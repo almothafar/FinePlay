@@ -1,0 +1,55 @@
+@import java.time._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.manage.company._
+@import models.company._
+
+@()
+
+@components.modal(Map("id"->"createDialog", "icon"->"fa fa-plus", "title"->Messages(MessageKeys.CREATE), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"createCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"createOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+	)){
+
+	@helper.form(helper.CSRF(controllers.manage.company.routes.Edit.create()), 'name->"createForm", 'id->"createForm") {
+		<div>
+			<p class="text-warning"></p>
+		</div>
+		<div class="row form-group">
+			<label for="create@Company.NAME" class="col-sm-3 col-form-label required">@Messages(MessageKeys.COMPANY_NAME)</label>
+			<div class="col-sm-9">
+				<input id="create@Company.NAME" type="text" name="@Company.NAME" class="form-control" placeholder="Name" value="" required autofocus>
+				<small class="text-muted">@Messages(MessageKeys.COMPANY_NAME_DESCRIPTION)</small>
+				<div>
+					<p class="text-warning"></p>
+				</div>
+			</div>
+		</div>
+		@if(!Locale.US.equals(lang.locale)){
+		<div class="row form-group">
+			<label for="create@Company.LOCALNAME" class="col-sm-3 col-form-label">@Messages(MessageKeys.LOCAL_NAME)</label>
+			<div class="col-sm-9">
+				<input id="create@Company.LOCALNAME" type="text" name="@Company.LOCALNAME" class="form-control" placeholder="LocalName" value="">
+				<small class="text-muted">@Messages(MessageKeys.LOCAL_NAME_DESCRIPTION)</small>
+				<div>
+					<p class="text-warning"></p>
+				</div>
+			</div>
+		</div>
+		}
+	}
+
+	<div style="word-wrap:break-word;">
+		<div id="createMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="createDescription">-</div>
+	</div>
+	@components.progress(Map("id"->"createProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
+}

@@ -1,0 +1,25 @@
+@(prop:scala.collection.immutable.Map[String, String])(content: Html)
+
+@alignClass() = @{
+
+	val align = prop.getOrElse("align","");
+
+	if("left".equals(align)){
+
+		""
+	}else if("center".equals(align)){
+
+		"text-center"
+	}else if("right".equals(align)){
+
+		"text-right"
+	}else{
+
+		""
+	}
+}
+
+<div id="@prop.getOrElse("id", "")" class="card border-@prop.getOrElse("border", "") bg-@prop.getOrElse("type", "") text-@prop.getOrElse("text", "") @alignClass() @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+
+	@content
+</div>

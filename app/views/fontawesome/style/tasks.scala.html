@@ -1,0 +1,13 @@
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+<div id="@prop.getOrElse("id", "")" class="list-group mb-3">
+	<a href="@controllers.fontawesome.style.routes.Style.index("squareicon").toString()" class="list-group-item @("active".when(equalTask("squareicon")))">@("Square "+Messages(MessageKeys.ICON))</a>
+	<a href="@controllers.fontawesome.style.routes.Style.index("largericon").toString()" class="list-group-item @("active".when(equalTask("largericon")))">@("Larger "+Messages(MessageKeys.ICON))</a>
+</div>

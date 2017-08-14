@@ -1,0 +1,21 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+<div id="@prop.getOrElse("id", "")" class="alert alert-@prop.getOrElse("type", "success") @("alert-dismissible fade show".when(Boolean.valueOf(prop.getOrElse("closable", "false")))) @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) role="alert">
+	@if(Boolean.valueOf(prop.getOrElse("closable","false"))){
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		<span class="sr-only">Close</span>
+	</button>
+	}
+	@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))
+	@Html(prop.getOrElse("text", ""))
+</div>

@@ -1,0 +1,212 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import javax.json._
+@import java.io._
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Nav", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"nav"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						@components.nav(Map("id"->""), List(
+							Map("name"->"11111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"22222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"33333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"44444", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"New"),
+							Map("name"->"55555", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"1"),
+							Map("name"->"66666", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"2", "enabled"->"false")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.nav(Map("id"->"","tabs"->"true"), List(
+							Map("name"->"11111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"22222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"33333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"44444", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"New"),
+							Map("name"->"55555", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"1"),
+							Map("name"->"66666", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"2", "enabled"->"false")
+						))
+					</div>
+
+					<div class="mb-3 clearfix">
+						@components.nav(Map("id"->"","pills"->"true"), List(
+							Map("name"->"11111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"22222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"33333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"44444", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"New"),
+							Map("name"->"55555", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"1"),
+							Map("name"->"66666", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"2", "enabled"->"false")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.nav(Map("id"->"","pills"->"true","vertical"->"true"), List(
+							Map("name"->"11111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"22222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"33333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"44444", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"New"),
+							Map("name"->"55555", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"1"),
+							Map("name"->"66666", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "badge"->"2", "enabled"->"false")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.adjust.nav(Map("id"->"","tabs"->"true","foldSize"->"xl"), List(
+							Map("name"->"1111111111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"2222222222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"3333333333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"4444444444", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"5555555555", "icon"->"fa fa-spinner fa-pulse", "link"->"#")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.adjust.nav(Map("id"->"","tabs"->"true","foldSize"->"lg"), List(
+							Map("name"->"1111111111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"2222222222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"3333333333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"4444444444", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"5555555555", "icon"->"fa fa-spinner fa-pulse", "link"->"#")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.adjust.nav(Map("id"->"","tabs"->"true","foldSize"->"md"), List(
+							Map("name"->"1111111111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"2222222222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"3333333333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"4444444444", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"5555555555", "icon"->"fa fa-spinner fa-pulse", "link"->"#")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.adjust.nav(Map("id"->"","tabs"->"true","foldSize"->"sm"), List(
+							Map("name"->"1111111111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"2222222222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"3333333333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"4444444444", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"5555555555", "icon"->"fa fa-spinner fa-pulse", "link"->"#")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.adjust.nav(Map("id"->"","tabs"->"true","foldSize"->"xs"), List(
+							Map("name"->"1111111111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"2222222222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"3333333333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"4444444444", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"5555555555", "icon"->"fa fa-spinner fa-pulse", "link"->"#")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.adjust.nav(Map("id"->"","tabs"->"true"), List(
+							Map("name"->"1111111111", "icon"->"fa fa-spinner fa-pulse", "link"->"#", "selected"->"true"),
+							Map("name"->"2222222222", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"3333333333", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"4444444444", "icon"->"fa fa-spinner fa-pulse", "link"->"#"),
+							Map("name"->"5555555555", "icon"->"fa fa-spinner fa-pulse", "link"->"#")
+						))
+					</div>
+
+					<div class="mb-3 clearfix">
+						<nav id="scrollspy-nav" class="navbar navbar-light bg-light">
+							@components.nav(Map("id"->"","pills"->"true"), List(
+								Map("name"->"11111", "icon"->"fa fa-spinner fa-pulse", "link"->"#S11111"),
+								Map("name"->"22222", "icon"->"fa fa-spinner fa-pulse", "link"->"#S22222"),
+								Map("name"->"33333", "icon"->"fa fa-spinner fa-pulse", "link"->"#S33333"),
+								Map("name"->"44444", "icon"->"fa fa-spinner fa-pulse", "link"->"#S44444"),
+								Map("name"->"55555", "icon"->"fa fa-spinner fa-pulse", "link"->"#S55555")
+							))
+						</nav>
+						<div data-spy="scroll" data-target="#scrollspy-nav" data-offset="0" class="scrollspy-help" style="height: 200px; position: relative; overflow: auto">
+
+							<h1 class="bd-title" id="S11111">
+								11111
+							</h1>
+							<p>
+								1111111111<br>
+								1111111111<br>
+								1111111111<br>
+								1111111111<br>
+								1111111111<br>
+							</p>
+							<h1 class="bd-title" id="S22222">
+								22222
+							</h1>
+							<p>
+								2222222222<br>
+								2222222222<br>
+								2222222222<br>
+								2222222222<br>
+								2222222222<br>
+							</p>
+							<h1 class="bd-title" id="S33333">
+								33333
+							</h1>
+							<p>
+								3333333333<br>
+								3333333333<br>
+								3333333333<br>
+								3333333333<br>
+								3333333333<br>
+							</p>
+							<h1 class="bd-title" id="S44444">
+								44444
+							</h1>
+							<p>
+								4444444444<br>
+								4444444444<br>
+								4444444444<br>
+								4444444444<br>
+								4444444444<br>
+							</p>
+							<h1 class="bd-title" id="S55555">
+								55555
+							</h1>
+							<p>
+								5555555555<br>
+								5555555555<br>
+								5555555555<br>
+								5555555555<br>
+								5555555555<br>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

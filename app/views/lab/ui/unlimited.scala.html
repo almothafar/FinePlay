@@ -1,0 +1,82 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Unlimited", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+	
+					@tasks(Map("id"->"", "task"->"unlimited"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<form>
+						<div class="form-group row">
+							<label for="inputItem" class="col-sm-2 col-form-label">Item</label>
+							<div id="unlimitedContainer" class="col-sm-10">
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var elementHtml=
+				'<div class="row">'+
+					'<div class="form-group col-sm-8">'+
+						'<label for="inputElement" class="sr-only">Element</label>'+
+						'<input type="text" class="form-control" id="inputElement" placeholder="Element">'+
+					'</div>'+
+					'<div class="form-group col-sm-4">'+
+						'@Html(components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-minus", "text"->"", "class"->"minusButton")).toString().trim().replace("\n",""))'+
+						'@Html(components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-plus", "text"->"", "class"->"plusButton")).toString().trim().replace("\n",""))'+
+					'</div>'+
+				'</div>';
+
+			var minusClick = function(e){
+
+				var element =$(e.currentTarget).parent().parent();
+				element.remove();
+			}
+
+			var plusClick = function(e){
+
+				var element =$(e.currentTarget).parent().parent();;
+				element.after(elementHtml);
+				var nextElement = element.next();
+				nextElement.find('.minusButton').on('click',minusClick);
+				nextElement.find('.plusButton').on('click',plusClick);
+			}
+
+			$('#unlimitedContainer').append(elementHtml);
+			var firstElement = $('#unlimitedContainer>.row').eq(0);
+			firstElement.find('.minusButton').attr("disabled", "disabled");
+			firstElement.find('.plusButton').on('click',plusClick);
+		}
+	}
+}

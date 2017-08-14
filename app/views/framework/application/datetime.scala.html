@@ -1,0 +1,61 @@
+@import views.html._
+@import views.html.components
+@import views.html.development
+@import play.api.i18n._
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("framework","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DATETIME), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"datetime"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@development.proptable("", map)
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var timeMap = new Object();
+			timeMap['Browser UTC Time'] = new Date().toISOString();
+			timeMap['Browser Local Time'] = new Date().toLocaleString();
+			timeMap['Browser toString()'] = new Date().toString();
+
+			var timeKeys = Object.keys(timeMap);
+			timeKeys.sort();
+
+			$.each(timeKeys, function(i, key){
+
+				$("tbody").append("<tr></tr>");
+				$("tbody > tr:last-child").append("<td>"+key+"</td><td>"+timeMap[key]+"</td>");
+			});
+		}
+	}
+}

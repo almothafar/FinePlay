@@ -1,0 +1,48 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
+
+<div id="@prop.getOrElse("id", "")" class="dropdown @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+	@components.button(Map("type"->"primary", "outline"->"true", "icon"->prop.getOrElse("icon", ""), "text"->prop.getOrElse("text", ""), "class"->"dropdown-toggle", "data-toggle"->"dropdown", "aria-haspopup"->"true", "aria-expanded"->"false"))
+	<div class="dropdown-menu">
+	@for(i <- 0 to elements.size - 1){
+
+
+		@elements(i).getOrElse("itemType", "item") match {
+			case "header" => {
+
+				<h6 id="@elements(i).getOrElse("id", "")" class="dropdown-header">
+					<i class="@elements(i).getOrElse("icon", "")"></i>
+					@Html(elements(i).getOrElse("text", ""))
+					<div class="float-right">
+						@if(!elements(i).getOrElse("badge", "").isEmpty()){&nbsp}@components.badge(Map("type"->prop.getOrElse("badgeType", "secondary"), "pill"->"true", "text"->elements(i).getOrElse("badge", "")))
+					</div>
+				</h6>
+			}
+			case "dropdown-divider" => {
+
+				<div id="@elements(i).getOrElse("id", "")" class="dropdown-divider">
+					<i class="@elements(i).getOrElse("icon", "")"></i>
+				</div>
+			}
+			case "item" | _ => {
+
+				<a id="@elements(i).getOrElse("id", "")" class="dropdown-item @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true"))))" href="@elements(i).getOrElse("link", "#")">
+					<i class="@elements(i).getOrElse("icon", "")"></i>
+					@Html(elements(i).getOrElse("text", ""))
+					<div class="float-right">
+						@if(!elements(i).getOrElse("badge", "").isEmpty()){&nbsp}@components.badge(Map("type"->prop.getOrElse("badgeType", "secondary"), "pill"->"true", "text"->elements(i).getOrElse("badge", "")))
+					</div>
+				</a>
+			}
+		}
+	}
+	</div>
+</div>

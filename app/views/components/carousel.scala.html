@@ -1,0 +1,39 @@
+@import views.html._
+@import views.html.components
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import org.apache.commons.lang3._
+
+@(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
+
+@defining(if(prop.getOrElse("id", "").isEmpty){"id-"+String.valueOf(RandomUtils.nextLong(0, 1000))}else{prop.getOrElse("id", "")}) { randomId =>
+
+<div id="@randomId" class="carousel slide @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) data-ride="carousel">
+	<ol class="carousel-indicators">
+		@for(i <- 0 to elements.size - 1){
+		<li data-target="#carousel-example-generic" data-slide-to="@i" class="@("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))"></li>
+		}
+	</ol>
+	<div class="carousel-inner" role="listbox">
+		@for(i <- 0 to elements.size - 1){
+		<div class="carousel-item @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))">
+			@components.image(Map("id"->"", "source"->elements(i).getOrElse("source", "#"), "rounded"->elements(i).getOrElse("rounded", ""), "roundedType"->elements(i).getOrElse("roundedType", ""), "alternate"->elements(i).getOrElse("alternate", ""), "style"->elements(i).getOrElse("style", "")))
+			<div class="carousel-caption d-none d-md-block">
+				<h3><i class="@elements(i).getOrElse("icon", "")"></i>@if(!elements(i).getOrElse("icon", "").isEmpty() && !elements(i).getOrElse("caption", "").isEmpty()){&nbsp}@elements(i).getOrElse("caption", "")</h3>
+				<p>@elements(i).getOrElse("description", "")</p>
+			</div>
+		</div>
+		}
+	</div>
+	<a class="carousel-control-prev" href="#@randomId" role="button" data-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#@randomId" role="button" data-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
+}

@@ -1,0 +1,612 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TABLE), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"table"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->""),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "inverse"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->""),
+							Map("id"->"", "inverse"->"true"),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->""),
+							Map("id"->"", "default"->"true"),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "striped"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "striped"->"true", "inverse"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "bordered"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@TwBootstrap"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"4", "scope"->"row"),
+									Map("id"->"", "text"->"Larry the Bird", "colspan"->"2"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "bordered"->"true", "inverse"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@TwBootstrap"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"4", "scope"->"row"),
+									Map("id"->"", "text"->"Larry the Bird", "colspan"->"2"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "hover"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry the Bird", "colspan"->"2"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "hover"->"true", "inverse"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry the Bird", "colspan"->"2"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "size"->"sm"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry the Bird", "colspan"->"2"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "size"->"sm", "inverse"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry the Bird", "colspan"->"2"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->""),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->"", "type"->"primary"),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->"", "type"->"secondary"),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"4", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->"", "type"->"success"),List(
+									Map("id"->"", "head"->"true", "text"->"5", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"6", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->"", "type"->"info"),List(
+									Map("id"->"", "head"->"true", "text"->"7", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"8", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->"", "type"->"warning"),List(
+									Map("id"->"", "head"->"true", "text"->"9", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"10", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"))),
+								Tuple2(Map("id"->"", "type"->"danger"),List(
+									Map("id"->"", "head"->"true", "text"->"11", "scope"->"row"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "responsive"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "responsive"->"true", "bordered"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "responsive"->"true", "bordered"->"true", "reflow"->"true"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"),
+								Map("id"->"", "head"->"true", "text"->"Table heading"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell"),
+									Map("id"->"", "text"->"Table cell")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->""),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#", "type"->"danger", "icon"->"fa fa-spinner fa-pulse"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"),
+								Map("id"->"", "head"->"true", "text"->"Column heading", "type"->"danger", "icon"->"fa fa-spinner fa-pulse"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row", "type"->"primary", "icon"->"fa fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "type"->"primary", "icon"->"fa fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content", "rowspan"->"5"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row", "type"->"secondary", "icon"->"fa fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "type"->"secondary", "icon"->"fa fa-spinner fa-pulse"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row", "type"->"success", "icon"->"fa fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "type"->"success", "icon"->"fa fa-spinner fa-pulse"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"4", "scope"->"row", "type"->"info", "icon"->"fa fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "type"->"info", "icon"->"fa fa-spinner fa-pulse"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"5", "scope"->"row", "type"->"warning", "icon"->"fa fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "type"->"warning", "icon"->"fa fa-spinner fa-pulse"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"6", "scope"->"row", "type"->"danger", "icon"->"fa fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "type"->"danger", "icon"->"fa fa-spinner fa-pulse")))),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#", "type"->"active", "icon"->"fa fa-spinner fa-pulse"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"),
+								Map("id"->"", "head"->"true", "text"->"Column heading", "type"->"active", "icon"->"fa fa-spinner fa-pulse"),
+								Map("id"->"", "head"->"true", "text"->"Column heading")))
+						)
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

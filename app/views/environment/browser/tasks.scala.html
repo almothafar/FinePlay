@@ -1,0 +1,21 @@
+@import views.html._
+@import views.html.components
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+@components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true", "foldSize"->"xs"), Seq(
+	Map("name"->"Navigator", "icon"->"fa fa-pencil", "link"->controllers.environment.browser.routes.Browser.index("navigator").toString, "selected"->equalTask("navigator").toString),
+	Map("name"->"Window", "icon"->"fa fa-pencil", "link"->controllers.environment.browser.routes.Browser.index("window").toString, "selected"->equalTask("window").toString),
+	Map("name"->"Document", "icon"->"fa fa-pencil", "link"->controllers.environment.browser.routes.Browser.index("document").toString, "selected"->equalTask("document").toString),
+	Map("name"->"Box", "icon"->"fa fa-pencil", "link"->controllers.environment.browser.routes.Browser.index("box").toString, "selected"->equalTask("box").toString),
+	Map("name"->"Position", "icon"->"fa fa-pencil", "link"->controllers.environment.browser.routes.Browser.index("position").toString, "selected"->equalTask("position").toString)
+))

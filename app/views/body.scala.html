@@ -1,0 +1,669 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConverters._
+@import scala.collection.JavaConversions._
+
+@import play.api.i18n._
+@import play.api.inject._
+@import play.api.Logger
+@import play.filters.csrf._
+
+@import models.system._
+@import models.system.System._
+@import models.user._
+@import models.user.User._
+
+@import views.html._
+
+@import common.system._
+@import common.utils._
+
+@(currentSection:String, currentWork:String)(content: Html)
+
+@isDev() = @{
+
+	common.system.System.getInjector().instanceOf(classOf[play.api.Environment]).mode == play.api.Mode.Dev
+}
+
+@isShow(permissions:Permission*) = @{
+
+	Logger.info("Menu");
+	val roleValues = session().getOrDefault(User.ROLES, /* Direct access of not signin */"");
+	models.system.System.isPermissionAllowed(EnumSet.copyOf(permissions.asJava), User.getPermissions(Sessions.toRoles(roleValues)))
+}
+
+@equalSection(section:String) = @{
+
+	if(section.equals(currentSection)){
+		"true"
+	}else{
+		"false"
+	}
+}
+
+@equalWork(section:String, work:String) = @{
+
+	if(section.equals(currentSection) && work.equals(currentWork)){
+		"true"
+	}else{
+		"false"
+	}
+}
+
+@token() = @{
+
+	val takenOpt = CSRF.getToken(request());
+	if(takenOpt.isPresent()){
+		takenOpt.get().name + "=" + takenOpt.get().value;
+	}else{
+		"csrfToken=testToken"
+	}
+}
+
+@addToken(call:play.api.mvc.Call) = @{
+
+	val csrfUrl = try{
+		helper.CSRF(call)
+	}catch{
+		case e: Exception => call + "?csrfToken=testToken"
+	}
+	csrfUrl
+}
+
+<body>
+
+	<div id="system_base">
+
+		<div id="system_work-menu">
+
+			@workmenu(Map("id"->"sections"), List(
+				(Map("name"->Messages(MessageKeys.HOME), "icon"->"fa fa-home", "selected"->equalSection("home")),List(
+					Map("name"->Messages(MessageKeys.INTRO), "icon"->"fa fa-file-text-o", "link"->controllers.home.routes.Home.index().toString(), "selected"->equalWork("home","intro")),
+					Map("name"->Messages(MessageKeys.VIDEO), "icon"->"fa fa-film", "link"->controllers.home.routes.Home.video().toString(), "selected"->equalWork("home","video"))
+				)),
+				(Map("name"->Messages(MessageKeys.SETTING), "icon"->"fa fa-cog", "selected"->equalSection("setting")),List(
+					Map("name"->Messages(MessageKeys.SYSTEM), "icon"->"fa fa-desktop", "link"->controllers.setting.system.routes.System.index().toString(), "selected"->equalWork("setting","system")),
+					Map("name"->Messages(MessageKeys.USER), "icon"->"fa fa-user", "link"->controllers.setting.user.routes.User.index().toString(), "selected"->equalWork("setting","user"))
+				)),
+				(Map("name"->Messages(MessageKeys.INFORMATION), "icon"->"fa fa-info-circle", "selected"->equalSection("information")),List(
+					Map("name"->Messages(MessageKeys.CREATOR), "icon"->"fa fa-address-card", "link"->controllers.information.routes.Information.creator().toString(), "selected"->equalWork("information","creator")),
+					Map("name"->Messages(MessageKeys.LICENSE), "icon"->"ii ii-fineplay", "link"->controllers.information.routes.Information.license().toString(), "selected"->equalWork("information","license"))
+				)),
+				(Map("show"->isShow(Permission.MANAGE).toString(), "name"->Messages(MessageKeys.MANAGE), "icon"->"fa fa-wrench", "selected"->equalSection("manage")),List(
+					Map("name"->Messages(MessageKeys.COMPANY), "icon"->"fa fa-building-o", "link"->controllers.manage.company.routes.Read.index().toString(), "selected"->equalWork("manage","company")),
+					Map("name"->Messages(MessageKeys.USER), "icon"->"fa fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user"))
+				)),
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"nf nf-disclosure_triangle", "selected"->equalSection("development")),List(
+					Map("name"->Messages(MessageKeys.HTTP), "icon"->"fa fa-file-text-o", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
+					Map("name"->Messages(MessageKeys.JAVASCRIPT), "icon"->"fa fa-file-text-o", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
+					Map("name"->Messages(MessageKeys.DESIGN), "icon"->"fa fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),
+					Map("name"->Messages(MessageKeys.DOCUMENT), "icon"->"fa fa-file-text-o", "link"->controllers.development.document.routes.Document.index("troubleshoot").toString(), "selected"->equalWork("development","document")),
+					Map("name"->Messages(MessageKeys.HELP), "icon"->"fa fa-question-circle-o", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
+				)),
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.ENVIRONMENT), "icon"->"fa fa-thermometer-half", "selected"->equalSection("environment")),List(
+					Map("name"->Messages(MessageKeys.JAVA), "icon"->"fa fa-coffee", "link"->controllers.environment.javalang.routes.Java.index().toString(), "selected"->equalWork("environment","java")),
+					Map("name"->Messages(MessageKeys.BROWSER), "icon"->"fa fa-safari", "link"->controllers.environment.browser.routes.Browser.index().toString(), "selected"->equalWork("environment","browser"))
+				)),
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FRAMEWORK), "icon"->"ii ii-play if-monochrome", "selected"->equalSection("framework")),List(
+					Map("name"->Messages(MessageKeys.WELCOME), "icon"->"ii ii-play", "link"->controllers.framework.welcome.routes.Welcome.index().toString(), "selected"->equalWork("framework","welcome")),
+					Map("name"->(Messages(MessageKeys.DEFAULT)+" "+Messages(MessageKeys.PAGE)), "icon"->"ef ef-note", "link"->controllers.framework.defaultpage.routes.Defaultpage.index().toString(), "selected"->equalWork("framework","defaultpage")),
+					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"ef ef-musical_note if-monochrome if-inverse", "link"->controllers.framework.application.routes.Application.index("config").toString(), "selected"->equalWork("framework","application")),
+					Map("name"->Messages(MessageKeys.DATETIME), "icon"->"ef ef-calendar if-monochrome", "link"->controllers.framework.datetime.routes.DateTime.index().toString(), "selected"->equalWork("framework","datetime"))
+				)),
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.BOOTSTRAP), "icon"->"ii ii-bootstrap if-monochrome if-inverse", "selected"->equalSection("bootstrap")),List(
+					Map("name"->Messages(MessageKeys.COMPONENT), "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.component.routes.Component.index("button").toString(), "selected"->equalWork("bootstrap","component")),
+					Map("name"->Messages(MessageKeys.LAYOUT), "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString(), "selected"->equalWork("bootstrap","layout")),
+					Map("name"->"I Like", "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.ilike.routes.ILike.index().toString(), "selected"->equalWork("bootstrap","ilike"))
+				)),
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FONTAWESOME), "icon"->"fa fa-font-awesome", "selected"->equalSection("fontawesome")),List(
+					Map("name"->Messages(MessageKeys.STYLE), "icon"->"fa fa-file-text-o", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString(), "selected"->equalWork("fontawesome","style"))
+				)),
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.LAB), "icon"->"fa fa-flask", "selected"->equalSection("lab")),List(
+					Map("name"->Messages(MessageKeys.LIBRARY), "icon"->"fa fa-file-text-o", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
+					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"fa fa-file-text-o", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
+					Map("name"->Messages(MessageKeys.UI), "icon"->"fa fa-file-text-o", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
+					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"fa fa-file-text-o", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance"))
+				)),
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.SECTION), "icon"->"fa fa-folder-o", "selected"->equalSection("section")),List(
+					Map("name"->Messages(MessageKeys.WORK), "icon"->"fa fa-file-text-o", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalWork("section","work")),
+					Map("name"->(Messages(MessageKeys.WORK)+" 2"), "icon"->"fa fa-file-text-o", "link"->"", "selected"->equalWork("section","work2")),
+					Map("name"->(Messages(MessageKeys.WORK)+" 3"), "icon"->"fa fa-file-text-o", "link"->"", "selected"->equalWork("section","work3"), "enabled"->"false")
+				))
+			))
+		</div>
+
+		<button id="system_menu-left-corner" style="position: absolute; top: 0; left:0; width:0px; height:0px; opacity:0;">
+		</button>
+
+		<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow">
+
+			<div class="d-inline">
+			@components.button(Map("id"->"menuButton", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
+			<a class="navbar-brand d-none d-md-inline ml-1 mt-1" href="@controllers.home.routes.Home.index()">
+				@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.language + "/logo.png").toString, "alternate"->"System logo.", "style"->"height: 2.4rem;"))
+			</a>
+			</div>
+			<div class="" id="">
+				<ul class="navbar-nav mr-auto">
+				</ul>
+				<form class="form-inline float-right align-items-center">
+					@views.html.debug()
+					@components.button(Map("id"->"printButton", "type"->"link", "icon"->"fa fa-print", "text"->"", "class"->"ml-1", "style"->"display: none;"))
+					@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fa fa-angle-double-up", "text"->"", "class"->"ml-1"))
+					<div class="btn-group">
+						<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USERID)</span>
+						</button>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fa fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
+							<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fa fa-sign-out"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
+						</div>
+					</div>
+					@components.button(Map("id"->"helpButton", "type"->"link", "icon"->"fa fa-question-circle-o", "text"->"", "class"->"ml-1", "style"->"display: none;"))
+				</form>
+			</div>
+		</nav>
+
+		<nav class="navbar invisible">
+			@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon"))
+		</nav>
+
+		<div id="system_extension-menu" class="shadow">
+		</div>
+
+		<div id="system_content">
+
+			@content
+
+			@components.container(Map("id"->"system_credit-container", "fluid"->"true", "style"->"text-align: center;")){
+
+				@components.credit()
+			}
+		</div>
+
+		<div id="system_notifications">
+		</div>
+
+		@components.modal(Map("id"->"reportErrorDialog", "icon"->"fa fa-bug", "title"->(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR)), "data-backdrop"->"static", "size"->"lg"), List(
+				Map("id"->"reportErrorCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+				Map("id"->"reportErrorButton", "type"->"primary", "text"->Messages(MessageKeys.REPORT), "default"->"true")
+			)){
+			<textarea id="reportErrorContent" class="form-control" placeholder="Content" rows="16" required maxlength="1000"></textarea>
+			<div style="word-wrap:break-word;">
+				<div id="reportErrorMessage" class="lead"></div>
+				<div id="reportErrorDescription">-</div>
+			</div>
+			@components.progress(Map("id"->"reportErrorProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
+			@if(isDev()){
+			<div class="mt-3">
+				<input type="text" class="form-control" id="searchErrorMessage" placeholder="@Messages(MessageKeys.ERROR)">
+				@components.button(Map("id"->"searchStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-stack-overflow", "text"->"Stack Overflow"))
+				@components.button(Map("id"->"searchStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-stack-overflow", "text"->"スタック・オーバーフロー"))
+				@components.button(Map("id"->"searchQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
+				@components.button(Map("id"->"searchTeratailButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"teratail"))
+			</div>
+			}
+		}
+
+		<div id="system_help-base">
+
+			<div id="system_help-header">
+
+				<nav id="system_help-menu" class="navbar bg-primary d-flex justify-content-center" style="-webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: initial">
+					@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
+					<div class="align-self-center h4">@Messages(MessageKeys.HELP)</div>
+					@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
+				</nav>
+
+				@components.container(Map("id"->"", "fluid"->"true", "class"->"bg-light py-2")){
+					<div class="input-group">
+						<span class="input-group-addon">@components.icon(Map("id"->"", "icon"->"fa fa-search"))</span>
+						<input id="help-search-text" type="text" class="form-control" aria-label="">
+						<span id="help-search-clear" class="input-group-addon">@components.icon(Map("id"->"", "icon"->"fa fa-times-circle"))</span>
+					</div>
+				}
+
+				<nav id="system_help-navbar" class="navbar navbar-light bg-light">
+
+					@components.nav(Map("id"->"","pills"->"true"), List(
+						/* Pair with help-top */
+						Map("icon"->"fa fa-angle-double-up", "link"->"#help-top", "selected"->"true")
+					))
+				</nav>
+			</div>
+
+			<div id="system_help-content" class="help-notready">
+
+				<div id="system_help-main" data-spy="scroll" data-target="#system_help-navbar" data-offset="0" class="shadow-inset">
+
+					<!-- Pair with nav-link -->
+					<h1 class="bd-title" id="help-top">
+					</h1>
+
+					<div class="d-flex" style="height: 100%;">
+						<div class="align-self-center" style="width: 100%;">
+							<div class="d-flex justify-content-center" style="">
+								<span class="fa-stack fa-2x rounded" style="background-color: lightgray; xborder-radius: .25rem;">
+									@components.icon(Map("id"->"system_help-content-loading", "icon"->"fa fa-spinner fa-pulse fa-stack-1x", "class"->"text-white"))
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="system_cover">
+		<div class="row h-100 mx-3">
+			<div class="col-5"></div>
+			<div class="col-2 align-self-center">
+				<div class="row justify-content-center">
+					<div class="d-md-block rounded p-5" style="background-color: rgba(0, 0, 0, 0.2);">
+						<i class="fa fa-circle-o-notch fa-5x fa-spin text-white"></i>
+					</div>
+				</div>
+			</div>
+			<div class="col-5"></div>
+		</div>
+	</div>
+
+	<div id="system_magnify-text">
+		<div class="row h-100 mx-3">
+			<div class="col-12 align-self-center">
+				<div class="row justify-content-center">
+					<div class="d-md-block rounded px-3 m-3" style="background-color: rgba(0, 0, 0, 0.5);">
+						<span id="system_magnify-text-content"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="system_responsive-bar" class="w-100" style="position: absolute; top: 0; z-index: 3090; display:none; opacity: 0.3; overflow: hidden;">
+
+		<div class="progress" style="width: 10000px;">
+			<div class="progress-bar text-left" style="width: 576px">&nbsp;XS 0px〜</div>
+			<div class="progress-bar text-left bg-success" style="width: 192px">&nbsp;SM 576px〜</div>
+			<div class="progress-bar text-left bg-info" style="width: 224px">&nbsp;MD 768px〜</div>
+			<div class="progress-bar text-left bg-warning" style="width: 208px">&nbsp;LG 992px〜</div>
+			<div class="progress-bar text-left bg-danger" style="width: 8800px">&nbsp;XL 1200px〜</div>
+		</div>
+	</div>
+
+	@script(){
+
+		$(document).ready(function () {
+
+			console.log('DOM loaded.');
+		});
+
+		$(window).on('load', function () {
+
+			console.log('completely loaded.');
+		});
+
+		if(@isDev() && window.Popper){
+
+			$("#debugButton").show();
+			$("#debugButton").popover({
+
+				html: true
+			});
+		}
+	}
+	@script(){
+
+		var initReportErrorResult = function(){
+
+			$('#reportErrorContent').empty();
+
+			$('#reportErrorMessage').text('');
+			$('#reportErrorDescription').text('-');
+			$('#reportErrorProgress>.progress-bar').removeClass('bg-danger').css('width', '0%');
+			$('#reportErrorCancel').prop('disabled', false);
+		};
+
+		$('#reportErrorButton').on('click', function (e) {
+
+			$('#reportErrorCancel').prop('disabled', true);
+			$('#reportErrorMessage').text('@Messages(MessageKeys.PLEASE__WAIT)');
+			$('#reportErrorProgress>.progress-bar').addClass('bg-primary').css('width', '100%')
+
+			var timeout = "10000";
+			$.ajax({
+				method: "POST",
+				url: "@addToken(apis.system.routes.Logger.log())",
+				data: $('#reportErrorContent').val(),
+				contentType: 'application/json',
+				dataType: "json",
+				timeout: timeout
+			})
+			.then(
+				function (responseJson) {
+
+					$('#reportErrorDialog').modal('hide');
+					alert(responseJson['message']);
+				},
+				function (jqXHR, textStatus, errorThrown) {
+
+					$('#reportErrorProgress>.progress-bar').removeClass('bg-primary').addClass('bg-danger');
+					$('#reportErrorMessage').text('@Messages(MessageKeys.FAILURE)');
+					$('#reportErrorCancel').prop('disabled', false);
+					$('#reportErrorDescription').html('@Messages(MessageKeys.STATUS)&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;@Messages(MessageKeys.ERROR)&nbsp;<strong>'+errorThrown+'</strong>');
+				}
+			);
+		})
+
+		$('#searchStackOverflowButton').on('click', function(){ window.open('https://stackoverflow.com/search?q=[js]' + $('#searchErrorMessage').val()); });
+		$('#searchStackOverflowJaButton').on('click', function(){ window.open('https://ja.stackoverflow.com/search?q=[javascript]' + $('#searchErrorMessage').val()); });
+		$('#searchQiitaButton').on('click', function(){ window.open('https://qiita.com/search?q=' + $('#searchErrorMessage').val()); });
+		$('#searchTeratailButton').on('click', function(){ window.open('https://teratail.com/questions/search?q=' + $('#searchErrorMessage').val()); });
+
+		var reportError = function(reportErrorContent){
+
+			initReportErrorResult();
+			$('#reportErrorContent').val(JSON.stringify(reportErrorContent, null, "	"));
+			$('#searchErrorMessage').val(reportErrorContent.message);
+			$('#reportErrorDialog').modal('show');
+		}
+
+		window.onerror = function (msg, url, lineNo, columnNo, error) {
+
+			var userId = '@session.get(models.user.User.USERID)';
+			var string = msg.toLowerCase();
+			var substring = "script error";
+			var reportErrorContent;
+			if (string.indexOf(substring) > -1){
+
+				reportErrorContent = {
+					userid: userId,
+					message: msg
+				}
+			} else {
+
+				reportErrorContent = {
+					userid: userId,
+					message: msg,
+					sourceURL: url,
+					line: lineNo,
+					column: columnNo,
+					error: error
+				}
+			}
+			reportError(reportErrorContent);
+
+			return false;
+		};
+	}
+	@script(){
+
+		$("#menuButton").on('click', function(event) {
+
+			$("#system_base").toggleClass('system_expand');
+			return false;
+		});
+
+		getContent().on('click', function(event) {
+
+			$("#system_base").removeClass('system_expand');
+			$("#system_base").removeClass('system_help-expand');
+		});
+
+		$("#printButton").on('click', function(event) {
+
+			$(window).trigger('beforeprint');
+			window.print();
+			$(window).trigger('afterprint');
+		});
+
+		$("#scrollTopButton").on('click', function(event) {
+
+			getContent().animate({ scrollTop: 0 }, 'fast');
+		});
+
+		$('#signOutLink').on('click', function(e){
+
+			event.preventDefault();
+
+			var signOutLinkUrl = $(this).prop('href');
+
+			fadeOutToFront('body', function(e){
+
+				window.location.href = signOutLinkUrl;
+			});
+		});
+	}
+	@script(){
+
+		var refreshHelp = function(){
+
+			var mainHtml = $('#system_help-main')[0].outerHTML;
+			$('#system_help-main').remove();
+			$('#system_help-content').append(mainHtml);
+
+			var activeNavItems = $('#system_content .nav>.nav-item>.nav-link.active');
+			var activeDropdownItems = $('#system_content .dropdown>.dropdown-menu>.dropdown-item.active');
+			$('#system_help-main').scrollspy('refresh');
+			activeNavItems.addClass('active');
+			activeDropdownItems.addClass('active');
+			$('#system_help-main').find('#help-wrapper>#help-top>.anchorjs-link').hide();
+
+			$('#system_help-main .btn-clipboard').tooltip();
+		}
+
+		$("#helpButton").on('click', function(event) {
+
+			var helpNav = $('#system_help-header>#system_help-navbar');
+			var helpMain = $('#system_help-content>#system_help-main');
+
+			$("#system_base").toggleClass('system_help-expand');
+
+			if($('#system_help-content').hasClass('help-notready')){
+
+				var helpLink = '/@currentSection/@currentWork/help?@token';
+				var timeout = "10000";
+				$.ajax({
+					method:"GET",
+					url: helpLink,
+					contentType: 'text/plain',
+					dataType: "html",
+					timeout: timeout
+				})
+				.then(
+					function (responseHtml) {
+
+						helpMain.empty();
+
+						helpMain.append('<div id="help-wrapper" class="container-fluid bd-content"></div>');
+						var helpWrapper = helpMain.find('#help-wrapper');
+
+						helpWrapper.append(responseHtml);
+
+						var titles = helpWrapper.find('h1.bd-title');
+						titles.each(function(){
+
+							var idAnchor = $(this).attr('id');
+							var title = $(this).text();
+							helpNav.find('ul').append('<li class="nav-item"><a href="#' + idAnchor + '" class="nav-link">' + title + '</a></li>');
+						});
+
+						helpWrapper.prepend('<h1 class="bd-title" id="help-top" style="width:100%; height:10px;"></h1>');
+
+						anchors.options.placement = 'right'
+						anchors.options.icon = '✿'
+						anchors.add('.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
+
+						// add tooltip
+						$('#system_help-main .highlight').each(function () {
+
+							var btnHtml = '<div class="bd-clipboard"><button class="btn-clipboard" title="Copy to clipboard" data-toggle="tooltip">Copy</button></div>';
+							$(this).before(btnHtml);
+						});
+
+						refreshHelp();
+
+						// enable clipboard
+						var clipboard = new Clipboard('#system_help-main .btn-clipboard', {
+							target: function (trigger) {
+								return trigger.parentNode.nextElementSibling
+							}
+						});
+						clipboard.on('success', function (e) {
+							$(e.trigger)
+								.attr('title', 'Copied!')
+								.tooltip('_fixTitle')
+								.tooltip('show')
+								.attr('title', 'Copy to clipboard')
+								.tooltip('_fixTitle');
+							e.clearSelection();
+						});
+
+						// enable dummy image
+						var images = $('#system_help-main img[data-src^="holder.js"]').get();
+						Holder.run({
+							images: images
+						});
+
+						Components.applyScrollToNav('#system_help-navbar>.nav');
+
+						$('#system_help-content').removeClass('help-notready');
+					},
+					function (jqXHR, textStatus, errorThrown) {
+
+						var errorMessage;
+						switch (jqXHR.status){
+							case 404:
+								// Server down or Bug
+
+								errorMessage = '@Html(Strings.removeNewLine(components.alert(Map("icon"->"fa fa-exclamation-triangle", "text"->Messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, Messages(MessageKeys.HELP)), "type"->"warning", "class"->"m-3")).toString))';
+								break;
+							default:
+
+								errorMessage = errorThrown;
+								break;
+						}
+
+						helpMain.html(errorMessage);
+
+						refreshHelp();
+					}
+				);
+			}
+			return false;
+		});
+
+		var highlightHelp = function(searchText){
+
+			var regExp = new RegExp('('+searchText+')', 'gi');
+			$('.help-text').each(function(){
+
+				var highlighted = $(this).html().replace(regExp, '<span class="matched">$1</span>');
+				$(this).html(highlighted);
+			});
+		}
+		var highlightedHelpTops = function(targetRootSelector, highlightedSelector){
+
+			var highlightedTops = [];
+			$(highlightedSelector).each(function(i){
+
+				var parents = $(this).parentsUntil(targetRootSelector);
+				var highlightedTop = parents[parents.length - 1];
+				highlightedTops.push(highlightedTop);
+			});
+			return $.unique(highlightedTops);
+		}
+		var filterHighlightHelp = function(){
+
+			var tops = highlightedHelpTops('#help-wrapper', '#help-wrapper .matched');
+
+			$('#help-wrapper').children().hide();
+			$(tops).show();
+			$('#help-wrapper>h1,h2,h3,h4,h5,h6').show();
+		}
+
+		var storedHelpWrapper;
+		var keyupEvents = [];
+		$("#help-search-text").on('keyup', function () {
+
+			keyupEvents.push('keyup');
+
+			var searchText = $(this).val();
+			setTimeout(function () {
+
+				keyupEvents.pop();
+
+				var helpNav = $('#system_help-header>#system_help-navbar');
+				var helpMain = $('#system_help-content>#system_help-main');
+
+				if (0 == keyupEvents.length) {
+
+					var helpWrapper = helpMain.find('#help-wrapper');
+					if(0 == searchText.length){
+
+						if(storedHelpWrapper){
+
+							helpWrapper.remove();
+							helpMain.append(storedHelpWrapper);
+							storedHelpWrapper = null;
+						}
+					}else{
+
+						var sourceHtml;
+						if(storedHelpWrapper){
+
+							sourceHtml = storedHelpWrapper[0].outerHTML;
+							helpWrapper.remove();
+						}else{
+
+							sourceHtml = helpWrapper[0].outerHTML;
+							storedHelpWrapper = helpWrapper.detach();
+						}
+
+						helpMain.append(sourceHtml);
+						highlightHelp(searchText);
+
+						filterHighlightHelp();
+					}
+
+					refreshHelp();
+				}
+			}, 1000);
+		});
+
+		$("#help-search-clear").on('click', function () {
+
+			$('#help-search-text').val('');
+			$('#help-search-text').trigger("keyup");
+		});
+
+		$("#help-search-text").on('focus', function () {
+
+			if(!$("#system_base").hasClass("system_help-expand")){
+
+				$('#system_menu-left-corner').focus();
+			}
+		});
+	}
+	@script(){
+
+		$("#system_magnify-text").on('click', function(event) {
+
+			hideMagnifyText();
+		});
+	}
+	@script(){
+
+		@if(isDev()){
+
+			$('.draft').each(function(){
+
+				var replacedHtml = $(this.outerHTML.replace(/>(.*?)</gi, '><span>$1</span><')).html();
+				$(this).html(replacedHtml);
+			});
+		}
+	}
+</body>

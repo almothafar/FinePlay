@@ -1,0 +1,58 @@
+@import models.components._
+@import views.html._
+@import views.html.components
+
+@import java.time._
+@import java.time.format._
+
+@(map: Map[String, String])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"ZXing", "icon"->"fa fa-barcode", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"zxing"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+
+						@for(entry <- map) {
+							<div class="col-md-4">
+
+								@components.figure(Map("id"->"", "text"->entry._1.toString)){
+
+									@components.image(Map("id"->"", "source"->("data:image/png;base64," + entry._2.toString), "fluid"->"true", "alternate"->entry._1.toString))
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+		}
+	}
+}

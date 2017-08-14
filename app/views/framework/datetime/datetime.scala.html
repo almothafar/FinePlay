@@ -1,0 +1,133 @@
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.framework.datetime._
+
+@(form: play.data.Form[models.framework.datetime.DateTimeFormContent])
+
+@datetime_now() = @{
+
+	common.utils.DateTimes.getClientDateTime(LocalDateTime.now())
+}
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.pickadate.head()
+	}
+
+	@body("framework","datetime"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DATETIME), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-0")){
+
+			@helper.form(helper.CSRF(controllers.framework.datetime.routes.DateTime.update()), 'name->"updateForm", 'id->"updateForm") {
+				<div class="row mb-3">
+					<div class="col-12">
+						@if(form.hasGlobalErrors) {
+							<p class="text-warning">@form.getGlobalError.get.message</p>
+						}
+						<div class="row form-group">
+							<label for="@DateTimeFormContent.DATETIME_DATE" class="col-12 col-sm-12 col-form-label">@Messages(MessageKeys.DATETIME)</label>
+							<div class="col-12 col-sm-6">
+								<div class="input-group">
+									<input id='@DateTimeFormContent.DATETIME_DATE' type='text' name="@DateTimeFormContent.DATETIME_DATE" class="form-control datePicker" value="@form(DateTimeFormContent.DATETIME_DATE+"_receive").getValue.orElse("")"/>
+									<span class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</span>
+									@for(error <- form(DateTimeFormContent.DATETIME_DATE).errors) {
+										<div class="text-warning">@Messages(error.message)</div>
+									}
+								</div>
+							</div>
+							<div class="col-12 col-sm-6">
+								<div class="input-group">
+									<input id='@DateTimeFormContent.DATETIME_TIME' type='text' name="@DateTimeFormContent.DATETIME_TIME" class="form-control timePicker" value="@form(DateTimeFormContent.DATETIME_TIME+"_receive").getValue.orElse("")"/>
+									<span class="input-group-addon">
+										<i class="fa fa-clock-o"></i>
+									</span>
+									@for(error <- form(DateTimeFormContent.DATETIME_TIME).errors) {
+										<div class="text-warning">@Messages(error.message)</div>
+									}
+								</div>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label for="@DateTimeFormContent.DATE_DATE" class="col-12 col-sm-12 col-form-label">@Messages(MessageKeys.DATE)</label>
+							<div class="col-12 col-sm-12">
+								<div class="input-group">
+									<input id='@DateTimeFormContent.DATE_DATE' type='text' name="@DateTimeFormContent.DATE_DATE" class="form-control datePicker" value="@form(DateTimeFormContent.DATE_DATE+"_receive").getValue.orElse("")"/>
+									<span class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</span>
+									@for(error <- form(DateTimeFormContent.DATE_DATE).errors) {
+										<div class="text-warning">@Messages(error.message)</div>
+									}
+								</div>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label for="@DateTimeFormContent.TIME_DATE" class="col-12 col-sm-12 col-form-label">@Messages(MessageKeys.TIME)</label>
+							<div class="input-group">
+								<input id='@DateTimeFormContent.TIME_DATE' type='hidden' name="@DateTimeFormContent.TIME_DATE" class="form-control" value="@form(DateTimeFormContent.TIME_DATE).getValue.orElse("")"/>
+							</div>
+							<div class="col-12 col-sm-12">
+								<div class="input-group">
+									<input id='@DateTimeFormContent.TIME_TIME' type='text' name="@DateTimeFormContent.TIME_TIME" class="form-control timePicker" value="@form(DateTimeFormContent.TIME_TIME+"_receive").getValue.orElse("")"/>
+									<span class="input-group-addon">
+										<i class="fa fa-clock-o"></i>
+									</span>
+									@for(error <- form(DateTimeFormContent.TIME_TIME).errors) {
+										<div class="text-warning">@Messages(error.message)</div>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						@components.button(Map("id"->"updateButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-refresh", "text"->Messages(MessageKeys.UPDATE), "class"->"float-right"))
+					</div>
+				</div>
+			}
+		}
+
+		@libraries.standard.last()
+		@libraries.pickadate.last()
+		@script(){
+
+			$('.datePicker').pickadate({
+				selectYears: true,
+				selectMonths: true,
+				format: 'yyyy/mm/dd',
+				formatSubmit: 'yyyy-mm-dd'
+			});
+
+			$('.timePicker').pickatime({
+				format: 'HH:i',
+				formatSubmit: 'HH:i:00'
+			});
+
+			$('.picker__input').each(function(){
+
+				$(this).nextAll('span:first').on('click', function(e){
+
+					$(e.currentTarget).prevAll('.picker__input:first').trigger("click");
+					e.stopPropagation();
+				});
+			});
+		}
+	}
+}

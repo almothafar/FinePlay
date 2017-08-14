@@ -1,0 +1,59 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.FONTAWESOME)){
+
+		@libraries.standard.head()
+	}
+
+	@body("fontawesome","style"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->("Square "+Messages(MessageKeys.ICON)), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"squareicon"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mt-3 mb-3">
+
+						<div class="ml-3" style="float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-square fa-inverse fa-2x fa-file-word-o", "class"->"pa-1", "style"->"background-color:blue; padding: 0.7rem; border-radius:6px;", "aria-hidden"->"true"))
+						</div>
+						<div class="ml-3" style="float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-square fa-inverse fa-2x fa-file-excel-o", "class"->"pa-1", "style"->"background-color:green; padding: 0.7rem; border-radius:6px;", "aria-hidden"->"true"))
+						</div>
+						<div class="ml-3" style="float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-square fa-inverse fa-2x fa-file-powerpoint-o", "class"->"pa-1", "style"->"background-color:orange; padding: 0.7rem; border-radius:6px;", "aria-hidden"->"true"))
+						</div>
+						<div class="ml-3" style="float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-square fa-inverse fa-2x fa-file-pdf-o", "class"->"pa-1", "style"->"background-color:red; padding: 0.7rem; border-radius:6px;", "aria-hidden"->"true"))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

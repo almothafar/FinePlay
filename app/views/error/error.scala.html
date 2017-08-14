@@ -1,0 +1,126 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import play.inject.Injector
+
+@import common.system._
+
+@this(injector: Injector)
+@(error: play.api.UsefulException)
+
+@isDev() = @{
+
+	injector.instanceOf(classOf[play.api.Environment]).mode == play.api.Mode.Dev
+}
+
+@isUsefulException(error: play.api.UsefulException) = @{
+
+	!"Execution exception".equals(error.title)
+}
+
+@title(isUsefulException: Boolean) = @{
+
+	if(isUsefulException){
+
+		error.title
+	}else{
+
+		Messages(MessageKeys.SYSTEM_ERROR_EXECUTION_EXCEPTION)
+	}
+}
+
+@causes(error: play.api.UsefulException) = @{
+
+	val buffer = scala.collection.mutable.ListBuffer[Throwable]()
+	var throwable = error.getCause();
+	while(throwable != null){
+
+		buffer += throwable
+		throwable = throwable.getCause()
+	}
+
+	buffer.toList
+}
+
+@frame(){
+
+	@head(error.title){
+
+		@libraries.standard.head()
+	}
+
+	@body("error","error"){
+
+		@components.modal(Map("id"->"errorModal", "title"->title(isUsefulException(error)), "size"->"lg"), List(
+				Map("id"->"errorModalOk", "type"->"primary", "text"->"OK", "default"->"true")
+			)){
+
+			@if(isUsefulException(error)){
+
+				<i class="fa fa-exclamation-triangle fa-3x fa-pull-left fa-border text-warning"></i>
+			}else{
+
+				<i class="fa fa-ban fa-3x fa-pull-left fa-border text-danger"></i>
+			}
+			<p>@error.id</p>
+			<p>@error.description</p>
+
+			@for(cause <- causes(error)){
+
+				@cause.getLocalizedMessage()
+			}
+
+			@if(isDev()){
+			<div class="mt-3">
+				<input type="text" class="form-control" id="searchServerErrorMessage" placeholder="@Messages(MessageKeys.ERROR)" value="@error.getLocalizedMessage()">
+				@components.button(Map("id"->"searchServerStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-stack-overflow", "text"->"Stack Overflow"))
+				@components.button(Map("id"->"searchServerStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-stack-overflow", "text"->"スタック・オーバーフロー"))
+				@components.button(Map("id"->"searchServerQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
+				@components.button(Map("id"->"searchServerTeratailButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"teratail"))
+			</div>
+			}
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			@if(isUsefulException(error)){
+			}else{
+
+				$('#errorModal .modal-content').addClass('bg-dark').addClass('text-white');
+			}
+
+			$('#errorModal').modal({backdrop:'static'});
+
+			$('#errorModalOk').on('click', function (e) {
+
+				window.location.href = '@controllers.user.routes.User.index()';
+			});
+
+			$(window).on('keydown', function(e){
+
+				var keyCode = e.which ? e.which : e.keyCode;
+				if (13 == keyCode) {
+
+					if($("#errorModal").is(".show")){
+
+						$('#errorModalOk').trigger("click");
+					}else{
+
+					}
+
+					e.preventDefault();
+				}
+			})
+
+			$('#searchServerStackOverflowButton').on('click', function(){ window.open('https://stackoverflow.com/search?q=[java]' + $('#searchServerErrorMessage').val()); });
+			$('#searchServerStackOverflowJaButton').on('click', function(){ window.open('https://ja.stackoverflow.com/search?q=[java]' + $('#searchServerErrorMessage').val()); });
+			$('#searchServerQiitaButton').on('click', function(){ window.open('https://qiita.com/search?q=' + $('#searchServerErrorMessage').val()); });
+			$('#searchServerTeratailButton').on('click', function(){ window.open('https://teratail.com/questions/search?q=' + $('#searchServerErrorMessage').val()); });
+		}
+	}
+}

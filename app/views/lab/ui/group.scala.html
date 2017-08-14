@@ -1,0 +1,140 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.GROUP), "icon"->"fa fa-arrow-right", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"group"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+
+				<div class="col-md-9">
+
+					@components.modal(Map("id"->"selectDialog", "icon"->"fa fa-list", "title"->Messages(MessageKeys.SELECT), "data-backdrop"->"static", "size"->"lg"), List(
+							Map("id"->"cancelBotton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+							Map("id"->"okButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
+						)){
+						<div id="select" class="form-group">
+							<select multiple class="form-control" size="10">
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+							</select>
+						</div>
+					}
+
+					<form>
+
+						<div class="row">
+							<div class="col-sm-6 col-md-4">
+								<div id="group-left" class="form-group group">
+									<h4 class="headline">@Messages(MessageKeys.LEFT)</h4>
+									<select multiple class="form-control" name="leftSelect" size="10">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+									<div class="text-right">
+										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fa fa-minus", "text"->Messages(MessageKeys.REMOVE)))
+										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fa fa-plus", "text"->Messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"left"))
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-4">
+								<div id="group-center" class="form-group group">
+									<h4 class="headline">@Messages(MessageKeys.CENTER)</h4>
+									<select multiple class="form-control" name="centerSelect" size="10">
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+									</select>
+									<div class="text-right">
+										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fa fa-minus", "text"->Messages(MessageKeys.REMOVE)))
+										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fa fa-plus", "text"->Messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"center"))
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-4">
+								<div id="group-right" class="form-group group">
+									<h4 class="headline">@Messages(MessageKeys.RIGHT)</h4>
+									<select multiple class="form-control" name="rightSelect" size="10">
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+									</select>
+									<div class="text-right">
+										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fa fa-minus", "text"->Messages(MessageKeys.REMOVE)))
+										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fa fa-plus", "text"->Messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"right"))
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			var optionSorter = function(a, b){
+
+				return parseInt($(a).val()) > parseInt($(b).val()) ? 1 : -1;
+			}
+
+			$('.remove').on('click', function(){
+
+				var selector = '#select>select';
+				$(this).parent().parent().find('select>option:selected').appendTo(selector);
+				$(selector + '>option').sort(optionSorter).appendTo(selector);
+			});
+
+			$('#selectDialog').on('show.bs.modal', function (e) {
+
+				var button = $(e.relatedTarget);
+				var group = button.data('group');
+				$('#okButton').data('group', group);
+			});
+			$('#okButton').on('click', function (e) {
+
+				var group = $(this).data('group');
+				var selector = '#group-' + group + '>select';
+				$('#select>select>option:selected').appendTo(selector);
+				$(selector + '>option').sort(optionSorter).appendTo(selector);
+			});
+		}
+	}
+}

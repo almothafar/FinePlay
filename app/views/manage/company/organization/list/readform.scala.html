@@ -1,0 +1,69 @@
+@import java.time._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.manage.company.organization.list._
+@import models.company.organization._
+
+@(form: play.data.Form[ReadFormContent])
+
+<div class="collapse" id="readCollapse">
+	<div id="readPanel" class="card text-xs-center">
+		<div class="card-body text-xs-left">
+		@helper.form(helper.CSRF(controllers.manage.company.organization.list.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
+			<h5 class="form-read-heading">@Messages(MessageKeys.CONDITION)</h5>
+			@if(form.hasGlobalErrors) {
+				<p class="text-warning">@form.getGlobalError.get.message</p>
+			}
+			<div class="row form-group">
+				<div class="col-sm-9">
+					<input id="@OrganizationUnit.COMPANYID" type="hidden" name="@OrganizationUnit.COMPANYID" class="form-control" placeholder="CompanyId" value="@form(OrganizationUnit.COMPANYID).getValue.orElse("")" required>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-sm-9">
+					<input id="@OrganizationUnit.ORGANIZATIONID" type="hidden" name="@OrganizationUnit.ORGANIZATIONID" class="form-control" placeholder="OrganizationId" value="@form(OrganizationUnit.ORGANIZATIONID).getValue.orElse("")" required>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-sm-9">
+					<input id="@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" type="hidden" name="@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" class="form-control" placeholder="OrganizationUpdateDateTime" value="@form(OrganizationUnit.ORGANIZATIONUPDATEDATETIME).getValue.orElse("")" required>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label for="@OrganizationUnit.NAME" class="col-sm-3 col-form-label">@Messages(MessageKeys.ORGANIZATIONUNIT_NAME)</label>
+				<div class="col-sm-9">
+					<div class="input-group">
+						<div class="input-group-addon"><i class="fa fa-group"></i></div>
+						<input id="@OrganizationUnit.NAME" type="text" name="@OrganizationUnit.NAME" class="form-control" placeholder="Name" value="@form(OrganizationUnit.NAME).getValue.orElse("")" autofocus>
+						@for(error <- form(OrganizationUnit.NAME).errors) {
+							<div class="text-warning">@Messages(error.message)</div>
+						}
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label for="@OrganizationUnit.MAXRESULT" class="col-sm-3 col-form-label">@Messages(MessageKeys.MAX__CASE)</label>
+				<div class="col-sm-9">
+					<select id="@OrganizationUnit.MAXRESULT" name="@OrganizationUnit.MAXRESULT" class="form-control custom-select" required>
+						<option value="100" @("selected".when("100".equals(form(OrganizationUnit.MAXRESULT).getValue.orElse(""))))>100</option>
+						<option value="500" @("selected".when("500".equals(form(OrganizationUnit.MAXRESULT).getValue.orElse(""))))>500</option>
+						<option value="1000" @("selected".when("1000".equals(form(OrganizationUnit.MAXRESULT).getValue.orElse(""))))>1000</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					@components.button(Map("id"->"readButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-refresh", "text"->Messages(MessageKeys.UPDATE), "class"->"float-right"))
+				</div>
+			</div>
+		}
+		</div>
+	</div>
+</div>

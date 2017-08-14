@@ -1,0 +1,81 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+@import views.html.development
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.ENVIRONMENT)){
+
+		@libraries.standard.head()
+		@style(){
+
+			.boxback{
+
+				background-color: lightcoral;
+			}
+			#box{
+
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				border: solid 10px blue;
+				margin: 10px;
+				padding: 10px;
+			}
+		}
+	}
+
+	@body("environment","browser"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Box", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"box"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"boxback", "style"->"padding-top: 10px;")){
+
+			<div id="box">#box</div>
+
+			@development.proptable("", map.asScala.toMap)
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var boxmap = {
+				'$("#box").width()': $("#box").width(),
+				'$("#box").innerWidth()': $("#box").innerWidth(),
+				'$("#box").outerWidth()': $("#box").outerWidth(),
+				'$("#box").outerWidth(true)': $("#box").outerWidth(true),
+				'$("#box").prop("clientWidth")': $("#box").prop("clientWidth"),
+				'$("#box").prop("offsetWidth")': $("#box").prop("offsetWidth"),
+				'$("#box").prop("scrollWidth")': $("#box").prop("scrollWidth"),
+				'document.querySelector("#box").clientWidth': document.querySelector("#box").clientWidth,
+				'document.querySelector("#box").offsetWidth': document.querySelector("#box").offsetWidth,
+				'document.querySelector("#box").scrollWidth': document.querySelector("#box").scrollWidth,
+			}
+
+			$.each(boxmap, function(key, value){
+
+				$("tbody").append("<tr></tr>");
+				$("tbody > tr:last-child").append("<td>"+key+"</td><td>"+value+"</td>");
+			});
+		}
+	}
+}

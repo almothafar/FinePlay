@@ -1,0 +1,58 @@
+@import java.util.Map._
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(markdown: String)
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.DEVELOPMENT)){
+
+		@libraries.standard.head()
+		@libraries.highlight.head()
+	}
+
+	@body("development","document"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TROUBLESHOOT), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"troubleshoot"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="preview"></div>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.marked.last()
+		@libraries.highlight.last()
+		@script(){
+
+			marked.setOptions({
+				langPrefix: ''
+			});
+//			var html = `Template literal`;
+			var html = marked('@Html(markdown.replace("'", "\\'").replace("\n", "\\n"))');
+			$('#preview').html(html);
+		}
+	}
+}

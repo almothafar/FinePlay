@@ -1,0 +1,70 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.api.i18n._
+
+@import views.html._
+@import views.html.components
+
+@import javax.json._
+@import java.io._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("home"){
+
+		@libraries.standard.head()
+	}
+
+	@body("home","video"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.VIDEO), "icon"->"fa fa-film", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="jumbotron">
+
+				<h4>Watch the training video.</h4>
+				<div class="embed-responsive embed-responsive-16by9">
+
+					<iframe id="trainingVideo" class="embed-responsive-item" src="http://www.youtube.com/embed/fb43-o74ha8" frameborder="0" allowfullscreen></iframe>
+				</div>
+
+				@components.container(Map("id"->"fullScreenButtonContainer", "fluid"->"true", "class"->"mt-3", "style"->"display:none;")){
+
+					<div class="row justify-content-end">
+
+						<div>
+
+							@components.button(Map("id"->"fullScreenButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-expand", "text"->Messages(MessageKeys.FULL__SCREEN), "class"->"float-right"))
+						</div>
+					</div>
+				}
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var videoFrame = $('#trainingVideo')[0];
+			videoFrame.requestFullscreen = videoFrame.requestFullscreen || videoFrame.webkitRequestFullscreen || videoFrame.mozRequestFullScreen || videoFrame.msRequestFullscreen;
+			if(videoFrame.requestFullscreen){
+
+				$('#fullScreenButtonContainer').show();
+				$('#fullScreenButton').on('click', function(){
+
+					videoFrame.requestFullscreen()
+				});
+			}
+		}
+	}
+}

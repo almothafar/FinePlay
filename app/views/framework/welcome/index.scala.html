@@ -1,0 +1,41 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Framework"){
+
+		@libraries.standard.head()
+	}
+
+	@body("framework","welcome"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.WELCOME), "icon"->"fa fa-file-text-o", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<h4 class="headline">Official page.</h4>
+
+			@components.figure(Map("id"->"", "class"->"d-block", "icon"->"fa fa-exclamation-circle text-info", "text"->"This template is unofficial.")){
+
+				@components.linkbutton(Map("id"->"", "type"->"success", "outline"->"true", "link"->"https://www.playframework.com", "text"->"Play Framework", "icon"->"ii ii-play", "target"->"_blank"))<br>
+			}
+		}
+
+		@libraries.standard.last()
+		@script(){
+		}
+	}
+}

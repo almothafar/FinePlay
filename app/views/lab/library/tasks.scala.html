@@ -1,0 +1,47 @@
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+<div id="@prop.getOrElse("id", "")" class="list-group mb-3">
+	<a href="@controllers.lab.library.routes.Library.index("bootbox").toString()" class="list-group-item @("active".when(equalTask("bootbox")))">Bootbox</a>
+	<a href="@controllers.lab.library.routes.Library.index("select2").toString()" class="list-group-item @("active".when(equalTask("select2")))">Select2</a>
+	<a href="@controllers.lab.library.routes.Library.index("pickadate").toString()" class="list-group-item @("active".when(equalTask("pickadate")))">pickadate</a>
+	<a href="@controllers.lab.library.routes.Library.index("chartjs").toString()" class="list-group-item @("active".when(equalTask("chartjs")))">Chart.js</a>
+	<a href="@controllers.lab.library.routes.Library.index("fullCalendar").toString()" class="list-group-item @("active".when(equalTask("fullCalendar")))">FullCalendar</a>
+	<a href="@controllers.lab.library.routes.Library.index("bootstrapslider").toString()" class="list-group-item @("active".when(equalTask("bootstrapslider")))">bootstrap-slider</a>
+	<a href="@controllers.lab.library.routes.Library.index("openlayers").toString()" class="list-group-item @("active".when(equalTask("openlayers")))">OpenLayers</a>
+	<a href="@controllers.lab.library.routes.Library.index("ckeditor").toString()" class="list-group-item @("active".when(equalTask("ckeditor")))">CKEditor</a>
+	<a href="@controllers.lab.library.routes.Library.index("handsontable").toString()" class="list-group-item @("active".when(equalTask("handsontable")))">Handsontable</a>
+	<a href="@controllers.lab.library.routes.Library.index("highlight").toString()" class="list-group-item @("active".when(equalTask("highlight")))">highlight</a>
+	<a href="@controllers.lab.library.routes.Library.index("d3geoprojection").toString()" class="list-group-item @("active".when(equalTask("d3geoprojection")))">d3-geo-projection</a>
+	<a href="@controllers.lab.library.routes.Library.index("cropperjs").toString()" class="list-group-item @("active".when(equalTask("cropperjs")))">Cropper.js</a>
+	<a href="@controllers.lab.library.routes.Library.index("diff2html").toString()" class="list-group-item @("active".when(equalTask("diff2html")))">diff2html</a>
+	<a href="@controllers.lab.library.routes.Library.index("mustache").toString()" class="list-group-item @("active".when(equalTask("mustache")))">Mustache</a>
+	<a href="@controllers.lab.library.routes.Library.index("zxing").toString()" class="list-group-item @("active".when(equalTask("zxing")))">ZXing</a>
+	<a href="@controllers.lab.library.routes.Library.index("materialicons").toString()" class="list-group-item @("active".when(equalTask("materialicons")))">Material Icons</a>
+	<a href="@controllers.lab.library.routes.Library.index("icofont").toString()" class="list-group-item @("active".when(equalTask("icofont")))">IcoFont</a>
+
+	<a href="@controllers.lab.library.routes.Library.index("parsley").toString()" class="list-group-item @("active".when(equalTask("parsley"))) lab d-none">Parsley</a>
+	<a href="@controllers.lab.library.routes.Library.index("bootstrapcolorpicker").toString()" class="list-group-item @("active".when(equalTask("bootstrapcolorpicker"))) lab d-none">bootstrap-colorpicker</a>
+	<a href="@controllers.lab.library.routes.Library.index("frappegantt").toString()" class="list-group-item @("active".when(equalTask("frappegantt"))) lab d-none">Frappé Gantt</a>
+	<a href="@controllers.lab.library.routes.Library.index("pdfjs").toString()" class="list-group-item @("active".when(equalTask("pdfjs"))) lab d-none">PDF.js</a>
+	<a href="@controllers.lab.library.routes.Library.index("3dmol").toString()" class="list-group-item @("active".when(equalTask("3dmol"))) lab d-none">3Dmol.js</a>
+</div>
+
+@script(){
+
+	document.onkeydown = function(e){
+
+		if(e.altKey && e.keyCode === 89){
+
+			if($){
+
+				$('.lab.d-none').removeClass('d-none');
+			}
+			return false;
+		}
+	};
+}

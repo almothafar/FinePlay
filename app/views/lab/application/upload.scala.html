@@ -1,0 +1,286 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<style id="fileStyle">#file + span.custom-file-control:after{content: "" !important;}</style>
+		<style id="imageFileStyle">#imageFile + span.custom-file-control:after{content: "" !important;}</style>
+		@style(){
+
+			.imagePreview{
+				width:100%;
+				height:240px;
+				background-color: lightgray;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+			}
+		}
+		<style id="ajaxFileStyle">#ajaxFile + span.custom-file-control:after{content: "" !important;}</style>
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.UPLOAD), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"upload"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<h4 class="headline">Form</h4>
+						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-check", "text"->play.mvc.Controller.flash("success"), "closable"->"true", "flashKey"->"success"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-exclamation-triangle", "text"->play.mvc.Controller.flash("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
+
+						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.form()), 'name->"normalForm", 'enctype -> "multipart/form-data") {
+
+							<div class="row">
+								<div class="col-md-12">
+
+									<label class="custom-file w-100">
+										<input id="file" type="file" name="inputName" class="custom-file-input">
+										<span class="custom-file-control"></span>
+									</label>
+								</div>
+							</div>
+							<p style="position: relative;">
+								<input type="submit" class="btn btn-outline-primary" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Messages(MessageKeys.UPLOAD)">
+								<i class="fa fa-upload" style="position: absolute; left: 1rem; top: 0.7rem; color: @models.user.User.Theme.valueOf(session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getBackgroundColor().toHex();"></i>
+							</p>
+						}
+					</div>
+
+					<div class="mb-3">
+						<h4 class="headline">@(Messages(MessageKeys.IMAGE)+" "+Messages(MessageKeys.PREVIEW))</h4>
+						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-check", "text"->play.mvc.Controller.flash("imageSuccess"), "closable"->"true", "flashKey"->"imageSuccess"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-exclamation-triangle", "text"->play.mvc.Controller.flash("imageWarning"), "type"->"warning", "closable"->"true", "flashKey"->"imageWarning"))
+
+						<div class="row">
+
+							<div class="col-md-6">
+
+								@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.image()), 'name->"imageForm", 'enctype -> "multipart/form-data") {
+
+									<div class="row">
+										<div class="col-md-12">
+
+											<label class="custom-file w-100">
+												<input id="imageFile" type="file" name="inputName" class="custom-file-input">
+												<span class="custom-file-control"></span>
+											</label>
+										</div>
+									</div>
+									<p style="position: relative;">
+										<input type="submit" class="btn btn-outline-primary" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Messages(MessageKeys.UPLOAD)">
+										<i class="fa fa-upload" style="position: absolute; left: 1rem; top: 0.7rem; color: @models.user.User.Theme.valueOf(session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getBackgroundColor().toHex();;"></i>
+									</p>
+								}
+							</div>
+
+							<div class="col-md-6">
+
+								<div id="imagePreview" class="imagePreview"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<h4 class="headline">Ajax</h4>
+						@components.alert(Map("id"->"ajaxSuccess", "icon"->"fa fa-check", "text"->"", "closable"->"true"))
+						@components.alert(Map("id"->"ajaxWarning", "icon"->"fa fa-exclamation-triangle", "text"->"", "type"->"warning", "closable"->"true"))
+
+						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.direct()), 'name->"ajaxForm", 'enctype -> "multipart/form-data", 'id->"ajaxForm") {
+
+							<div class="row">
+								<div class="col-md-12">
+
+									<label class="custom-file w-100">
+										<input id="ajaxFile" type="file" name="inputName" class="custom-file-input">
+										<span class="custom-file-control"></span>
+									</label>
+									@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+											Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal")
+										)){
+										<div style="word-wrap:break-word;">
+											<div id="ajaxMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+											<div id="ajaxDescription">-</div>
+										</div>
+										@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
+									}
+								</div>
+							</div>
+							<p>
+								@components.button(Map("id"->"ajaxSubmit", "type"->"primary", "outline"->"true", "icon"->"fa fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
+							</p>
+						}
+					</div>
+				</div>
+			</div>
+		}
+		@libraries.standard.last()
+		@script(){
+
+			$('#file').on('change', function(e){
+
+				var template = '<style id="fileStyle">#file + span.custom-file-control:after{content: "fileName" !important;}</style>';
+
+				var selectedFilePath = document.normalForm.inputName.value;
+				var selectedFilePaths = selectedFilePath.split(/\\|\\/);
+				var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
+
+				var updatedStyle = template.replace('fileName',selectedFileName)
+				$('#fileStyle').replaceWith(updatedStyle);
+			});
+		}
+		@script(){
+
+			$('#imageFile').on('change', function(e){
+
+				var template = '<style id="imageFileStyle">#imageFile + span.custom-file-control:after{content: "fileName" !important;}</style>';
+
+				var selectedFilePath = document.imageForm.inputName.value;
+				var selectedFilePaths = selectedFilePath.split(/\\|\\/);
+				var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
+
+				if(!this.files.length){
+
+					document.imageForm.inputName.value = '';
+					$('#imageFileStyle').replaceWith(template.replace('fileName',''));
+					$('#imagePreview').css('background-image', '');
+					return;
+				}
+
+				var file = $(this).prop('files')[0];
+
+				if(!/^image.*/.test(file.type)){
+
+					document.imageForm.inputName.value = '';
+					$('#imageFileStyle').replaceWith(template.replace('fileName',''));
+					$('#imagePreview').css('background-image', '');
+					return;
+				}
+
+				var updatedStyle = template.replace('fileName',selectedFileName)
+				$('#imageFileStyle').replaceWith(updatedStyle);
+
+				if(window.FileReader){
+
+					var reader = new FileReader();
+					reader.onload = function(){
+
+						var imageData = reader.result;
+						$('#imagePreview').css('background-image', 'url('+imageData+')');
+					};
+					reader.readAsDataURL(file);
+				}
+			});
+
+			if(!window.FileReader){
+
+				$('#imagePreview').hide();
+			}
+		}
+		@script(){
+
+			$("#ajaxSuccess").append("<span></span>").hide();
+			$("#ajaxWarning").append("<span></span>").hide();
+
+			$("#ajaxSuccess>button").on('click', function(e){
+
+				$("#ajaxSuccess").hide();
+				return false;
+			});
+
+			$("#ajaxWarning>button").on('click', function(e){
+
+				$("#ajaxWarning").hide();
+				return false;
+			});
+
+			$('#ajaxFile').on('change', function(e){
+
+				var template = '<style id="ajaxFileStyle">#ajaxFile + span.custom-file-control:after{content: "fileName" !important;}</style>';
+
+				var selectedFilePath = document.ajaxForm.inputName.value;
+				var selectedFilePaths = selectedFilePath.split(/\\|\\/);
+				var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
+
+				var updatedStyle = template.replace('fileName',selectedFileName)
+				$('#ajaxFileStyle').replaceWith(updatedStyle);
+			});
+
+			$('#ajaxSubmit').on('click', function(e){
+
+				$('#ajaxDialog').one('shown.bs.modal', function (e) {
+
+					var form = $('#ajaxForm');
+					var url = form.attr('action');
+					var formData = new FormData(form[0]);
+					$.ajax({
+						method:"POST",
+						url:url,
+						data:formData,
+						processData: false,
+						contentType: false,
+						dataType: "json",
+						timeout: 3 * 1000
+					})
+					.then(
+						function(responseJson) {
+
+							$('#ajaxDialog').modal('hide');
+
+							var status = responseJson.status;
+							var message = responseJson.message;
+							if("success" == status){
+
+								$("#ajaxSuccess>span").html(message);
+								$("#ajaxSuccess").show();
+							}else if("warning" == status){
+
+								$("#ajaxWarning>span").html(message);
+								$("#ajaxWarning").show();
+							}
+						},
+						function( jqXHR, textStatus, errorThrown) {
+
+							$('#ajaxProgress>.progress-bar').addClass('bg-danger');
+							$('#ajaxCancel').prop('disabled', false);
+							$('#ajaxMessage').text('@Messages(MessageKeys.FAILURE)');
+							$('#ajaxDescription').html('@Messages(MessageKeys.STATUS)&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;@Messages(MessageKeys.ERROR)&nbsp;<strong>'+errorThrown+'</strong>');
+						}
+					);
+				})
+
+				$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
+				$('#ajaxCancel').prop('disabled', true);
+				$('#ajaxMessage').text('@Messages(MessageKeys.PLEASE__WAIT)');
+				$('#ajaxDescription').text('-');
+
+				$('#ajaxDialog').modal('show');
+
+				return false;
+			});
+		}
+	}
+}

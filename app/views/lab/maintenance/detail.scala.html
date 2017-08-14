@@ -1,0 +1,59 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(target:String, task:String)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","manage"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DETAIL), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"detailContent", "fluid"->"true", "style"->"display: none;")){
+			<div class="row">
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-12">
+
+					@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS)))
+
+					<div class="jumbotron mt-3">
+						<h1 class="display-4">Detail of @target</h1>
+						<p class="lead">From @task</p>
+					</div>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			showFromRight('#detailContent');
+
+			$('#previousButton').on('click', function(e){
+
+				event.preventDefault();
+
+				hideToRight('#detailContent', function(e){
+
+					window.location.href = "@controllers.lab.maintenance.routes.Maintenance.master()";
+				});
+			});
+		}
+	}
+}

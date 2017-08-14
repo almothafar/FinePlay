@@ -1,0 +1,139 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.CHECKBOX), "icon"->"fa fa-check-square-o", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"checkbox"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+
+				<div class="col-md-9">
+
+					<div class="row">
+
+						<div class="col-md-9 mb-3">
+
+							<label for="" class="col-form-label col-md-3">2~&nbsp</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_" type="checkbox" name="" value="1" checked>
+								<span class="custom-control-indicator"></span>
+								1
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_" type="checkbox" name="" value="2" checked>
+								<span class="custom-control-indicator"></span>
+								2
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_" type="checkbox" name="" value="3" >
+								<span class="custom-control-indicator"></span>
+								3
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_" type="checkbox" name="" value="4" >
+								<span class="custom-control-indicator"></span>
+								4
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_" type="checkbox" name="" value="5" >
+								<span class="custom-control-indicator"></span>
+								5
+							</label>
+						</div>
+						<div class="col-md-9 mb-3">
+
+							<label for="" class="col-form-label col-md-3">~4&nbsp</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input _4" type="checkbox" name="" value="1" checked>
+								<span class="custom-control-indicator"></span>
+								1
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input _4" type="checkbox" name="" value="2" checked>
+								<span class="custom-control-indicator"></span>
+								2
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input _4" type="checkbox" name="" value="3" >
+								<span class="custom-control-indicator"></span>
+								3
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input _4" type="checkbox" name="" value="4" >
+								<span class="custom-control-indicator"></span>
+								4
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input _4" type="checkbox" name="" value="5" >
+								<span class="custom-control-indicator"></span>
+								5
+							</label>
+						</div>
+						<div class="col-md-9 mb-3">
+
+							<label for="" class="col-form-label col-md-3">2~4&nbsp</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_4" type="checkbox" name="" value="1" checked>
+								<span class="custom-control-indicator"></span>
+								1
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_4" type="checkbox" name="" value="2" checked>
+								<span class="custom-control-indicator"></span>
+								2
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_4" type="checkbox" name="" value="3" >
+								<span class="custom-control-indicator"></span>
+								3
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_4" type="checkbox" name="" value="4" >
+								<span class="custom-control-indicator"></span>
+								4
+							</label>
+							<label class="custom-control custom-checkbox">
+								<input class="custom-control-input 2_4" type="checkbox" name="" value="5" >
+								<span class="custom-control-indicator"></span>
+								5
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			Components.applyRangeToCheckboxs(".2_", 2);
+			Components.applyRangeToCheckboxs("._4", null, 4);
+			Components.applyRangeToCheckboxs(".2_4", 2, 4);
+		}
+	}
+}

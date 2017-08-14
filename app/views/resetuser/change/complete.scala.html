@@ -1,0 +1,87 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import models.user._
+
+@import common.system._
+
+@(user: models.user.User)
+
+@frame(){
+
+	@top.head(Messages(MessageKeys.RESETUSER)){
+
+		@libraries.bootstrap.head()
+	}
+
+	@top.body("top","resetuser"){
+
+		<div class="d-none d-sm-block">
+			<div style="height:50px;">
+			</div>
+		</div>
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-md-1 col-lg-2 col-xl-3">
+				</div>
+				<div class="col-md-10 col-lg-8 col-xl-6">
+					@components.card(Map("id"->"completePanel", "class"->"shadow m-3")){
+						<div class="card-header">
+							@Messages(MessageKeys.RESETUSER)
+						</div>
+						<div class="card-body">
+
+							<h4 class="card-title">@Messages(MessageKeys.RESETUSER_CHANGE_COMPLETE)</h4>
+							<p class="card-text">@Messages(MessageKeys.RESETUSER_CHANGE_COMPLETE_DESCRIPTION)</p>
+							<div class="form-group row">
+								<div class="col-sm-9">
+									<input id="@User.USERID" type="hidden" name="@User.USERID" class="form-control" placeholder="Email" value="@user.getUserId" required disabled>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="@User.PASSWORD" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_PASSWORD)</label>
+								<div class="col-sm-9">
+									<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="********" required disabled>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-12 text-right">
+									@components.linkbutton(Map("id"->"topButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "link"->controllers.user.routes.User.index().toString, "default"->"true", "class"->"float-right"))
+								</div>
+							</div>
+
+						</div>
+						<div class="card-footer text-muted">
+						</div>
+					}
+				</div>
+				<div class="col-md-1 col-lg-2 col-xl-3">
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			$(window).on('keydown', function(e){
+
+				var keyCode = e.which ? e.which : e.keyCode;
+				if (13 == keyCode) {
+
+					location.href = $('#topButton').attr("href");
+
+					e.preventDefault();
+				}
+			});
+		}
+	}
+}

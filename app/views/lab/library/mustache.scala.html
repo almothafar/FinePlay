@@ -1,0 +1,63 @@
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(fromTemplate:String, fromTemplateText:String)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Mustache", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"mustache"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+
+						<h4 class="headline">Fixed</h4>
+						<textarea class="form-control" id="replace" name="replace" rows="10" readonly>
+@fromTemplate
+						</textarea>
+					</div>
+
+					<div class="mb-3">
+
+						<h4 class="headline">Free</h4>
+						<textarea class="form-control" id="replace" name="replace" rows="10" readonly>
+@fromTemplateText
+						</textarea>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+		}
+	}
+}

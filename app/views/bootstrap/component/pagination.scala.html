@@ -1,0 +1,98 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import javax.json._
+@import java.io._
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Pagination", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"pagination"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@components.pagination(Map("id"->""),
+						Map("icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						Map("icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						List(
+							Map("name"->"1", "icon"->"fa fa-spinner fa-pulse", "link"->"", "selected"->"true"),
+							Map("name"->"2", "icon"->"fa fa-spinner fa-pulse", "link"->""),
+							Map("name"->"3", "icon"->"fa fa-spinner fa-pulse", "link"->""),
+							Map("name"->"4", "icon"->"fa fa-spinner fa-pulse", "link"->""),
+							Map("name"->"5", "icon"->"fa fa-spinner fa-pulse", "link"->"")),
+						Map("icon"->"fa fa-spinner fa-pulse", "link"->""),
+						Map("icon"->"fa fa-spinner fa-pulse", "link"->"")
+					)
+
+					@components.pagination(Map("id"->""),
+						Map("name"->"«", "icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						Map("name"->"‹", "icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						List(
+							Map("name"->"1", "icon"->"fa fa-spinner fa-pulse", "link"->"", "selected"->"true"),
+							Map("name"->"2", "icon"->"fa fa-spinner fa-pulse", "link"->""),
+							Map("name"->"3", "icon"->"fa fa-spinner fa-pulse", "link"->""),
+							Map("name"->"4", "icon"->"fa fa-spinner fa-pulse", "link"->""),
+							Map("name"->"5", "icon"->"fa fa-spinner fa-pulse", "link"->"")),
+						Map("name"->"›", "icon"->"fa fa-spinner fa-pulse", "link"->""),
+						Map("name"->"»", "icon"->"fa fa-spinner fa-pulse", "link"->"")
+					)
+
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"0", "pageCount"->"5", "visibleCount"->"3"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"1", "pageCount"->"5", "visibleCount"->"3"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"2", "pageCount"->"5", "visibleCount"->"3"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"3", "pageCount"->"5", "visibleCount"->"3"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"4", "pageCount"->"5", "visibleCount"->"3"))
+
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"0", "pageCount"->"5", "visibleCount"->"4"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"1", "pageCount"->"5", "visibleCount"->"4"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"2", "pageCount"->"5", "visibleCount"->"4"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"3", "pageCount"->"5", "visibleCount"->"4"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"4", "pageCount"->"5", "visibleCount"->"4"))
+
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"0", "pageCount"->"5", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"1", "pageCount"->"5", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"2", "pageCount"->"5", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"3", "pageCount"->"5", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"4", "pageCount"->"5", "visibleCount"->"5"))
+
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"0", "pageCount"->"7", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"1", "pageCount"->"7", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"2", "pageCount"->"7", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"3", "pageCount"->"7", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"4", "pageCount"->"7", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"5", "pageCount"->"7", "visibleCount"->"5"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"6", "pageCount"->"7", "visibleCount"->"5"))
+
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"0", "pageCount"->"2", "visibleCount"->"2"))
+					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"1", "pageCount"->"2", "visibleCount"->"2", "firstName"->"«", "previousName"->"‹", "nextName"->"›", "lastName"->"»"))
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

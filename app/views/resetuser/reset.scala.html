@@ -1,0 +1,112 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import models.user._
+@import models.resetuser._
+
+@import common.system._
+
+@(form: play.data.Form[models.resetuser.ResetFormContent])
+
+@frame(){
+
+	@top.head(Messages(MessageKeys.RESETUSER)){
+
+		@libraries.bootstrap.head()
+	}
+
+	@top.body("top","resetuser"){
+
+		<div class="d-none d-sm-block">
+			<div style="height:50px;">
+			</div>
+		</div>
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-md-1 col-lg-2 col-xl-3">
+				</div>
+				<div class="col-md-10 col-lg-8 col-xl-6">
+					@components.card(Map("id"->"resetPanel", "class"->"shadow m-3")){
+						<div class="card-header">
+							@Messages(MessageKeys.RESETUSER)
+						</div>
+						<div class="card-body">
+
+							@helper.form(helper.CSRF(controllers.resetuser.routes.ResetUser.apply()), args = 'class -> "form-reset") {
+								<h4 class="card-title">@Messages(MessageKeys.RESETUSER_PLEASE__RESET)</h4>
+								<p class="card-text">@Messages(MessageKeys.RESETUSER_PLEASE__RESET_DESCRIPTION)</p>
+								@if(form.hasGlobalErrors) {
+									<p class="text-warning">@form.getGlobalError.get.message</p>
+								}
+								<div class="form-group row">
+									<label for="@User.USERID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_USERID)</label>
+									<div class="col-sm-9">
+										<input id="@User.USERID" type="email" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" required autofocus>
+										<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
+										@for(error <- form(User.USERID).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-9">
+										<input id="@User.PASSWORD" type="hidden" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).getValue.orElse("")" required>
+										@for(error <- form(User.PASSWORD).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-9">
+										<input id="@User.REPASSWORD" type="hidden" name="@User.REPASSWORD" class="form-control" placeholder="RePassword" value="@form(User.REPASSWORD).getValue.orElse("")" required>
+										@for(error <- form(User.REPASSWORD).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-12 text-right">
+										@components.button(Map("id"->"applyButton", "action"->"submit", "type"->"primary", "icon"->"", "text"->Messages(MessageKeys.RESET), "default"->"true", "class"->"float-right"))
+									</div>
+								</div>
+							}
+
+						</div>
+						<div class="card-footer text-muted">
+						</div>
+					}
+				</div>
+				<div class="col-md-1 col-lg-2 col-xl-3">
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			@if(form.hasGlobalErrors || form.hasErrors) {
+
+				shake('#resetPanel');
+			}
+
+			$(window).on('keydown', function(e){
+
+				var keyCode = e.which ? e.which : e.keyCode;
+				if (13 == keyCode) {
+
+					$('#applyButton').trigger("click");
+
+					e.preventDefault();
+				}
+			});
+		}
+	}
+}

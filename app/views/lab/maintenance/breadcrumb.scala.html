@@ -1,0 +1,26 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@elements() = @{
+
+	val lastElement = prop - "id"
+	val elements = scala.collection.mutable.ListBuffer[Map[String, String]](
+		Map("name"->Messages(MessageKeys.LAB), "icon"->"fa fa-flask", "link"->controllers.lab.library.routes.Library.index("bootbox").toString()),
+		Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"fa fa-file-text-o", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString())
+	)
+	elements += lastElement
+
+	elements.toList
+}
+
+@components.adjust.breadcrumb(Map("id"->prop.getOrElse("id", ""), "foldSize"->"xs"), elements())

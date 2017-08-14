@@ -1,0 +1,266 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import play.inject.Injector
+@import play.api.i18n._
+@import play.api.inject._
+@import views.html._
+@import views.html.components
+
+@import models.user._
+
+@import common.system._
+
+@this(injector: Injector)
+@(form: play.data.Form[models.user.SignInFormContent], fixedUsersData: String)
+
+@isDev() = @{
+
+	injector.instanceOf(classOf[play.api.Environment]).mode == play.api.Mode.Dev
+}
+
+@frame(){
+
+	@top.head(Messages(MessageKeys.USER_SIGNIN)){
+
+		@libraries.bootstrap.head()
+		@libraries.fontawesome.head()
+
+		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/user/signin.css")">
+	}
+
+	@top.body("top","signin"){
+
+		<pre id="fixedUsersData" class="d-none">
+			@fixedUsersData
+		</pre>
+
+		<div class="d-none d-sm-block">
+			<div style="height:100px;">
+			</div>
+		</div>
+
+		@components.container(Map()){
+		<div class="row">
+			<div class="col-sm-1 col-md-2 col-lg-3 col-xl-3">
+			</div>
+			<div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 p-0">
+				@components.card(Map("id"->"signInPanel", "class"->"text-xs-center shadow m-3")){
+					<div class="card-header">
+						@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.language + "/logo.png").toString, "align"->"center", "alternate"->"logo", "style"->"height:54px;"))
+						@if(isDev()){
+							@components.button(Map("id"->"stamp", "type"->"danger", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.DEVELOPMENT)))
+						}
+					</div>
+					<div class="card-body text-xs-left">
+					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin") {
+						<h5 class="form-signin-heading">@Messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
+						<div id="selectUserContainer" style="display: none;">
+							<div class="row justify-content-center">
+								<div class="my-3"><i id="selectUser" class="fa fa-inverse fa-square fa-2x fa-user-o rounded-circle bg-success shadow" style="padding: 10px 12px;" aria-hidden="true"></i></div>
+							</div>
+						</div>
+						@if(form.hasGlobalErrors) {
+							<p class="text-warning">@form.getGlobalError.get.message</p>
+						}
+						<label for="@User.USERID" class="sr-only">User ID</label>
+						<input id="@User.USERID" type="email" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" required autofocus>
+						@for(error <- form(User.USERID).errors) {
+							<div class="text-warning">@Messages(error.message)</div>
+						}
+						<label for="@User.PASSWORD" class="sr-only">Password</label>
+						<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).getValue.orElse("")" required>
+						@for(error <- form(User.PASSWORD).errors) {
+							<div class="text-warning">@Messages(error.message)</div>
+						}
+						<input id="@User.OFFSETSECOND" type="hidden" name="@User.OFFSETSECOND" class="form-control" required>
+						<input id="@User.SHORTZONEID" type="hidden" name="@User.SHORTZONEID" class="form-control">
+						@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+							<div class="row justify-content-between">
+
+								<div class="checkbox">
+									<label>
+										<input id="@User.STOREACCOUNT" type="checkbox" name="@User.STOREACCOUNT" class="form-control" style="width:auto; display: inline-block;" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).getValue.orElse(""))))> @Messages(MessageKeys.USER_STORE__ACCOUNT)
+									</label>
+								</div>
+								@components.button(Map("id"->"signInButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-sign-in", "text"->Messages(MessageKeys.USER_SIGNIN), "default"->"true", "class"->"float-right"))
+							</div>
+						}
+						<div class="mt-3">
+							@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fa fa-", "text"->Messages(MessageKeys.RESETUSER_FORGET__PASSWORD), "link"->controllers.resetuser.routes.ResetUser.index().toString, "class"->"forget-password"))
+						</div>
+					}
+					</div>
+					<div class="card-footer text-muted">
+					</div>
+				}
+			</div>
+			<div class="col-sm-1 col-md-2 col-lg-3 col-xl-3">
+			</div>
+		</div>
+		}
+
+		@components.modal(Map("id"->"licenseDialog", "title"->Messages(MessageKeys.LIBRARY), "closable"->"true", "size"->"lg"), List(
+				Map("id"->"licenseOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
+			)){
+
+			@components.container(Map("id"->"", "fluid"->"true")){
+				<div class="row">
+					<div class="card-columns w-100">
+						@license.liblist(List(
+							Map("name"->common.system.System.getImage().getName(), "icon"->"fa fa-picture-o", "link"->common.system.System.getImage().getCredit().getLink().toString(), "info"->common.system.System.getImage().getInformation()),
+							Map("name"->"Java", "icon"->"fa fa-coffee", "link"->"http://www.oracle.com", "info"->""),
+							Map("name"->"Hibernate", "icon"->"fa fa-database", "link"->"http://hibernate.org", "info"->""),
+							Map("name"->"geckodriver", "icon"->"fa fa-firefox", "link"->" https://github.com/mozilla/geckodriver", "info"->""),
+							Map("name"->"Play Framework", "icon"->"ii ii-play", "link"->"https://www.playframework.com", "info"->""),
+							Map("name"->"play-mailer", "icon"->"fa fa-envelope-o", "link"->"https://github.com/playframework/play-mailer", "info"->""),
+							Map("name"->"MapStruct", "icon"->"fa fa-pencil", "link"->"http://mapstruct.org", "info"->""),
+							Map("name"->"jQuery", "icon"->"fa fa-pencil", "link"->"http://jquery.com", "info"->""),
+							Map("name"->"Bootstrap", "icon"->"ii ii-bootstrap", "link"->"http://getbootstrap.com", "info"->""),
+							Map("name"->"Bootstrap Docs", "icon"->"fa fa-pencil", "link"->"http://getbootstrap.com", "info"->""),
+							Map("name"->"Popper.js", "icon"->"fa fa-pencil", "link"->"https://popper.js.org", "info"->""),
+							Map("name"->"Tether", "icon"->"fa fa-pencil", "link"->"http://github.hubspot.com/tether/", "info"->""),
+							Map("name"->"Font Awesome", "icon"->"fa fa-flag", "link"->"http://fortawesome.github.io/Font-Awesome/", "info"->""),
+							Map("name"->"PostgreSQL JDBC", "icon"->"fa fa-database", "link"->"https://jdbc.postgresql.org", "info"->""),
+							Map("name"->"jQuery UI", "icon"->"fa fa-pencil", "link"->"http://jqueryui.com", "info"->""),
+							Map("name"->"jQuery UI Touch Punch", "icon"->"fa fa-pencil", "link"->"http://touchpunch.furf.com", "info"->""),
+							Map("name"->"Super CSV", "icon"->"fa fa-pencil", "link"->"http://super-csv.github.io/super-csv", "info"->""),
+							Map("name"->"POI", "icon"->"fa fa-table", "link"->"https://poi.apache.org", "info"->""),
+							Map("name"->"ZXing", "icon"->"fa fa-barcode", "link"->"https://zxing.appspot.com", "info"->""),
+							Map("name"->"PDFBox", "icon"->"fa fa-file-pdf-o", "link"->"http://pdfbox.apache.org", "info"->""),
+							Map("name"->"jsoup", "icon"->"fa fa-code", "link"->"http://jsoup.org", "info"->""),
+							Map("name"->"javapoet", "icon"->"fa fa-pencil", "link"->"https://github.com/square/javapoet", "info"->""),
+							Map("name"->"mustache.java", "icon"->"fa fa-pencil", "link"->"https://github.com/spullara/mustache.java", "info"->""),
+							Map("name"->"Bootbox.js", "icon"->"fa fa-pencil", "link"->"http://bootboxjs.com", "info"->""),
+							Map("name"->"pickadate", "icon"->"fa fa-calendar", "link"->"http://amsul.ca/pickadate.js", "info"->""),
+							Map("name"->"bootstrap-slider", "icon"->"fa fa-sliders", "link"->"https://github.com/seiyria/bootstrap-slider", "info"->""),
+							Map("name"->"Select2", "icon"->"fa fa-pencil", "link"->"http://select2.github.io", "info"->""),
+							Map("name"->"DataTables", "icon"->"fa fa-table", "link"->"http://www.datatables.net", "info"->""),
+							Map("name"->"CKEditor", "icon"->"fa fa-pencil-square-o", "link"->"http://ckeditor.com", "info"->""),
+							Map("name"->"Handsontable", "icon"->"fa fa-table", "link"->"https://handsontable.com", "info"->""),
+							Map("name"->"Chart.js", "icon"->"fa fa-bar-chart", "link"->"http://www.chartjs.org", "info"->""),
+							Map("name"->"slick", "icon"->"fa fa-picture-o", "link"->"http://kenwheeler.github.io/slick/", "info"->""),
+							Map("name"->"Cropper.js", "icon"->"fa fa-crop", "link"->"https://fengyuanchen.github.io/cropperjs/", "info"->""),
+							Map("name"->"D3.js", "icon"->"fa fa-pencil", "link"->"https://d3js.org", "info"->""),
+							Map("name"->"d3-geo-projection", "icon"->"fa fa-pencil", "link"->"https://github.com/d3/d3-geo-projection", "info"->""),
+							Map("name"->"highlight.js", "icon"->"fa fa-code", "link"->"https://highlightjs.org", "info"->""),
+							Map("name"->"diff2html", "icon"->"fa fa-pencil", "link"->"https://diff2html.xyz", "info"->""),
+							Map("name"->"marked", "icon"->"fa fa-code", "link"->"https://github.com/chjj/marked", "info"->""),
+							Map("name"->"Parsley", "icon"->"fa fa-pencil", "link"->"http://parsleyjs.org", "info"->""),
+							Map("name"->"bootstrap-colorpicker", "icon"->"fa fa-tint", "link"->"https://itsjavi.com/bootstrap-colorpicker/", "info"->""),
+							Map("name"->"jqTree", "icon"->"fa fa-sitemap", "link"->"http://mbraak.github.io/jqTree/#node-functions", "info"->""),
+							Map("name"->"Snap.svg", "icon"->"fa fa-pencil", "link"->"http://snapsvg.io/", "info"->""),
+							Map("name"->"Frappé Gantt", "icon"->"fa fa-pencil", "link"->"https://frappe.github.io/gantt/", "info"->""),
+							Map("name"->"PDF.js", "icon"->"fa fa-file-pdf-o", "link"->"https://github.com/mozilla/pdf.js", "info"->""),
+							Map("name"->"wkhtmltopdf", "icon"->"fa fa-file-pdf-o", "link"->"https://wkhtmltopdf.org", "info"->""),
+							Map("name"->"3Dmol.js", "icon"->"fa fa-pencil", "link"->"http://3dmol.csb.pitt.edu", "info"->""),
+							Map("name"->"moment", "icon"->"fa fa-clock-o", "link"->"http://momentjs.com", "info"->""),
+							Map("name"->"FullCalendar", "icon"->"fa fa-calendar", "link"->"http://fullcalendar.io", "info"->""),
+							Map("name"->"OpenLayers", "icon"->"fa fa-map-o", "link"->"http://www.openlayers.org/", "info"->""),
+							Map("name"->"Shepherd", "icon"->"fa fa-pencil", "link"->"http://github.hubspot.com/shepherd/docs/welcome/", "info"->""),
+							Map("name"->"Material Icons", "icon"->"fa fa-font", "link"->"http://google.github.io/material-design-icons/", "info"->""),
+							Map("name"->"IcoFont", "icon"->"fa fa-font", "link"->"http://icofont.com/", "info"->""),
+							Map("name"->"Holder.js", "icon"->"fa fa-pencil", "link"->"http://imsky.github.io/holder/", "info"->""),
+							Map("name"->"clipboard.js", "icon"->"fa fa-clipboard", "link"->"https://clipboardjs.com/", "info"->""),
+							Map("name"->"AnchorJS", "icon"->"fa fa-link", "link"->"https://www.bryanbraun.com/anchorjs/", "info"->""),
+							Map("name"->"mockito", "icon"->"fa fa-pencil", "link"->"https://github.com/mockito/mockito", "info"->""),
+							Map("name"->"Mocha", "icon"->"fa fa-pencil", "link"->"http://mochajs.org", "info"->""),
+							Map("name"->"Chai", "icon"->"fa fa-pencil", "link"->"http://chaijs.com", "info"->"")
+						))
+					</div>
+				</div>
+			}
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			@if(form.hasGlobalErrors || form.hasErrors) {
+
+				shake('#signInPanel');
+			}
+
+			var signInImageLink = "url(@common.system.System.getImage().getLink().toString())";
+			$('#system_base').css({
+				"background-image": signInImageLink,
+				"background-size": "cover",
+				"background-position": "center"
+			});
+
+			$(window).on('keydown', function(e){
+
+				var keyCode = e.which ? e.which : e.keyCode;
+				if (13 == keyCode) {
+
+					if($("#licenseDialog").is(".show")){
+
+						$('#licenseOk').trigger("click");
+					}else{
+
+						$('#signInButton').trigger("click");
+					}
+
+					e.preventDefault();
+				}
+			});
+		}
+		@script(){
+
+			var fixedUsers = $('#fixedUsers>#user_list');
+			var fixedUsersData = JSON.parse($('#fixedUsersData').text());
+			$.each(fixedUsersData, function(){
+
+				var fixedUser = this;
+				fixedUsers.append('<div class="rounded mx-3 my-3 fixedUser">' +
+					@if(isDev()){
+					'<div class="fixedUser_info">' +
+						'<span class="badge badge-pill badge-info mb-1">' + fixedUser.locale + '</span>&nbsp;' +
+						'<span class="badge badge-pill badge-info mb-1">' + fixedUser.zoneId.id + '</span>&nbsp;' +
+						'<span class="badge badge-pill badge-info mb-1">' + fixedUser.roles + '</span>' +
+					'</div>' +
+					}
+					'<div class="row justify-content-center">' +
+						'<div class="my-1"><i class="fa fa-inverse fa-square fa-2x fa-user-o rounded-circle bg-success shadow fixedUser_body" aria-hidden="true"></i></div>' +
+					'</div>' +
+					'<div class="fixedUser_caption"><strong class="fixedUser_UserId">' + fixedUser.userId + '</strong></div>' +
+					@if(isDev()){
+					'<div class="fixedUser_Password d-none">' + fixedUser.password + '</div>' +
+					}
+				'</div>');
+			});
+
+			$('#selectUser').on('click', function(){
+
+				showUsers();
+			});
+
+			$('#system_users').on('click', function(){
+
+				hideUsers();
+			});
+
+			$('.fixedUser').on('click', function(){
+
+				var userId = $(this).find('.fixedUser_UserId').text();
+				var password = $(this).find('.fixedUser_Password').text();
+
+				$('#@User.USERID').val(userId);
+				$('#@User.PASSWORD').val(password);
+
+				hideUsers();
+			});
+
+			if(1 <= fixedUsersData.length){
+
+				$('#selectUserContainer').show();
+			}
+		}
+		<div class="container" style="text-align: center;">
+
+			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "style"->"color:lightgray;"))
+		</div>
+	}
+}

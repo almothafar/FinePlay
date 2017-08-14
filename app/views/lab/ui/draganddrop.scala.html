@@ -1,0 +1,191 @@
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@style(){
+
+			.section{
+
+				width:280px;
+			}
+			.seat{
+
+				width:140px;
+				height:48px;
+			}
+			.employee{
+
+				text-align: center;
+				z-index:1000;
+			}
+		}
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.DRAG)+" & "+Messages(MessageKeys.DROP)), "icon"->"fa fa-mouse-pointer", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"draganddrop"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+
+				<div class="col-md-9 room">
+
+					<div class="row">
+						<div class="col-md-6">
+							<table class="table table-bordered section">
+								<tbody>
+									<tr>
+										<td class="seat" colspan="2">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Usagi Tsukino", "style"->"background-color:#efd03f;"))
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Ami Mizuno", "style"->"background-color:#0275d8;"))
+											</div>
+										</td>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Rei Hino", "style"->"background-color:#930f1c;"))
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Makoto Kino", "style"->"background-color:#1b7830;"))
+											</div>
+										</td>
+										<td class="seat">
+											<div class="employee">
+
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="seat">
+											<div class="employee">
+
+											</div>
+										</td>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Minako Aino", "style"->"background-color:#e96414;"))
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="col-md-6">
+							<table class="table table-bordered section">
+								<tbody>
+									<tr>
+										<td class="seat" colspan="2">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Chibiusa", "style"->"background-color:#ec99bc;"))
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Haruka Ten'oh", "style"->"background-color:#0e257f;"))
+											</div>
+										</td>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Michiru Kaioh", "style"->"background-color:#267d68;"))
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="seat">
+											<div class="employee">
+
+											</div>
+										</td>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Setsuna Meioh", "style"->"background-color:#0e150a;"))
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="seat">
+											<div class="employee">
+												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Hotaru Tomoe", "style"->"background-color:#62529e;"))
+											</div>
+										</td>
+										<td class="seat">
+											<div class="employee">
+
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.jqueryuitouchpunch.last()
+		@script(){
+
+			$(".employee").draggable({
+				helper:"clone",
+				containment: ".room",
+				revert: "invalid",
+				opacity: 0.5,
+			});
+
+			$(".seat" ).droppable({
+				accept : ".employee" ,
+				drop : function(event , ui){
+
+					var currentEmployee = $(this).find(".employee");
+					var currentEmployeeSeat = $(this);
+
+					var newEmployee = $(ui.draggable);
+					var newEmployeeSeat = newEmployee.parent();
+					newEmployee.detach();
+
+					newEmployee.appendTo(currentEmployeeSeat);
+					currentEmployee.appendTo(newEmployeeSeat);
+				}
+			});
+		}
+	}
+}

@@ -1,0 +1,172 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import common.utils._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.bootstrapslider.head()
+		@style(){
+
+			.event-content-frame {
+				position: relative;
+			}
+			@@media (min-width:768px) {
+
+				.event-date {
+				}
+				.event-content-frame {
+					border-left: 5px #eceeef solid;
+				}
+				.event-content {
+					margin-left: 1rem
+				}
+				.event-type {
+					position: absolute;
+					top: 10px;
+					left: -24px;
+				}
+			}
+
+			.alert-rich {
+				background-color: whitesmoke;
+				border: lightgray;
+				color: dimgray;
+			}
+			.alert-rich button.close {
+				position: initial;
+			}
+		}
+	}
+
+	@body("lab","notification"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.NOTIFICATION), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"notification"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<h2 class="headline">Plain</h2>
+						@components.button(Map("id"->"notificationButton", "type"->"primary", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+					</div>
+
+					<div class="mb-3">
+						<h2 class="headline">Bootstrap</h2>
+						@components.button(Map("id"->"successAlertButton", "type"->"success", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"infoAlertButton", "type"->"info", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"warningAlertButton", "type"->"warning", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"dangerAlertButton", "type"->"danger", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+					</div>
+
+					<div class="mb-3">
+						<h2 class="headline">Rich</h2>
+						@components.button(Map("id"->"richAlertButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+					</div>
+
+					<div class="mb-3">
+						<h2 class="headline">Custom</h2>
+						<textarea name="htmlEditor" id="htmlEditor" rows="10" cols="40">
+
+							This is my textarea to be replaced with CKEditor.
+						</textarea>
+						<div>
+
+							<input id="waitSlider" data-slider-id='waitSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" style="width:100%;"/>
+						</div>
+						@components.button(Map("id"->"htmlNotificationButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.ckeditor.last()
+		@libraries.bootstrapslider.last()
+		@script(){
+
+			$('#notificationButton').on('click', function(e){
+
+				notify('@Messages(MessageKeys.NOTIFICATION)', 10000);
+			});
+
+			$('#successAlertButton').on('click', function(e){
+
+				notifyAlert('success', '<strong>@Messages(MessageKeys.SUCCESS)</strong> @Messages(MessageKeys.SUCCESS)', 10000);
+			});
+			$('#infoAlertButton').on('click', function(e){
+
+				notifyAlert('info', '<strong>@Messages(MessageKeys.INFO)</strong> @Messages(MessageKeys.INFO)', 10000);
+			});
+			$('#warningAlertButton').on('click', function(e){
+
+				notifyAlert('warning', '<strong>@Messages(MessageKeys.WARNING)</strong> @Messages(MessageKeys.WARNING)', 10000);
+			});
+			$('#dangerAlertButton').on('click', function(e){
+
+				notifyAlert('danger', '<strong>@Messages(MessageKeys.DANGER)</strong> @Messages(MessageKeys.DANGER)', 10000);
+			});
+
+			$('#richAlertButton').on('click', function(e){
+
+				notify(''+
+					'<div class="alert alert-rich alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">' +
+						'<div class="p-2"><img id="" src="@routes.Assets.versioned("images/favicon.png")" class="rounded" style="width: 64px; height: 64px;"></div>' +
+						'<div class="p-2 align-self-stretch w-100">' +
+							'<strong>Rich notification!</strong><br> <a href="@controllers.home.routes.Home.index()" class="alert-link">Link</a> The quick brown fox jumps over the lazy dog.' +
+						'</div>' +
+						'<div class="p-2 d-flex align-items-center">' +
+							'<button type="button" class="p-3 close" data-dismiss="alert" aria-label="Close">' +
+								'<span aria-hidden="true">×</span><span class="sr-only">Close</span>' +
+							'</button>' +
+						'</div>' +
+					'</div>'
+				, 10000);
+			});
+
+			var ckEditor = CKEDITOR.replace( 'htmlEditor', {
+
+				height: 100,
+				language: "@Messages(MessageKeys.CKEDITOR_LANG)"
+			});
+
+			var mySlider = $("#waitSlider").bootstrapSlider({
+
+				formatter: function(value) {
+
+					return 'Wait: ' + value;
+				}
+			});
+
+			$('#htmlNotificationButton').on('click', function(e){
+
+				var notificationHtml = ckEditor.getData();
+				console.log(notificationHtml);
+				var wait = mySlider.bootstrapSlider('getValue') * 1000;
+				console.log(wait);
+
+				notify('<div style="border-radius: .25rem; width:100%;">' + notificationHtml + '</div>', wait);
+			});
+		}
+	}
+}

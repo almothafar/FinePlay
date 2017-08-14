@@ -1,0 +1,18 @@
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+<script src='@routes.Assets.versioned("lib/ckeditor/full/ckeditor.js")'></script>
+@script(){
+
+	CKEDITOR.config.language = "@Messages(MessageKeys.CKEDITOR_LANG)";
+	CKEDITOR.config.uiColor = '@models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getDisabledBackgroundColor().toHex()';
+}
+@style(){
+	/* Unknown Element */
+	.cke_screen_reader_only {
+		height: 0px;
+	}
+}

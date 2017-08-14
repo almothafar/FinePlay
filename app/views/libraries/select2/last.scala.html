@@ -1,0 +1,17 @@
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@translation() = @{
+
+	var lang = Messages(MessageKeys.SELECT2_LANG)
+
+	var path = "lib/select2/dist/js/i18n/"+lang+".js"
+	Html("<script type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+}
+
+<script type='text/javascript'
+	src='@routes.Assets.versioned("lib/select2/dist/js/select2.min.js")'></script>
+@translation()

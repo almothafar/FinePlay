@@ -1,0 +1,20 @@
+@import views.html._
+@import views.html.components
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+@components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true"), Seq(
+	Map("name"->Messages(MessageKeys.THEME), "icon"->"fa fa-paint-brush", "link"->controllers.development.design.routes.Design.index("theme").toString, "selected"->equalTask("theme").toString),
+	Map("name"->Messages(MessageKeys.ICON), "icon"->"fa fa-pencil", "link"->controllers.development.design.routes.Design.index("icon").toString, "selected"->equalTask("icon").toString)
+))

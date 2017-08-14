@@ -1,0 +1,154 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.PROCESS), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"process"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<h4 class="headline">@Messages(MessageKeys.PROCESS)</h4>
+						<div>
+							@components.process(Map("id"->""), List(
+								Map("name"->"", "icon"->"", "link"->"#", "selected"->"true"),
+								Map("name"->"", "icon"->"", "link"->"#"),
+								Map("name"->"", "icon"->"", "link"->"#"),
+								Map("name"->"", "icon"->"", "link"->"#"),
+								Map("name"->"", "icon"->"", "link"->"#")
+							))
+							@components.process(Map("id"->""), List(
+								Map("name"->"", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"", "icon"->"fa fa-phone", "link"->"#", "selected"->"true"),
+								Map("name"->"", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.process(Map("id"->""), List(
+								Map("name"->"Start", "icon"->"", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"", "link"->"#"),
+								Map("name"->"Contact", "icon"->"", "link"->"#", "selected"->"true"),
+								Map("name"->"Provisional", "icon"->"", "link"->"#"),
+								Map("name"->"Contract", "icon"->"", "link"->"#")
+							))
+							@components.process(Map("id"->""), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#", "selected"->"true"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+						</div>
+						<h4 class="headline">@Messages(MessageKeys.PROCESS)</h4>
+						<div>
+							@components.adjust.process(Map("id"->"","foldSize"->"xl"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#", "selected"->"true"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"lg"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#", "selected"->"true"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"md"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#", "selected"->"true"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"sm"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#", "selected"->"true"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"xs"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#", "selected"->"true")
+							))
+						</div>
+						<h4 class="headline">@Messages(MessageKeys.PROCESS)</h4>
+						<div>
+							@components.adjust.process(Map("id"->"","foldSize"->"xl","fixedSelect"->"true"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#", "selected"->"true"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"lg","fixedSelect"->"true"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#", "selected"->"true"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"md","fixedSelect"->"true"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#", "selected"->"true"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"sm","fixedSelect"->"true"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#", "selected"->"true"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#")
+							))
+							@components.adjust.process(Map("id"->"","foldSize"->"xs","fixedSelect"->"true"), List(
+								Map("name"->"Start", "icon"->"fa fa-flag", "link"->"#"),
+								Map("name"->"Appointment", "icon"->"fa fa-phone", "link"->"#"),
+								Map("name"->"Contact", "icon"->"fa fa-comments-o", "link"->"#"),
+								Map("name"->"Provisional", "icon"->"fa fa-thumbs-o-up", "link"->"#"),
+								Map("name"->"Contract", "icon"->"fa fa-handshake-o", "link"->"#", "selected"->"true")
+							))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.jqueryuitouchpunch.last()
+		@script(){
+		}
+	}
+}

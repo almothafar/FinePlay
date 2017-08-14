@@ -1,0 +1,92 @@
+@import java.time._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.manage.user._
+@import models.user._
+
+@()
+
+@components.modal(Map("id"->"updateDialog", "icon"->"fa fa-edit", "title"->Messages(MessageKeys.UPDATE), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"updateCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"updateOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+	)){
+
+	@helper.form(helper.CSRF(controllers.manage.user.routes.Edit.update()), 'name->"updateForm", 'id->"updateForm") {
+		<div>
+			<p class="text-warning"></p>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="update@User.USERID" type="hidden" name="@User.USERID" class="form-control" placeholder="Email" value="" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label for="update@User.NEWUSERID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_USERID)</label>
+			<div class="col-sm-9">
+				<input id="update@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="NewEmail" value="" required autofocus>
+				<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
+				<div>
+					<p class="text-warning"></p>
+				</div>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label for="inputRoles" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_ROLE)</label>
+			<div class="col-sm-9">
+				<label class="custom-control custom-checkbox">
+					<input class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[0]")" value="@User.Role.GUEST.toString()">
+					<span class="custom-control-indicator"></span>
+					@Messages(MessageKeys.USER_ROLE_GUEST)
+				</label>
+				<label class="custom-control custom-checkbox">
+					<input class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[1]")" value="@User.Role.CUSTOMER.toString()">
+					<span class="custom-control-indicator"></span>
+					@Messages(MessageKeys.USER_ROLE_CUSTOMER)
+				</label>
+				<label class="custom-control custom-checkbox">
+					<input class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[2]")" value="@User.Role.ADMIN.toString()">
+					<span class="custom-control-indicator"></span>
+					@Messages(MessageKeys.USER_ROLE_ADMIN)
+				</label>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label for="update@User.COMPANYID" class="col-sm-3 col-form-label">@Messages(MessageKeys.COMPANY_NAME)</label>
+			<div class="col-sm-9">
+				<div class="row">
+					<div class="col-9">
+						<select id="update@User.COMPANYID" name="@User.COMPANYID" class="" style="width:100%">
+							<option value=""></option>
+						</select>
+						<small class="text-muted">@Messages(MessageKeys.COMPANY_NAME_DESCRIPTION)</small>
+						<div>
+							<p class="text-warning"></p>
+						</div>
+					</div>
+					<div class="col-3">
+						@components.button(Map("id"->("updateDelete"+User.COMPANYID), "type"->"primary", "outline"->"true", "icon"->"fa fa-times-circle", "text"->"", "class"->"float-right"))
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="update@User.UPDATEDATETIME" type="hidden" name="@User.UPDATEDATETIME" class="form-control" placeholder="UpdateDateTime" value="" required>
+			</div>
+		</div>
+	}
+
+	<div style="word-wrap:break-word;">
+		<div id="updateMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="updateDescription">-</div>
+	</div>
+	@components.progress(Map("id"->"updateProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
+}

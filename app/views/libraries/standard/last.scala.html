@@ -1,0 +1,8 @@
+@()
+
+@libraries.popper.last()
+@libraries.jquery.last()
+@libraries.bootstrap.last()
+@script(){var bsTooltip = $.fn.tooltip;}
+@libraries.jqueryui.last()
+@script(){$.fn.tooltip = bsTooltip;}

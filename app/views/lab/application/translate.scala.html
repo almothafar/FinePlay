@@ -1,0 +1,133 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@exampleText() = @{
+
+	lang.code match {
+		case "en-US" => {
+
+			"こんにちは。";
+		}
+		case _ => {
+
+			"Hello.";
+		}
+	}
+}
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TRANSLATE), "icon"->"fa fa-exchange", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"translate"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@components.nav(Map("id"->"translateTab","tabs"->"true"), List(
+						Map("name"->Messages(MessageKeys.TEXT), "icon"->"", "link"->"#text", "selected"->"true", "data-toggle"->"tab"),
+						Map("name"->Messages(MessageKeys.RESULT), "icon"->"", "link"->"#result", "data-toggle"->"tab")
+					))
+
+					<div id="translateTabContent" class="tab-content mt-3">
+						<div class="tab-pane active" id="text" role="tabpanel">
+
+							<textarea id="text" class="form-control" placeholder="Content" rows="8" required maxlength="1000">@exampleText()</textarea>
+						</div>
+						<div class="tab-pane" id="result" role="tabpanel">
+
+							<textarea id="resultText" class="form-control" placeholder="Result" rows="8" required maxlength="1000"></textarea>
+						</div>
+					</div>
+
+					@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
+						)){
+						<div style="word-wrap:break-word;">
+							<div id="ajaxMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+							<div id="ajaxDescription">-</div>
+						</div>
+						@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
+					}
+					<div class="mt-3 mb-3" style="text-align: right;">
+
+						@components.button(Map("id"->"translateButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-exchange", "text"->Messages(MessageKeys.TRANSLATE), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var currentLink = '@helper.CSRF(apis.transrator.routes.Transrator.translate("from", "to", "text"))';
+			var currentLinkArray = currentLink.split(/\?.*(?=csrfToken)/);
+			var translateLink = currentLinkArray[0]+'?'+currentLinkArray[1];
+
+			$('#translateButton').on('click', function(e){
+
+				$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
+				$('#ajaxCancel').prop('disabled', true);
+				$('#ajaxMessage').text('@Messages(MessageKeys.PLEASE__WAIT)');
+				$('#ajaxDescription').text('-');
+
+				var timeout = "10000";
+				$.ajax({
+					method:"GET",
+					url: translateLink,
+					data: $.param({
+							to: '@lang.language',
+							text: $('#translateTabContent div:eq(0) textarea').val()
+					}),
+					contentType: 'text/plain',
+					dataType: "json",
+					timeout: timeout
+				})
+				.then(
+					function (responseJson) {
+
+						$('#ajaxDialog').modal('hide');
+
+						$('#translateTabContent div:eq(1) textarea').val(responseJson['text']);
+						$('#translateTab li:eq(1) a').tab('show');
+					},
+					function (jqXHR, textStatus, errorThrown) {
+
+						$('#ajaxProgress>.progress-bar').addClass('bg-danger');
+						$('#ajaxCancel').prop('disabled', false);
+						$('#ajaxMessage').text('@Messages(MessageKeys.FAILURE)');
+						var errorMessage = errorThrown;
+						if(jqXHR.responseJSON){errorMessage = jqXHR.responseJSON['error'];}
+						$('#ajaxDescription').html('@Messages(MessageKeys.STATUS)&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;@Messages(MessageKeys.ERROR)&nbsp;<strong>'+errorMessage+'</strong>');
+					}
+				);
+			})
+		}
+	}
+}

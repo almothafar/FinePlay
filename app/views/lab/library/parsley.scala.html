@@ -1,0 +1,108 @@
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.parsley.head()
+		@style(){
+
+			.form-gropu>div>.parsley-success {
+				color: #468847;
+				background-color: #DFF0D8;
+				border: 1px solid #D6E9C6;
+			}
+			.form-gropu>div>.parsley-error {
+				color: #B94A48;
+				background-color: #F2DEDE;
+				border: 1px solid #EED3D7;
+			}
+		}
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Parsley", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"parsley"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<h4 class="headline">Custom validator</h4>
+						@components.card(Map("id"->"inquiryPanel", "class"->"shadow m-3")){
+							<div class="card-header">
+								Parsley
+							</div>
+							<div class="card-body">
+
+								@helper.form(helper.CSRF(controllers.lab.library.routes.Library.index("parsley")), 'name->"parsleyForm", 'id->"parsleyForm") {
+
+									<div class="form-group row">
+										<label for="hiragana" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_HIRAGANA)</label>
+										<div class="col-sm-9">
+											<input id="hiragana" type="text" name="hiragana" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-hiragana="">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="katakana" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_KATAKANA)</label>
+										<div class="col-sm-9">
+											<input id="hiragana" type="text" name="katakana" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-katakana="">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-12 text-right">
+											@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-paper-plane", "text"->Messages(MessageKeys.SEND), "default"->"true", "class"->"float-right"))
+										</div>
+									</div>
+								}
+
+							</div>
+							<div class="card-footer text-muted">
+							</div>
+						}
+					</div>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.parsley.last()
+		@libraries.parsleyvalidators.last()
+		@script(){
+
+			window.Parsley.addValidator('hiragana',　ParsleyValidators.HiraganaValidator);
+			window.Parsley.addValidator('katakana',　ParsleyValidators.KatakanaValidator);
+			$('#parsleyForm').parsley();
+
+			window.Parsley.on('form:error', function() {
+
+				shake('#parsleyPanel');
+			});
+		}
+	}
+}

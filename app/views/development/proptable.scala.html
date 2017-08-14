@@ -1,0 +1,38 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.mvc._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(id:String, map:scala.collection.Map[String, AnyRef])
+
+@tbodyRowToColumnsList(map:scala.collection.Map[String, AnyRef]) = @{
+
+	val tbodyRowToColumnsList = scala.collection.mutable.ListBuffer[Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]]();
+	for((key,value) <- map) {
+
+		val tbodyRow = Map[String, String]();
+
+		val columnsList = List(Map("text"->key), Map("text"->value.toString()));
+
+		tbodyRowToColumnsList += Tuple2(tbodyRow, columnsList);
+	}
+
+	tbodyRowToColumnsList.toList
+}
+
+@components.table(Map("id"->id, "class"->"table-xl-responsive", "table-xl-responsive"->"true", "bordered"->"true", "striped"->"true"),
+	Map("id"->""),Tuple2(Map("id"->""),List(
+		Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.KEY)),
+		Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VALUE)))),
+	Map("id"->""), tbodyRowToColumnsList(map),
+	Map("id"->""),Tuple2(Map("id"->""),List(
+	))
+)
+

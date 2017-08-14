@@ -1,0 +1,98 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
+
+@dropDownSize(prop:scala.collection.immutable.Map[String, String]) = @{
+
+	var foldSize = prop.getOrElse("foldSize", "");
+	foldSize match {
+		case "" => {
+			"d-none"
+		}
+		case "xs" => {
+			"d-sm-none"
+		}
+		case "sm" => {
+			"d-md-none"
+		}
+		case "md" => {
+			"d-lg-none"
+		}
+		case "lg" => {
+			"d-xl-none"
+		}
+		case "xl" => {
+			""
+		}
+		case _ => {
+			throw new IllegalStateException(foldSize)
+		}
+	}
+}
+
+@tabSize(prop:scala.collection.immutable.Map[String, String]) = @{
+
+	var foldSize = prop.getOrElse("foldSize", "");
+	foldSize match {
+		case "" => {
+			""
+		}
+		case "xs" => {
+			"d-none d-sm-block"
+		}
+		case "sm" => {
+			"d-none d-md-block"
+		}
+		case "md" => {
+			"d-none d-lg-block"
+		}
+		case "lg" => {
+			"d-none d-xl-block"
+		}
+		case "xl" => {
+			"d-none"
+		}
+		case _ => {
+			throw new IllegalStateException(foldSize)
+		}
+	}
+}
+
+<ul id="@prop.getOrElse("id", "")" class="nav @("nav-tabs".when(Boolean.valueOf(prop.getOrElse("tabs", "false")))) @("nav-pills".when(Boolean.valueOf(prop.getOrElse("pills", "false")))) @("flex-column".when(Boolean.valueOf(prop.getOrElse("stacked", "false")))) @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+
+		<li class="nav-item dropdown @dropDownSize(prop)">
+			@for(i <- 0 to elements.size - 1){
+				@if(Boolean.valueOf(elements(i).getOrElse("selected", "false"))){
+			<a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->elements(i).getOrElse("icon", "")))
+				@elements(i).getOrElse("name", "")
+			</a>
+				}
+			}
+			<div class="dropdown-menu">
+			@for(i <- 0 to elements.size - 1){
+				<a href="@elements(i).getOrElse("link", "#")" class="dropdown-item @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))  @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true"))))">
+					@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->elements(i).getOrElse("icon", "")))
+					@elements(i).getOrElse("name", "")
+				</a>
+			}
+			</div>
+		</li>
+
+		@for(i <- 0 to elements.size - 1){
+		<li class="nav-item @tabSize(prop)">
+			<a href="@elements(i).getOrElse("link", "#")" class="nav-link @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))  @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true"))))">
+				@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->elements(i).getOrElse("icon", "")))
+				@elements(i).getOrElse("name", "")
+			</a>
+		</li>
+		}
+
+</ul>

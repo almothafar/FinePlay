@@ -1,0 +1,127 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.bootstrapcolorpicker.head()
+		@style(){
+
+			.colorpicker-component{
+				width: 280px;
+			}
+
+			.colorpicker-2x .colorpicker-saturation {
+				width: 200px;
+				height: 200px;
+			}
+
+			.colorpicker-2x .colorpicker-hue,
+			.colorpicker-2x .colorpicker-alpha {
+				width: 30px;
+				height: 200px;
+			}
+
+			.colorpicker-2x .colorpicker-color,
+			.colorpicker-2x .colorpicker-color div {
+				height: 30px;
+			}
+		}
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"bootstrapcolorpicker", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"bootstrapcolorpicker"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						@components.button(Map("id"->"getButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.GET), "data-toggle"->"modal", "data-target"->"#pickerWindow"))
+						<div class="modal fade" id="pickerWindow" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body p-0">
+										<div id="picker"
+											class="colorpicker-component mx-auto my-1">
+											<div class="input-group">
+												<input type="text" value="" class="form-control" /> <span
+													class="input-group-addon"><i></i></span>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										@components.button(Map("id"->"cancelButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"))
+										@components.button(Map("id"->"okButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-toggle"->"modal", "data-target"->"#pickerWindow", "data-whatever"->"okButton", "class"->"default"))
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.bootstrapcolorpicker.last()
+		@script(){
+
+			$('#picker').colorpicker({
+
+				customClass: 'colorpicker-2x',
+				color: '#ffaa00',
+				container: true,
+				inline: true,
+				sliders: {
+					saturation: {
+						maxLeft: 200,
+						maxTop: 200
+					},
+					hue: {
+						maxTop: 200
+					},
+					alpha: {
+						maxTop: 200
+					}
+				}
+			});
+
+			$('#okButton').on('click', function (e) {
+
+				var button = $(this);
+
+				var picker = button.parent().parent().find('#picker');
+				console.dir(picker.colorpicker('getValue'));
+				console.dir(picker.data('colorpicker').color.toRGB());
+				console.dir(picker.data('colorpicker').color.toHex());
+				console.dir(picker.data('colorpicker').color.toHSL());
+
+				$('#getButton').css({
+					"backgroundColor": picker.colorpicker('getValue')
+				});
+			})
+		}
+	}
+}

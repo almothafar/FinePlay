@@ -1,0 +1,80 @@
+@import java.time._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.manage.company.organization.list._
+@import models.company.organization._
+
+@(form: play.data.Form[ReadFormContent])
+
+@components.modal(Map("id"->"updateDialog", "icon"->"fa fa-edit", "title"->Messages(MessageKeys.UPDATE), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"updateCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"updateOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+	)){
+
+	@helper.form(helper.CSRF(controllers.manage.company.organization.list.routes.Edit.update()), 'name->"updateForm", 'id->"updateForm") {
+		<div>
+			<p class="text-warning"></p>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="update@OrganizationUnit.COMPANYID" type="hidden" name="@OrganizationUnit.COMPANYID" class="form-control" placeholder="CompanyId" value="@form(OrganizationUnit.COMPANYID).getValue.orElse("")" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="update@OrganizationUnit.ORGANIZATIONID" type="hidden" name="@OrganizationUnit.ORGANIZATIONID" class="form-control" placeholder="OrganizationId" value="@form(OrganizationUnit.ORGANIZATIONID).getValue.orElse("")" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="update@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" type="hidden" name="@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" class="form-control" placeholder="OrganizationUpdateDateTime" value="@form(OrganizationUnit.ORGANIZATIONUPDATEDATETIME).getValue.orElse("")" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="update@OrganizationUnit.ID" type="hidden" name="@OrganizationUnit.ID" class="form-control" placeholder="id" value="" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label for="update@OrganizationUnit.NAME" class="col-sm-3 col-form-label required">@Messages(MessageKeys.ORGANIZATIONUNIT_NAME)</label>
+			<div class="col-sm-9">
+				<input id="update@OrganizationUnit.NAME" type="text" name="@OrganizationUnit.NAME" class="form-control" placeholder="NewName" value="" required autofocus>
+				<small class="text-muted">@Messages(MessageKeys.ORGANIZATIONUNIT_NAME_DESCRIPTION)</small>
+				<div>
+					<p class="text-warning"></p>
+				</div>
+			</div>
+		</div>
+		@if(!Locale.US.equals(lang.locale)){
+		<div class="row form-group">
+			<label for="update@OrganizationUnit.LOCALNAME" class="col-sm-3 col-form-label">@Messages(MessageKeys.LOCAL_NAME)</label>
+			<div class="col-sm-9">
+				<input id="update@OrganizationUnit.LOCALNAME" type="text" name="@OrganizationUnit.LOCALNAME" class="form-control" placeholder="LocalName" value="">
+				<small class="text-muted">@Messages(MessageKeys.LOCAL_NAME_DESCRIPTION)</small>
+				<div>
+					<p class="text-warning"></p>
+				</div>
+			</div>
+		</div>
+		}
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="update@OrganizationUnit.UPDATEDATETIME" type="hidden" name="@OrganizationUnit.UPDATEDATETIME" class="form-control" placeholder="UpdateDateTime" value="" required>
+			</div>
+		</div>
+	}
+
+	<div style="word-wrap:break-word;">
+		<div id="updateMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="updateDescription">-</div>
+	</div>
+	@components.progress(Map("id"->"updateProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
+}

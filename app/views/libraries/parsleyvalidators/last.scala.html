@@ -1,0 +1,43 @@
+@import play.api.i18n._
+
+@import common.system._
+@import common.utils._
+
+@()
+
+@messages() = @{
+
+	common.system.System.getInjector().instanceOf(classOf[play.i18n.MessagesApi])
+}
+
+@errorMessage(lang:Lang, messageKey:String) = @{
+
+	messages.get(lang, messageKey)
+}
+
+@script(){
+
+	'use strict';
+
+	var ParsleyValidators = {
+
+		HiraganaValidator: {
+			validateString: function(value) {
+				return /^[ぁ-ゖ゛゜ゝゞー]*$/.test(value);
+			},
+			messages: {
+				en: '@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_HIRAGANA)',
+				ja: '@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_HIRAGANA)'
+			}
+		},
+		KatakanaValidator: {
+			validateString: function(value) {
+				return /^[ァ-ヶ゛゜ヽヾー]*$/.test(value);
+			},
+			messages: {
+				en: '@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_KATAKANA)',
+				ja: '@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_KATAKANA)'
+			}
+		}
+	}
+}

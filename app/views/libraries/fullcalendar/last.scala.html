@@ -1,0 +1,22 @@
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@translation() = @{
+
+	var lang = Messages(MessageKeys.FULLCALENDAR_LANG)
+	if(lang.isEmpty){
+
+		Html("")
+	}else{
+
+		var path = "lib/fullcalendar/dist/locale/"+lang+".js"
+		Html("<script type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+	}
+}
+
+<script type='text/javascript'
+	src='@routes.Assets.versioned("lib/fullcalendar/dist/fullcalendar.min.js")'></script>
+@translation()

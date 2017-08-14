@@ -1,0 +1,16 @@
+@import com.typesafe.config._
+
+@()
+
+@src() = @{
+
+	if(ConfigFactory.defaultApplication().hasPath("jquery-ui.cdn.script")){
+
+		ConfigFactory.defaultApplication().getString("jquery-ui.cdn.script")
+	}else{
+		//
+		routes.Assets.versioned("lib/jquery-ui/jquery-ui.min.js")
+	}
+}
+
+<script type='text/javascript' src='@src()'></script>

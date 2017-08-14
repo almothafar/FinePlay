@@ -1,0 +1,142 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@style(){
+
+			.event-content-frame {
+				position: relative;
+			}
+			@@media (min-width:768px) {
+
+				.event-date {
+				}
+				.event-content-frame {
+					border-left: 5px #eceeef solid;
+				}
+				.event-content {
+					margin-left: 1rem
+				}
+				.event-type {
+					position: absolute;
+					top: 10px;
+					left: -24px;
+				}
+			}
+		}
+	}
+
+	@body("lab","timeline"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TIMELINE), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"timeline"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row">
+						<div class="col-md-3 ">
+							<p class="event-date mt-3">2009/12/22</p>
+						</div>
+						<div class="col-md-9 event-content-frame">
+							<span class="fa-stack fa-lg event-type d-none d-md-block">
+								<i class="fa fa-circle fa-stack-2x" style="color:Brown;"></i>
+								<i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
+							</span>
+							<div class="card event-content mb-3">
+								<div class="card-body">
+									<h4 class="card-title">Maya Kitajima</h4>
+									<p class="card-text draft"><span>With supporting text below as a natural lead-in to additional content.</span></p>
+									<a href="#" class="btn btn-primary btn-sm">Edit</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3 ">
+							<p class="event-date mt-3">2009/10/19</p>
+						</div>
+						<div class="col-md-9 event-content-frame">
+							<span class="fa-stack fa-lg event-type d-none d-md-block">
+								<i class="fa fa-circle fa-stack-2x" style="color:Gold;"></i>
+								<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+							</span>
+							<div class="card event-content mb-3">
+								<div class="card-body">
+									<h4 class="card-title">Ayumi Himekawa</h4>
+									<p class="card-text draft"><span>With supporting text below as a natural lead-in to additional content.</span></p>
+									<a href="#" class="btn btn-primary btn-sm">Edit</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3 ">
+							<p class="event-date mt-3">2009/6/2</p>
+						</div>
+						<div class="col-md-9 event-content-frame">
+							<span class="fa-stack fa-lg event-type d-none d-md-block">
+								<i class="fa fa-circle fa-stack-2x" style="color:Indigo;"></i>
+								<i class="fa fa-comments fa-stack-1x fa-inverse"></i>
+							</span>
+							<div class="card event-content mb-3">
+								<div class="card-body">
+									<h4 class="card-title">Chigusa Tsukikage</h4>
+									<p class="card-text draft"><span>With supporting text below as a natural lead-in to additional content.</span></p>
+									<a href="#" class="btn btn-primary btn-sm">Edit</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3 ">
+							<p class="event-date mt-3">2009/2/14</p>
+						</div>
+						<div class="col-md-9 event-content-frame">
+							<span class="fa-stack fa-lg event-type d-none d-md-block">
+								<i class="fa fa-circle fa-stack-2x" style="color:Purple;"></i>
+								<i class="fa fa-phone fa-stack-1x fa-inverse"></i>
+							</span>
+							<div class="card event-content mb-3">
+								<div class="card-body">
+									<h4 class="card-title">Masumi Hayami</h4>
+									<p class="card-text draft"><span>With supporting text below as a natural lead-in to additional content.</span></p>
+									<a href="#" class="btn btn-primary btn-sm">Edit</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+		}
+	}
+}

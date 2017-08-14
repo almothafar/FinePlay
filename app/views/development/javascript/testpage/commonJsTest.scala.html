@@ -1,0 +1,78 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.api.i18n._
+
+@import views.html._
+@import views.html.components
+
+@import javax.json._
+@import java.io._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head(""){
+
+		@libraries.standard.head()
+		@libraries.mocha.head()
+	}
+
+	@body("",""){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "link"->controllers.development.javascript.routes.JavaScript.index("test").toString()))
+				</div>
+			</div>
+		}
+
+		<div id="mocha">
+		</div>
+
+		@libraries.standard.last()
+		@libraries.mocha.last()
+		@libraries.chai.last()
+		@script(){
+
+			mocha.setup('tdd');
+			var assert = chai.assert;
+
+			var testFunction = function(arg) {
+
+				return arg;
+			}
+
+			suite('Test', function(){
+
+				suite('Test of testFunction()', function(){
+
+						test('Success',function() {
+						assert.equal("1",testFunction(1),'Argment 1');
+					});
+				});
+
+				suite('Test of testFunction()', function(){
+
+						test('Failure',function() {
+						assert.equal("3",testFunction(2),'Argment 2');
+					});
+				});
+			});
+		}
+		@script(){
+
+			mocha.run();
+		}
+	}
+}

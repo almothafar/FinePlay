@@ -1,0 +1,34 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])(imageContent: Html)
+
+@alignClass() = @{
+
+	val align = prop.getOrElse("align","");
+
+	if("left".equals(align)){
+
+		""
+	}else if("right".equals(align)){
+
+		"text-right"
+	}else{
+
+		""
+	}
+}
+
+<figure id="@prop.getOrElse("id", "")" class="figure @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+	@imageContent
+	<figcaption class="figure-caption @alignClass()">
+		@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))
+		@prop.getOrElse("text","")
+	</figcaption>
+</figure>

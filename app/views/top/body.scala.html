@@ -1,0 +1,95 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConverters._
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+
+@import models.system._
+@import models.system.System._
+@import models.user._
+@import models.user.User._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import common.utils._
+
+@(currentSection:String, currentWork:String)(content: Html)
+
+@equalSection(section:String) = @{
+
+	if(section.equals(currentSection)){
+		"true"
+	}else{
+		"false"
+	}
+}
+
+@equalWork(section:String, work:String) = @{
+
+	if(section.equals(currentSection) && work.equals(currentWork)){
+		"true"
+	}else{
+		"false"
+	}
+}
+
+<body>
+
+	<div id="system_users">
+
+		<div id="fixedUsers" class="container-fluid" style="height:100%; overflow-y:scroll;">
+
+			<div id="user_list" class="row mt-3">
+			</div>
+		</div>
+	</div>
+
+	<div id="system_base">
+
+		@top.workmenu(Map("id"->"system_menu"), List(
+			(Map("name"->Messages(MessageKeys.INQUIRY), "icon"->"", "link"->controllers.inquiry.routes.Inquiry.index().toString, "selected"->equalWork("top", "inquiry")),List(
+			)),
+			(Map("name"->Messages(MessageKeys.REGISTUSER), "icon"->"", "link"->controllers.registuser.routes.RegistUser.index().toString, "selected"->equalWork("top", "registuser")),List(
+			))
+		))
+
+		<nav class="navbar invisible">
+			@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon"))
+		</nav>
+
+		<div id="system_content">
+
+			@content
+
+			<div class="container" style="text-align: center;">
+
+				@components.credit()
+			</div>
+		</div>
+	</div>
+
+	@script(){
+
+		var cookies = function(){
+
+			var cookie = document.cookie;
+			var result = new Object();
+			if("" != cookie){
+
+				var cookies = cookie.split(";");
+				for( var i = 0; i < cookies.length; i++ ){
+
+					var cookie = cookies[ i ].split( '=' );
+					var key = cookie[0].trim();
+					var value = cookie[1].trim();
+
+					result[ key ] = decodeURIComponent( value );
+				}
+			}
+			return result;
+		}
+	}
+</body>

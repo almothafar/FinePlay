@@ -1,0 +1,46 @@
+@import views.html._
+@import views.html.components
+@import views.html.development
+@import models.user._
+@import models.user.User._
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("framework","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.USER), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"user"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@development.proptable("", map)
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

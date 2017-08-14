@@ -1,0 +1,63 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.user._
+
+@(form: play.data.Form[models.setting.user.EditFormContent])
+
+@frame(){
+
+	@head("setting"){
+
+		@libraries.standard.head()
+		@libraries.select2.head()
+	}
+
+	@body("setting","user"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.GENERAL), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"general"))
+		}
+
+		@updateform(form)
+
+		@libraries.standard.last()
+		@libraries.select2.last()
+		@script(){
+
+			$(document).ready(function() {
+
+				$("#update@User.ZONEID").select2({
+
+				});
+			});
+
+			$( "#update@User.LOCALE" ).change(function(e) {
+
+				$('#updateForm').submit();
+			});
+
+			$( "#update@User.ZONEID" ).change(function(e) {
+
+				$('#updateForm').submit();
+			});
+
+			$( "#update@User.THEME" ).change(function(e) {
+
+				$('#updateForm').submit();
+			});
+		}
+	}
+}

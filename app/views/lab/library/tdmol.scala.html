@@ -1,0 +1,79 @@
+@import models.components._
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+
+@import java.time._
+@import java.time.format._
+
+@(pdb: String)
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@style(){
+
+			.mol-container {
+				width: 100%;
+				height: 400px;
+			}
+			.mol-container>canvas {
+				left: 15px !important;
+			}
+		}
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"3Dmol", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"3dmol"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="viewer" class="mol-container mb-3">
+					</div>
+				</div>
+			</div>
+		}
+
+		<pre id="pdb" class="d-none">
+			@pdb
+		</pre>
+
+		@libraries.standard.last()
+		@libraries.tdmol.last()
+		@script(){
+
+			var viewer = $3Dmol.createViewer($("#viewer"));
+			viewer.setBackgroundColor(0x00000000, 0.2);
+			viewer.addModel( $('#pdb').text(), "pdb" );
+			viewer.setStyle({}, {cartoon:{color:"spectrum"}});
+			viewer.render();
+
+			setInterval(function() {
+
+				if(viewer) {
+
+					viewer.rotate(1);
+				}
+			}, 50);
+		}
+	}
+}

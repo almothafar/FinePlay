@@ -1,0 +1,67 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+@import views.html.development
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.ENVIRONMENT)){
+
+		@libraries.standard.head()
+	}
+
+	@body("environment","browser"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Document", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		<div class="container-fluid">
+
+			@tasks(Map("id"->"", "task"->"document"))
+		</div>
+
+		<div class="container-fluid">
+
+			@components.badge(Map("id"->"Fullscreen", "type"->"danger", "text"->"Fullscreen"))
+			@components.badge(Map("id"->"PageVisibility", "type"->"danger", "text"->"PageVisibility"))
+
+			@development.proptable("", map.asScala.toMap)
+		</div>
+
+		@libraries.standard.last()
+		@script(){
+
+			if(document.fullscreenEnabled){$("#Fullscreen").removeClass("badge-danger").addClass("badge-success")}
+			if(document.visibilityState){$("#PageVisibility").removeClass("badge-danger").addClass("badge-success")}
+
+			var documentMap = new Object();
+			$.each(document, function(key, val){
+
+				var valType = typeof val;
+				if('object' == valType || 'function' ==  valType ){return true;}
+				documentMap[key] = val;
+			});
+
+			var documentKeys = Object.keys(documentMap);
+			documentKeys.sort();
+
+			$.each(documentKeys, function(i, key){
+
+				$("tbody").append("<tr></tr>");
+				$("tbody > tr:last-child").append("<td>"+key+"</td><td>"+documentMap[key]+"</td>");
+			});
+		}
+	}
+}

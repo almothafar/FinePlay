@@ -1,0 +1,62 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.FIELD), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"field"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="input-group eraceable mb-3">
+
+						<input type="text" class="form-control" placeholder="Placeholder" value="@Messages(MessageKeys.VALUE)">
+						<span class="input-group-addon" id="basic-addon2">@components.icon(Map("id"->"", "icon"->"fa fa-times-circle"))</span>
+					</div>
+					<div class="input-group eraceable mb-3">
+
+						<input type="text" class="form-control" placeholder="Placeholder">
+						<span class="input-group-addon" id="basic-addon2">@components.icon(Map("id"->"", "icon"->"fa fa-times-circle"))</span>
+					</div>
+					<div class="input-group eraceable mb-3">
+
+						<input type="text" class="form-control" placeholder="Placeholder" value="@Messages(MessageKeys.VALUE)">
+						<span class="input-group-addon" id="basic-addon2">@components.icon(Map("id"->"", "icon"->"fa fa-times-circle"))</span>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/ui/field.js")'></script>
+		@script(){
+
+			initEraceableField(".eraceable");
+		}
+	}
+}

@@ -1,0 +1,188 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("setting"){
+
+		@libraries.standard.head()
+		@style(){
+
+			.fontExample{
+				overflow: hidden;
+			}
+			.fontExample>img{
+				height: 54px;
+			}
+			.fontEqual{
+				font-size:36px;
+				text-align:center;
+			}
+			.fontPreview{
+				background-color: white;
+				color: black;
+				font-size:36px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: clip;
+			}
+		}
+	}
+
+	@body("setting","system"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.FONT), "icon"->"fa fa-font", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"font"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "style"->"display:none;")){
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div>
+						<h4 class="headline">@Messages(MessageKeys.FONT_HIRAGINOSANS__W3)</h4>
+						<span class="float-right d-inline">
+							@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "size"->"sm", "icon"->"fa fa-font", "text"->Messages(MessageKeys.GET), "link"->"http://www.screen-hiragino.jp/product/index.html"))
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "text"->Messages(MessageKeys.SAMPLE))){
+						<div class="fontExample">
+							@components.image(Map("id"->"", "source"->"holder.js/100px250?random=yes", "fluid"->"true", "alternate"->"Responsive image"))
+						</div>
+					}
+				</div>
+				<div class="col-2 col-sm-1 fontEqual">=</div>
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "icon"->"fa fa-exclamation-circle text-info", "text"->"If already installed will be displayed as well.")){
+						<div class="font-family_HiraginoSans-W3 fontPreview">
+							The quick brown fox jumps over the lazy dog.
+						</div>
+					}
+				</div>
+			</div>
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div>
+						<h4 class="headline">@Messages(MessageKeys.FONT_HIRAGINOSANS__W3)</h4>
+						<span class="float-right d-inline">
+							@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "size"->"sm", "icon"->"fa fa-font", "text"->Messages(MessageKeys.GET), "link"->"http://www.screen-hiragino.jp/product/index.html"))
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "text"->Messages(MessageKeys.SAMPLE))){
+						<div class="fontExample">
+							@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/fonts/HiraginoSans-W3_example.png").toString, "alternate"->"Responsive image"))
+						</div>
+					}
+				</div>
+				<div class="col-2 col-sm-1 fontEqual">=</div>
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "icon"->"fa fa-exclamation-circle text-info", "text"->"If already installed will be displayed as well.")){
+						<div class="font-family_HiraginoSans-W3 fontPreview">
+							色はにほへど 散りぬるを 我が世たれぞ 常ならむ 有為の奥山 今日越えて 浅き夢見じ 酔ひもせず
+						</div>
+					}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "text"->Messages(MessageKeys.SAMPLE))){
+						<div class="fontExample">
+							@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/fonts/HiraginoSans-W3_example_ivd.png").toString, "alternate"->"Responsive image"))
+						</div>
+					}
+				</div>
+				<div class="col-2 col-sm-1 fontEqual">=</div>
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "icon"->"fa fa-exclamation-circle text-info", "text"->"If available browsers will be displayed as well.(Adobe-Japan1)")){
+						<div class="font-family_HiraginoSans-W3 fontPreview">
+							邉&#xe0100;邉&#xe0101;邉&#xe0102;邉&#xe0103;邉&#xe0104;邉&#xe0105;邉&#xe0106;邉&#xe0107;邉&#xe0108;邉&#xe0109;邉&#xe010a;邉&#xe010b;邉&#xe010c;邉&#xe010d;邉&#xe010e;
+						</div>
+					}
+				</div>
+			</div>
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div>
+						<h4 class="headline">@Messages(MessageKeys.FONT_IPAMJMINCHO)</h4>
+						<span class="float-right d-inline">
+							@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "size"->"sm", "icon"->"fa fa-font", "text"->Messages(MessageKeys.GET), "link"->"http://mojikiban.ipa.go.jp/1300.html"))
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "text"->Messages(MessageKeys.SAMPLE))){
+						<div class="fontExample">
+							@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/fonts/IPAmjMincho_example.png").toString, "alternate"->"Responsive image"))
+						</div>
+					}
+				</div>
+				<div class="col-2 col-sm-1 fontEqual">=</div>
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "icon"->"fa fa-exclamation-circle text-info", "text"->"If already installed will be displayed as well.")){
+						<div class="font-family_IPAmjMincho fontPreview">
+							色はにほへど 散りぬるを 我が世たれぞ 常ならむ 有為の奥山 今日越えて 浅き夢見じ 酔ひもせず
+						</div>
+					}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "text"->Messages(MessageKeys.SAMPLE))){
+						<div class="fontExample">
+							@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/fonts/IPAmjMincho_example_ivd.png").toString, "alternate"->"Responsive image"))
+						</div>
+					}
+				</div>
+				<div class="col-2 col-sm-1 fontEqual">=</div>
+				<div class="col-10 col-sm-5">
+					@components.figure(Map("id"->"", "class"->"d-block", "icon"->"fa fa-exclamation-circle text-info", "text"->"If available browsers will be displayed as well.(Hanyo-Denshi)")){
+						<div class="font-family_IPAmjMincho fontPreview">
+							邉&#xe010f;邉&#xe0110;邉&#xe0111;邉&#xe0112;邉&#xe0113;邉&#xe0114;邉&#xe0115;邉&#xe0116;邉&#xe0117;邉&#xe0118;邉&#xe0119;邉&#xe011a;邉&#xe011b;邉&#xe011c;邉&#xe011d;邉&#xe011e;
+						</div>
+					}
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			$(document).ready(function() {
+
+			});
+		}
+	}
+}

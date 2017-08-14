@@ -1,0 +1,91 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import common.utils._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"breadcrumbContainer", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Infinity", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"contentsContainer", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"infinity"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<ul id="infinityItems" class="list-unstyled">
+					</ul>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			$(document).ready(function () {
+
+				var lastItem;
+				getContent().scroll(function(e){
+
+					if(lastItem){
+
+						var appendY = $('body').outerHeight();
+						var lastY = lastItem.offset().top;
+						if(lastY < appendY){
+
+							appndItems();
+						}
+					}
+				});
+
+				var appndItems = function(){
+
+					var fragment = document.createDocumentFragment();
+					for(i=0; i<10; i++){
+
+						var newItem = $('' +
+							'<li class="media mb-4 infinityItem">' +
+								'@Html(Strings.removeNewLine(components.image(Map("id"->"", "class"->"d-flex mr-3", "source"->routes.Assets.versioned("images/favicon.png").toString, "style"->"width: 64px; height: 64px;", "fluid"->"true", "alternate"->"Picture")).toString))' +
+								'<div class="media-body draft">' +
+									'<h5 class="mt-0 mb-1"><span class="draft-text">List-based media object</span></h5>' +
+									'<span class="draft-text">Cras sit amet nibh libero, in gravida nulla.' +
+									'Nulla vel metus scelerisque ante sollicitudin.' +
+									'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.' +
+									'Fusce condimentum nunc ac nisi vulputate fringilla.' +
+									'Donec lacinia congue felis in faucibus.</span>' +
+								'</div>' +
+							'</li>');
+						fragment.appendChild(newItem.get(0));
+					}
+					$('#infinityItems')[0].appendChild(fragment);
+
+					lastItem = $('#infinityItems>.infinityItem').last();
+				}
+
+				appndItems();
+			});
+		}
+	}
+}

@@ -1,0 +1,57 @@
+@(prop:scala.collection.immutable.Map[String, String],
+	thead:scala.collection.immutable.Map[String, String],
+	theadRowToColumns:Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]],
+	tbody:scala.collection.immutable.Map[String, String],
+	tbodyRowToColumnsList:/*trs*/Seq[Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]],
+	tfoot:scala.collection.immutable.Map[String, String],
+	tfootRowToColumns:Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]
+)
+
+@cellTag(prop:scala.collection.immutable.Map[String, String]) = @{
+
+	if(Boolean.valueOf(prop.getOrElse("head", "false"))){
+
+		"th"
+	}else{
+
+		"td"
+	}
+}
+
+<table id="@prop.getOrElse("id", "")" class="table table-@prop.getOrElse("type", "") @("table-responsive".when(Boolean.valueOf(prop.getOrElse("responsive", "false")))) @("table-inverse".when(Boolean.valueOf(prop.getOrElse("inverse", "false")))) @("table-striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) @("table-bordered".when(Boolean.valueOf(prop.getOrElse("bordered", "false")))) @("table-hover".when(Boolean.valueOf(prop.getOrElse("hover", "false")))) @("table-reflow".when(Boolean.valueOf(prop.getOrElse("reflow", "false")))) table-@prop.getOrElse("size", "") @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+	<thead id="@thead.getOrElse("id", "")" class="table-@thead.getOrElse("type", "") @("thead-inverse".when(Boolean.valueOf(thead.getOrElse("inverse", "false")))) @("thead-default".when(Boolean.valueOf(thead.getOrElse("default", "false"))))">
+	@defining(theadRowToColumns._1) { row =>
+	<tr class="table-@row.getOrElse("type", "")">
+		@defining(theadRowToColumns._2) { columns =>
+			@for(column <- columns) {
+		<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+			}
+		}
+	</tr>
+	}
+	</thead>
+	<tbody id="@tbody.getOrElse("id", "")" class="table-@tbody.getOrElse("type", "")">
+	@for(tbodyRowToColumns <- tbodyRowToColumnsList) {
+		@defining(tbodyRowToColumns._1) { row =>
+		<tr class="table-@row.getOrElse("type", "")">
+			@defining(tbodyRowToColumns._2) { columns =>
+				@for(column <- columns) {
+			<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")" @Html(Attributes.datas(column))>@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+				}
+			}
+		</tr>
+		}
+	}
+	</tbody>
+	<tfoot id="@tfoot.getOrElse("id", "")" class="table-@tfoot.getOrElse("type", "") @("thead-inverse".when(Boolean.valueOf(tfoot.getOrElse("inverse", "false")))) @("thead-default".when(Boolean.valueOf(tfoot.getOrElse("default", "false"))))">
+	@defining(tfootRowToColumns._1) { row =>
+	<tr class="table-@row.getOrElse("type", "")">
+		@defining(tfootRowToColumns._2) { columns =>
+			@for(column <- columns) {
+		<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+			}
+		}
+	</tr>
+	}
+	</tfoot>
+</table>

@@ -1,0 +1,58 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
+
+@iconOnlySize(prop:scala.collection.immutable.Map[String, String]) = @{
+
+	var foldSize = prop.getOrElse("foldSize", "");
+	foldSize match {
+		case "" => {
+			""
+		}
+		case "xs" => {
+			"d-none d-sm-inline"
+		}
+		case "sm" => {
+			"d-none d-md-inline"
+		}
+		case "md" => {
+			"d-none d-lg-inline"
+		}
+		case "lg" => {
+			"d-none d-xl-inline"
+		}
+		case "xl" => {
+			"d-none"
+		}
+		case _ => {
+			throw new IllegalStateException(foldSize)
+		}
+	}
+}
+
+<ol id="@prop.getOrElse("id", "")" class="process @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+	@for(i <- 0 to elements.size - 1){
+	<li class="process-item @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))">
+		@if(elements(i).contains("link")){
+		<a href="@elements(i).get("link")">
+		}
+			<i class="@elements(i).getOrElse("icon", "")"></i>
+			@if(Boolean.valueOf(elements(i).getOrElse("selected", "false")) && Boolean.valueOf(prop.getOrElse("fixedSelect", "false"))){
+				@elements(i).getOrElse("name", "")
+			}else{
+
+				<span class="@iconOnlySize(prop)">
+					@elements(i).getOrElse("name", "")
+				</span>
+			}
+			@if(elements(i).getOrElse("icon", "").isEmpty && elements(i).getOrElse("name", "").isEmpty){&nbsp;&nbsp;&nbsp;}
+		@if(elements(i).contains("link")){
+		</a>
+		}
+	</li>
+	}
+</ol>

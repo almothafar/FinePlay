@@ -1,0 +1,110 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@index() = @{
+
+	prop.get("pageIndex").get.toInt
+}
+
+@count() = @{
+
+	prop.get("pageCount").get.toInt
+}
+
+@visibles() = @{
+
+	prop.get("visibleCount").get.toInt
+}
+
+@first() = @{
+
+	var map = Map("link"->(if(0 < index()){prop.getOrElse("link", "#")+"?page="+(0)+"&"+prop.getOrElse("query", "")}else{"#"}), "enabled"->(0 < index()).toString)
+	if(prop.contains("previousName")){
+
+		map = map + ("name"->prop.apply("firstName"))
+	}
+
+	map;
+}
+
+@previous() = @{
+
+	var map = Map("link"->(if(0 < index()){prop.getOrElse("link", "#")+"?page="+(index() - 1)+"&"+prop.getOrElse("query", "")}else{"#"}), "enabled"->(0 < index()).toString)
+	if(prop.contains("previousName")){
+
+		map = map + ("name"->prop.apply("previousName"))
+	}
+
+	map;
+}
+
+@pages() = @{
+
+	val visibleIndexs = scala.collection.mutable.ListBuffer[Int]()
+
+	visibleIndexs += index();
+	do {
+
+		if (visibleIndexs.size < visibles()) {
+
+			val last = visibleIndexs.last;
+			if (last < count() - 1) {
+
+				val next:Int = last + 1;
+				visibleIndexs.append(next);
+			}
+		}
+
+		if (visibleIndexs.size < visibles()) {
+
+			val head = visibleIndexs.head;
+			if (0 < head) {
+
+				val prev:Int = head - 1;
+				visibleIndexs.prepend(prev);
+			}
+		}
+	} while (visibleIndexs.size < visibles());
+
+	val visiblePages = scala.collection.mutable.ListBuffer[Map[String, String]]()
+
+	for(i:Int <- Range(visibleIndexs.head, visibleIndexs.last+1)){
+
+		visiblePages += Map("name"->(i+1).toString, "link"->(prop.getOrElse("link", "#")+"?page="+(i)+"&"+prop.getOrElse("query", "")), "selected"->(index() == i).toString)
+	}
+
+	visiblePages.toList
+}
+
+@next() = @{
+
+	var map = Map("link"->(if(index() < count() - 1){prop.getOrElse("link", "#")+"?page="+(index() + 1)+"&"+prop.getOrElse("query", "")}else{"#"}), "enabled"->(index() < count() - 1).toString)
+	if(prop.contains("previousName")){
+
+		map = map + ("name"->prop.apply("nextName"))
+	}
+
+	map;
+}
+
+@last() = @{
+
+	var map = Map("link"->(if(index() < count() - 1){prop.getOrElse("link", "#")+"?page="+(count() - 1)+"&"+prop.getOrElse("query", "")}else{"#"}), "enabled"->(index() < count() - 1).toString)
+	if(prop.contains("previousName")){
+
+		map = map + ("name"->prop.apply("lastName"))
+	}
+
+	map;
+}
+
+@components.pagination(Map("id"->prop.getOrElse("id", "")), first(), previous(), pages(), next(), last())

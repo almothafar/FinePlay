@@ -1,0 +1,42 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String], groupToElementsList:Seq[Tuple2[ /*section*/ scala.collection.immutable.Map[String, String], /*work*/ Seq[scala.collection.immutable.Map[String, String]]]])
+
+<nav id="system_menu" class="navbar navbar-expand-md fixed-top navbar-light bg-light shadow">
+	<a class="navbar-brand" href="@controllers.user.routes.User.index()">
+		@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/brand.png").toString, "alternate"->"brand", "style"->"height:1.8rem;"))
+	</a>
+	@components.button(Map("id"->"", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "data-toggle"->"collapse", "data-target"->"#collapsingWorks", "aria-controls"->"collapsingWorks", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
+	<div class="collapse navbar-collapse" id="collapsingWorks">
+		<ul class="navbar-nav mr-auto">
+				@for(i <- 0 to groupToElementsList.size() - 1){
+					@defining(groupToElementsList.get(i)) { groupToElements =>
+						@defining(groupToElements._1) { group =>
+							@if(Boolean.valueOf(group.getOrElse("show", "true"))){
+				<li class="nav-item @("active".when(Boolean.valueOf(group.getOrElse("selected", "false"))))">
+					<a class="nav-link" href="@group.getOrElse("link", "#")">
+						<i class="@group.getOrElse("icon", "")"></i>
+						@group.get("name")</a>
+				</li>
+							@defining(groupToElements._2) { elements =>
+								@for(j <- 0 to elements.size - 1){
+									@if(Boolean.valueOf(elements.get(j).getOrElse("show", "true"))){
+
+									}
+								}
+							}
+
+							}
+						}
+					}
+				}
+		</ul>
+	</div>
+</nav>

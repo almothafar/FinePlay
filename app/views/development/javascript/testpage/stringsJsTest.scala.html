@@ -1,0 +1,67 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.api.i18n._
+
+@import views.html._
+@import views.html.components
+
+@import javax.json._
+@import java.io._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head(""){
+
+		@libraries.standard.head()
+		@libraries.mocha.head()
+	}
+
+	@body("",""){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "link"->controllers.development.javascript.routes.JavaScript.index("test").toString()))
+				</div>
+			</div>
+		}
+
+		<div id="mocha">
+		</div>
+
+		@libraries.standard.last()
+		@libraries.mocha.last()
+		@libraries.chai.last()
+		<script src='@routes.Assets.versioned("javascripts/utils/strings.js")'></script>
+		@script(){
+
+			mocha.setup('tdd');
+			var assert = chai.assert;
+
+			suite('Test', function(){
+
+				suite('Test of removeNewLine()', function(){
+
+						test('Replace multi new line.',function() {
+						assert.equal("aaabbbcccddd",Strings.removeNewLine("aaa\rbbb\nccc\r\nddd"),'removeNewLine 1');
+					});
+				});
+			});
+		}
+		@script(){
+
+			mocha.run();
+		}
+	}
+}

@@ -1,0 +1,73 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.IMAGE), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"image"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+					@components.image(Map("id"->"", "source"->"holder.js/100px250?random=yes", "fluid"->"true", "alternate"->"Responsive image"))
+					</div>
+
+					<div class="mb-3">
+					@components.image(Map("id"->"", "source"->"holder.js/200x200?random=yes", "rounded"->"true", "alternate"->"..."))
+					@components.image(Map("id"->"", "source"->"holder.js/200x200?random=yes", "rounded"->"true", "roundedType"->"circle", "alternate"->"..."))
+					@components.image(Map("id"->"", "source"->"holder.js/200x200?random=yes", "thumbnail"->"true", "alternate"->"..."))
+					</div>
+
+					<div class="mb-3 clearfix">
+					@components.image(Map("id"->"", "source"->"holder.js/200x200?random=yes", "rounded"->"true", "align"->"left", "alternate"->"..."))
+					@components.image(Map("id"->"", "source"->"holder.js/200x200?random=yes", "rounded"->"true", "align"->"right", "alternate"->"..."))
+					</div>
+
+					<div class="mb-3">
+					@components.image(Map("id"->"", "source"->"holder.js/200x200?random=yes", "rounded"->"true", "align"->"center", "alternate"->"..."))
+					</div>
+
+					<div class="mb-3">
+					@components.figure(Map("id"->"", "icon"->"fa fa-spinner fa-pulse", "text"->"A caption for the above image.")){
+						@components.image(Map("id"->"", "source"->"holder.js/400x300?random=yes", "rounded"->"true", "alternate"->"A generic square placeholder image with rounded corners in a figure."))
+					}
+					</div>
+
+					<div class="mb-3">
+					@components.figure(Map("id"->"", "icon"->"fa fa-spinner fa-pulse", "align"->"right", "text"->"A caption for the above image.")){
+						@components.image(Map("id"->"", "source"->"holder.js/400x300?random=yes", "rounded"->"true", "alternate"->"A generic square placeholder image with rounded corners in a figure."))
+					}
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+	}
+}

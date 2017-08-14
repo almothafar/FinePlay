@@ -1,0 +1,190 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import java.time._
+@import java.time.format._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@style(){
+
+			@@media print {
+
+				.chart {
+					width: initial;
+				}
+			}
+		}
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Chart.js", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"chartjs"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mb-3">
+
+						<div class="col-sm-6 chart">
+							<canvas id="lineChart" width="400" height="400"></canvas>
+						</div>
+
+						<div class="col-sm-6 chart">
+							<canvas id="barChart" width="400" height="400"></canvas>
+						</div>
+
+						<div class="col-sm-6 chart">
+							<canvas id="doughnutChart" width="400" height="400"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.chartjs.last()
+		@script(){
+
+			$(document).ready(function() {
+
+				var lineChartCtx = document.getElementById("lineChart");
+				var barData = {
+					labels: [
+						"@Month.JANUARY.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.FEBRUARY.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.MARCH.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.APRIL.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.MAY.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.JUNE.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.JULY.getDisplayName(TextStyle.FULL, lang.toLocale())"
+					],
+					datasets: [
+						{
+							label: "My First dataset",
+							fill: false,
+							lineTension: 0.1,
+							backgroundColor: "rgba(75,192,192,0.4)",
+							borderColor: "rgba(75,192,192,1)",
+							borderCapStyle: 'butt',
+							borderDash: [],
+							borderDashOffset: 0.0,
+							borderJoinStyle: 'miter',
+							pointBorderColor: "rgba(75,192,192,1)",
+							pointBackgroundColor: "#fff",
+							pointBorderWidth: 1,
+							pointHoverRadius: 5,
+							pointHoverBackgroundColor: "rgba(75,192,192,1)",
+							pointHoverBorderColor: "rgba(220,220,220,1)",
+							pointHoverBorderWidth: 2,
+							pointRadius: 1,
+							pointHitRadius: 10,
+							data: [65, 59, 80, 81, 56, 55, 40],
+						}
+					]
+				};
+				var lineChart = new Chart(lineChartCtx, {
+					type: 'line',
+					data: barData,
+					options: {
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true
+								}
+							}]
+						}
+					}
+				});
+
+				var barChartCtx = document.getElementById("barChart");
+				var barData = {
+					labels: [
+						"@Month.JANUARY.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.FEBRUARY.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.MARCH.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.APRIL.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.MAY.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.JUNE.getDisplayName(TextStyle.FULL, lang.toLocale())",
+						"@Month.JULY.getDisplayName(TextStyle.FULL, lang.toLocale())"
+					],
+					datasets: [
+						{
+							label: "My First dataset",
+							backgroundColor: "rgba(255,99,132,0.2)",
+							borderColor: "rgba(255,99,132,1)",
+							borderWidth: 1,
+							hoverBackgroundColor: "rgba(255,99,132,0.4)",
+							hoverBorderColor: "rgba(255,99,132,1)",
+							data: [65, 59, 80, 81, 56, 55, 40],
+						}
+					]
+				};
+				var barChart = new Chart(barChartCtx, {
+					type: 'bar',
+					data: barData,
+					options: {
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true
+								}
+							}]
+						}
+					}
+				});
+
+				var doughnutChartCtx = document.getElementById("doughnutChart");
+				var doughnutData = {
+					labels: [
+						"Red",
+						"Green",
+						"Yellow"
+					],
+					datasets: [
+						{
+							data: [300, 50, 100],
+							backgroundColor: [
+								"#FF6384",
+								"#36A2EB",
+								"#FFCE56"
+							],
+							hoverBackgroundColor: [
+								"#FF6384",
+								"#36A2EB",
+								"#FFCE56"
+							]
+						}
+					]
+				};
+				var doughnutChart = new Chart(doughnutChartCtx, {
+					type: 'doughnut',
+					data: doughnutData,
+					animation:{
+						animateScale:true
+					}
+				});
+			});
+		}
+	}
+}

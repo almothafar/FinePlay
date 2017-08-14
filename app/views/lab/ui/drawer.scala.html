@@ -1,0 +1,104 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@style(){
+
+			#taskbase {
+				position: relative;
+				width: 100%;
+				height: 600px;
+				overflow: hidden;
+			}
+
+			#taskcontent {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+			}
+
+			#taskmenu {
+				position: absolute; right:10px;
+				width: 260px;
+				height: 100%;
+				overflow: auto;
+				right: -260px;
+				background-color:#e6e6e6;
+				border-top: 1px white solid;
+				border-bottom: 1px white solid;
+				border-left: 1px white solid;
+				border-top-left-radius: 4px;
+				border-bottom-left-radius: 4px;
+				transition-property: right;
+				transition-duration: 0.4s;
+				transition-timing-function: ease;
+				z-index:1050;
+			}
+
+			.expand>#taskmenu {
+				right: 0px;
+			}
+		}
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DRAWER), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"drawer"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9 pr-0">
+
+					<div id="taskbase">
+						<div id="taskcontent" class="pr-3">
+
+							@components.button(Map("id"->"taskmenuButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-bars"))
+						</div>
+						<div id="taskmenu">
+
+							@components.button(Map("id"->"taskmenuCloseButton", "type"->"link", "icon"->"fa fa-times-circle"))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			$("#taskmenuCloseButton").click(function(event) {
+
+				$("#taskbase").removeClass('expand');
+				$("#taskbase>.modal-backdrop").remove();
+			});
+
+			$("#taskmenuButton").click(function(event) {
+
+				$("#taskbase").addClass('expand');
+				$("#taskbase").append('<div class="modal-backdrop fade show"></div>');
+			});
+		}
+	}
+}

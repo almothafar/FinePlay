@@ -1,0 +1,6 @@
+@(prop:scala.collection.immutable.Map[String, String])(content: Html)
+
+<div id="@prop.getOrElse("id", "")" class="container@("-fluid".when(Boolean.valueOf(prop.getOrElse("fluid", "false")))) @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+
+	@content
+</div>

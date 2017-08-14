@@ -1,0 +1,51 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.development
+
+@(playMap: Map[String, Object], jsr303Map: Map[String, Object], fineplayMap: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("framework","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Validation", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"validation"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<h2 class="headline">Play</h2>
+					@development.proptable("", SortedMap[String, AnyRef]() ++ playMap.asScala.toMap)
+
+					<h2 class="headline">JSR-303</h2>
+					@development.proptable("", SortedMap[String, AnyRef]() ++ jsr303Map.asScala.toMap)
+
+					<h2 class="headline">fine play</h2>
+					@development.proptable("", SortedMap[String, AnyRef]() ++ fineplayMap.asScala.toMap)
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

@@ -1,0 +1,211 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+@import java.time._
+
+@import models.user._
+@import models.setting.user.changeuser._
+
+@import common.system._
+@import views.html.setting.user._
+
+@(form: play.data.Form[models.setting.user.changeuser.ChangeFormContent])
+
+@frame(){
+
+	@head(Messages(MessageKeys.SETTING)){
+
+		@libraries.standard.head()
+	}
+
+	@body("setting","user"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.USER_CHANGE__USERID), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"changeuser"))
+		}
+
+		@if(!LocalDateTime.now().isBefore(LocalDateTime.parse(session().get(SessionKeys.OPERATION_TIMEOUT)))){
+
+			@confirmdialog()
+			@components.container(Map("id"->"contents", "fluid"->"true", "class"->"mt-5 mb-5", "style"->"text-align: center;")){
+
+				@components.button(Map("id"->"confirmButton", "type"->"primary", "icon"->"fa fa-lock", "text"->Messages(MessageKeys.AUTHENTICATION), "data-toggle"->"modal", "data-target"->"#confirmDialog"))
+			}
+		}else{
+
+			@components.container(Map("id"->"contents", "fluid"->"true")){
+
+				<div class="row mt-3">
+					<div class="col-md-1 col-lg-2 col-xl-3">
+					</div>
+					<div class="col-md-10 col-lg-8 col-xl-6">
+
+						@components.card(Map("id"->"changePanel", "class"->"shadow")){
+							<div class="card-header">
+								@Messages(MessageKeys.CHANGEUSER)
+							</div>
+							<div class="card-body">
+
+								@helper.form(helper.CSRF(controllers.setting.user.routes.ChangeUser.apply()), args = 'class -> "form-change") {
+									<h4 class="card-title">@Messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE)</h4>
+									<p class="card-text">@Messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE_DESCRIPTION)</p>
+									@if(form.hasGlobalErrors) {
+										<p class="text-warning">@form.getGlobalError.get.message</p>
+									}
+									<div class="form-group row">
+										<label for="@User.NEWUSERID" class="col-sm-4 col-form-label required">@Messages(MessageKeys.USER_NEWUSERID)</label>
+										<div class="col-sm-8">
+											<input id="@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="Email" value="@form(User.NEWUSERID).getValue.orElse("")" required autofocus>
+											<small class="text-muted">@Messages(MessageKeys.USER_NEWUSERID_DESCRIPTION)</small>
+											@for(error <- form(User.NEWUSERID).errors) {
+												<div class="text-warning">@Messages(error.message)</div>
+											}
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-12 text-right">
+											@components.button(Map("id"->"applyButton", "action"->"submit", "type"->"primary", "icon"->"", "text"->Messages(MessageKeys.CHANGE), "default"->"true", "class"->"float-right"))
+										</div>
+									</div>
+								}
+
+							</div>
+							<div class="card-footer text-muted">
+							</div>
+						}
+					</div>
+					<div class="col-md-1 col-lg-2 col-xl-3">
+					</div>
+				</div>
+			}
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			$('#confirmButton').on("click", function(){
+
+				$('#confirmpassword').val("");
+				initOperation();
+			});
+
+			$('#confirmOk').on("click", function(){
+
+				initOperation();
+				operation();
+			});
+
+			var initOperation = function(){
+
+				var errorContainer = $('#confirmDialog form>div:first-child');
+				errorContainer.empty();
+
+				var propertyErrorContainer = $('#confirmpassword').parent().find("div");
+				propertyErrorContainer.empty();
+
+				$('#confirmMessage').text('');
+				$('#confirmDescription').text('-');
+				$('#confirmProgress').removeClass('progress-danger').val(0);
+				$('#confirmCancel').prop('disabled', false);
+				$('#confirmOk').prop('disabled', false);
+			}
+
+			var operation = function(){
+
+				$('#confirmMessage').text('@Messages(MessageKeys.PLEASE__WAIT)');
+				$('#confirmProgress').val(100);
+				$('#confirmCancel').prop('disabled', true);
+				$('#confirmOk').prop('disabled', true);
+
+				var form = $('#confirmForm');
+				var url = form.attr('action');
+				$.ajax({
+					method:"POST",
+					url:url,
+					data:form.serialize(),
+					processData: false,
+					dataType: "json",
+					timeout: 3 * 1000
+				})
+				.then(
+					function (responseJson) {
+
+						window.location.href = '@controllers.setting.user.routes.ChangeUser.index()';
+					},
+					function (jqXHR, textStatus, errorThrown) {
+
+						var responseJson = jqXHR.responseJSON||{};
+						if(responseJson['globalErrors']){
+
+							var errorContainer = $('#confirmDialog form>div:first-child');
+							var errors = responseJson.globalErrors;
+							$.each(errors, function(i, error){
+
+								errorContainer.append('<p class="text-warning">'+error+'</p>');
+							});
+						}
+						if(responseJson['errors']){
+
+							for(property in responseJson.errors){
+
+								var propertyErrorContainer = $('#confirm'+property).parent().find('div')
+								var propertyErrors = responseJson.errors[property];
+								$.each(propertyErrors, function(i, error){
+
+									propertyErrorContainer.append('<p class="text-warning">'+error+'</p>');
+								});
+							}
+
+						}
+
+						$('#confirmMessage').text('@Messages(MessageKeys.FAILURE)');
+						$('#confirmDescription').html('@Messages(MessageKeys.STATUS)&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;@Messages(MessageKeys.ERROR)&nbsp;<strong>'+errorThrown+'</strong>');
+						$('#confirmProgress>.progress-bar').addClass('bg-danger');
+						$('#confirmCancel').prop('disabled', false);
+						$('#confirmOk').prop('disabled', false);
+
+						if(responseJson['globalErrors'] || responseJson['errors']) {
+
+							shake('#confirmDialog');
+						}
+					}
+				);
+				return false;
+			}
+
+			$(window).on('keydown', function(e){
+
+				var keyCode = e.which ? e.which : e.keyCode;
+				if (13 == keyCode) {
+
+					if($("#confirmDialog").is(".show")){
+
+						$('#confirmOk').trigger("click");
+					}else{
+
+						$('#applyButton').trigger("click");
+					}
+
+					e.preventDefault();
+				}
+			})
+		}
+		@script(){
+
+			@if(form.hasGlobalErrors || form.hasErrors) {
+
+				shake('#changePanel');
+			}
+		}
+	}
+}

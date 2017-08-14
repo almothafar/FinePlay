@@ -1,0 +1,111 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.FONTAWESOME)){
+
+		@libraries.standard.head()
+	}
+
+	@body("fontawesome","style"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->("Larger "+Messages(MessageKeys.ICON)), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"largericon"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mt-3">
+
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-apple fa-4x", "aria-hidden"->"true"))
+							<p>Apple</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-windows fa-4x", "aria-hidden"->"true"))
+							<p>Windows</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-linux fa-4x", "aria-hidden"->"true"))
+							<p>Linux</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-android fa-4x", "aria-hidden"->"true"))
+							<p>Android</p>
+						</div>
+					</div>
+
+					<div class="row mt-3">
+
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-mobile fa-4x", "aria-hidden"->"true"))
+							<p>Phone</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-tablet fa-4x", "aria-hidden"->"true"))
+							<p>Tablet</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-desktop fa-4x", "aria-hidden"->"true"))
+							<p>Desktop</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-server fa-4x", "aria-hidden"->"true"))
+							<p>Server</p>
+						</div>
+					</div>
+
+					<div class="row mt-3">
+
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-safari fa-4x", "aria-hidden"->"true"))
+							<p>Safari</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-chrome fa-4x", "aria-hidden"->"true"))
+							<p>Chrome</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-firefox fa-4x", "aria-hidden"->"true"))
+							<p>Firefox</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-opera fa-4x", "aria-hidden"->"true"))
+							<p>Opera</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-internet-explorer fa-4x", "aria-hidden"->"true"))
+							<p>Internet Explorer</p>
+						</div>
+						<div style="width: 120px; text-align: center; float: left">
+							@components.icon(Map("id"->"", "icon"->"fa fa-edge fa-4x", "aria-hidden"->"true"))
+							<p>Edge</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

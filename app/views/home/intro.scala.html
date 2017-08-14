@@ -1,0 +1,174 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.inject.Injector
+@import play.api.i18n._
+
+@import views.html._
+@import views.html.components
+
+@import javax.json._
+@import java.io._
+
+@import common.system._
+
+@this(injector: Injector)
+@()
+
+@messages() = @{
+
+	injector.instanceOf(classOf[play.i18n.MessagesApi])
+}
+
+@currentTimeZone() = @{
+
+	common.utils.ZoneIds.getZoneIdToNameMap(lang.toLocale).get(session.get(models.user.User.ZONEID))
+}
+
+@currentLang() = @{
+
+	common.utils.Locales.getLocaleIdToNameMap(lang.toLocale).get(ctx().lang().code())
+}
+
+@frame(){
+
+	@head("home"){
+
+		@libraries.standard.head()
+		@libraries.shepherd.head()
+	}
+
+	@body("home","intro"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.INTRO), "icon"->"fa fa-file-text-o", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@components.alert(Map("id"->"timezoneInfo", "icon"->"fa fa-clock-o", "text"->Messages(MessageKeys.YOUR__X__IS__X, "<strong>"+Messages(MessageKeys.TIMEZONE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentTimeZone+"</a>"), "type"->"info", "closable"->"true"))
+			@components.alert(Map("id"->"languageInfo", "icon"->"fa fa-globe", "text"->Messages(MessageKeys.YOUR__X__IS__X, "<strong>"+Messages(MessageKeys.LANGUAGE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentLang+"</a>"), "type"->"info", "closable"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="jumbotron">
+				<h1 class="display-4">@Messages(MessageKeys.WELCOME)</h1>
+				<p class="lead draft">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+				<hr class="m-y-2">
+				<p class="draft">It uses utility classes for typography and spacing to space content out within the larger container.</p>
+
+				<p class="lead mt-3">
+					@components.button(Map("id"->"tourButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-binoculars", "text"->"Tour"))
+					<span class="ml-3">@components.icon(Map("id"->"", "icon"->"fa fa-long-arrow-left fa-1x", "class"->"text-info elastic-left"))</span>
+				</p>
+				<p class="lead mt-3">
+					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-graduation-cap", "text"->"Learn more", "link"->"#"))
+				</p>
+				<p class="lead mt-3">
+					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-film", "text"->Messages(MessageKeys.VIDEO), "link"->controllers.home.routes.Home.video().toString()))
+				</p>
+			</div>
+
+			@components.container(Map("id"->"", "fluid"->"true", "class"->"mb-3 text-center")){
+
+				@components.linkbutton(Map("id"->"", "link"->Messages(MessageKeys.ADOBE_READER_LINK), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-pdf-o", "iconType"->"danger", "text"->"Adobe Reader"))
+			}
+		}
+
+		@libraries.standard.last()
+		@libraries.shepherd.last()
+		@script(){
+
+			$(document).ready(function () {
+
+				if(document.location.origin+"@controllers.user.routes.User.index().toString()" == document.referrer){
+
+					fadeInFromFront('body');
+				}else{
+
+				}
+
+				var tour = new Shepherd.Tour({
+					defaults: {
+						classes: 'shepherd-theme-default',
+						showCancelLink: true,
+						scrollTo: 'system_content'
+					}
+				});
+				tour.addStep('welcome', {
+					title: '@Messages(MessageKeys.TIMEZONE) @Messages(MessageKeys.INFO)',
+					text: ['<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>', '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>'],
+					attachTo: '#timezoneInfo bottom',
+					buttons: [
+						{
+							text: '@Messages(MessageKeys.CANCEL)',
+							classes: 'shepherd-button-secondary',
+							action: tour.cancel
+						}, {
+							text: '@Messages(MessageKeys.NEXT)',
+							action: tour.next,
+							classes: 'shepherd-button-example-primary'
+						}
+					]
+				});
+				tour.addStep('including', {
+					title: '@Messages(MessageKeys.LANGUAGE) @Messages(MessageKeys.INFO)',
+					text: '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>',
+					attachTo: '#languageInfo bottom',
+					buttons: [
+						{
+							text: '@Messages(MessageKeys.PREVIOUS)',
+							classes: 'shepherd-button-secondary',
+							action: tour.back
+						}, {
+							text: '@Messages(MessageKeys.NEXT)',
+							action: tour.next
+						}
+					]
+				});
+				tour.addStep('followup', {
+					title: '@Messages(MessageKeys.MENU) @Messages(MessageKeys.BUTTON)',
+					text: '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>',
+					attachTo: '#menuButton bottom',
+					buttons: [
+						{
+							text: '@Messages(MessageKeys.PREVIOUS)',
+							classes: 'shepherd-button-secondary',
+							action: tour.back
+						}, {
+							text: '@Messages(MessageKeys.NEXT)',
+							action: tour.next
+						}
+					]
+				});
+				tour.addStep('followup', {
+					title: '@Messages(MessageKeys.HELP) @Messages(MessageKeys.BUTTON)',
+					text: '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>',
+					attachTo: '#helpButton bottom',
+					buttons: [
+						{
+							text: '@Messages(MessageKeys.PREVIOUS)',
+							classes: 'shepherd-button-secondary',
+							action: tour.back
+						}, {
+							text: '@Messages(MessageKeys.END)',
+							action: tour.next
+						}
+					]
+				});
+
+				$('#tourButton').on('click', function(){
+
+					tour.start();
+				});
+			});
+
+			enablePrint();
+			enableHelp();
+		}
+	}
+}

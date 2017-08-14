@@ -1,0 +1,37 @@
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@translation() = @{
+
+	var lang = Messages(MessageKeys.PICKADATE_LANG)
+	if(lang.isEmpty){
+
+		Html("")
+	}else{
+
+		var path = "lib/pickadate.js/compressed/translations/"+lang+".js"
+		Html("<script type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+	}
+}
+
+<script type='text/javascript'
+	src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.js")'></script>
+<script type='text/javascript'
+	src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.date.js")'></script>
+<script type='text/javascript'
+	src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.time.js")'></script>
+@translation()
+
+<!-- provisional coped for pickadate 3.5.6 -->
+@ctx().lang().code() match {
+	case "ja-JP" => {
+
+<script>jQuery.fn.pickadate.defaults.close = '@Messages(MessageKeys.CLOSE)';jQuery.extend( jQuery.fn.pickadate.defaults, jQuery.fn.pickadate.defaults);</script>
+	}
+	case _ => {
+
+	}
+}

@@ -1,0 +1,53 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.api.i18n._
+
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String], first:scala.collection.immutable.Map[String, String], previous:Map[String, String], pages:Seq[scala.collection.immutable.Map[String, String]], next:scala.collection.immutable.Map[String, String], last:scala.collection.immutable.Map[String, String])
+
+<nav id="@prop.getOrElse("id", "")" class="container @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+	<ul class="pagination pagination-@prop.getOrElse("size", "") justify-content-center">
+		<li class="page-item @("disabled".when(!Boolean.valueOf(first.getOrElse("enabled", "true"))))">
+			<a class="page-link" href="@first.getOrElse("link", "#")" aria-label="First">
+				<i class="@first.getOrElse("icon", "")"></i>
+				<span aria-hidden="true">@first.getOrElse("name", Messages(MessageKeys.FIRST))</span>
+				<span class="sr-only">First</span>
+			</a>
+		</li>
+		<li class="page-item @("disabled".when(!Boolean.valueOf(previous.getOrElse("enabled", "true"))))">
+			<a class="page-link" href="@previous.getOrElse("link", "#")" aria-label="Previous">
+				<i class="@previous.getOrElse("icon", "")"></i>
+				<span aria-hidden="true">@previous.getOrElse("name", Messages(MessageKeys.PREVIOUS))</span>
+				<span class="sr-only">Previous</span>
+			</a>
+		</li>
+		@for(i <- 0 to pages.size - 1){
+		<li class="page-item @("active".when(Boolean.valueOf(pages(i).getOrElse("selected", "false"))))">
+			<a class="page-link" href="@pages(i).getOrElse("link", "#")">
+				<i class="@pages(i).getOrElse("icon", "")"></i>
+				@pages(i).getOrElse("name", "")
+			</a>
+		</li>
+		}
+		</li>
+		<li class="page-item @("disabled".when(!Boolean.valueOf(next.getOrElse("enabled", "true"))))">
+			<a class="page-link" href="@next.getOrElse("link", "#")" aria-label="Next">
+				<i class="@next.getOrElse("icon", "")"></i>
+				<span aria-hidden="true">@next.getOrElse("name", Messages(MessageKeys.NEXT))</span>
+				<span class="sr-only">Next</span>
+			</a>
+		</li>
+		<li class="page-item @("disabled".when(!Boolean.valueOf(last.getOrElse("enabled", "true"))))">
+			<a class="page-link" href="@last.getOrElse("link", "#")" aria-label="Last">
+				<i class="@last.getOrElse("icon", "")"></i>
+				<span aria-hidden="true">@last.getOrElse("name", Messages(MessageKeys.LAST))</span>
+				<span class="sr-only">Last</span>
+			</a>
+		</li>
+	</ul>
+</nav>

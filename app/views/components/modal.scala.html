@@ -1,0 +1,39 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String], buttons:Seq[scala.collection.immutable.Map[String, String]])(content: Html)
+
+<div id="@prop.getOrElse("id", "")" class="modal fade @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+	<div class="modal-dialog modal-@prop.getOrElse("size", "")" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">
+					@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))
+					@Html(prop.getOrElse("title", ""))
+				</h4>
+				@if(Boolean.valueOf(prop.getOrElse("closable","false"))){
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				}
+			</div>
+			<div class="modal-body">
+				@content
+			</div>
+			@if(1 <= buttons.size){
+			<div class="modal-footer">
+				@for(i <- 0 to buttons.size - 1){
+					@button(buttons(i))
+				}
+			</div>
+			}
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

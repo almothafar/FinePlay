@@ -1,0 +1,63 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.api.i18n._
+
+@import views.html._
+@import views.html.components
+@import views.html.information
+
+@import javax.json._
+@import java.io._
+
+@import common.system._
+
+@(myImageUrl: String)
+
+@frame(){
+
+	@head("information"){
+
+		@libraries.standard.head()
+		@libraries.datatables.head()
+	}
+
+	@body("information","creator"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@information.breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.CREATOR), "icon"->"fa fa-address-card", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"")){
+
+			<div class="jumbotron">
+				@components.image(Map("id"->"", "source"->myImageUrl, "rounded"->"true", "align"->"center", "alternate"->"My Picture of Gravatar", "style"->"width: 200px; height: 200px;"))
+				<div class="display-4">hiro20v</div>
+				<p class="lead">I am a hobbyist programmer.</p>
+				<hr class="m-y-2">
+				<p>If you have any offers, please feel free to contact us.</p>
+
+				<h3 class="h3">@Messages(MessageKeys.CONTACT)</h3>
+				<p class="lead mt-3">
+					@components.linkbutton(Map("id"->"myGitHubLink", "type"->"primary", "icon"->"fa fa-github-alt", "iconType"->"warning", "text"->"GitHub", "link"->"https://github.com/hiro20v"))
+				</p>
+				<p class="lead mt-3">
+					@components.linkbutton(Map("id"->"myEMailLink", "type"->"primary", "icon"->"fa fa-paper-plane", "iconType"->"warning", "text"->Messages(MessageKeys.EMAIL), "link"->"mailto:hiro20v++@icloud.com"))
+				</p>
+
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			$(document).ready(function () {
+
+			});
+		}
+	}
+}

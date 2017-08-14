@@ -1,0 +1,287 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Nav", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"nav"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<h4 class="headline">Scroll Tab</h4>
+						<div>
+							@components.nav(Map("id"->"","tabs"->"true","class"->"scrollTab"), List(
+								Map("name"->"Fashion", "icon"->"fa fa-shopping-bag", "link"->"#fashion1-1", "data-toggle"->"tab", "badge"->"New", "selected"->"true"),
+								Map("name"->"Food", "icon"->"fa fa-cutlery", "link"->"#food1-1", "data-toggle"->"tab"),
+								Map("name"->"Sports", "icon"->"fa fa-futbol-o", "link"->"#sports1-1", "data-toggle"->"tab"),
+								Map("name"->"Electronics", "icon"->"fa fa-tv", "link"->"#electronics1-1", "data-toggle"->"tab"),
+								Map("name"->"Toys", "icon"->"fa fa-rocket", "link"->"#toys1-1", "badge"->"New", "data-toggle"->"tab"),
+								Map("name"->"Health", "icon"->"fa fa-medkit", "link"->"#health1-1", "data-toggle"->"tab")
+							))
+						</div>
+						<div id="scrollTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="fashion1-1" role="tabpanel">
+								@components.badge(Map("type"->"primary", "text"->"Fashion"))
+							</div>
+							<div class="tab-pane" id="food1-1" role="tabpanel">
+								@components.badge(Map("type"->"secondary", "text"->"Food"))
+							</div>
+							<div class="tab-pane" id="sports1-1" role="tabpanel">
+								@components.badge(Map("type"->"success", "text"->"Sports"))
+							</div>
+							<div class="tab-pane" id="electronics1-1" role="tabpanel">
+								@components.badge(Map("type"->"info", "text"->"Electronics"))
+							</div>
+							<div class="tab-pane" id="toys1-1" role="tabpanel">
+								@components.badge(Map("type"->"warning", "text"->"Toys"))
+							</div>
+							<div class="tab-pane" id="health1-1" role="tabpanel">
+								@components.badge(Map("type"->"danger", "text"->"Health"))
+							</div>
+						</div>
+						<div>
+							@components.nav(Map("id"->"","tabs"->"true","class"->"scrollTab"), List(
+								Map("name"->"Fashion", "icon"->"fa fa-shopping-bag", "link"->"#fashion1-2", "data-toggle"->"tab", "badge"->"New"),
+								Map("name"->"Food", "icon"->"fa fa-cutlery", "link"->"#food1-2", "data-toggle"->"tab"),
+								Map("name"->"Sports", "icon"->"fa fa-futbol-o", "link"->"#sports1-2", "data-toggle"->"tab"),
+								Map("name"->"Electronics", "icon"->"fa fa-tv", "link"->"#electronics1-2", "data-toggle"->"tab"),
+								Map("name"->"Toys", "icon"->"fa fa-rocket", "link"->"#toys1-2", "data-toggle"->"tab", "badge"->"New"),
+								Map("name"->"Health", "icon"->"fa fa-medkit", "link"->"#health1-2", "data-toggle"->"tab", "selected"->"true")
+							))
+						</div>
+						<div id="scrollTabContent2" class="tab-content mt-3">
+							<div class="tab-pane" id="fashion1-2" role="tabpanel">
+								@components.badge(Map("type"->"primary", "text"->"Fashion"))
+							</div>
+							<div class="tab-pane" id="food1-2" role="tabpanel">
+								@components.badge(Map("type"->"secondary", "text"->"Food"))
+							</div>
+							<div class="tab-pane" id="sports1-2" role="tabpanel">
+								@components.badge(Map("type"->"success", "text"->"Sports"))
+							</div>
+							<div class="tab-pane" id="electronics1-2" role="tabpanel">
+								@components.badge(Map("type"->"info", "text"->"Electronics"))
+							</div>
+							<div class="tab-pane" id="toys1-2" role="tabpanel">
+								@components.badge(Map("type"->"warning", "text"->"Toys"))
+							</div>
+							<div class="tab-pane active" id="health1-2" role="tabpanel">
+								@components.badge(Map("type"->"danger", "text"->"Health"))
+							</div>
+						</div>
+					</div>
+
+					<hr class="separator">
+
+					<div class="mb-3">
+						<h4 class="headline">Fold Tab</h4>
+						<div>
+							@components.nav(Map("id"->"","tabs"->"true","class"->"foldTab"), List(
+								Map("name"->"Fashion", "icon"->"fa fa-shopping-bag", "link"->"#fashion2-1", "data-toggle"->"tab", "badge"->"New", "selected"->"true"),
+								Map("name"->"Food", "icon"->"fa fa-cutlery", "link"->"#food2-1", "data-toggle"->"tab"),
+								Map("name"->"Sports", "icon"->"fa fa-futbol-o", "link"->"#sports2-1", "data-toggle"->"tab"),
+								Map("name"->"Electronics", "icon"->"fa fa-tv", "link"->"#electronics2-1", "data-toggle"->"tab"),
+								Map("name"->"Toys", "icon"->"fa fa-rocket", "link"->"#toys2-1", "badge"->"New", "data-toggle"->"tab"),
+								Map("name"->"Health", "icon"->"fa fa-medkit", "link"->"#health2-1", "data-toggle"->"tab")
+							))
+						</div>
+						<div id="foldTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="fashion2-1" role="tabpanel">
+								@components.badge(Map("type"->"primary", "text"->"Fashion"))
+							</div>
+							<div class="tab-pane" id="food2-1" role="tabpanel">
+								@components.badge(Map("type"->"secondary", "text"->"Food"))
+							</div>
+							<div class="tab-pane" id="sports2-1" role="tabpanel">
+								@components.badge(Map("type"->"success", "text"->"Sports"))
+							</div>
+							<div class="tab-pane" id="electronics2-1" role="tabpanel">
+								@components.badge(Map("type"->"info", "text"->"Electronics"))
+							</div>
+							<div class="tab-pane" id="toys2-1" role="tabpanel">
+								@components.badge(Map("type"->"warning", "text"->"Toys"))
+							</div>
+							<div class="tab-pane" id="health2-1" role="tabpanel">
+								@components.badge(Map("type"->"danger", "text"->"Health"))
+							</div>
+						</div>
+						<div>
+							@components.nav(Map("id"->"","tabs"->"true","class"->"foldTab"), List(
+								Map("name"->"Fashion", "icon"->"fa fa-shopping-bag", "link"->"#fashion2-2", "data-toggle"->"tab", "badge"->"New"),
+								Map("name"->"Food", "icon"->"fa fa-cutlery", "link"->"#food2-2", "data-toggle"->"tab"),
+								Map("name"->"Sports", "icon"->"fa fa-futbol-o", "link"->"#sports2-2", "data-toggle"->"tab"),
+								Map("name"->"Electronics", "icon"->"fa fa-tv", "link"->"#electronics2-2", "data-toggle"->"tab"),
+								Map("name"->"Toys", "icon"->"fa fa-rocket", "link"->"#toys2-2", "data-toggle"->"tab", "badge"->"New"),
+								Map("name"->"Health", "icon"->"fa fa-medkit", "link"->"#health2-2", "data-toggle"->"tab", "selected"->"true")
+							))
+						</div>
+						<div id="foldTabContent2" class="tab-content mt-3">
+							<div class="tab-pane" id="fashion2-2" role="tabpanel">
+								@components.badge(Map("type"->"primary", "text"->"Fashion"))
+							</div>
+							<div class="tab-pane" id="food2-2" role="tabpanel">
+								@components.badge(Map("type"->"secondary", "text"->"Food"))
+							</div>
+							<div class="tab-pane" id="sports2-2" role="tabpanel">
+								@components.badge(Map("type"->"success", "text"->"Sports"))
+							</div>
+							<div class="tab-pane" id="electronics2-2" role="tabpanel">
+								@components.badge(Map("type"->"info", "text"->"Electronics"))
+							</div>
+							<div class="tab-pane" id="toys2-2" role="tabpanel">
+								@components.badge(Map("type"->"warning", "text"->"Toys"))
+							</div>
+							<div class="tab-pane active" id="health2-2" role="tabpanel">
+								@components.badge(Map("type"->"danger", "text"->"Health"))
+							</div>
+						</div>
+					</div>
+
+					<hr class="separator">
+
+					<div class="mb-3">
+						<h4 class="headline">Compress Tab</h4>
+						<div>
+							@components.nav(Map("id"->"","tabs"->"true","class"->"compressTab"), List(
+								Map("name"->"Fashion", "icon"->"fa fa-shopping-bag", "link"->"#fashion3-1", "data-toggle"->"tab", "badge"->"New", "selected"->"true"),
+								Map("name"->"Food", "icon"->"fa fa-cutlery", "link"->"#food3-1", "data-toggle"->"tab"),
+								Map("name"->"Sports", "icon"->"fa fa-futbol-o", "link"->"#sports3-1", "data-toggle"->"tab"),
+								Map("name"->"Electronics", "icon"->"fa fa-tv", "link"->"#electronics3-1", "data-toggle"->"tab"),
+								Map("name"->"Toys", "icon"->"fa fa-rocket", "link"->"#toys3-1", "badge"->"New", "data-toggle"->"tab"),
+								Map("name"->"Health", "icon"->"fa fa-medkit", "link"->"#health3-1", "data-toggle"->"tab")
+							))
+						</div>
+						<div id="compressTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="fashion3-1" role="tabpanel">
+								@components.badge(Map("type"->"primary", "text"->"Fashion"))
+							</div>
+							<div class="tab-pane" id="food3-1" role="tabpanel">
+								@components.badge(Map("type"->"secondary", "text"->"Food"))
+							</div>
+							<div class="tab-pane" id="sports3-1" role="tabpanel">
+								@components.badge(Map("type"->"success", "text"->"Sports"))
+							</div>
+							<div class="tab-pane" id="electronics3-1" role="tabpanel">
+								@components.badge(Map("type"->"info", "text"->"Electronics"))
+							</div>
+							<div class="tab-pane" id="toys3-1" role="tabpanel">
+								@components.badge(Map("type"->"warning", "text"->"Toys"))
+							</div>
+							<div class="tab-pane" id="health3-1" role="tabpanel">
+								@components.badge(Map("type"->"danger", "text"->"Health"))
+							</div>
+						</div>
+						<div>
+							@components.nav(Map("id"->"","tabs"->"true","class"->"compressTab"), List(
+								Map("name"->"Fashion", "icon"->"fa fa-shopping-bag", "link"->"#fashion3-2", "data-toggle"->"tab", "badge"->"New"),
+								Map("name"->"Food", "icon"->"fa fa-cutlery", "link"->"#food3-2", "data-toggle"->"tab"),
+								Map("name"->"Sports", "icon"->"fa fa-futbol-o", "link"->"#sports3-2", "data-toggle"->"tab"),
+								Map("name"->"Electronics", "icon"->"fa fa-tv", "link"->"#electronics3-2", "data-toggle"->"tab"),
+								Map("name"->"Toys", "icon"->"fa fa-rocket", "link"->"#toys3-2", "data-toggle"->"tab", "badge"->"New"),
+								Map("name"->"Health", "icon"->"fa fa-medkit", "link"->"#health3-2", "data-toggle"->"tab", "selected"->"true")
+							))
+						</div>
+						<div id="compressTabContent2" class="tab-content mt-3">
+							<div class="tab-pane" id="fashion3-2" role="tabpanel">
+								@components.badge(Map("type"->"primary", "text"->"Fashion"))
+							</div>
+							<div class="tab-pane" id="food3-2" role="tabpanel">
+								@components.badge(Map("type"->"secondary", "text"->"Food"))
+							</div>
+							<div class="tab-pane" id="sports3-2" role="tabpanel">
+								@components.badge(Map("type"->"success", "text"->"Sports"))
+							</div>
+							<div class="tab-pane" id="electronics3-2" role="tabpanel">
+								@components.badge(Map("type"->"info", "text"->"Electronics"))
+							</div>
+							<div class="tab-pane" id="toys3-2" role="tabpanel">
+								@components.badge(Map("type"->"warning", "text"->"Toys"))
+							</div>
+							<div class="tab-pane active" id="health3-2" role="tabpanel">
+								@components.badge(Map("type"->"danger", "text"->"Health"))
+							</div>
+						</div>
+					</div>
+
+					<hr class="separator">
+
+					<div class="mb-3">
+						<h4 class="headline">Draggable Tab</h4>
+						<div>
+							@components.nav(Map("id"->"","tabs"->"true","class"->"dragTab"), List(
+								Map("name"->"Fashion", "icon"->"fa fa-shopping-bag", "link"->"#fashion4-1", "data-toggle"->"tab", "badge"->"New", "selected"->"true"),
+								Map("name"->"Food", "icon"->"fa fa-cutlery", "link"->"#food4-1", "data-toggle"->"tab"),
+								Map("name"->"Sports", "icon"->"fa fa-futbol-o", "link"->"#sports4-1", "data-toggle"->"tab"),
+								Map("name"->"Electronics", "icon"->"fa fa-tv", "link"->"#electronics4-1", "data-toggle"->"tab"),
+								Map("name"->"Toys", "icon"->"fa fa-rocket", "link"->"#toys4-1", "badge"->"New", "data-toggle"->"tab"),
+								Map("name"->"Health", "icon"->"fa fa-medkit", "link"->"#health4-1", "data-toggle"->"tab")
+							))
+						</div>
+						<div id="dragTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="fashion4-1" role="tabpanel">
+								@components.badge(Map("type"->"primary", "text"->"Fashion"))
+							</div>
+							<div class="tab-pane" id="food4-1" role="tabpanel">
+								@components.badge(Map("type"->"secondary", "text"->"Food"))
+							</div>
+							<div class="tab-pane" id="sports4-1" role="tabpanel">
+								@components.badge(Map("type"->"success", "text"->"Sports"))
+							</div>
+							<div class="tab-pane" id="electronics4-1" role="tabpanel">
+								@components.badge(Map("type"->"info", "text"->"Electronics"))
+							</div>
+							<div class="tab-pane" id="toys4-1" role="tabpanel">
+								@components.badge(Map("type"->"warning", "text"->"Toys"))
+							</div>
+							<div class="tab-pane" id="health4-1" role="tabpanel">
+								@components.badge(Map("type"->"danger", "text"->"Health"))
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.jqueryuitouchpunch.last()
+		@script(){
+
+			$(document).ready(function () {
+
+				Components.applyScrollToNav('.scrollTab');
+
+				Components.applyFoldToNav('.foldTab');
+
+				Components.applyCompressToNav('.compressTab');
+
+				Components.applyDragToNav(".dragTab");
+			});
+		}
+	}
+}

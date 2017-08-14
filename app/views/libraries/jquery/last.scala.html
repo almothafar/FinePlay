@@ -1,0 +1,16 @@
+@import com.typesafe.config._
+
+@()
+
+@src() = @{
+
+	if(ConfigFactory.defaultApplication().hasPath("jquery.cdn.script")){
+
+		ConfigFactory.defaultApplication().getString("jquery.cdn.script")
+	}else{
+		// npm
+		routes.Assets.versioned("lib/jquery/dist/jquery.min.js")
+	}
+}
+
+<script type='text/javascript' src='@src()'></script>

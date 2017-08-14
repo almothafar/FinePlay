@@ -1,0 +1,25 @@
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+<div id="@prop.getOrElse("id", "")" class="list-group mb-3">
+	<a href="@controllers.framework.application.routes.Application.index("config").toString()" class="list-group-item @("active".when(equalTask("config")))">Config</a>
+	<a href="@controllers.framework.application.routes.Application.index("cookie").toString()" class="list-group-item @("active".when(equalTask("cookie")))">Cookie</a>
+	<a href="@controllers.framework.application.routes.Application.index("session").toString()" class="list-group-item @("active".when(equalTask("session")))">Session</a>
+	<a href="@controllers.framework.application.routes.Application.index("flash").toString()" class="list-group-item @("active".when(equalTask("flash")))">Flash</a>
+	<a href="@controllers.framework.application.routes.Application.index("cache").toString()" class="list-group-item @("active".when(equalTask("cache")))">Cache</a>
+	<a href="@controllers.framework.application.routes.Application.index("i18n").toString()" class="list-group-item @("active".when(equalTask("i18n")))">I18n</a>
+	<a href="@controllers.framework.application.routes.Application.index("message").toString()" class="list-group-item @("active".when(equalTask("message")))">@Messages(MessageKeys.MESSAGE)</a>
+	<a href="@controllers.framework.application.routes.Application.index("validation").toString()" class="list-group-item @("active".when(equalTask("validation")))">Validation</a>
+	<a href="@controllers.framework.application.routes.Application.index("request").toString()" class="list-group-item @("active".when(equalTask("request")))">@Messages(MessageKeys.REQUEST)</a>
+	<a href="@controllers.framework.application.routes.Application.index("exception").toString()" class="list-group-item @("active".when(equalTask("exception")))">Exception</a>
+	<a href="@controllers.framework.application.routes.Application.index("reporterror").toString()" class="list-group-item @("active".when(equalTask("reporterror")))">@(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR))</a>
+	<a href="@controllers.framework.application.routes.Application.index("datetime").toString()" class="list-group-item @("active".when(equalTask("datetime")))">@Messages(MessageKeys.DATETIME)</a>
+	<a href="@controllers.framework.application.routes.Application.index("entitymanager").toString()" class="list-group-item @("active".when(equalTask("entitymanager")))">EntityManager</a>
+	<a href="@controllers.framework.application.routes.Application.index("user").toString()" class="list-group-item @("active".when(equalTask("user")))">@Messages(MessageKeys.USER)</a>
+</div>

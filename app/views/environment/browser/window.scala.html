@@ -1,0 +1,110 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+@import views.html.development
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.ENVIRONMENT)){
+
+		@libraries.standard.head()
+	}
+
+	@body("environment","browser"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Window", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		<div class="container-fluid">
+
+			@tasks(Map("id"->"", "task"->"window"))
+		</div>
+
+		<div class="container-fluid">
+
+			@components.badge(Map("id"->"jQuery", "type"->"danger", "text"->"jQuery"))
+			@components.badge(Map("id"->"HTML5Audio", "type"->"danger", "text"->"HTML5Audio"))
+			@components.badge(Map("id"->"HTML5Video", "type"->"danger", "text"->"HTML5Video"))
+			@components.badge(Map("id"->"Canvas", "type"->"danger", "text"->"Canvas"))
+			@components.badge(Map("id"->"SessionStorage", "type"->"danger", "text"->"SessionStorage"))
+			@components.badge(Map("id"->"LocalStorage", "type"->"danger", "text"->"LocalStorage"))
+			@components.badge(Map("id"->"File", "type"->"danger", "text"->"File"))
+			@components.badge(Map("id"->"FileReader", "type"->"danger", "text"->"FileReader"))
+			@components.badge(Map("id"->"URL", "type"->"danger", "text"->"URL"))
+			@components.badge(Map("id"->"Blob", "type"->"danger", "text"->"Blob"))
+			@components.badge(Map("id"->"WebSocket", "type"->"danger", "text"->"WebSocket"))
+			@components.badge(Map("id"->"WebWorkers", "type"->"danger", "text"->"WebWorkers"))
+			@components.badge(Map("id"->"WebAudio", "type"->"danger", "text"->"WebAudio"))
+			@components.badge(Map("id"->"Notification", "type"->"danger", "text"->"Notification"))
+			@components.badge(Map("id"->"CrossDocumentMessaging", "type"->"danger", "text"->"CrossDocumentMessaging"))
+			@components.badge(Map("id"->"SpeechSynthesis", "type"->"danger", "text"->"SpeechSynthesis"))
+			@components.badge(Map("id"->"SpeechRecognition", "type"->"danger", "text"->"SpeechRecognition"))
+			@components.badge(Map("id"->"DeviceOrientationEvent", "type"->"danger", "text"->"DeviceOrientationEvent"))
+			@components.badge(Map("id"->"DeviceMotionEvent", "type"->"danger", "text"->"DeviceMotionEvent"))
+			@components.badge(Map("id"->"WebSQLDatabase", "type"->"danger", "text"->"WebSQLDatabase"))
+			@components.badge(Map("id"->"IndexedDatabase", "type"->"danger", "text"->"IndexedDatabase"))
+			@components.badge(Map("id"->"ActiveX", "type"->"danger", "text"->"ActiveX"))
+			@components.badge(Map("id"->"XMLHttpRequestLevel2", "type"->"danger", "text"->"XMLHttpRequestLevel2"))
+
+			@development.proptable("", map.asScala.toMap)
+		</div>
+
+		@libraries.standard.last()
+		@script(){
+
+			if(window.jQuery){$("#jQuery").removeClass("badge-danger").addClass("badge-success")}
+			if(window.HTMLAudioElement){$("#HTML5Audio").removeClass("badge-danger").addClass("badge-success")}
+			if(window.HTMLVideoElement){$("#HTML5Video").removeClass("badge-danger").addClass("badge-success")}
+			if(window.HTMLCanvasElement){$("#Canvas").removeClass("badge-danger").addClass("badge-success")}
+			if(window.sessionStorage){$("#SessionStorage").removeClass("badge-danger").addClass("badge-success")}
+			if(window.localStorage){$("#LocalStorage").removeClass("badge-danger").addClass("badge-success")}
+			if(window.File){$("#File").removeClass("badge-danger").addClass("badge-success")}
+			if(window.FileReader){$("#FileReader").removeClass("badge-danger").addClass("badge-success")}
+			if(window.URL){$("#URL").removeClass("badge-danger").addClass("badge-success")}
+			if(window.Blob){$("#Blob").removeClass("badge-danger").addClass("badge-success")}
+			if(window.WebSocket){$("#WebSocket").removeClass("badge-danger").addClass("badge-success")}
+			if(window.Worker){$("#WebWorkers").removeClass("badge-danger").addClass("badge-success")}
+			if(window.AudioContext){$("#WebAudio").removeClass("badge-danger").addClass("badge-success")}
+			if(window.Notification){$("#Notification").removeClass("badge-danger").addClass("badge-success")}
+			if(window.postMessage){$("#CrossDocumentMessaging").removeClass("badge-danger").addClass("badge-success")}
+			if(window.speechSynthesis){$("#SpeechSynthesis").removeClass("badge-danger").addClass("badge-success")}
+			if(window.speechRecognition){$("#SpeechRecognition").removeClass("badge-danger").addClass("badge-success")}
+			if(window.DeviceOrientationEvent){$("#DeviceOrientationEvent").removeClass("badge-danger").addClass("badge-success")}
+			if(window.DeviceMotionEvent){$("#DeviceMotionEvent").removeClass("badge-danger").addClass("badge-success")}
+			if(window.openDatabase){$("#WebSQLDatabase").removeClass("badge-danger").addClass("badge-success")}
+			if('indexedDB' in window){$("#IndexedDatabase").removeClass("badge-danger").addClass("badge-success")}
+			if(window.ActiveXObject){$("#ActiveX").removeClass("badge-danger").addClass("badge-success")}
+			if(!(typeof(new XMLHttpRequest).withCredentials==='undefind')){$("#XMLHttpRequestLevel2").removeClass("badge-danger").addClass("badge-success")}
+
+			var windowMap = new Object();
+			$.each(window, function(key, val) {
+
+				var valType = typeof val;
+				if('object' == valType || 'function' ==  valType ){return true;}
+				windowMap[key] = val;
+			});
+
+			var windowKeys = Object.keys(windowMap);
+			windowKeys.sort();
+
+			$.each(windowKeys, function(i, key) {
+
+				$("tbody").append("<tr></tr>");
+				$("tbody > tr:last-child").append(
+						"<td>" + key + "</td><td>" + windowMap[key] + "</td>");
+			});
+		}
+	}
+}

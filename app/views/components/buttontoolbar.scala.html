@@ -1,0 +1,6 @@
+@(prop:scala.collection.immutable.Map[String, String])(content: Html)
+
+<div id="@prop.getOrElse("id", "")" class="btn-toolbar @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) role="toolbar">
+
+	@content
+</div>

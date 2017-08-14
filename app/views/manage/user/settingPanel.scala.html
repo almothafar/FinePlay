@@ -1,0 +1,45 @@
+@import java.time._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.user._
+
+@()
+
+@customCheckbox(columnName: String, isChecked: Boolean, isShow: Boolean) = {
+
+	<label class="custom-control custom-checkbox" style="@("display:none;".when(!isShow))">
+		<input class="custom-control-input settingDisplayColumns" type="checkbox" name="@columnName" value="@columnName" @("checked".when(isChecked))>
+		<span class="custom-control-indicator"></span>
+		@columnName
+	</label>
+}
+
+<div class="collapse" id="settingCollapse">
+	<div id="settingPanel" class="card text-xs-center">
+		<div class="card-body text-xs-left">
+			<h5 class="form-setting-heading">@Messages(MessageKeys.SETTING)</h5>
+			<div class="row form-group">
+				<label for="" class="col-sm-3 col-form-label">@(Messages(MessageKeys.DISPLAY)+" "+Messages(MessageKeys.COLUMN))</label>
+				<div class="col-sm-9">
+					@customCheckbox(Messages(MessageKeys.USER_USERID), true, true)
+					@customCheckbox(Messages(MessageKeys.USER_ROLE), true, true)
+					@customCheckbox((User.ROLES+"_source"), false, false)
+					@customCheckbox(User.COMPANYID, false, false)
+					@customCheckbox(Messages(MessageKeys.COMPANY_NAME), true, true)
+					@customCheckbox(Messages(MessageKeys.USER_EXPIRE), true, true)
+					@customCheckbox(Messages(MessageKeys.USER_SIGNIN), true, true)
+					@customCheckbox(Messages(MessageKeys.USER_SIGNOUT), true, true)
+					@customCheckbox((Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME)), true, true)
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,181 @@
+@import models.components._
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@style(){
+
+			.table-w100 {
+
+				word-break: break-all;
+			}
+
+			@@media (min-width: 992px) {
+				.table-lg-w100  {
+					word-break: break-all;
+				}
+				.table-lg-w100  tr>td:nth-child(1) {
+					min-width: 400px;
+				}
+				.table-lg-w100 tr>td:nth-child(2) {
+					max-width: 800px;
+				}
+				.table-lg-w100 tr>td:nth-child(3) {
+					max-width: 800px;
+				}
+			}
+
+			.table-wrapper-responsive {
+				display: block;
+				width: 100%;
+				overflow-x: auto;
+				-ms-overflow-style: -ms-autohiding-scrollbar;
+			}
+			.table-w991p-w100  {
+				word-break: break-all;
+			}
+			.table-w991p-w100  tr>td:nth-child(1) {
+				width: 30%;
+			}
+			.table-w991p-w100 tr>td:nth-child(2) {
+				width: 35%;
+			}
+			.table-w991p-w100 tr>td:nth-child(3) {
+				width: 35%;
+			}
+			@@media (max-width: 991px) {
+				.table-w991p-w100 {
+					width: 991px;
+					max-width: 991px;
+				}
+			}
+			@@media (min-width: 992px) {
+				.table-w991p-w100 {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TABLE), "icon"->"fa fa-table", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"table"))
+		}
+
+		<div class="mt-3">
+		</div>
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<h4 class="headline">Always Width 100%</h4>
+			<div class="mb-3">
+
+				@components.table(Map("id"->"", "class"->"w-100 table-w100"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<h4 class="headline">Responsive + Width 100%</h4>
+			<div class="mb-3">
+
+				@components.table(Map("id"->"", "responsive"->"true", "class"->"w-100 table-lg-w100"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<h4 class="headline">Always Responsive</h4>
+			<div class="mb-3">
+
+				@components.table(Map("id"->"", "class"->"table-xl-responsive"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<h4 class="headline">Always Responsive(Responsive override)</h4>
+			<div class="mb-3">
+
+				@components.table(Map("id"->"", "responsive"->"true", "class"->"table-xl-responsive"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<h4 class="headline">Responsive(Word break) + Width 100%</h4>
+			<div class="mb-3 table-wrapper-responsive">
+
+				@components.table(Map("id"->"", "class"->"table-w991p-w100"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.slick.last()
+		@libraries.holder.last()
+		@script(){
+		}
+	}
+}

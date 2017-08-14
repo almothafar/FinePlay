@@ -1,0 +1,22 @@
+@(prop:scala.collection.immutable.Map[String, String])
+
+@alignClass() = @{
+
+	val align = prop.getOrElse("align","");
+
+	if("left".equals(align)){
+
+		"float-left"
+	}else if("center".equals(align)){
+
+		"mx-auto d-block"
+	}else if("right".equals(align)){
+
+		"float-right"
+	}else{
+
+		""
+	}
+}
+
+<img id="@prop.getOrElse("id", "")" src="@prop.getOrElse("source","#")" class="@("rounded".when(Boolean.valueOf(prop.getOrElse("rounded", "false"))))@("-".when(prop.contains("roundedType")))@prop.getOrElse("roundedType", "") @("img-fluid".when(Boolean.valueOf(prop.getOrElse("fluid", "false")))) @("img-thumbnail".when(Boolean.valueOf(prop.getOrElse("thumbnail", "false")))) @alignClass() @Attributes.classValue(prop)" style="@("display: block;".when("center".equals(prop.get("align")))) @Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) alt="@prop.getOrElse("alternate", "")">

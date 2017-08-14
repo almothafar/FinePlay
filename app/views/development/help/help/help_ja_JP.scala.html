@@ -1,0 +1,43 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.DEVELOPMENT)){
+
+		<!--  -->
+		@libraries.standard.head()
+		<!-- for Help -->
+		@libraries.bootstrapdocs.head()
+	}
+
+	@body("development","help"){
+
+		<!-- Help content -->
+		@typography_ja_JP()
+		@code_ja_JP()
+		@images_ja_JP()
+		@tables_ja_JP()
+		@figures_ja_JP()
+
+		<!-- for Help -->
+		<!--  -->
+		@libraries.standard.last()
+		<!-- for Help -->
+		@libraries.clipboard.last()
+		@libraries.anchorjs.last()
+		@libraries.holder.last()
+	}
+}

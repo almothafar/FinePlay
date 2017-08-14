@@ -1,0 +1,100 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+@import views.html.development
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.ENVIRONMENT)){
+
+		@libraries.standard.head()
+	}
+
+	@body("environment","browser"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Navigator", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		<div class="container-fluid">
+
+			@tasks(Map("id"->"", "task"->"navigator"))
+		</div>
+
+		<div class="container-fluid">
+
+			@components.badge(Map("id"->"OnLine", "type"->"danger", "text"->"OnLine"))
+			@components.badge(Map("id"->"Cookie", "type"->"danger", "text"->"Cookie"))
+			@components.badge(Map("id"->"Geolocation", "type"->"danger", "text"->"Geolocation"))
+			@components.badge(Map("id"->"MediaDevices", "type"->"danger", "text"->"MediaDevices"))
+			@components.badge(Map("id"->"Vibration", "type"->"danger", "text"->"Vibration"))
+
+			@development.proptable("navigatorPropTable", map.asScala.toMap)
+
+			<h2 class="headline">Mime Types</h2>
+			@components.table(Map("id"->"mimeTypeTable", "class"->"table-xl-responsive", "responsive"->"true", "bordered"->"true", "striped"->"true"),
+				Map("id"->""),Tuple2(Map("id"->""),List(
+					Map("id"->"", "head"->"true", "text"->"DESCRIPTION"),
+					Map("id"->"", "head"->"true", "text"->"TYPE"),
+					Map("id"->"", "head"->"true", "text"->"SUFFIXES"))),
+				Map("id"->""),List(),
+				Map("id"->""),Tuple2(Map("id"->""),List())
+			)
+		</div>
+
+		@libraries.standard.last()
+		@script(){
+
+			if(navigator.onLine){$("#OnLine").removeClass("badge-danger").addClass("badge-success")}
+			if(navigator.cookieEnabled){$("#Cookie").removeClass("badge-danger").addClass("badge-success")}
+			if(navigator.geolocation){$("#Geolocation").removeClass("badge-danger").addClass("badge-success")}
+			if(navigator.mediaDevices){$("#MediaDevices").removeClass("badge-danger").addClass("badge-success")}
+			if(navigator.vibrate){$("#Vibration").removeClass("badge-danger").addClass("badge-success")}
+
+			var navigatorMap = new Object();
+			$.each(navigator, function(key, val){
+
+				var valType = typeof val;
+				if('object' == valType || 'function' ==  valType ){return true;}
+				navigatorMap[key] = val;
+			});
+
+			var navigatorKeys = Object.keys(navigatorMap);
+			navigatorKeys.sort();
+
+			$.each(navigatorKeys, function(i, key){
+
+				$("#navigatorPropTable>tbody").append("<tr></tr>");
+				$("#navigatorPropTable>tbody > tr:last-child").append("<td>"+key+"</td><td>"+navigatorMap[key]+"</td>");
+			});
+
+			var mimeTypes = new Array();
+			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
+
+			  mimeTypes.push(navigator.mimeTypes[i]);
+			}
+			mimeTypes.sort(function(mimeType0,mimeType1){
+
+				return mimeType0.description.localeCompare(mimeType1.description);
+			});
+			for ( i in mimeTypes) {
+
+				var mimeType = mimeTypes[i];
+
+				$("#mimeTypeTable>tbody").append("<tr></tr>");
+				$("#mimeTypeTable>tbody > tr:last-child").append("<td>"+mimeType.description+"</td><td>"+mimeType.type+"</td><td>"+mimeType.suffixes+"</td>");
+			};
+		}
+	}
+}

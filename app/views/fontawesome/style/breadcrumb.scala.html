@@ -1,0 +1,26 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@elements() = @{
+
+	val lastElement = prop - "id"
+	val elements = scala.collection.mutable.ListBuffer[Map[String, String]](
+		Map("name"->Messages(MessageKeys.FONTAWESOME), "icon"->"fa fa-font-awesome", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString()),
+		Map("name"->Messages(MessageKeys.STYLE), "icon"->"fa fa-file-text-o", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString())
+	)
+	elements += lastElement
+
+	elements.toList
+}
+
+@components.adjust.breadcrumb(Map("id"->prop.getOrElse("id", ""), "foldSize"->"xs"), elements())

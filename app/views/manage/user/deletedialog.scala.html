@@ -1,0 +1,49 @@
+@import java.time._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.manage.user._
+@import models.user._
+
+@()
+
+@components.modal(Map("id"->"deleteDialog", "icon"->"fa fa-trash", "title"->Messages(MessageKeys.DELETE), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"deleteCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"deleteOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+	)){
+
+	@helper.form(helper.CSRF(controllers.manage.user.routes.Edit.delete()), 'name->"deleteForm", 'id->"deleteForm") {
+		<div>
+			<p class="text-warning"></p>
+		</div>
+		<div class="row form-group">
+			<label for="inputUserId" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>
+			<div class="col-sm-9">
+				<input id="" type="email" name="" class="form-control" placeholder="Email" value="" required disabled>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="delete@User.USERID" type="hidden" name="@User.USERID" class="form-control" placeholder="Email" value="" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="delete@User.UPDATEDATETIME" type="hidden" name="@User.UPDATEDATETIME" class="form-control" placeholder="UpdateDateTime" value="" required>
+			</div>
+		</div>
+	}
+
+	<div style="word-wrap:break-word;">
+		<div id="deleteMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="deleteDescription">-</div>
+	</div>
+	@components.progress(Map("id"->"deleteProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
+}

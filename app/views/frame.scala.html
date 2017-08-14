@@ -1,0 +1,6 @@
+@()(content: Html)
+
+<!DOCTYPE html>
+
+<html lang="@lang.language" class="theme-@session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase">@content
+</html>

@@ -1,0 +1,449 @@
+message.code = ja-JP
+country.flag = 🇯🇵
+
+#
+# Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> = # Japanese messages Copyright (C) 2017-2017 hiro20v. <https://github.com/hiro20v>
+#
+
+# Default messages
+
+# --- Constraints
+constraint.required = 必須
+constraint.min = 最小値: {0}
+constraint.max = 最大値: {0}
+constraint.minLength = 最小長: {0}
+constraint.maxLength = 最大長: {0}
+constraint.email = Eメール
+constraint.pattern = 要求パターン: {0}
+
+# --- Formats
+format.date = 日付(''{0}'')
+format.numeric = 数値
+format.real = 実数
+format.uuid = UUID
+
+# --- Patterns for Formats
+formats.date = yyyy/MM/dd
+
+# --- Errors
+error.invalid = 無効な値です。
+error.invalid.java.util.Date = 無効な日付値です。
+error.required = このフィールドは、必須です。
+error.number = 数値が、期待されます。
+error.real = 実数値が、期待されます。
+error.real.precision = {0}桁以下で、小数点以下{1}桁を含む実数が、想定されています。
+error.min = {0}以上である必要があります。
+error.min.strict = {0}を超えるである必要があります。
+error.max = {0}以下である必要があります。
+error.max.strict = {0}未満である必要があります。
+error.minLength = 最小長は、{0}です。
+error.maxLength = 最大長は、{0}です。
+error.email = 有効なEメールが、必要です。
+error.pattern = {0}である必要があります。
+error.date = 有効な日付が、必要です。
+error.uuid = 有効なUUIDが、必要です。
+
+error.expected.date = 日付値が、期待されます。
+error.expected.date.isoformat = ISO日付値が、期待されます。
+error.expected.time = 時間値が、期待されます。
+error.expected.jsarray = 配列が、期待されます。
+error.expected.jsboolean = 真偽値が、期待されます。
+error.expected.jsnumber = 数値が、期待されます。
+error.expected.jsobject = オブジェクトが、期待されます。
+error.expected.jsstring = 文字列が、期待されます。
+error.expected.jsnumberorjsstring = 文字列か、数値が、期待されます。
+error.expected.keypathnode = ノード値が、期待されます。
+error.expected.uuid = UUID値が、期待されます。
+error.expected.validenumvalue = 有効なenumeration値が、期待されます。
+error.expected.enumstring = enum文字列が、期待されます。
+
+error.path.empty = 空のパスです。
+error.path.missing = 存在しないパスです。
+error.path.result.multiple = 指定のパスには、複数の結果が存在します。
+
+#
+# JSR-303
+#
+
+constraints.AssertFalse = 偽 である必要があります。
+constraints.AssertTrue = 真 である必要があります。
+constraints.DecimalMax = {0} 以上もしくは、超える必要があります。
+constraints.DecimalMin = {0} 以下もしくは、未満の必要があります。
+#constraints.DecimalMax = {0}${inclusive == true ? '以上である' : 'を超える'}必要があります。
+#constraints.DecimalMin = {0}${inclusive == true ? '以下である' : '未満の'}必要があります。
+constraints.Digits = 数値が範囲外です。 (期待値 <{0} 桁>.<{1} 桁>)
+constraints.Future = 未来の日付である必要があります。
+constraints.Max = {0} 以下である必要があります。
+constraints.Min = {0} 以上である必要があります。
+constraints.NotNull = Null でない必要があります。
+constraints.Null = Null である必要があります。
+constraints.Past = 過去の日付である必要があります。
+constraints.Pattern = この正規表現に適合する必要があります。: "{0}"
+constraints.Size = サイズは、 {0} と {1} の間である必要があります。
+
+#
+# fine play
+#
+
+system.constraint.userid = ユーザーID
+system.constraint.password = パスワード
+system.constraint.hiragana = ひらがな
+system.constraint.katakana = カタカナ
+
+system.error.user = 有効なユーザーが、必要です。
+system.error.userid = 有効なユーザー ID(Eメール)が、必要です。
+system.error.password = 有効なパスワードが、必要です。
+system.error.hiragana = ひらがなである必要があります。
+system.error.katakana = カタカナである必要があります。
+
+system.error.userid.exist = ユーザー IDが、存在します。
+system.error.userid.notexist = ユーザー IDが、存在しません。
+system.error.password.notequal = パスワードが、異なります。
+system.error.expiretime.past = 有効期限が、無効です。
+
+system.error.x.exist = {0}が、存在します。
+system.error.x.notexist = {0}が、存在しません。
+
+system.error.data.illegal = データが、不正です。
+system.error.data.unsave = 未保存のデータが存在します。
+system.error.x_data.illegal = {0} のデータが、不正です。
+system.error.x_case_data.illegal = {0} 件目のデータが、不正です。
+system.error.state.notconsistent = 状態に一貫性が、ありません。
+system.error.state.updateotheruser = 他のユーザーにより、更新されています。
+
+system.error.execution.exception = 想定外エラー
+
+#
+
+language = 言語
+
+#
+
+timezone = 時間帯
+
+#
+
+system.name = ファイン✿プレイ
+system.description = ファイン✿プレイの説明
+
+#
+
+mycompany.name = hiro20v
+mycompany.link = https://github.com/hiro20v
+
+#
+
+theme = テーマ
+theme.default = 標準
+theme.pretty = プリティ
+
+#
+
+font.ipamjmincho = IPAmj明朝
+font.hiraginosans_w3 = ヒラギノ角ゴシックW3
+
+#
+
+adobe.reader.link = https://get.adobe.com/jp/reader/
+
+bootbox.lang = ja
+pickadate.lang = ja_JP
+select2.lang = ja
+fullcalendar.lang = ja
+datatables.lang = Japanese
+ckeditor.lang = ja
+frappegantt.lang = ja
+parsley.lang = ja
+pdfjs.lang = ja
+speech.synthesis.lang = ja-JP
+naturalearthdata.lang = Japan
+
+#
+
+user.userid = ユーザーID
+user.userid.description = 半角Eメール。
+user.newuserid = 新規 ユーザーID
+user.newuserid.description = 半角Eメール。
+user.role = 役割
+user.role.guest = ゲスト
+user.role.customer = 顧客
+user.role.admin = 管理者
+user.password = パスワード
+user.password.description = 半角8〜16文字。 ※アルファベット小文字、大文字、数字、記号(!#$%&'*+/=?^_`{|}~-)をそれぞれ、1文字以上含みます。
+user.repassword = パスワード(再)
+user.repassword.description = パスワードを再入力。
+user.expire = 期限切れ
+user.signin = サインイン
+user.signout = サインアウト
+user.store_account = アカウントを保存
+user.please_signin = サインインしてください。
+
+registuser = ユーザー登録
+registuser.please_regist = ユーザー登録してください。
+registuser.please_regist.description = ユーザー登録してください。の説明
+registuser.provisional.complete = 仮登録完了
+registuser.provisional.complete.description = 仮登録完了の説明
+registuser.provisional.mail.subject = 仮登録完了のお知らせ
+registuser.regular.complete = 本登録完了
+registuser.regular.complete.description = 本登録完了の説明
+registuser.regular.mail.subject = 本登録完了のお知らせ
+
+resetuser = パスワードリセット
+resetuser.forget_password = パスワードをお忘れの方は、こちら
+resetuser.please_reset = パスワードリセットを要求してください。
+resetuser.please_reset.description = パスワードリセットを要求してください。の説明
+resetuser.request.complete = パスワードリセット要求完了
+resetuser.request.complete.description = パスワードリセット要求完了の説明
+resetuser.request.mail.subject = パスワードリセット要求のお知らせ
+resetuser.please_change = 新規のパスワードを入力してください。
+resetuser.please_change.description = 新規のパスワードを入力してください。の説明
+resetuser.change.complete = パスワードリセット完了
+resetuser.change.complete.description = パスワードリセット完了の説明
+resetuser.change.mail.subject = パスワードリセット完了のお知らせ
+
+changeuser = ユーザーID変更
+changeuser.please_change = ユーザーID変更を要求してください。
+changeuser.please_change.description = ユーザーID変更を要求してください。の説明
+changeuser.reserve.complete = ユーザーID変更要求完了
+changeuser.reserve.complete.description = ユーザーID変更要求完了の説明
+changeuser.reserve.mail.subject = ユーザーID変更要求のお知らせ
+changeuser.decision.complete = ユーザーID変更完了
+changeuser.decision.complete.description = ユーザーID変更完了の説明
+changeuser.decision.mail.subject = ユーザーID変更完了のお知らせ
+
+inquiry = お問い合わせ
+inquiry.send = 問い合わせ送信
+inquiry.send.description = 問い合わせ送信の説明
+inquiry.send.complete = 問い合わせ送信完了
+inquiry.send.complete.description = 問い合わせ送信完了の説明
+
+#
+
+about_x = {0} について
+access = アクセス
+add = 追加
+alignment = 整列
+all = 全
+analyses = 分析
+answer = 回答
+application = アプリケーション
+arrange = 整頓
+arrow = 矢印
+audio = 音声
+authentication = 認証
+authorization = 認可
+auto = 自動
+
+bottom = 下
+browse = 閲覧
+browser = ブラウザー
+button = ボタン
+campaign = キャンペーン
+cancel = キャンセル
+card = カード
+center = 中央
+change = 変更
+character = 文字
+checkbox = チェックボックス
+client = クライアント
+close = 閉じる
+codepoint = コード位置
+column = 列
+company = 会社
+company.name = 会社名
+company.name.description = 会社名の説明
+complete = 完了
+component = 部品
+condition = 条件
+consistent = 一貫
+contact = 連絡
+content = 内容
+create = 作成
+creator = 作成者
+danger = 危険
+date = 日
+datetime = 日時
+day = 日
+default = 標準
+delete = 削除
+description = 説明
+deselect = 選択解除
+design = デザイン
+detail = 詳細
+development = 開発
+display = 表示
+document = 書類
+down = 下
+download = ダウンロード
+drag = ドラッグ
+drop = ドロップ
+drawer = 引き出し
+edit = 編集
+email = 電子メール
+empty = 空
+end = 終了
+environment = 環境
+error = エラー
+essential = 必須
+example = 例
+failure = 失敗
+faq = よくある質問
+field = フィールド
+file = ファイル
+file.name = ファイル名
+filter = フィルター
+first = 最初
+first_time = 初回
+font = 書体
+
+footer = フッタ
+format = 形式
+framework = フレームワーク
+full_name = 名前
+full_screen = 全画面
+general = 一般
+get = 取得
+group = グループ
+half_day = 半日
+header = ヘッダ
+help = ヘルプ
+hex = 16進
+home = ホーム
+horizontal = 水平
+
+icon = アイコン
+
+image = 画像
+info = 情報
+information = 情報
+initialize = 初期化
+insert_column_left = 左に列挿入
+insert_column_right = 右に列挿入
+insert_row_above = 上に行挿入
+insert_row_below = 下に行挿入
+intro = 導入
+
+
+justify = 均等
+key = キー
+lab = 実験室
+last = 最後
+layout = 配置
+left = 左
+library = ライブラリー
+license = ライセンス
+link = リンク
+list = 一覧
+load = 読込
+local = 地域
+local.name = 地域名
+local.name.description = 地域名の説明。
+maintenance = メンテナンス
+manage = 管理
+map = 地図
+master = マスター
+max = 最大
+max_case = 最大件数
+menu = メニュー
+message = メッセージ
+middle = 中央
+min = 最小
+min_case = 最小件数
+month = 月
+name = 名前
+name.description = 名前の説明。
+new = 新
+next = 次
+notification = 通知
+ok = OK
+old = 旧
+open = 開く
+operation = 操作
+order = 順番
+organization = 組織
+organizationunit = 組織単位
+organizationunit.name = 組織単位名
+organizationunit.name.description = 組織単位名の説明
+other = その他
+page = ページ
+part = 部分
+please_select = 選択してください。
+please_wait = お待ちください。
+preview = プレビュー
+previous = 前
+print = 印刷
+process = プロセス
+progress = 進捗
+quarter_day = 1/4日
+question = 質問
+radiobutton = ラジオボタン
+read = 読出
+read_only = 読出のみ
+receive = 受信
+redo = やり直し
+regist = 登録
+remove = 取り除く
+remove_column = 列削除
+remove_row = 行削除
+report = 報告
+request = 要求
+required = 必須
+reset = リセット
+response = 応答
+result = 結果
+right = 右
+row = 行
+sample = 見本
+save = 保存
+search = 検索
+section = 課
+select = 選択
+select_file = ファイル選択
+send = 送信
+server = サーバー
+set = 設定
+setting = 設定
+sort = 並べ替え
+start = 開始
+status = 状態
+style = スタイル
+success = 成功
+system = システム
+table = テーブル
+target = 対象
+task = 作業
+template = ひな型
+text = テキスト
+thank_you = ありがとう
+thank_you_very_much = ありがとうございます。
+time = 時
+timeline = タイムライン
+title = 題名
+top = 上
+translate = 翻訳
+tree = ツリー
+troubleshoot = 問題解決
+type = タイプ
+
+undo = 取り消し
+up = 上
+update = 更新
+upload = アップロード
+user = ユーザー
+user.change_userid = ユーザーID変更
+value = 値
+variation = バリエーション
+vertical = 垂直
+video = ビデオ
+warning = 警告
+web = ウェブ
+week = 週
+welcome = ようこそ
+window = ウインドウ
+work = 仕事
+world = 世界
+x_case_selected = {0} 件選択中。
+x_is_x = {0}は、{1}です。
+your_x_is_x = あなたの{0}は、{1}です。
+zoomin = ズームイン
+zoomout = ズームアウト

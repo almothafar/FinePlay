@@ -1,0 +1,88 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","maintenance"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.MASTER), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"masterContent", "fluid"->"true", "style"->"display: none;")){
+			<div class="row">
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@components.table(Map("id"->"targetlist", "class"->"table-xl-responsive", "responsive"->"true", "striped"->"true"),
+						Map("id"->""),Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.TARGET)),
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.DETAIL)))),
+						Map("id"->""),List(
+							Tuple2(Map("id"->""),List(
+								Map("id"->"", "text"->"T00001"),
+								Map("id"->"", "text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fa fa-arrow-circle-right", "text"->"")).toString()))),
+							Tuple2(Map("id"->""),List(
+								Map("id"->"", "text"->"T00002"),
+								Map("id"->"", "text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fa fa-arrow-circle-right", "text"->"")).toString())))),
+						Map("id"->""),Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.TARGET)),
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.DETAIL))))
+					)
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			showFromLeft('#masterContent');
+
+			var buildForm = function(method, action, json){
+
+				var form = $('<form/>', {action: action, method: method});
+				for(key in json){
+
+					var value = json[key];
+					form.append($('<input/>', {type: 'hidden', name: key, value: value}))
+				}
+
+				return form;
+			}
+
+			var postForm = function(form){
+
+				form.appendTo(document.body).submit();
+			}
+
+			$('.nextButton').on('click', function(e){
+
+				event.preventDefault();
+
+				var target = $(this).parent().parent().find('td').eq(0).text();
+
+				hideToLeft('#masterContent', function(e){
+
+					var json = {target: target, task: "@controllers.lab.maintenance.routes.Maintenance.master().toString()"};
+					var form = buildForm('post', '@helper.CSRF(controllers.lab.maintenance.routes.Maintenance.detail())', json);
+					postForm(form);
+				});
+			});
+		}
+	}
+}

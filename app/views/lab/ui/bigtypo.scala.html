@@ -1,0 +1,75 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"breadcrumbContainer", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Big typo", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"contentsContainer", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"bigtypo"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="form-group row">
+						<div class="col-8">
+							<input type="text" class="form-control" id="numericField" value="090-0690-0380">
+						</div>
+						<div class="col-4 text-right">
+							@components.button(Map("id"->"numericButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Big typo"))
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-8">
+							<input type="text" class="form-control" id="alphaField" value="ILOQbdqgacevwnu">
+						</div>
+						<div class="col-4 text-right">
+							@components.button(Map("id"->"alphaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Big typo"))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			$(document).ready(function () {
+
+				$('#numericButton').on('click', function(){
+
+					showMagnifyText($('#numericField').val());
+				});
+
+				$('#alphaButton').on('click', function(){
+
+					showMagnifyText($('#alphaField').val());
+				});
+			});
+		}
+	}
+}

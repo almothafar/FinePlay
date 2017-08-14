@@ -1,0 +1,151 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@style(){
+			div[id^="group_"]{
+			position: relative;
+			}
+		}
+	}
+
+	@body("lab","ui"){
+
+		@components.buttontoolbar(Map("id"->"toolbar", "class"->"p-3 justify-content-between w-100 bg-light", "style"->"border-bottom: 1px LightGray solid")){
+
+			@components.buttongroup(Map("id"->""), List(
+				Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->"1", "enabled"->"false"),
+				Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->"2", "enabled"->"false"),
+				Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->"3", "enabled"->"false")
+			))
+			@components.buttongroup(Map("id"->""), List(
+				Map("id"->"backButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-angle-up", "text"->""),
+				Map("id"->"nextButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-angle-down", "text"->"")
+			))
+		}
+
+		@components.container(Map("id"->"breadcrumbContainer", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Fixed bar", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"contentsContainer", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"fixedbar"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="group_0" class="mb-3">
+						<h4 class="headline">@("1 " + Messages(MessageKeys.CONTENT))</h4>
+						<div class="jumbotron jumbotron-fluid">
+							<div class="container">
+								<h1 class="display-4 draft">Fluid jumbotron</h1>
+								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("1 " + Messages(MessageKeys.CONTENT))))
+							</div>
+						</div>
+					</div>
+
+					<div id="group_1" class="mb-3">
+						<h4 class="headline">@("2 " + Messages(MessageKeys.CONTENT))</h4>
+						<div class="jumbotron jumbotron-fluid">
+							<div class="container">
+								<h1 class="display-4 draft">Fluid jumbotron</h1>
+								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("2 " + Messages(MessageKeys.CONTENT))))
+							</div>
+						</div>
+					</div>
+
+					<div id="group_2" class="mb-3">
+						<h4 class="headline">@("3 " + Messages(MessageKeys.CONTENT))</h4>
+						<div class="jumbotron jumbotron-fluid">
+							<div class="container">
+								<h1 class="display-4 draft">Fluid jumbotron</h1>
+								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("3 " + Messages(MessageKeys.CONTENT))))
+							</div>
+						</div>
+					</div>
+
+					<div id="group_3" class="mb-3">
+						<h4 class="headline">@("4 " + Messages(MessageKeys.CONTENT))</h4>
+						<div class="jumbotron jumbotron-fluid">
+							<div class="container">
+								<h1 class="display-4 draft">Fluid jumbotron</h1>
+								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("4 " + Messages(MessageKeys.CONTENT))))
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+
+			$(document).ready(function () {
+
+				extendMenu('#toolbar');
+
+				$('#backButton').on('click', function(){
+
+					var currentPosition = getContent().scrollTop();
+					var beforePositions = $('div[id^="group_"]').map(function(){
+
+							return offsetTopFromTarget('#system_content', this);
+						}).filter(function(){
+
+							return this < currentPosition;
+						});
+					var beforePosition = beforePositions[beforePositions.length - 1];
+					if(beforePosition){
+
+						scrollContent(beforePosition);
+					} else {
+
+						scrollContent(0);
+					}
+				});
+
+				$('#nextButton').on('click', function(){
+
+					var currentPosition = getContent().scrollTop();
+					var nextPositions = $('div[id^="group_"]').map(function(){
+
+							return offsetTopFromTarget('#system_content', this);
+						}).filter(function(){
+
+							return currentPosition < this;
+						});
+					var nextPosition = nextPositions[0];
+					if(nextPosition){
+
+						scrollContent(nextPosition);
+					} else {
+
+						scrollContent(($('#breadcrumbContainer').outerHeight() + 15 + $('#contentsContainer').outerHeight()) - creditHeight());
+					}
+				});
+			});
+		}
+	}
+}

@@ -1,0 +1,101 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.diff2html.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"diff2html", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"diff2html"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+
+						<div id="line-by-line" style="margin: 0 auto;"></div>
+					</div>
+
+					<div class="mb-3">
+
+						<div id="side-by-side" style="margin: 0 auto;"></div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.highlight.last()
+		@libraries.diff2html.last()
+		@script(){
+
+			var lineDiffExample =
+				"--- a/src/my/really/big/path/sample.js\n" +
+				"+++ b/src/my/small/path/sample.js\n" +
+				"@@@@ -1 +1,2 @@@@\n" +
+				"-test\n" +
+				"+test1r\n" +
+				"+test2r\n" +
+				'diff --git a/src/core/init.java b/src/core/init.java\n' +
+				'index e49196a..50f310c 100644\n' +
+				'--- a/src/core/init.java\n' +
+				'+++ b/src/core/init.java\n' +
+				'@@@@ -101,7 +101,7 @@@@\n' +
+				' /**\n' +
+				'   * Setter for property filesize.\n' +
+				'   *\n' +
+				"   * @@param filesize value of property 'filesize'.\n" +
+				'   */\n' +
+				'   public void setFilesize(int filesize) {\n' +
+				'-    this.filesizeOld = filesizeOld;\n' +
+				'+    this.filesizeNew = filesizeNew;\n' +
+				'   }\n';
+
+			$(document).ready(function() {
+				var diff2htmlUi = new Diff2HtmlUI({diff: lineDiffExample});
+
+				diff2htmlUi.draw('#line-by-line', {
+					inputFormat: 'json',
+					showFiles: true,
+					matching: 'lines'
+				});
+				diff2htmlUi.fileListCloseable('#line-by-line', false);
+				diff2htmlUi.highlightCode('#line-by-line');
+
+				diff2htmlUi.draw('#side-by-side', {
+					inputFormat: 'json',
+					showFiles: true,
+					matching: 'lines',
+					outputFormat: 'side-by-side',
+					synchronisedScroll: true
+				});
+				diff2htmlUi.fileListCloseable('#side-by-side', false);
+				diff2htmlUi.highlightCode('#side-by-side');
+			});
+		}
+	}
+}

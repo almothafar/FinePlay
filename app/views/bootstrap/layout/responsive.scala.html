@@ -1,0 +1,122 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","layout"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Responsive", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"responsive"))
+		}
+
+		<div class="mt-3">
+		</div>
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div id="responsiveElement" class="row">
+				<div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-2">
+
+					<div class="d-block">
+						@components.badge(Map("id"->"", "type"->"primary", "icon"->"fa fa-mobile", "text"->"Extra small devices"))
+					</div>
+					<div class="d-none">
+						@components.badge(Map("id"->"", "type"->"info", "icon"->"fa fa-mobile", "text"->"Extra small devices"))
+					</div>
+				</div>
+				<div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-2">
+
+					<div class="d-none d-sm-block">
+						@components.badge(Map("id"->"", "type"->"primary", "icon"->"fa fa-mobile fa-rotate-90", "text"->"Small devices"))
+					</div>
+					<div class="d-sm-none">
+						@components.badge(Map("id"->"", "type"->"info", "icon"->"fa fa-mobile fa-rotate-90", "text"->"Small devices"))
+					</div>
+				</div>
+				<div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-2">
+
+					<div class="d-none d-md-block">
+						@components.badge(Map("id"->"", "type"->"primary", "icon"->"fa fa-tablet", "text"->"Medium devices"))
+					</div>
+					<div class="d-md-none">
+						@components.badge(Map("id"->"", "type"->"info", "icon"->"fa fa-tablet", "text"->"Medium devices"))
+					</div>
+				</div>
+				<div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-2">
+
+					<div class="d-none d-lg-block">
+						@components.badge(Map("id"->"", "type"->"primary", "icon"->"fa fa-desktop", "text"->"Large devices"))
+					</div>
+					<div class="d-lg-none">
+						@components.badge(Map("id"->"", "type"->"info", "icon"->"fa fa-desktop", "text"->"Large devices"))
+					</div>
+				</div>
+				<div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-2">
+
+					<div class="d-none d-xl-block">
+						@components.badge(Map("id"->"", "type"->"primary", "icon"->"fa fa-desktop fa-lg", "text"->"Extra large devices"))
+					</div>
+					<div class="d-xl-none">
+						@components.badge(Map("id"->"", "type"->"info", "icon"->"fa fa-desktop fa-lg", "text"->"Extra large devices"))
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+
+				</div>
+				<div class="col-4">
+
+					<h1>Width @components.badge(Map("id"->"widthLabel", "type"->"secondary", "icon"->"", "pill"->"true", "text"->""))</h1>
+				</div>
+				<div class="col-4">
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var draw = function(){
+
+				$("#widthLabel").text($("#responsiveElement").width() + ' px');
+			};
+
+			var timer = false;
+			$(window).resize(function() {
+
+				if (timer !== false) {
+
+					clearTimeout(timer);
+				}
+				timer = setTimeout(function() {
+
+					draw();
+				}, 100);
+			});
+
+			draw();
+		}
+	}
+}

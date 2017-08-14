@@ -1,0 +1,304 @@
+test
+run
+compile
+eclipse with-source=true
+eclipse with-javadoc=true
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+clean
+compile
+eclipse with-source=true
+compile
+clean
+compile
+clean
+compile
+test
+testOnly controllers.user.UserTset
+test
+testOnly controllers.user.UserTset
+testOnly controllers.registuser.RegistUserTset
+test:testOnly controllers.registuser.RegistUserTset
+h2-browser
+compile
+test
+compile
+test
+compile
+test
+compile
+test
+compile
+test
+compile
+test
+compile
+test
+testOnly controllers.user.UserTest
+run
+compile
+run
+h2-browser
+run
+testOnly controllers.user.UserTest
+compile
+run
+eclipse with-source=true
+run
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+compile
+run
+testOnly controllers.user.UserTest
+test
+run
+test
+testOnly controllers.user.UserTest
+testOnly controllers.user.B1
+testOnly controllers.user.BrowserFunctionalTest
+testOnly controllers.user.B1
+testOnly controllers.user.UserTest
+run
+compile
+run
+compile
+run
+testOnly JUnitTest
+run
+compile
+eclipse with-source=true
+compile
+eclipse with-source=true
+compile
+run
+compile
+eclipse with-source=true
+compile
+eclipse with-source=true
+compile
+run
+eclipse with-source=true
+compile
+run
+compile
+run
+compile
+run
+test
+testOnly BrowserFunctionalTest
+testOnly WithBrowserFunctionalTest
+testOnly BrowserFunctionalTest
+testOnly WithBrowserFunctionalTest
+testOnly BrowserFunctionalTest
+compile
+run
+testOnly BrowserTest
+testOnly WithBrowserTest
+testOnly BrowserTest
+testOnly controllers.user.UserTest
+testOnly BrowserTest
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+testOnly controllers.user.RegistUserTest
+testOnly controllers.registuser.RegistUserTest
+testOnly controllers.resetuser.ResetUserTest
+testOnly controllers.registuser.RegistUserTest
+testOnly controllers.resetuser.ResetUserTest
+testOnly controllers.registuser.RegistUserTest
+testOnly controllers.resetuser.ResetUserTest
+testOnly controllers.user.UserTest
+testOnly controllers.resetuser.ResetUserTest
+testOnly controllers.user.UserTest
+testOnly controllers.resetuser.ResetUserTest
+testOnly controllers.user.UserTest
+testOnly controllers.resetuser.ResetUserTest
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+run
+testOnly controllers.user.UserTest
+testOnly controllers.registuser.RegistUserTest
+test
+testOnly common.utils.JSONsTest
+testOnly common.utils.HelpsTest
+testOnly controllers.resetuser.ResetUserTest
+test
+run
+compile
+eclipse with-source=true
+run
+h2-browser
+run
+compile
+run
+compile
+run
+compile
+eclipse with-source=true
+compile
+eclipse with-source=true
+compile
+run
+h2-browser
+run
+test
+run
+test
+testOnly controllers.user.UserTest
+run
+compile
+run
+compile
+eclipse with-source=true
+run
+eclipse with-source=true
+run
+eclipse with-source=true
+run
+testOnly models.user.UserDaoTest
+run
+testOnly models.user.UserDaoTest
+testOnly controllers.user.UserTest
+test
+testOnly controllers.user.UserTest
+test
+testOnly views.framework.application.I18nTest
+testOnly controllers.registuser.RegistUserTest
+testOnly controllers.resetuser.ResetUserTest
+testOnly views.framework.application.I18nTest
+test
+run
+compile
+run
+compile
+eclipse with-source=true
+run
+eclipse with-source=true
+run
+compile
+run
+console
+run
+eclipse with-source=true
+run
+compile
+run
+compile
+run
+eclipse with-source=true
+run
+scala
+scal
+doc
+open -a Safari ./target/scala-2.12/api/index.html
+sources
+doc
+clean
+doc
+clean
+doc
+run
+eclipse with-source=true
+run
+eclipse with-source=true
+run
+compile
+run
+compile
+run
+h2-browser
+run
+h2-browser
+run
+h2-browser
+run
+compile
+clean
+eclipse with-source=true
+run
+compile
+eclipse with-source=true
+run
+eclipse with-source=true
+compile
+eclipse with-source=true
+run
+compile
+run
+compile
+eclipse with-source=true
+run
+compile
+eclipse with-source=true
+compile
+eclipse with-source=true
+run
+test
+testOnly views.framework.application.I18nTest
+test
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+test
+exit
+jacoco:cover
+./compile
+compile
+eclipse with-source=true
+testOnly ApplicationTest
+testOnly BrowserTest
+testOnly controllers.registuser.RegistUserTest
+compile
+eclipse with-source=true
+testOnly JUnitTest
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+eclipse with-source=true
+run
+compile
+testOnly controllers.user.UserTest
+compile
+run
+eclipse with-source=true
+compile
+eclipse with-source=true
+run
+testOnly controllers.registuser.RegistUserTest
+run
+jacoco:cover
+jacoco:testOnly controllers.registuser.RegistUserTest
+jacoco:cover
+testOnly controllers.registuser.RegistUserTest
+eclipse with-source=true
+run

@@ -1,0 +1,154 @@
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.ARRANGE), "icon"->"fa fa-edit", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+	
+					@tasks(Map("id"->"", "task"->"arrange"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mt-3 mb-3" style="text-align: right;">
+
+						@components.button(Map("id"->"editButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.EDIT), "data-toggle"->"button", "aria-pressed"->"false"))
+					</div>
+
+					@components.table(Map("id"->"", "striped"->"true"),
+						Map("id"->""),Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"", "class"->"removeButtonColumn"),
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.FULL__NAME)),
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ORDER)),
+							Map("id"->"", "head"->"true", "text"->"", "class"->"sortHandleColumn"))),
+						Map("id"->"sortable"),List(
+							Tuple2(Map("id"->""),List(
+								Map("id"->"", "icon"->"fa fa-minus-circle text-danger", "class"->"removeButtonColumn", "scope"->"row"),
+								Map("id"->"", "text"->"Yui Hirasawa"),
+								Map("id"->"", "text"->"0"),
+								Map("id"->"", "icon"->"fa fa-bars", "class"->"sortHandleColumn"))),
+							Tuple2(Map("id"->""),List(
+								Map("id"->"", "icon"->"fa fa-minus-circle text-danger", "class"->"removeButtonColumn", "scope"->"row"),
+								Map("id"->"", "text"->"Mio Akiyama"),
+								Map("id"->"", "text"->"1"),
+								Map("id"->"", "icon"->"fa fa-bars", "class"->"sortHandleColumn"))),
+							Tuple2(Map("id"->""),List(
+								Map("id"->"", "icon"->"fa fa-minus-circle text-danger", "class"->"removeButtonColumn", "scope"->"row"),
+								Map("id"->"", "text"->"Ritsu Tainaka"),
+								Map("id"->"", "text"->"2"),
+								Map("id"->"", "icon"->"fa fa-bars", "class"->"sortHandleColumn"))),
+							Tuple2(Map("id"->""),List(
+								Map("id"->"", "icon"->"fa fa-minus-circle text-danger", "class"->"removeButtonColumn", "scope"->"row"),
+								Map("id"->"", "text"->"Tsumugi Kotobuki"),
+								Map("id"->"", "text"->"3"),
+								Map("id"->"", "icon"->"fa fa-bars", "class"->"sortHandleColumn"))),
+							Tuple2(Map("id"->""),List(
+								Map("id"->"", "icon"->"fa fa-minus-circle text-danger", "class"->"removeButtonColumn", "scope"->"row"),
+								Map("id"->"", "text"->"Azusa Nakano"),
+								Map("id"->"", "text"->"4"),
+								Map("id"->"", "icon"->"fa fa-bars", "class"->"sortHandleColumn")))),
+						Map("id"->""),Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"", "class"->"removeButtonColumn"),
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.FULL__NAME)),
+							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ORDER)),
+							Map("id"->"", "head"->"true", "text"->"", "class"->"sortHandleColumn")))
+					)
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.jqueryuitouchpunch.last()
+		@script(){
+
+			$(".removeButtonColumn").css("width", "46px").hide();
+			$(".sortHandleColumn").css("width", "46px").hide();
+
+			$(function() {
+
+				$( "#sortable" ).sortable({
+
+					start: function( event, ui ) {
+
+						var placeholderTds = ui.placeholder.find('>td');
+						var itemTds = ui.item.find('>td');
+						itemTds.eq(1).css('width', placeholderTds.eq(1).width());
+						itemTds.eq(2).css('width', placeholderTds.eq(2).width());
+					},
+					update: function( event, ui ) {
+
+						console.log("updated.");
+					}
+				});
+				$( "#sortable" ).sortable( "disable" );
+				$( "#sortable" ).disableSelection();
+			});
+
+			$("#editButton").on('click', function(e) {
+
+				$(".removeButtonColumn").toggle();
+				$(".sortHandleColumn").toggle();
+
+				var isStartEdit = $("#editButton").attr('aria-pressed') == 'false';
+				if(isStartEdit){
+
+					$( "#sortable" ).sortable( "enable" );
+					$("#editButton").text("@Messages(MessageKeys.COMPLETE)");
+				}else{
+
+					$( "#sortable" ).sortable( "disable" );
+					$("#editButton").text("@Messages(MessageKeys.EDIT)");
+
+					$("#sortable>tr").find("td:eq(2)").each(function(i){
+
+						$(this).text(i);
+					});
+				}
+			});
+
+			$( "#sortable" ).on('click', function(e) {
+
+				var eventSource = $(e.target);
+
+				var isRemoveButton = eventSource.hasClass("fa-minus-circle");
+				if(isRemoveButton){
+
+					var tr = eventSource.parent().parent();
+					$(tr).animate({
+						opacity: "0"
+					}, 100, function() {
+
+						tr.remove();
+					});
+				}
+			});
+		}
+	}
+}

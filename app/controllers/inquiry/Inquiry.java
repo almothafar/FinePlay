@@ -1,0 +1,86 @@
+package controllers.inquiry;
+
+import java.time.LocalDateTime;
+
+import javax.inject.Inject;
+import javax.persistence.EntityExistsException;
+
+import common.data.validation.groups.Create;
+import play.mvc.Controller;
+import models.base.EntityDao;
+import models.inquiry.Inquiry.Type;
+import models.inquiry.InquiryFormContent;
+import play.data.Form;
+import play.data.FormFactory;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
+import play.filters.csrf.RequireCSRFCheck;
+import play.mvc.Result;
+
+public class Inquiry extends Controller {
+
+	@Inject
+	private FormFactory formFactory;
+
+	@Inject
+	private JPAApi jpaApi;
+
+	private final EntityDao<models.inquiry.Inquiry> inquiryDao = new EntityDao<models.inquiry.Inquiry>() {
+	};
+
+	public Result index() {
+
+		final InquiryFormContent inquiryFormContent = new InquiryFormContent();
+		// inquiryFormContent.setType(Type.OTHER.name());
+		final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class).fill(inquiryFormContent);
+
+		return ok(views.html.inquiry.inquiry.render(inquiryForm));
+	}
+
+	@Transactional()
+	@RequireCSRFCheck
+	public Result send() {
+
+		final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class, Create.class).bindFromRequest();
+		if (!inquiryForm.hasErrors()) {
+
+			final InquiryFormContent inquiryFormContent = inquiryForm.get();
+
+			final String userId = inquiryFormContent.getUserId();
+			final String name = inquiryFormContent.getName();
+
+			final Type type = Type.valueOf(inquiryFormContent.getType());
+			final String title = inquiryFormContent.getTitle();
+			final String content = inquiryFormContent.getContent();
+
+			final models.inquiry.Inquiry inquiry;
+
+			inquiry = new models.inquiry.Inquiry();
+			inquiry.setLocale(lang().toLocale());
+			inquiry.setUserId(userId);
+			inquiry.setName(name);
+			inquiry.setType(type);
+			inquiry.setTitle(title);
+			inquiry.setContent(content);
+			inquiry.setDateTime(LocalDateTime.now());
+
+			try {
+
+				inquiryDao.create(jpaApi.em(), inquiry);
+			} catch (final EntityExistsException e) {
+
+				throw new RuntimeException(e);
+			}
+
+			return ok(views.html.inquiry.send.complete.render(inquiryForm));
+		} else {
+
+			return failureInquiry(inquiryForm);
+		}
+	}
+
+	private Result failureInquiry(final Form<InquiryFormContent> inquiryForm) {
+
+		return badRequest(views.html.inquiry.inquiry.render(inquiryForm));
+	}
+}

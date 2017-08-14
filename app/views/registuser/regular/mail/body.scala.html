@@ -1,0 +1,246 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import controllers.registuser._
+
+@import common.system._
+
+@(user: models.user.User, signInURL: String, inquiryURL: String)
+
+@frame(){
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title></title>
+		<style type="text/css">
+
+			body {
+				font-family: sans-serif;
+				font-size: 17px;
+				padding: 0;
+				margin: 0;
+				-webkit-text-size-adjust: 100%;
+				-ms-text-size-adjust: 100%;
+			}
+
+			table, td {
+				border-collapse: collapse;
+				mso-table-lspace: 0;
+				mso-table-rspace: 0;
+			}
+
+			a {
+				text-decoration: underline;
+			}
+
+			img {
+				border: 0 none;
+				height: auto;
+				line-height: 1;
+				outline: none;
+				text-decoration: none;
+			}
+
+			a img {
+				border: 0 none;
+				text-decoration: none;
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				margin: 0;
+				line-height: 1.1;
+			}
+
+			h1 {
+				font-size: 24px;
+			}
+
+			h2 {
+				font-size: 22px;
+			}
+
+			h3 {
+				font-size: 20px;
+			}
+
+			h4 {
+				font-size: 18px;
+			}
+
+			h5 {
+				font-size: 16px;
+			}
+
+			p {
+				margin: 0 0 1em;
+				color: #333;
+				font-size: 16px;
+				line-height: 1.47;
+			}
+
+			.wrapper {
+				width: 580px;
+			}
+
+			.content {
+				width: 100%;
+			}
+
+			.spacing {
+				padding-top: 2em;
+			}
+
+			.preheader {
+				font-size: 13px;
+			}
+
+			.heading {
+				margin: 0 0 0.5em;
+				&#160
+			}
+
+			.header-banner {
+				padding-bottom: 20px;
+			}
+
+			.lead {
+				font-size: 20px;
+				color: #555;
+			}
+
+			.footer-list {
+				margin: 0;
+				padding: 2em 0;
+				border-top: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+				list-style: square inside;
+				font-size: 13px;
+			}
+
+			.footer-copyright {
+				font-size: 11px;
+			}
+
+			@@media only screen and (max-width: 479px) {
+				table[class="wrapper"] {
+					margin: 0 auto;
+					width: 100% !important;
+					box-sizing: border-box;
+				}
+				table[class="content"] {
+					width: 100% !important;
+					box-sizing: border-box;
+				}
+				table[class="content"] td {
+					padding: 0 10px;
+				}
+				img[class="img-fluid"] {
+					width: 100% !important;
+					max-width: 100%;
+				}
+				p {
+					font-size: 17px;
+				}
+			}
+
+			.preheader {
+				display: none;
+			}
+
+			.logo {
+				height: 46px;
+			}
+
+			.button {
+				color: #fff;
+				background-color: #007bff;
+				border-color: #007bff;
+				display: inline-block;
+				padding: .375rem 1rem;
+				font-size: 1rem;
+				font-weight: 400;
+				line-height: 1.5;
+				text-align: center;
+				white-space: nowrap;
+				vertical-align: middle;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				border: 1px solid transparent;
+				border-radius: .25rem
+			}
+		</style>
+	</head>
+	<body>
+
+		<table width="580" cellpadding="20" cellspacing="0" align="center"
+			class="wrapper">
+			<tr>
+				<td>
+					<!-- Header -->
+					<table cellpadding="0" cellspacing="0" class="content">
+						<tr>
+							<td>
+
+								<p class="preheader">@Messages(MessageKeys.SYSTEM_NAME)</p> 
+								<br /> 
+								<img class="logo" src="cid:@RegistUser.CID_LOGO" alt="@Messages(MessageKeys.SYSTEM_NAME)" height="46">
+
+							</td>
+						</tr>
+					</table>
+					<br /> 
+					<!-- Contents -->
+					<table cellpadding="0" cellspacing="0" class="content">
+						<tr>
+							<td>
+
+								<h2 class="heading">@user.getUserId() 様</h2>
+								<p class="lead">この度は、@Messages(MessageKeys.SYSTEM_NAME)にユーザー登録をいただき、誠にありがとうございます。</p>
+								<p>本登録を完了いたしました。</p>
+
+							</td>
+						</tr>
+						<tr>
+							<td class="spacing">
+								<a class="button" href="@signInURL">@Messages(MessageKeys.USER_SIGNIN)</a>
+							</td>
+						</tr>
+					</table>
+					<br /> 
+					<!-- Footer -->
+					<table cellpadding="0" cellspacing="0" class="content">
+						<tr>
+							<td class="spacing">
+
+								<ul class="footer-list">
+									<li>このメールは、@Messages(MessageKeys.SYSTEM_NAME)にご登録いただいた方にお送りしています。</li>
+									<li>もし、このメールにお心当たりがない方は、お手数をおかけいたしますが、@Messages(MessageKeys.SYSTEM_NAME)サポートまでお問い合わせください。</li>
+									<li><a href="@inquiryURL">お問い合わせはこちらから</a></li>
+								</ul>
+
+							</td>
+						</tr>
+						<tr>
+							<td class="spacing">
+
+								<p class="footer-copyright">@components.credit()</p>
+
+							</td>
+						</tr>
+					</table>
+
+				</td>
+			</tr>
+		</table>
+
+	</body>
+}

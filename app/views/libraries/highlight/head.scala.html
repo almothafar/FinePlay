@@ -1,0 +1,13 @@
+@()
+
+@session.get(models.user.User.THEME) match {
+	case "PRETTY" => { 
+
+		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/atelier-dune-light.css")'>
+	}
+	case "DEFAULT" | _ => {
+
+		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/atelier-lakeside-light.css")'>
+	}
+}
+

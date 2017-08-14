@@ -1,0 +1,32 @@
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+<div id="@prop.getOrElse("id", "")" class="list-group mb-3">
+	<a href="@controllers.lab.ui.routes.UI.index("drawer").toString()" class="list-group-item @("active".when(equalTask("drawer")))">@Messages(MessageKeys.DRAWER)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("field").toString()" class="list-group-item @("active".when(equalTask("field")))">@Messages(MessageKeys.FIELD)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("checkbox").toString()" class="list-group-item @("active".when(equalTask("checkbox")))">@Messages(MessageKeys.CHECKBOX)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("ajaxselect").toString()" class="list-group-item @("active".when(equalTask("ajaxselect")))">@("Ajax " + Messages(MessageKeys.SELECT))</a>
+	<a href="@controllers.lab.ui.routes.UI.index("select").toString()" class="list-group-item @("active".when(equalTask("select")))">@Messages(MessageKeys.SELECT)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("unlimited").toString()" class="list-group-item @("active".when(equalTask("unlimited")))">Unlimited</a>
+	<a href="@controllers.lab.ui.routes.UI.index("arrange").toString()" class="list-group-item @("active".when(equalTask("arrange")))">@Messages(MessageKeys.ARRANGE)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("draganddrop").toString()" class="list-group-item @("active".when(equalTask("draganddrop")))">@(Messages(MessageKeys.DRAG)+" & "+Messages(MessageKeys.DROP))</a>
+	<a href="@controllers.lab.ui.routes.UI.index("timeline").toString()" class="list-group-item @("active".when(equalTask("timeline")))">@Messages(MessageKeys.TIMELINE)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("notification").toString()" class="list-group-item @("active".when(equalTask("notification")))">@Messages(MessageKeys.NOTIFICATION)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("nav").toString()" class="list-group-item @("active".when(equalTask("nav")))">Nav</a>
+	<a href="@controllers.lab.ui.routes.UI.index("process").toString()" class="list-group-item @("active".when(equalTask("process")))">@Messages(MessageKeys.PROCESS)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("arrow").toString()" class="list-group-item @("active".when(equalTask("arrow")))">@Messages(MessageKeys.ARROW)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("campaign").toString()" class="list-group-item @("active".when(equalTask("campaign")))">@Messages(MessageKeys.CAMPAIGN)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("group").toString()" class="list-group-item @("active".when(equalTask("group")))">@Messages(MessageKeys.GROUP)</a>
+	<a href="@controllers.lab.ui.routes.UI.index("infinity").toString()" class="list-group-item @("active".when(equalTask("infinity")))">Infinity</a>
+	<a href="@controllers.lab.ui.routes.UI.index("parallax").toString()" class="list-group-item @("active".when(equalTask("parallax")))">Parallax</a>
+	<a href="@controllers.lab.ui.routes.UI.index("fixedbar").toString()" class="list-group-item @("active".when(equalTask("fixedbar")))">Fixed bar</a>
+	<a href="@controllers.lab.ui.routes.UI.index("bigtypo").toString()" class="list-group-item @("active".when(equalTask("bigtypo")))">Big typo</a>
+	<a href="@controllers.lab.ui.routes.UI.index("block").toString()" class="list-group-item @("active".when(equalTask("block")))">Block</a>
+	<a href="@controllers.lab.ui.routes.UI.index("window").toString()" class="list-group-item @("active".when(equalTask("window")))">@Messages(MessageKeys.WINDOW)</a>
+</div>

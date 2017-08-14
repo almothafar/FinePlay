@@ -1,0 +1,15 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@if(flash.containsKey(prop.get("flashKey").get)) {
+
+	@components.alert(prop)
+}

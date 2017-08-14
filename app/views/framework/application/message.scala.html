@@ -1,0 +1,114 @@
+@import views.html._
+@import views.html.components
+@import play.api.i18n._
+
+@import common.system._
+
+@(displaySystemLangs: java.util.List[String], headerColumns: java.util.List[String], lineColumnsList: java.util.List[java.util.List[String]])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@theadRowToColumns(headerColumns: java.util.List[String]) = @{
+
+	val headRow = Map[String, String]();
+
+	val columnsList = scala.collection.mutable.ListBuffer[scala.collection.immutable.Map[String, String]]();
+	for(headerColumn <- headerColumns) {
+
+		columnsList += Map("text"->headerColumn, "head"->"true");
+	}
+
+	Tuple2(headRow, columnsList.toList);
+}
+
+@tbodyRowToColumnsList(lineColumnsList: java.util.List[java.util.List[String]]) = @{
+
+	val tbodyRowToColumnsList = scala.collection.mutable.ListBuffer[Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]]();
+	for(lineColumns <- lineColumnsList) {
+
+		val tbodyRow = Map[String, String]();
+
+		val columnsList = scala.collection.mutable.ListBuffer[scala.collection.immutable.Map[String, String]]();
+		for(lineColumn <- lineColumns) {
+
+			columnsList += Map("text"->lineColumn);
+		}
+
+		tbodyRowToColumnsList += Tuple2(tbodyRow, columnsList.toList);
+	}
+
+	tbodyRowToColumnsList.toList
+}
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+		@libraries.datatables.head()
+	}
+
+	@body("framework","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.MESSAGE), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"message"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="langSelect">
+						@for(i <- 0 until displaySystemLangs.length) {
+						<label class="custom-control custom-checkbox">
+							<input class="custom-control-input" type="checkbox" name="@i" value="@i" checked>
+							<span class="custom-control-indicator"></span>
+							@displaySystemLangs(i)
+						</label>
+						}
+					</div>
+
+					<div class="mt-3 mb-3">
+
+						@components.table(Map("id"->"messagelist", "class"->"table-xl-responsive", "responsive"->"true", "bordered"->"true"),
+							Map("id"->""),theadRowToColumns(headerColumns),
+							Map("id"->""),
+							tbodyRowToColumnsList(lineColumnsList),
+							Map("id"->""),theadRowToColumns(headerColumns)
+						)
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.datatables.last()
+		@script(){
+
+			$(document).ready(function() {
+
+				dataTable=$('#messagelist').DataTable({
+					"lengthMenu": [ [10, 50, 100, 500, -1], [10, 50, 100, 500, "@Messages(MessageKeys.ALL)"] ]
+				});
+
+				$('#langSelect').on('change', function(e){
+
+					var eventSource = $(e.target);
+					var checked = eventSource.prop('checked');
+					var index = eventSource.val();
+
+					dataTable.column(parseInt(index, 10) + 1).visible(checked);
+				});
+			});
+		}
+	}
+}

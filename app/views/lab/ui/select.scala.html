@@ -1,0 +1,153 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.SELECT), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"select"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<fieldset id="bigSelect" class="form-group">
+						<label for="bigSelect">Big</label>
+						<select class="form-control custom-select">
+						</select>
+					</fieldset>
+
+					<fieldset id="middleSelect" class="form-group">
+						<label for="middleSelect">Middle</label>
+						<select class="form-control custom-select">
+						</select>
+					</fieldset>
+
+					<fieldset id="smallSelect" class="form-group">
+						<label for="smallSelect">Small</label>
+						<select class="form-control custom-select">
+						</select>
+					</fieldset>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var selectInfo = {
+				0:{
+					'0 0':{
+						'0 0 0':{},
+						'0 0 1':{},
+						'0 0 2':{}
+					},
+					'0 1':{
+						'0 1 0':{},
+						'0 1 1':{},
+						'0 1 2':{}
+					},
+					'0 2':{
+						'0 2 0':{},
+						'0 2 1':{},
+						'0 2 2':{}
+					}
+				},
+				1:{
+					'1 0':{
+						'1 0 0':{},
+						'1 0 1':{},
+						'1 0 2':{}
+					},
+					'1 1':{
+						'1 1 0':{},
+						'1 1 1':{},
+						'1 1 2':{}
+					},
+					'1 2':{
+						'1 2 0':{},
+						'1 2 1':{},
+						'1 2 2':{}
+					}
+				},
+				2:{
+					'2 0':{
+						'2 0 0':{},
+						'2 0 1':{},
+						'2 0 2':{}
+					},
+					'2 1':{
+						'2 1 0':{},
+						'2 1 1':{},
+						'2 1 2':{}
+					},
+					'2 2':{
+						'2 2 0':{},
+						'2 2 1':{},
+						'2 2 2':{}
+					}
+				},
+			}
+
+			$( "#bigSelect>select" ).on('change', function(e) {
+
+				var path = [$(this).val()];
+				update(path, $(this).parent().next().find("select"));
+			});
+
+			$( "#middleSelect>select" ).on('change', function(e) {
+
+				var path = [$( "#bigSelect>select" ).val() , $(this).val()];
+				update(path, $(this).parent().next().find("select"));
+			});
+
+			$( "#smaleSelect>select" ).on('change', function(e) {
+
+			});
+
+			var update = function(path, updateElement){
+
+				updateElement.empty();
+
+				var children = selectInfo;
+				$.each(path, function(i, parent){
+
+					children = children[parent];
+				});
+
+				$.each(children, function(key, value){
+
+					var div = $('<option value="'+key+'">'+key+'</option>');
+					updateElement.append(div);
+				});
+
+				updateElement.trigger("change");
+			}
+
+			var path = [];
+			update(path, $( "#bigSelect>select" ));
+		}
+	}
+}

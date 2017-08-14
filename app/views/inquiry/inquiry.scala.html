@@ -1,0 +1,157 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import models.inquiry._
+
+@import common.system._
+
+@(form: play.data.Form[models.inquiry.InquiryFormContent])
+
+@frame(){
+
+	@top.head(Messages(MessageKeys.INQUIRY)){
+
+		@libraries.bootstrap.head()
+		@libraries.parsley.head()
+		@style(){
+
+			.form-gropu>div>.parsley-success {
+				color: #468847;
+				background-color: #DFF0D8;
+				border: 1px solid #D6E9C6;
+			}
+			.form-gropu>div>.parsley-error {
+				color: #B94A48;
+				background-color: #F2DEDE;
+				border: 1px solid #EED3D7;
+			}
+		}
+	}
+
+	@top.body("top","inquiry"){
+
+		<div class="d-none d-sm-block">
+			<div style="height:50px;">
+			</div>
+		</div>
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-md-1 col-lg-2 col-xl-3">
+				</div>
+				<div class="col-md-10 col-lg-8 col-xl-6">
+					@components.card(Map("id"->"inquiryPanel", "class"->"shadow m-3")){
+						<div class="card-header">
+							@Messages(MessageKeys.INQUIRY)
+						</div>
+						<div class="card-body">
+
+							@helper.form(helper.CSRF(controllers.inquiry.routes.Inquiry.send()), 'name->"inquiryForm", 'id->"inquiryForm") {
+								<h4 class="card-title">@Messages(MessageKeys.INQUIRY_SEND)</h4>
+								<p class="card-text">@Messages(MessageKeys.INQUIRY_SEND_DESCRIPTION)</p>
+								@if(form.hasGlobalErrors) {
+									<p class="text-warning">@form.getGlobalError.get.message</p>
+								}
+								<div class="form-group row">
+									<label for="@Inquiry.USERID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.EMAIL)</label>
+									<div class="col-sm-9">
+										<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).getValue.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change">
+										<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
+										@for(error <- form(Inquiry.USERID).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="@Inquiry.NAME" class="col-sm-3 col-form-label">@Messages(MessageKeys.FULL__NAME)</label>
+									<div class="col-sm-9">
+										<input id="@Inquiry.NAME" type="text" name="@Inquiry.NAME" class="form-control" placeholder="Name" value="@form(Inquiry.NAME).getValue.orElse("")" maxlength="64" data-parsley-trigger="change">
+										@for(error <- form(Inquiry.NAME).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="@Inquiry.TYPE" class="col-sm-3 col-form-label required">@Messages(MessageKeys.TYPE)</label>
+									<div class="col-sm-9">
+										<select id="@Inquiry.TYPE" class="custom-select w-100" name="@Inquiry.TYPE" size="1" required data-parsley-trigger="change">
+											<option value="" label="@Messages(MessageKeys.PLEASE__SELECT)"></option>
+											@for(inquiry_type <- Inquiry.Type.values()) {
+											<option value="@inquiry_type.name()" label="@Messages(inquiry_type.getMessageKey())" @("selected".when(inquiry_type.name().equals(form(Inquiry.TYPE).getValue.orElse(""))))>@Messages(inquiry_type.getMessageKey())</option>
+											}
+										</select>
+										@for(error <- form(Inquiry.TYPE).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="@Inquiry.TITLE" class="col-sm-3 col-form-label required">@Messages(MessageKeys.TITLE)</label>
+									<div class="col-sm-9">
+										<input id="@Inquiry.TITLE" type="text" name="@Inquiry.TITLE" class="form-control" placeholder="Title" value="@form(Inquiry.TITLE).getValue.orElse("")" required maxlength="64" data-parsley-trigger="change">
+										@for(error <- form(Inquiry.TITLE).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="inquiry_@Inquiry.CONTENT" class="col-sm-3 col-form-label required">@Messages(MessageKeys.CONTENT)</label>
+									<div class="col-sm-9">
+										<textarea id="inquiry_@Inquiry.CONTENT" name="@Inquiry.CONTENT" class="form-control" placeholder="Content" rows="8" required maxlength="1000" data-parsley-trigger="change"></textarea>
+										@for(error <- form(Inquiry.CONTENT).errors) {
+											<div class="text-warning">@Messages(error.message)</div>
+										}
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-12 text-right">
+										@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-paper-plane", "text"->Messages(MessageKeys.SEND), "default"->"true", "class"->"float-right"))
+									</div>
+								</div>
+							}
+
+						</div>
+						<div class="card-footer text-muted">
+						</div>
+					}
+				</div>
+				<div class="col-md-1 col-lg-2 col-xl-3">
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.parsley.last()
+		@script(){
+
+			@if(form.hasGlobalErrors || form.hasErrors) {
+
+				shake('#inquiryPanel');
+			}
+
+			$(window).on('keydown', function(e){
+
+				var keyCode = e.which ? e.which : e.keyCode;
+				if (13 == keyCode) {
+
+					$('#sendButton').trigger("click");
+
+					e.preventDefault();
+				}
+			});
+
+			$('#inquiryForm').parsley();
+
+			window.Parsley.on('form:error', function() {
+
+				shake('#inquiryPanel');
+			});
+		}
+	}
+}

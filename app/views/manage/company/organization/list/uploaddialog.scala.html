@@ -1,0 +1,70 @@
+@import java.time._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import models.manage.company.organization.list.UploadFormContent._
+@import models.manage.company.organization.list._
+@import models.company.organization._
+
+@(form: play.data.Form[ReadFormContent])
+
+@components.modal(Map("id"->"uploadDialog", "icon"->"fa fa-upload", "title"->("CSV "+Messages(MessageKeys.UPLOAD)), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"uploadCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"uploadOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+	)){
+
+	@helper.form(helper.CSRF(controllers.manage.company.organization.list.routes.Upload.upload()), 'name->"uploadForm", 'id->"uploadForm", 'enctype -> "multipart/form-data") {
+		<div>
+			<p class="text-warning"></p>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="@OrganizationUnit.COMPANYID" type="hidden" name="@OrganizationUnit.COMPANYID" class="form-control" placeholder="CompanyId" value="@form(OrganizationUnit.COMPANYID).getValue.orElse("")" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-9">
+				<input id="@OrganizationUnit.ORGANIZATIONID" type="hidden" name="@OrganizationUnit.ORGANIZATIONID" class="form-control" placeholder="OrganizationId" value="@form(OrganizationUnit.ORGANIZATIONID).getValue.orElse("")" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label for="@OrganizationUnit.UPLOADFILE" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.FILE)</label>
+			<div class="col-sm-12">
+				<label class="custom-file w-100">
+					<input id="@OrganizationUnit.UPLOADFILE" type="file" name="@OrganizationUnit.UPLOADFILE" class="custom-file-input" value="" required autofocus>
+					<span class="custom-file-control"></span>
+				</label>
+				<small class="text-muted">@Messages(MessageKeys.ABOUT__X, Messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fa fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
+				<div>
+					<p class="text-warning"></p>
+				</div>
+			</div>
+			<label for="operation" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.OPERATION)</label>
+			<div class="col-sm-12">
+				<label class="custom-control custom-radio">
+					<input class="custom-control-input" id="createRadio" name="operation" type="radio" value="@Operation.CREATE.toString()">
+					<span class="custom-control-indicator"></span>
+					@Messages(MessageKeys.CREATE)
+				</label>
+				<label class="custom-control custom-radio">
+					<input class="custom-control-input" id="updateRadio" name="operation" type="radio" value="@Operation.UPDATE.toString()" checked>
+					<span class="custom-control-indicator"></span>
+					@Messages(MessageKeys.UPDATE)
+				</label>
+			</div>
+		</div>
+	}
+
+	<div style="word-wrap:break-word;">
+		<div id="uploadMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="uploadDescription">-</div>
+	</div>
+	@components.progress(Map("id"->"uploadProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
+}

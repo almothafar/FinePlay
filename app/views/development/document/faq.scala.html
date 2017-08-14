@@ -1,0 +1,152 @@
+@import java.util.Map._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(things: List[Entry[String, String]])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.DEVELOPMENT)){
+
+		@libraries.standard.head()
+	}
+
+	@body("development","document"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.FAQ), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"faq"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@components.container(Map("id"->"", "fluid"->"true")){
+
+						<div class="row justify-content-end">
+
+							<div>
+
+								<div class="form-group">
+									<input id="searchField" type="text" class="form-control" placeholder="@Messages(MessageKeys.SEARCH)" value="">
+								</div>
+							</div>
+						</div>
+					}
+
+					<div class="row">
+						@for(thing <- things) {
+						<div class="col-12 col-lg-6">
+							<div class="thing card card-body mb-3" data-thing='{"title": "@thing.getKey", "text": "@thing.getValue"}'>
+								<h4 class="card-title" data-titlex="@thing.getKey">@thing.getKey</h4>
+								<p class="card-text" data-textx="@thing.getValue">@thing.getValue</p>
+							</div>
+						</div>
+						}
+					</div>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			var highlight = function(text, searchText){
+
+				var result = text.match(new RegExp('('+searchText+')', 'gi'));
+				var highlighted = text;
+				if(result){
+					for(i=0;i < result.length;i++){
+
+						highlighted = highlighted.replace(new RegExp(result[i]), '<mark class="px-0">' + result[i] + '</mark>');
+					}
+				}
+				return highlighted;
+			}
+
+			var keyupEvents = [];
+			$("#searchField").on('keyup', function () {
+
+				keyupEvents.push('keyup');
+
+				var searchText = $(this).val();
+				setTimeout(function () {
+
+					keyupEvents.pop();
+
+					if (0 == keyupEvents.length) {
+
+						$('.thing').each(function(){
+
+							var thing = $(this);
+							var thingSource = thing.data('thing');
+
+							var titleElement = thing.find('.card-title');
+							var titleSource = thingSource['title'];
+
+							var textElement = thing.find('.card-text');
+							var textSource = thingSource['text'];
+
+							var isShow = true;
+							var title;
+							var text;
+							if(0 == searchText.length){
+
+								title = titleSource;
+								text = textSource;
+
+								isShow = true;
+							}else{
+
+								title = highlight(titleSource, searchText);
+								text = highlight(textSource, searchText);
+
+								var isTitleMatched = titleSource != title;
+								var isTextMatched = textSource != text;
+
+								var isMatched = isTitleMatched || isTextMatched;
+
+								isShow = isMatched;
+							}
+
+							var thingWrapper = thing.parent();
+
+							if(!thingWrapper.is(':visible') && isShow){
+
+								thingWrapper.css({
+									"display": "inline"
+								}).animate({
+									"opacity": 1
+								}, 'fast');
+							}else if(thingWrapper.is(':visible') && !isShow){
+
+								thingWrapper.animate({
+									"opacity": 0
+								}, 'fast', function() {
+									$(this).css('display','none');
+								});
+							}
+
+							titleElement.html(title);
+							textElement.html(text);
+						});
+					}
+				}, 500);
+			});
+		}
+	}
+}

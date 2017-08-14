@@ -1,0 +1,12 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+<span id="@prop.getOrElse("id", "")" class="badge badge@("-pill".when(Boolean.valueOf(prop.getOrElse("pill", "false")))) badge-@prop.getOrElse("type", "secondary") @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>@if(!prop.getOrElse("icon", "").isEmpty()){@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))}@if(!prop.getOrElse("icon", "").isEmpty() && !prop.getOrElse("text", "").isEmpty()){&nbsp}@Html(prop.getOrElse("text", ""))</span>

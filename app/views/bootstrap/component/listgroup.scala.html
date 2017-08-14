@@ -1,0 +1,58 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"List group", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"listgroup"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+					<div class="mb-3">
+
+						@components.listgroup(Map("id"->""), List(
+							Map("id"->"", "type"->"", "icon"->"fa fa-spinner fa-pulse", "text"->"Cras justo odio"),
+							Map("id"->"", "type"->"", "icon"->"fa fa-spinner fa-pulse", "text"->"Dapibus ac facilisis in", "selected"->"true"),
+							Map("id"->"", "type"->"", "icon"->"fa fa-spinner fa-pulse", "text"->"Morbi leo risus", "enabled"->"false"),
+							Map("id"->"", "type"->"", "icon"->"fa fa-spinner fa-pulse", "text"->"Porta ac consectetur ac", "badge"->"New"),
+							Map("id"->"", "type"->"", "icon"->"fa fa-spinner fa-pulse", "text"->"Vestibulum at eros", "badge"->"2"),
+							Map("id"->"", "type"->"success", "icon"->"fa fa-spinner fa-pulse", "text"->"Dapibus ac facilisis in"),
+							Map("id"->"", "type"->"info", "icon"->"fa fa-spinner fa-pulse", "text"->"Morbi leo risus"),
+							Map("id"->"", "type"->"warning", "icon"->"fa fa-spinner fa-pulse", "text"->"Porta ac consectetur ac"),
+							Map("id"->"", "type"->"danger", "icon"->"fa fa-spinner fa-pulse", "text"->"Vestibulum at eros"),
+							Map("id"->"", "type"->"", "icon"->"", "text"->"<h5 class=\"mb-1\">List group item heading</h5><p class=\"mb-1\">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>", "active"->"true")
+						))
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+
+		@script(){
+		}
+	}
+}

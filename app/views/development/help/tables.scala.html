@@ -1,0 +1,50 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.DEVELOPMENT)){
+
+		@libraries.standard.head()
+		<!-- for Help -->
+		@libraries.bootstrapdocs.head()
+	}
+
+	@body("development","help"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Tables", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"tables"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+		}
+
+		@libraries.standard.last()
+		<!-- for Help -->
+		@libraries.clipboard.last()
+		@libraries.anchorjs.last()
+		@libraries.holder.last()
+		@script(){
+
+			enableHelp();
+		}
+	}
+}

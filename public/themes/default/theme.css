@@ -1,0 +1,157 @@
+@charset "utf-8";
+
+/* Basic frame */
+
+body {
+	background-color: white !important;
+	background-image: linear-gradient(rgba(0, 255, 255, .05) 1.5px, transparent 1.5px),
+						linear-gradient(90deg, rgba(0, 255, 255, .05) 1.5px, transparent 1.5px),
+						linear-gradient(rgba(0, 255, 255, .05) 1px, transparent 1px),
+						linear-gradient(90deg, rgba(0, 255, 255, .05) 1px, transparent 1.5px);
+	background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+	background-position: -1.5px -1.5px, -1.5px -1.5px, -1px -1px, -1px -1px
+}
+
+
+
+
+
+
+
+
+/* Top menu */
+
+#system_menu{
+	border-bottom: 1px LightGray solid;
+}
+
+
+
+
+
+/* Side menu */
+
+#system_work-menu {
+	background-color: #585858;
+}
+
+
+
+
+#system_work-menu a {
+	color: #65c6ff;
+}
+#system_work-menu a.disabled {
+	color: #3d7cae;
+}
+
+#system_work-menu .worksbase{
+	background-color: #424242;
+}
+
+#system_work-menu .works .work{
+	border-left: transparent 4px solid;
+}
+#system_work-menu .works .work.selected{
+	border-left: orange 4px solid;
+	background-color: #2e2e2e;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Table custom style */
+
+.bg-primary, .bg-primary>th, .bg-primary>td {
+	color: #fff;
+	background-color: #0056b3;
+}
+
+/* Nav custom style */
+
+.nav-tabs a.nav-link{
+	border-top:transparent solid 3px;
+}
+
+.nav-tabs a.nav-link.active{
+	border-top: #007bff solid 3px;
+}
+
+/* Table custom style */
+
+.table:not(.table-inverse){
+	background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Project style */
+
+h1.headline{
+	border-left: 7px solid #007bff;
+	padding-left: 6px;
+}
+h2.headline{
+	border-left: 6px solid #007bff;
+	padding-left: 6px;
+}
+h3.headline{
+	border-left: 5px solid #007bff;
+	padding-left: 6px;
+}
+h4.headline{
+	border-left: 4px solid #007bff;
+	padding-left: 6px;
+}
+h5.headline{
+	border-left: 3px solid #007bff;
+	padding-left: 6px;
+}
+h6.headline{
+	border-left: 2px solid #007bff;
+	padding-left: 6px;
+}
+
+
+
+
+
+
+
+hr.separator{
+	height: 1px;
+	background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), lightgray 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+
+
+.matched {
+	background-color: #e4fc2f;
+}

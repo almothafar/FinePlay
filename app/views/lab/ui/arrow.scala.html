@@ -1,0 +1,75 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.ARROW), "icon"->"fa fa-arrow-right", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"arrow"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+
+				<div class="col-md-9">
+
+					<div class="row">
+
+						<div class="col-md-5">
+							<h4 class="headline">@(Messages(MessageKeys.LEFT) + ' ' + Messages(MessageKeys.CONTENT))</h4>
+							<div class="jumbotron jumbotron-fluid">
+								<div class="container">
+									<h1 class="display-4 draft">Fluid jumbotron</h1>
+									<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+									@components.image(Map("id"->"", "source"->"holder.js/100px200?random=yes", "fluid"->"true", "alternate"->(Messages(MessageKeys.RIGHT) + ' ' + Messages(MessageKeys.CONTENT))))
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 align-self-center">
+							<div class="row justify-content-center">
+								<div class="mb-3 d-md-none">@components.icon(Map("id"->"", "icon"->"fa fa-arrow-down fa-3x", "class"->"text-primary", "aria-hidden"->"true"))</div>
+								<div class="mt-3 d-none d-md-block">@components.icon(Map("id"->"", "icon"->"fa fa-arrow-right fa-3x", "class"->"text-primary", "aria-hidden"->"true"))</div>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<h4 class="headline">@(Messages(MessageKeys.RIGHT) + ' ' + Messages(MessageKeys.CONTENT))</h4>
+							<div class="jumbotron jumbotron-fluid">
+								<div class="container">
+									<h1 class="display-4 draft">Fluid jumbotron</h1>
+									<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+									@components.image(Map("id"->"", "source"->"holder.js/100px300?random=yes", "fluid"->"true", "alternate"->(Messages(MessageKeys.RIGHT) + ' ' + Messages(MessageKeys.CONTENT))))
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		@script(){
+		}
+	}
+}

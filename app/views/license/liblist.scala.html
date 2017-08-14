@@ -1,0 +1,26 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(elements:Seq[scala.collection.immutable.Map[String, String]])
+
+@for(i <- 0 to elements.size - 1){
+
+	@components.card(Map("id"->"", "type"->"", "outline"->"true", "class"->"mb-3")){
+		<div class="card-body">
+			<h5 class="card-title">
+				@components.icon(Map("icon"->elements(i).getOrElse("icon", "")))
+				@elements(i).get("name")
+			</h5>
+			<p class="card-text">@elements(i).getOrElse("info", "")</p>
+			@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "link"->elements(i).getOrElse("link","#"), "text"->Messages(MessageKeys.LICENSE), "target"->"_blank", "size"->"sm"))<br>
+		</div>
+	}
+}

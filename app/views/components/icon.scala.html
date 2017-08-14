@@ -1,0 +1,26 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@iconText() = @{
+
+	val text = prop.getOrElse("text","");
+
+	val materialIcon = prop.getOrElse("icon","").split("\\s+").find(s => s.startsWith("mi-"));
+	if(materialIcon.isDefined){
+
+		materialIcon.get.replaceFirst("^mi-", "");
+	}else{
+
+		text;
+	}
+}
+
+<i id="@prop.getOrElse("id", "")" class="@prop.getOrElse("icon", "") text-@prop.getOrElse("type", "") @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>@iconText()</i>

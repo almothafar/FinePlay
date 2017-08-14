@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+#system_work-menu i {
+	color: lightgray;
+}
+
+.breadcrumb-item i{
+	color: gray;
+}
+
+.breadcrumb-item.active i{
+	color: lightgray;
+}

@@ -1,0 +1,15 @@
+@()
+
+@session.get(models.user.User.THEME) match {
+
+	case "DEFAULT" => {
+
+		@libraries.bootstrap.head()
+	}
+	case _ => {
+
+		<link rel='stylesheet'
+			href='@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/bootstrap.min.css")'>
+	}
+}
+

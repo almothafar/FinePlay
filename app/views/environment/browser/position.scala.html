@@ -1,0 +1,154 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+@import views.html.development
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.ENVIRONMENT)){
+
+		@libraries.standard.head()
+		@style(){
+
+			.position-container{
+				margin-left: auto;
+				margin-right: auto;
+				padding-right: 15px;
+				padding-left: 15px
+			}
+			.boxback{
+
+				background-color: lightcoral;
+			}
+			#box_container{
+
+				width: 100px;
+				height: 100px;
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
+			#box_container_relative{
+
+				width: 100px;
+				height: 100px;
+				overflow-y: auto;
+				overflow-x: hidden;
+				position: relative;
+			}
+			.space_box{
+
+				width: 100px;
+				height: 100px;
+				background-color: lightcyan;
+			}
+			.box{
+
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		}
+	}
+
+	@body("environment","browser"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Position", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"position"))
+		}
+
+		<div class="position-container">
+			<div class="row">
+				<div class="col-md-6">
+
+					<div id="box_container">
+						<div class="box">#box</div>
+						<div class="space_box">#space_box</div>
+						<div class="space_box">#space_box</div>
+					</div>
+
+					@development.proptable("table", map.asScala.toMap)
+				</div>
+				<div class="col-md-6">
+
+					<div id="box_container_relative">
+						<div class="box">#box</div>
+						<div class="space_box">#space_box</div>
+						<div class="space_box">#space_box</div>
+					</div>
+
+					@development.proptable("table_relative", map.asScala.toMap)
+				</div>
+			</div>
+		</div>
+
+		@libraries.standard.last()
+		@script(){
+
+			var boxmap = {
+				'$("#box").offset().top': $("#box_container>.box").offset().top,
+				'$("#box").position().top': $("#box_container>.box").position().top,
+				'$("#box").scrollTop()': $("#box_container>.box").scrollTop(),
+				'document.querySelector("#box").getBoundingClientRect().top': document.querySelector("#box_container>.box").getBoundingClientRect().top,
+				'document.querySelector("#box").offsetTop': document.querySelector("#box_container>.box").offsetTop,
+				'document.querySelector("#box").scrollTop': document.querySelector("#box_container>.box").scrollTop,
+			}
+
+			$.each(boxmap, function(key, value){
+
+				$("#table tbody").append("<tr></tr>");
+				$("#table tbody > tr:last-child").append("<td>"+key+"</td><td>"+value+"</td>");
+			});
+
+			$('#box_container').scroll(function(){
+
+				$("#table tbody>tr").eq(0).find('td:nth-child(2)').text($("#box_container>.box").offset().top);
+				$("#table tbody>tr").eq(1).find('td:nth-child(2)').text($("#box_container>.box").position().top);
+				$("#table tbody>tr").eq(2).find('td:nth-child(2)').text($("#box_container>.box").scrollTop());
+				$("#table tbody>tr").eq(5).find('td:nth-child(2)').text(document.querySelector("#box_container>.box").getBoundingClientRect().top);
+				$("#table tbody>tr").eq(3).find('td:nth-child(2)').text(document.querySelector("#box_container>.box").offsetTop);
+				$("#table tbody>tr").eq(4).find('td:nth-child(2)').text(document.querySelector("#box_container>.box").scrollTop);
+			});
+
+			var boxmap_relative = {
+				'$("#box").offset().top': $("#box_container_relative>.box").offset().top,
+				'$("#box").position().top': $("#box_container_relative>.box").position().top,
+				'$("#box").scrollTop()': $("#box_container_relative>.box").scrollTop(),
+				'document.querySelector("#box").getBoundingClientRect().top': document.querySelector("#box_container_relative>.box").getBoundingClientRect().top,
+				'document.querySelector("#box").offsetTop': document.querySelector("#box_container_relative>.box").offsetTop,
+				'document.querySelector("#box").scrollTop': document.querySelector("#box_container_relative>.box").scrollTop,
+			}
+
+			$.each(boxmap_relative, function(key, value){
+
+				$("#table_relative tbody").append("<tr></tr>");
+				$("#table_relative tbody > tr:last-child").append("<td>"+key+"</td><td>"+value+"</td>");
+			});
+
+			$('#box_container_relative').scroll(function(){
+
+				$("#table_relative tbody>tr").eq(0).find('td:nth-child(2)').text($("#box_container_relative>.box").offset().top);
+				$("#table_relative tbody>tr").eq(1).find('td:nth-child(2)').text($("#box_container_relative>.box").position().top);
+				$("#table_relative tbody>tr").eq(2).find('td:nth-child(2)').text($("#box_container_relative>.box").scrollTop());
+				$("#table_relative tbody>tr").eq(5).find('td:nth-child(2)').text(document.querySelector("#box_container_relative>.box").getBoundingClientRect().top);
+				$("#table_relative tbody>tr").eq(3).find('td:nth-child(2)').text(document.querySelector("#box_container_relative>.box").offsetTop);
+				$("#table_relative tbody>tr").eq(4).find('td:nth-child(2)').text(document.querySelector("#box_container_relative>.box").scrollTop);
+			});
+		}
+	}
+}

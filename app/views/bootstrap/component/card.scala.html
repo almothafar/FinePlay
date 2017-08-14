@@ -1,0 +1,166 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+		@style(){
+
+			.card{
+
+				max-width: 20rem;
+			}
+		}
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.CARD), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"card"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+					<div class="mb-3">
+						@components.card(Map("id"->"", "style"->"width: 18rem;")){
+							<div class="card-body">
+								<h4 class="card-title">Special title treatment</h4>
+								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"Go somewhere"))
+							</div>
+						}
+					</div>
+					<div class="mb-3">
+						@components.card(Map("id"->"")){
+							<div class="card-body">
+								<h4 class="card-title">Special title treatment</h4>
+								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"Go somewhere"))
+							</div>
+						}
+						@components.card(Map("id"->"", "align"->"center")){
+							<div class="card-body">
+								<h4 class="card-title">Special title treatment</h4>
+								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"Go somewhere"))
+							</div>
+						}
+						@components.card(Map("id"->"", "align"->"right")){
+							<div class="card-body">
+								<h4 class="card-title">Special title treatment</h4>
+								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"Go somewhere"))
+							</div>
+						}
+					</div>
+					<div class="mb-3">
+						@components.card(Map("id"->"", "type"->"primary", "text"->"white", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body">
+								<h4 class="card-title">Primary card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "type"->"success", "text"->"white", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body">
+								<h4 class="card-title">Success card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "type"->"info", "text"->"white", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body">
+								<h4 class="card-title">Info card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "type"->"warning", "text"->"white", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body">
+								<h4 class="card-title">Warning card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "type"->"danger", "text"->"white", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body">
+								<h4 class="card-title">Danger card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+					</div>
+					<div class="mb-3">
+						@components.card(Map("id"->"", "border"->"primary", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body text-primary">
+								<h4 class="card-title">Primary card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "border"->"success", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body text-success">
+								<h4 class="card-title">Success card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "border"->"info", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body text-info">
+								<h4 class="card-title">Info card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "border"->"warning", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body text-warning">
+								<h4 class="card-title">Warning card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+						@components.card(Map("id"->"", "border"->"danger", "align"->"center")){
+							<div class="card-header">Header</div>
+							<div class="card-body text-danger">
+								<h4 class="card-title">Danger card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						}
+					</div>
+					<div class="mb-3">
+						@components.card(Map("id"->"", "type"->"dark", "text"->"white")){
+							<img class="card-img" src="holder.js/100px270?bg=55595c" alt="Card image">
+							<div class="card-img-overlay">
+								<h4 class="card-title">Card title</h4>
+								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text">Last updated 3 mins ago</p>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+	}
+}

@@ -1,0 +1,44 @@
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import play.api.PlayException
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("framework","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Exception", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"exception"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@components.linkbutton(Map("id"->"", "type"->"warning", "icon"->"fa fa-exclamation-triangle", "text"->classOf[PlayException].getSimpleName, "link"->controllers.framework.application.routes.Application.playException().toString))
+					@components.linkbutton(Map("id"->"", "type"->"danger", "icon"->"fa fa-ban", "text"->classOf[RuntimeException].getSimpleName, "link"->controllers.framework.application.routes.Application.runtimeException().toString))
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

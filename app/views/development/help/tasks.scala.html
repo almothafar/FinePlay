@@ -1,0 +1,23 @@
+@import views.html._
+@import views.html.components
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+@components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true","foldSize"->"sm"), Seq(
+	Map("name"->"Typography", "icon"->"fa fa-pencil", "link"->controllers.development.help.routes.Help.typography().toString, "selected"->equalTask("typography").toString),
+	Map("name"->"Code", "icon"->"fa fa-pencil", "link"->controllers.development.help.routes.Help.code().toString, "selected"->equalTask("code").toString),
+	Map("name"->"Images", "icon"->"fa fa-pencil", "link"->controllers.development.help.routes.Help.images().toString, "selected"->equalTask("images").toString),
+	Map("name"->"Tables", "icon"->"fa fa-pencil", "link"->controllers.development.help.routes.Help.tables().toString, "selected"->equalTask("tables").toString),
+	Map("name"->"Figures", "icon"->"fa fa-pencil", "link"->controllers.development.help.routes.Help.figures().toString, "selected"->equalTask("figures").toString)
+))

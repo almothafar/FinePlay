@@ -1,0 +1,44 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("setting"){
+
+		@libraries.standard.head()
+	}
+
+	@body("setting","system"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.GENERAL), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"general"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+		}
+
+		@libraries.standard.last()
+		@script(){
+
+			$(document).ready(function() {
+
+			});
+		}
+	}
+}
