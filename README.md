@@ -70,7 +70,7 @@ Release History
 
 License
 -------
-Copyright &copy; 2017 [hiro20v](https://github.com/hiro20v)
+Copyright &copy; 2017 [hiro20v](https://github.com/hiro20v)  
 Distributed under the [MIT License][mit].
 
 [MIT]: http://opensource.org/licenses/MIT
