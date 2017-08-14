@@ -1,7 +1,6 @@
 <img src="./public/images/en/logo.png" alt="fine✿play" height="54"/>
-=======
 
-Play(Java) 2.6 & Bootstrap 4
+Play(Java) 2.6 & Bootstrap 4  
 multilingual responsive project template.
 
 | Phone | Tablet    |
@@ -61,7 +60,7 @@ This template is unofficial.
 Notice
 ---------------
 
-+ Based on bootstrap 4β
++ Based on Bootstrap 4β
 
 Release History
 ---------------
