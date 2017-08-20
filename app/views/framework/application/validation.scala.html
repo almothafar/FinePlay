@@ -4,7 +4,7 @@
 @import views.html.components
 @import views.html.development
 
-@(playMap: Map[String, Object], jsr303Map: Map[String, Object], fineplayMap: Map[String, Object])
+@(playMap: Map[String, Object], jsr380Map: Map[String, Object], fineplayMap: Map[String, Object])
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -37,8 +37,8 @@
 					<h2 class="headline">Play</h2>
 					@development.proptable("", SortedMap[String, AnyRef]() ++ playMap.asScala.toMap)
 
-					<h2 class="headline">JSR-303</h2>
-					@development.proptable("", SortedMap[String, AnyRef]() ++ jsr303Map.asScala.toMap)
+					<h2 class="headline">JSR-303/380</h2>
+					@development.proptable("", SortedMap[String, AnyRef]() ++ jsr380Map.asScala.toMap)
 
 					<h2 class="headline">fine play</h2>
 					@development.proptable("", SortedMap[String, AnyRef]() ++ fineplayMap.asScala.toMap)

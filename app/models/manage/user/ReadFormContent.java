@@ -15,7 +15,7 @@ public class ReadFormContent {
 	@Constraints.MaxLength(value = 256)
 	private String userId;
 
-	@Size(message = MessageKeys.CONSTRAINTS_SIZE, min = 1, max = User.ROLE_COUNT_MAX)
+	@Size(message = MessageKeys.JAVA_ERROR_SIZE, min = 1, max = User.ROLE_COUNT_MAX)
 	private List<Role> roles;
 
 	private Long companyId;

@@ -31,6 +31,7 @@ libraryDependencies ++= Seq(
 //  "org.apache.tomcat" % "tomcat-servlet-api" % "8.0.33",
   "org.hibernate" % "hibernate-core" % "5.2.10.Final",					// LGPL 5.2.10
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.10.Final",			//
+  "org.hibernate.validator" % "hibernate-validator" % "6.0.1.Final",	// Apache 6.0.1 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b08",
   "org.dom4j" % "dom4j" % "2.0.1",
   "javax.json" % "javax.json-api" % "1.1",
@@ -52,7 +53,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.CR1",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
   "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
-  "org.webjars.npm" % "bootstrap" % "4.0.0-alpha.6",					// MIT 4.0.0-alpha.6
+  "org.webjars.npm" % "bootstrap" % "4.0.0-beta",						// MIT 4.0.0-alpha.6
   "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",			// MIT 9.8.1
@@ -97,6 +98,10 @@ libraryDependencies ++= Seq(
 // 3Dmol.js																// BSD-3-Clause license 1.1.1
 // IcoFont																// MIT 1.3
 // geckodriver															// ? 0.18.0
+
+excludeDependencies ++= Seq(
+  "org.hibernate" % "hibernate-validator"								// into play include
+)
 
 // //////////
 

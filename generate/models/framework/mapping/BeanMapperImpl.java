@@ -18,7 +18,7 @@ import models.framework.mapping.Bean.Inner;
 
     value = "org.mapstruct.ap.MappingProcessor",
 
-    date = "2017-08-14T13:50:27+0900",
+    date = "2017-08-20T11:57:28+0900",
 
     comments = "version: 1.2.0.CR1, compiler: javac, environment: Java 1.8.0_144 (Oracle Corporation)"
 

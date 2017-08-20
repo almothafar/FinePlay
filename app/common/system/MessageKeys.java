@@ -105,32 +105,6 @@ public class MessageKeys {
 
   public static final String CONSISTENT = "consistent";
 
-  public static final String CONSTRAINTS_ASSERTFALSE = "constraints.AssertFalse";
-
-  public static final String CONSTRAINTS_ASSERTTRUE = "constraints.AssertTrue";
-
-  public static final String CONSTRAINTS_DECIMALMAX = "constraints.DecimalMax";
-
-  public static final String CONSTRAINTS_DECIMALMIN = "constraints.DecimalMin";
-
-  public static final String CONSTRAINTS_DIGITS = "constraints.Digits";
-
-  public static final String CONSTRAINTS_FUTURE = "constraints.Future";
-
-  public static final String CONSTRAINTS_MAX = "constraints.Max";
-
-  public static final String CONSTRAINTS_MIN = "constraints.Min";
-
-  public static final String CONSTRAINTS_NOTNULL = "constraints.NotNull";
-
-  public static final String CONSTRAINTS_NULL = "constraints.Null";
-
-  public static final String CONSTRAINTS_PAST = "constraints.Past";
-
-  public static final String CONSTRAINTS_PATTERN = "constraints.Pattern";
-
-  public static final String CONSTRAINTS_SIZE = "constraints.Size";
-
   public static final String CONSTRAINT_EMAIL = "constraint.email";
 
   public static final String CONSTRAINT_MAX = "constraint.max";
@@ -376,6 +350,50 @@ public class MessageKeys {
   public static final String JAVA = "java";
 
   public static final String JAVASCRIPT = "javascript";
+
+  public static final String JAVA_ERROR_ASSERTFALSE = "java.error.AssertFalse";
+
+  public static final String JAVA_ERROR_ASSERTTRUE = "java.error.AssertTrue";
+
+  public static final String JAVA_ERROR_DECIMALMAX = "java.error.DecimalMax";
+
+  public static final String JAVA_ERROR_DECIMALMIN = "java.error.DecimalMin";
+
+  public static final String JAVA_ERROR_DIGITS = "java.error.Digits";
+
+  public static final String JAVA_ERROR_EMAIL = "java.error.Email";
+
+  public static final String JAVA_ERROR_FUTURE = "java.error.Future";
+
+  public static final String JAVA_ERROR_FUTUREORPRESENT = "java.error.FutureOrPresent";
+
+  public static final String JAVA_ERROR_MAX = "java.error.Max";
+
+  public static final String JAVA_ERROR_MIN = "java.error.Min";
+
+  public static final String JAVA_ERROR_NEGATIVE = "java.error.Negative";
+
+  public static final String JAVA_ERROR_NEGATIVEORZERO = "java.error.NegativeOrZero";
+
+  public static final String JAVA_ERROR_NOTBLANK = "java.error.NotBlank";
+
+  public static final String JAVA_ERROR_NOTEMPTY = "java.error.NotEmpty";
+
+  public static final String JAVA_ERROR_NOTNULL = "java.error.NotNull";
+
+  public static final String JAVA_ERROR_NULL = "java.error.Null";
+
+  public static final String JAVA_ERROR_PAST = "java.error.Past";
+
+  public static final String JAVA_ERROR_PASTORPRESENT = "java.error.PastOrPresent";
+
+  public static final String JAVA_ERROR_PATTERN = "java.error.Pattern";
+
+  public static final String JAVA_ERROR_POSITIVE = "java.error.Positive";
+
+  public static final String JAVA_ERROR_POSITIVEORZERO = "java.error.PositiveOrZero";
+
+  public static final String JAVA_ERROR_SIZE = "java.error.Size";
 
   public static final String JUSTIFY = "justify";
 

@@ -62,24 +62,31 @@ error.path.missing = 存在しないパスです。
 error.path.result.multiple = 指定のパスには、複数の結果が存在します。
 
 #
-# JSR-303
+# JSR-303/380
 #
 
-constraints.AssertFalse = 偽 である必要があります。
-constraints.AssertTrue = 真 である必要があります。
-constraints.DecimalMax = {0} 以上もしくは、超える必要があります。
-constraints.DecimalMin = {0} 以下もしくは、未満の必要があります。
-#constraints.DecimalMax = {0}${inclusive == true ? '以上である' : 'を超える'}必要があります。
-#constraints.DecimalMin = {0}${inclusive == true ? '以下である' : '未満の'}必要があります。
-constraints.Digits = 数値が範囲外です。 (期待値 <{0} 桁>.<{1} 桁>)
-constraints.Future = 未来の日付である必要があります。
-constraints.Max = {0} 以下である必要があります。
-constraints.Min = {0} 以上である必要があります。
-constraints.NotNull = Null でない必要があります。
-constraints.Null = Null である必要があります。
-constraints.Past = 過去の日付である必要があります。
-constraints.Pattern = この正規表現に適合する必要があります。: "{0}"
-constraints.Size = サイズは、 {0} と {1} の間である必要があります。
+java.error.AssertFalse = 偽 である必要があります。
+java.error.AssertTrue = 真 である必要があります。
+java.error.DecimalMax = {1}{0,choice,0# 未満の|1# 以下である}必要があります。
+java.error.DecimalMin = {1}{0,choice,0# を超える|1# 以上である}必要があります。
+java.error.Digits = 数値が範囲外です。 (期待値 <{0} 桁>.<{1} 桁>)
+java.error.Email = 正しいEメールである必要があります。
+java.error.Future = 未来の日付である必要があります。
+java.error.FutureOrPresent = 現在より、未来の日付である必要があります。
+java.error.Max = {0} 以下である必要があります。
+java.error.Min = {0} 以上である必要があります。
+java.error.Negative = 負数である必要があります。
+java.error.NegativeOrZero = 0以下である必要があります。
+java.error.NotBlank = 空白 でない必要があります。
+java.error.NotEmpty = 空 でない必要があります。
+java.error.NotNull = Null でない必要があります。
+java.error.Null = Null である必要があります。
+java.error.Past = 過去の日付である必要があります。
+java.error.PastOrPresent = 現在より、過去の日付である必要があります。
+java.error.Pattern = この正規表現に適合する必要があります。: "{1}"
+java.error.Positive = 正数である必要があります。
+java.error.PositiveOrZero = 0以上である必要があります。
+java.error.Size = サイズは、 {0} と {1} の間である必要があります。
 
 #
 # fine play

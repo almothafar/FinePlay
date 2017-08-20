@@ -8,10 +8,8 @@
 
 		ConfigFactory.defaultApplication().getString("bootstrap.cdn.script")
 	}else{
-		// provisional
-		routes.Assets.versioned("lib/bootstrap-4.0.0-beta-dist/js/bootstrap.min.js")
 		// npm
-		//routes.Assets.versioned("lib/bootstrap/dist/js/bootstrap.min.js")
+		routes.Assets.versioned("lib/bootstrap/dist/js/bootstrap.min.js")
 	}
 }
 

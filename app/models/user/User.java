@@ -326,7 +326,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 					break;
 				default :
 
-					throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.CONSTRAINTS_SIZE, 0, ROLE_COUNT_MAX) + " :" + i);
+					throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + i);
 			}
 
 			i++;
@@ -346,7 +346,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 
 		if (!(1 <= roles.size())) {
 
-			throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.CONSTRAINTS_SIZE, 0, ROLE_COUNT_MAX) + " :" + roles.size());
+			throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + roles.size());
 		}
 
 		setRoles(roles);

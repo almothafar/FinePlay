@@ -16,6 +16,8 @@ import java.time.chrono.MinguoDate;
 import java.time.chrono.ThaiBuddhistDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.format.TextStyle;
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,6 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
 import java.util.SortedSet;
@@ -32,6 +35,8 @@ import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
+import java.util.function.Function;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -39,9 +44,32 @@ import javax.inject.Inject;
 import javax.security.auth.login.AccountException;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
+import javax.validation.ValidationProviderResolver;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.NegativeOrZero;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern.Flag;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.internal.SessionImpl;
+import org.hibernate.validator.HibernateValidator;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -52,7 +80,7 @@ import common.system.MessageKeys;
 import common.utils.DateTimes;
 import controllers.user.UserService;
 import play.mvc.Controller;
-import models.framework.application.Jsr303Bean;
+import models.framework.application.Jsr380Bean;
 import models.framework.application.PlayBean;
 import models.framework.application.FinePlayBean;
 import models.system.System.PermissionsAllowed;
@@ -60,6 +88,9 @@ import models.user.User;
 import play.api.PlayException;
 import play.cache.AsyncCacheApi;
 import play.cache.SyncCacheApi;
+import play.data.Form;
+import play.data.FormFactory;
+import play.data.validation.ValidationError;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.i18n.Lang;
@@ -96,6 +127,9 @@ public class Application extends Controller {
 
 	@Inject
 	private UserService userService;
+
+	@Inject
+	private FormFactory formFactory;
 
 	@Authenticated(common.core.Authenticator.class)
 	@Transactional(readOnly = true)
@@ -305,33 +339,134 @@ public class Application extends Controller {
 
 	public Result validation() {
 
-		final Map<String, Object> playMap = new LinkedHashMap<>();
+		final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
 		final PlayBean playBean = new PlayBean();
-		final Set<ConstraintViolation<PlayBean>> playViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(playBean);
+		final Set<ConstraintViolation<PlayBean>> playViolations = validator.validate(playBean);
 		playViolations.stream().forEach(violation -> {
-			playMap.put(violation.getPropertyPath().toString(), messages.get(lang(), violation.getMessage()));
+			violation.getPropertyPath().toString();
+			messages.get(lang(), violation.getMessage());
 		});
 
-		final Map<String, Object> jsr303Map = new LinkedHashMap<>();
-
-		final Jsr303Bean jsr303Bean = new Jsr303Bean();
-		final Set<ConstraintViolation<Jsr303Bean>> jsr303Violations = Validation.buildDefaultValidatorFactory().getValidator().validate(jsr303Bean);
-		jsr303Violations.stream().forEach(violation -> {
-			jsr303Map.put(violation.getPropertyPath().toString(), messages.get(lang(), violation.getMessage()));
+		final Jsr380Bean jsr380Bean = new Jsr380Bean();
+		final Set<ConstraintViolation<Jsr380Bean>> jsr380Violations = validator.validate(jsr380Bean);
+		jsr380Violations.stream().forEach(violation -> {
+			violation.getPropertyPath().toString();
+			messages.get(lang(), violation.getMessage());
 		});
-
-		final Map<String, Object> fineplayMap = new LinkedHashMap<>();
 
 		final FinePlayBean fineplayBean = new FinePlayBean();
-		final Set<ConstraintViolation<FinePlayBean>> fineplayViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(fineplayBean);
+		final Set<ConstraintViolation<FinePlayBean>> fineplayViolations = validator.validate(fineplayBean);
 		fineplayViolations.stream().forEach(violation -> {
-			fineplayMap.put(violation.getPropertyPath().toString(), messages.get(lang(), violation.getMessage()));
+			violation.getPropertyPath().toString();
+			messages.get(lang(), violation.getMessage());
 		});
+
+		final Function<ValidationError, Entry<String, Object>> createErrorDisplayEntry = error -> {
+
+			String messageKeyAndTypeValue = error.key().replaceFirst("_", ".");
+			final boolean isSystem = error.key().startsWith("java_") || error.key().startsWith("system_");
+			if(isSystem){
+
+				messageKeyAndTypeValue = messageKeyAndTypeValue.replaceFirst("_", ".");
+			}
+			final String[] messageKeyAndType = messageKeyAndTypeValue.split("_");
+
+			final String messageKey = messageKeyAndType[0];
+			final String messageType = 1 == messageKeyAndType.length ? "" : "(" + messageKeyAndType[1] + ")";
+			final Object[] arguments = error.arguments().stream().map(argument -> {
+
+				switch (argument.getClass().getSimpleName()) {
+					case "Boolean" :
+
+						return Boolean.TRUE.equals(argument) ? 1 : 0;
+					case "Flag[]" :
+
+						final Flag[] flags = Flag[].class.cast(argument);
+						final List<String> flagList = Arrays.stream(flags).map(flag -> {
+
+							switch (flag.getValue()) {
+								case Pattern.CANON_EQ :
+
+									return "CANON_EQ";
+								case Pattern.CASE_INSENSITIVE :
+
+									return "CASE_INSENSITIVE";
+								case Pattern.COMMENTS :
+
+									return "COMMENTS";
+								case Pattern.DOTALL :
+
+									return "DOTALL";
+								case Pattern.UNICODE_CASE :
+
+									return "UNICODE_CASE";
+								case Pattern.MULTILINE :
+
+									return "MULTILINE";
+								case Pattern.UNICODE_CHARACTER_CLASS :
+
+									return "UNICODE_CHARACTER_CLASS";
+								case Pattern.UNIX_LINES :
+
+									return "UNIX_LINES";
+								default :
+
+									throw new IllegalStateException(":" + flag.getValue());
+							}
+						}).collect(Collectors.toList());
+
+						return flagList.toString();
+					default :
+
+						return argument;
+				}
+			}).collect(Collectors.toList()).toArray(new Object[0]);
+
+			final String constraintKey = messageKey;
+			final String constraint = messages.get(lang(), constraintKey, arguments);
+
+			final String errorKey = error.message();
+			final String errorMessage = messages.get(lang(), errorKey, arguments);
+
+			final String messageDescription = messageKey + messageType;
+
+			return new SimpleImmutableEntry<String, Object>(messageDescription, constraint+"<br>"+errorMessage);
+		};
+
+		final Form<PlayBean> playForm = formFactory.form(PlayBean.class).bindFromRequest();
+		final Map<String, Object> playMap = playForm.allErrors().stream().map(createErrorDisplayEntry)
+				.collect(Collectors.toMap(//
+						entry -> entry.getKey(), //
+						entry -> entry.getValue(), //
+						(u, v) -> {
+							throw new IllegalStateException(v.toString());
+						}, //
+						LinkedHashMap::new));
+
+		final Form<Jsr380Bean> jsr380Form = formFactory.form(Jsr380Bean.class).bindFromRequest();
+		final Map<String, Object> jsr380Map = jsr380Form.allErrors().stream().map(createErrorDisplayEntry)
+				.collect(Collectors.toMap(//
+						entry -> entry.getKey(), //
+						entry -> entry.getValue(), //
+						(u, v) -> {
+							throw new IllegalStateException(v.toString());
+						}, //
+						LinkedHashMap::new));
+
+		final Form<FinePlayBean> fineplayForm = formFactory.form(FinePlayBean.class).bindFromRequest();
+		final Map<String, Object> fineplayMap = fineplayForm.allErrors().stream().map(createErrorDisplayEntry)
+				.collect(Collectors.toMap(//
+						entry -> entry.getKey(), //
+						entry -> entry.getValue(), //
+						(u, v) -> {
+							throw new IllegalStateException(v.toString());
+						}, //
+						LinkedHashMap::new));
 
 		return ok(views.html.framework.application.validation.render(//
 				new TreeMap<>(playMap), //
-				new TreeMap<>(jsr303Map), //
+				new TreeMap<>(jsr380Map), //
 				new TreeMap<>(fineplayMap)));
 	}
 

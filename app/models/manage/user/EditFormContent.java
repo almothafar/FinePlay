@@ -42,7 +42,7 @@ public class EditFormContent {
 	private String rePassword;
 
 	// JSR-303
-	@Size(message = MessageKeys.CONSTRAINTS_SIZE, min = 1, max = User.ROLE_COUNT_MAX, groups = {Create.class, Update.class})
+	@Size(message = MessageKeys.JAVA_ERROR_SIZE, min = 1, max = User.ROLE_COUNT_MAX, groups = {Create.class, Update.class})
 	private List<Role> roles;
 
 	private Long companyId;

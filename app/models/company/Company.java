@@ -145,7 +145,7 @@ public class Company {
 				setNameJaJp(name);
 			} else {
 
-				throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.CONSTRAINTS_SIZE, 0, NAME_COUNT_MAX) + " :" + i);
+				throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, NAME_COUNT_MAX) + " :" + i);
 			}
 
 			i++;
@@ -160,7 +160,7 @@ public class Company {
 
 		if (!(1 <= names.size())) {
 
-			throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.CONSTRAINTS_SIZE, 0, NAME_COUNT_MAX) + " :" + names.size());
+			throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, NAME_COUNT_MAX) + " :" + names.size());
 		}
 
 		setNames(names);

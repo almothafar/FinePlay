@@ -62,15 +62,22 @@ country.flag = 🇺🇸
 
 
 #
-# JSR-303
+# JSR-303/380
 #
 
 
 
 
 
-#constraints.DecimalMax
-#constraints.DecimalMin
+
+
+
+
+
+
+
+
+
 
 
 

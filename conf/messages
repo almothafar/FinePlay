@@ -62,24 +62,31 @@ error.path.missing = Missing path
 error.path.result.multiple = Multiple results for the given path
 
 #
-# JSR-303
+# JSR-303/380
 #
 
-constraints.AssertFalse = must be false
-constraints.AssertTrue = must be true
-constraints.DecimalMax = must be less than or equal to {0}
-constraints.DecimalMin = must be greater than or equal to {0}
-#constraints.DecimalMax = must be less than ${inclusive == true ? 'or equal to ' : ''}{0}
-#constraints.DecimalMin = must be greater than ${inclusive == true ? 'or equal to ' : ''}{0}
-constraints.Digits = numeric value out of bounds (<{0} digits>.<{1} digits> expected)
-constraints.Future = must be in the future
-constraints.Max = must be less than or equal to {0}
-constraints.Min = must be greater than or equal to {0}
-constraints.NotNull = may not be null
-constraints.Null = must be null
-constraints.Past = must be in the past
-constraints.Pattern = must match "{0}"
-constraints.Size = size must be between {0} and {1}
+java.error.AssertFalse = must be false
+java.error.AssertTrue = must be true
+java.error.DecimalMax = must be less than {0,choice,0# |1# or equal to }{1}
+java.error.DecimalMin = must be greater than {0,choice,0# |1# or equal to }{1}
+java.error.Digits = numeric value out of bounds (<{0} digits>.<{1} digits> expected)
+java.error.Email = must be a well-formed email address
+java.error.Future = must be a future date
+java.error.FutureOrPresent = must be a date in the present or in the future
+java.error.Max = must be less than or equal to {0}
+java.error.Min = must be greater than or equal to {0}
+java.error.Negative = must be less than 0
+java.error.NegativeOrZero = must be less than or equal to 0
+java.error.NotBlank = must not be blank
+java.error.NotEmpty = must not be empty
+java.error.NotNull = must not be null
+java.error.Null = must be null
+java.error.Past = must be a past date
+java.error.PastOrPresent = must be a date in the past or in the present
+java.error.Pattern = must match "{1}"
+java.error.Positive = must be greater than 0
+java.error.PositiveOrZero = must be greater than or equal to 0
+java.error.Size = size must be between {0} and {1}
 
 #
 # fine play
