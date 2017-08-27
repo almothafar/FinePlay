@@ -52,6 +52,7 @@ var shake = function(selector, func){
 
 var showFromLeft = function(selector, func){
 
+	if($(selector).hasClass("d-none")){$(selector).css({'display':'none'}).removeClass("d-none")};
 	$(selector).effect( 'drop', {'mode':'show','direction':'left'}, 400, func);
 }
 
@@ -62,6 +63,7 @@ var hideToLeft = function(selector, func){
 
 var showFromRight = function(selector, func){
 
+	if($(selector).hasClass("d-none")){$(selector).css({'display':'none'}).removeClass("d-none")};
 	$(selector).effect( 'drop', {'mode':'show','direction':'right'}, 400, func);
 }
 
@@ -72,6 +74,7 @@ var hideToRight = function(selector, func){
 
 var showFromUp = function(selector, func){
 
+	if($(selector).hasClass("d-none")){$(selector).css({'display':'none'}).removeClass("d-none")};
 	$(selector).effect( 'drop', {'mode':'show','direction':'up'}, 400, func);
 }
 
@@ -82,6 +85,7 @@ var hideToUp = function(selector, func){
 
 var showFromDown = function(selector, func){
 
+	if($(selector).hasClass("d-none")){$(selector).css({'display':'none'}).removeClass("d-none")};
 	$(selector).effect( 'drop', {'mode':'show','direction':'down'}, 400, func);
 }
 
@@ -258,12 +262,12 @@ var getContent = function() {
 
 var enableHelp = function() {
 
-	$("#helpButton").show();
+	$("#helpButton").removeClass("d-none");
 }
 
 var enablePrint = function() {
 
-	$("#printButton").show();
+	$("#printButton").removeClass("d-none");
 }
 
 var ready = function(selector, func){

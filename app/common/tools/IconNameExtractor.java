@@ -15,20 +15,19 @@ class IconNameExtractor {
 	public static void main(String[] args) throws Exception {
 
 		final List<String> fontAwesomeIconNames = getFontAwesomeIconNames();
-		final Path fontAwesome = Paths.get(".", "conf", "development", "design", "icon", "font-awesome.txt");
+		final Path fontAwesome = Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome.txt");
 		Files.write(fontAwesome, fontAwesomeIconNames, StandardCharsets.UTF_8);
+		System.out.println("Created :" + fontAwesome);
 
 		final List<String> materialDesignIconNames = getMaterialDesignIconNames();
-		final Path materialDesignIcons = Paths.get(".", "conf", "development", "design", "icon", "material-design.txt");
+		final Path materialDesignIcons = Paths.get(".", "conf", "resources", "development", "design", "icon", "material-design.txt");
 		Files.write(materialDesignIcons, materialDesignIconNames, StandardCharsets.UTF_8);
+		System.out.println("Created :" + materialDesignIcons);
 
 		final List<String> icoFontNames = getIcoFontNames();
-		final Path icoFont = Paths.get(".", "conf", "development", "design", "icon", "icofont.txt");
+		final Path icoFont = Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt");
 		Files.write(icoFont, icoFontNames, StandardCharsets.UTF_8);
-
-		final List<String> whhgIconNames = getWhhgIconNames();
-		final Path whhg = Paths.get(".", "conf", "development", "design", "icon", "whhg.txt");
-		Files.write(whhg, whhgIconNames, StandardCharsets.UTF_8);
+		System.out.println("Created :" + icoFont);
 	}
 
 	private static final Pattern PATTERN_FONTAWESOME = Pattern.compile("\\.fa-(?<iconName>.*):before.*");
@@ -93,34 +92,6 @@ class IconNameExtractor {
 		final List<String> iconNames = icoFontIconLines.stream().map(line -> {
 
 			final Matcher matcher = PATTERN_ICOFONT.matcher(line);
-			if (!matcher.matches()) {
-
-				throw new IllegalStateException("");
-			}
-
-			final String iconName = matcher.group("iconName");
-
-			return iconName;
-		}).collect(Collectors.toList());
-
-		return iconNames;
-	}
-
-	private static final Pattern PATTERN_WHHG = Pattern.compile("\\.icon-(?<iconName>.*):before.*");
-
-	private static List<String> getWhhgIconNames() throws IOException {
-
-		final Path path = Paths.get(".", "public", "lib", "whhg-font", "css", "whhg.css");
-		if (!Files.exists(path)) {
-
-			throw new RuntimeException(": " + path);
-		}
-
-		final List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-		final List<String> iconIconLines = lines.stream().filter(line -> line.startsWith(".icon-")).collect(Collectors.toList());
-		final List<String> iconNames = iconIconLines.stream().map(line -> {
-
-			final Matcher matcher = PATTERN_WHHG.matcher(line);
 			if (!matcher.matches()) {
 
 				throw new IllegalStateException("");

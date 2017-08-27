@@ -1,5 +1,6 @@
 package controllers.lab.application;
 
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -7,12 +8,14 @@ import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -21,6 +24,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -36,6 +40,7 @@ import common.system.MessageKeys;
 import common.utils.PDFs;
 import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.api.PlayException;
 import play.i18n.MessagesApi;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -115,13 +120,24 @@ public class Download extends Controller {
 
 			try (final PDPageContentStream stream = new PDPageContentStream(document, page)) {
 
+				final Path imagePath = Paths.get(".", "public", "images", lang().code(), "logo.png");
+				final BufferedImage bufferedImage = ImageIO.read(imagePath.toFile());
+				final int imageHeight = 38;
+				final float reduceRate = (float) imageHeight / bufferedImage.getHeight();
+				final int imageWidth = (int) ((float) bufferedImage.getWidth() * reduceRate);
+
+				final PDImageXObject image = PDImageXObject.createFromFileByContent(imagePath.toFile(), document);
+				float y = PDRectangle.A4.getHeight() - imageHeight;
+				stream.drawImage(image, 0, y, imageWidth, imageHeight);
+
 				stream.beginText();
 
 				final int fontSize = 36;
-				final PDFont pdFont = PDType0Font.load(document, Paths.get("/", "/Library", "Fonts", "Microsoft", "MS Gothic.ttf").toFile());
+				final PDFont pdFont = PDType0Font.load(document, getFontPath().toFile());
 				stream.setFont(pdFont, fontSize);
 
-				stream.newLineAtOffset(0, PDRectangle.A4.getHeight() - fontSize);
+				y = y - fontSize;
+				stream.newLineAtOffset(0, y);
 				stream.showText(messages.get(lang(), MessageKeys.WELCOME));
 
 				stream.newLineAtOffset(0, -fontSize);
@@ -136,6 +152,24 @@ public class Download extends Controller {
 		} catch (IOException e) {
 
 			throw new UncheckedIOException(e);
+		}
+	}
+
+	private Path getFontPath() {
+
+		final String os = System.getProperty("os.name").toLowerCase();
+		if (os.startsWith("mac")) {
+
+			return Paths.get("/", "/Library", "Fonts", "Microsoft", "MS Gothic.ttf");
+		} else if (os.startsWith("linux")) {
+
+			throw new PlayException("Font error.", "This server(Linux) is unsupported.");
+		} else if (os.startsWith("windows")) {
+
+			throw new PlayException("Font error.", "This server(Windows) is unsupported.");
+		} else {
+
+			throw new PlayException("Font error.", "This server OS is unsupported.");
 		}
 	}
 

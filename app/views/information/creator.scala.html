@@ -23,6 +23,7 @@
 
 		@libraries.standard.head()
 		@libraries.datatables.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/information/creator.css")'>
 	}
 
 	@body("information","creator"){
@@ -34,7 +35,7 @@
 		@components.container(Map("id"->"")){
 
 			<div class="jumbotron">
-				@components.image(Map("id"->"", "source"->myImageUrl, "rounded"->"true", "align"->"center", "alternate"->"My Picture of Gravatar", "style"->"width: 200px; height: 200px;"))
+				@components.image(Map("id"->"myImage", "source"->myImageUrl, "rounded"->"true", "align"->"center", "alternate"->"My Picture of Gravatar"))
 				<div class="display-4">hiro20v</div>
 				<p class="lead">I am a hobbyist programmer.</p>
 				<hr class="m-y-2">

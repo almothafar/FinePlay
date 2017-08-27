@@ -16,27 +16,7 @@
 	@head("setting"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.fontExample{
-				overflow: hidden;
-			}
-			.fontExample>img{
-				height: 54px;
-			}
-			.fontEqual{
-				font-size:36px;
-				text-align:center;
-			}
-			.fontPreview{
-				background-color: white;
-				color: black;
-				font-size:36px;
-				overflow: hidden;
-				white-space: nowrap;
-				text-overflow: clip;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/setting/system/font.css")'>
 	}
 
 	@body("setting","system"){
@@ -50,7 +30,7 @@
 			@tasks(Map("id"->"", "task"->"font"))
 		}
 
-		@components.container(Map("id"->"", "fluid"->"true", "style"->"display:none;")){
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"d-none")){
 
 			<div class="row">
 				<div class="col-sm-12">

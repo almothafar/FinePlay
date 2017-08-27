@@ -7,32 +7,37 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
 
+import akka.actor.Cancellable;
 import akka.stream.javadsl.Source;
-import play.mvc.Controller;
 import models.components.PagingInfo;
 import models.system.System.PermissionsAllowed;
+import models.user.User;
+import models.user.User_;
 import play.Logger;
 import play.Logger.ALogger;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
 import play.libs.Comet;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
+import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
-import akka.actor.Cancellable;
 
 @PermissionsAllowed
 public class Application extends Controller {
@@ -40,9 +45,13 @@ public class Application extends Controller {
 	private static final ALogger LOGGER = Logger.of(Application.class);
 
 	@Inject
+	private JPAApi jpaApi;
+
+	@Inject
 	private WSClient ws;
 
 	@Authenticated(common.core.Authenticator.class)
+	@Transactional(readOnly = true)
 	public Result index(String state) {
 
 		switch (state) {
@@ -64,6 +73,9 @@ public class Application extends Controller {
 			case "authorization" :
 
 				return authorization();
+			case "jpql" :
+
+				return jpql();
 			case "serialtask" :
 
 				return serialTask();
@@ -119,6 +131,14 @@ public class Application extends Controller {
 	private static Result authorization() {
 
 		return ok(views.html.lab.application.authorization.render());
+	}
+
+	private Result jpql() {
+
+		final TypedQuery<User> query = jpaApi.em().createNamedQuery("User.findByLocale", User.class);
+		query.setParameter(User_.locale.getName(), lang().toLocale());
+
+		return ok(query.getResultList().toString());
 	}
 
 	private static Result serialTask() {

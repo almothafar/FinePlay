@@ -36,7 +36,7 @@
 		@if(!LocalDateTime.now().isBefore(LocalDateTime.parse(session().get(SessionKeys.OPERATION_TIMEOUT)))){
 
 			@confirmdialog()
-			@components.container(Map("id"->"contents", "fluid"->"true", "class"->"mt-5 mb-5", "style"->"text-align: center;")){
+			@components.container(Map("id"->"contents", "fluid"->"true", "class"->"mt-5 mb-5 text-center")){
 
 				@components.button(Map("id"->"confirmButton", "type"->"primary", "icon"->"fa fa-lock", "text"->Messages(MessageKeys.AUTHENTICATION), "data-toggle"->"modal", "data-target"->"#confirmDialog"))
 			}

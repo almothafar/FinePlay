@@ -15,16 +15,12 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-			div[id^="group_"]{
-			position: relative;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/fixedbar.css")'>
 	}
 
 	@body("lab","ui"){
 
-		@components.buttontoolbar(Map("id"->"toolbar", "class"->"p-3 justify-content-between w-100 bg-light", "style"->"border-bottom: 1px LightGray solid")){
+		@components.buttontoolbar(Map("id"->"toolbar", "class"->"p-3 justify-content-between w-100 bg-light")){
 
 			@components.buttongroup(Map("id"->""), List(
 				Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->"1", "enabled"->"false"),

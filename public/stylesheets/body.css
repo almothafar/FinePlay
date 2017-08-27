@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+#system_menu-left-corner{
+	position: absolute;
+	top: 0;
+	left:0;
+	width:0px;
+	height:0px;
+	opacity:0;
+}
+
+#system_menu>div>.navbar-brand>#system_logo{
+	height: 2.4rem;
+}
+
+#system_responsive-bar{
+	position: absolute;
+	top: 0;
+	z-index: 3090;
+	opacity: 0.3;
+	overflow: hidden;
+}
+
+#system_responsive-bar>.progress{
+	width: 10000px;
+}
+
+#system_responsive-bar>.progress>.progress-bar:nth-child(1){
+	width: 576px;
+}
+#system_responsive-bar>.progress>.progress-bar:nth-child(2){
+	width: 192px;
+}
+#system_responsive-bar>.progress>.progress-bar:nth-child(3){
+	width: 224px;
+}
+#system_responsive-bar>.progress>.progress-bar:nth-child(4){
+	width: 208px;
+}
+#system_responsive-bar>.progress>.progress-bar:nth-child(5){
+	width: 8800px;
+}

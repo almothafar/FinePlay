@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+.variation{
+	width: 80px;
+	text-align: center;
+	margin: 2px;
+	padding: 6px;
+	background-color: rgb(235, 242, 255);
+	border: 1px solid rgb(215, 222, 255);
+	border-radius: 6px;
+}
+
+.variation>.marker{
+	text-align:left;
+	font-size: 0.7rem;
+	color: lightgray;
+}
+.variation.adobe-japan1>.marker>i:nth-child(1){
+	color: #5cb85c;
+}
+.variation.hanyo-denshi>.marker>i:nth-child(2){
+	color: #17a2b8;
+}
+.variation.moji_joho>.marker>i:nth-child(3){
+	color: #f0ad4e;
+}
+.variation.msarg>.marker>i:nth-child(4){
+	color: #d9534f;
+}
+
+.variation>.character{
+	font-size: 3rem;
+}
+.variation.adobe-japan1>.character{
+	font-family: HiraginoSans-W3;
+}
+.variation.hanyo-denshi>.character{
+	font-family: IPAmjMincho;
+}
+.variation.moji_joho>.character{
+	font-family: IPAmjMincho;
+}
+.variation.msarg>.character{
+
+}
+
+.variation.selected .fa-info-circle{
+	color: white;
+	background-color: @models.user.User.Theme.valueOf(session.get(models.user.User.THEME)).getPrimary().getBackgroundColor().toHex();
+}
+
+.inputText{
+	font-size: 3rem;
+}
+.inputText.adobe-japan1{
+	font-family: HiraginoSans-W3;
+}
+.inputText.hanyo-denshi{
+	font-family: IPAmjMincho;
+}

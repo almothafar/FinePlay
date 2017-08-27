@@ -47,7 +47,7 @@
 					@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
 							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
 						)){
-						<div style="word-wrap:break-word;">
+						<div class="wordwrap">
 							<div id="ajaxMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
 							<div id="ajaxDescription">-</div>
 						</div>

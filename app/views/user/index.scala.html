@@ -36,9 +36,7 @@
 			@fixedUsersData
 		</pre>
 
-		<div class="d-none d-sm-block">
-			<div style="height:100px;">
-			</div>
+		<div class="d-none d-sm-block py-5">
 		</div>
 
 		@components.container(Map()){
@@ -48,7 +46,7 @@
 			<div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 p-0">
 				@components.card(Map("id"->"signInPanel", "class"->"text-xs-center shadow m-3")){
 					<div class="card-header">
-						@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.language + "/logo.png").toString, "align"->"center", "alternate"->"logo", "style"->"height:54px;"))
+						@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"logo"))
 						@if(isDev()){
 							@components.button(Map("id"->"stamp", "type"->"danger", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.DEVELOPMENT)))
 						}
@@ -56,9 +54,9 @@
 					<div class="card-body text-xs-left">
 					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin") {
 						<h5 class="form-signin-heading">@Messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
-						<div id="selectUserContainer" style="display: none;">
+						<div id="selectUserContainer d-none">
 							<div class="row justify-content-center">
-								<div class="my-3"><i id="selectUser" class="fa fa-inverse fa-square fa-2x fa-user-o rounded-circle bg-success shadow" style="padding: 10px 12px;" aria-hidden="true"></i></div>
+								<div class="my-3"><i id="selectUser" class="fa fa-inverse fa-square fa-2x fa-user-o rounded-circle bg-success shadow" aria-hidden="true"></i></div>
 							</div>
 						</div>
 						@if(form.hasGlobalErrors) {
@@ -82,7 +80,7 @@
 
 								<div class="checkbox">
 									<label>
-										<input id="@User.STOREACCOUNT" type="checkbox" name="@User.STOREACCOUNT" class="form-control" style="width:auto; display: inline-block;" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).getValue.orElse(""))))> @Messages(MessageKeys.USER_STORE__ACCOUNT)
+										<input id="@User.STOREACCOUNT" type="checkbox" name="@User.STOREACCOUNT" class="form-control d-inline-block" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).getValue.orElse(""))))> @Messages(MessageKeys.USER_STORE__ACCOUNT)
 									</label>
 								</div>
 								@components.button(Map("id"->"signInButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-sign-in", "text"->Messages(MessageKeys.USER_SIGNIN), "default"->"true", "class"->"float-right"))
@@ -255,12 +253,12 @@
 
 			if(1 <= fixedUsersData.length){
 
-				$('#selectUserContainer').show();
+				$('#selectUserContainer').removeClass("d-none");
 			}
 		}
-		<div class="container" style="text-align: center;">
+		<div class="container text-center">
 
-			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "style"->"color:lightgray;"))
+			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-secondary"))
 		</div>
 	}
 }

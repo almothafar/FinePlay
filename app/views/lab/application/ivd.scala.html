@@ -16,71 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.variation{
-				width: 80px;
-				text-align: center;
-				margin: 2px;
-				padding: 6px;
-				background-color: rgb(235, 242, 255);
-				border: 1px solid rgb(215, 222, 255);
-				border-radius: 6px;
-			}
-			.variation.selected{
-				color: white;
-				background-color: @models.user.User.Theme.valueOf(session.get(models.user.User.THEME)).getPrimary().getBackgroundColor().toHex();
-			}
-
-			.variation>.marker{
-				text-align:left;
-				font-size: 0.7rem;
-				color: lightgray;
-			}
-			.variation.adobe-japan1>.marker>i:nth-child(1){
-				color: #5cb85c;
-			}
-			.variation.hanyo-denshi>.marker>i:nth-child(2){
-				color: #17a2b8;
-			}
-			.variation.moji_joho>.marker>i:nth-child(3){
-				color: #f0ad4e;
-			}
-			.variation.msarg>.marker>i:nth-child(4){
-				color: #d9534f;
-			}
-
-			.variation>.character{
-				font-size: 3rem;
-			}
-			.variation.adobe-japan1>.character{
-				font-family: HiraginoSans-W3;
-			}
-			.variation.hanyo-denshi>.character{
-				font-family: IPAmjMincho;
-			}
-			.variation.moji_joho>.character{
-				font-family: IPAmjMincho;
-			}
-			.variation.msarg>.character{
-
-			}
-
-			.variation.selected .fa-info-circle{
-				color: white;
-				background-color: @models.user.User.Theme.valueOf(session.get(models.user.User.THEME)).getPrimary().getBackgroundColor().toHex();
-			}
-
-			.inputText{
-				font-size: 3rem;
-			}
-			.inputText.adobe-japan1{
-				font-family: HiraginoSans-W3;
-			}
-			.inputText.hanyo-denshi{
-				font-family: IPAmjMincho;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/application/ivd.css")'>
 	}
 
 	@body("lab","application"){
@@ -164,7 +100,7 @@
 								<div id="variations" class="row mb-3">
 								</div>
 							}
-							<div style="word-wrap:break-word;">
+							<div class="wordwrap">
 								<div id="ajaxMessage" class="lead"></div>
 								<div id="ajaxDescription">-</div>
 							</div>
@@ -345,15 +281,15 @@
 
 			$('#variations').on('click', '.variation', function (e) {
 
-				$('#variations>.variation.selected').removeClass('selected');
+				$('#variations>.variation.bg-primary').removeClass('bg-primary');
 				var variation = $(this);
-				variation.addClass('selected');
+				variation.addClass('bg-primary');
 			});
 
 			$('#okButton').on('click', function (e) {
 
 				var button = $(this);
-				var selectedCharacter = $('#variations>.variation.selected').children('.character').text();
+				var selectedCharacter = $('#variations>.variation.bg-primary').children('.character').text();
 
 				// possibility of dependant browser
 				insertText('#adobe-japan1Text', adobeJapan1Position[0], adobeJapan1Position[1], selectedCharacter);

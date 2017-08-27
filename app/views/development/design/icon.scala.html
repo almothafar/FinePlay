@@ -17,20 +17,7 @@
 		@libraries.materialicons.head()
 		@libraries.icofont.head()
 		@libraries.standard.head()
-		@style(){
-
-			.icon_container{
-				width: 100px;
-				text-align: center;
-				float: left;
-			}
-			.icon_container>.icon_body{
-			}
-			.icon_container>.icon_caption{
-				font-size: 0.7rem;
-				word-wrap: break-word;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/development/design/icon.css")'>
 	}
 
 	@body("development","design"){
@@ -66,7 +53,7 @@
 				<div class="row mt-3 icon_list">
 
 					@for(fontAwesomeIconName <- fontAwesomeIconNames) {
-					<div class="icon_container mb-3">
+					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("fa fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
 						<div class="icon_caption">@fontAwesomeIconName</div>
 					</div>
@@ -82,7 +69,7 @@
 				<div class="row mt-3 icon_list">
 
 					@for(materialDesignIconName <- materialDesignIconNames) {
-					<div class="icon_container mb-3">
+					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("mi mi-" + materialDesignIconName + " fa-2x"), "class"->"icon_body"))
 						<div class="icon_caption">@materialDesignIconName</div>
 					</div>
@@ -98,7 +85,7 @@
 				<div class="row mt-3 icon_list">
 
 					@for(icoFontName <- icoFontNames) {
-					<div class="icon_container mb-3">
+					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("icofont icofont-" + icoFontName + " fa-2x"), "class"->"icon_body"))
 						<div class="icon_caption">@icoFontName</div>
 					</div>

@@ -765,6 +765,8 @@ public class MessageKeys {
 
   public static final String VARIATION = "variation";
 
+  public static final String VERSION = "version";
+
   public static final String VERTICAL = "vertical";
 
   public static final String VIDEO = "video";

@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.section{
+
+	width:280px;
+}
+.seat{
+
+	width:140px;
+	height:48px;
+}
+.employee{
+
+	text-align: center;
+	z-index:1000;
+}
+
+#Usagi_Tsukino{background-color:#efd03f;}
+#Ami_Mizuno{background-color:#0275d8;}
+#Rei_Hino{background-color:#930f1c;}
+#Makoto_Kino{background-color:#1b7830;}
+#Minako_Aino{background-color:#e96414;}
+#Chibiusa{background-color:#ec99bc;}
+#Haruka_Tenoh{background-color:#0e257f;}
+#Michiru_Kaioh{background-color:#267d68;}
+#Setsuna_Meioh{background-color:#0e150a;}
+#Hotaru_Tomoe{background-color:#62529e;}

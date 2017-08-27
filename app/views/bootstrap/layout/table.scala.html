@@ -16,58 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.table-w100 {
-
-				word-break: break-all;
-			}
-
-			@@media (min-width: 992px) {
-				.table-lg-w100  {
-					word-break: break-all;
-				}
-				.table-lg-w100  tr>td:nth-child(1) {
-					min-width: 400px;
-				}
-				.table-lg-w100 tr>td:nth-child(2) {
-					max-width: 800px;
-				}
-				.table-lg-w100 tr>td:nth-child(3) {
-					max-width: 800px;
-				}
-			}
-
-			.table-wrapper-responsive {
-				display: block;
-				width: 100%;
-				overflow-x: auto;
-				-ms-overflow-style: -ms-autohiding-scrollbar;
-			}
-			.table-w991p-w100  {
-				word-break: break-all;
-			}
-			.table-w991p-w100  tr>td:nth-child(1) {
-				width: 30%;
-			}
-			.table-w991p-w100 tr>td:nth-child(2) {
-				width: 35%;
-			}
-			.table-w991p-w100 tr>td:nth-child(3) {
-				width: 35%;
-			}
-			@@media (max-width: 991px) {
-				.table-w991p-w100 {
-					width: 991px;
-					max-width: 991px;
-				}
-			}
-			@@media (min-width: 992px) {
-				.table-w991p-w100 {
-					width: 100%;
-				}
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/bootstrap/layout/table.css")'>
 	}
 
 	@body("lab","application"){

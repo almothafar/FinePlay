@@ -37,9 +37,9 @@ public class Design extends Controller {
 
 	private static class LazyHolder {
 
-		private static List<String> FONTAWESOME_ICON_NAMES = initIconNames(Paths.get(".", "conf", "development", "design", "icon", "font-awesome.txt"));
-		private static List<String> MATERIAL_DESIGN_ICON_NAMES = initIconNames(Paths.get(".", "conf", "development", "design", "icon", "material-design.txt"));
-		private static List<String> ICOFONT_ICON_NAMES = initIconNames(Paths.get(".", "conf", "development", "design", "icon", "icofont.txt"));
+		private static List<String> FONTAWESOME_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome.txt"));
+		private static List<String> MATERIAL_DESIGN_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "material-design.txt"));
+		private static List<String> ICOFONT_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt"));
 	}
 
 	private static List<String> initIconNames(final Path path) {

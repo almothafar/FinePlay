@@ -11,7 +11,7 @@
 
 <nav id="system_menu" class="navbar navbar-expand-md fixed-top navbar-light bg-light shadow">
 	<a class="navbar-brand" href="@controllers.user.routes.User.index()">
-		@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/brand.png").toString, "alternate"->"brand", "style"->"height:1.8rem;"))
+		@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/brand.png").toString, "alternate"->"brand"))
 	</a>
 	@components.button(Map("id"->"", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "data-toggle"->"collapse", "data-target"->"#collapsingWorks", "aria-controls"->"collapsingWorks", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
 	<div class="collapse navbar-collapse" id="collapsingWorks">

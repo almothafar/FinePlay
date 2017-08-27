@@ -9,15 +9,15 @@
 
 @views.html.components.button(Map("id"->"debugButton", "type"->"danger", "icon"->"fa fa-bug", "text"->"", "title"->"Debug", "data-content"->("""
 
-	<button id="applyBorderButton" type="button" class="btn btn-outline-primary"><i id="" class="fa fa-square-o" style=""></i></button>
+	<button id="applyBorderButton" type="button" class="btn btn-outline-primary"><i id="" class="fa fa-square-o"></i></button>
 	<script>$("#applyBorderButton").on("click", function(){$("*").css("border", "solid 1px lavender");});</script>
 
-	<button id="showResponsiveButton" type="button" class="btn btn-outline-primary"><i id="" class="fa fa-desktop" style=""></i></button>
-	<script>$("#showResponsiveButton").on("click", function(){$("#system_responsive-bar").show();});</script>
+	<button id="showResponsiveButton" type="button" class="btn btn-outline-primary"><i id="" class="fa fa-desktop"></i></button>
+	<script>$("#showResponsiveButton").on("click", function(){$("#system_responsive-bar").removeClass("d-none");});</script>
 
 	<div><strong>Play</strong>&nbsp;<span id="Play_ver"></span></div>
 	<div><strong>jQuery</strong>&nbsp;<span id="jQuery_ver"></span></div>
 	<script>$("#Play_ver").text($("#debugButton").data("playver"));</script>
 	<script>$("#jQuery_ver").text($.fn.jquery);</script>
 
-"""), "data-placement"->"bottom", "style"->"display:none;", "data-playver"->play.core.PlayVersion.current))
+"""), "data-placement"->"bottom", "class"->"d-none", "data-playver"->play.core.PlayVersion.current))

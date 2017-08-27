@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.fontExample{
+	overflow: hidden;
+}
+.fontExample>img{
+	height: 54px;
+}
+.fontEqual{
+	font-size:36px;
+	text-align:center;
+}
+.fontPreview{
+	background-color: white;
+	color: black;
+	font-size:36px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: clip;
+}

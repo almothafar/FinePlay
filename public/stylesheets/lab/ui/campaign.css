@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+#campaigns{
+	display:-webkit-box;
+	display: box;
+	overflow-x:scroll;
+	background-color:gainsboro;
+}
+#campaigns>.campaign{
+	width: 260px;
+	height: 280px;
+}

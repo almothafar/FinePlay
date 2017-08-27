@@ -1,4 +1,5 @@
 @import java.time._
+@import java.time.format._
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
@@ -16,9 +17,16 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 
+
+
 @datetime(dateTime: LocalDateTime) = @{
 
 	common.utils.DateTimes.getClientDateTime(dateTime)
+}
+
+@datetimeFormat(dateTime: LocalDateTime) = @{
+
+	DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(dateTime)
 }
 
 @datetime_now() = @{
@@ -39,9 +47,10 @@
 			Map("text"->JSONs.toJSON(user.getRoles())),
 			Map("text"->(if(user.getCompany != null){user.getCompany.getId.toString}else{""})),
 			Map("text"->(if(user.getCompany != null){user.getCompany.getNames.getOrElse(lang.locale, user.getCompany.getNames.get(Locale.US))}else{""})),
-			Map("text"->datetime(user.getExpireDateTime).toString),
-			Map("text"->(if(user.getSignInDateTime != null){datetime(user.getSignInDateTime).toString}else{""})),
-			Map("text"->(if(user.getSignOutDateTime != null){datetime(user.getSignOutDateTime).toString}else{""})),
+			Map("text"->datetimeFormat(datetime(user.getExpireDateTime))),
+			Map("text"->(if(user.getSignInDateTime != null){datetimeFormat(datetime(user.getSignInDateTime))}else{""})),
+			Map("text"->(if(user.getSignOutDateTime != null){datetimeFormat(datetime(user.getSignOutDateTime))}else{""})),
+			Map("text"->datetimeFormat(datetime(user.getUpdateDateTime))),
 			Map("text"->datetime(user.getUpdateDateTime).toString)
 		);
 
@@ -75,7 +84,7 @@
 		@libraries.standard.head()
 		@libraries.datatables.head()
 		@style(){span.custom-file-control:before{content: "@Messages(MessageKeys.SELECT__FILE)";}}
-		<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "";}</style>
+		<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "" !important;}</style>
 		@libraries.pickadate.head()
 		@libraries.select2.head()
 	}
@@ -121,7 +130,8 @@
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_EXPIRE)),
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNIN)),
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNOUT)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VERSION)))),
 					Map("id"->""),
 					tbodyRowToColumnsList(users),
 					Map("id"->""),Tuple2(Map("id"->""),List(
@@ -133,7 +143,8 @@
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_EXPIRE)),
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNIN)),
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNOUT)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME)))))
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VERSION)))),
 				)
 			</div>
 		</div>
@@ -563,7 +574,7 @@
 							"expireDateTime":columns[5],
 							"signInDateTime":("" != columns[6] ? columns[6]:null),
 							"signOutDateTime":("" != columns[7] ? columns[7]:null),
-							"@User.UPDATEDATETIME":columns[8]
+							"@User.UPDATEDATETIME":columns[9]
 						};
 						users.push(user);
 					});
@@ -576,7 +587,7 @@
 
 				// ////////// Upload //////////
 
-				var template = '<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "fileName";}</style>';
+				var template = '<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "fileName" !important;}</style>';
 				$('#uploadFile').on('change', function(e){
 
 					var selectedFilePath = document.uploadForm.uploadFile.value;

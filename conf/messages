@@ -440,6 +440,7 @@ user = User
 user.change_userid = Change User ID
 value = Value
 variation = Variation
+version = Version
 vertical = Vertical
 video = Video
 warning = Warning

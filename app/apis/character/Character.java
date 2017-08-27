@@ -48,7 +48,7 @@ public class Character extends Controller {
 
 	private static Map<Integer, BaseCharacter> initCodePointToCharacterMap() {
 
-		final Path IVD_SequencesPath = Paths.get(".", "conf", "character", "IVD_Sequences.txt");
+		final Path IVD_SequencesPath = Paths.get(".", "conf", "resources", "character", "IVD_Sequences.txt");
 		if (!Files.exists(IVD_SequencesPath)) {
 
 			throw new RuntimeException("Not exists IVD_Sequences. : " + IVD_SequencesPath);

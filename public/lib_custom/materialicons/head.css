@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.mi {
+	display: inline-block;
+	font: normal normal normal 14px / 1 'Material Icons';
+	font-size: 1.3em;
+	text-rendering: auto;
+	vertical-align: -0.18em;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: 'liga';
+}

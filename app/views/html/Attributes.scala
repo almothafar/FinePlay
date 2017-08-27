@@ -7,8 +7,10 @@ object Attributes {
 			prop.getOrElse("class", "");
 	}
 
+	@deprecated
 	def styleValue(prop: scala.collection.immutable.Map[String, String]): String = {
 
+			System.out.println("!!!!!!!!!! deprecated !!!!!!!!!!");
 			prop.getOrElse("style", "");
 	}
 

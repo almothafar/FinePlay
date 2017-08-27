@@ -236,18 +236,26 @@ body {
 #system_help-header {
 	border-bottom: 1px LightGray solid;
 }
+#system_help-header>#system_help-menu{
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: initial;
+}
 
 #system_help-content {
 	position: absolute;
 	width: 100%;
-	x_height: 100%;
-	top: 164px;
+	top: 167px;
 	bottom: 0px;
 }
 #system_help-content>#system_help-main {
 	position: relative;
 	height: 100%;
-	overflow: auto
+	overflow: auto;
+}
+#system_help-content>#system_help-main>#help-wrapper>#help-top {
+	height:10px;
+	xmargin-top: initial;
 }
 
 /* Side menu */
@@ -430,6 +438,26 @@ label.required:after{
 
 .blur {
 	filter: blur(6px);
+}
+
+/* Opacity */
+
+.opacity-25 {
+	opacity: 0.25 !important;
+}
+
+.opacity-50 {
+	opacity: 0.5 !important;
+}
+
+.opacity-75 {
+	opacity: 0.75 !important;
+}
+
+/* Wordwrap */
+
+.wordwrap {
+	word-wrap: break-word;
 }
 
 /* Project style */

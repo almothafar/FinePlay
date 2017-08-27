@@ -3,13 +3,8 @@
 @()
 
 <!-- Coped for Bootstrap 4 (and bootbox) -->
-@style(){.bootbox .modal-header {display: block;}.bootbox .close {float: right; margin-top: 0px !important;}}
-@style(){.bootbox.modal .btn-default {color: #007bff; background-color: transparent; background-image: none; border-color: @models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getBackgroundColor().toHex()}.modal-footer .btn + .btn {margin-bottom: 0;margin-left: 5px;}}
+<link rel='stylesheet' href='@routes.Assets.versioned("lib_custom/bootbox/head.css")'>
 
-<script type='text/javascript'
-	src='@routes.Assets.versioned("lib/bootbox/bootbox.min.js")'></script>
+<script type='text/javascript' src='@routes.Assets.versioned("lib/bootbox/bootbox.min.js")'></script>
 
-@script(){
-
-	bootbox.setDefaults({locale: "@Messages(MessageKeys.BOOTBOX_LANG)"});
-}
+<script type='text/javascript' src='@routes.Assets.versioned("lib_custom/bootbox/last.js")'></script>

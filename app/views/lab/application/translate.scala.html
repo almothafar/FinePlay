@@ -69,13 +69,13 @@
 					@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
 							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
 						)){
-						<div style="word-wrap:break-word;">
+						<div class="wordwrap">
 							<div id="ajaxMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
 							<div id="ajaxDescription">-</div>
 						</div>
 						@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
 					}
-					<div class="mt-3 mb-3" style="text-align: right;">
+					<div class="mt-3 mb-3 text-right">
 
 						@components.button(Map("id"->"translateButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-exchange", "text"->Messages(MessageKeys.TRANSLATE), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
 					</div>

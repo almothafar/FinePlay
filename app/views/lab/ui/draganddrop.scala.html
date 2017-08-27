@@ -19,23 +19,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.section{
-
-				width:280px;
-			}
-			.seat{
-
-				width:140px;
-				height:48px;
-			}
-			.employee{
-
-				text-align: center;
-				z-index:1000;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/draganddrop.css")'>
 	}
 
 	@body("lab","ui"){
@@ -62,26 +46,26 @@
 									<tr>
 										<td class="seat" colspan="2">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Usagi Tsukino", "style"->"background-color:#efd03f;"))
+												@components.badge(Map("id"->"Usagi_Tsukino", "icon"->"fa fa-user", "text"->"Usagi Tsukino"))
 											</div>
 										</td>
 									</tr>
 									<tr>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Ami Mizuno", "style"->"background-color:#0275d8;"))
+												@components.badge(Map("id"->"Ami_Mizuno", "icon"->"fa fa-user", "text"->"Ami Mizuno"))
 											</div>
 										</td>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Rei Hino", "style"->"background-color:#930f1c;"))
+												@components.badge(Map("id"->"Rei_Hino", "icon"->"fa fa-user", "text"->"Rei Hino"))
 											</div>
 										</td>
 									</tr>
 									<tr>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Makoto Kino", "style"->"background-color:#1b7830;"))
+												@components.badge(Map("id"->"Makoto_Kino", "icon"->"fa fa-user", "text"->"Makoto Kino"))
 											</div>
 										</td>
 										<td class="seat">
@@ -98,7 +82,7 @@
 										</td>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Minako Aino", "style"->"background-color:#e96414;"))
+												@components.badge(Map("id"->"Minako_Aino", "icon"->"fa fa-user", "text"->"Minako Aino"))
 											</div>
 										</td>
 									</tr>
@@ -112,19 +96,19 @@
 									<tr>
 										<td class="seat" colspan="2">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Chibiusa", "style"->"background-color:#ec99bc;"))
+												@components.badge(Map("id"->"Chibiusa", "icon"->"fa fa-user", "text"->"Chibiusa"))
 											</div>
 										</td>
 									</tr>
 									<tr>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Haruka Ten'oh", "style"->"background-color:#0e257f;"))
+												@components.badge(Map("id"->"Haruka_Tenoh", "icon"->"fa fa-user", "text"->"Haruka Ten'oh"))
 											</div>
 										</td>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Michiru Kaioh", "style"->"background-color:#267d68;"))
+												@components.badge(Map("id"->"Michiru_Kaioh", "icon"->"fa fa-user", "text"->"Michiru Kaioh"))
 											</div>
 										</td>
 									</tr>
@@ -136,14 +120,14 @@
 										</td>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Setsuna Meioh", "style"->"background-color:#0e150a;"))
+												@components.badge(Map("id"->"Setsuna_Meioh", "icon"->"fa fa-user", "text"->"Setsuna Meioh"))
 											</div>
 										</td>
 									</tr>
 									<tr>
 										<td class="seat">
 											<div class="employee">
-												@components.badge(Map("id"->"", "icon"->"fa fa-user", "text"->"Hotaru Tomoe", "style"->"background-color:#62529e;"))
+												@components.badge(Map("id"->"Hotaru_Tomoe", "icon"->"fa fa-user", "text"->"Hotaru Tomoe"))
 											</div>
 										</td>
 										<td class="seat">

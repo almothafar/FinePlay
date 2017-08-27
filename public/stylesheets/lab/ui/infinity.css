@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+div[id^="group_"]{
+	position: relative;
+}
+
+#toolbar{
+	border-bottom: 1px LightGray solid;
+}
+
+.infinityItem>img{
+	width: 64px;
+	height: 64px;
+}

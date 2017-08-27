@@ -1,8 +1,13 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
 
 	<persistence-unit name="defaultPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
 		<non-jta-data-source>DefaultDS</non-jta-data-source>
+
+		<mapping-file>META-INF/mappings/user/User.xml</mapping-file>
+
 		<class>models.base.LocaleConverter</class>
 		<class>models.base.ZoneIdConverter</class>
 		<class>models.user.User</class>
@@ -14,7 +19,9 @@
 		<class>models.company.organization.OrganizationUnit</class>
 		<class>models.inquiry.Inquiry</class>
 		<class>models.framework.datetime.DateTime</class>
+
 		<properties>
+
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
@@ -33,8 +40,13 @@
 	</persistence-unit>
 
 	<persistence-unit name="defaultPersistenceUnit_prod" transaction-type="RESOURCE_LOCAL">
+
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
 		<non-jta-data-source>DefaultDS</non-jta-data-source>
+
+		<mapping-file>META-INF/mappings/user/User.xml</mapping-file>
+
 		<class>models.base.LocaleConverter</class>
 		<class>models.base.ZoneIdConverter</class>
 		<class>models.user.User</class>
@@ -46,7 +58,9 @@
 		<class>models.company.organization.OrganizationUnit</class>
 		<class>models.inquiry.Inquiry</class>
 		<class>models.framework.datetime.DateTime</class>
+
 		<properties>
+
 			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> -->
 			<property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
 

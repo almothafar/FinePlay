@@ -16,6 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/campaign.css")'>
 	}
 
 	@body("lab","application"){
@@ -46,53 +47,53 @@
 					</div>
 
 					<div class="row mb-3">
-						<div class="w-100 shadow-inset" style="display:-webkit-box; display: box; overflow-x:scroll; background-color:gainsboro;">
-								@components.card(Map("id"->"", "class"->"shadow my-3 ml-3", "style"->"width: 260px; height: 280px;", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"shadow my-3 ml-3", "style"->"width: 260px; height: 280px;", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"shadow my-3 ml-3", "style"->"width: 260px; height: 280px;", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"shadow my-3 ml-3", "style"->"width: 260px; height: 280px;", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"shadow my-3 ml-3", "style"->"width: 260px; height: 280px;", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								<div class="pl-3"></div>
+						<div id="campaigns" class="w-100 shadow-inset">
+							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
+								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+								<div class="card-body">
+									<p class="card-text draft"><span>Description.</span></p>
+								</div>
+								<div class="card-footer">
+									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+								</div>
+							}
+							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
+								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+								<div class="card-body">
+									<p class="card-text draft"><span>Description.</span></p>
+								</div>
+								<div class="card-footer">
+									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+								</div>
+							}
+							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
+								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+								<div class="card-body">
+									<p class="card-text draft"><span>Description.</span></p>
+								</div>
+								<div class="card-footer">
+									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+								</div>
+							}
+							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
+								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+								<div class="card-body">
+									<p class="card-text draft"><span>Description.</span></p>
+								</div>
+								<div class="card-footer">
+									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+								</div>
+							}
+							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
+								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+								<div class="card-body">
+									<p class="card-text draft"><span>Description.</span></p>
+								</div>
+								<div class="card-footer">
+									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+								</div>
+							}
+							<div class="pl-3"></div>
 						</div>
 					</div>
 

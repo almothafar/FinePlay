@@ -42,7 +42,7 @@ public class Document extends Controller {
 
 	public Result troubleshoot() {
 
-		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("development/document/troubleshoot/troubleshoot_" + lang().code().replace('-', '_') + ".md"); //
+		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/development/document/troubleshoot/troubleshoot_" + lang().code().replace('-', '_') + ".md"); //
 				final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
 
 			final String markdown = reader.lines().collect(Collectors.joining("\n"));
@@ -56,7 +56,7 @@ public class Document extends Controller {
 
 	public Result faq() {
 
-		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("development/document/faq/faq_" + lang().code().replace('-', '_') + ".json"); //
+		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/development/document/faq/faq_" + lang().code().replace('-', '_') + ".json"); //
 				final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
 
 			final String troubleshootJson = reader.lines().collect(Collectors.joining("\n"));

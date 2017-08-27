@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+div[id^="group_"]{
+	position: relative;
+}
+
+#toolbar{
+	border-bottom: 1px LightGray solid;
+}

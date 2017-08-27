@@ -232,7 +232,7 @@ public class Library extends Controller {
 
 		// fixed.
 
-		final String fromTemplate = Templates.fill("template/template.mustache", new EventNotify("Our Customer", "My Company"));
+		final String fromTemplate = Templates.fill("resources/lab/library/mustache/template.mustache", new EventNotify("Our Customer", "My Company"));
 
 		// free.
 
@@ -328,7 +328,7 @@ public class Library extends Controller {
 
 	public static Result tdmol() {
 
-		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("lab/library/2por.pdb"); //
+		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/lab/library/tdmol/2por.pdb"); //
 				final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
 
 			final String pdb = reader.lines().collect(Collectors.joining("\n"));

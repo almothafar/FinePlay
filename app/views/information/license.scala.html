@@ -23,8 +23,7 @@
 
 		@libraries.standard.head()
 		@libraries.datatables.head()
-		@style(){
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/information/license.css")'>
 	}
 
 	@body("information","license"){
@@ -41,10 +40,10 @@
 				</div>
 
 					<div class="d-none d-sm-block">
-				@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.language + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3", "style"->"width:320px;"))
+				@components.image(Map("id"->"logoImage", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3"))
 					</div>
 					<div class="d-sm-none">
-				@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.language + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3", "style"->"width:240px;"))
+				@components.image(Map("id"->"smLogoImage", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3"))
 					</div>
 				<h3 class="headline">This system was built using a fine<span style="color:hotpink;">✿</span>play.</h3>
 				<hr class="m-y-2">

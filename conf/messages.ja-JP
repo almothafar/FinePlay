@@ -440,6 +440,7 @@ user = ユーザー
 user.change_userid = ユーザーID変更
 value = 値
 variation = バリエーション
+version = バージョン
 vertical = 垂直
 video = ビデオ
 warning = 警告

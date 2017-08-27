@@ -19,7 +19,7 @@
 	<div class="carousel-inner" role="listbox">
 		@for(i <- 0 to elements.size - 1){
 		<div class="carousel-item @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))">
-			@components.image(Map("id"->"", "source"->elements(i).getOrElse("source", "#"), "rounded"->elements(i).getOrElse("rounded", ""), "roundedType"->elements(i).getOrElse("roundedType", ""), "alternate"->elements(i).getOrElse("alternate", ""), "style"->elements(i).getOrElse("style", "")))
+			@components.image(Map("id"->"", "source"->elements(i).getOrElse("source", "#"), "rounded"->elements(i).getOrElse("rounded", ""), "roundedType"->elements(i).getOrElse("roundedType", ""), "alternate"->elements(i).getOrElse("alternate", ""), "x_style"->elements(i).getOrElse("x_style", "")))
 			<div class="carousel-caption d-none d-md-block">
 				<h3><i class="@elements(i).getOrElse("icon", "")"></i>@if(!elements(i).getOrElse("icon", "").isEmpty() && !elements(i).getOrElse("caption", "").isEmpty()){&nbsp}@elements(i).getOrElse("caption", "")</h3>
 				<p>@elements(i).getOrElse("description", "")</p>

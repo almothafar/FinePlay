@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+#system_menu>.navbar-brand>img{
+	height:1.8rem;
+}
+
+#system_menu .nav-item.active {
+
+	border-radius: 4px;
+	background-color: gainsboro;
+	border: solid 1px lightgray;
+}
+@media (max-width: 34em) {
+
+	.nav-item{
+		float:none !important
+	}
+	.top::after{
+		display: table;
+		clear: both;
+		content: "";
+	}
+}
+
+#fixedUsers{
+	overflow-y:scroll;
+}
+
+.fixedUser>.fixedUser_info{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	font-size: 1rem;
+}
+.fixedUser{
+	width: 120px;
+	text-align: center;
+	float: left;
+	padding: 4px 4px;
+}
+.fixedUser .fixedUser_body{
+	padding: 10px 12px;
+}
+.fixedUser>.fixedUser_caption{
+	font-size: 1rem;
+	word-wrap: break-word;
+	color: white;
+	text-shadow:0px 1px 0px #999,0px 2px 0px #888;
+}
+

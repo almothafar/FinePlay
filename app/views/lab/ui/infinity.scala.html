@@ -16,6 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/infinity.css")'>
 	}
 
 	@body("lab","ui"){
@@ -67,7 +68,7 @@
 
 						var newItem = $('' +
 							'<li class="media mb-4 infinityItem">' +
-								'@Html(Strings.removeNewLine(components.image(Map("id"->"", "class"->"d-flex mr-3", "source"->routes.Assets.versioned("images/favicon.png").toString, "style"->"width: 64px; height: 64px;", "fluid"->"true", "alternate"->"Picture")).toString))' +
+								'@Html(Strings.removeNewLine(components.image(Map("id"->"", "class"->"d-flex mr-3", "source"->routes.Assets.versioned("images/favicon.png").toString, "fluid"->"true", "alternate"->"Picture")).toString))' +
 								'<div class="media-body draft">' +
 									'<h5 class="mt-0 mb-1"><span class="draft-text">List-based media object</span></h5>' +
 									'<span class="draft-text">Cras sit amet nibh libero, in gravida nulla.' +

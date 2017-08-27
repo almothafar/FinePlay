@@ -31,7 +31,7 @@ libraryDependencies ++= Seq(
 //  "org.apache.tomcat" % "tomcat-servlet-api" % "8.0.33",
   "org.hibernate" % "hibernate-core" % "5.2.10.Final",					// LGPL 5.2.10
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.10.Final",			//
-  "org.hibernate.validator" % "hibernate-validator" % "6.0.1.Final",	// Apache 6.0.1 // into play include
+  "org.hibernate.validator" % "hibernate-validator" % "6.0.2.Final",	// Apache 6.0.2 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b08",
   "org.dom4j" % "dom4j" % "2.0.1",
   "javax.json" % "javax.json-api" % "1.1",
@@ -76,7 +76,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "handsontable" % "0.32.0",						// MIT 1.10.15
   "org.webjars.bower" % "slick-carousel" % "1.6.0",						// MIT 1.7.1
 //  "org.webjars.npm" % "cropperjs" % "1.0.0",							// MIT 1.0.0-rc.3
-  "org.webjars.npm" % "d3" % "4.9.1",									// BSD-3-Clause license 4.10.0
+  "org.webjars.npm" % "d3" % "4.10.0",									// BSD-3-Clause license 4.10.0
   "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.2.0
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0

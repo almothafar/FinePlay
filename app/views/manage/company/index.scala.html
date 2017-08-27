@@ -54,7 +54,7 @@
 		@libraries.standard.head()
 		@libraries.datatables.head()
 		@style(){span.custom-file-control:before{content: "@Messages(MessageKeys.SELECT__FILE)";}}
-		<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "";}</style>
+		<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "" !important;}</style>
 		@libraries.pickadate.head()
 		<style>
 
@@ -76,7 +76,7 @@
 			@tasks(Map("id"->"", "task"->"list"))
 		</div>
 
-		@components.container(Map("id"->"masterContent", "fluid"->"true", "style"->"display: none;")){
+		@components.container(Map("id"->"masterContent", "fluid"->"true", "class"->"d-none")){
 
 			<div class="mt-3 mb-3">
 				@components.button(Map("id"->"searchButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-search", "text"->(Messages(MessageKeys.SEARCH)+Html("&nbsp;<i class=\"fa fa-caret-down\"></i>")), "data-toggle"->"collapse", "data-target"->"#readCollapse", "aria-controls"->"readCollapse"))
@@ -391,7 +391,7 @@
 
 				// ////////// Upload //////////
 
-				var template = '<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "fileName";}</style>';
+				var template = '<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "fileName" !important;}</style>';
 				$('#uploadFile').on('change', function(e){
 
 					var selectedFilePath = document.uploadForm.uploadFile.value;
@@ -571,7 +571,7 @@
 				showFromLeft('#masterContent');
 			}else{
 
-				$('#masterContent').show();
+				$('#masterContent').removeClass("d-none");
 			}
 		}
 	}

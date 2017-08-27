@@ -15,7 +15,7 @@
 
 @customCheckbox(columnName: String, isChecked: Boolean, isShow: Boolean) = {
 
-	<label class="custom-control custom-checkbox" style="@("display:none;".when(!isShow))">
+	<label class="custom-control custom-checkbox @("d-none".when(!isShow))">
 		<input class="custom-control-input settingDisplayColumns" type="checkbox" name="@columnName" value="@columnName" @("checked".when(isChecked))>
 		<span class="custom-control-indicator"></span>
 		@columnName
@@ -38,6 +38,7 @@
 					@customCheckbox(Messages(MessageKeys.USER_SIGNIN), true, true)
 					@customCheckbox(Messages(MessageKeys.USER_SIGNOUT), true, true)
 					@customCheckbox((Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME)), true, true)
+					@customCheckbox(Messages(MessageKeys.VERSION), false, false)
 				</div>
 			</div>
 		</div>

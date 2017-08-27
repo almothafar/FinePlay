@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.bootbox .modal-header {
+	display: block;
+}
+.bootbox .close {
+	float: right;
+	margin-top: 0px !important;
+}
+.bootbox.modal .btn-default {
+	background-color: transparent;
+	background-image: none;
+}
+.modal-footer .btn + .btn {
+	margin-bottom: 0;
+	margin-left: 5px;
+}
