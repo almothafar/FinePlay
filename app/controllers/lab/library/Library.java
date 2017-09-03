@@ -47,9 +47,9 @@ public class Library extends Controller {
 			case "chartjs" :
 
 				return chartjs();
-			case "fullCalendar" :
+			case "fullcalendar" :
 
-				return fullCalendar();
+				return fullcalendar();
 			case "bootstrapslider" :
 
 				return bootstrapslider();
@@ -127,9 +127,9 @@ public class Library extends Controller {
 		return ok(views.html.lab.library.chartjs.render());
 	}
 
-	public static Result fullCalendar() {
+	public static Result fullcalendar() {
 
-		return ok(views.html.lab.library.fullCalendar.render());
+		return ok(views.html.lab.library.fullcalendar.render());
 	}
 
 	public static Result bootstrapslider() {

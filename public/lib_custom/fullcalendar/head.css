@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+.fc-state-default{
+
+	background-color: transparent;
+	background-image: none;
+	border-color: #ddd;
+	box-shadow: none;
+}
+.fc-state-active, .fc-state-disabled, .fc-state-down, .fc-state-hover{
+
+	background-color: #e6e6e6;
+	box-shadow: none;
+}
+.fc-event, .fc-event:hover, .ui-widget .fc-event {
+
+	color: #fff !important;
+	text-decoration: none
+}

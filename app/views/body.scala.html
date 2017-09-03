@@ -52,27 +52,11 @@
 	}
 }
 
-@token() = @{
-
-	val takenOpt = CSRF.getToken(request());
-	if(takenOpt.isPresent()){
-		takenOpt.get().name + "=" + takenOpt.get().value;
-	}else{
-		"csrfToken=testToken"
-	}
-}
-
-@addToken(call:play.api.mvc.Call) = @{
-
-	val csrfUrl = try{
-		helper.CSRF(call)
-	}catch{
-		case e: Exception => call + "?csrfToken=testToken"
-	}
-	csrfUrl
-}
-
 <body>
+
+	@token()
+
+	@theme()
 
 	<div id="system_base">
 
@@ -336,7 +320,7 @@
 			var timeout = "10000";
 			$.ajax({
 				method: "POST",
-				url: "@addToken(apis.system.routes.Logger.log())",
+				url: Routes.apis.system.Logger.log().url + "?" + getToken(),
 				data: $('#reportErrorContent').val(),
 				contentType: 'application/json',
 				dataType: "json",
@@ -464,7 +448,7 @@
 
 			if($('#system_help-content').hasClass('help-notready')){
 
-				var helpLink = '/@currentSection/@currentWork/help?@token';
+				var helpLink = '/@currentSection/@currentWork/help?'+ getToken();
 				var timeout = "10000";
 				$.ajax({
 					method:"GET",

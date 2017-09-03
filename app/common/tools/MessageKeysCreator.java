@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.AbstractMap.SimpleImmutableEntry;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
@@ -29,6 +30,8 @@ class MessageKeysCreator {
 		final SortedMap<String, String> constMap = readMessages();
 
 		writeJavaFile(constMap);
+
+		writeJavaScriptFile(constMap);
 	}
 
 	private static SortedMap<String, String> readMessages() throws IOException {
@@ -107,5 +110,19 @@ class MessageKeysCreator {
 
 		final Path constantsPath = Paths.get(".", "app");
 		javaFile.writeTo(constantsPath);
+	}
+
+	private static void writeJavaScriptFile(final SortedMap<String, String> constMap) throws IOException {
+
+		final Path path = Paths.get(".", "public", "javascripts", "messages.js");
+
+		final List<String> lines = new ArrayList<>();
+		lines.add("'use strict';");
+		lines.add("");
+		lines.add("var MessageKeys = {");
+		lines.addAll(constMap.entrySet().stream().map(entry -> "\t" + entry.getKey() + ": \"" + entry.getValue() + "\",").collect(Collectors.toList()));
+		lines.add("}");
+
+		Files.write(path, lines, StandardCharsets.UTF_8);
 	}
 }

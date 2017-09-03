@@ -16,13 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.form-group.row:nth-child(odd) {
-
-				background-color: rgb(250, 250, 250);
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/bootstrap/layout/grid.css")'>
 	}
 
 	@body("lab","application"){
@@ -158,7 +152,5 @@
 		@libraries.standard.last()
 		@libraries.slick.last()
 		@libraries.holder.last()
-		@script(){
-		}
 	}
 }

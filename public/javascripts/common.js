@@ -185,12 +185,16 @@ var notifyAlert = function(type, text, wait){
 var notify = function(text, wait){
 
 	var isHtml = /<(".*?"|'.*?'|[^'"])*?>/.test(text);
-	var notification = $('<div class="notification m-3" style="">' + text + '</div>');
+	var notification = $('<div class="m-3">' + text + '</div>');
 	var notificationId = new Date().getTime() + Math.floor( Math.random()*1000 );
 	notification.attr('id', notificationId).hide();
 	if(!isHtml){
 
 		notification.css({ backgroundColor:"WhiteSmoke", borderRadius:".25rem", padding:"0.7rem", fontSize:"0.9rem", border:"1px solid lightgray"});
+		notification.addClass("system_notification");
+	} else {
+
+		notification.children().addClass("system_notification");
 	}
 
 	$('#system_notifications').prepend(notification);

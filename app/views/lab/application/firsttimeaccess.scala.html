@@ -17,29 +17,7 @@
 
 		@libraries.standard.head()
 		@libraries.slick.head()
-		@style(){
-
-			/* Hide initialize */
-			.slick-container>div>img{
-				visibility: hidden;
-			}
-			#firstDialog .modal-body{
-				height:400px;
-				padding: 0;
-			}
-			.slick-prev{
-				left: 25px;
-				z-index: 1;
-			}
-			.slick-next{
-				right: 25px;
-				z-index: 1;
-			}
-			.slick-dots{
-				bottom: 25px;
-				z-index: 1;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/application/firsttimeaccess.css")'>
 	}
 
 	@body("lab","application"){
@@ -84,51 +62,6 @@
 		@libraries.standard.last()
 		@libraries.slick.last()
 		@libraries.holder.last()
-		@script(){
-
-			var taskKey = "firstAccess";
-			var documentId = "guided";
-
-			if(window.localStorage){
-
-				$("#LocalStorage").removeClass("badge-danger").addClass("badge-success");
-
-				var savedDataJson = window.localStorage.getItem(taskKey);
-				if(!savedDataJson){
-
-					savedDataJson = JSON.stringify({})
-					window.localStorage.setItem(taskKey, savedDataJson);
-				}
-
-				var savedData = JSON.parse(savedDataJson);
-				var isGuided = savedData[documentId];
-
-				if(!isGuided){
-
-					$('#firstDialog').modal('show');
-
-					$('#firstDialog').on('shown.bs.modal', function (e) {
-
-						$('.slick-container').slick({
-							dots: true
-						});
-					})
-
-					savedData[documentId] = true;
-
-					var saveDataJson = JSON.stringify(savedData);
-					window.localStorage.setItem(taskKey, saveDataJson);
-				}
-
-				$('#resetButton').prop('disabled', false);
-
-				$('#resetButton').on('click', function(){
-
-					savedData[documentId] = false;
-					var saveDataJson = JSON.stringify(savedData);
-					window.localStorage.setItem(taskKey, saveDataJson);
-				});
-			}
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/application/firsttimeaccess.js")'></script>
 	}
 }

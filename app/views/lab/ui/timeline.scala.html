@@ -15,28 +15,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.event-content-frame {
-				position: relative;
-			}
-			@@media (min-width:768px) {
-
-				.event-date {
-				}
-				.event-content-frame {
-					border-left: 5px #eceeef solid;
-				}
-				.event-content {
-					margin-left: 1rem
-				}
-				.event-type {
-					position: absolute;
-					top: 10px;
-					left: -24px;
-				}
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/timeline.css")'>
 	}
 
 	@body("lab","timeline"){
@@ -61,7 +40,7 @@
 						</div>
 						<div class="col-md-9 event-content-frame">
 							<span class="fa-stack fa-lg event-type d-none d-md-block">
-								<i class="fa fa-circle fa-stack-2x" style="color:Brown;"></i>
+								<i class="fa fa-circle fa-stack-2x Maya_Kitajima"></i>
 								<i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="card event-content mb-3">
@@ -80,7 +59,7 @@
 						</div>
 						<div class="col-md-9 event-content-frame">
 							<span class="fa-stack fa-lg event-type d-none d-md-block">
-								<i class="fa fa-circle fa-stack-2x" style="color:Gold;"></i>
+								<i class="fa fa-circle fa-stack-2x Ayumi_Himekawa"></i>
 								<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="card event-content mb-3">
@@ -99,7 +78,7 @@
 						</div>
 						<div class="col-md-9 event-content-frame">
 							<span class="fa-stack fa-lg event-type d-none d-md-block">
-								<i class="fa fa-circle fa-stack-2x" style="color:Indigo;"></i>
+								<i class="fa fa-circle fa-stack-2x Chigusa_Tsukikage"></i>
 								<i class="fa fa-comments fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="card event-content mb-3">
@@ -118,7 +97,7 @@
 						</div>
 						<div class="col-md-9 event-content-frame">
 							<span class="fa-stack fa-lg event-type d-none d-md-block">
-								<i class="fa fa-circle fa-stack-2x" style="color:Purple;"></i>
+								<i class="fa fa-circle fa-stack-2x Masumi_Hayami"></i>
 								<i class="fa fa-phone fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="card event-content mb-3">
@@ -135,8 +114,5 @@
 		}
 
 		@libraries.standard.last()
-		@script(){
-
-		}
 	}
 }

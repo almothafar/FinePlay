@@ -35,17 +35,10 @@
 
 			<div class=" mt-3">
 
-				@components.button(Map("id"->"button", "type"->"primary", "icon"->"fa fa-comment-o", "text"->"Hello World."))
+				@components.badge(Map("id"->"", "type"->"success", "icon"->"fa fa-comment-o", "text"->message))
 			</div>
 		}
 
 		@libraries.standard.last()
-		@script(){
-
-			$('#button').on('click', function(){
-
-				alert('@message');
-			});
-		}
 	}
 }

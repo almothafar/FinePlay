@@ -29,30 +29,6 @@
 		}
 
 		@libraries.standard.last()
-		@script(){
-
-			$('#notfoundModal').modal({backdrop:'static'});
-
-			$('#notfoundModalOk').on('click', function (e) {
-
-				window.location.href = '@controllers.home.routes.Home.index()';
-			});
-
-			$(window).on('keydown', function(e){
-
-				var keyCode = e.which ? e.which : e.keyCode;
-				if (13 == keyCode) {
-
-					if($("#notfoundModal").is(".show")){
-
-						$('#notfoundModalOk').trigger("click");
-					}else{
-
-					}
-
-					e.preventDefault();
-				}
-			})
-		}
+		<script src='@routes.Assets.versioned("javascripts/error/notfound.js")'></script>
 	}
 }

@@ -17,6 +17,7 @@
 	@head("Bootstrap"){
 
 		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/bootstrap/component/nav.css")'>
 	}
 
 	@body("bootstrap","component"){
@@ -149,7 +150,7 @@
 								Map("name"->"55555", "icon"->"fa fa-spinner fa-pulse", "link"->"#S55555")
 							))
 						</nav>
-						<div data-spy="scroll" data-target="#scrollspy-nav" data-offset="0" class="scrollspy-help" style="height: 200px; position: relative; overflow: auto">
+						<div data-spy="scroll" data-target="#scrollspy-nav" data-offset="0" class="scrollspy-help">
 
 							<h1 class="bd-title" id="S11111">
 								11111

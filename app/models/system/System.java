@@ -150,6 +150,7 @@ public class System {
 		}
 	}
 
+	@Deprecated
 	public static class ColorType {
 
 		private final Color backgroundColor;
@@ -201,6 +202,7 @@ public class System {
 		}
 	}
 
+	@Deprecated
 	public static class Color {
 
 		private final javafx.scene.paint.Color colorImpl;

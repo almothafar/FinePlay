@@ -19,7 +19,7 @@
 	}
 }
 
-<div id="@prop.getOrElse("id", "")" class="card border-@prop.getOrElse("border", "") bg-@prop.getOrElse("type", "") text-@prop.getOrElse("text", "") @alignClass() @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<div id="@prop.getOrElse("id", "")" class="card border-@prop.getOrElse("border", "") bg-@prop.getOrElse("type", "") text-@prop.getOrElse("text", "") @alignClass() @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 
 	@content
 </div>

@@ -16,65 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.contentFrame{
-
-				position: relative;
-				width: 100%;
-				height: 600px;
-				overflow: hidden;
-			}
-			.textContent{
-
-				position: absolute;
-				color: white;
-				background-color: rgba(255, 255, 255, 0.33);
-				padding: 7px 20px 7px 20px;
-				margin: 130px 160px 130px 160px;
-				font-size: 3rem;
-				border-radius: 8px;
-				white-space: nowrap;
-			}
-			@@media (min-width:576px) {
-
-				.textContent{
-
-					padding: 10px 30px 10px 30px;
-					margin: 130px 220px 130px 220px;
-					font-size: 5rem;
-				}
-			}
-			.imageContent{
-
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-position: center center;
-				background-size: cover;
-				transform: scale3d(1.5, 1.5, 1.5);
-			}
-			.contentFrame:nth-child(1)>.imageContent{
-
-				background-image: url(@routes.Assets.versioned("images/signins/IMG_2680.JPG").toString);
-			}
-			.contentFrame:nth-child(2)>.imageContent{
-
-				background-image: url(@routes.Assets.versioned("images/signins/IMG_2715.JPG").toString);
-			}
-			.contentFrame:nth-child(3)>.imageContent{
-
-				background-image: url(@routes.Assets.versioned("images/signins/IMG_2726.JPG").toString);
-			}
-			.contentFrame:nth-child(4)>.imageContent{
-
-				background-image: url(@routes.Assets.versioned("images/signins/IMG_2757.JPG").toString);
-			}
-			.contentFrame:nth-child(5)>.imageContent{
-
-				background-image: url(@routes.Assets.versioned("images/signins/IMG_2758.JPG").toString);
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/parallax.css")'>
 	}
 
 	@body("lab","ui"){
@@ -102,54 +44,16 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"img1":"@routes.Assets.versioned("images/signins/IMG_2680.JPG").toString",
+			"img2":"@routes.Assets.versioned("images/signins/IMG_2715.JPG").toString",
+			"img3":"@routes.Assets.versioned("images/signins/IMG_2726.JPG").toString",
+			"img4":"@routes.Assets.versioned("images/signins/IMG_2757.JPG").toString",
+			"img5":"@routes.Assets.versioned("images/signins/IMG_2758.JPG").toString"
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.holder.last()
-		@script(){
-
-			$(document).ready(function () {
-
-				var breadcrumbHeight = 15 + $('.breadcrumb').outerHeight(true); //79
-
-				var redraw = function(){
-
-					var contentFrames = $('.contentFrame');
-					contentFrames.each(function(frameIndex){
-
-						var image = $(this).find('.imageContent');
-						var imageTop = image.offset().top;
-						var imageHeight = image.outerHeight();
-
-						var framePosition = $('.contentFrame').eq(frameIndex).offset().top;
-						var reviseFramePosition = framePosition - menuHeight() - breadcrumbHeight; //0 〜 -600
-
-						image.css('background-position-y', reviseFramePosition / 10);
-
-						var text = $(this).find('.textContent');
-						text.css('left', reviseFramePosition + 'px');
-					});
-				}
-
-				getContent().scroll(function(e){
-
-					redraw();
-				});
-
-				var timer = false;
-				$(window).resize(function() {
-
-					if (timer !== false) {
-
-						clearTimeout(timer);
-						return;
-					}
-					timer = setTimeout(function() {
-
-						redraw();
-					}, 100);
-				});
-
-				redraw();
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/ui/parallax.js")'></script>
 	}
 }

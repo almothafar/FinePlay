@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+.contentFrame{
+
+	position: relative;
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+}
+.textContent{
+
+	position: absolute;
+	color: white;
+	background-color: rgba(255, 255, 255, 0.33);
+	padding: 7px 20px 7px 20px;
+	margin: 130px 160px 130px 160px;
+	font-size: 3rem;
+	border-radius: 8px;
+	white-space: nowrap;
+}
+@media (min-width:576px) {
+
+	.textContent{
+
+		padding: 10px 30px 10px 30px;
+		margin: 130px 220px 130px 220px;
+		font-size: 5rem;
+	}
+}
+.imageContent{
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-position: center center;
+	background-size: cover;
+	transform: scale3d(1.5, 1.5, 1.5);
+}

@@ -19,19 +19,7 @@
 
 		@libraries.standard.head()
 		@libraries.parsley.head()
-		@style(){
-
-			.form-gropu>div>.parsley-success {
-				color: #468847;
-				background-color: #DFF0D8;
-				border: 1px solid #D6E9C6;
-			}
-			.form-gropu>div>.parsley-error {
-				color: #B94A48;
-				background-color: #F2DEDE;
-				border: 1px solid #EED3D7;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/parsley.css")'>
 	}
 
 	@body("lab","library"){
@@ -93,16 +81,6 @@
 		@libraries.standard.last()
 		@libraries.parsley.last()
 		@libraries.parsleyvalidators.last()
-		@script(){
-
-			window.Parsley.addValidator('hiragana',　ParsleyValidators.HiraganaValidator);
-			window.Parsley.addValidator('katakana',　ParsleyValidators.KatakanaValidator);
-			$('#parsleyForm').parsley();
-
-			window.Parsley.on('form:error', function() {
-
-				shake('#parsleyPanel');
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/parsley.js")'></script>
 	}
 }

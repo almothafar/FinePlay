@@ -10,7 +10,7 @@
 
 @(prop:scala.collection.immutable.Map[String, String], first:scala.collection.immutable.Map[String, String], previous:Map[String, String], pages:Seq[scala.collection.immutable.Map[String, String]], next:scala.collection.immutable.Map[String, String], last:scala.collection.immutable.Map[String, String])
 
-<nav id="@prop.getOrElse("id", "")" class="container @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<nav id="@prop.getOrElse("id", "")" class="container @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	<ul class="pagination pagination-@prop.getOrElse("size", "") justify-content-center">
 		<li class="page-item @("disabled".when(!Boolean.valueOf(first.getOrElse("enabled", "true"))))">
 			<a class="page-link" href="@first.getOrElse("link", "#")" aria-label="First">

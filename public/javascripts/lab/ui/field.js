@@ -52,3 +52,5 @@ var initEraceableField = function(selector){
 		});
 	});
 }
+
+initEraceableField(".eraceable");

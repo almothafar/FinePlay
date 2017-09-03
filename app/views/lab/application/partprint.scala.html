@@ -16,9 +16,6 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-		}
 	}
 
 	@body("lab","application"){
@@ -55,17 +52,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		@script(){
-
-			$('#printContent0Button').on('click', function(){
-
-				printPart('#printContent0');
-			});
-
-			$('#printContent1Button').on('click', function(){
-
-				printPart('#printContent1');
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/application/partprint.js")'></script>
 	}
 }

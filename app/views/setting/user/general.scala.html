@@ -35,29 +35,6 @@
 
 		@libraries.standard.last()
 		@libraries.select2.last()
-		@script(){
-
-			$(document).ready(function() {
-
-				$("#update@User.ZONEID").select2({
-
-				});
-			});
-
-			$( "#update@User.LOCALE" ).change(function(e) {
-
-				$('#updateForm').submit();
-			});
-
-			$( "#update@User.ZONEID" ).change(function(e) {
-
-				$('#updateForm').submit();
-			});
-
-			$( "#update@User.THEME" ).change(function(e) {
-
-				$('#updateForm').submit();
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/setting/user/general.js")'></script>
 	}
 }

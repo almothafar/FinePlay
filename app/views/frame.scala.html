@@ -4,9 +4,7 @@
 
 <html
 	lang="@lang.code"
-	class="theme-@session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase"
-	data-primary-background-color="@models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getBackgroundColor().toHex()"
-	data-primary-border-color="@models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getBorderColor().toHex()"
+	class="theme-@session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase mode-@common.system.System.getInjector().instanceOf(classOf[play.api.Environment]).mode.toString.toLowerCase"
 >
 	@content
 </html>

@@ -19,16 +19,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			.mol-container {
-				width: 100%;
-				height: 400px;
-			}
-			.mol-container>canvas {
-				left: 15px !important;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/tdmol.css")'>
 	}
 
 	@body("lab","library"){
@@ -54,26 +45,11 @@
 		}
 
 		<pre id="pdb" class="d-none">
-			@pdb
+@pdb
 		</pre>
 
 		@libraries.standard.last()
 		@libraries.tdmol.last()
-		@script(){
-
-			var viewer = $3Dmol.createViewer($("#viewer"));
-			viewer.setBackgroundColor(0x00000000, 0.2);
-			viewer.addModel( $('#pdb').text(), "pdb" );
-			viewer.setStyle({}, {cartoon:{color:"spectrum"}});
-			viewer.render();
-
-			setInterval(function() {
-
-				if(viewer) {
-
-					viewer.rotate(1);
-				}
-			}, 50);
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/tdmol.js")'></script>
 	}
 }

@@ -7,13 +7,13 @@
 
 	if(value != 0 && max != 0){
 
-		String.valueOf((value*100) / max)
+		String.valueOf(((value*100) / max) / 10 * 10)
 	}else{
 
 		"0"
 	}
 }
 
-<div id="@prop.getOrElse("id", "")" class="progress" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
-	<div class="progress-bar progress-bar-@("striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) progress-bar-@("animated".when(Boolean.valueOf(prop.getOrElse("animated", "false")))) bg-@prop.getOrElse("type", "primary") @Attributes.classValue(prop)" role="progressbar" aria-valuenow="@prop.getOrElse("value", "0")" aria-valuemin="0" aria-valuemax="@prop.getOrElse("max", "100")" style="width: @percent(prop.getOrElse("value", "0"),prop.getOrElse("max", "100"))%;"></div>
+<div id="@prop.getOrElse("id", "")" class="progress" @Html(Attributes.datas(prop))>
+	<div class="progress-bar progress-bar-@("striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) progress-bar-@("animated".when(Boolean.valueOf(prop.getOrElse("animated", "false")))) bg-@prop.getOrElse("type", "primary") w-@percent(prop.getOrElse("value", "0"),prop.getOrElse("max", "100")) @Attributes.classValue(prop)" role="progressbar" aria-valuenow="@prop.getOrElse("value", "0")" aria-valuemin="0" aria-valuemax="@prop.getOrElse("max", "100")"></div>
 </div>

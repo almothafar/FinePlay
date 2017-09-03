@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+.event-content-frame {
+	position: relative;
+}
+@media (min-width:768px) {
+
+	.event-date {
+	}
+	.event-content-frame {
+		border-left: 5px #eceeef solid;
+	}
+	.event-content {
+		margin-left: 1rem
+	}
+	.event-type {
+		position: absolute;
+		top: 10px;
+		left: -24px;
+	}
+}
+
+.alert-rich {
+	background-color: whitesmoke;
+	border: lightgray;
+	color: dimgray;
+}
+.alert-rich button.close {
+	position: initial;
+}
+
+#waitSlider{
+	width: 100%;
+}
+
+#richAlertImg{
+	width: 64px;
+	height: 64px;
+}

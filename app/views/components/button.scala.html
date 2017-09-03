@@ -9,7 +9,7 @@
 
 @(prop:scala.collection.immutable.Map[String, String])
 
-<button id="@prop.getOrElse("id", "")" type="@prop.getOrElse("action", "button")" class="btn btn-@("outline-".when(Boolean.valueOf(prop.getOrElse("outline", "false"))))@prop.getOrElse("type", "primary") @("active".when(Boolean.valueOf(prop.getOrElse("selected", "false")))) btn-@prop.getOrElse("size", "") @("default".when(Boolean.valueOf(prop.getOrElse("default", "false")))) btn-@("block".when(Boolean.valueOf(prop.getOrElse("block", "false")))) @Attributes.classValue(prop)" @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<button id="@prop.getOrElse("id", "")" type="@prop.getOrElse("action", "button")" class="btn btn-@("outline-".when(Boolean.valueOf(prop.getOrElse("outline", "false"))))@prop.getOrElse("type", "primary") @("active".when(Boolean.valueOf(prop.getOrElse("selected", "false")))) btn-@prop.getOrElse("size", "") @("default".when(Boolean.valueOf(prop.getOrElse("default", "false")))) btn-@("block".when(Boolean.valueOf(prop.getOrElse("block", "false")))) @Attributes.classValue(prop)" @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) @Html(Attributes.datas(prop))>
 	@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))@if(!prop.getOrElse("icon", "").isEmpty() && !prop.getOrElse("text", "").isEmpty()){&nbsp}@Html(prop.getOrElse("text", ""))
 	@components.badge(Map("type"->prop.getOrElse("badgeType", "secondary"), "pill"->"true", "text"->prop.getOrElse("badge", "")))
 </button>

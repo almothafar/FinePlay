@@ -18,34 +18,19 @@
 
 		@libraries.bootstrap.head()
 		@libraries.parsley.head()
-		@style(){
-
-			.form-gropu>div>.parsley-success {
-				color: #468847;
-				background-color: #DFF0D8;
-				border: 1px solid #D6E9C6;
-			}
-			.form-gropu>div>.parsley-error {
-				color: #B94A48;
-				background-color: #F2DEDE;
-				border: 1px solid #EED3D7;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/inquiry/inquiry.css")'>
 	}
 
 	@top.body("top","inquiry"){
 
-		<div class="d-none d-sm-block">
-			<div style="height:50px;">
-			</div>
-		</div>
+		@components.adjust.spacetop()
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
 			<div class="row">
 				<div class="col-md-1 col-lg-2 col-xl-3">
 				</div>
-				<div class="col-md-10 col-lg-8 col-xl-6">
+				<div class="col-md-10 col-lg-8 col-xl-6 p-0">
 					@components.card(Map("id"->"inquiryPanel", "class"->"shadow m-3")){
 						<div class="card-header">
 							@Messages(MessageKeys.INQUIRY)
@@ -126,32 +111,12 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"hasErrors":@(form.hasGlobalErrors || form.hasErrors)
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.parsley.last()
-		@script(){
-
-			@if(form.hasGlobalErrors || form.hasErrors) {
-
-				shake('#inquiryPanel');
-			}
-
-			$(window).on('keydown', function(e){
-
-				var keyCode = e.which ? e.which : e.keyCode;
-				if (13 == keyCode) {
-
-					$('#sendButton').trigger("click");
-
-					e.preventDefault();
-				}
-			});
-
-			$('#inquiryForm').parsley();
-
-			window.Parsley.on('form:error', function() {
-
-				shake('#inquiryPanel');
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/inquiry/inquiry.js")'></script>
 	}
 }

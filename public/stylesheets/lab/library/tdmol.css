@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.mol-container {
+	width: 100%;
+	height: 400px;
+}
+.mol-container>canvas {
+	left: 15px !important;
+}

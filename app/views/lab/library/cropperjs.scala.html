@@ -45,16 +45,6 @@
 		@libraries.standard.last()
 		@libraries.cropperjs.last()
 		@libraries.holder.last()
-		@script(){
-
-			var cropper = new Cropper($('#image')[0], {
-
-				aspectRatio: 16 / 9,
-				crop: function(e) {
-
-					console.dir(e);
-				}
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/cropperjs.js")'></script>
 	}
 }

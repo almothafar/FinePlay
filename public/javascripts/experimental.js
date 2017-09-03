@@ -112,3 +112,64 @@ var hideUsers = function(){
 		$('#system_base').removeClass('blur');
 	});
 }
+
+var getToken = function(){
+
+	return $("#system_token").data('token');
+}
+
+var getTheme = function(){
+
+	var theme = {
+		"backgroundColor": (function(){
+			return $("#system_theme>#system_theme-normal").css("background-color");
+		})(),
+		"borderRadius": (function(){
+			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("border-radius");
+		})(),
+		"smallBorderRadius": (function(){
+			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal-sm").css("border-radius");
+		})(),
+		"largeBorderRadius": (function(){
+			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal-lg").css("border-radius");
+		})(),
+		"primary":{
+			"color": (function(){
+				return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("color");
+			})(),
+			"backgroundColor": (function(){
+				return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("background-color");
+			})(),
+			"activeBackgroundColor": (function(){
+				return $("#system_theme>#system_theme-primary>.system_theme-primary-active").css("background-color");
+			})(),
+			"disabledBackgroundColor": (function(){
+				var color = $.Color($("#system_theme>#system_theme-primary>.system_theme-primary-disabled").css("background-color"));
+				var alpha = $('.system_theme-primary-disabled').css('opacity');
+				var disabledBackgroundColor = $.Color(color.red(), color.green(), color.blue(), alpha);
+				return disabledBackgroundColor.toRgbaString();
+			})(),
+		}
+	}
+
+	return theme;
+}
+
+var Messages = function(messageKey){
+
+	return $("#system_messages").data('messages')[messageKey];
+}
+
+var insertStyle = function(selector, css){
+
+	var rule = selector + "{";
+	$.each(css, function(key, value){
+
+		rule = rule + key + ": " + value + ";"
+	});
+	rule = rule + "}";
+
+	var sheets = document.styleSheets;
+	var sheet = sheets[sheets.length - 1];
+	sheet.insertRule(rule, sheet.cssRules.length);
+}

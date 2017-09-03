@@ -1,6 +1,6 @@
 @(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
 
-<div id="@prop.getOrElse("id", "")" class="btn-group @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) data-toggle="buttons">
+<div id="@prop.getOrElse("id", "")" class="btn-group @Attributes.classValue(prop)" @Html(Attributes.datas(prop)) data-toggle="buttons">
 	@for(i <- 0 to elements.size - 1){
 	<label class="btn btn-@("outline-".when(Boolean.valueOf(elements(i).getOrElse("outline", "false"))))@elements(i).getOrElse("type", "primary") @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))">
 		<i class="@elements(i).getOrElse("icon", "")"></i>

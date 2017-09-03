@@ -42,17 +42,13 @@
 			</div>
 		}
 
+		<pre id="markdown" class="d-none">
+@markdown
+		</pre>
+
 		@libraries.standard.last()
 		@libraries.marked.last()
 		@libraries.highlight.last()
-		@script(){
-
-			marked.setOptions({
-				langPrefix: ''
-			});
-//			var html = `Template literal`;
-			var html = marked('@Html(markdown.replace("'", "\\'").replace("\n", "\\n"))');
-			$('#preview').html(html);
-		}
+		<script src='@routes.Assets.versioned("javascripts/development/document/troubleshoot.js")'></script>
 	}
 }

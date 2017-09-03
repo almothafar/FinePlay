@@ -23,17 +23,14 @@
 
 	@top.body("top","registuser"){
 
-		<div class="d-none d-sm-block">
-			<div style="height:50px;">
-			</div>
-		</div>
+		@components.adjust.spacetop()
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
 			<div class="row">
 				<div class="col-md-1 col-lg-2 col-xl-3">
 				</div>
-				<div class="col-md-10 col-lg-8 col-xl-6">
+				<div class="col-md-10 col-lg-8 col-xl-6 p-0">
 					@components.card(Map("id"->"completePanel", "class"->"shadow m-3")){
 						<div class="card-header">
 							@Messages(MessageKeys.REGISTUSER)
@@ -72,18 +69,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		@script(){
-
-			$(window).on('keydown', function(e){
-
-				var keyCode = e.which ? e.which : e.keyCode;
-				if (13 == keyCode) {
-
-					location.href = $('#topButton').attr("href");
-
-					e.preventDefault();
-				}
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/registuser/provisional/complete.js")'></script>
 	}
 }

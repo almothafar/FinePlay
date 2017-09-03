@@ -6,21 +6,4 @@
 	href='@routes.Assets.versioned("lib/datatables/css/dataTables.bootstrap4.min.css")'>
 
 <!-- provisional coped for Bootstrap 4 -->
-@style(){
-	table.dataTable {border-collapse: collapse !important;}
-
-	.dataTables_wrapper>.row:nth-child(3) .pagination{
-		-webkit-box-pack: center !important;
-		-webkit-justify-content: center !important;
-		-ms-flex-pack: center !important;
-		justify-content: center !important
-	}
-	@@media (min-width:992px) {
-		.dataTables_wrapper>.row:nth-child(3) .pagination{
-			-webkit-box-pack: end !important;
-			-webkit-justify-content: flex-end !important;
-			-ms-flex-pack: end !important;
-			justify-content: flex-end !important
-		}
-	}
-}
+<link rel='stylesheet' href='@routes.Assets.versioned("lib_custom/datatables/head.css")'>

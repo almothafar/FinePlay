@@ -46,7 +46,7 @@
 					<div class="mb-3">
 						<input class="form-control d-xs-none" type="text" placeholder="Default input">
 						<h4 class="headline">Single select boxes</h4>
-						<select class="js-example-basic-single js-states form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-basic-single js-states form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
 							<optgroup label="Alaskan/Hawaiian Time Zone">
 								<option value="AK">Alaska</option>
 								<option value="HI">Hawaii</option>
@@ -112,7 +112,7 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Multiple select boxes</h4>
-						<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
 							<optgroup label="Alaskan/Hawaiian Time Zone">
 								<option value="AK">Alaska</option>
 								<option value="HI">Hawaii</option>
@@ -178,7 +178,7 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Tagging</h4>
-						<select class="js-example-tags form-control select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-tags form-control select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
 							<option selected="selected">orange</option>
 							<option>white</option>
 							<option selected="selected">purple</option>
@@ -189,19 +189,19 @@
 					<div class="mb-3">
 						<h4 class="headline">Sizing lg</h4>
 						<input class="form-control form-control-lg d-xs-none" type="text" placeholder=".form-control-lg">
-						<select class="js-example-basic-single js-states form-control form-control-lg select2-hidden-accessible" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-basic-single js-states form-control form-control-lg select2-hidden-accessible" tabindex="-1" aria-hidden="true">
 							<optgroup label="Alaskan/Hawaiian Time Zone">
 								<option value="AK">Alaska</option>
 								<option value="HI">Hawaii</option>
 							</optgroup>
 						</select>
-						<select class="js-example-basic-multiple js-states form-control form-control-lg select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-basic-multiple js-states form-control form-control-lg select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
 							<optgroup label="Alaskan/Hawaiian Time Zone">
 								<option value="AK">Alaska</option>
 								<option value="HI">Hawaii</option>
 							</optgroup>
 						</select>
-						<select class="js-example-tags form-control form-control-lg select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-tags form-control form-control-lg select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
 							<option selected="selected">orange</option>
 							<option>white</option>
 						</select>
@@ -210,19 +210,19 @@
 					<div class="mb-3">
 						<h4 class="headline">Sizing sm</h4>
 						<input class="form-control form-control-sm d-xs-none" type="text" placeholder=".form-control-sm">
-						<select class="js-example-basic-single js-states form-control form-control-sm select2-hidden-accessible" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-basic-single js-states form-control form-control-sm select2-hidden-accessible" tabindex="-1" aria-hidden="true">
 							<optgroup label="Alaskan/Hawaiian Time Zone">
 								<option value="AK">Alaska</option>
 								<option value="HI">Hawaii</option>
 							</optgroup>
 						</select>
-						<select class="js-example-basic-multiple js-states form-control form-control-sm select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-basic-multiple js-states form-control form-control-sm select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
 							<optgroup label="Alaskan/Hawaiian Time Zone">
 								<option value="AK">Alaska</option>
 								<option value="HI">Hawaii</option>
 							</optgroup>
 						</select>
-						<select class="js-example-tags form-control form-control-sm select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" style="width:100%">
+						<select class="js-example-tags form-control form-control-sm select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
 							<option selected="selected">orange</option>
 							<option>white</option>
 						</select>
@@ -234,43 +234,6 @@
 
 		@libraries.standard.last()
 		@libraries.select2.last()
-		@script(){
-
-			$(document).ready(function() {
-
-				$(".js-example-basic-single").select2({
-					placeholder: "Select a state",
-					allowClear: true
-				});
-				$(".js-example-basic-multiple").select2({
-					placeholder: "Select a state"
-				});
-				$(".js-example-tags").select2({
-					tags: true
-				})
-
-				$(".js-example-basic-single.form-control-lg").select2({
-					placeholder: "Select a state",
-					allowClear: true
-				});
-				$(".js-example-basic-multiple.form-control-lg").select2({
-					placeholder: "Select a state"
-				});
-				$(".js-example-tags.form-control-lg").select2({
-					tags: true
-				})
-
-				$(".js-example-basic-single.form-control-sm").select2({
-					placeholder: "Select a state",
-					allowClear: true
-				});
-				$(".js-example-basic-multiple.form-control-sm").select2({
-					placeholder: "Select a state"
-				});
-				$(".js-example-tags.form-control-sm").select2({
-					tags: true
-				})
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/select2.js")'></script>
 	}
 }

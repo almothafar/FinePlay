@@ -56,20 +56,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		@script(){
-
-			$(document).ready(function () {
-
-				$('#numericButton').on('click', function(){
-
-					showMagnifyText($('#numericField').val());
-				});
-
-				$('#alphaButton').on('click', function(){
-
-					showMagnifyText($('#alphaField').val());
-				});
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/ui/bigtypo.js")'></script>
 	}
 }

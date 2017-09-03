@@ -17,13 +17,7 @@
 
 		@libraries.standard.head()
 		@libraries.bootstrapslider.head()
-		@style(){
-
-			#ex1Slider .slider-selection {
-
-				background: #BABABA;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/bootstrapslider.css")'>
 	}
 
 	@body("lab","library"){
@@ -55,17 +49,6 @@
 
 		@libraries.standard.last()
 		@libraries.bootstrapslider.last()
-		@script(){
-
-			$('#ex1').bootstrapSlider({
-
-				formatter: function(value) {
-
-					return 'Current value: ' + value;
-				}
-			});
-
-			$("#ex2").bootstrapSlider({});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/bootstrapslider.js")'></script>
 	}
 }

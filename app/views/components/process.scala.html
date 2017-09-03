@@ -6,7 +6,7 @@
 
 @(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
 
-<ol id="@prop.getOrElse("id", "")" class="process @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<ol id="@prop.getOrElse("id", "")" class="process @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	@for(i <- 0 to elements.size - 1){
 	<li class="process-item @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))">
 		@if(elements(i).contains("link")){

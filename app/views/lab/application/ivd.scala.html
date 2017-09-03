@@ -117,6 +117,7 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/application/ivd.js")'></script>
 		@script(){
 
 			var currentLink = '@helper.CSRF(apis.character.routes.Character.character("type", "text"))';

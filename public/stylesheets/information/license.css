@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+#projectImage{
+	height:240px;
+	background-size:cover !important;
+}
 #smLogoImage{
 	width:240px;
 }

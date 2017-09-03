@@ -10,7 +10,7 @@
 
 @defining(if(prop.getOrElse("id", "").isEmpty){"id-"+String.valueOf(RandomUtils.nextLong(0, 1000))}else{prop.getOrElse("id", "")}) { randomId =>
 
-<div id="@randomId" class="carousel slide @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) data-ride="carousel">
+<div id="@randomId" class="carousel slide @Attributes.classValue(prop)" @Html(Attributes.datas(prop)) data-ride="carousel">
 	<ol class="carousel-indicators">
 		@for(i <- 0 to elements.size - 1){
 		<li data-target="#carousel-example-generic" data-slide-to="@i" class="@("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))"></li>

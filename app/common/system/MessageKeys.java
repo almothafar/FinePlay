@@ -123,11 +123,15 @@ public class MessageKeys {
 
   public static final String CONTENT = "content";
 
+  public static final String COPY = "copy";
+
   public static final String COUNTRY_FLAG = "country.flag";
 
   public static final String CREATE = "create";
 
   public static final String CREATOR = "creator";
+
+  public static final String CUT = "cut";
 
   public static final String DANGER = "danger";
 
@@ -492,6 +496,8 @@ public class MessageKeys {
   public static final String PARSLEY_LANG = "parsley.lang";
 
   public static final String PART = "part";
+
+  public static final String PASTE = "paste";
 
   public static final String PDFJS_LANG = "pdfjs.lang";
 

@@ -14,29 +14,7 @@
 	@head("Application"){
 
 		@libraries.standard.head()
-		@style(){
-
-			#configTable {
-			}
-			#configTable tr>td:nth-child(1) {
-				min-width: 300px;
-			}
-			#configTable tr>td:nth-child(2) {
-				min-width: 400px;
-			}
-			@@media (min-width: 992px) {
-				#configTable {
-					width: 100%;
-					word-break: break-all;
-				}
-				#configTable tr>td:nth-child(1) {
-					min-width: 400px;
-				}
-				#configTable tr>td:nth-child(2) {
-					max-width: 1000px;
-				}
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/framework/application/config.css")'>
 	}
 
 	@body("framework","application"){

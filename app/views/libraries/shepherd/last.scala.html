@@ -5,19 +5,4 @@
 <script type='text/javascript'
 	src='@routes.Assets.versioned("lib/tether-shepherd/dist/js/shepherd.min.js")'></script>
 
-@script(){
-
-	Shepherd.on("show", function(e){
-
-		if(!e.step.options.scrollToHandler){
-
-			e.step.options.scrollToHandler = function(){
-
-				// attachTo of '[selector] [direction]' only.
-				var selector = e.step.options.attachTo.split(/\s+/)[0];
-				var y = offsetTopFromTarget('#system_content', selector);
-				getContent().animate({ scrollTop: y }, 'fast');
-			};
-		}
-	});
-}
+<script src='@routes.Assets.versioned("lib_custom/shepherd/last.js")'></script>

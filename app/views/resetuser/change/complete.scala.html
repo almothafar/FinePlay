@@ -22,17 +22,14 @@
 
 	@top.body("top","resetuser"){
 
-		<div class="d-none d-sm-block">
-			<div style="height:50px;">
-			</div>
-		</div>
+		@components.adjust.spacetop()
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
 			<div class="row">
 				<div class="col-md-1 col-lg-2 col-xl-3">
 				</div>
-				<div class="col-md-10 col-lg-8 col-xl-6">
+				<div class="col-md-10 col-lg-8 col-xl-6 p-0">
 					@components.card(Map("id"->"completePanel", "class"->"shadow m-3")){
 						<div class="card-header">
 							@Messages(MessageKeys.RESETUSER)
@@ -70,6 +67,7 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
+		<script src='@routes.Assets.versioned("javascripts/resetuser/change/complete.js")'></script>
 		@script(){
 
 			$(window).on('keydown', function(e){

@@ -53,6 +53,7 @@
 
 		@libraries.standard.head()
 		@libraries.datatables.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/manage/company/index.css")'>
 		@style(){span.custom-file-control:before{content: "@Messages(MessageKeys.SELECT__FILE)";}}
 		<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "" !important;}</style>
 		@libraries.pickadate.head()
@@ -118,6 +119,7 @@
 		@libraries.standard.last()
 		@libraries.datatables.last()
 		@libraries.pickadate.last()
+		<script src='@routes.Assets.versioned("javascripts/manage/company/index.js")'></script>
 		@script(){
 
 			$(document).ready(function() {

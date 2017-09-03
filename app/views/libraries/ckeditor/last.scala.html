@@ -5,14 +5,10 @@
 @()
 
 <script src='@routes.Assets.versioned("lib/ckeditor/full/ckeditor.js")'></script>
-@script(){
 
-	CKEDITOR.config.language = "@Messages(MessageKeys.CKEDITOR_LANG)";
-	CKEDITOR.config.uiColor = '@models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getDisabledBackgroundColor().toHex()';
-}
-@style(){
-	/* Unknown Element */
-	.cke_screen_reader_only {
-		height: 0px;
-	}
-}
+<div id="ckeditor_messages" class="d-none" data-messages='{
+	"@MessageKeys.CKEDITOR_LANG":"@Messages(MessageKeys.CKEDITOR_LANG)"
+}'></div>
+<script src='@routes.Assets.versioned("lib_custom/ckeditor/last.js")'></script>
+
+<link rel='stylesheet' href='@routes.Assets.versioned("lib_custom/ckeditor/last.css")'>

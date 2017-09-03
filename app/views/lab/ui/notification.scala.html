@@ -17,37 +17,7 @@
 
 		@libraries.standard.head()
 		@libraries.bootstrapslider.head()
-		@style(){
-
-			.event-content-frame {
-				position: relative;
-			}
-			@@media (min-width:768px) {
-
-				.event-date {
-				}
-				.event-content-frame {
-					border-left: 5px #eceeef solid;
-				}
-				.event-content {
-					margin-left: 1rem
-				}
-				.event-type {
-					position: absolute;
-					top: 10px;
-					left: -24px;
-				}
-			}
-
-			.alert-rich {
-				background-color: whitesmoke;
-				border: lightgray;
-				color: dimgray;
-			}
-			.alert-rich button.close {
-				position: initial;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/notification.css")'>
 	}
 
 	@body("lab","notification"){
@@ -92,7 +62,7 @@
 						</textarea>
 						<div>
 
-							<input id="waitSlider" data-slider-id='waitSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10" style="width:100%;"/>
+							<input id="waitSlider" data-slider-id='waitSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
 						</div>
 						@components.button(Map("id"->"htmlNotificationButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
 					</div>
@@ -100,73 +70,18 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.NOTIFICATION":"@Messages(MessageKeys.NOTIFICATION)",
+			"@MessageKeys.SUCCESS":"@Messages(MessageKeys.SUCCESS)",
+			"@MessageKeys.INFO":"@Messages(MessageKeys.INFO)",
+			"@MessageKeys.WARNING":"@Messages(MessageKeys.WARNING)",
+			"@MessageKeys.DANGER":"@Messages(MessageKeys.DANGER)",
+			"img":"@routes.Assets.versioned("images/favicon.png")"
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.ckeditor.last()
 		@libraries.bootstrapslider.last()
-		@script(){
-
-			$('#notificationButton').on('click', function(e){
-
-				notify('@Messages(MessageKeys.NOTIFICATION)', 10000);
-			});
-
-			$('#successAlertButton').on('click', function(e){
-
-				notifyAlert('success', '<strong>@Messages(MessageKeys.SUCCESS)</strong> @Messages(MessageKeys.SUCCESS)', 10000);
-			});
-			$('#infoAlertButton').on('click', function(e){
-
-				notifyAlert('info', '<strong>@Messages(MessageKeys.INFO)</strong> @Messages(MessageKeys.INFO)', 10000);
-			});
-			$('#warningAlertButton').on('click', function(e){
-
-				notifyAlert('warning', '<strong>@Messages(MessageKeys.WARNING)</strong> @Messages(MessageKeys.WARNING)', 10000);
-			});
-			$('#dangerAlertButton').on('click', function(e){
-
-				notifyAlert('danger', '<strong>@Messages(MessageKeys.DANGER)</strong> @Messages(MessageKeys.DANGER)', 10000);
-			});
-
-			$('#richAlertButton').on('click', function(e){
-
-				notify(''+
-					'<div class="alert alert-rich alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">' +
-						'<div class="p-2"><img id="" src="@routes.Assets.versioned("images/favicon.png")" class="rounded" style="width: 64px; height: 64px;"></div>' +
-						'<div class="p-2 align-self-stretch w-100">' +
-							'<strong>Rich notification!</strong><br> <a href="@controllers.home.routes.Home.index()" class="alert-link">Link</a> The quick brown fox jumps over the lazy dog.' +
-						'</div>' +
-						'<div class="p-2 d-flex align-items-center">' +
-							'<button type="button" class="p-3 close" data-dismiss="alert" aria-label="Close">' +
-								'<span aria-hidden="true">×</span><span class="sr-only">Close</span>' +
-							'</button>' +
-						'</div>' +
-					'</div>'
-				, 10000);
-			});
-
-			var ckEditor = CKEDITOR.replace( 'htmlEditor', {
-
-				height: 100,
-				language: "@Messages(MessageKeys.CKEDITOR_LANG)"
-			});
-
-			var mySlider = $("#waitSlider").bootstrapSlider({
-
-				formatter: function(value) {
-
-					return 'Wait: ' + value;
-				}
-			});
-
-			$('#htmlNotificationButton').on('click', function(e){
-
-				var notificationHtml = ckEditor.getData();
-				console.log(notificationHtml);
-				var wait = mySlider.bootstrapSlider('getValue') * 1000;
-				console.log(wait);
-
-				notify('<div style="border-radius: .25rem; width:100%;">' + notificationHtml + '</div>', wait);
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/ui/notification.js")'></script>
 	}
 }

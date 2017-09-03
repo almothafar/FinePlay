@@ -50,4 +50,12 @@ public class Work extends Controller {
 		final Map<String, String> data = targetForm.rawData();
 		return ok(views.html.section.work.task2.render(data.getOrDefault("name", "")));
 	}
+
+	// Task3
+
+	@Authenticated(common.core.Authenticator.class)
+	public Result task3() {
+
+		return ok(views.html.section.work.task3.render());
+	}
 }

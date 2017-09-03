@@ -6,31 +6,20 @@
 	@libraries.common.head(title)
 
 	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/common.css")'>
-	@style(){
-
-		label.required:after{
-			content: "@Messages(MessageKeys.REQUIRED)";
-		}
-	}
+	<!-- <link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/head11111.css")'> -->
 	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/experimental.css")'>
 
 	<script src='@routes.Assets.versioned("javascripts/common.js")'></script>
 	<script src='@routes.Assets.versioned("javascripts/experimental.js")'></script>
+	<script src='@routes.Assets.versioned("javascripts/messages.js")'></script>
+	<script type="text/javascript" src="@controllers.system.routes.System.routes"></script>
 	<script src='@routes.Assets.versioned("javascripts/utils/strings.js")'></script>
 	<script src='@routes.Assets.versioned("javascripts/utils/components.js")'></script>
 	<script src='@routes.Assets.versioned("javascripts/utils/forms.js")'></script>
 
 	@content
 	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/body.css")'>
-	@style(){
-
-		.custom-file-control:empty::after {
-			content: "@Messages(MessageKeys.SELECT__FILE)" !important
-		}
-		.custom-file-control::before {
-			content: "@Messages(MessageKeys.BROWSE)" !important
-		}
-	}
+	<!-- <link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/head22222.css")'> -->
 
 	<link rel='stylesheet' href='@routes.Assets.versioned("themes/base.css")'>
 	<link rel='stylesheet' href='@routes.Assets.versioned("themes/" + session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase + "/theme.css")'>

@@ -22,6 +22,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/application/vertical.css")'>
 	}
 
 	@body("lab","application"){
@@ -39,7 +40,7 @@
 				<div class="mt-3 d-md-none">
 				</div>
 				<div class="col-md-9">
-					<div style="width:100%; writing-mode: vertical-rl;">
+					<div id="verticalContents" class="w-100">
 						<h4 class="">@Messages(MessageKeys.VERTICAL)</h4>
 						いろはにほへと
 					</div>
@@ -48,7 +49,5 @@
 		}
 
 		@libraries.standard.last()
-		@script(){
-		}
 	}
 }

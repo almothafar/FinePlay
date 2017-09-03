@@ -9,7 +9,7 @@
 
 @(prop:scala.collection.immutable.Map[String, String])
 
-<div id="@prop.getOrElse("id", "")" class="alert alert-@prop.getOrElse("type", "success") @("alert-dismissible fade show".when(Boolean.valueOf(prop.getOrElse("closable", "false")))) @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) role="alert">
+<div id="@prop.getOrElse("id", "")" class="alert alert-@prop.getOrElse("type", "success") @("alert-dismissible fade show".when(Boolean.valueOf(prop.getOrElse("closable", "false")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop)) role="alert">
 	@if(Boolean.valueOf(prop.getOrElse("closable","false"))){
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">&times;</span>

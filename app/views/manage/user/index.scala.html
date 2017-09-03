@@ -87,6 +87,7 @@
 		<style id="uploadFileStyle">#uploadFile + span.custom-file-control:after{content: "" !important;}</style>
 		@libraries.pickadate.head()
 		@libraries.select2.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/manage/user/index.css")'>
 	}
 
 	@body("manage","user"){
@@ -153,6 +154,7 @@
 		@libraries.datatables.last()
 		@libraries.pickadate.last()
 		@libraries.select2.last()
+		<script src='@routes.Assets.versioned("javascripts/manage/user/index.js")'></script>
 		@script(){
 
 			$(document).ready(function() {

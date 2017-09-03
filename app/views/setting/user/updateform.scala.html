@@ -36,7 +36,7 @@
 		<div class="row form-group">
 			<label for="update@User.ZONEID" class="col-sm-3 col-form-label"><i class="fa fa-clock-o"></i> @Messages(MessageKeys.TIMEZONE)</label>
 			<div class="col-sm-9">
-				<select id="update@User.ZONEID" name="@User.ZONEID" class="form-control custom-select" style="width:100%;">
+				<select id="update@User.ZONEID" name="@User.ZONEID" class="form-control custom-select">
 					@for((zoneId,zoneName) <- common.utils.ZoneIds.getZoneIdToNameMap(lang.toLocale)) {
 					<option value="@zoneId" @("selected".when(zoneId.equals(form(User.ZONEID).getValue.orElse(""))))>@zoneName</option>
 					}

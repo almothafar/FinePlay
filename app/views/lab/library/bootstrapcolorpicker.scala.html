@@ -17,28 +17,7 @@
 
 		@libraries.standard.head()
 		@libraries.bootstrapcolorpicker.head()
-		@style(){
-
-			.colorpicker-component{
-				width: 280px;
-			}
-
-			.colorpicker-2x .colorpicker-saturation {
-				width: 200px;
-				height: 200px;
-			}
-
-			.colorpicker-2x .colorpicker-hue,
-			.colorpicker-2x .colorpicker-alpha {
-				width: 30px;
-				height: 200px;
-			}
-
-			.colorpicker-2x .colorpicker-color,
-			.colorpicker-2x .colorpicker-color div {
-				height: 30px;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/bootstrapcolorpicker.css")'>
 	}
 
 	@body("lab","library"){
@@ -86,42 +65,6 @@
 
 		@libraries.standard.last()
 		@libraries.bootstrapcolorpicker.last()
-		@script(){
-
-			$('#picker').colorpicker({
-
-				customClass: 'colorpicker-2x',
-				color: '#ffaa00',
-				container: true,
-				inline: true,
-				sliders: {
-					saturation: {
-						maxLeft: 200,
-						maxTop: 200
-					},
-					hue: {
-						maxTop: 200
-					},
-					alpha: {
-						maxTop: 200
-					}
-				}
-			});
-
-			$('#okButton').on('click', function (e) {
-
-				var button = $(this);
-
-				var picker = button.parent().parent().find('#picker');
-				console.dir(picker.colorpicker('getValue'));
-				console.dir(picker.data('colorpicker').color.toRGB());
-				console.dir(picker.data('colorpicker').color.toHex());
-				console.dir(picker.data('colorpicker').color.toHSL());
-
-				$('#getButton').css({
-					"backgroundColor": picker.colorpicker('getValue')
-				});
-			})
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/bootstrapcolorpicker.js")'></script>
 	}
 }

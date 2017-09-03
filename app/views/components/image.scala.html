@@ -19,4 +19,4 @@
 	}
 }
 
-<img id="@prop.getOrElse("id", "")" src="@prop.getOrElse("source","#")" class="@("rounded".when(Boolean.valueOf(prop.getOrElse("rounded", "false"))))@("-".when(prop.contains("roundedType")))@prop.getOrElse("roundedType", "") @("img-fluid".when(Boolean.valueOf(prop.getOrElse("fluid", "false")))) @("img-thumbnail".when(Boolean.valueOf(prop.getOrElse("thumbnail", "false")))) @alignClass() @Attributes.classValue(prop)" style="@("display: block;".when("center".equals(prop.get("align")))) @Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) alt="@prop.getOrElse("alternate", "")">
+<img id="@prop.getOrElse("id", "")" src="@prop.getOrElse("source","#")" class="@("rounded".when(Boolean.valueOf(prop.getOrElse("rounded", "false"))))@("-".when(prop.contains("roundedType")))@prop.getOrElse("roundedType", "") @("img-fluid".when(Boolean.valueOf(prop.getOrElse("fluid", "false")))) @("img-thumbnail".when(Boolean.valueOf(prop.getOrElse("thumbnail", "false")))) @alignClass() @("d-block".when("center".equals(prop.get("align")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop)) alt="@prop.getOrElse("alternate", "")">

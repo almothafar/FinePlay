@@ -25,7 +25,7 @@
 	}
 }
 
-<figure id="@prop.getOrElse("id", "")" class="figure @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<figure id="@prop.getOrElse("id", "")" class="figure @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	@imageContent
 	<figcaption class="figure-caption @alignClass()">
 		@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))

@@ -1,10 +1,13 @@
 'use strict';
 
-var sheets = document.styleSheets;
-var sheet = sheets[sheets.length - 1];
-sheet.insertRule('.bootbox.modal .btn-default{' +
-	'border-color: '+ $('html').data('primary-border-color') +';' +
-	'color: '+ $('html').data('primary-background-color') +';' +
-'}', sheet.cssRules.length);
+insertStyle('.bootbox.modal .btn-default', {
+	'border-color': getTheme().primary.backgroundColor,
+	'color': getTheme().primary.backgroundColor
+});
 
-bootbox.setDefaults({locale: "@Messages(MessageKeys.BOOTBOX_LANG)"});
+var bootboxMessages = function(messageKey){
+
+	return $("#bootbox_messages").data('messages')[messageKey];
+}
+
+bootbox.setDefaults({locale: bootboxMessages(MessageKeys.BOOTBOX_LANG)});

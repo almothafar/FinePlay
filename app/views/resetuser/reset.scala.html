@@ -22,17 +22,14 @@
 
 	@top.body("top","resetuser"){
 
-		<div class="d-none d-sm-block">
-			<div style="height:50px;">
-			</div>
-		</div>
+		@components.adjust.spacetop()
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
 			<div class="row">
 				<div class="col-md-1 col-lg-2 col-xl-3">
 				</div>
-				<div class="col-md-10 col-lg-8 col-xl-6">
+				<div class="col-md-10 col-lg-8 col-xl-6 p-0">
 					@components.card(Map("id"->"resetPanel", "class"->"shadow m-3")){
 						<div class="card-header">
 							@Messages(MessageKeys.RESETUSER)
@@ -88,25 +85,12 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"hasErrors":@(form.hasGlobalErrors || form.hasErrors)
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.holder.last()
-		@script(){
-
-			@if(form.hasGlobalErrors || form.hasErrors) {
-
-				shake('#resetPanel');
-			}
-
-			$(window).on('keydown', function(e){
-
-				var keyCode = e.which ? e.which : e.keyCode;
-				if (13 == keyCode) {
-
-					$('#applyButton').trigger("click");
-
-					e.preventDefault();
-				}
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/resetuser/reset.js")'></script>
 	}
 }

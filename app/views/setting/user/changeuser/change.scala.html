@@ -89,8 +89,13 @@
 			}
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"hasErrors":@(form.hasGlobalErrors || form.hasErrors)
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.holder.last()
+		<script src='@routes.Assets.versioned("javascripts/setting/user/changeuser/change.js")'></script>
 		@script(){
 
 			$('#confirmButton').on("click", function(){
@@ -199,10 +204,8 @@
 					e.preventDefault();
 				}
 			})
-		}
-		@script(){
 
-			@if(form.hasGlobalErrors || form.hasErrors) {
+			if(Messages("hasErrors")) {
 
 				shake('#changePanel');
 			}

@@ -43,10 +43,6 @@
 
 		@libraries.standard.last()
 		@libraries.ckeditor.last()
-		@script(){
-
-			CKEDITOR.replace( 'editor1', {
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/ckeditor.js")'></script>
 	}
 }

@@ -1,0 +1,46 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("section"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/section/work/task3.css")'>
+	}
+
+	@body("section","work"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.TASK)+" 3"), "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"task3"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class=" mt-3">
+
+				@components.button(Map("id"->"button", "type"->"primary", "icon"->"fa fa-comment-o", "text"->"Hello World.", "class"->"Hello World."))
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script src='@routes.Assets.versioned("javascripts/section/work/task3.js")'></script>
+	}
+}

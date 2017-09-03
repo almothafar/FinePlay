@@ -36,16 +36,16 @@
 
 			<div class="jumbotron">
 
-				<div class="img-thumbnail mb-3" style="height: 220px; background:url('@routes.Assets.versioned("images/signins/IMG_2794.JPG")') no-repeat center; background-size:cover;">
+				<div id="projectImage" class="img-thumbnail mb-3">
 				</div>
 
-					<div class="d-none d-sm-block">
-				@components.image(Map("id"->"logoImage", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3"))
-					</div>
-					<div class="d-sm-none">
-				@components.image(Map("id"->"smLogoImage", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3"))
-					</div>
-				<h3 class="headline">This system was built using a fine<span style="color:hotpink;">✿</span>play.</h3>
+				<div class="d-none d-sm-block">
+					@components.image(Map("id"->"logoImage", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3"))
+				</div>
+				<div class="d-sm-none">
+					@components.image(Map("id"->"smLogoImage", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"This software logo.", "class"->"mb-3"))
+				</div>
+				<h3 class="headline">This system was built using a fine<span class="text-primary">✿</span>play.</h3>
 				<hr class="m-y-2">
 				<div>The software is licensed under the <a href="http://opensource.org/licenses/MIT" alt="MIT">MIT</a>.</div>
 				<div>Try to get from the link below.</div>
@@ -57,13 +57,12 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"projectImage":"@routes.Assets.versioned("images/signins/IMG_2794.JPG").toString"
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.holder.last()
-		@script(){
-
-			$(document).ready(function () {
-
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/information/license.js")'></script>
 	}
 }

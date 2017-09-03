@@ -24,7 +24,7 @@
 		@components.container(Map("id"->"", "fluid"->"true")){
 			<div class="row">
 				<div class="col-md-3">
-	
+
 					@tasks(Map("id"->"", "task"->"unlimited"))
 				</div>
 				<div class="mt-3 d-md-none">
@@ -44,6 +44,7 @@
 		}
 
 		@libraries.standard.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/ui/unlimited.js")'></script>
 		@script(){
 
 			var elementHtml=

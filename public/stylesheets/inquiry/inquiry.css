@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.form-gropu>div>.parsley-success {
+	color: #468847;
+	background-color: #DFF0D8;
+	border: 1px solid #D6E9C6;
+}
+.form-gropu>div>.parsley-error {
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border: 1px solid #EED3D7;
+}

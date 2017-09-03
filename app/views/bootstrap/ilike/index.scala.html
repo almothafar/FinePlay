@@ -16,25 +16,7 @@
 	@head("Bootstrap"){
 
 		@libraries.standard.head()
-		@style(){
-			.i_back {
-				background-color: gainsboro;
-			}
-			.i_space {
-				margin-bottom: 2.2rem !important;
-			}
-			.i_master .list-group>.list-group-item{
-				boader-left: 0px;
-				boader-right: 0px;
-				border-radius: 0px;
-			}
-			@@media (min-width:576px) {
-
-				.i_detail {
-					border-left: 0.5px solid darkgray;
-				}
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/bootstrap/ilike/index.css")'>
 	}
 
 	@body("bootstrap","ilike"){

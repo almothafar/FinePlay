@@ -25,12 +25,7 @@
 
 		@libraries.standard.head()
 		@libraries.fullcalendar.head()
-		@style(){
-			.fc-day-grid-container.fc-scroller {
-
-				height: 100% !important;
-			}
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/fullcalendar.css")'>
 	}
 
 	@body("lab","library"){
@@ -43,7 +38,7 @@
 			<div class="row">
 				<div class="col-md-3">
 
-					@tasks(Map("id"->"", "task"->"fullCalendar"))
+					@tasks(Map("id"->"", "task"->"fullcalendar"))
 				</div>
 				<div class="mt-3 d-md-none">
 				</div>
@@ -54,109 +49,16 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.FULLCALENDAR_LANG":"@Messages(MessageKeys.FULLCALENDAR_LANG)",
+			"clientZoneId":"@session.get(models.user.User.ZONEID)",
+			"clientDateTime":"@datetime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)",
+			"clientDate":"@datetime().format(DateTimeFormatter.ISO_LOCAL_DATE)"
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.moment.last()
 		@libraries.fullcalendar.last()
-		@script(){
-
-			var currentTimezone = '@session.get(models.user.User.ZONEID)';
-
-			var todayDate = moment().startOf('day');
-			var YM = todayDate.format('YYYY-MM');
-			var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
-			var TODAY = todayDate.format('YYYY-MM-DD');
-			var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
-
-			$(document).ready(function() {
-
-				$('#calendar').fullCalendar({
-					lang: '@Messages(MessageKeys.FULLCALENDAR_LANG)',
-					header: {
-						left: 'prev,next today',
-						center: 'title',
-						right: 'month,agendaWeek,agendaDay,listWeek'
-					},
-					now : '@datetime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)',
-					defaultDate: '@datetime().format(DateTimeFormatter.ISO_LOCAL_DATE)',
-					timezone: currentTimezone,
-					editable: true,
-					selectable: true,
-					eventLimit: true, // allow "more" link when too many events
-					loading: function(bool) {
-						$('#loading').toggle(bool);
-					},
-					events: [
-						{
-							title: 'All Day Event',
-							start: YM + '-01'
-						},
-						{
-							title: 'Long Event',
-							start: YM + '-07',
-							end: YM + '-10'
-						},
-						{
-							id: 999,
-							title: 'Repeating Event',
-							start: YM + '-09T16:00:00'
-						},
-						{
-							id: 999,
-							title: 'Repeating Event',
-							start: YM + '-16T16:00:00'
-						},
-						{
-							title: 'Conference',
-							start: YESTERDAY,
-							end: TOMORROW
-						},
-						{
-							title: 'Meeting',
-							start: TODAY + 'T10:30:00',
-							end: TODAY + 'T12:30:00'
-						},
-						{
-							title: 'Lunch',
-							start: TODAY + 'T12:00:00'
-						},
-						{
-							title: 'Meeting',
-							start: TODAY + 'T14:30:00'
-						},
-						{
-							title: 'Happy Hour',
-							start: TODAY + 'T17:30:00'
-						},
-						{
-							title: 'Dinner',
-							start: TODAY + 'T20:00:00'
-						},
-						{
-							title: 'Birthday Party',
-							start: TOMORROW + 'T07:00:00'
-						},
-						{
-							title: 'Click for Google',
-							url: 'http://google.com/',
-							start: YM + '-28'
-						}
-					],
-					eventRender: function(event, el) {
-						// render the timezone offset below the event title
-						if (event.start.hasZone()) {
-							el.find('.fc-title').after(
-								$('<div class="tzo"/>').text(event.start.format('Z'))
-							);
-						}
-					},
-					dayClick: function(date) {
-						console.log('dayClick', date.toISOString(), currentTimezone);
-					},
-					select: function(startDate, endDate) {
-						console.log('select', startDate.format(), endDate.format());
-					}
-				});
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/fullCalendar.js")'></script>
 	}
 }

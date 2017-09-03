@@ -38,8 +38,8 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1",
   "org.apache.commons" % "commons-text" % "1.1",						// Apache 1.1
   "org.postgresql" % "postgresql" % "42.1.1",							// BSD 2-clause 4.2.14
-  "org.mockito" % "mockito-inline" % "2.8.47",
-//  "org.mockito" % "mockito-core" % "2.8.47",							// MIT 2.8.54
+  "org.mockito" % "mockito-inline" % "2.9.0",
+//  "org.mockito" % "mockito-core" % "2.9.0",							// MIT 2.8.54
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.16",									// Apache 3.16
@@ -49,8 +49,8 @@ libraryDependencies ++= Seq(
   "org.apache.pdfbox" % "pdfbox" % "2.0.7",								// Apache 2.0.7
   "org.jsoup" % "jsoup" % "1.10.3",										// MIT 1.10.3
   "com.squareup" % "javapoet" % "1.9.0",								// Apache 1.9.0
-  "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.CR1",						// Apache 1.2.0.CR1
-  "org.mapstruct" % "mapstruct-processor" % "1.2.0.CR1",				//
+  "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.CR2",						// Apache 1.2.0.CR1
+  "org.mapstruct" % "mapstruct-processor" % "1.2.0.CR2",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
   "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
   "org.webjars.npm" % "bootstrap" % "4.0.0-beta",						// MIT 4.0.0-alpha.6
@@ -66,14 +66,14 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "chartjs" % "2.6.0",							// MIT 2.6.0
   "org.webjars.bower" % "moment" % "2.18.1",							// MIT 2.18.1
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.4.0",						// MIT 3.4.0
-  "org.webjars" % "openlayers" % "4.2.0",								// 2-Clause BSD 4.2.0
+  "org.webjars.bower" % "fullcalendar" % "3.5.0",						// MIT 3.4.0
+  "org.webjars" % "openlayers" % "4.3.1",								// 2-Clause BSD 4.2.0
 //  "org.webjars" % "datatables" % "1.10.15",							// MIT 1.10.15
   "org.webjars" % "datatables" % "1.10.13",								//
   "org.webjars" % "datatables-plugins" % "1.10.12",						//
   "org.webjars.bower" % "datatables.net-select" % "1.2.0",				//
-  "org.webjars" % "ckeditor" % "4.7.1",									// GPL/LGPL/MPL 4.7.1
-  "org.webjars.bower" % "handsontable" % "0.32.0",						// MIT 1.10.15
+  "org.webjars" % "ckeditor" % "4.7.2",									// GPL/LGPL/MPL 4.7.1
+  "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
   "org.webjars.bower" % "slick-carousel" % "1.6.0",						// MIT 1.7.1
 //  "org.webjars.npm" % "cropperjs" % "1.0.0",							// MIT 1.0.0-rc.3
   "org.webjars.npm" % "d3" % "4.10.0",									// BSD-3-Clause license 4.10.0

@@ -18,7 +18,7 @@
 	}
 }
 
-<table id="@prop.getOrElse("id", "")" class="table table-@prop.getOrElse("type", "") @("table-responsive".when(Boolean.valueOf(prop.getOrElse("responsive", "false")))) @("table-inverse".when(Boolean.valueOf(prop.getOrElse("inverse", "false")))) @("table-striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) @("table-bordered".when(Boolean.valueOf(prop.getOrElse("bordered", "false")))) @("table-hover".when(Boolean.valueOf(prop.getOrElse("hover", "false")))) @("table-reflow".when(Boolean.valueOf(prop.getOrElse("reflow", "false")))) table-@prop.getOrElse("size", "") @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<table id="@prop.getOrElse("id", "")" class="table table-@prop.getOrElse("type", "") @("table-responsive".when(Boolean.valueOf(prop.getOrElse("responsive", "false")))) @("table-inverse".when(Boolean.valueOf(prop.getOrElse("inverse", "false")))) @("table-striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) @("table-bordered".when(Boolean.valueOf(prop.getOrElse("bordered", "false")))) @("table-hover".when(Boolean.valueOf(prop.getOrElse("hover", "false")))) @("table-reflow".when(Boolean.valueOf(prop.getOrElse("reflow", "false")))) table-@prop.getOrElse("size", "") @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	<thead id="@thead.getOrElse("id", "")" class="table-@thead.getOrElse("type", "") @("thead-inverse".when(Boolean.valueOf(thead.getOrElse("inverse", "false")))) @("thead-default".when(Boolean.valueOf(thead.getOrElse("default", "false"))))">
 	@defining(theadRowToColumns._1) { row =>
 	<tr class="table-@row.getOrElse("type", "")">

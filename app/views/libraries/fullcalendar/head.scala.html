@@ -5,35 +5,4 @@
 <link rel='stylesheet'
 	href='@routes.Assets.versioned("lib/fullcalendar/dist/fullcalendar.min.css")'>
 
-@style(){
-
-	.fc-button-group, .fc-view-container{
-
-		background-color: @models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getBackgroundColor().toHex();
-	}
-
-	.fc-state-default{
-
-		background-color: transparent;
-		background-image: none;
-		border-color: #ddd;
-		box-shadow: none;
-	}
-	.fc-state-active, .fc-state-disabled, .fc-state-down, .fc-state-hover{
-
-		background-color: #e6e6e6;
-		box-shadow: none;
-	}
-	.fc-event, .fc-event:hover, .ui-widget .fc-event {
-
-		color: #fff !important;
-		text-decoration: none
-	}
-
-	.fc-event {
-		border: 1px solid @models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getBackgroundColor().toHex()
-	}
-	.fc-event, .fc-event-dot {
-		background-color: @models.user.User.Theme.valueOf(session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name())).getPrimary().getBackgroundColor().toHex()
-	}
-}
+<link rel='stylesheet' href='@routes.Assets.versioned("lib_custom/fullcalendar/head.css")'>

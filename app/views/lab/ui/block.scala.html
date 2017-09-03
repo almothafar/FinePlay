@@ -43,19 +43,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		@script(){
-
-			$(document).ready(function () {
-
-				$('#blockButton').on('click', function(){
-
-					showCover();
-					setTimeout(function(){
-
-						hideCover();
-					}, 3000)
-				});
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/ui/block.js")'></script>
 	}
 }

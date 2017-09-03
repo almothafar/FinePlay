@@ -1,7 +1,29 @@
+@import common.system._
+
 @()
 
 @libraries.popper.last()
 @libraries.jquery.last()
+	@script(){
+
+
+
+insertStyle('label.required:after', {
+	'content': '"@Messages(MessageKeys.REQUIRED)"'
+});
+
+
+
+insertStyle('.custom-file-control:empty::after', {
+	'content': '"@Messages(MessageKeys.SELECT__FILE)" !important'
+});
+insertStyle('.custom-file-control::before', {
+	'content': '"@Messages(MessageKeys.BROWSE)" !important'
+});
+
+
+
+	}
 @libraries.bootstrap.last()
 @script(){var bsTooltip = $.fn.tooltip;}
 @libraries.jqueryui.last()

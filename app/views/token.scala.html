@@ -1,0 +1,17 @@
+@import play.filters.csrf._
+@import views.html._
+@import play.mvc._
+
+@()
+
+@gentoken() = @{
+
+	val takenOpt = CSRF.getToken(request());
+	if(takenOpt.isPresent()){
+		takenOpt.get().name + "=" + takenOpt.get().value;
+	}else{
+		"csrfToken=testToken";
+	}
+}
+
+<div id="system_token" class="d-none" data-token='@gentoken'></div>

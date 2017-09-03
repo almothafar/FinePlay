@@ -53,18 +53,6 @@
 		}
 
 		@libraries.standard.last()
-		@script(){
-
-			var videoFrame = $('#trainingVideo')[0];
-			videoFrame.requestFullscreen = videoFrame.requestFullscreen || videoFrame.webkitRequestFullscreen || videoFrame.mozRequestFullScreen || videoFrame.msRequestFullscreen;
-			if(videoFrame.requestFullscreen){
-
-				$('#fullScreenButtonContainer').removeClass("d-none");
-				$('#fullScreenButton').on('click', function(){
-
-					videoFrame.requestFullscreen()
-				});
-			}
-		}
+		<script src='@routes.Assets.versioned("javascripts/home/video.js")'></script>
 	}
 }

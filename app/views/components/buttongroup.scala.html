@@ -9,7 +9,7 @@
 
 @(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
 
-<div id="@prop.getOrElse("id", "")" class="btn-group@("-vertical".when("vertical".equals(prop.getOrElse("direction", "horizontal")))) btn-group-@prop.getOrElse("size", "") @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop)) role="group">
+<div id="@prop.getOrElse("id", "")" class="btn-group@("-vertical".when("vertical".equals(prop.getOrElse("direction", "horizontal")))) btn-group-@prop.getOrElse("size", "") @Attributes.classValue(prop)" @Html(Attributes.datas(prop)) role="group">
 	@for(i <- 0 to elements.size - 1){
 		@components.button(elements(i))
 	}

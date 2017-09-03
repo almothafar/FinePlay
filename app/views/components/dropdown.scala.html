@@ -9,7 +9,7 @@
 
 @(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
 
-<div id="@prop.getOrElse("id", "")" class="dropdown @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<div id="@prop.getOrElse("id", "")" class="dropdown @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	@components.button(Map("type"->"primary", "outline"->"true", "icon"->prop.getOrElse("icon", ""), "text"->prop.getOrElse("text", ""), "class"->"dropdown-toggle", "data-toggle"->"dropdown", "aria-haspopup"->"true", "aria-expanded"->"false"))
 	<div class="dropdown-menu">
 	@for(i <- 0 to elements.size - 1){

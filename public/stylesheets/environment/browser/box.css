@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.boxback{
+
+	background-color: lightcoral;
+}
+#box{
+
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	border: solid 10px blue;
+	margin: 10px;
+	padding: 10px;
+}

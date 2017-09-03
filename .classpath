@@ -136,8 +136,8 @@
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/jars/jsoup-1.10.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/srcs/jsoup-1.10.3-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.squareup/javapoet/jars/javapoet-1.9.0.jar" sourcepath="/Users/hiro/.ivy2/cache/com.squareup/javapoet/srcs/javapoet-1.9.0-sources.jar"/>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/jars/mapstruct-jdk8-1.2.0.CR1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/srcs/mapstruct-jdk8-1.2.0.CR1-sources.jar"/>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/jars/mapstruct-processor-1.2.0.CR1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/srcs/mapstruct-processor-1.2.0.CR1-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/jars/mapstruct-jdk8-1.2.0.CR2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/srcs/mapstruct-jdk8-1.2.0.CR2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/jars/mapstruct-processor-1.2.0.CR2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/srcs/mapstruct-processor-1.2.0.CR2-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.github.spullara.mustache.java/compiler/jars/compiler-0.9.5.jar" sourcepath="/Users/hiro/.ivy2/cache/com.github.spullara.mustache.java/compiler/srcs/compiler-0.9.5-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/jars/jquery-3.2.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/srcs/jquery-3.2.1-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/jars/bootstrap-4.0.0-beta.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/srcs/bootstrap-4.0.0-beta-sources.jar"/>

@@ -16,11 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@style(){
-
-			svg { width: 0px; height: 0px; border: 1px solid black; background-color: #fff; }
-			path { fill : white; stroke: black; stroke-width: 0.5; }
-		}
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/d3geoprojection.css")'>
 	}
 
 	@body("lab","library"){
@@ -49,65 +45,14 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.NATURALEARTHDATA_LANG":"@Messages(MessageKeys.NATURALEARTHDATA_LANG)",
+			"map":"@routes.Assets.versioned("javascripts/lab/library/ne_50m_admin_0_countries.json")"
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.d3.last()
 		@libraries.d3geoprojection.last()
-		@script(){
-
-			$(document).ready(function() {
-
-				var update = function(){
-
-					var graphContainer = $('#graphContainer');
-					var svgWidth = graphContainer.width();
-					var svgHeight = svgWidth;
-
-					var svg = $('svg');
-					svg.empty();
-					svg.outerWidth(svgWidth);
-					svg.outerHeight(svgHeight);
-
-					var path = d3.geoPath()
-						.projection(
-							d3.geoMercator()
-							.translate([svgWidth/2, svgHeight/2])
-							.scale(svgWidth / 640 * 100)
-						)
-
-					d3.json('@routes.Assets.versioned("javascripts/lab/library/ne_50m_admin_0_countries.json")', function(error, world) {
-						d3.select("#geoGraph")
-							.selectAll("path")
-							.data(world.features)
-							.enter()
-							.append("path")
-							.attr("d", path)
-							.style("fill", function(d, i){
-								if (d.properties.name == "Antarctica"){
-									return "#fff";
-								}
-								if (d.properties.name == "@Messages(MessageKeys.NATURALEARTHDATA_LANG)"){
-									return "red";
-								}
-								return "#eee";
-							})
-					})
-				};
-
-				var timer = false;
-				$(window).resize(function() {
-
-					if (timer !== false) {
-
-						clearTimeout(timer);
-					}
-					timer = setTimeout(function() {
-
-						update();
-					}, 100);
-				});
-
-				update();
-			});
-		}
+		<script src='@routes.Assets.versioned("javascripts/lab/library/d3geoprojection.js")'></script>
 	}
 }

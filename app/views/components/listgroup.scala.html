@@ -9,9 +9,9 @@
 
 @(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
 
-<div id="@prop.getOrElse("id", "")" class="list-group @Attributes.classValue(prop)" style="@Attributes.styleValue(prop)" @Html(Attributes.datas(prop))>
+<div id="@prop.getOrElse("id", "")" class="list-group @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	@for(i <- 0 to elements.size - 1){
-	<a href="@elements(i).getOrElse("link", "#")" class="list-group-item list-group-item-action list-group-item-@elements(i).getOrElse("type", "") @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false")))) @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true")))) justify-content-between @Attributes.classValue(elements(i))" style="@Attributes.styleValue(elements(i))" @Html(Attributes.datas(elements(i)))>
+	<a href="@elements(i).getOrElse("link", "#")" class="list-group-item list-group-item-action list-group-item-@elements(i).getOrElse("type", "") @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false")))) @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true")))) justify-content-between @Attributes.classValue(elements(i))" @Html(Attributes.datas(elements(i)))>
 		@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->elements(i).getOrElse("icon", "")))@if(!elements(i).getOrElse("icon", "").isEmpty() && !elements(i).getOrElse("text", "").isEmpty()){&nbsp}@Html(elements(i).getOrElse("text", ""))
 		<div class="float-right">
 			@if(!elements(i).getOrElse("badge", "").isEmpty()){&nbsp}@components.badge(Map("type"->prop.getOrElse("badgeType", "secondary"), "pill"->"true", "text"->elements(i).getOrElse("badge", "")))
