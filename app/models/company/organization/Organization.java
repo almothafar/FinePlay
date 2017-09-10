@@ -26,15 +26,15 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 import models.company.Company;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.i18n.MessagesApi;
 
 @Entity
 @Table(name = "ORGANIZATIONS", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID", "COMPANY_ID"})}, indexes = {@Index(columnList = "ID"), @Index(columnList = "COMPANY_ID")})
 public class Organization {
 
-	private static final ALogger LOGGER = Logger.of(Organization.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Organization.class);
 
 	@Inject
 	@Transient

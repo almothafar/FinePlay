@@ -1,6 +1,10 @@
+@import play.api.i18n._
+
+@import common.system._
+
 @()
 
-@session.get(models.user.User.THEME) match {
+@session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()) match {
 
 	case "DEFAULT" => {
 
@@ -10,6 +14,12 @@
 
 		<link rel='stylesheet'
 			href='@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/bootstrap.min.css")'>
+
+		<div id="bootstrap_messages" class="d-none" data-messages='{
+			"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",
+			"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
+			"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
+		}'></div>
+		<script src='@routes.Assets.versioned("lib_custom/bootstrap/head.css.js")'></script>
 	}
 }
-

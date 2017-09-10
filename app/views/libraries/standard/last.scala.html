@@ -2,29 +2,15 @@
 
 @()
 
-@libraries.popper.last()
 @libraries.jquery.last()
-	@script(){
 
+<script src='@routes.Assets.versioned("javascripts/common.js")'></script>
+<script src='@routes.Assets.versioned("javascripts/experimental.js")'></script>
+<script type="text/javascript" src="@controllers.system.routes.System.routes"></script>
+<script src='@routes.Assets.versioned("javascripts/utils/strings.js")'></script>
+<script src='@routes.Assets.versioned("javascripts/utils/components.js")'></script>
+<script src='@routes.Assets.versioned("javascripts/utils/forms.js")'></script>
 
-
-insertStyle('label.required:after', {
-	'content': '"@Messages(MessageKeys.REQUIRED)"'
-});
-
-
-
-insertStyle('.custom-file-control:empty::after', {
-	'content': '"@Messages(MessageKeys.SELECT__FILE)" !important'
-});
-insertStyle('.custom-file-control::before', {
-	'content': '"@Messages(MessageKeys.BROWSE)" !important'
-});
-
-
-
-	}
+@libraries.popper.last()
 @libraries.bootstrap.last()
-@script(){var bsTooltip = $.fn.tooltip;}
 @libraries.jqueryui.last()
-@script(){$.fn.tooltip = bsTooltip;}

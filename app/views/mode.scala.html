@@ -1,0 +1,12 @@
+@import play.filters.csrf._
+@import views.html._
+@import play.mvc._
+
+@()
+
+@genmode() = @{
+
+	common.system.System.getInjector().instanceOf(classOf[play.api.Environment]).mode
+}
+
+<div id="system_mode" class="d-none" data-mode='@genmode'></div>

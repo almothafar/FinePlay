@@ -56,15 +56,11 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"path":"@ctx().request().path()"
+		}'></div>
+
 		@libraries.standard.last()
 		<script src='@routes.Assets.versioned("javascripts/lab/application/paging.js")'></script>
-		@script(){
-
-			$( "#pageSizeSelect>select" ).change(function(e) {
-
-				var pageSize = $(this).children(':selected').attr('value');
-				location.href = "@ctx().request().path()" + "?size="+pageSize+"&page=0";
-			});
-		}
 	}
 }

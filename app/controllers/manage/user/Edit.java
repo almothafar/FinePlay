@@ -35,8 +35,8 @@ import models.system.System.PermissionsAllowed;
 import models.user.User.Role;
 import models.user.User.Theme;
 import models.user.User_;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -50,7 +50,7 @@ import play.mvc.Security.Authenticated;
 
 public class Edit extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(Edit.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Edit.class);
 
 	@Inject
 	private MessagesApi messages;

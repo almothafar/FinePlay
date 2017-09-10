@@ -1,18 +1,10 @@
 @charset "utf-8";
 
-table.dataTable {border-collapse: collapse !important;}
-
-.dataTables_wrapper>.row:nth-child(3) .pagination{
-	-webkit-box-pack: center !important;
-	-webkit-justify-content: center !important;
-	-ms-flex-pack: center !important;
-	justify-content: center !important
+table.dataTable {
+	border-collapse: collapse !important;
 }
-@media (min-width:992px) {
-	.dataTables_wrapper>.row:nth-child(3) .pagination{
-		-webkit-box-pack: end !important;
-		-webkit-justify-content: flex-end !important;
-		-ms-flex-pack: end !important;
-		justify-content: flex-end !important
-	}
+
+.dataTables_wrapper.container-fluid.dt-bootstrap4{
+	padding-left: 0;
+	padding-right: 0;
 }

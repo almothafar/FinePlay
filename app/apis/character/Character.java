@@ -20,8 +20,8 @@ import apis.character.Variation.Collection;
 import common.system.MessageKeys;
 import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.i18n.MessagesApi;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -29,7 +29,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class Character extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(Character.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Character.class);
 
 	@Inject
 	private MessagesApi messages;

@@ -83,52 +83,15 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"langCode":"@lang.language",
+			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)"
+		}'></div>
+
 		@libraries.standard.last()
 		<script src='@routes.Assets.versioned("javascripts/lab/application/translate.js")'></script>
-		@script(){
-
-			var currentLink = '@helper.CSRF(apis.transrator.routes.Transrator.translate("from", "to", "text"))';
-			var currentLinkArray = currentLink.split(/\?.*(?=csrfToken)/);
-			var translateLink = currentLinkArray[0]+'?'+currentLinkArray[1];
-
-			$('#translateButton').on('click', function(e){
-
-				$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
-				$('#ajaxCancel').prop('disabled', true);
-				$('#ajaxMessage').text('@Messages(MessageKeys.PLEASE__WAIT)');
-				$('#ajaxDescription').text('-');
-
-				var timeout = "10000";
-				$.ajax({
-					method:"GET",
-					url: translateLink,
-					data: $.param({
-							to: '@lang.language',
-							text: $('#translateTabContent div:eq(0) textarea').val()
-					}),
-					contentType: 'text/plain',
-					dataType: "json",
-					timeout: timeout
-				})
-				.then(
-					function (responseJson) {
-
-						$('#ajaxDialog').modal('hide');
-
-						$('#translateTabContent div:eq(1) textarea').val(responseJson['text']);
-						$('#translateTab li:eq(1) a').tab('show');
-					},
-					function (jqXHR, textStatus, errorThrown) {
-
-						$('#ajaxProgress>.progress-bar').addClass('bg-danger');
-						$('#ajaxCancel').prop('disabled', false);
-						$('#ajaxMessage').text('@Messages(MessageKeys.FAILURE)');
-						var errorMessage = errorThrown;
-						if(jqXHR.responseJSON){errorMessage = jqXHR.responseJSON['error'];}
-						$('#ajaxDescription').html('@Messages(MessageKeys.STATUS)&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;@Messages(MessageKeys.ERROR)&nbsp;<strong>'+errorMessage+'</strong>');
-					}
-				);
-			})
-		}
 	}
 }

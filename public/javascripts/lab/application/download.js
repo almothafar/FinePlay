@@ -6,12 +6,3 @@ if("" == document.createElement('a').download){$("#DownloadAttribute").removeCla
 var blob = new Blob(["(｀・ω・´)\r\n(*´ω｀*)\r\n(´･ω･`)\r\n"], {type : 'application/octet-binary'});
 var url = URL.createObjectURL(blob);
 $("#local").attr("href", url);
-
-$(window).on('keydown', function(e){
-
-	if(e.altKey && e.keyCode === 89){
-
-		$('.lab.d-none').removeClass('d-none');
-		return false;
-	}
-})

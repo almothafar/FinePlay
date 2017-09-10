@@ -29,8 +29,8 @@ import models.company.organization.OrganizationUnit_;
 import models.manage.company.organization.tree.ReadFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -41,7 +41,7 @@ import play.mvc.Security.Authenticated;
 
 public class Read extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(Read.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Read.class);
 
 	@Inject
 	private MessagesApi messages;

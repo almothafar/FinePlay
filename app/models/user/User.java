@@ -53,8 +53,8 @@ import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
 import models.system.System.Color;
 import models.system.System.ColorType;
 import models.system.System.Permission;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.data.validation.Constraints.Validate;
@@ -67,7 +67,7 @@ import play.mvc.Controller;
 @Table(name = "USERS", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID", "USERID"})}, indexes = {@Index(columnList = "USERID")})
 public class User implements ExpireHandler, PasswordHandler, Validatable<List<ValidationError>> {
 
-	private static final ALogger LOGGER = Logger.of(User.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 
 	public static final int ROLE_COUNT_MAX = 5;
 

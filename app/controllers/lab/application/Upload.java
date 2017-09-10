@@ -10,9 +10,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import common.system.MessageKeys;
+import controllers.user.User;
 import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
-import play.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
@@ -21,6 +24,8 @@ import play.mvc.Result;
 
 @PermissionsAllowed
 public class Upload extends Controller {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 
 	@Inject
 	private MessagesApi messages;
@@ -85,8 +90,8 @@ public class Upload extends Controller {
 		final Map<String, String[]> form = body.asFormUrlEncoded();
 		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
 
-		Logger.info("" + form);
-		Logger.info("" + filePart);
+		LOGGER.info("" + form);
+		LOGGER.info("" + filePart);
 
 		final ObjectMapper mapper = new ObjectMapper();
 		final ObjectNode result = mapper.createObjectNode();

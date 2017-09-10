@@ -33,6 +33,11 @@
 				</div>
 				<div class="col-md-9">
 
+					<div class="mb-3">
+
+						@components.alert(Map("id"->"", "icon"->"fa fa-info-circle", "text"->"Default page uses inline styles.", "type"->"info"))
+					</div>
+
 					<div class="embed-responsive embed-responsive-a4 mb-3">
 						<iframe id="taskframe" class="embed-responsive-item" src='@controllers.framework.defaultpage.routes.Defaultpage.page("notfound").toString()' allowfullscreen></iframe>
 					</div>
@@ -42,36 +47,5 @@
 
 		@libraries.standard.last()
 		<script src='@routes.Assets.versioned("javascripts/framework/defaultpage/index.js")'></script>
-		@script(){
-
-			$('#tasklist').on('click', function (e) {
-
-				var tasks = $('#tasklist>a');
-				tasks.removeClass("active");
-				var target = e.target;
-				if(tasks.eq(0)[0]===target){
-					$("#taskframe").attr({src:'@controllers.framework.defaultpage.routes.Defaultpage.page("notfound").toString()'});
-					tasks.eq(0).addClass("active");
-				}else if(tasks.eq(1)[0]===target){
-					$("#taskframe").attr({src:'@controllers.framework.defaultpage.routes.Defaultpage.page("badrequest").toString()'});
-					tasks.eq(1).addClass("active");
-				}else if(tasks.eq(2)[0]===target){
-					$("#taskframe").attr({src:'@controllers.framework.defaultpage.routes.Defaultpage.page("unauthorized").toString()'});
-					tasks.eq(2).addClass("active");
-				}else if(tasks.eq(3)[0]===target){
-					$("#taskframe").attr({src:'@controllers.framework.defaultpage.routes.Defaultpage.page("deverror").toString()'});
-					tasks.eq(3).addClass("active");
-				}else if(tasks.eq(4)[0]===target){
-					$("#taskframe").attr({src:'@controllers.framework.defaultpage.routes.Defaultpage.page("devnotfound").toString()'});
-					tasks.eq(4).addClass("active");
-				}else if(tasks.eq(5)[0]===target){
-					$("#taskframe").attr({src:'@controllers.framework.defaultpage.routes.Defaultpage.page("error").toString()'});
-					tasks.eq(5).addClass("active");
-				}else if(tasks.eq(6)[0]===target){
-					$("#taskframe").attr({src:'@controllers.framework.defaultpage.routes.Defaultpage.page("todo").toString()'});
-					tasks.eq(6).addClass("active");
-				}
-			});
-		}
 	}
 }

@@ -24,8 +24,7 @@
 
 	@top.head(Messages(MessageKeys.USER_SIGNIN)){
 
-		@libraries.bootstrap.head()
-		@libraries.fontawesome.head()
+		@libraries.standard.head()
 
 		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/user/signin.css")">
 	}
@@ -172,91 +171,14 @@
 			}
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"formError":@(form.hasGlobalErrors || form.hasErrors),
+			"signInImage":"@common.system.System.getImage().getLink().toString()"
+		}'></div>
+
 		@libraries.standard.last()
-		@libraries.holder.last()
 		<script src='@routes.Assets.versioned("javascripts/user/index.js")'></script>
-		@script(){
 
-			@if(form.hasGlobalErrors || form.hasErrors) {
-
-				shake('#signInPanel');
-			}
-
-			var signInImageLink = "url(@common.system.System.getImage().getLink().toString())";
-			$('#system_base').css({
-				"background-image": signInImageLink,
-				"background-size": "cover",
-				"background-position": "center"
-			});
-
-			$(window).on('keydown', function(e){
-
-				var keyCode = e.which ? e.which : e.keyCode;
-				if (13 == keyCode) {
-
-					if($("#licenseDialog").is(".show")){
-
-						$('#licenseOk').trigger("click");
-					}else{
-
-						$('#signInButton').trigger("click");
-					}
-
-					e.preventDefault();
-				}
-			});
-		}
-		@script(){
-
-			var fixedUsers = $('#fixedUsers>#user_list');
-			var fixedUsersData = JSON.parse($('#fixedUsersData').text());
-			$.each(fixedUsersData, function(){
-
-				var fixedUser = this;
-				fixedUsers.append('<div class="rounded mx-3 my-3 fixedUser">' +
-					@if(isDev()){
-					'<div class="fixedUser_info">' +
-						'<span class="badge badge-pill badge-info mb-1">' + fixedUser.locale + '</span>&nbsp;' +
-						'<span class="badge badge-pill badge-info mb-1">' + fixedUser.zoneId.id + '</span>&nbsp;' +
-						'<span class="badge badge-pill badge-info mb-1">' + fixedUser.roles + '</span>' +
-					'</div>' +
-					}
-					'<div class="row justify-content-center">' +
-						'<div class="my-1"><i class="fa fa-inverse fa-square fa-2x fa-user-o rounded-circle bg-success shadow fixedUser_body" aria-hidden="true"></i></div>' +
-					'</div>' +
-					'<div class="fixedUser_caption"><strong class="fixedUser_UserId">' + fixedUser.userId + '</strong></div>' +
-					@if(isDev()){
-					'<div class="fixedUser_Password d-none">' + fixedUser.password + '</div>' +
-					}
-				'</div>');
-			});
-
-			$('#selectUser').on('click', function(){
-
-				showUsers();
-			});
-
-			$('#system_users').on('click', function(){
-
-				hideUsers();
-			});
-
-			$('.fixedUser').on('click', function(){
-
-				var userId = $(this).find('.fixedUser_UserId').text();
-				var password = $(this).find('.fixedUser_Password').text();
-
-				$('#@User.USERID').val(userId);
-				$('#@User.PASSWORD').val(password);
-
-				hideUsers();
-			});
-
-			if(1 <= fixedUsersData.length){
-
-				$('#selectUserContainer').removeClass("d-none");
-			}
-		}
 		<div class="container text-center">
 
 			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-secondary"))

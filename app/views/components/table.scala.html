@@ -7,6 +7,35 @@
 	tfootRowToColumns:Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]
 )
 
+@responsiveSize(prop:scala.collection.immutable.Map[String, String]) = @{
+
+	// prop.getOrElse("responsiveSize", "")
+	var responsiveSize = prop.getOrElse("responsiveSize", "");
+	responsiveSize match {
+		case "" => {
+			""
+		}
+		case "xs" => {
+			"-xs"
+		}
+		case "sm" => {
+			"-sm"
+		}
+		case "md" => {
+			"-md"
+		}
+		case "lg" => {
+			"-lg"
+		}
+		case "xl" => {
+			"-xl"
+		}
+		case _ => {
+			throw new IllegalStateException(responsiveSize)
+		}
+	}
+}
+
 @cellTag(prop:scala.collection.immutable.Map[String, String]) = @{
 
 	if(Boolean.valueOf(prop.getOrElse("head", "false"))){

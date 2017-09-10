@@ -1,7 +1,9 @@
 @(title: String)(content: Html)
 
-@views.html.head(title){
+<head>
+
+	@libraries.common.head(title)
 
 	@content
 	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/top/body.css")'>
-}
+</head>

@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+.custom-file-control:empty::after {
+	content: attr(data-filename) !important;
+}
+
+.bg-primary .nextButton{
+
+	color:white;
+}

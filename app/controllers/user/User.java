@@ -18,7 +18,11 @@ import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.security.auth.login.AccountException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -33,8 +37,7 @@ import models.system.System.PermissionsAllowed;
 import models.user.PasswordFormContent;
 import models.user.SignInFormContent;
 import models.user.User.Theme;
-import play.Logger;
-import play.Logger.ALogger;
+import play.Application;
 import play.Mode;
 import play.data.Form;
 import play.data.FormFactory;
@@ -43,6 +46,7 @@ import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
+import play.inject.Injector;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http.Cookie;
@@ -51,7 +55,7 @@ import play.mvc.Security.Authenticated;
 
 public class User extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(User.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 
 	@Inject
 	private views.html.user.index index;

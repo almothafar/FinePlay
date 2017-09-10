@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import play.mvc.Controller;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.mvc.Result;
@@ -14,7 +14,7 @@ import play.mvc.Security.Authenticated;
 
 public class System extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(System.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(System.class);
 
 	@Inject
 	private JPAApi jpaApi;

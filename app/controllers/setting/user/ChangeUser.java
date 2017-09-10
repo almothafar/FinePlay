@@ -20,8 +20,8 @@ import models.setting.user.changeuser.ChangeUser_;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import com.typesafe.config.Config;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -39,7 +39,7 @@ import play.twirl.api.Html;
 @PermissionsAllowed(value = {Permission.READ, Permission.WRITE})
 public class ChangeUser extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(ChangeUser.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ChangeUser.class);
 
 	private static long ONE_DAY = Duration.ofDays(1).toDays();
 

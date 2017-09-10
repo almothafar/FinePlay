@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import play.mvc.Controller;
 import models.system.PDFInfoFormContent;
 import models.system.System.PermissionsAllowed;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.FormFactory;
 import play.filters.csrf.RequireCSRFCheck;
@@ -19,7 +19,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class PDF extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(PDF.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PDF.class);
 
 	@Inject
 	private FormFactory formFactory;

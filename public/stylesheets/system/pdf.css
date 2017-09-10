@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+@media print {
+	.d-print-none {
+		display: none !important
+	}
+}
+
+#btn-prev {
+	position: absolute;
+	top: 45px;
+	left: 16px
+}
+
+.btn-primary:hover {
+	color: #fff;
+	background-color: #025aa5;
+	border-color: #01549b
+}
+
+.btn:focus {
+	text-decoration: none
+}
+
+a:focus {
+	color: #014c8c;
+	text-decoration: underline
+}
+
+a:hover {
+	outline: 0
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff
+}
+
+.btn {
+	display: inline-block;
+	padding: .375rem 1rem;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: .25rem
+}

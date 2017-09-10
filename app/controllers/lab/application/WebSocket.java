@@ -16,8 +16,8 @@ import javax.inject.Inject;
 import akka.stream.Materializer;
 import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.libs.F;
 import play.libs.streams.ActorFlow;
 import play.mvc.Result;
@@ -30,7 +30,7 @@ import akka.actor.UntypedAbstractActor;
 @PermissionsAllowed
 public class WebSocket extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(WebSocket.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(WebSocket.class);
 
 	private final ActorSystem actorSystem;
 	private final Materializer materializer;

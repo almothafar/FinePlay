@@ -5,11 +5,11 @@
 @()
 
 <script type='text/javascript'
-	src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.js")'></script>
-<script type='text/javascript'
-	src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.date.js")'></script>
-<script type='text/javascript'
-	src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.time.js")'></script>
+	src='@routes.Assets.versioned("lib_custom/pickadate/head.css.js")'></script>
+
+<script type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.js")'></script>
+<script type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.date.js")'></script>
+<script type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.time.js")'></script>
 @translation() = @{
 
 	var lang = Messages(MessageKeys.PICKADATE_LANG)
@@ -27,5 +27,4 @@
 <div id="pickadate_messages" class="d-none" data-messages='{
 	"@MessageKeys.CLOSE":"@Messages(MessageKeys.CLOSE)"
 }'></div>
-<script type='text/javascript'
-	src='@routes.Assets.versioned("lib_custom/pickadate/last.js")'></script>
+<script type='text/javascript' src='@routes.Assets.versioned("lib_custom/pickadate/last.js")'></script>

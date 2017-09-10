@@ -692,7 +692,9 @@ public class Application extends Controller {
 
 			try {
 
+				System.out.println("async get start");
 				stage.toCompletableFuture().get();
+				System.out.println("async get end");
 
 				result.put("key", key);
 				result.put("value", value);

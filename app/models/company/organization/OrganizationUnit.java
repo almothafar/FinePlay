@@ -37,8 +37,8 @@ import common.system.MessageKeys;
 import models.base.LocaleConverter;
 import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
 import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 
@@ -46,7 +46,7 @@ import play.mvc.Controller;
 @Table(name = "ORGANIZATION_UNITS", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID", "ORGANIZATION_ID"})}, indexes = {@Index(columnList = "ID"), @Index(columnList = "ORGANIZATION_ID")})
 public class OrganizationUnit {
 
-	private static final ALogger LOGGER = Logger.of(OrganizationUnit.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationUnit.class);
 
 	private static final int NAME_COUNT_MAX = 2;
 

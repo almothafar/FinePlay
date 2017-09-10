@@ -59,69 +59,16 @@ See https://github.com/adobe-type-tools/cmap-resources
     <script src="@routes.Assets.versioned("lib/pdf-js/web/debugger.js")"></script>
     <script src="@routes.Assets.versioned("lib_custom/pdf-js/viewer.js")"></script>
 
+	@libraries.jquery.last()
+	<script src='@routes.Assets.versioned("javascripts/messages.js")'></script>
 	@libraries.fontawesome.head()
 	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/system/pdf.css")'>
-	@style(){
 
-		@@media print {
-			.d-print-none {
-				display: none !important
-			}
-		}
-
-		#btn-prev {
-			position: absolute;
-			top: 45px;
-			left: 16px
-		}
-
-		.btn-primary:hover {
-			color: #fff;
-			background-color: #025aa5;
-			border-color: #01549b
-		}
-
-		.btn:focus {
-			text-decoration: none
-		}
-
-		a:focus {
-			color: #014c8c;
-			text-decoration: underline
-		}
-
-		a:hover {
-			outline: 0
-		}
-
-		.btn-primary {
-			color: #fff;
-			background-color: #007bff;
-			border-color: #007bff
-		}
-
-		.btn {
-			display: inline-block;
-			padding: .375rem 1rem;
-			font-size: 16px;
-			font-weight: 400;
-			line-height: 1.5;
-			text-align: center;
-			white-space: nowrap;
-			vertical-align: middle;
-			cursor: pointer;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-			border: 1px solid transparent;
-			border-radius: .25rem
-		}
-	}
-	@script(){
-
-		var DEFAULT_URL = '@pdfInfo.get(models.system.PDFInfoFormContent.URL)';
-	}
+	<div id="pdfjs_messages" class="d-none" data-messages='{
+		"@MessageKeys.PDFJS_LANG":"@Messages(MessageKeys.PDFJS_LANG)",
+		"contentUrl":"@pdfInfo.get(models.system.PDFInfoFormContent.URL)"
+	}'></div>
+	<script src='@routes.Assets.versioned("javascripts/system/pdf1.js")'></script>
   </head>
 
   <body tabindex="1" class="loadingInProgress">
@@ -417,72 +364,8 @@ See https://github.com/adobe-type-tools/cmap-resources
     </div> <!-- outerContainer -->
     <div id="printContainer"></div>
 <div id="mozPrintCallback-shim" hidden>
-  <style>
-@@media print {
-  #printContainer div {
-    page-break-after: always;
-    page-break-inside: avoid;
-  }
-}
-  </style>
-  <style scoped>
-#mozPrintCallback-shim {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 9999999;
-
-  display: block;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-#mozPrintCallback-shim[hidden] {
-  display: none;
-}
-@@media print {
-  #mozPrintCallback-shim {
-    display: none;
-  }
-}
-
-#mozPrintCallback-shim .mozPrintCallback-dialog-box {
-  display: inline-block;
-  margin: -50px auto 0;
-  position: relative;
-  top: 45%;
-  left: 0;
-  min-width: 220px;
-  max-width: 400px;
-
-  padding: 9px;
-
-  border: 1px solid hsla(0, 0%, 0%, .5);
-  border-radius: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-
-  background-color: #474747;
-
-  color: hsl(0, 0%, 85%);
-  font-size: 16px;
-  line-height: 20px;
-}
-#mozPrintCallback-shim .progress-row {
-  clear: both;
-  padding: 1em 0;
-}
-#mozPrintCallback-shim progress {
-  width: 100%;
-}
-#mozPrintCallback-shim .relative-progress {
-  clear: both;
-  float: right;
-}
-#mozPrintCallback-shim .progress-actions {
-  clear: both;
-}
-  </style>
+	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/system/pdf1.css")'>
+	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/system/pdf2.css")'>
   <div class="mozPrintCallback-dialog-box">
     <!-- TODO: Localise the following strings -->
     Preparing document for printing...
@@ -498,8 +381,5 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 	@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fa fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "link"->pdfInfo.get(models.system.PDFInfoFormContent.RETURNURL), "class"->"d-print-none")))
   </body>
-	@script(){
-
-		PDFJS.locale = '@Messages(MessageKeys.PDFJS_LANG)';
-	}
+	<script src='@routes.Assets.versioned("javascripts/system/pdf2.js")'></script>
 </html>

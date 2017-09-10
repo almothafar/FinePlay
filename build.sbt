@@ -38,8 +38,8 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1",
   "org.apache.commons" % "commons-text" % "1.1",						// Apache 1.1
   "org.postgresql" % "postgresql" % "42.1.1",							// BSD 2-clause 4.2.14
-  "org.mockito" % "mockito-inline" % "2.9.0",
-//  "org.mockito" % "mockito-core" % "2.9.0",							// MIT 2.8.54
+  "org.mockito" % "mockito-inline" % "2.10.0",
+//  "org.mockito" % "mockito-core" % "2.10.0",							// MIT 2.8.54
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.16",									// Apache 3.16
@@ -68,15 +68,15 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.5.0",						// MIT 3.4.0
   "org.webjars" % "openlayers" % "4.3.1",								// 2-Clause BSD 4.2.0
-//  "org.webjars" % "datatables" % "1.10.15",							// MIT 1.10.15
+//  "org.webjars" % "datatables" % "1.10.16",							// MIT 1.10.16
   "org.webjars" % "datatables" % "1.10.13",								//
   "org.webjars" % "datatables-plugins" % "1.10.12",						//
-  "org.webjars.bower" % "datatables.net-select" % "1.2.0",				//
+  "org.webjars.bower" % "datatables.net-select" % "1.2.2",				//
   "org.webjars" % "ckeditor" % "4.7.2",									// GPL/LGPL/MPL 4.7.1
   "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
   "org.webjars.bower" % "slick-carousel" % "1.6.0",						// MIT 1.7.1
 //  "org.webjars.npm" % "cropperjs" % "1.0.0",							// MIT 1.0.0-rc.3
-  "org.webjars.npm" % "d3" % "4.10.0",									// BSD-3-Clause license 4.10.0
+  "org.webjars.npm" % "d3" % "4.10.2",									// BSD-3-Clause license 4.10.0
   "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.2.0
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0

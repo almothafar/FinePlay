@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import common.system.MessageKeys;
 import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
-import play.Logger.ALogger;
+import org.slf4j.LoggerFactory;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Result;
@@ -24,7 +24,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class Logger extends Controller {
 
-	private static final ALogger LOGGER = play.Logger.of(Logger.class);
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Logger.class);
 
 	@Inject
 	private MessagesApi messages;

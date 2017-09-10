@@ -113,16 +113,12 @@ var hideUsers = function(){
 	});
 }
 
-var getToken = function(){
-
-	return $("#system_token").data('token');
-}
-
 var getTheme = function(){
 
 	var theme = {
 		"backgroundColor": (function(){
-			return $("#system_theme>#system_theme-normal").css("background-color");
+			var color = $.Color($("#system_theme>#system_theme-normal").css("background-color"));
+			return color.toRgbaString();
 		})(),
 		"borderRadius": (function(){
 			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("border-radius");
@@ -135,13 +131,16 @@ var getTheme = function(){
 		})(),
 		"primary":{
 			"color": (function(){
-				return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("color");
+				var color = $.Color($("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("color"));
+				return color.toRgbaString();
 			})(),
 			"backgroundColor": (function(){
-				return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("background-color");
+				var color = $.Color($("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("background-color"));
+				return color.toRgbaString();
 			})(),
 			"activeBackgroundColor": (function(){
-				return $("#system_theme>#system_theme-primary>.system_theme-primary-active").css("background-color");
+				var color = $.Color($("#system_theme>#system_theme-primary>.system_theme-primary-active").css("background-color"));
+				return color.toRgbaString();
 			})(),
 			"disabledBackgroundColor": (function(){
 				var color = $.Color($("#system_theme>#system_theme-primary>.system_theme-primary-disabled").css("background-color"));
@@ -155,21 +154,17 @@ var getTheme = function(){
 	return theme;
 }
 
+var getMode = function(){
+
+	return $("#system_mode").data('mode');
+}
+
+var getToken = function(){
+
+	return $("#system_token").data('token');
+}
+
 var Messages = function(messageKey){
 
 	return $("#system_messages").data('messages')[messageKey];
-}
-
-var insertStyle = function(selector, css){
-
-	var rule = selector + "{";
-	$.each(css, function(key, value){
-
-		rule = rule + key + ": " + value + ";"
-	});
-	rule = rule + "}";
-
-	var sheets = document.styleSheets;
-	var sheet = sheets[sheets.length - 1];
-	sheet.insertRule(rule, sheet.cssRules.length);
 }

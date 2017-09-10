@@ -48,33 +48,5 @@
 
 		@libraries.standard.last()
 		<script src='@routes.Assets.versioned("javascripts/lab/application/websocket.js")'></script>
-		@script(){
-
-			$( "#sendButton" ).on('click', function(e) {
-
-				var socket = new WebSocket('ws://localhost:9000'+'@controllers.lab.application.routes.WebSocket.connect().toString()');
-
-				socket.onopen = function(event){
-
-					timer = setTimeout(function() {
-
-						socket.send("Hello.");
-					}, 1000);
-				}
-
-				socket.onclose = function(event){
-				}
-
-				socket.onmessage = function(event){
-
-					var time = event.data;
-					$('#clock').html(time.replace(/(\d)/g, '<span>$1</span>'))
-//					socket.close(1000, "Closed.");
-				}
-
-				socket.onerror = function(event){
-				}
-			});
-		}
 	}
 }

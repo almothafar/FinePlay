@@ -15,29 +15,10 @@
 	messages.get(lang, messageKey)
 }
 
-@script(){
-
-	'use strict';
-
-	var ParsleyValidators = {
-
-		HiraganaValidator: {
-			validateString: function(value) {
-				return /^[ぁ-ゖ゛゜ゝゞー]*$/.test(value);
-			},
-			messages: {
-				en: '@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_HIRAGANA)',
-				ja: '@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_HIRAGANA)'
-			}
-		},
-		KatakanaValidator: {
-			validateString: function(value) {
-				return /^[ァ-ヶ゛゜ヽヾー]*$/.test(value);
-			},
-			messages: {
-				en: '@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_KATAKANA)',
-				ja: '@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_KATAKANA)'
-			}
-		}
-	}
-}
+<div id="parsleyvalidators_messages" class="d-none" data-messages='{
+	"en_@MessageKeys.SYSTEM_ERROR_HIRAGANA":"@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_HIRAGANA)",
+	"ja_@MessageKeys.SYSTEM_ERROR_HIRAGANA":"@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_HIRAGANA)",
+	"en_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_KATAKANA)",
+	"ja_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_KATAKANA)"
+}'></div>
+<script src='@routes.Assets.versioned("lib_custom/parsleyvalidators/last.js")'></script>

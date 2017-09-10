@@ -16,30 +16,16 @@
 	<a href="@controllers.lab.application.routes.Application.index("firsttimeaccess").toString()" class="list-group-item @("active".when(equalTask("firsttimeaccess")))">@(Messages(MessageKeys.FIRST__TIME)+" "+Messages(MessageKeys.ACCESS))</a>
 	<a href="@controllers.lab.application.routes.Application.index("partprint").toString()" class="list-group-item @("active".when(equalTask("partprint")))">@(Messages(MessageKeys.PART)+" "+Messages(MessageKeys.PRINT))</a>
 	<a href="@controllers.lab.application.routes.Application.index("ivd").toString()" class="list-group-item @("active".when(equalTask("ivd")))">IVD</a>
+
+	<a href="@controllers.lab.application.routes.Application.index("jpql").toString()" class="list-group-item @("active".when(equalTask("jpql"))) secret">JPQL</a>
+	<a href="@controllers.lab.application.routes.WebSocket.index().toString()" class="list-group-item @("active".when(equalTask("websocket"))) secret">WebSocket</a>
+	<a href="@controllers.lab.application.routes.Application.index("comet").toString()" class="list-group-item @("active".when(equalTask("comet"))) secret">Comet</a>
+	<a href="@controllers.lab.application.routes.Application.index("serialtask").toString()" class="list-group-item @("active".when(equalTask("serialtask"))) secret">Serial Task</a>
+	<a href="@controllers.lab.application.routes.Application.index("paralleltask").toString()" class="list-group-item @("active".when(equalTask("paralleltask"))) secret">Parallel Task</a>
+	<a href="@controllers.lab.application.routes.Application.index("webservice").toString()" class="list-group-item @("active".when(equalTask("webservice"))) secret">Web Service</a>
+	<a href="@controllers.lab.application.routes.Application.index("translate").toString()" class="list-group-item @("active".when(equalTask("translate"))) secret">Translate</a>
+	<a href="@controllers.lab.application.routes.Application.index("righttoleft").toString()" class="list-group-item @("active".when(equalTask("righttoleft"))) secret">Right to Left</a>
+	<a href="@controllers.lab.application.routes.Application.index("vertical").toString()" class="list-group-item @("active".when(equalTask("vertical"))) secret">Vertical</a>
+
 	<a href="@controllers.lab.application.routes.Application.index("authorization").toString()" class="list-group-item @("active".when(equalTask("authorization")))">@Messages(MessageKeys.AUTHORIZATION)</a>
-
-	<a href="@controllers.lab.application.routes.Application.index("jpql").toString()" class="list-group-item @("active".when(equalTask("jpql"))) lab d-none">JPQL</a>
-	<a href="@controllers.lab.application.routes.WebSocket.index().toString()" class="list-group-item @("active".when(equalTask("websocket"))) lab d-none">WebSocket</a>
-	<a href="@controllers.lab.application.routes.Application.index("comet").toString()" class="list-group-item @("active".when(equalTask("comet"))) lab d-none">Comet</a>
-	<a href="@controllers.lab.application.routes.Application.index("serialtask").toString()" class="list-group-item @("active".when(equalTask("serialtask"))) lab d-none">Serial Task</a>
-	<a href="@controllers.lab.application.routes.Application.index("paralleltask").toString()" class="list-group-item @("active".when(equalTask("paralleltask"))) lab d-none">Parallel Task</a>
-	<a href="@controllers.lab.application.routes.Application.index("webservice").toString()" class="list-group-item @("active".when(equalTask("webservice"))) lab d-none">Web Service</a>
-	<a href="@controllers.lab.application.routes.Application.index("translate").toString()" class="list-group-item @("active".when(equalTask("translate"))) lab d-none">Translate</a>
-	<a href="@controllers.lab.application.routes.Application.index("righttoleft").toString()" class="list-group-item @("active".when(equalTask("righttoleft"))) lab d-none">Right to Left</a>
-	<a href="@controllers.lab.application.routes.Application.index("vertical").toString()" class="list-group-item @("active".when(equalTask("vertical"))) lab d-none">Vertical</a>
 </div>
-
-@script(){
-
-	document.onkeydown = function(e){
-
-		if(e.altKey && e.keyCode === 89){
-
-			if($){
-
-				$('.lab.d-none').removeClass('d-none');
-			}
-			return false;
-		}
-	};
-}

@@ -1,5 +1,26 @@
+@import com.typesafe.config._
+@import play.api.i18n._
+
+@import common.system._
+
 @()
 
-<!-- npm -->
-<link rel='stylesheet'
-	href='@routes.Assets.versioned("lib/bootstrap/dist/css/bootstrap.min.css")'>
+@href() = @{
+
+	if(ConfigFactory.defaultApplication().hasPath("bootstrap.cdn.style")){
+
+		ConfigFactory.defaultApplication().getString("bootstrap.cdn.style")
+	}else{
+		// npm
+		routes.Assets.versioned("lib/bootstrap/dist/css/bootstrap.min.css")
+	}
+}
+
+<link rel='stylesheet' href='@href()'>
+
+<div id="bootstrap_messages" class="d-none" data-messages='{
+	"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",
+	"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
+	"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
+}'></div>
+<script src='@routes.Assets.versioned("lib_custom/bootstrap/head.css.js")'></script>

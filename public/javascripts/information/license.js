@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-	insertStyle('#projectImage', {
+	injectStyle('#projectImage', {
 		'background': 'url(' + Messages("projectImage") + ') no-repeat center'
 	});
 });

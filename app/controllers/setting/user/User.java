@@ -13,8 +13,8 @@ import models.setting.user.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User.Theme;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -28,7 +28,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed(value = {Permission.READ, Permission.WRITE})
 public class User extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(User.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 
 	@Inject
 	private MessagesApi messages;

@@ -6,5 +6,5 @@ var CKEDITORMessages = function(messageKey){
 }
 
 CKEDITOR.config.language = CKEDITORMessages(MessageKeys.CKEDITOR_LANG);
-CKEDITOR.config.uiColor = $.Color(getTheme().primary.disabledBackgroundColor).toHexString();
-
+var color = $.Color(getTheme().primary.backgroundColor);
+CKEDITOR.config.uiColor = $.Color({hue: color.hue(), saturation: color.saturation(), lightness: 0.9, alpha: color.alpha()}).toHexString();

@@ -8,8 +8,8 @@ import javax.inject.Provider;
 
 import com.typesafe.config.Config;
 import play.Environment;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.Mode;
 import play.api.OptionalSourceMapper;
 import play.api.UsefulException;
@@ -23,7 +23,7 @@ import play.mvc.Results;
 
 public class ErrorHandler extends DefaultHttpErrorHandler {
 
-	private static final ALogger LOGGER = Logger.of(ErrorHandler.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ErrorHandler.class);
 
 	@Inject
 	private Config config;

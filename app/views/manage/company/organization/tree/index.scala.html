@@ -33,18 +33,6 @@
 		@libraries.standard.head()
 		@libraries.jqtree.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/manage/company/organization/list/tree.css")'>
-		@style(){
-
-			ul.jqtree-tree li.jqtree-folder {
-
-				margin-bottom: 0px;
-			}
-			ul.jqtree-tree li.jqtree-selected > .jqtree-element,
-			ul.jqtree-tree li.jqtree-selected > .jqtree-element:hover {
-				background-color: white;
-				background: none;
-				text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7); }
-		}
 	}
 
 	@body("manage","organizationUnit"){
@@ -101,187 +89,23 @@
 			</div>
 		}
 
+		<pre id="unitTreeJSON" class="d-none">
+@unitTreeJSON
+		</pre>
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"companyId":@Long.valueOf(form(OrganizationUnit.COMPANYID).getValue.orElse("")),
+			"@MessageKeys.SAVE":"@Messages(MessageKeys.SAVE)",
+			"@MessageKeys.INFO":"@Messages(MessageKeys.INFO)",
+			"@MessageKeys.SYSTEM_ERROR_DATA_UNSAVE":"@Messages(MessageKeys.SYSTEM_ERROR_DATA_UNSAVE)",
+			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)"
+		}'></div>
+
 		@libraries.standard.last()
 		@libraries.jqtree.last()
 		<script src='@routes.Assets.versioned("javascripts/manage/company/organization/tree/index.js")'></script>
-		@script(){
-
-			$(document).ready(function() {
-
-				var data = JSON.parse('@Html(unitTreeJSON)');
-
-				$('#unitTree').tree({
-					data: data,
-					autoOpen: true,
-					dragAndDrop: true,
-					onCreateLi: function(node, $li) {
-
-						$li.addClass('list-group-item').css('display', 'list-item').parent().addClass('list-group');
-					}
-				});
-
-				$('#unitTree').bind(
-					'tree.move',
-					function(event) {
-
-						$("#unsavedInfo>span").html("<strong>@(Messages(MessageKeys.SAVE)+" "+Messages(MessageKeys.INFO))</strong> "+"@Messages(MessageKeys.SYSTEM_ERROR_DATA_UNSAVE)");
-						$("#unsavedInfo").show();
-					}
-				);
-
-				var updateState = function (){
-
-					$('#updateButton').attr("disabled", "disabled");
-
-					switch(data.length){
-						case 0:
-
-							$('#updateButton').attr("disabled", "disabled");
-							break;
-						default:
-
-							$('#updateButton').prop('disabled', false);
-							break;
-					};
-
-					$("#unsavedInfo").append("<span></span>").hide();
-				};
-
-				updateState();
-
-				// ////////// Edit //////////
-
-				$('#updateButton').on("click", function(){
-
-					var unitTreeJSON = $('#unitTree').tree('toJson');
-					$('#update@OrganizationUnit.UNITTREEJSON').val(unitTreeJSON);
-
-					initOperation('update');
-				});
-
-				$('#updateOk').on("click", function(){
-
-					initOperation('update');
-					operation('update');
-				});
-
-				var initOperation = function(crud){
-
-					var errorContainer = $('#'+crud+'Dialog form>div:first-child');
-					errorContainer.empty();
-
-					$('#'+crud+'Message').text('');
-					$('#'+crud+'Description').text('-');
-					$('#'+crud+'Progress').removeClass('progress-danger').val(0);
-					$('#'+crud+'Cancel').prop('disabled', false);
-					$('#'+crud+'Ok').prop('disabled', false);
-				}
-
-				var operation = function(crud){
-
-					$('#'+crud+'Message').text('@Messages(MessageKeys.PLEASE__WAIT)');
-					$('#'+crud+'Progress').val(100);
-					$('#'+crud+'Cancel').prop('disabled', true);
-					$('#'+crud+'Ok').prop('disabled', true);
-
-					var form = $('#'+crud+'Form');
-					var url = form.attr('action');
-					$.ajax({
-						method:"POST",
-						url:url,
-						data:form.serialize(),
-						processData: false,
-						dataType: "json",
-						timeout: 3 * 1000
-					})
-					.then(
-						function (responseJson) {
-
-							window.location.href = '@controllers.manage.company.organization.tree.routes.Read.index(Long.valueOf(form(OrganizationUnit.COMPANYID).getValue.orElse("")))';
-						},
-						function (jqXHR, textStatus, errorThrown) {
-
-							var responseJson = jqXHR.responseJSON||{};
-							if(responseJson['globalErrors']){
-
-								var errorContainer = $('#'+crud+'Dialog form>div:first-child');
-								var errors = responseJson.globalErrors;
-								$.each(errors, function(i, error){
-
-									errorContainer.append('<p class="text-warning">'+error+'</p>');
-								});
-							}
-
-							$('#'+crud+'Message').text('@Messages(MessageKeys.FAILURE)');
-							$('#'+crud+'Description').html('@Messages(MessageKeys.STATUS)&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;@Messages(MessageKeys.ERROR)&nbsp;<strong>'+errorThrown+'</strong>');
-							$('#'+crud+'Progress>.progress-bar').addClass('bg-danger');
-							$('#'+crud+'Cancel').prop('disabled', false);
-							$('#'+crud+'Ok').prop('disabled', false);
-
-							if(responseJson['globalErrors']) {
-
-								shake('#'+crud+'Dialog');
-							}
-						}
-					);
-					return false;
-				}
-
-			});
-
-			// ////////// Common //////////
-
-			$(window).on('keydown', function(e){
-
-				var keyCode = e.which ? e.which : e.keyCode;
-				if (13 == keyCode) {
-
-					if($("#updateDialog").is(".show")){
-
-						$('#updateOk').trigger("click");
-					}else{
-
-					}
-
-					e.preventDefault();
-				}
-			})
-
-			$('[data-toggle="tooltip"]').tooltip();
-			$('[data-toggle="popover"]').popover();
-		}
-		@script(){
-
-			if(document.location.origin+"@controllers.manage.company.routes.Read.index().toString()" == document.referrer){
-
-				showFromRight('#detailContent');
-			}else{
-
-				$('#detailContent').removeClass("d-none");
-			}
-
-			$('#previousButton').on('click', function(e){
-
-				event.preventDefault();
-
-				hideToRight('#detailContent', function(e){
-
-					window.location.href = "@controllers.manage.company.routes.Read.index()";
-				});
-			});
-
-			$('#tasklist>label').on('click', function (e) {
-
-				var tasks = $('#tasklist>label');
-				var taskIndex = tasks.index($(e.currentTarget));
-				if(0 == taskIndex){
-
-					window.location.href = "@controllers.manage.company.organization.list.routes.Read.index(Long.valueOf(form(OrganizationUnit.COMPANYID).getValue.orElse("")))";
-				}else if(1 == taskIndex){
-
-					window.location.href = "@controllers.manage.company.organization.tree.routes.Read.index(Long.valueOf(form(OrganizationUnit.COMPANYID).getValue.orElse("")))";
-				}
-			});
-		}
 	}
 }

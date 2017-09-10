@@ -16,12 +16,12 @@ import javax.annotation.Nonnull;
 
 import org.apache.commons.lang3.StringUtils;
 
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class System {
 
-	public static final ALogger LOGGER = Logger.of(System.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(System.class);
 
 	public enum Permission {
 		READ, WRITE, MANAGE

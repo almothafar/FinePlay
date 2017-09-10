@@ -63,25 +63,12 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.WELCOME":"@Messages(MessageKeys.WELCOME)",
+			"@MessageKeys.SPEECH_SYNTHESIS_LANG":"@Messages(MessageKeys.SPEECH_SYNTHESIS_LANG)"
+		}'></div>
+
 		@libraries.standard.last()
 		<script src='@routes.Assets.versioned("javascripts/framework/application/i18n.js")'></script>
-		@script(){
-
-			$("tbody").append("<tr></tr>");
-
-			if(window.SpeechSynthesisUtterance){
-
-				$("tbody > tr:last-child").append("<td>Speech</td><td>" + '@Html(Strings.removeNewLine(components.button(Map("id"->"speakButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-volume-up", "text"->"Speech")).toString))' + "</td>");
-			}else{
-
-				$("tbody > tr:last-child").append("<td>Speech</td><td><span class='tag badge-danger'>SpeechSynthesis is Unsupported.</span></td>");
-			}
-			$('#speakButton').click(function() {
-
-				var synthes = new SpeechSynthesisUtterance("@Messages(MessageKeys.WELCOME)");
-				synthes.lang = "@Messages(MessageKeys.SPEECH_SYNTHESIS_LANG)";
-				speechSynthesis.speak(synthes);
-			});
-		}
 	}
 }

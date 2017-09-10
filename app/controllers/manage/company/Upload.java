@@ -35,8 +35,8 @@ import models.manage.company.UploadFormContent;
 import models.manage.company.UploadFormContent.Operation;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.api.PlayException;
 import play.api.PlayException.ExceptionSource;
 import play.data.Form;
@@ -53,7 +53,7 @@ import play.mvc.Security.Authenticated;
 
 public class Upload extends Controller {
 
-	private static final ALogger LOGGER = Logger.of(Upload.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Upload.class);
 
 	@Inject
 	private MessagesApi messages;

@@ -5,15 +5,15 @@ import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.inject.ApplicationLifecycle;
 import play.inject.Injector;
 
 @Singleton
 public class Global {
 
-	private static final ALogger LOGGER = Logger.of(Global.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Global.class);
 
 	@SuppressWarnings("deprecation")
 	@Inject
@@ -21,7 +21,7 @@ public class Global {
 
 		LOGGER.info("onStart");
 
-		common.system.System.setInjector(injector);
+//		common.system.System.setInjector(injector);
 
 		lifecycle.addStopHook(() -> {
 

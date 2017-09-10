@@ -1,26 +1,9 @@
-@import common.system._
-
 @(title: String)(content: Html)
 
 <head>
+
 	@libraries.common.head(title)
-
-	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/common.css")'>
-	<!-- <link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/head11111.css")'> -->
-	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/experimental.css")'>
-
-	<script src='@routes.Assets.versioned("javascripts/common.js")'></script>
-	<script src='@routes.Assets.versioned("javascripts/experimental.js")'></script>
-	<script src='@routes.Assets.versioned("javascripts/messages.js")'></script>
-	<script type="text/javascript" src="@controllers.system.routes.System.routes"></script>
-	<script src='@routes.Assets.versioned("javascripts/utils/strings.js")'></script>
-	<script src='@routes.Assets.versioned("javascripts/utils/components.js")'></script>
-	<script src='@routes.Assets.versioned("javascripts/utils/forms.js")'></script>
 
 	@content
 	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/body.css")'>
-	<!-- <link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/head22222.css")'> -->
-
-	<link rel='stylesheet' href='@routes.Assets.versioned("themes/base.css")'>
-	<link rel='stylesheet' href='@routes.Assets.versioned("themes/" + session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase + "/theme.css")'>
 </head>

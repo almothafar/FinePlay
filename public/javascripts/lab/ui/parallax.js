@@ -2,19 +2,19 @@
 
 $(document).ready(function () {
 
-	insertStyle('.contentFrame:nth-child(1)>.imageContent', {
+	injectStyle('.contentFrame:nth-child(1)>.imageContent', {
 		'background-image': 'url(' + Messages("img1") + ')'
 	});
-	insertStyle('.contentFrame:nth-child(2)>.imageContent', {
+	injectStyle('.contentFrame:nth-child(2)>.imageContent', {
 		'background-image': 'url(' + Messages("img2") + ')'
 	});
-	insertStyle('.contentFrame:nth-child(3)>.imageContent', {
+	injectStyle('.contentFrame:nth-child(3)>.imageContent', {
 		'background-image': 'url(' + Messages("img3") + ')'
 	});
-	insertStyle('.contentFrame:nth-child(4)>.imageContent', {
+	injectStyle('.contentFrame:nth-child(4)>.imageContent', {
 		'background-image': 'url(' + Messages("img4") + ')'
 	});
-	insertStyle('.contentFrame:nth-child(5)>.imageContent', {
+	injectStyle('.contentFrame:nth-child(5)>.imageContent', {
 		'background-image': 'url(' + Messages("img5") + ')'
 	});
 

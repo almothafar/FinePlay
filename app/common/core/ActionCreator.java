@@ -22,8 +22,8 @@ import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
 import models.user.User.Role;
-import play.Logger;
-import play.Logger.ALogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.db.jpa.Transactional;
 import play.http.DefaultActionCreator;
 import play.mvc.Action;
@@ -36,7 +36,7 @@ import play.mvc.Results;
 
 public class ActionCreator extends DefaultActionCreator {
 
-	private static final ALogger LOGGER = Logger.of(ActionCreator.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ActionCreator.class);
 
 	@Transactional
 	@SuppressWarnings("rawtypes")

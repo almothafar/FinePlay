@@ -227,3 +227,9 @@ a:not(.collapsed)>.nf-disclosure_triangle:before{
 	background: #c9c9c9;
 	color:transparent ;
 }
+
+/* Secret */
+
+.secret {
+  display: none !important;
+}

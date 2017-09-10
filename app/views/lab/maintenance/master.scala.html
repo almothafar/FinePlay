@@ -50,40 +50,5 @@
 
 		@libraries.standard.last()
 		<script src='@routes.Assets.versioned("javascripts/lab/maintenance/master.js")'></script>
-		@script(){
-
-			showFromLeft('#masterContent');
-
-			var buildForm = function(method, action, json){
-
-				var form = $('<form/>', {action: action, method: method});
-				for(key in json){
-
-					var value = json[key];
-					form.append($('<input/>', {type: 'hidden', name: key, value: value}))
-				}
-
-				return form;
-			}
-
-			var postForm = function(form){
-
-				form.appendTo(document.body).submit();
-			}
-
-			$('.nextButton').on('click', function(e){
-
-				event.preventDefault();
-
-				var target = $(this).parent().parent().find('td').eq(0).text();
-
-				hideToLeft('#masterContent', function(e){
-
-					var json = {target: target, task: "@controllers.lab.maintenance.routes.Maintenance.master().toString()"};
-					var form = buildForm('post', '@helper.CSRF(controllers.lab.maintenance.routes.Maintenance.detail())', json);
-					postForm(form);
-				});
-			});
-		}
 	}
 }

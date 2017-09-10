@@ -17,7 +17,7 @@
 
 	@top.head(Messages(MessageKeys.RESETUSER)){
 
-		@libraries.bootstrap.head()
+		@libraries.standard.head()
 	}
 
 	@top.body("top","resetuser"){
@@ -68,18 +68,5 @@
 		@libraries.standard.last()
 		@libraries.holder.last()
 		<script src='@routes.Assets.versioned("javascripts/resetuser/change/complete.js")'></script>
-		@script(){
-
-			$(window).on('keydown', function(e){
-
-				var keyCode = e.which ? e.which : e.keyCode;
-				if (13 == keyCode) {
-
-					location.href = $('#topButton').attr("href");
-
-					e.preventDefault();
-				}
-			});
-		}
 	}
 }

@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.custom-file-control:empty::after {
+	content: attr(data-filename) !important;
+}
+
 .imagePreview{
 	width:100%;
 	height:240px;
