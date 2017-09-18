@@ -81,8 +81,6 @@ public class MessageKeys {
 
   public static final String CHECKBOX = "checkbox";
 
-  public static final String CKEDITOR_LANG = "ckeditor.lang";
-
   public static final String CLIENT = "client";
 
   public static final String CLOSE = "close";
@@ -630,6 +628,8 @@ public class MessageKeys {
   public static final String STYLE = "style";
 
   public static final String SUCCESS = "success";
+
+  public static final String SUMMERNOTE_LANG = "summernote.lang";
 
   public static final String SYSTEM = "system";
 

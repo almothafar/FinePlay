@@ -9,10 +9,10 @@ var initEraceableField = function(selector){
 
 		if(0 == input.val().length){
 
-			icon.css("display", "none");
+			icon.addClass("invisible");
 		}else{
 
-			icon.css("display", "inline");
+			icon.removeClass("invisible");
 		}
 	}
 
@@ -51,7 +51,7 @@ var initEraceableField = function(selector){
 			var currentInput = currentAddOn.prev(".form-control");
 
 			currentInput.val("");
-			currentIcon.css("display", "none");
+			currentIcon.addClass("invisible");
 		});
 	});
 }

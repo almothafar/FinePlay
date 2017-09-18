@@ -11,8 +11,9 @@
 
 		ConfigFactory.defaultApplication().getString("bootstrap.cdn.style")
 	}else{
+		routes.Assets.versioned("lib/bootstrap-4-dev/dist/css/bootstrap.min.css")
 		// npm
-		routes.Assets.versioned("lib/bootstrap/dist/css/bootstrap.min.css")
+		//routes.Assets.versioned("lib/bootstrap/dist/css/bootstrap.min.css")
 	}
 }
 
@@ -23,4 +24,4 @@
 	"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
 	"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
 }'></div>
-<script src='@routes.Assets.versioned("lib_custom/bootstrap/head.css.js")'></script>
+<script src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>

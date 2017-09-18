@@ -42,6 +42,8 @@ import play.mvc.Controller;
 
 class PermissionListCreator {
 
+	private static final String SYSTEM_NAME = "FinePlay";
+
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		final StringBuilder builder = new StringBuilder();
@@ -97,7 +99,7 @@ class PermissionListCreator {
 		return new HashSet<>(Arrays.asList(permissions));
 	}
 
-	private static final Pattern PATTERN_PATH = Pattern.compile("^.*/fineplay/bin/(.*)\\.class");
+	private static final Pattern PATTERN_PATH = Pattern.compile("^.*/" + SYSTEM_NAME + "/bin/(.*)\\.class");
 
 	public static Set<Class<?>> getClasses(final String packageName) throws IOException {
 
@@ -112,7 +114,7 @@ class PermissionListCreator {
 			if (!"file".equals(uri.getScheme()))
 				return false;
 			final String path = uri.getPath();
-			if (!path.contains("/fineplay/bin/"))
+			if (!path.contains("/" + SYSTEM_NAME + "/bin/"))
 				return false;
 			if (path.contains("$"))
 				return false;
@@ -156,6 +158,7 @@ class PermissionListCreator {
 			if (!Controller.class.isAssignableFrom(clazz))
 				return false;
 
+			java.lang.System.out.println("Create... " + clazz.getName());
 			return true;
 		}).collect(Collectors.toCollection(() -> new TreeSet<Class<?>>((c0, c1) -> c0.getName().compareTo(c1.getName()))));
 	}

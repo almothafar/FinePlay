@@ -43,7 +43,7 @@ $('#getSyncButton').click(function() {
 	.then(
 		function (responseJson) {
 
-			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS), 1000);
+			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
 
 			$('#setSyncKeyField').val(responseJson.key);
 			$('#setSyncValueField').val(responseJson.value);
@@ -69,7 +69,7 @@ $('#setASyncButton').click(function() {
 	.then(
 		function (responseJson) {
 
-			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS), 1000);
+			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
 
 			$('#setASyncKeyField').val(responseJson.key);
 			$('#setASyncValueField').val(responseJson.value);
@@ -94,7 +94,7 @@ $('#getASyncButton').click(function() {
 	.then(
 		function (responseJson) {
 
-			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS), 1000);
+			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
 
 			$('#setASyncKeyField').val(responseJson.key);
 			$('#setASyncValueField').val(responseJson.value);

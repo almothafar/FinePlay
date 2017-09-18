@@ -89,12 +89,6 @@ body {
 	border-top: #007bff solid 3px;
 }
 
-/* Table custom style */
-
-.table:not(.table-inverse){
-	background-color: #fff;
-}
-
 
 
 

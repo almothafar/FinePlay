@@ -12,6 +12,7 @@
 	<a href="@controllers.framework.application.routes.Application.index("cookie").toString()" class="list-group-item @("active".when(equalTask("cookie")))">Cookie</a>
 	<a href="@controllers.framework.application.routes.Application.index("session").toString()" class="list-group-item @("active".when(equalTask("session")))">Session</a>
 	<a href="@controllers.framework.application.routes.Application.index("flash").toString()" class="list-group-item @("active".when(equalTask("flash")))">Flash</a>
+	<a href="@controllers.framework.application.routes.Application.index("logger").toString()" class="list-group-item @("active".when(equalTask("logger"))) secret">Logger</a>
 	<a href="@controllers.framework.application.routes.Application.index("cache").toString()" class="list-group-item @("active".when(equalTask("cache")))">Cache</a>
 	<a href="@controllers.framework.application.routes.Application.index("i18n").toString()" class="list-group-item @("active".when(equalTask("i18n")))">I18n</a>
 	<a href="@controllers.framework.application.routes.Application.index("message").toString()" class="list-group-item @("active".when(equalTask("message")))">@Messages(MessageKeys.MESSAGE)</a>

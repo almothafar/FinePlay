@@ -56,9 +56,6 @@ public class Library extends Controller {
 			case "openlayers" :
 
 				return openlayers();
-			case "ckeditor" :
-
-				return ckeditor();
 			case "handsontable" :
 
 				return handsontable();
@@ -74,6 +71,9 @@ public class Library extends Controller {
 			case "diff2html" :
 
 				return diff2html();
+			case "summernote" :
+
+				return summernote();
 			case "parsley" :
 
 				return parsley();
@@ -142,11 +142,6 @@ public class Library extends Controller {
 		return ok(views.html.lab.library.openlayers.render());
 	}
 
-	public static Result ckeditor() {
-
-		return ok(views.html.lab.library.ckeditor.render());
-	}
-
 	public static Result handsontable() {
 
 		final List<List<String>> rows = IntStream.rangeClosed(1, 500).mapToObj(rowIndex -> {
@@ -206,6 +201,11 @@ public class Library extends Controller {
 	public static Result diff2html() {
 
 		return ok(views.html.lab.library.diff2html.render());
+	}
+
+	public static Result summernote() {
+
+		return ok(views.html.lab.library.summernote.render());
 	}
 
 	public static Result parsley() {

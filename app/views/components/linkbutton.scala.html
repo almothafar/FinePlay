@@ -10,7 +10,7 @@
 @(prop:scala.collection.immutable.Map[String, String])
 
 <a id="@prop.getOrElse("id", "")" role="button" class="btn btn-@("outline-".when(Boolean.valueOf(prop.getOrElse("outline", "false"))))@prop.getOrElse("type", "primary") @("active".when(Boolean.valueOf(prop.getOrElse("selected", "false")))) btn-@prop.getOrElse("size", "") @("default".when(Boolean.valueOf(prop.getOrElse("default", "false")))) btn-@("block".when(Boolean.valueOf(prop.getOrElse("block", "false")))) @Attributes.classValue(prop) @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true"))))" href="@prop.getOrElse("link", "#")" target="@prop.getOrElse("target", "")" @Html(Attributes.datas(prop))>
-	@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))@if(!prop.getOrElse("icon", "").isEmpty() && !prop.getOrElse("text", "").isEmpty()){&nbsp}
+	@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))@if(!prop.getOrElse("icon", "").isEmpty() && !prop.getOrElse("text", "").isEmpty()){&nbsp;}
 	@Html(prop.getOrElse("text", ""))
 	@components.badge(Map("type"->prop.getOrElse("badgeType", "secondary"), "pill"->"true", "text"->prop.getOrElse("badge", "")))
 </a>

@@ -16,7 +16,6 @@ import java.time.chrono.MinguoDate;
 import java.time.chrono.ThaiBuddhistDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.time.format.TextStyle;
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +34,8 @@ import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -44,32 +45,13 @@ import javax.inject.Inject;
 import javax.security.auth.login.AccountException;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
-import javax.validation.ValidationProviderResolver;
 import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.validation.constraints.AssertFalse;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.Negative;
-import javax.validation.constraints.NegativeOrZero;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern.Flag;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.internal.SessionImpl;
-import org.hibernate.validator.HibernateValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -78,11 +60,11 @@ import com.typesafe.config.Config;
 import akka.Done;
 import common.system.MessageKeys;
 import common.utils.DateTimes;
+import common.utils.JSONs;
 import controllers.user.UserService;
-import play.mvc.Controller;
+import models.framework.application.FinePlayBean;
 import models.framework.application.Jsr380Bean;
 import models.framework.application.PlayBean;
-import models.framework.application.FinePlayBean;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
 import play.api.PlayException;
@@ -98,14 +80,19 @@ import play.i18n.Langs;
 import play.i18n.MessagesApi;
 import play.libs.Json;
 import play.mvc.BodyParser;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
+import play.mvc.With;
+import play.routing.HandlerDef;
 import play.routing.Router;
 import play.twirl.api.Html;
 import scala.Tuple2;
 
 @PermissionsAllowed
 public class Application extends Controller {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
 	@Inject
 	private Config config;
@@ -131,6 +118,7 @@ public class Application extends Controller {
 	@Inject
 	private FormFactory formFactory;
 
+	@With(LoggingAction.class)
 	@Authenticated(common.core.Authenticator.class)
 	@Transactional(readOnly = true)
 	public Result index(String state) {
@@ -148,6 +136,9 @@ public class Application extends Controller {
 			case "flash" :
 
 				return flashlist();
+			case "logger" :
+
+				return logger();
 			case "cache" :
 
 				return cache();
@@ -236,22 +227,20 @@ public class Application extends Controller {
 		return ok(views.html.framework.application.flash.render(new TreeMap<>(map)));
 	}
 
+	public Result logger() {
+
+		LOGGER.trace("TRACE Log.");
+		LOGGER.debug("DEBUG Log.");
+		LOGGER.info("Info Log.");
+		LOGGER.warn("WARN Log.");
+		LOGGER.error("Error Log.");
+
+		final StackTraceElement element = Thread.currentThread().getStackTrace()[1];
+
+		return ok("See "+element.getClassName()+"#"+element.getMethodName()+" Line:"+element.getLineNumber());
+	}
+
 	public Result cache() {
-
-		// set
-		// aSyncCacheApi.set("key", "value", 3600);
-
-		// get
-		aSyncCacheApi.get("key");
-
-		// get
-		aSyncCacheApi.getOrElseUpdate("item.key1", () -> {
-
-			return CompletableFuture.supplyAsync(() -> {
-
-				return "Cache is empty.";
-			});
-		}, 3600);
 
 		return ok(views.html.framework.application.cache.render());
 	}
@@ -485,7 +474,7 @@ public class Application extends Controller {
 			return "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
 		}).collect(Collectors.joining("", "<table><thead><tr><td>KEY</td><td>VALUE</td></tr></thead><tbody>", "</tbody></table>")));
 
-		final /* play.routing.HandlerDef ??? */play.api.routing.HandlerDef handlerDef = ctx().request().attrs().get(Router.Attrs.HANDLER_DEF);
+		final HandlerDef handlerDef = ctx().request().attrs().get(Router.Attrs.HANDLER_DEF);
 		final List<String> modifiers = handlerDef.getModifiers();;
 		map.put("HandlerDef", modifiers);
 
@@ -617,9 +606,10 @@ public class Application extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
-	public CompletionStage<Result> synccache() {
+	public Result synccache() {
 
 		final JsonNode jsonNode = request().body().asJson();
+		LOGGER.debug(JSONs.toJSON(jsonNode));
 		final String key = jsonNode.get("key") != null ? jsonNode.get("key").textValue() : "";
 		final String value = jsonNode.get("value") != null ? jsonNode.get("value").textValue() : "";
 
@@ -629,32 +619,29 @@ public class Application extends Controller {
 		}
 
 		final ObjectNode result = Json.newObject();
+		result.put("key", key);
 		if (value.isEmpty()) {
 			// get
 
-			final String cachedValue = syncCacheApi.getOrElseUpdate(key, () -> "Cache is empty.", 60 * 60);
+			final String cachedValue = syncCacheApi.get(key);
 
-			result.put("key", key);
 			result.put("value", cachedValue);
 		} else {
 			// set
 
-			syncCacheApi.set(key, value, 60 * 60);
+			syncCacheApi.set(key, value);
 
-			result.put("key", key);
 			result.put("value", value);
 		}
 
-		return CompletableFuture.supplyAsync(() -> {
-
-			return ok(result);
-		});
+		return ok(result);
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
 	public CompletionStage<Result> asynccache() {
 
 		final JsonNode jsonNode = request().body().asJson();
+		LOGGER.debug(JSONs.toJSON(jsonNode));
 		final String key = jsonNode.get("key") != null ? jsonNode.get("key").textValue() : "";
 		final String value = jsonNode.get("value") != null ? jsonNode.get("value").textValue() : "";
 
@@ -663,48 +650,41 @@ public class Application extends Controller {
 			badRequest(jsonNode);
 		}
 
-		final ObjectNode result = Json.newObject();
-		if (value.isEmpty()) {
-			// get
-
-			final CompletionStage<String> stage = aSyncCacheApi.getOrElseUpdate(key, () -> {
-
-				return CompletableFuture.supplyAsync(() -> {
-
-					return "Cache is empty.";
-				});
-			}, 60 * 60);
-			final String cachedValue;
-			try {
-
-				cachedValue = stage.toCompletableFuture().get();
-			} catch (InterruptedException | ExecutionException e) {
-
-				throw new RuntimeException(e);
-			}
-
-			result.put("key", key);
-			result.put("value", cachedValue);
-		} else {
-			// set
-
-			final CompletionStage<Done> stage = aSyncCacheApi.set(key, value, 60 * 60);
-
-			try {
-
-				System.out.println("async get start");
-				stage.toCompletableFuture().get();
-				System.out.println("async get end");
-
-				result.put("key", key);
-				result.put("value", value);
-			} catch (InterruptedException | ExecutionException e) {
-
-				throw new RuntimeException(e);
-			}
-		}
-
 		return CompletableFuture.supplyAsync(() -> {
+
+			final ObjectNode result = Json.newObject();
+			result.put("key", key);
+			if (value.isEmpty()) {
+				// get
+
+				final CompletionStage<String> stage = aSyncCacheApi.get(key);
+				try {
+
+					final String cachedValue = stage.toCompletableFuture().get(3, TimeUnit.SECONDS);
+					result.put("value", cachedValue);
+				} catch (InterruptedException | ExecutionException e) {
+
+					throw new RuntimeException(e);
+				} catch (TimeoutException e) {
+
+					result.put("value", e.getLocalizedMessage());
+				}
+			} else {
+				// set
+
+				final CompletionStage<Done> stage = aSyncCacheApi.set(key, value, 60 * 60);
+				try {
+
+					stage.toCompletableFuture().get(3, TimeUnit.SECONDS);
+					result.put("value", value);
+				} catch (InterruptedException | ExecutionException e) {
+
+					throw new RuntimeException(e);
+				} catch (TimeoutException e) {
+
+					result.put("value", e.getLocalizedMessage());
+				}
+			}
 
 			return ok(result);
 		});

@@ -198,9 +198,11 @@
 			<div id="system_help-header">
 
 				<nav id="system_help-menu" class="navbar bg-primary d-flex justify-content-center">
-					@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
-					<div class="align-self-center h4">@Messages(MessageKeys.HELP)</div>
-					@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
+					<div class="row align-items-center">
+						@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
+						<div class="h4 mb-0">@Messages(MessageKeys.HELP)</div>
+						@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
+					</div>
 				</nav>
 
 				@components.container(Map("id"->"", "fluid"->"true", "class"->"bg-light py-2")){

@@ -118,7 +118,7 @@ GET		/framework/welcome							controllers.framework.welcome.Welcome.index()
 GET		/framework/defaultpage						controllers.framework.defaultpage.Defaultpage.index()
 GET		/framework/defaultpage/:page				controllers.framework.defaultpage.Defaultpage.page(page:String)
 + nocsrf modifier1 modifier2 modifier3
-GET		/framework/application						controllers.framework.application.Application.index(state:String ?="configuration")
+GET		/framework/application						controllers.framework.application.Application.index(state:String ?="config")
 + nocsrf modifier1 modifier2 modifier3
 GET		/framework/application:state				controllers.framework.application.Application.index(state:String)
 GET		/framework/application/playexception		controllers.framework.application.Application.playException()

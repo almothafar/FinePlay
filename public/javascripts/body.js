@@ -204,10 +204,6 @@ $("#helpButton").on('click', function(event) {
 
 				helpWrapper.prepend('<h1 class="bd-title w-100" id="help-top"></h1>');
 
-				anchors.options.placement = 'right'
-				anchors.options.icon = '✿'
-				anchors.add('.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
-
 				// add tooltip
 				$('#system_help-main .highlight').each(function () {
 
@@ -395,7 +391,7 @@ if("Dev" == getMode()){
 
 document.onkeydown = function(e){
 
-	if(e.altKey && e.keyCode === 89){
+	if(e.altKey && e.keyCode === 72){
 
 		$('.secret').removeClass('secret');
 		return false;

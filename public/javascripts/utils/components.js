@@ -87,9 +87,10 @@ var Components = function() {
 				navs.each(function(){
 
 					var nav = $(this);
+					nav.css({ flexWrap:"nowrap", msFlexWrap:"nowrap"});
 					nav.width(10000);
 
-					nav.wrap('<div style="overflow-x:scroll; -webkit-overflow-scrolling:touch;"></div>');
+					nav.wrap('<div class="w-100" style="overflow-x:scroll; -webkit-overflow-scrolling:touch;"></div>');
 
 					var navItems = nav.find('.nav-item');
 					var width = navItems.map(function(){return $(this).outerWidth(true)}).get().reduce(function(a,b){return a+b;},0);

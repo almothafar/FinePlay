@@ -26,7 +26,7 @@
 
 		@libraries.standard.head()
 
-		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/user/signin.css")">
+		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/user/index.css")">
 	}
 
 	@top.body("top","signin"){
@@ -50,7 +50,7 @@
 							@components.button(Map("id"->"stamp", "type"->"danger", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.DEVELOPMENT)))
 						}
 					</div>
-					<div class="card-body text-xs-left">
+					<div class="card-body text-xs-left pb-0">
 					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin") {
 						<h5 class="form-signin-heading">@Messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
 						<div id="selectUserContainer d-none">
@@ -87,6 +87,11 @@
 						}
 						<div class="mt-3">
 							@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fa fa-", "text"->Messages(MessageKeys.RESETUSER_FORGET__PASSWORD), "link"->controllers.resetuser.routes.ResetUser.index().toString, "class"->"forget-password"))
+						</div>
+
+						<div id="snsLinks" class="mt-3">
+
+							<a class="github-button" href="https://github.com/hiro20v/FinePlay" data-show-count="true" aria-label="Star hiro20v/FinePlay on GitHub">Star</a>
 						</div>
 					}
 					</div>
@@ -135,7 +140,7 @@
 							Map("name"->"bootstrap-slider", "icon"->"fa fa-sliders", "link"->"https://github.com/seiyria/bootstrap-slider", "info"->""),
 							Map("name"->"Select2", "icon"->"fa fa-pencil", "link"->"http://select2.github.io", "info"->""),
 							Map("name"->"DataTables", "icon"->"fa fa-table", "link"->"http://www.datatables.net", "info"->""),
-							Map("name"->"CKEditor", "icon"->"fa fa-pencil-square-o", "link"->"http://ckeditor.com", "info"->""),
+							Map("name"->"summernote", "icon"->"fa fa-pencil-square-o", "link"->"http://summernote.org", "info"->""),
 							Map("name"->"Handsontable", "icon"->"fa fa-table", "link"->"https://handsontable.com", "info"->""),
 							Map("name"->"Chart.js", "icon"->"fa fa-bar-chart", "link"->"http://www.chartjs.org", "info"->""),
 							Map("name"->"slick", "icon"->"fa fa-picture-o", "link"->"http://kenwheeler.github.io/slick/", "info"->""),
@@ -161,7 +166,6 @@
 							Map("name"->"IcoFont", "icon"->"fa fa-font", "link"->"http://icofont.com/", "info"->""),
 							Map("name"->"Holder.js", "icon"->"fa fa-pencil", "link"->"http://imsky.github.io/holder/", "info"->""),
 							Map("name"->"clipboard.js", "icon"->"fa fa-clipboard", "link"->"https://clipboardjs.com/", "info"->""),
-							Map("name"->"AnchorJS", "icon"->"fa fa-link", "link"->"https://www.bryanbraun.com/anchorjs/", "info"->""),
 							Map("name"->"mockito", "icon"->"fa fa-pencil", "link"->"https://github.com/mockito/mockito", "info"->""),
 							Map("name"->"Mocha", "icon"->"fa fa-pencil", "link"->"http://mochajs.org", "info"->""),
 							Map("name"->"Chai", "icon"->"fa fa-pencil", "link"->"http://chaijs.com", "info"->"")
@@ -171,6 +175,11 @@
 			}
 		}
 
+		<div class="container text-center">
+
+			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-secondary"))
+		</div>
+
 		<div id="system_messages" class="d-none" data-messages='{
 			"formError":@(form.hasGlobalErrors || form.hasErrors),
 			"signInImage":"@common.system.System.getImage().getLink().toString()"
@@ -178,10 +187,6 @@
 
 		@libraries.standard.last()
 		<script src='@routes.Assets.versioned("javascripts/user/index.js")'></script>
-
-		<div class="container text-center">
-
-			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-secondary"))
-		</div>
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	}
 }

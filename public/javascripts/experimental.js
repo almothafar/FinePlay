@@ -123,10 +123,10 @@ var getTheme = function(){
 		"borderRadius": (function(){
 			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("border-radius");
 		})(),
-		"smallBorderRadius": (function(){
+		"borderRadiusSmall": (function(){
 			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal-sm").css("border-radius");
 		})(),
-		"largeBorderRadius": (function(){
+		"borderRadiusLarge": (function(){
 			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal-lg").css("border-radius");
 		})(),
 		"primary":{
@@ -138,7 +138,7 @@ var getTheme = function(){
 				var color = $.Color($("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("background-color"));
 				return color.toRgbaString();
 			})(),
-			"activeBackgroundColor": (function(){
+			"backgroundColorActive": (function(){
 				var color = $.Color($("#system_theme>#system_theme-primary>.system_theme-primary-active").css("background-color"));
 				return color.toRgbaString();
 			})(),

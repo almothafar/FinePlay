@@ -16,6 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
+		@libraries.summernote.head()
 		@libraries.bootstrapslider.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/notification.css")'>
 	}
@@ -56,10 +57,11 @@
 
 					<div class="mb-3">
 						<h2 class="headline">Custom</h2>
-						<textarea name="htmlEditor" id="htmlEditor" rows="10" cols="40">
+						<div id="summernote">Hello Summernote</div>
+						<!-- <textarea name="htmlEditor" id="htmlEditor" rows="10" cols="40">
 
 							This is my textarea to be replaced with CKEditor.
-						</textarea>
+						</textarea> -->
 						<div>
 
 							<input id="waitSlider" data-slider-id='waitSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
@@ -80,7 +82,7 @@
 		}'></div>
 
 		@libraries.standard.last()
-		@libraries.ckeditor.last()
+		@libraries.summernote.last()
 		@libraries.bootstrapslider.last()
 		<script src='@routes.Assets.versioned("javascripts/lab/ui/notification.js")'></script>
 	}

@@ -268,7 +268,7 @@ $(document).ready(function() {
 		var user = {
 			"userId":"",
 			"password":"",
-			"password":"",
+			"rePassword":"",
 			"roles":"CUSTOMER",
 			"companyId":"",
 			"companyName":""

@@ -26,6 +26,13 @@ This application is already running (Or delete /Users/[user]/workspace/fineplay/
 ```
 を削除
 
+### 1バイトのUTF-8シーケンスのバイト1が無効です。というエラー
+
+/fineplay/sbt-dist/conf/sbtconfig.txt
+に、
+	-Dfile.encoding=UTF-8
+を追記
+
 ### PostgreSQL が起動しない
 ```
 FATAL:  lock file "postmaster.pid" already exists

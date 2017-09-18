@@ -1,1 +1,1 @@
-sbt -debug "-jvm-debug 9999" run
+sbt "-jvm-debug 9999" run

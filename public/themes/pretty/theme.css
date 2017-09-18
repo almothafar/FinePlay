@@ -89,12 +89,6 @@ body {
 	border-top: #ff6fcf solid 3px;
 }
 
-/* Table custom style */
-
-.table:not(.table-inverse){
-	background-color: #f8fffa;
-}
-
 /* Breadcrumb custom style */
 
 .breadcrumb{

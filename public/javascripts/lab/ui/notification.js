@@ -39,9 +39,11 @@ $('#richAlertButton').on('click', function(e){
 	, 10000);
 });
 
-var ckEditor = CKEDITOR.replace( 'htmlEditor', {
-
-	height: 100
+$('#summernote').summernote({
+	height: 100,
+	minHeight: null,
+	maxHeight: null,
+	focus: true
 });
 
 var mySlider = $("#waitSlider").bootstrapSlider({
@@ -54,7 +56,7 @@ var mySlider = $("#waitSlider").bootstrapSlider({
 
 $('#htmlNotificationButton').on('click', function(e){
 
-	var notificationHtml = ckEditor.getData();
+	var notificationHtml = $('#summernote').summernote('code');
 	console.log(notificationHtml);
 	var wait = mySlider.bootstrapSlider('getValue') * 1000;
 	console.log(wait);

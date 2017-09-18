@@ -50,8 +50,6 @@ import models.base.ZoneIdConverter;
 import models.company.Company;
 import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
 import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
-import models.system.System.Color;
-import models.system.System.ColorType;
 import models.system.System.Permission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,34 +74,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	}
 
 	public enum Theme {
-		DEFAULT(new Color("#fff"), new Color("#0056b3"), new ColorType(new Color("#007bff"), new Color("#007bff"))), //
-		PRETTY(new Color("#f8fffa"), new Color("#db4c81"), new ColorType(new Color("#e88cae"), new Color("#e88cae")));
-
-		private final Color backgroundColor;
-		private final Color linkHoverColor;
-		private final ColorType primary;
-
-		Theme(final Color backgroundColor, final Color linkHoverColor, final ColorType primary) {
-
-			this.backgroundColor = backgroundColor;
-			this.linkHoverColor = linkHoverColor;
-			this.primary = primary;
-		}
-
-		public Color getBackgroundColor() {
-
-			return backgroundColor;
-		}
-
-		public Color getLinkHoverColor() {
-
-			return linkHoverColor;
-		}
-
-		public ColorType getPrimary() {
-
-			return primary;
-		}
+		DEFAULT, PRETTY
 	}
 
 	@Inject

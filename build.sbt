@@ -1,6 +1,6 @@
 name := """fineplay"""
 
-version := "2.6.3-α1-SNAPSHOT"
+version := "2.6.5-α1-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
@@ -16,11 +16,11 @@ libraryDependencies ++= Seq(
   filters,
 //  openId,
 //  evolutions,
-  "com.typesafe.play" %% "play-mailer" % "6.0.0",						// Apache 6.0.1
-  "com.typesafe.play" %% "play-mailer-guice" % "6.0.0",
+  "com.typesafe.play" %% "play-mailer" % "6.0.1",						// Apache 6.0.1
+  "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.6.0",
-  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.0.0",
+  "com.typesafe.play" %% "play-json" % "2.6.5",
+  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.1",
   "com.h2database" % "h2" % "1.4.196",
 //  "com.h2database" % "h2" % "1.4.196" % Test,
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-json" % "1.0.0",
@@ -29,8 +29,8 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
 //  "xerces" % "xercesImpl" % "2.11.0",
 //  "org.apache.tomcat" % "tomcat-servlet-api" % "8.0.33",
-  "org.hibernate" % "hibernate-core" % "5.2.10.Final",					// LGPL 5.2.10
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.2.10.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.2.11.Final",					// LGPL 5.2.10
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.2.11.Final",			//
   "org.hibernate.validator" % "hibernate-validator" % "6.0.2.Final",	// Apache 6.0.2 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b08",
   "org.dom4j" % "dom4j" % "2.0.1",
@@ -42,9 +42,9 @@ libraryDependencies ++= Seq(
 //  "org.mockito" % "mockito-core" % "2.10.0",							// MIT 2.8.54
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
-  "org.apache.poi" % "poi" % "3.16",									// Apache 3.16
-  "org.apache.poi" % "poi-scratchpad" % "3.16",
-  "org.apache.poi" % "poi-ooxml" % "3.16",
+  "org.apache.poi" % "poi" % "3.17",									// Apache 3.16
+  "org.apache.poi" % "poi-scratchpad" % "3.17",
+  "org.apache.poi" % "poi-ooxml" % "3.17",
   "com.google.zxing" % "javase" % "3.3.0",								// Apache 3.3.0
   "org.apache.pdfbox" % "pdfbox" % "2.0.7",								// Apache 2.0.7
   "org.jsoup" % "jsoup" % "1.10.3",										// MIT 1.10.3
@@ -66,30 +66,29 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "chartjs" % "2.6.0",							// MIT 2.6.0
   "org.webjars.bower" % "moment" % "2.18.1",							// MIT 2.18.1
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.5.0",						// MIT 3.4.0
+  "org.webjars.bower" % "fullcalendar" % "3.5.1",						// MIT 3.4.0
   "org.webjars" % "openlayers" % "4.3.1",								// 2-Clause BSD 4.2.0
-//  "org.webjars" % "datatables" % "1.10.16",							// MIT 1.10.16
-  "org.webjars" % "datatables" % "1.10.13",								//
-  "org.webjars" % "datatables-plugins" % "1.10.12",						//
+  "org.webjars.bower" % "datatables" % "1.10.16",						// MIT 1.10.16
+  "org.webjars" % "datatables-plugins" % "1.10.15",
   "org.webjars.bower" % "datatables.net-select" % "1.2.2",				//
-  "org.webjars" % "ckeditor" % "4.7.2",									// GPL/LGPL/MPL 4.7.1
+//  "org.webjars.bower" % "summernote" % "0.8.8",						// MIT 0.8.8
   "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
-  "org.webjars.bower" % "slick-carousel" % "1.6.0",						// MIT 1.7.1
+  "org.webjars.bower" % "slick-carousel" % "1.8.0",						// MIT 1.7.1
 //  "org.webjars.npm" % "cropperjs" % "1.0.0",							// MIT 1.0.0-rc.3
-  "org.webjars.npm" % "d3" % "4.10.2",									// BSD-3-Clause license 4.10.0
-  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.2.0
+//  "org.webjars.npm" % "d3" % "4.10.2",								// BSD-3-Clause license 4.10.2
+//  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
   "org.webjars.npm" % "marked" % "0.3.6",								// MIT 0.3.6
   "org.webjars.bower" % "parsleyjs" % "2.7.2",							// MIT 2.7.2
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
   "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
-  "org.webjars.npm" % "jqtree" % "1.3.2",								// Apache 1.4.2
+  "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
   "org.webjars" % "pdf-js" % "1.5.188",									// Apache 1.8.188
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
   "org.webjars.npm" % "anchor-js" % "4.0.0",							// MIT 4.0.0
-//  "org.webjars.npm" % "github-com-FezVrasta-popper-js" % "1.11.0",	// MIT 1.11.1
+  "org.webjars.npm" % "popper.js" % "1.12.5",							// MIT 1.12.5
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
