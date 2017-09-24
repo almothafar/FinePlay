@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+#finderFrame{
+	width: 320px;
+	height: 320px;
+	background-color: black;
+}
+
+#pictureFrame{
+	width: 320px;
+	height: 320px;
+	border: 1px solid #ddd;
+}
+
+#picturePrint{
+	width: 300px;
+	height: 300px;
+}

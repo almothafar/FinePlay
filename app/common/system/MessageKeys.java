@@ -499,6 +499,8 @@ public class MessageKeys {
 
   public static final String PDFJS_LANG = "pdfjs.lang";
 
+  public static final String PHOTO = "photo";
+
   public static final String PICKADATE_LANG = "pickadate.lang";
 
   public static final String PLEASE__SELECT = "please_select";

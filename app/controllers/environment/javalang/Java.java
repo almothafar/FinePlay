@@ -29,7 +29,7 @@ public class Java extends Controller {
 				return runtime();
 			default :
 
-				return notFound(views.html.error.notfound.render(request().method(), request().uri()));
+				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

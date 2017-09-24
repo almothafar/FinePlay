@@ -36,7 +36,7 @@ public class Document extends Controller {
 				return faq();
 			default :
 
-				return notFound(views.html.error.notfound.render(request().method(), request().uri()));
+				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

@@ -186,7 +186,7 @@ public class ActionCreator extends DefaultActionCreator {
 
 	private CompletionStage<Result> createUnauthorizedPromise() {
 
-		final Result unauthorized = Results.unauthorized(views.html.defaultpages.unauthorized.render());
+		final Result unauthorized = Results.unauthorized(views.html.system.pages.unauthorized.render());
 		return CompletableFuture.completedFuture(unauthorized);
 	}
 

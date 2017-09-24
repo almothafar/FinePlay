@@ -86,6 +86,9 @@ public class Library extends Controller {
 			case "pdfjs" :
 
 				return pdfjs();
+			case "camera" :
+
+				return camera();
 			case "mustache" :
 
 				return mustache();
@@ -103,7 +106,7 @@ public class Library extends Controller {
 				return tdmol();
 			default :
 
-				return notFound(views.html.error.notfound.render(request().method(), request().uri()));
+				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 
@@ -226,6 +229,11 @@ public class Library extends Controller {
 	public static Result pdfjs() {
 
 		return ok(views.html.lab.library.pdfjs.render());
+	}
+
+	public static Result camera() {
+
+		return ok(views.html.lab.library.camera.render());
 	}
 
 	public static Result mustache() {

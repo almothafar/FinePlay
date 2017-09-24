@@ -15,7 +15,7 @@ public class JavaScript extends Controller {
 				return test();
 			default :
 
-				return notFound(views.html.error.notfound.render(request().method(), request().uri()));
+				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 
@@ -35,7 +35,7 @@ public class JavaScript extends Controller {
 				return stringsJs();
 			default :
 
-				return notFound(views.html.error.notfound.render(request().method(), request().uri()));
+				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

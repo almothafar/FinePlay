@@ -72,7 +72,7 @@ $('#system_users').on('click', function(){
 	hideUsers();
 });
 
-$('.fixedUser').on('click', function(){
+$('#system_users>#fixedUsers>#user_list>.fixedUser').on('click', function(event){
 
 	var userId = $(this).find('.fixedUser_UserId').text();
 	var password = $(this).find('.fixedUser_Password').text();

@@ -26,6 +26,7 @@ GET		/signout									controllers.user.User.signOut()
 POST	/confirm									controllers.user.User.confirm()
 
 GET		/inquiry									controllers.inquiry.Inquiry.index()
+POST	/inquiry/send								controllers.inquiry.Inquiry.send()
 
 GET		/registuser									controllers.registuser.RegistUser.index()
 POST	/registuser/apply							controllers.registuser.RegistUser.apply()
@@ -39,9 +40,6 @@ GET		/resetuser/request/htmlmail					controllers.resetuser.ResetUser.requestHtml
 GET		/resetuser/owner/:code						controllers.resetuser.ResetUser.owner(code:String)
 GET		/resetuser/change/htmlmail					controllers.resetuser.ResetUser.changeHtmlMail(code:String ?="en-US")
 POST	/resetuser/change							controllers.resetuser.ResetUser.change()
-
-GET		/inquiry									controllers.inquiry.Inquiry.index()
-POST	/inquiry/send								controllers.inquiry.Inquiry.send()
 
 GET		/home										controllers.home.Home.index()
 GET		/home/video									controllers.home.Home.video()

@@ -1,0 +1,70 @@
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/camera.css")'>
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Camera", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"camera"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@components.badge(Map("id"->"MediaDevices", "type"->"danger", "text"->"MediaDevices"))
+
+					<div class="mb-3">
+
+						<div id="finderFrame" class="" width="320" height="320"></div>
+					</div>
+					<div class="mb-3">
+
+						@components.button(Map("id"->"start", "type"->"primary", "outline"->"true", "icon"->"fa fa-play", "text"->"Start", "enabled"->"false"))
+						@components.button(Map("id"->"pause", "type"->"primary", "outline"->"true", "icon"->"fa fa-pause", "text"->"Pause", "enabled"->"false"))
+						@components.button(Map("id"->"take", "type"->"primary", "icon"->"fa fa-camera", "text"->"Take", "enabled"->"false"))
+					</div>
+					<div class="mb-3">
+
+						<div id="pictureFrame" class="" width="320" height="320"></div>
+					</div>
+
+					@components.modal(Map("id"->"printDialog", "icon"->"fa fa-photo", "title"->Messages(MessageKeys.PHOTO), "closable"->"true", "data-backdrop"->"static"), List(
+						)){
+						@components.image(Map("id"->"picturePrint", "source"->"", "rounded"->"true", "thumbnail"->"true", "align"->"center", "alternate"->"..."))
+					}
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/library/cameralib.js")'></script>
+		<script src='@routes.Assets.versioned("javascripts/lab/library/camera.js")'></script>
+	}
+}

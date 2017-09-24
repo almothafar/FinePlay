@@ -247,6 +247,7 @@ var MessageKeys = {
 	PART: "part",
 	PASTE: "paste",
 	PDFJS_LANG: "pdfjs.lang",
+	PHOTO: "photo",
 	PICKADATE_LANG: "pickadate.lang",
 	PLEASE__SELECT: "please_select",
 	PLEASE__WAIT: "please_wait",

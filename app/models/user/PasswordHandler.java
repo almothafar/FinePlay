@@ -57,6 +57,7 @@ public interface PasswordHandler {
 			throw new IllegalStateException(": " + hash.length);
 		}
 
+		// TODO Java 9 module
 		return DatatypeConverter.printHexBinary(hash).toLowerCase();
 	}
 }

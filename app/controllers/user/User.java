@@ -18,7 +18,6 @@ import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 import javax.security.auth.login.AccountException;
 
 import org.slf4j.Logger;
@@ -37,7 +36,6 @@ import models.system.System.PermissionsAllowed;
 import models.user.PasswordFormContent;
 import models.user.SignInFormContent;
 import models.user.User.Theme;
-import play.Application;
 import play.Mode;
 import play.data.Form;
 import play.data.FormFactory;
@@ -46,7 +44,6 @@ import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
-import play.inject.Injector;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http.Cookie;

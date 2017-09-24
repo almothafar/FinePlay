@@ -29,7 +29,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 	private Config config;
 
 	@Inject
-	private views.html.error.error error;
+	private views.html.system.pages.error error;
 
 	@Inject
 	public ErrorHandler(Config config, Environment environment, OptionalSourceMapper sourceMapper, Provider<Router> routes) {
@@ -58,7 +58,13 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 			return CompletableFuture.completedFuture(Action.redirect(controllers.user.routes.User.index()));
 		}
 
-		return CompletableFuture.completedFuture(Results.notFound(views.html.error.notfound.render(request.method(), request.uri())));
+		return CompletableFuture.completedFuture(Results.notFound(views.html.system.pages.notfound.render(request.method(), request.uri())));
+	}
+
+	@Override
+	protected CompletionStage<Result> onForbidden(RequestHeader request, String message) {
+
+		return CompletableFuture.completedFuture(Results.forbidden(views.html.system.pages.unauthorized.render()));
 	}
 
 	@Override

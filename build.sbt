@@ -33,7 +33,7 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.11.Final",			//
   "org.hibernate.validator" % "hibernate-validator" % "6.0.2.Final",	// Apache 6.0.2 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b08",
-  "org.dom4j" % "dom4j" % "2.0.1",
+  "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
   "javax.json" % "javax.json-api" % "1.1",
   "org.glassfish" % "javax.json" % "1.1",
   "org.apache.commons" % "commons-text" % "1.1",						// Apache 1.1
@@ -74,7 +74,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.bower" % "summernote" % "0.8.8",						// MIT 0.8.8
   "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
   "org.webjars.bower" % "slick-carousel" % "1.8.0",						// MIT 1.7.1
-//  "org.webjars.npm" % "cropperjs" % "1.0.0",							// MIT 1.0.0-rc.3
+//  "org.webjars.npm" % "cropperjs" % "1.0.0",							// MIT 1.0.0
 //  "org.webjars.npm" % "d3" % "4.10.2",								// BSD-3-Clause license 4.10.2
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
@@ -84,10 +84,9 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
   "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
   "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
-  "org.webjars" % "pdf-js" % "1.5.188",									// Apache 1.8.188
+  "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
-  "org.webjars.npm" % "anchor-js" % "4.0.0",							// MIT 4.0.0
   "org.webjars.npm" % "popper.js" % "1.12.5",							// MIT 1.12.5
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1

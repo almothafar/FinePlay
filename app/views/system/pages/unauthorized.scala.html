@@ -1,0 +1,32 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Unauthorized"){
+
+		@libraries.standard.head()
+	}
+
+	@body("error","unauthorized"){
+
+		@components.modal(Map("id"->"unauthorizedModal", "title"->("403 " + Messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, Messages(MessageKeys.AUTHENTICATION) + " / " + Messages(MessageKeys.AUTHORIZATION)))), List(
+				Map("id"->"unauthorizedModalOk", "type"->"primary", "text"->"OK", "default"->"true")
+			)){
+
+			<i class="fa fa-exclamation-triangle fa-3x fa-pull-left fa-border text-warning"></i>
+		}
+
+		@libraries.standard.last()
+		<script src='@routes.Assets.versioned("javascripts/system/pages/unauthorized.js")'></script>
+	}
+}

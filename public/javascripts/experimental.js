@@ -168,3 +168,8 @@ var Messages = function(messageKey){
 
 	return $("#system_messages").data('messages')[messageKey];
 }
+
+var flash = function(){
+
+	$('html').fadeOut(300).fadeIn(300);
+}

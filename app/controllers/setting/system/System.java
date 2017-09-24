@@ -21,7 +21,7 @@ public class System extends Controller {
 				return font();
 			default :
 
-				return notFound(views.html.error.notfound.render(request().method(), request().uri()));
+				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

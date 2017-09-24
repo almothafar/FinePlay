@@ -32,6 +32,7 @@ public class Authenticator extends Security.Authenticator {
 		}
 
 		ctx.session().put(SessionKeys.REQUEST_URL, requestUrl);
+
 		return redirect(controllers.user.routes.User.index());
 	}
 }

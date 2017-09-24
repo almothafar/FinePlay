@@ -15,14 +15,13 @@ import javax.inject.Singleton;
 
 import org.apache.commons.lang3.RandomUtils;
 
-import common.core.ActionCreator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
 public class DefaultImage implements Image {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ActionCreator.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultImage.class);
 
 	private static final Pattern IMAGE = Pattern.compile(".+\\.(png|jpg|jpeg)$", Pattern.CASE_INSENSITIVE);
 

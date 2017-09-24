@@ -14,7 +14,7 @@ How to play
 
 	macOS Sierra version 10.12.6（16G29）
 	java version "1.8.0_144"
-	Safari version 10.1.2 (12603.3.8)
+	Safari version 11.0 (12604.1.38.1.7)
 
 ##### Java #####
 
