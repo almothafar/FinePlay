@@ -22,6 +22,9 @@ $(window).on('keydown', function(e){
 		if($("#licenseDialog").is(".show")){
 
 			$('#licenseOk').trigger("click");
+		}else	if($("#usersDialog").is(".show")){
+
+				$('#usersOk').trigger("click");
 		}else{
 
 			$('#signInButton').trigger("click");
@@ -33,26 +36,28 @@ $(window).on('keydown', function(e){
 
 //
 
-var fixedUsers = $('#fixedUsers>#user_list');
+var fixedUsers = $('#fixedUsers');
 var fixedUsersData = JSON.parse($('#fixedUsersData').text());
 $.each(fixedUsersData, function(){
 
 	var fixedUser = this;
 
 	var fixedUsersHtml = '';
-	fixedUsersHtml = fixedUsersHtml + '<div class="rounded mx-3 my-3 fixedUser">';
+	fixedUsersHtml = fixedUsersHtml + '<div class="rounded mx-1 my-1 fixedUser">';
 	if('Dev' == getMode()){
 		fixedUsersHtml = fixedUsersHtml +
 			'<div class="fixedUser_info">' +
-				'<span class="badge badge-pill badge-info mb-1">' + fixedUser.locale + '</span>&nbsp;' +
-				'<span class="badge badge-pill badge-info mb-1">' + fixedUser.zoneId.id + '</span>&nbsp;' +
-				'<span class="badge badge-pill badge-info mb-1">' + fixedUser.roles + '</span>' +
+				'<span class="badge badge-pill badge-info">' + fixedUser.locale + '</span>&nbsp;' +
+				'<span class="badge badge-pill badge-info">' + fixedUser.zoneId.id + '</span>&nbsp;' +
+				'<span class="badge badge-pill badge-info">' + fixedUser.roles + '</span>' +
 			'</div>';
 	}
 	fixedUsersHtml = fixedUsersHtml +
 		'<div class="row justify-content-center">' +
-			'<div class="my-1"><i class="fa fa-inverse fa-square fa-2x fa-user-o rounded-circle bg-success shadow fixedUser_body" aria-hidden="true"></i></div>' +
+			'<div class="my-1">' +
+				'<button type="button" class="btn btn-success fixedUser_body fixedUserButton rounded-circle"><i class="fa fa-user-o"></i></button>' +
 			'</div>' +
+		'</div>' +
 		'<div class="fixedUser_caption"><strong class="fixedUser_UserId">' + fixedUser.userId + '</strong></div>';
 	if('Dev' == getMode()){
 		fixedUsersHtml = fixedUsersHtml +'<div class="fixedUser_Password d-none">' + fixedUser.password + '</div>';
@@ -62,29 +67,32 @@ $.each(fixedUsersData, function(){
 	fixedUsers.append(fixedUsersHtml);
 });
 
-$('#selectUser').on('click', function(){
+$('.fixedUserButton').on('click', function(){
 
-	showUsers();
-});
+	$('#usersDialog').modal('hide');
 
-$('#system_users').on('click', function(){
+	var eventSource = $(event.target);
+	var fixedUserButton;
+	if(eventSource.parent().hasClass('fixedUserButton')){
 
-	hideUsers();
-});
+		fixedUserButton = eventSource.parent();
+	}else if(eventSource.hasClass('fixedUserButton')){
 
-$('#system_users>#fixedUsers>#user_list>.fixedUser').on('click', function(event){
+		fixedUserButton = eventSource;
+	}
 
-	var userId = $(this).find('.fixedUser_UserId').text();
-	var password = $(this).find('.fixedUser_Password').text();
+	if(fixedUserButton){
 
-	$('#userId').val(userId);
-	$('#password').val(password);
+		var fixedUser = fixedUserButton.parent().parent().parent();
+		var userId = fixedUser.find('.fixedUser_UserId').text();
+		var password = fixedUser.find('.fixedUser_Password').text();
 
-	hideUsers();
+		$('#userId').val(userId);
+		$('#password').val(password);
+	}
 });
 
 if(1 <= fixedUsersData.length){
 
 	$('#selectUserContainer').removeClass("d-none");
 }
-

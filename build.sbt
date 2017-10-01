@@ -62,14 +62,14 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
   "org.webjars.bower" % "font-awesome" % "4.7.0",						// SIL OFL 4.7.0
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
-  "org.webjars.bower" % "select2" % "4.0.3",							// MIT 4.0.3
+  "org.webjars.bower" % "select2" % "4.0.4",							// MIT 4.0.4
   "org.webjars.bower" % "chartjs" % "2.6.0",							// MIT 2.6.0
   "org.webjars.bower" % "moment" % "2.18.1",							// MIT 2.18.1
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.5.1",						// MIT 3.4.0
   "org.webjars" % "openlayers" % "4.3.1",								// 2-Clause BSD 4.2.0
   "org.webjars.bower" % "datatables" % "1.10.16",						// MIT 1.10.16
-  "org.webjars" % "datatables-plugins" % "1.10.15",
+  "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",
   "org.webjars.bower" % "datatables.net-select" % "1.2.2",				//
 //  "org.webjars.bower" % "summernote" % "0.8.8",						// MIT 0.8.8
   "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0

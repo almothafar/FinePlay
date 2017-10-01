@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
 
-	if(document.location.origin+Routes.controllers.user.User.index() == document.referrer){
+	if(document.location.origin + Routes.controllers.user.User.index().url == document.referrer){
 
 		fadeInFromFront('body');
 	}else{

@@ -6,8 +6,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
-import javax.xml.bind.DatatypeConverter;
 
+import common.utils.Binaries;
 import common.utils.Strings;
 
 public interface PasswordHandler {
@@ -57,7 +57,6 @@ public interface PasswordHandler {
 			throw new IllegalStateException(": " + hash.length);
 		}
 
-		// TODO Java 9 module
-		return DatatypeConverter.printHexBinary(hash).toLowerCase();
+		return Binaries.toHexString(hash);
 	}
 }

@@ -221,16 +221,26 @@ var notify = function(text, wait){
 	},wait);
 };
 
-var showCover = function(){
+var showCover = function(func){
 
-	showFromUp('#system_cover');
-	$('#system_base').addClass('blur');
+	showFromUp('#system_cover', function(){
+
+		if(func){
+
+			func();
+		}
+	});
 }
 
-var hideCover = function(){
+var hideCover = function(func){
 
-	hideToUp('#system_cover');
-	$('#system_base').removeClass('blur');
+	hideToUp('#system_cover', function(event){
+
+		if(func){
+
+			func();
+		}
+	});
 }
 
 var showMagnifyText = function(text){

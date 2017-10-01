@@ -99,20 +99,6 @@ var extendMenu = function(selector){
 	getContent().css('top', getMenuBarHeight() + getExtensionMenuHeight() + 'px');
 }
 
-var showUsers = function(){
-
-	showFromDown('#system_users');
-	$('#system_base').addClass('blur');
-}
-
-var hideUsers = function(){
-
-	hideToDown('#system_users', function(){
-
-		$('#system_base').removeClass('blur');
-	});
-}
-
 var getTheme = function(){
 
 	var theme = {

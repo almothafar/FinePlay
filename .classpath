@@ -151,7 +151,7 @@
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/tether/jars/tether-1.4.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/tether/srcs/tether-1.4.0-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/holderjs/jars/holderjs-2.8.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/holderjs/srcs/holderjs-2.8.2-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/font-awesome/jars/font-awesome-4.7.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/font-awesome/srcs/font-awesome-4.7.0-sources.jar"/>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/jars/select2-4.0.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/srcs/select2-4.0.3-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/jars/select2-4.0.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/srcs/select2-4.0.4-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/chartjs/jars/chartjs-2.6.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/chartjs/srcs/chartjs-2.6.0-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/jars/moment-2.18.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/srcs/moment-2.18.1-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/jars/Snap.svg-0.5.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/srcs/Snap.svg-0.5.1-sources.jar"/>
@@ -159,8 +159,7 @@
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/jars/jquery-3.2.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/srcs/jquery-3.2.1-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/openlayers/jars/openlayers-4.3.1.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/jars/datatables-1.10.16.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/srcs/datatables-1.10.16-sources.jar"/>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/datatables-plugins/jars/datatables-plugins-1.10.15.jar"/>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/datatables/jars/datatables-1.10.15.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars/datatables/srcs/datatables-1.10.15-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/jars/datatables.net-plugins-1.10.16.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/srcs/datatables.net-plugins-1.10.16-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/jars/datatables.net-select-1.2.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/srcs/datatables.net-select-1.2.2-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net/jars/datatables.net-1.10.9.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net/srcs/datatables.net-1.10.9-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/jars/handsontable-0.34.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/srcs/handsontable-0.34.0-sources.jar"/>
@@ -219,7 +218,6 @@
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-common/jars/websocket-common-9.4.5.v20170502.jar" sourcepath="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-common/srcs/websocket-common-9.4.5.v20170502-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-api/jars/websocket-api-9.4.5.v20170502.jar" sourcepath="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-api/srcs/websocket-api-9.4.5.v20170502-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.seleniumhq.selenium/selenium-firefox-driver/jars/selenium-firefox-driver-3.5.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.seleniumhq.selenium/selenium-firefox-driver/srcs/selenium-firefox-driver-3.5.3-sources.jar"/>
-	<classpathentry kind="lib" path="target/scala-2.12/classes_managed"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>

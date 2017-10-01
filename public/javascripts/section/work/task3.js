@@ -2,5 +2,5 @@
 
 $('#button').on('click', function(){
 
-	alert("Taped.");
+	alert("Tapped.");
 });
