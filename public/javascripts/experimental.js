@@ -107,13 +107,16 @@ var getTheme = function(){
 			return color.toRgbaString();
 		})(),
 		"borderRadius": (function(){
-			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal").css("border-radius");
+			var elem = $("#system_theme>#system_theme-primary>.system_theme-primary-normal");
+			return 0 != elem.css("border-radius").length ? elem.css("border-radius") : elem.css("border-top-left-radius");
 		})(),
 		"borderRadiusSmall": (function(){
-			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal-sm").css("border-radius");
+			var elem = $("#system_theme>#system_theme-primary>.system_theme-primary-normal-sm");
+			return 0 != elem.css("border-radius").length ? elem.css("border-radius") : elem.css("border-top-left-radius");
 		})(),
 		"borderRadiusLarge": (function(){
-			return $("#system_theme>#system_theme-primary>.system_theme-primary-normal-lg").css("border-radius");
+			var elem = $("#system_theme>#system_theme-primary>.system_theme-primary-normal-lg");
+			return 0 != elem.css("border-radius").length ? elem.css("border-radius") : elem.css("border-top-left-radius");
 		})(),
 		"primary":{
 			"color": (function(){

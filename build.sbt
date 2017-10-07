@@ -1,6 +1,6 @@
 name := """fineplay"""
 
-version := "2.6.5-α1-SNAPSHOT"
+version := "2.6.6-α1-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 

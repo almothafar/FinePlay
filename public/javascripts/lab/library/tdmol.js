@@ -1,15 +1,19 @@
 'use strict';
 
-var viewer = $3Dmol.createViewer($("#viewer"));
-viewer.setBackgroundColor(0x00000000, 0.2);
-viewer.addModel( $('#pdb').text(), "pdb" );
-viewer.setStyle({}, {cartoon:{color:"spectrum"}});
-viewer.render();
+$(document).ready(function() {
 
-setInterval(function() {
+	var viewer = $3Dmol.createViewer($("#viewer"));
+	viewer.setBackgroundColor(0x00000000, 0.2);
+	viewer.addModel( $('#pdb').text(), "pdb" );
+	viewer.setStyle({}, {cartoon:{color:"spectrum"}});
+	viewer.render();
 
-	if(viewer) {
+	setInterval(function() {
 
-		viewer.rotate(1);
-	}
-}, 50);
+		if(viewer) {
+
+			viewer.rotate(1);
+		}
+	}, 50);
+
+});

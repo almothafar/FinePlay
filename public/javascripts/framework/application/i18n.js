@@ -10,7 +10,7 @@ if(window.SpeechSynthesisUtterance){
 }else{
 
 	$("tbody > tr:last-child").append('<td>Speech</td><td>' +
-		'<span class="tag badge-danger">SpeechSynthesis is Unsupported.</span>' +
+		'<span class="badge badge-danger">SpeechSynthesis is Unsupported.</span>' +
 	'</td>');
 }
 $('#speakButton').click(function() {

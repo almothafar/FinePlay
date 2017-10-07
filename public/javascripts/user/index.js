@@ -67,7 +67,7 @@ $.each(fixedUsersData, function(){
 	fixedUsers.append(fixedUsersHtml);
 });
 
-$('.fixedUserButton').on('click', function(){
+$('.fixedUserButton').on('click', function(event){
 
 	$('#usersDialog').modal('hide');
 
