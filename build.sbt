@@ -1,6 +1,6 @@
 name := """fineplay"""
 
-version := "2.6.6-α1-SNAPSHOT"
+version := "2.6.6-α2-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
@@ -29,17 +29,17 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
 //  "xerces" % "xercesImpl" % "2.11.0",
 //  "org.apache.tomcat" % "tomcat-servlet-api" % "8.0.33",
-  "org.hibernate" % "hibernate-core" % "5.2.11.Final",					// LGPL 5.2.10
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.2.11.Final",			//
-  "org.hibernate.validator" % "hibernate-validator" % "6.0.2.Final",	// Apache 6.0.2 // into play include
+  "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",			//
+  "org.hibernate.validator" % "hibernate-validator" % "6.0.3.Final",	// Apache 6.0.2 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b08",
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
   "javax.json" % "javax.json-api" % "1.1",
   "org.glassfish" % "javax.json" % "1.1",
   "org.apache.commons" % "commons-text" % "1.1",						// Apache 1.1
   "org.postgresql" % "postgresql" % "42.1.1",							// BSD 2-clause 4.2.14
-  "org.mockito" % "mockito-inline" % "2.10.0",
-//  "org.mockito" % "mockito-core" % "2.10.0",							// MIT 2.8.54
+  "org.mockito" % "mockito-inline" % "2.11.0",
+//  "org.mockito" % "mockito-core" % "2.11.0",							// MIT 2.8.54
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",									// Apache 3.16
@@ -49,11 +49,11 @@ libraryDependencies ++= Seq(
   "org.apache.pdfbox" % "pdfbox" % "2.0.7",								// Apache 2.0.7
   "org.jsoup" % "jsoup" % "1.10.3",										// MIT 1.10.3
   "com.squareup" % "javapoet" % "1.9.0",								// Apache 1.9.0
-  "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.CR2",						// Apache 1.2.0.CR1
-  "org.mapstruct" % "mapstruct-processor" % "1.2.0.CR2",				//
+  "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",						// Apache 1.2.0.CR1
+  "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
   "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
-  "org.webjars.npm" % "bootstrap" % "4.0.0-beta",						// MIT 4.0.0-alpha.6
+  "org.webjars.npm" % "bootstrap" % "4.0.0-beta.2",						// MIT 4.0.0-alpha.6
   "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",			// MIT 9.8.1
@@ -64,7 +64,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.4",							// MIT 4.0.4
   "org.webjars.bower" % "chartjs" % "2.6.0",							// MIT 2.6.0
-  "org.webjars.bower" % "moment" % "2.18.1",							// MIT 2.18.1
+  "org.webjars.bower" % "moment" % "2.19.1",							// MIT 2.18.1
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.5.1",						// MIT 3.4.0
   "org.webjars" % "openlayers" % "4.3.1",								// 2-Clause BSD 4.2.0
@@ -74,7 +74,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.bower" % "summernote" % "0.8.8",						// MIT 0.8.8
   "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
   "org.webjars.bower" % "slick-carousel" % "1.8.0",						// MIT 1.7.1
-//  "org.webjars.npm" % "cropperjs" % "1.0.0",							// MIT 1.0.0
+  "org.webjars.npm" % "cropperjs" % "1.1.1",							// MIT 1.0.0
 //  "org.webjars.npm" % "d3" % "4.10.2",								// BSD-3-Clause license 4.10.2
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0

@@ -64,7 +64,7 @@
 
 		<div id="system_work-menu">
 
-			@workmenu(Map("id"->"sections"), List(
+			@workmenu(Map("id"->"system_sections"), List(
 				(Map("name"->Messages(MessageKeys.HOME), "icon"->"fa fa-home", "selected"->equalSection("home")),List(
 					Map("name"->Messages(MessageKeys.INTRO), "icon"->"fa fa-file-text-o", "link"->controllers.home.routes.Home.index().toString(), "selected"->equalWork("home","intro")),
 					Map("name"->Messages(MessageKeys.VIDEO), "icon"->"fa fa-film", "link"->controllers.home.routes.Home.video().toString(), "selected"->equalWork("home","video"))

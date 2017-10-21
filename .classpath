@@ -94,15 +94,15 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.google.inject/guice/srcs/guice-4.1.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.google.inject/guice/jars/guice-4.1.0.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/srcs/guice-assistedinject-4.1.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.1.0.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.h2database/h2/srcs/h2-1.4.196-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.h2database/h2/jars/h2-1.4.196.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.2.11.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.2.11.Final.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.2.12.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.2.12.Final.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jboss.logging/jboss-logging/srcs/jboss-logging-3.3.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jboss.logging/jboss-logging/jars/jboss-logging-3.3.0.Final.jar"/>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/antlr/antlr/jars/antlr-2.7.7.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jboss.spec.javax.transaction/jboss-transaction-api_1.2_spec/srcs/jboss-transaction-api_1.2_spec-1.0.1.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jboss.spec.javax.transaction/jboss-transaction-api_1.2_spec/jars/jboss-transaction-api_1.2_spec-1.0.1.Final.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jboss/jandex/srcs/jandex-2.0.3.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jboss/jandex/bundles/jandex-2.0.3.Final.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/dom4j/dom4j/srcs/dom4j-1.6.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/dom4j/dom4j/jars/dom4j-1.6.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/srcs/hibernate-commons-annotations-5.0.1.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/jars/hibernate-commons-annotations-5.0.1.Final.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.2.11.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.2.11.Final.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate.validator/hibernate-validator/srcs/hibernate-validator-6.0.2.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate.validator/hibernate-validator/jars/hibernate-validator-6.0.2.Final.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.2.12.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.2.12.Final.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate.validator/hibernate-validator/srcs/hibernate-validator-6.0.3.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate.validator/hibernate-validator/jars/hibernate-validator-6.0.3.Final.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.validation/validation-api/srcs/validation-api-2.0.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.validation/validation-api/jars/validation-api-2.0.0.Final.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.fasterxml/classmate/srcs/classmate-1.3.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.fasterxml/classmate/bundles/classmate-1.3.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/srcs/javax.el-3.0.1-b08-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/jars/javax.el-3.0.1-b08.jar"/>
@@ -112,8 +112,8 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish/javax.json/srcs/javax.json-1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish/javax.json/bundles/javax.json-1.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.commons/commons-text/srcs/commons-text-1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.commons/commons-text/jars/commons-text-1.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.postgresql/postgresql/srcs/postgresql-42.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.postgresql/postgresql/bundles/postgresql-42.1.1.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-inline/srcs/mockito-inline-2.10.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-inline/jars/mockito-inline-2.10.0.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.10.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.10.0.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-inline/srcs/mockito-inline-2.11.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-inline/jars/mockito-inline-2.11.0.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.11.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.11.0.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/srcs/byte-buddy-1.7.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/jars/byte-buddy-1.7.4.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/srcs/byte-buddy-agent-1.7.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.7.4.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.objenesis/objenesis/srcs/objenesis-2.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-2.6.jar"/>
@@ -136,11 +136,11 @@
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.2.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/srcs/jsoup-1.10.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/jars/jsoup-1.10.3.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.squareup/javapoet/srcs/javapoet-1.9.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.squareup/javapoet/jars/javapoet-1.9.0.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/srcs/mapstruct-jdk8-1.2.0.CR2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/jars/mapstruct-jdk8-1.2.0.CR2.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/srcs/mapstruct-processor-1.2.0.CR2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/jars/mapstruct-processor-1.2.0.CR2.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/srcs/mapstruct-jdk8-1.2.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/jars/mapstruct-jdk8-1.2.0.Final.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/srcs/mapstruct-processor-1.2.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-processor/jars/mapstruct-processor-1.2.0.Final.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.github.spullara.mustache.java/compiler/srcs/compiler-0.9.5-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.github.spullara.mustache.java/compiler/jars/compiler-0.9.5.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/srcs/jquery-3.2.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/jars/jquery-3.2.1.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/srcs/bootstrap-4.0.0-beta-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/jars/bootstrap-4.0.0-beta.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/srcs/bootstrap-4.0.0-beta.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/jars/bootstrap-4.0.0-beta.2.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootbox/srcs/bootbox-4.4.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootbox/jars/bootbox-4.4.0.jar"/>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/jars/pickadate.js-3.5.6.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/seiyria-bootstrap-slider/srcs/seiyria-bootstrap-slider-9.7.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/seiyria-bootstrap-slider/jars/seiyria-bootstrap-slider-9.7.2.jar"/>
@@ -152,7 +152,7 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/font-awesome/srcs/font-awesome-4.7.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/font-awesome/jars/font-awesome-4.7.0.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/srcs/select2-4.0.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/jars/select2-4.0.4.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/chartjs/srcs/chartjs-2.6.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/chartjs/jars/chartjs-2.6.0.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/srcs/moment-2.18.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/jars/moment-2.18.1.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/srcs/moment-2.19.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/jars/moment-2.19.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/srcs/Snap.svg-0.5.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/jars/Snap.svg-0.5.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/fullcalendar/srcs/fullcalendar-3.5.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/fullcalendar/jars/fullcalendar-3.5.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/srcs/jquery-3.2.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/jars/jquery-3.2.1.jar"/>
@@ -165,6 +165,7 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/srcs/numbro-1.9.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/jars/numbro-1.9.3.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/pikaday/srcs/pikaday-1.6.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/pikaday/jars/pikaday-1.6.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/slick-carousel/srcs/slick-carousel-1.8.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/slick-carousel/jars/slick-carousel-1.8.0.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/srcs/cropperjs-1.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/jars/cropperjs-1.1.1.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/highlightjs/srcs/highlightjs-9.12.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/highlightjs/jars/highlightjs-9.12.0.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/diff2html/srcs/diff2html-2.3.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/diff2html/jars/diff2html-2.3.0.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/marked/srcs/marked-0.3.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/marked/jars/marked-0.3.6.jar"/>
@@ -217,7 +218,6 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-common/srcs/websocket-common-9.4.5.v20170502-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-common/jars/websocket-common-9.4.5.v20170502.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-api/srcs/websocket-api-9.4.5.v20170502-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.eclipse.jetty.websocket/websocket-api/jars/websocket-api-9.4.5.v20170502.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.seleniumhq.selenium/selenium-firefox-driver/srcs/selenium-firefox-driver-3.5.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.seleniumhq.selenium/selenium-firefox-driver/jars/selenium-firefox-driver-3.5.3.jar"/>
-  <classpathentry kind="lib" path="./target/scala-2.12/classes_managed"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="output" path="bin"/>
 </classpath>

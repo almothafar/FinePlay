@@ -37,10 +37,10 @@ var initEraceableField = function(selector){
 			var color = $.Color(getTheme().primary.backgroundColor);
 			var focusBorderColor = $.Color({hue: color.hue(), saturation: color.saturation(), lightness: 0.75, alpha: color.alpha()}).toHexString()
 
-			addOn.css({"border-color": focusBorderColor, "outline": "0"});
+//			addOn.css({"border-color": focusBorderColor, "outline": "0"});
 		}).blur(function(){
 
-			addOn.css({"border-color": "rgba(0, 0, 0, .15)"});
+//			addOn.css({"border-color": "rgba(0, 0, 0, .15)"});
 		});
 
 		var icon = addOn.children().eq(0);

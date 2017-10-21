@@ -3,7 +3,6 @@
 var bootstrapMessages = function(messageKey){
 
 	return JSON.parse(document.getElementById('bootstrap_messages').getAttribute('data-messages'))[messageKey];
-//	return $("#bootstrap_messages").data('messages')[messageKey];
 }
 
 injectStyle('label.required:after', {

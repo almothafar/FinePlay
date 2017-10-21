@@ -261,22 +261,22 @@ body {
 
 /* Side menu */
 
-#sections {
+#system_sections {
 	padding-top: 1rem !important;
 }
 
-#sections .worksbase[class~="show"] .works .work[class~="selected"]{
+#system_sections .worksbase[class~="show"] .works .work[class~="selected"]{
 	animation: selectwork 0.2s;
 }
 
-#sections>.section{
+#system_sections>.system_section{
 	margin-bottom: 0;
 	background-color: transparent;
 	border-radius: 0;
 	border: none;
 }
 
-#sections>.section i{
+#system_sections>.system_section i{
 	width: 1.5rem;
 	text-align: center;
 }
