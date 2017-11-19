@@ -5,8 +5,8 @@ LANG=en_US.UTF-8
 #./sbt test
 # /fineplay/target/test-reports/*
 
-./sbt jacoco:check jacoco:report
-# /fineplay/target/scala-2.11/jacoco/html/index.html
+./sbt jacoco
+# /fineplay/target/scala-2.12/jacoco/report/html/index.html
 
 ./sbt findbugs
 # /fineplay/target/scala-2.11/findbugs/report.html

@@ -17,22 +17,22 @@ public class EditFormContent {
 	private Long organizationId;
 
 	// Play
-	@Constraints.Required(groups = {Update.class, Delete.class})
+	@Constraints.Required(groups = { Update.class, Delete.class })
 	private String organizationUpdateDateTime;
 
 	// Play
-	@Constraints.Required(groups = {Update.class, Delete.class})
+	@Constraints.Required(groups = { Update.class, Delete.class })
 	private long id;
 
 	// Play
-	@Constraints.Required(groups = {Create.class, Update.class})
+	@Constraints.Required(groups = { Create.class, Update.class })
 	private String name;
 
 	// Play
 	private String localName;
 
 	// Play
-	@Constraints.Required(groups = {Update.class, Delete.class})
+	@Constraints.Required(groups = { Update.class, Delete.class })
 	private LocalDateTime updateDateTime;
 
 	public long getCompanyId() {
@@ -89,6 +89,7 @@ public class EditFormContent {
 
 		return localName;
 	}
+
 	public void setLocalName(String localName) {
 
 		this.localName = localName;

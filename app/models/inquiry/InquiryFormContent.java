@@ -7,7 +7,7 @@ import play.data.validation.Constraints;
 public class InquiryFormContent {
 
 	// Play
-	@Constraints.Required(groups = {Create.class})
+	@Constraints.Required(groups = { Create.class })
 	// System
 	@UserId
 	private String userId;
@@ -15,15 +15,15 @@ public class InquiryFormContent {
 	private String name;
 
 	// Play
-	@Constraints.Required(groups = {Create.class})
+	@Constraints.Required(groups = { Create.class })
 	private String type;
 
 	// Play
-	@Constraints.Required(groups = {Create.class})
+	@Constraints.Required(groups = { Create.class })
 	private String title;
 
 	// Play
-	@Constraints.Required(groups = {Create.class})
+	@Constraints.Required(groups = { Create.class })
 	private String content;
 
 	public String getUserId() {

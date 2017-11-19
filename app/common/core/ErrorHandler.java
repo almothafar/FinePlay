@@ -6,10 +6,12 @@ import java.util.concurrent.CompletionStage;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import com.typesafe.config.Config;
-import play.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.typesafe.config.Config;
+
+import play.Environment;
 import play.Mode;
 import play.api.OptionalSourceMapper;
 import play.api.UsefulException;
@@ -79,13 +81,13 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 		final Mode errorHandlerMode = Mode.valueOf(config.hasPath("errorHandler.mode") ? config.getString("errorHandler.mode") : Mode.DEV.name());
 		switch (errorHandlerMode) {
 
-			case PROD :
+		case PROD:
 
-				return onProdServerError(request, exception);
+			return onProdServerError(request, exception);
 
-			default :
+		default:
 
-				return super.onDevServerError(request, exception);
+			return super.onDevServerError(request, exception);
 		}
 	}
 

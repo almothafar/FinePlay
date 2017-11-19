@@ -15,14 +15,15 @@ import javax.inject.Inject;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import play.mvc.Controller;
-import models.system.System.PermissionsAllowed;
 import com.typesafe.config.Config;
+
+import models.system.System.PermissionsAllowed;
 import play.db.jpa.Transactional;
+import play.filters.csrf.RequireCSRFCheck;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
+import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -38,6 +39,7 @@ public class Transrator extends Controller {
 
 	@Transactional(readOnly = true)
 	@Authenticated(common.core.Authenticator.class)
+	@RequireCSRFCheck
 	public Result translate(@Nullable final String from, @Nonnull final String to, @Nonnull final String text) {
 
 		try {

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="batch-hello-job" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	version="1.0">
+
+	<properties>
+		<property name="message" value="Hello Batch." />
+	</properties>
+
+	<step id="batchlet-step" next="chunk-step">
+
+		<batchlet ref="batchlet">
+			<properties>
+				<property name="class" value="batchs.manage.hello.batchlet.Batchlet" />
+				<property name="file" value="/tmp" />
+				<property name="jar.files"
+					value="#{systemProperties['test.war']}, #{systemProperties['test.war']}" />
+				<property name="int" value="9" />
+				<property name="booleans" value="true, true" />
+				<property name="big.integer" value="999" />
+				<property name="big.decimal" value="999.99" />
+				<property name="inet4.address" value="127.0.0.1" />
+				<property name="inet6.address" value="0:0:0:0:0:0:0:1" />
+				<property name="url" value="http://jboss.org" />
+				<property name="uri" value="http://jboss.org" />
+
+				<property name="list" value=" 1, 2, 3" />
+				<property name="list.date" value="12/31/2012, 01/01/2013" />
+
+				<property name="map" value="b=2, a = 1" />
+				<property name="set" value="2.0, 1.0, 2.0, 1.0, 1.0" />
+				<property name="logger" value="org.jberet" />
+				<property name="pattern" value="a*b" />
+				<property name="object.name" value="d:type=Foo,name=Bar" />
+				<property name="string" value="    a b c    " />
+			</properties>
+		</batchlet>
+		<!-- <batchlet ref="batchs.manage.hello.batchlet.Batchlet" /> -->
+	</step>
+
+	<step id="chunk-step">
+
+		<chunk item-count="5">
+
+			<reader ref="reader">
+				<properties>
+					<property name="inputFile" value="./temp/input.txt" />
+				</properties>
+			</reader>
+			<processor ref="processor" />
+			<writer ref="writer">
+				<properties>
+					<property name="outputFile" value="./temp/output.txt" />
+				</properties>
+			</writer>
+			<!-- <reader ref="batchs.manage.hello.chunk.Reader" /> -->
+			<!-- <processor ref="batchs.manage.hello.chunk.Processor" /> -->
+			<!-- <writer ref="batchs.manage.hello.chunk.Writer" /> -->
+		</chunk>
+	</step>
+</job>

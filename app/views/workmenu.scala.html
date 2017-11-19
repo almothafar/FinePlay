@@ -21,7 +21,7 @@
 				@defining(groupToElements._2) { elements =>
 					@for(j <- 0 to elements.size - 1){
 						@if(Boolean.valueOf(elements.get(j).getOrElse("show", "true"))){
-				<li class="work nav-item @("selected".when(Boolean.valueOf(elements.get(j).getOrElse("selected", "false"))))">
+				<li class="work nav-item @elements.get(j).getOrElse("class", "") @("selected".when(Boolean.valueOf(elements.get(j).getOrElse("selected", "false"))))">
 					<a href="@(elements.get(j).getOrElse("link","#"))" class="nav-link @("disabled".when(!Boolean.valueOf(elements.get(j).getOrElse("enabled", "true"))))">
 						<i class="@elements.get(j).getOrElse("icon", "")"></i>
 						&nbsp;@elements.get(j).get("name")

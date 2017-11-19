@@ -1,8 +1,8 @@
 package controllers.framework.defaultpage;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
 import play.api.PlayException;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import scala.Option;
@@ -20,30 +20,30 @@ public class Defaultpage extends Controller {
 	public Result page(String item) {
 
 		switch (item) {
-			case "notfound" :
+		case "notfound":
 
-				return notFoundPage();
-			case "badrequest" :
+			return notFoundPage();
+		case "badrequest":
 
-				return badRequestPage();
-			case "unauthorized" :
+			return badRequestPage();
+		case "unauthorized":
 
-				return unauthorizedPage();
-			case "deverror" :
+			return unauthorizedPage();
+		case "deverror":
 
-				return devError();
-			case "devnotfound" :
+			return devError();
+		case "devnotfound":
 
-				return devNotFound();
-			case "error" :
+			return devNotFound();
+		case "error":
 
-				return error();
-			case "todo" :
+			return error();
+		case "todo":
 
-				return todo();
-			default :
+			return todo();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

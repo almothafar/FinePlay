@@ -1,7 +1,7 @@
 package controllers.framework.welcome;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 

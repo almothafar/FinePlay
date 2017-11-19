@@ -16,7 +16,7 @@ public class JSONs {
 	private JSONs() {
 	}
 
-	@SuppressWarnings({"null", "serial"})
+	@SuppressWarnings({ "null", "serial" })
 	@Nonnull
 	public static String toJSON(@Nonnull final Object bean) {
 
@@ -60,7 +60,7 @@ public class JSONs {
 		return json;
 	}
 
-	@SuppressWarnings({"null", "serial"})
+	@SuppressWarnings({ "null", "serial" })
 	@Nonnull
 	public static <BEAN> BEAN toBean(@Nonnull final String json, @Nonnull final Class<BEAN> clazz) {
 

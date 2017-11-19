@@ -5,9 +5,9 @@ import java.util.concurrent.CompletionStage;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
 import play.mvc.BodyParser;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed

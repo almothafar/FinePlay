@@ -1,0 +1,57 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import common.utils._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.twentytwenty.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/twentytwenty.css")'>
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"TwentyTwenty", "icon"->"fa fa-pencil", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"twentytwenty"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9 px-0">
+
+					<div id="twentytwentyContainer" class="">
+
+						@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2830.JPG").toString, "class"->"monochrome"))
+						@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2830.JPG").toString))
+					</div>
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.BEFORE":"@Messages(MessageKeys.BEFORE)",
+			"@MessageKeys.AFTER":"@Messages(MessageKeys.AFTER)"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.twentytwenty.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/library/twentytwenty.js")'></script>
+	}
+}

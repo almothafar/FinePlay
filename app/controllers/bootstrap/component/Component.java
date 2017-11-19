@@ -1,7 +1,7 @@
 package controllers.bootstrap.component;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
@@ -10,51 +10,51 @@ public class Component extends Controller {
 	public Result index(String component) {
 
 		switch (component) {
-			case "button" :
+		case "button":
 
-				return button();
-			case "linkbutton" :
+			return button();
+		case "linkbutton":
 
-				return linkbutton();
-			case "badge" :
+			return linkbutton();
+		case "badge":
 
-				return badge();
-			case "dropdown" :
+			return badge();
+		case "dropdown":
 
-				return dropdown();
-			case "buttongroup" :
+			return dropdown();
+		case "buttongroup":
 
-				return buttongroup();
-			case "listgroup" :
+			return buttongroup();
+		case "listgroup":
 
-				return listgroup();
-			case "nav" :
+			return listgroup();
+		case "nav":
 
-				return nav();
-			case "alerts" :
+			return nav();
+		case "alerts":
 
-				return alerts();
-			case "progress" :
+			return alerts();
+		case "progress":
 
-				return progress();
-			case "pagination" :
+			return progress();
+		case "pagination":
 
-				return pagination();
-			case "image" :
+			return pagination();
+		case "image":
 
-				return image();
-			case "carousel" :
+			return image();
+		case "carousel":
 
-				return carousel();
-			case "table" :
+			return carousel();
+		case "table":
 
-				return table();
-			case "card" :
+			return table();
+		case "card":
 
-				return card();
-			default :
+			return card();
+		default:
 
-				return etc();
+			return etc();
 		}
 	}
 

@@ -12,17 +12,19 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import apis.character.Variation.Collection;
 import common.system.MessageKeys;
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -72,8 +74,8 @@ public class Character extends Controller {
 			final String ivdCollectionName = strings[2].trim();
 			final String ivdCollectionCharacterId = strings[3].trim();
 
-			final String s = new String(new int[]{codePoint}, 0, 1);
-			final String ivd = new String(new int[]{codePoint, ivsCodePoint}, 0, 2);
+			final String s = new String(new int[] { codePoint }, 0, 1);
+			final String ivd = new String(new int[] { codePoint, ivsCodePoint }, 0, 2);
 			LOGGER.info(s + " / " + ivd + " / " + codePoint + " / " + ivsCodePoint + " / " + ivdCollectionName + " / " + ivdCollectionCharacterId);
 
 			if (!codePointToCharacterMap.containsKey(codePoint)) {
@@ -99,48 +101,49 @@ public class Character extends Controller {
 		public String getMessageKey() {
 
 			switch (this) {
-				case CHARACTER :
+			case CHARACTER:
 
-					return MessageKeys.CHARACTER;
-				case CODEPOINT :
+				return MessageKeys.CHARACTER;
+			case CODEPOINT:
 
-					return MessageKeys.CODEPOINT;
-				case HEX :
+				return MessageKeys.CODEPOINT;
+			case HEX:
 
-					return MessageKeys.HEX;
-				default :
+				return MessageKeys.HEX;
+			default:
 
-					throw new IllegalStateException(this.name());
+				throw new IllegalStateException(this.name());
 			}
 		}
 	}
 
 	@Authenticated(common.core.Authenticator.class)
+	@RequireCSRFCheck
 	public Result character(@Nonnull final String typeString, @Nonnull final String searchText) {
 
 		final Type type = Type.valueOf(typeString);
 		switch (type) {
-			case CHARACTER :
+		case CHARACTER:
 
-				return character(searchText);
-			case CODEPOINT :
+			return character(searchText);
+		case CODEPOINT:
 
-				final int codePoint;
-				try {
+			final int codePoint;
+			try {
 
-					codePoint = Integer.valueOf(searchText);
-				} catch (NumberFormatException e) {
+				codePoint = Integer.valueOf(searchText);
+			} catch (NumberFormatException e) {
 
-					return badRequest(createErrorResult(messages.get(lang(), MessageKeys.ERROR_NUMBER) + " :" + searchText));
-				}
+				return badRequest(createErrorResult(messages.get(lang(), MessageKeys.ERROR_NUMBER) + " :" + searchText));
+			}
 
-				return codePoint(codePoint);
-			case HEX :
+			return codePoint(codePoint);
+		case HEX:
 
-				return hex(searchText);
-			default :
+			return hex(searchText);
+		default:
 
-				throw new RuntimeException();
+			throw new RuntimeException();
 		}
 	}
 

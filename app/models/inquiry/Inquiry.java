@@ -20,7 +20,7 @@ import models.base.LocaleConverter;
 import play.data.validation.Constraints;
 
 @Entity
-@Table(name = "INQUIRIES", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID"})}, indexes = {@Index(columnList = "ID")})
+@Table(name = "INQUIRIES", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) }, indexes = { @Index(columnList = "ID") })
 public class Inquiry {
 
 	public enum Type {
@@ -29,15 +29,15 @@ public class Inquiry {
 		public String getMessageKey() {
 
 			switch (this) {
-				case QUESTION :
+			case QUESTION:
 
-					return MessageKeys.QUESTION;
-				case OTHER :
+				return MessageKeys.QUESTION;
+			case OTHER:
 
-					return MessageKeys.OTHER;
-				default :
+				return MessageKeys.OTHER;
+			default:
 
-					throw new IllegalStateException(this.name());
+				throw new IllegalStateException(this.name());
 			}
 		}
 	}

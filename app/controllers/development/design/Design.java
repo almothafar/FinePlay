@@ -8,8 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
@@ -18,15 +18,15 @@ public class Design extends Controller {
 	public Result index(String item) {
 
 		switch (item) {
-			case "theme" :
+		case "theme":
 
-				return theme();
-			case "icon" :
+			return theme();
+		case "icon":
 
-				return icon();
-			default :
+			return icon();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

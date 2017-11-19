@@ -6,15 +6,15 @@ import java.util.Locale;
 import javax.inject.Inject;
 import javax.security.auth.login.AccountException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import common.utils.Locales;
 import controllers.user.UserService;
-import play.mvc.Controller;
 import models.setting.user.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User.Theme;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -22,10 +22,11 @@ import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
-@PermissionsAllowed(value = {Permission.READ, Permission.WRITE})
+@PermissionsAllowed(value = { Permission.READ, Permission.WRITE })
 public class User extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);

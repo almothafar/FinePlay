@@ -17,10 +17,11 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.criteria.Root;
 import javax.security.auth.login.AccountException;
 
+import com.typesafe.config.Config;
+
 import common.system.MessageKeys;
 import common.utils.Locales;
 import controllers.user.UserService;
-import play.mvc.Controller;
 import models.registuser.RegistFormContent;
 import models.registuser.RegistUserDao;
 import models.registuser.RegistUser_;
@@ -28,8 +29,6 @@ import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User.Role;
 import models.user.User.Theme;
-import com.typesafe.config.Config;
-
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -41,6 +40,7 @@ import play.i18n.Langs;
 import play.i18n.MessagesApi;
 import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.twirl.api.Html;
 
@@ -171,30 +171,30 @@ public class RegistUser extends Controller {
 	private static Lang normalizeLang(final Lang useLang) {
 
 		switch (useLang.language()) {
-			case "ja" :
+		case "ja":
 
-				return Locales.toLang(Locale.JAPAN);
-			case "zh" :
+			return Locales.toLang(Locale.JAPAN);
+		case "zh":
 
-				switch (useLang.country()) {
-					case "TW" :
-
-						return Locales.toLang(Locale.US);
-					// return Locales.toLang(Locale.TRADITIONAL_CHINESE);
-					case "CN" :
-					default :
-
-						return Locales.toLang(Locale.US);
-					// return Locales.toLang(Locale.SIMPLIFIED_CHINESE);
-				}
-			case "ko" :
+			switch (useLang.country()) {
+			case "TW":
 
 				return Locales.toLang(Locale.US);
-			// return Locales.toLang(Locale.KOREA);
-			case "en" :
-			default :
+			// return Locales.toLang(Locale.TRADITIONAL_CHINESE);
+			case "CN":
+			default:
 
 				return Locales.toLang(Locale.US);
+			// return Locales.toLang(Locale.SIMPLIFIED_CHINESE);
+			}
+		case "ko":
+
+			return Locales.toLang(Locale.US);
+		// return Locales.toLang(Locale.KOREA);
+		case "en":
+		default:
+
+			return Locales.toLang(Locale.US);
 		}
 	}
 
@@ -245,16 +245,16 @@ public class RegistUser extends Controller {
 	private Html createProvisionalHtmlMailBody(final models.registuser.RegistUser user, final String regularURL, final Lang lang) {
 
 		switch (lang.code()) {
-			case "ja-JP" :
+		case "ja-JP":
 
-				return views.html.registuser.provisional.mail.body_ja_JP.render(user, regularURL, createInquiryURL());
-			default :
+			return views.html.registuser.provisional.mail.body_ja_JP.render(user, regularURL, createInquiryURL());
+		default:
 
-				return views.html.registuser.provisional.mail.body_en_US.render(user, regularURL, createInquiryURL());
+			return views.html.registuser.provisional.mail.body_en_US.render(user, regularURL, createInquiryURL());
 		}
 	}
 
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	public Result provisionalHtmlMail(final String langString) {
 
 		final models.registuser.RegistUser dummyRegistUser = new models.registuser.RegistUser();
@@ -327,16 +327,16 @@ public class RegistUser extends Controller {
 	private Html createRegularHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {
 
 		switch (lang.code()) {
-			case "ja-JP" :
+		case "ja-JP":
 
-				return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL());
-			default :
+			return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL());
+		default:
 
-				return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL());
 		}
 	}
 
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	public Result regularHtmlMail(final String langString) {
 
 		final models.user.User dummyUser = new models.user.User();

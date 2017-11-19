@@ -11,17 +11,17 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.criteria.Root;
 import javax.security.auth.login.AccountException;
 
+import com.typesafe.config.Config;
+
 import common.data.validation.groups.Read;
 import common.data.validation.groups.Update;
 import common.system.MessageKeys;
 import controllers.user.UserService;
-import play.mvc.Controller;
 import models.resetuser.ResetFormContent;
 import models.resetuser.ResetUserDao;
 import models.resetuser.ResetUser_;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import com.typesafe.config.Config;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -32,6 +32,7 @@ import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.twirl.api.Html;
 
@@ -145,16 +146,16 @@ public class ResetUser extends Controller {
 	private Html createRequestHtmlMailBody(final models.resetuser.ResetUser user, final String changeURL, final Lang lang) {
 
 		switch (lang.code()) {
-			case "ja-JP" :
+		case "ja-JP":
 
-				return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL());
-			default :
+			return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL());
+		default:
 
-				return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL());
+			return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL());
 		}
 	}
 
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	public Result requestHtmlMail(final String langString) {
 
 		final models.resetuser.ResetUser dummyResetUser = new models.resetuser.ResetUser();
@@ -286,16 +287,16 @@ public class ResetUser extends Controller {
 	private Html createChangeHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {
 
 		switch (lang.code()) {
-			case "ja-JP" :
+		case "ja-JP":
 
-				return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL());
-			default :
+			return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL());
+		default:
 
-				return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL());
 		}
 	}
 
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	public Result changeHtmlMail(final String langString) {
 
 		final models.user.User dummyUser = new models.user.User();

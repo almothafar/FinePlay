@@ -16,9 +16,9 @@ import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.Payload;
 
-import play.data.validation.Constraints.Validator;
-
 import common.system.MessageKeys;
+import play.data.validation.Constraints.Validator;
+import play.libs.F.Tuple;
 
 public class Constraints {
 
@@ -27,7 +27,7 @@ public class Constraints {
 	/**
 	 * Defines a userId constraint for a string field.
 	 */
-	@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 	@Retention(RUNTIME)
 	@Constraint(validatedBy = UserIdValidator.class)
 	@play.data.Form.Display(name = MessageKeys.SYSTEM_CONSTRAINT_USERID, attributes = {})
@@ -65,7 +65,7 @@ public class Constraints {
 
 		@Override
 		public Tuple<String, Object[]> getErrorMessageKey() {
-			return Tuple(message, new Object[]{});
+			return Tuple(message, new Object[] {});
 		}
 
 	}
@@ -84,7 +84,7 @@ public class Constraints {
 	/**
 	 * Defines a password constraint for a string field.
 	 */
-	@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 	@Retention(RUNTIME)
 	@Constraint(validatedBy = PasswordValidator.class)
 	@play.data.Form.Display(name = MessageKeys.SYSTEM_CONSTRAINT_PASSWORD, attributes = {})
@@ -122,7 +122,7 @@ public class Constraints {
 
 		@Override
 		public Tuple<String, Object[]> getErrorMessageKey() {
-			return Tuple(message, new Object[]{});
+			return Tuple(message, new Object[] {});
 		}
 
 	}
@@ -141,7 +141,7 @@ public class Constraints {
 	/**
 	 * Defines a hiragana constraint for a string field.
 	 */
-	@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 	@Retention(RUNTIME)
 	@Constraint(validatedBy = HiraganaValidator.class)
 	@play.data.Form.Display(name = MessageKeys.SYSTEM_CONSTRAINT_HIRAGANA, attributes = {})
@@ -179,7 +179,7 @@ public class Constraints {
 
 		@Override
 		public Tuple<String, Object[]> getErrorMessageKey() {
-			return Tuple(message, new Object[]{});
+			return Tuple(message, new Object[] {});
 		}
 
 	}
@@ -198,7 +198,7 @@ public class Constraints {
 	/**
 	 * Defines a katakana constraint for a string field.
 	 */
-	@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 	@Retention(RUNTIME)
 	@Constraint(validatedBy = KatakanaValidator.class)
 	@play.data.Form.Display(name = MessageKeys.SYSTEM_CONSTRAINT_KATAKANA, attributes = {})
@@ -236,7 +236,7 @@ public class Constraints {
 
 		@Override
 		public Tuple<String, Object[]> getErrorMessageKey() {
-			return Tuple(message, new Object[]{});
+			return Tuple(message, new Object[] {});
 		}
 
 	}

@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityExistsException;
 
 import common.data.validation.groups.Create;
-import play.mvc.Controller;
 import models.base.EntityDao;
 import models.inquiry.Inquiry.Type;
 import models.inquiry.InquiryFormContent;
@@ -15,6 +14,7 @@ import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 public class Inquiry extends Controller {

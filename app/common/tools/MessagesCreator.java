@@ -97,17 +97,17 @@ class MessagesCreator {
 
 					final String key;
 					switch (keyCell.getCellTypeEnum()) {
-						case BLANK :
+					case BLANK:
 
-							key = "";
-							break;
-						case STRING :
+						key = "";
+						break;
+					case STRING:
 
-							key = keyCell.getStringCellValue().trim();
-							break;
-						default :
+						key = keyCell.getStringCellValue().trim();
+						break;
+					default:
 
-							throw new IllegalStateException("Cell type is not STRING: " + toCellInfoString(keyCell));
+						throw new IllegalStateException("Cell type is not STRING: " + toCellInfoString(keyCell));
 					}
 
 					final MessagesInfo defaultMessagesInfo = MESSAGES_INFO_LIST.get(defaultCellNum - 1);
@@ -147,17 +147,17 @@ class MessagesCreator {
 		} else {
 
 			switch (langCell.getCellTypeEnum()) {
-				case BLANK :
+			case BLANK:
 
-					value = "";
-					break;
-				case STRING :
+				value = "";
+				break;
+			case STRING:
 
-					value = langCell.getStringCellValue().trim();
-					break;
-				default :
+				value = langCell.getStringCellValue().trim();
+				break;
+			default:
 
-					throw new IllegalStateException("Cell type is not STRING: " + toCellInfoString(langCell));
+				throw new IllegalStateException("Cell type is not STRING: " + toCellInfoString(langCell));
 			}
 		}
 

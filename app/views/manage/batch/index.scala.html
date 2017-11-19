@@ -1,0 +1,187 @@
+@import java.time._
+@import java.time.format._
+@import java.net.URLEncoder
+@import java.nio.charset.StandardCharsets
+@import java.io.UnsupportedEncodingException
+@import javax.batch.runtime.BatchStatus
+@import javax.batch.runtime.BatchStatus._
+@import javax.batch.runtime.JobExecution
+@import play.api.i18n._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import common.utils._
+
+@(jobNames: List[String], jobExecutions: List[JobExecution])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@datetime(dateTime: LocalDateTime) = @{
+
+	common.utils.DateTimes.getClientDateTime(dateTime)
+}
+
+@datetimeFormat(dateTime: LocalDateTime) = @{
+
+	DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(dateTime)
+}
+
+@encodedUserId() = @{
+
+	var userId = session().get(models.user.User.USERID);
+
+	try {
+
+		URLEncoder.encode(userId, StandardCharsets.UTF_8.name());
+	} catch {
+
+		case e: UnsupportedEncodingException => throw new RuntimeException(e)
+	}
+}
+
+@tbodyRowToColumnsList(jobExecutions: java.util.List[JobExecution]) = @{
+
+	val tbodyRowToColumnsList = scala.collection.mutable.ListBuffer[Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]]();
+	for(jobExecution <- jobExecutions) {
+
+		val tbodyRow = Map[String, String]("type"->rowType(jobExecution.getBatchStatus()));
+
+		val columnsList = List[scala.collection.immutable.Map[String, String]](
+			Map("text"->jobExecution.getJobName()),
+			Map("text"->jobExecution.getJobParameters().toString()),
+			Map("text"->String.valueOf(jobExecution.getExecutionId())),
+			Map("text"->Messages(jobExecution.getBatchStatus().name().toLowerCase)),
+			Map("text"->jobExecution.getExitStatus()),
+			Map("text"->(if(jobExecution.getCreateTime() != null){datetimeFormat(datetime(LocalDateTime.ofInstant(jobExecution.getCreateTime().toInstant(), ZoneOffset.UTC)))}else{""})),
+			Map("text"->(if(jobExecution.getStartTime() != null){datetimeFormat(datetime(LocalDateTime.ofInstant(jobExecution.getStartTime().toInstant(), ZoneOffset.UTC)))}else{""})),
+			Map("text"->(if(jobExecution.getEndTime() != null){datetimeFormat(datetime(LocalDateTime.ofInstant(jobExecution.getEndTime().toInstant(), ZoneOffset.UTC)))}else{""})),
+			Map("text"->(if(jobExecution.getLastUpdatedTime() != null){datetimeFormat(datetime(LocalDateTime.ofInstant(jobExecution.getLastUpdatedTime().toInstant(), ZoneOffset.UTC)))}else{""}))
+		);
+
+		tbodyRowToColumnsList += Tuple2(tbodyRow, columnsList);
+	}
+
+	tbodyRowToColumnsList.toList
+}
+
+@rowType(batchStatus: BatchStatus) = @{
+
+	batchStatus match {
+		case STARTED => {
+			"info"
+		}
+		case STARTING => {
+			"info"
+		}
+		case STOPPED => {
+			"warning"
+		}
+		case STOPPING => {
+			"warning"
+		}
+		case COMPLETED => {
+			"success"
+		}
+		case FAILED => {
+			"danger"
+		}
+		case ABANDONED => {
+			"secondary"
+		}
+		case _ => {
+			throw new IllegalStateException(batchStatus.name())
+		}
+	}
+}
+
+@frame(){
+
+	@head("manage"){
+
+		@libraries.standard.head()
+		@libraries.datatables.head()
+	}
+
+	@body("manage","batch"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.OPERATION), "icon"->"fa fa-hand-pointer-o", "selected"->"true"))
+		}
+
+		<div class="container-fluid">
+
+		</div>
+
+		<div class="container-fluid">
+
+			<div class="mt-3 mb-3">
+
+				@components.alert(Map("id"->"", "icon"->"fa fa-warning", "text"->"The author is short of knowledge of Batch.", "type"->"warning"))
+			</div>
+
+			<div class="mt-3 mb-3">
+
+				<div class="row">
+					<div class="col-6">
+						<select id="executeJobName" name="jobName" class="form-control custom-select">
+							@for(jobName <- jobNames) {
+							<option value="@jobName" @("selected".when(jobName.equals("batch-hello-job")))>@jobName</option>
+							}
+						</select>
+					</div>
+					<div class="col-6">
+
+						@components.button(Map("id"->"startButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-play", "text"->Messages(MessageKeys.START)))
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-3 mb-3">
+				@components.button(Map("id"->"restartButton", "type"->"warning", "outline"->"true", "icon"->"fa fa-play", "text"->Messages(MessageKeys.RESTART)))
+				@components.button(Map("id"->"stopButton", "type"->"warning", "outline"->"true", "icon"->"fa fa-stop", "text"->Messages(MessageKeys.STOP)))
+				@components.button(Map("id"->"cancelButton", "type"->"danger", "outline"->"true", "icon"->"fa fa-times-circle", "text"->Messages(MessageKeys.CANCEL)))
+				@components.button(Map("id"->"reloadButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-repeat", "text"->Messages(MessageKeys.RELOAD)))
+			</div>
+
+			<div class="mb-3">
+				@components.table(Map("id"->"jobExecutionlist", "class"->"w-100", "responsive"->"true", "bordered"->"true"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.NAME)),
+						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.PARAMETER)),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.ID))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.BATCH) + " " + Messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.CREATE) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))))),
+					Map("id"->""),
+					tbodyRowToColumnsList(jobExecutions),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.NAME)),
+						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.PARAMETER)),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.ID))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.BATCH) + " " + Messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.CREATE) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))))),
+				)
+			</div>
+		</div>
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.X__CASE__SELECTED":"@Messages(MessageKeys.X__CASE__SELECTED)",
+			"encodedUserId":"@encodedUserId"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.datatables.last()
+		<script src='@routes.Assets.versioned("javascripts/manage/batch/index.js")'></script>
+	}
+}

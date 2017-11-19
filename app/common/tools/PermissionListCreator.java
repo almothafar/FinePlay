@@ -89,13 +89,14 @@ class PermissionListCreator {
 	private static Set<Permission> getClassPermissions(@Nonnull final Class<?> clazz) {
 
 		final System.PermissionsAllowed permissionsAllowed = clazz.getAnnotation(System.PermissionsAllowed.class);
-		final Permission[] permissions = Objects.isNull(permissionsAllowed) ? new Permission[]{} : permissionsAllowed.value();
+		final Permission[] permissions = Objects.isNull(permissionsAllowed) ? new Permission[] {} : permissionsAllowed.value();
 		return new HashSet<>(Arrays.asList(permissions));
 	}
+
 	private static Set<Permission> getMethodPermissions(@Nonnull final Method method) {
 
 		final System.PermissionsAllowed permissionsAllowed = method.getAnnotation(System.PermissionsAllowed.class);
-		final Permission[] permissions = Objects.isNull(permissionsAllowed) ? new Permission[]{} : permissionsAllowed.value();
+		final Permission[] permissions = Objects.isNull(permissionsAllowed) ? new Permission[] {} : permissionsAllowed.value();
 		return new HashSet<>(Arrays.asList(permissions));
 	}
 

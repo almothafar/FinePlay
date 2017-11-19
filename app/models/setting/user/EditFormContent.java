@@ -6,15 +6,15 @@ import play.data.validation.Constraints;
 public class EditFormContent {
 
 	// Play
-	@Constraints.Required(groups = {Update.class})
+	@Constraints.Required(groups = { Update.class })
 	private String theme;
 
 	// Play
-	@Constraints.Required(groups = {Update.class})
+	@Constraints.Required(groups = { Update.class })
 	private String locale;
 
 	// Play
-	@Constraints.Required(groups = {Update.class})
+	@Constraints.Required(groups = { Update.class })
 	private String zoneId;
 
 	public String getTheme() {

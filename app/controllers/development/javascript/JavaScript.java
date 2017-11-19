@@ -1,7 +1,7 @@
 package controllers.development.javascript;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
@@ -10,12 +10,12 @@ public class JavaScript extends Controller {
 	public Result index(String item) {
 
 		switch (item) {
-			case "test" :
+		case "test":
 
-				return test();
-			default :
+			return test();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 
@@ -27,15 +27,15 @@ public class JavaScript extends Controller {
 	public Result test(String testCase) {
 
 		switch (testCase) {
-			case "commonJs" :
+		case "commonJs":
 
-				return commonJs();
-			case "stringsJs" :
+			return commonJs();
+		case "stringsJs":
 
-				return stringsJs();
-			default :
+			return stringsJs();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

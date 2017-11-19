@@ -23,8 +23,11 @@ class DefaultUserAuthenticator implements UserAuthenticator {
 	@Inject
 	private UserService userService;
 
-	/* (非 Javadoc)
-	 * @see controllers.user.UserAuthenticator#signIn(play.i18n.Lang, java.lang.String, java.lang.String)
+	/*
+	 * (非 Javadoc)
+	 * 
+	 * @see controllers.user.UserAuthenticator#signIn(play.i18n.Lang,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
 	public models.user.User signIn(final Lang lang, final String userId, final String password) throws AccountException {
@@ -55,8 +58,11 @@ class DefaultUserAuthenticator implements UserAuthenticator {
 		return user;
 	}
 
-	/* (非 Javadoc)
-	 * @see controllers.user.UserAuthenticator#confirm(play.i18n.Lang, java.lang.String, java.lang.String)
+	/*
+	 * (非 Javadoc)
+	 * 
+	 * @see controllers.user.UserAuthenticator#confirm(play.i18n.Lang,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
 	public models.user.User confirm(final Lang lang, final String userId, final String password) throws AccountException {
@@ -79,8 +85,11 @@ class DefaultUserAuthenticator implements UserAuthenticator {
 		return user;
 	}
 
-	/* (非 Javadoc)
-	 * @see controllers.user.UserAuthenticator#signOut(play.i18n.Lang, java.lang.String)
+	/*
+	 * (非 Javadoc)
+	 * 
+	 * @see controllers.user.UserAuthenticator#signOut(play.i18n.Lang,
+	 * java.lang.String)
 	 */
 	@Override
 	public models.user.User signOut(final Lang lang, final String userId) throws AccountException {

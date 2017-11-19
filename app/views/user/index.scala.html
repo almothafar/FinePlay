@@ -53,7 +53,7 @@
 					<div class="card-body text-xs-left pb-0">
 					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin") {
 						<h5 class="form-signin-heading">@Messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
-						<div id="selectUserContainer d-none">
+						<div id="selectUserContainer" class="d-none">
 							<div class="row justify-content-center">
 								<div class="my-3">
 									@components.button(Map("id"->"selectFixedUser", "type"->"success", "icon"->"fa fa-user-o", "class"->"fixedUserButton rounded-circle", "data-toggle"->"modal", "data-target"->"#usersDialog"))
@@ -148,6 +148,11 @@
 							Map("name"->"jsoup", "icon"->"fa fa-code", "link"->"http://jsoup.org", "info"->""),
 							Map("name"->"javapoet", "icon"->"fa fa-pencil", "link"->"https://github.com/square/javapoet", "info"->""),
 							Map("name"->"mustache.java", "icon"->"fa fa-pencil", "link"->"https://github.com/spullara/mustache.java", "info"->""),
+							Map("name"->"Weld", "icon"->"fa fa-pencil", "link"->"http://weld.cdi-spec.org", "info"->""),
+							Map("name"->"JBoss Marshalling", "icon"->"fa fa-pencil", "link"->"http://www.jboss.org/jbossmarshalling", "info"->""),
+							Map("name"->"JBeret", "icon"->"fa fa-tasks", "link"->"https://github.com/jberet/jsr352", "info"->""),
+							Map("name"->"WildFly Security Manager", "icon"->"fa fa-pencil", "link"->"https://github.com/wildfly-security/security-manager", "info"->""),
+							Map("name"->"SchemaSpy", "icon"->"fa fa-database", "link"->"http://schemaspy.org", "info"->""),
 							Map("name"->"Bootbox.js", "icon"->"fa fa-pencil", "link"->"http://bootboxjs.com", "info"->""),
 							Map("name"->"pickadate", "icon"->"fa fa-calendar", "link"->"http://amsul.ca/pickadate.js", "info"->""),
 							Map("name"->"bootstrap-slider", "icon"->"fa fa-sliders", "link"->"https://github.com/seiyria/bootstrap-slider", "info"->""),
@@ -158,6 +163,7 @@
 							Map("name"->"Chart.js", "icon"->"fa fa-bar-chart", "link"->"http://www.chartjs.org", "info"->""),
 							Map("name"->"slick", "icon"->"fa fa-picture-o", "link"->"http://kenwheeler.github.io/slick/", "info"->""),
 							Map("name"->"Cropper.js", "icon"->"fa fa-crop", "link"->"https://fengyuanchen.github.io/cropperjs/", "info"->""),
+							Map("name"->"TwentyTwenty", "icon"->"fa fa-pencil", "link"->"https://zurb.com/playground/twentytwenty", "info"->""),
 							Map("name"->"D3.js", "icon"->"fa fa-pencil", "link"->"https://d3js.org", "info"->""),
 							Map("name"->"d3-geo-projection", "icon"->"fa fa-pencil", "link"->"https://github.com/d3/d3-geo-projection", "info"->""),
 							Map("name"->"highlight.js", "icon"->"fa fa-code", "link"->"https://highlightjs.org", "info"->""),

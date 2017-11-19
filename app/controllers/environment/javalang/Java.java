@@ -8,8 +8,8 @@ import java.util.TreeMap;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
@@ -18,18 +18,18 @@ public class Java extends Controller {
 	public Result index(String item) {
 
 		switch (item) {
-			case "systemproperties" :
+		case "systemproperties":
 
-				return systemproperties();
-			case "systemenv" :
+			return systemproperties();
+		case "systemenv":
 
-				return systemenv();
-			case "runtime" :
+			return systemenv();
+		case "runtime":
 
-				return runtime();
-			default :
+			return runtime();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

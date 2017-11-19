@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import play.mvc.Action.Simple;
-import play.mvc.Result;
 import play.mvc.Http.Context;
 import play.mvc.Http.Request;
+import play.mvc.Result;
 
 class LoggingAction extends Simple {
 

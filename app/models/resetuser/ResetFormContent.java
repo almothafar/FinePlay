@@ -9,21 +9,21 @@ import play.data.validation.Constraints;
 public class ResetFormContent {
 
 	// Play
-	@Constraints.Required(groups = {Read.class})
+	@Constraints.Required(groups = { Read.class })
 	// System
-	@UserId(groups = {Read.class})
+	@UserId(groups = { Read.class })
 	private String userId;
 
 	// Play
-	@Constraints.Required(groups = {Update.class})
+	@Constraints.Required(groups = { Update.class })
 	// System
-	@Password(groups = {Update.class})
+	@Password(groups = { Update.class })
 	private String password;
 
 	// Play
-	@Constraints.Required(groups = {Update.class})
+	@Constraints.Required(groups = { Update.class })
 	// System
-	@Password(groups = {Update.class})
+	@Password(groups = { Update.class })
 	private String rePassword;
 
 	public String getUserId() {

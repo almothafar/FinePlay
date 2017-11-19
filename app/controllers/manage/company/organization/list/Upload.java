@@ -18,6 +18,8 @@ import javax.persistence.EntityManager;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.supercsv.prefs.CsvPreference;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +30,6 @@ import common.data.validation.groups.Create;
 import common.data.validation.groups.Update;
 import common.system.MessageKeys;
 import common.utils.CSVs;
-import play.mvc.Controller;
 import models.base.EntityDao;
 import models.company.Company;
 import models.company.organization.Organization;
@@ -37,8 +38,6 @@ import models.manage.company.organization.list.UploadFormContent;
 import models.manage.company.organization.list.UploadFormContent.Operation;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.api.PlayException;
 import play.api.PlayException.ExceptionSource;
 import play.data.Form;
@@ -48,6 +47,7 @@ import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
+import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
@@ -70,7 +70,7 @@ public class Upload extends Controller {
 	};
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(value = BodyParser.MultipartFormData.class)
 	@Transactional()
 	@RequireCSRFCheck
@@ -208,15 +208,15 @@ public class Upload extends Controller {
 	private UploadProcess createUploadProcess(final Operation operation) {
 
 		switch (operation) {
-			case CREATE :
+		case CREATE:
 
-				return new CreateUploadProcess();
-			case UPDATE :
+			return new CreateUploadProcess();
+		case UPDATE:
 
-				return new UpdateUploadProcess();
-			default :
+			return new UpdateUploadProcess();
+		default:
 
-				throw new IllegalArgumentException("Operation: " + operation);
+			throw new IllegalArgumentException("Operation: " + operation);
 		}
 	}
 
@@ -249,7 +249,7 @@ public class Upload extends Controller {
 
 	private class CreateUploadProcess implements UploadProcess {
 
-		private final Class<?>[] groups = new Class<?>[]{Create.class};
+		private final Class<?>[] groups = new Class<?>[] { Create.class };
 
 		@Override
 		public MessagesApi getMessages() {
@@ -290,7 +290,7 @@ public class Upload extends Controller {
 
 	private class UpdateUploadProcess implements UploadProcess {
 
-		private final Class<?>[] groups = new Class<?>[]{Update.class};
+		private final Class<?>[] groups = new Class<?>[] { Update.class };
 
 		@Override
 		public MessagesApi getMessages() {

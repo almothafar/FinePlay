@@ -1,0 +1,18 @@
+<batch-artifacts xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+
+	<ref id="batchlet" class="batchs.manage.hello.batchlet.Batchlet"/>
+
+	<ref id="reader" class="batchs.manage.hello.chunk.Reader"/>
+	<ref id="processor" class="batchs.manage.hello.chunk.Processor"/>
+	<ref id="writer" class="batchs.manage.hello.chunk.Writer"/>
+
+	<ref id="paramBatchlet" class="batchs.manage.param.Batchlet"/>
+
+	<ref id="slowBatchlet" class="batchs.manage.slow.Batchlet"/>
+
+	<ref id="dbBatchlet" class="batchs.manage.db.Batchlet"/>
+
+	<ref id="dbRollbackBatchlet" class="batchs.manage.dbrollback.Batchlet"/>
+
+	<ref id="failBatchlet" class="batchs.manage.fail.Batchlet"/>
+</batch-artifacts>

@@ -16,7 +16,7 @@ import models.user.ExpireHandler;
 import play.data.validation.Constraints;
 
 @Entity
-@Table(name = "CHANGE_USERS", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+@Table(name = "CHANGE_USERS", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
 public class ChangeUser implements ExpireHandler {
 
 	private static final int CODE_SIZE_MAX = 64;

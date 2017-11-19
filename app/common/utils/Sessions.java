@@ -62,7 +62,8 @@ public class Sessions {
 		try (final StringWriter stringWriter = new StringWriter(); final ICsvListWriter writer = new CsvListWriter(stringWriter, CsvPreference.STANDARD_PREFERENCE)) {
 
 			writer.write(list);
-			writer.flush();;
+			writer.flush();
+			;
 
 			final String value = stringWriter.toString();
 

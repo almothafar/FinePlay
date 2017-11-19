@@ -15,6 +15,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import common.utils.Sessions;
 import models.system.System;
@@ -22,8 +24,6 @@ import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
 import models.user.User.Role;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.db.jpa.Transactional;
 import play.http.DefaultActionCreator;
 import play.mvc.Action;

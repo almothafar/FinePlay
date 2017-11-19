@@ -12,7 +12,6 @@ import javax.security.auth.login.AccountException;
 
 import common.utils.DateTimes;
 import controllers.user.UserService;
-import play.mvc.Controller;
 import models.framework.datetime.DateTimeFormContent;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
@@ -21,6 +20,7 @@ import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 

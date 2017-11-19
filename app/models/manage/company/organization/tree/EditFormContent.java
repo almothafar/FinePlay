@@ -14,15 +14,15 @@ public class EditFormContent {
 	private long companyId;
 
 	// Play
-	@Constraints.Required(groups = {Create.class, Update.class, Delete.class})
+	@Constraints.Required(groups = { Create.class, Update.class, Delete.class })
 	private long organizationId;
 
 	// Play
-	@Constraints.Required(groups = {Update.class, Delete.class})
+	@Constraints.Required(groups = { Update.class, Delete.class })
 	private LocalDateTime organizationUpdateDateTime;
 
 	// Play
-	@Constraints.Required(groups = {Update.class})
+	@Constraints.Required(groups = { Update.class })
 	private String unitTreeJSON;
 
 	public long getCompanyId() {

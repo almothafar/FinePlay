@@ -25,7 +25,7 @@ public class CSVs {
 	private CSVs() {
 	}
 
-	@SuppressWarnings({"serial", "null"})
+	@SuppressWarnings({ "serial", "null" })
 	@Nonnull
 	public static String toCSV(//
 			@Nonnull final String[] headers, //
@@ -85,7 +85,7 @@ public class CSVs {
 		return csv;
 	}
 
-	@SuppressWarnings({"serial", "null"})
+	@SuppressWarnings({ "serial", "null" })
 	@Nonnull
 	public static <BEAN> List<BEAN> toBeans(//
 			@Nonnull final String[] headers, //

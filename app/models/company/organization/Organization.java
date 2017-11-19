@@ -25,13 +25,14 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
-import models.company.Company;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import models.company.Company;
 import play.i18n.MessagesApi;
 
 @Entity
-@Table(name = "ORGANIZATIONS", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID", "COMPANY_ID"})}, indexes = {@Index(columnList = "ID"), @Index(columnList = "COMPANY_ID")})
+@Table(name = "ORGANIZATIONS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "COMPANY_ID" }) }, indexes = { @Index(columnList = "ID"), @Index(columnList = "COMPANY_ID") })
 public class Organization {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Organization.class);
@@ -47,7 +48,7 @@ public class Organization {
 	private long id;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumns(value = {@JoinColumn(nullable = false, unique = true)})
+	@JoinColumns(value = { @JoinColumn(nullable = false, unique = true) })
 	private Company company;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organization")
@@ -62,14 +63,13 @@ public class Organization {
 
 	public Map<Long, OrganizationUnit> getIdToUnitMap() {
 
-		final Map<Long, OrganizationUnit> idToUnitMap = getOrganizationUnits().stream()
-				.collect(Collectors.toMap(//
-						unit -> unit.getId(), //
-						unit -> unit, //
-						(k, v) -> {
-							throw new IllegalStateException(v.toString());
-						}, //
-						HashMap::new));
+		final Map<Long, OrganizationUnit> idToUnitMap = getOrganizationUnits().stream().collect(Collectors.toMap(//
+				unit -> unit.getId(), //
+				unit -> unit, //
+				(k, v) -> {
+					throw new IllegalStateException(v.toString());
+				}, //
+				HashMap::new));
 
 		return Collections.unmodifiableMap(idToUnitMap);
 	}

@@ -11,6 +11,9 @@ import java.util.concurrent.CompletionStage;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -19,7 +22,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import common.data.validation.groups.Update;
 import common.system.MessageKeys;
 import common.utils.DateTimes;
-import play.mvc.Controller;
 import models.base.EntityDao;
 import models.company.Company;
 import models.company.organization.Organization;
@@ -27,8 +29,6 @@ import models.company.organization.OrganizationUnit;
 import models.manage.company.organization.tree.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -37,6 +37,7 @@ import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -57,7 +58,7 @@ public class Edit extends Controller {
 	};
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@Transactional()
 	@RequireCSRFCheck

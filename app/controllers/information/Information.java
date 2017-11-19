@@ -6,15 +6,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
-import javax.xml.bind.DatatypeConverter;
 
-import play.mvc.Controller;
+import common.utils.Binaries;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
-@PermissionsAllowed(value = {Permission.READ})
+@PermissionsAllowed(value = { Permission.READ })
 public class Information extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
@@ -46,11 +46,11 @@ public class Information extends Controller {
 
 		messageDigest.update(eMail.getBytes(StandardCharsets.UTF_8));
 		final byte[] hash = messageDigest.digest();
-		if(hash.length != 16){
+		if (hash.length != 16) {
 
-			throw new IllegalStateException(": "+hash.length);
+			throw new IllegalStateException(": " + hash.length);
 		}
 
-		return DatatypeConverter.printHexBinary(hash).toLowerCase();
+		return Binaries.toHexString(hash);
 	}
 }

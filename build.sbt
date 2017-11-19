@@ -1,12 +1,24 @@
 name := """fineplay"""
 
-version := "2.6.6-α2-SNAPSHOT"
+organization := "hiro20v"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+version := "2.6.7-α2-SNAPSHOT"
 
-scalaVersion := "2.12.2"
+scalaVersion := "2.12.4"
+
+//lazy val fineplaySub = (project in file("sub"))
+//    .enablePlugins(PlayJava)
+
+lazy val root = (project in file("."))
+    .enablePlugins(PlayJava)
+//    .aggregate(fineplaySub)
+//    .dependsOn(fineplaySub)
+
+// Repository
+//resolvers += "jboss-public-repository-group" at "http://repository.jboss.org/nexus/content/groups/public/"
 
 libraryDependencies ++= Seq(
+//  "hiro20v" %% "fineplay-sub" % "2.6.7-α2-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -16,86 +28,99 @@ libraryDependencies ++= Seq(
   filters,
 //  openId,
 //  evolutions,
-  "com.typesafe.play" %% "play-mailer" % "6.0.1",						// Apache 6.0.1
+  "com.typesafe.play" %% "play-mailer" % "6.0.1",							// Apache 6.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.6.5",
-  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.1",
+  "com.typesafe.play" %% "play-json" % "2.6.7",
+  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.3",
   "com.h2database" % "h2" % "1.4.196",
 //  "com.h2database" % "h2" % "1.4.196" % Test,
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-json" % "1.0.0",
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-xml" % "1.0.0",
 //  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
-//  "xerces" % "xercesImpl" % "2.11.0",
-//  "org.apache.tomcat" % "tomcat-servlet-api" % "8.0.33",
+//  "org.apache.tomcat" % "tomcat-servlet-api" % "9.0.1",
   "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",			//
-  "org.hibernate.validator" % "hibernate-validator" % "6.0.3.Final",	// Apache 6.0.2 // into play include
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",				//
+  "org.hibernate.validator" % "hibernate-validator" % "6.0.5.Final",		// Apache 6.0.2 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b08",
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
-  "javax.json" % "javax.json-api" % "1.1",
-  "org.glassfish" % "javax.json" % "1.1",
-  "org.apache.commons" % "commons-text" % "1.1",						// Apache 1.1
-  "org.postgresql" % "postgresql" % "42.1.1",							// BSD 2-clause 4.2.14
-  "org.mockito" % "mockito-inline" % "2.11.0",
-//  "org.mockito" % "mockito-core" % "2.11.0",							// MIT 2.8.54
-  "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
+  "javax.json" % "javax.json-api" % "1.1.2",
+  "org.glassfish" % "javax.json" % "1.1.2",
+  "org.apache.commons" % "commons-text" % "1.1",							// Apache 1.1
+  "org.postgresql" % "postgresql" % "42.1.4",							// BSD 2-clause 4.2.14
+  "org.mockito" % "mockito-inline" % "2.12.0",
+//  "org.mockito" % "mockito-core" % "2.12.0",							// MIT 2.8.54
+  "net.sf.supercsv" % "super-csv" % "2.4.0",								// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
-  "org.apache.poi" % "poi" % "3.17",									// Apache 3.16
+  "org.apache.poi" % "poi" % "3.17",										// Apache 3.16
   "org.apache.poi" % "poi-scratchpad" % "3.17",
   "org.apache.poi" % "poi-ooxml" % "3.17",
-  "com.google.zxing" % "javase" % "3.3.0",								// Apache 3.3.0
-  "org.apache.pdfbox" % "pdfbox" % "2.0.7",								// Apache 2.0.7
-  "org.jsoup" % "jsoup" % "1.10.3",										// MIT 1.10.3
-  "com.squareup" % "javapoet" % "1.9.0",								// Apache 1.9.0
+  "com.google.zxing" % "javase" % "3.3.1",								// Apache 3.3.0
+  "org.apache.pdfbox" % "pdfbox" % "2.0.8",								// Apache 2.0.7
+  "org.jsoup" % "jsoup" % "1.11.1",										// MIT 1.10.3
+  "com.squareup" % "javapoet" % "1.9.0",									// Apache 1.9.0
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",						// Apache 1.2.0.CR1
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
-  "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
+  "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
   "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
   "org.webjars.npm" % "bootstrap" % "4.0.0-beta.2",						// MIT 4.0.0-alpha.6
   "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
-  "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",			// MIT 9.8.1
+  "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",				// MIT 9.8.1
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars.npm" % "tether" % "1.4.0",								// MIT 1.4.0
   "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
-  "org.webjars.bower" % "font-awesome" % "4.7.0",						// SIL OFL 4.7.0
+  "org.webjars.bower" % "font-awesome" % "4.7.0",							// SIL OFL 4.7.0
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
-  "org.webjars.bower" % "select2" % "4.0.4",							// MIT 4.0.4
-  "org.webjars.bower" % "chartjs" % "2.6.0",							// MIT 2.6.0
-  "org.webjars.bower" % "moment" % "2.19.1",							// MIT 2.18.1
+  "org.webjars.bower" % "select2" % "4.0.4",								// MIT 4.0.4
+  "org.webjars.bower" % "chartjs" % "2.6.0",								// MIT 2.6.0
+  "org.webjars.bower" % "moment" % "2.19.1",								// MIT 2.18.1
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.5.1",						// MIT 3.4.0
+  "org.webjars.bower" % "fullcalendar" % "3.5.1",							// MIT 3.7.0
   "org.webjars" % "openlayers" % "4.3.1",								// 2-Clause BSD 4.2.0
-  "org.webjars.bower" % "datatables" % "1.10.16",						// MIT 1.10.16
+  "org.webjars.bower" % "datatables" % "1.10.16",							// MIT 1.10.16
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",
-  "org.webjars.bower" % "datatables.net-select" % "1.2.2",				//
-//  "org.webjars.bower" % "summernote" % "0.8.8",						// MIT 0.8.8
+  "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
+//  "org.webjars.bower" % "summernote" % "0.8.8",							// MIT 0.8.8
   "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
   "org.webjars.bower" % "slick-carousel" % "1.8.0",						// MIT 1.7.1
-  "org.webjars.npm" % "cropperjs" % "1.1.1",							// MIT 1.0.0
-//  "org.webjars.npm" % "d3" % "4.10.2",								// BSD-3-Clause license 4.10.2
+  "org.webjars.npm" % "cropperjs" % "1.1.1",								// MIT 1.0.0
+//  "org.webjars.npm" % "d3" % "4.10.2",									// BSD-3-Clause license 4.10.2
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
-  "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
+  "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
   "org.webjars.npm" % "marked" % "0.3.6",								// MIT 0.3.6
-  "org.webjars.bower" % "parsleyjs" % "2.7.2",							// MIT 2.7.2
-  "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
+  "org.webjars.bower" % "parsleyjs" % "2.8.0",							// MIT 2.7.2
+  "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1
   "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
   "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
   "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426
-  "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
+  "org.webjars" % "material-design-icons" % "3.0.1",						// Apache 3.0.1
   "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
   "org.webjars.npm" % "popper.js" % "1.12.5",							// MIT 1.12.5
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
-  "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
+  "org.webjars.bower" % "chai" % "4.1.1"									// MIT 4.1.1
 )
+// TwentyTwenty															// MIT 2017/11/11 master
 // Frappé Gantt															// MIT 2017/8/11 master
 // wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4
 // 3Dmol.js																// BSD-3-Clause license 1.1.1
 // IcoFont																// MIT 1.3
 // geckodriver															// ? 0.18.0
+
+// Batch library
+libraryDependencies ++= Seq(
+  "javax.enterprise" % "cdi-api" % "2.0",
+  "org.jboss.weld.se" % "weld-se" % "2.4.5.Final",						// Apache 2.4.5.Final
+  "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.0.Final",
+  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.2.Final",			// Apache 2.0.2.Final
+  "org.jboss.logging" % "jboss-logging" % "3.3.1.Final",
+  "org.jberet" % "jberet-core" % "1.2.5.Final",							// Eclipse Public 1.2.5.Final
+  "org.jberet" % "jberet-support" % "1.2.0.Final",
+  "org.jberet" % "jberet-se" % "1.2.0.Final",
+  "org.wildfly.security" % "wildfly-security-manager" % "1.1.2.Final"		// ? 1.1.2.Final
+)
 
 excludeDependencies ++= Seq(
   "org.hibernate" % "hibernate-validator"								// into play include
@@ -140,6 +165,14 @@ mappings in Universal ++= {
     f -> ("prod/" + f.getCanonicalPath.substring(prodFolderLength))
   }
 }
+// Copy temp on dist
+mappings in Universal ++= {
+  val tempFolder = baseDirectory(_ / "temp").value
+  val tempFolderLength = tempFolder.getCanonicalPath.length
+  (tempFolder ** "*").get.map { f: File =>
+    f -> ("temp/" + f.getCanonicalPath.substring(tempFolderLength))
+  }
+}
 
 // Copy public on dist
 mappings in Universal ++= {
@@ -155,28 +188,27 @@ mappings in Universal ++= {
 // playEnhancerEnabled := false
 
 // JaCoCo
-testOptions in jacoco.Config += Tests.Setup( () => {
+testOptions in jacocoReportSettings += Tests.Setup( () => {
 	System.setProperty("config.file", "conf/application_test.conf");
 	System.setProperty("webdriver.gecko.driver", "misc/geckodriver");
 } )
-jacoco.settings
-parallelExecution in jacoco.Config := false
+jacocoReportSettings := JacocoReportSettings(
+  "Jacoco Coverage Report",
+  None,
+  JacocoThresholds(),
+  Seq(JacocoReportFormats.ScalaHTML),
+  "utf-8")
 
 // FindBugs
-import de.johoop.findbugs4sbt._
-findbugsSettings
 findbugsReportPath := Some(crossTarget.value / "findbugs" / "report.html")
-findbugsReportType := Some(de.johoop.findbugs4sbt.ReportType.FancyHistHtml)
+findbugsReportType := Some(com.github.sbt.findbugs.settings.FindbugsReport.FancyHtml)
 
-// PMD/CPD
-import de.johoop.cpd4sbt._
-enablePlugins(CopyPasteDetector)
-cpdReportName:= "cpd.xml"
-cpdLanguage := de.johoop.cpd4sbt.Language.Java
-cpdReportType := de.johoop.cpd4sbt.ReportType.XML
+// CPD
+cpdLanguage := CpdLanguage.Java
+cpdReportType := CpdReportType.XML
 
 // CheckStyle
 checkstyleConfigLocation := CheckstyleConfigLocation.File("conf/checkstyle-config.xml")
-checkstyleXsltTransformations := {
-  Some(Set(CheckstyleXSLTSettings(baseDirectory(_ / "conf" / "checkstyle-noframes.xml").value, target(_ / "checkstyle-report.html").value)))
-}
+//checkstyleXsltTransformations := {
+//  Some(Set(CheckstyleXSLTSettings(baseDirectory(_ / "conf" / "checkstyle-noframes.xml").value, target(_ / "checkstyle-report.html").value)))
+//}

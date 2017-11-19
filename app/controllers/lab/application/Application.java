@@ -21,14 +21,15 @@ import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import akka.actor.Cancellable;
 import akka.stream.javadsl.Source;
 import models.components.PagingInfo;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
 import models.user.User_;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.libs.Comet;
@@ -55,51 +56,51 @@ public class Application extends Controller {
 	public Result index(String state) {
 
 		switch (state) {
-			case "autosave" :
+		case "autosave":
 
-				return autoSave();
-			case "storeform" :
+			return autoSave();
+		case "storeform":
 
-				return storeform();
-			case "firsttimeaccess" :
+			return storeform();
+		case "firsttimeaccess":
 
-				return firstTimeAccess();
-			case "partprint" :
+			return firstTimeAccess();
+		case "partprint":
 
-				return partPrint();
-			case "ivd" :
+			return partPrint();
+		case "ivd":
 
-				return ivd();
-			case "authorization" :
+			return ivd();
+		case "authorization":
 
-				return authorization();
-			case "jpql" :
+			return authorization();
+		case "jpql":
 
-				return jpql();
-			case "serialtask" :
+			return jpql();
+		case "serialtask":
 
-				return serialTask();
-			case "paralleltask" :
+			return serialTask();
+		case "paralleltask":
 
-				return parallelTask();
-			case "webservice" :
+			return parallelTask();
+		case "webservice":
 
-				return webService();
-			case "translate" :
+			return webService();
+		case "translate":
 
-				return translate();
-			case "righttoleft" :
+			return translate();
+		case "righttoleft":
 
-				return righttoleft();
-			case "vertical" :
+			return righttoleft();
+		case "vertical":
 
-				return vertical();
-			case "comet" :
+			return vertical();
+		case "comet":
 
-				return comet();
-			default :
+			return comet();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

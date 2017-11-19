@@ -12,10 +12,10 @@ import org.mapstruct.Qualifier;
 
 import controllers.framework.mapping.Mapping.CustomConvertor;
 
-@Mapper(uses = {CustomConvertor.class})
+@Mapper(uses = { CustomConvertor.class })
 public interface BeanMapper {
 
-	@Mappings({//
+	@Mappings({ //
 			@Mapping(target = "ignore", ignore = true), //
 			// value
 			@Mapping(source = "mapValue", target = "mapValue"), //
@@ -26,7 +26,7 @@ public interface BeanMapper {
 			@Mapping(source = "object.value", target = "object.value"), //
 			@Mapping(source = "dateValue", target = "dateValue", dateFormat = "yyyy/MM/dd"), //
 			@Mapping(source = "numberValue", target = "numberValue", numberFormat = "#,###"), //
-			@Mapping(target = "customValue", source = "customValue", qualifiedBy = {CustomConvertorClass.class, CustomConvertorMethod.class}) //
+			@Mapping(target = "customValue", source = "customValue", qualifiedBy = { CustomConvertorClass.class, CustomConvertorMethod.class }) //
 	})
 	Bean toBean(BeanFormContent beanFormContent);
 

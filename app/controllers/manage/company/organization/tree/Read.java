@@ -13,6 +13,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -20,7 +23,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import common.system.MessageKeys;
 import common.utils.DateTimes;
-import play.mvc.Controller;
 import models.base.EntityDao;
 import models.company.Company;
 import models.company.organization.Organization;
@@ -29,13 +31,12 @@ import models.company.organization.OrganizationUnit_;
 import models.manage.company.organization.tree.ReadFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.i18n.MessagesApi;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -59,7 +60,7 @@ public class Read extends Controller {
 	};
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Transactional()
 	public Result index(final long companyId) {
 

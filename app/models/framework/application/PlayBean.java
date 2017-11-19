@@ -5,6 +5,7 @@ import static play.libs.F.Tuple;
 import common.system.MessageKeys;
 import play.data.validation.Constraints;
 import play.data.validation.Constraints.Validator;
+import play.libs.F.Tuple;
 
 public class PlayBean {
 
@@ -28,21 +29,27 @@ public class PlayBean {
 	public String getConstraint_required() {
 		return constraint_required;
 	}
+
 	public int getConstraint_min() {
 		return constraint_min;
 	}
+
 	public int getConstraint_max() {
 		return constraint_max;
 	}
+
 	public String getConstraint_minLength() {
 		return constraint_minLength;
 	}
+
 	public String getConstraint_maxLength() {
 		return constraint_maxLength;
 	}
+
 	public String getConstraint_email() {
 		return constraint_email;
 	}
+
 	public String getConstraint_pattern() {
 		return constraint_pattern;
 	}
@@ -67,7 +74,7 @@ public class PlayBean {
 		}
 
 		public Tuple<String, Object[]> getErrorMessageKey() {
-			return Tuple(message, new Object[]{});
+			return Tuple(message, new Object[] {});
 		}
 	}
 }

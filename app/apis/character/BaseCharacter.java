@@ -21,7 +21,7 @@ class BaseCharacter {
 	BaseCharacter(final int codePoint) {
 
 		this.codePoint = codePoint;
-		this.string = new String(new int[]{codePoint}, 0, 1);
+		this.string = new String(new int[] { codePoint }, 0, 1);
 	}
 
 	int getCodePoint() {

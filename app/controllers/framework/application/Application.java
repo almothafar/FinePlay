@@ -124,54 +124,54 @@ public class Application extends Controller {
 	public Result index(String state) {
 
 		switch (state) {
-			case "config" :
+		case "config":
 
-				return config();
-			case "cookie" :
+			return config();
+		case "cookie":
 
-				return cookie();
-			case "session" :
+			return cookie();
+		case "session":
 
-				return sessionlist();
-			case "flash" :
+			return sessionlist();
+		case "flash":
 
-				return flashlist();
-			case "logger" :
+			return flashlist();
+		case "logger":
 
-				return logger();
-			case "cache" :
+			return logger();
+		case "cache":
 
-				return cache();
-			case "i18n" :
+			return cache();
+		case "i18n":
 
-				return i18n();
-			case "message" :
+			return i18n();
+		case "message":
 
-				return message();
-			case "validation" :
+			return message();
+		case "validation":
 
-				return validation();
-			case "request" :
+			return validation();
+		case "request":
 
-				return requestlist();
-			case "exception" :
+			return requestlist();
+		case "exception":
 
-				return exception();
-			case "reporterror" :
+			return exception();
+		case "reporterror":
 
-				return reporterror();
-			case "datetime" :
+			return reporterror();
+		case "datetime":
 
-				return datetime();
-			case "entitymanager" :
+			return datetime();
+		case "entitymanager":
 
-				return entitymanager();
-			case "user" :
+			return entitymanager();
+		case "user":
 
-				return user();
-			default :
+			return user();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 
@@ -237,7 +237,7 @@ public class Application extends Controller {
 
 		final StackTraceElement element = Thread.currentThread().getStackTrace()[1];
 
-		return ok("See "+element.getClassName()+"#"+element.getMethodName()+" Line:"+element.getLineNumber());
+		return ok("See " + element.getClassName() + "#" + element.getMethodName() + " Line:" + element.getLineNumber());
 	}
 
 	public Result cache() {
@@ -355,7 +355,7 @@ public class Application extends Controller {
 
 			String messageKeyAndTypeValue = error.key().replaceFirst("_", ".");
 			final boolean isSystem = error.key().startsWith("java_") || error.key().startsWith("system_");
-			if(isSystem){
+			if (isSystem) {
 
 				messageKeyAndTypeValue = messageKeyAndTypeValue.replaceFirst("_", ".");
 			}
@@ -366,49 +366,49 @@ public class Application extends Controller {
 			final Object[] arguments = error.arguments().stream().map(argument -> {
 
 				switch (argument.getClass().getSimpleName()) {
-					case "Boolean" :
+				case "Boolean":
 
-						return Boolean.TRUE.equals(argument) ? 1 : 0;
-					case "Flag[]" :
+					return Boolean.TRUE.equals(argument) ? 1 : 0;
+				case "Flag[]":
 
-						final Flag[] flags = Flag[].class.cast(argument);
-						final List<String> flagList = Arrays.stream(flags).map(flag -> {
+					final Flag[] flags = Flag[].class.cast(argument);
+					final List<String> flagList = Arrays.stream(flags).map(flag -> {
 
-							switch (flag.getValue()) {
-								case Pattern.CANON_EQ :
+						switch (flag.getValue()) {
+						case Pattern.CANON_EQ:
 
-									return "CANON_EQ";
-								case Pattern.CASE_INSENSITIVE :
+							return "CANON_EQ";
+						case Pattern.CASE_INSENSITIVE:
 
-									return "CASE_INSENSITIVE";
-								case Pattern.COMMENTS :
+							return "CASE_INSENSITIVE";
+						case Pattern.COMMENTS:
 
-									return "COMMENTS";
-								case Pattern.DOTALL :
+							return "COMMENTS";
+						case Pattern.DOTALL:
 
-									return "DOTALL";
-								case Pattern.UNICODE_CASE :
+							return "DOTALL";
+						case Pattern.UNICODE_CASE:
 
-									return "UNICODE_CASE";
-								case Pattern.MULTILINE :
+							return "UNICODE_CASE";
+						case Pattern.MULTILINE:
 
-									return "MULTILINE";
-								case Pattern.UNICODE_CHARACTER_CLASS :
+							return "MULTILINE";
+						case Pattern.UNICODE_CHARACTER_CLASS:
 
-									return "UNICODE_CHARACTER_CLASS";
-								case Pattern.UNIX_LINES :
+							return "UNICODE_CHARACTER_CLASS";
+						case Pattern.UNIX_LINES:
 
-									return "UNIX_LINES";
-								default :
+							return "UNIX_LINES";
+						default:
 
-									throw new IllegalStateException(":" + flag.getValue());
-							}
-						}).collect(Collectors.toList());
+							throw new IllegalStateException(":" + flag.getValue());
+						}
+					}).collect(Collectors.toList());
 
-						return flagList.toString();
-					default :
+					return flagList.toString();
+				default:
 
-						return argument;
+					return argument;
 				}
 			}).collect(Collectors.toList()).toArray(new Object[0]);
 
@@ -420,38 +420,35 @@ public class Application extends Controller {
 
 			final String messageDescription = messageKey + messageType;
 
-			return new SimpleImmutableEntry<String, Object>(messageDescription, constraint+"<br>"+errorMessage);
+			return new SimpleImmutableEntry<String, Object>(messageDescription, constraint + "<br>" + errorMessage);
 		};
 
 		final Form<PlayBean> playForm = formFactory.form(PlayBean.class).bindFromRequest();
-		final Map<String, Object> playMap = playForm.allErrors().stream().map(createErrorDisplayEntry)
-				.collect(Collectors.toMap(//
-						entry -> entry.getKey(), //
-						entry -> entry.getValue(), //
-						(u, v) -> {
-							throw new IllegalStateException(v.toString());
-						}, //
-						LinkedHashMap::new));
+		final Map<String, Object> playMap = playForm.allErrors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
+				entry -> entry.getKey(), //
+				entry -> entry.getValue(), //
+				(u, v) -> {
+					throw new IllegalStateException(v.toString());
+				}, //
+				LinkedHashMap::new));
 
 		final Form<Jsr380Bean> jsr380Form = formFactory.form(Jsr380Bean.class).bindFromRequest();
-		final Map<String, Object> jsr380Map = jsr380Form.allErrors().stream().map(createErrorDisplayEntry)
-				.collect(Collectors.toMap(//
-						entry -> entry.getKey(), //
-						entry -> entry.getValue(), //
-						(u, v) -> {
-							throw new IllegalStateException(v.toString());
-						}, //
-						LinkedHashMap::new));
+		final Map<String, Object> jsr380Map = jsr380Form.allErrors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
+				entry -> entry.getKey(), //
+				entry -> entry.getValue(), //
+				(u, v) -> {
+					throw new IllegalStateException(v.toString());
+				}, //
+				LinkedHashMap::new));
 
 		final Form<FinePlayBean> fineplayForm = formFactory.form(FinePlayBean.class).bindFromRequest();
-		final Map<String, Object> fineplayMap = fineplayForm.allErrors().stream().map(createErrorDisplayEntry)
-				.collect(Collectors.toMap(//
-						entry -> entry.getKey(), //
-						entry -> entry.getValue(), //
-						(u, v) -> {
-							throw new IllegalStateException(v.toString());
-						}, //
-						LinkedHashMap::new));
+		final Map<String, Object> fineplayMap = fineplayForm.allErrors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
+				entry -> entry.getKey(), //
+				entry -> entry.getValue(), //
+				(u, v) -> {
+					throw new IllegalStateException(v.toString());
+				}, //
+				LinkedHashMap::new));
 
 		return ok(views.html.framework.application.validation.render(//
 				new TreeMap<>(playMap), //
@@ -475,7 +472,8 @@ public class Application extends Controller {
 		}).collect(Collectors.joining("", "<table><thead><tr><td>KEY</td><td>VALUE</td></tr></thead><tbody>", "</tbody></table>")));
 
 		final HandlerDef handlerDef = ctx().request().attrs().get(Router.Attrs.HANDLER_DEF);
-		final List<String> modifiers = handlerDef.getModifiers();;
+		final List<String> modifiers = handlerDef.getModifiers();
+		;
 		map.put("HandlerDef", modifiers);
 
 		return ok(views.html.framework.application.request.render(map));

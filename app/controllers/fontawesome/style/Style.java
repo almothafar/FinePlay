@@ -1,7 +1,7 @@
 package controllers.fontawesome.style;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -12,15 +12,15 @@ public class Style extends Controller {
 	public Result index(String example) {
 
 		switch (example) {
-			case "squareicon" :
+		case "squareicon":
 
-				return squareicon();
-			case "largericon" :
+			return squareicon();
+		case "largericon":
 
-				return largericon();
-			default :
+			return largericon();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

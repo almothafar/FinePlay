@@ -79,7 +79,8 @@
 				)),
 				(Map("show"->isShow(Permission.MANAGE).toString(), "name"->Messages(MessageKeys.MANAGE), "icon"->"fa fa-wrench", "selected"->equalSection("manage")),List(
 					Map("name"->Messages(MessageKeys.COMPANY), "icon"->"fa fa-building-o", "link"->controllers.manage.company.routes.Read.index().toString(), "selected"->equalWork("manage","company")),
-					Map("name"->Messages(MessageKeys.USER), "icon"->"fa fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user"))
+					Map("name"->Messages(MessageKeys.USER), "icon"->"fa fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user")),
+					Map("class"->"secret", "name"->Messages(MessageKeys.BATCH), "icon"->"fa fa-tasks", "link"->controllers.manage.batch.routes.Batch.index().toString(), "selected"->equalWork("manage","batch"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"nf nf-disclosure_triangle", "selected"->equalSection("development")),List(
 					Map("name"->Messages(MessageKeys.HTTP), "icon"->"fa fa-file-text-o", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),

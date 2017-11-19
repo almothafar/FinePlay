@@ -18,13 +18,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import play.mvc.Controller;
 import models.base.EntityDao;
 import models.company.organization.OrganizationUnit_;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -37,7 +37,7 @@ public class Organization extends Controller {
 	};
 
 	@Transactional(readOnly = true)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Authenticated(common.core.Authenticator.class)
 	public Result organizationUnits(final long companyId, @Nonnull final String name, final int pageIndex, final int pageSize) {
 

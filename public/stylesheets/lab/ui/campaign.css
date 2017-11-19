@@ -1,10 +1,13 @@
 @charset "utf-8";
 
+#campaigns-wrapper{
+	overflow-x:scroll;
+	background-color:gainsboro;
+}
 #campaigns{
 	display:-webkit-box;
 	display: box;
-	overflow-x:scroll;
-	background-color:gainsboro;
+	width: 1390px;
 }
 #campaigns>.campaign{
 	width: 260px;

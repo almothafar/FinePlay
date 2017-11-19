@@ -18,37 +18,37 @@ import play.data.validation.Constraints;
 public class EditFormContent {
 
 	// Play
-	@Constraints.Required(groups = {Create.class, Update.class, Delete.class})
+	@Constraints.Required(groups = { Create.class, Update.class, Delete.class })
 	// System
-	@UserId(groups = {Create.class, Update.class, Delete.class})
+	@UserId(groups = { Create.class, Update.class, Delete.class })
 	private String userId;
 
 	// Play
-	@Constraints.Required(groups = {Update.class})
+	@Constraints.Required(groups = { Update.class })
 	// System
-	@UserId(groups = {Update.class})
+	@UserId(groups = { Update.class })
 	private String newUserId;
 
 	// Play
-	@Constraints.Required(groups = {Create.class})
+	@Constraints.Required(groups = { Create.class })
 	// System
-	@Password(groups = {Create.class})
+	@Password(groups = { Create.class })
 	private String password;
 
 	// Play
-	@Constraints.Required(groups = {Create.class})
+	@Constraints.Required(groups = { Create.class })
 	// System
-	@Password(groups = {Create.class})
+	@Password(groups = { Create.class })
 	private String rePassword;
 
 	// JSR-303
-	@Size(message = MessageKeys.JAVA_ERROR_SIZE, min = 1, max = User.ROLE_COUNT_MAX, groups = {Create.class, Update.class})
+	@Size(message = MessageKeys.JAVA_ERROR_SIZE, min = 1, max = User.ROLE_COUNT_MAX, groups = { Create.class, Update.class })
 	private List<Role> roles;
 
 	private Long companyId;
 
 	// Play
-	@Constraints.Required(groups = {Update.class, Delete.class})
+	@Constraints.Required(groups = { Update.class, Delete.class })
 	private LocalDateTime updateDateTime;
 
 	public String getUserId() {

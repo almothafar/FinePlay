@@ -1,7 +1,7 @@
 package controllers.lab.ui;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -12,72 +12,72 @@ public class UI extends Controller {
 	public Result index(String ui) {
 
 		switch (ui) {
-			case "drawer" :
+		case "drawer":
 
-				return drawer();
-			case "field" :
+			return drawer();
+		case "field":
 
-				return field();
-			case "checkbox" :
+			return field();
+		case "checkbox":
 
-				return checkbox();
-			case "ajaxselect" :
+			return checkbox();
+		case "ajaxselect":
 
-				return ajaxselect();
-			case "select" :
+			return ajaxselect();
+		case "select":
 
-				return select();
-			case "unlimited" :
+			return select();
+		case "unlimited":
 
-				return unlimited();
-			case "arrange" :
+			return unlimited();
+		case "arrange":
 
-				return arrange();
-			case "draganddrop" :
+			return arrange();
+		case "draganddrop":
 
-				return draganddrop();
-			case "timeline" :
+			return draganddrop();
+		case "timeline":
 
-				return timeline();
-			case "notification" :
+			return timeline();
+		case "notification":
 
-				return notification();
-			case "nav" :
+			return notification();
+		case "nav":
 
-				return nav();
-			case "process" :
+			return nav();
+		case "process":
 
-				return process();
-			case "arrow" :
+			return process();
+		case "arrow":
 
-				return arrow();
-			case "campaign" :
+			return arrow();
+		case "campaign":
 
-				return campaign();
-			case "group" :
+			return campaign();
+		case "group":
 
-				return group();
-			case "infinity" :
+			return group();
+		case "infinity":
 
-				return infinity();
-			case "parallax" :
+			return infinity();
+		case "parallax":
 
-				return parallax();
-			case "fixedbar" :
+			return parallax();
+		case "fixedbar":
 
-				return fixedbar();
-			case "bigtypo" :
+			return fixedbar();
+		case "bigtypo":
 
-				return bigtypo();
-			case "block" :
+			return bigtypo();
+		case "block":
 
-				return block();
-			case "window" :
+			return block();
+		case "window":
 
-				return window();
-			default :
+			return window();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

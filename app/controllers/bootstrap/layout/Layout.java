@@ -1,7 +1,7 @@
 package controllers.bootstrap.layout;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
@@ -10,18 +10,18 @@ public class Layout extends Controller {
 	public Result index(String component) {
 
 		switch (component) {
-			case "responsive" :
+		case "responsive":
 
-				return responsive();
-			case "grid" :
+			return responsive();
+		case "grid":
 
-				return grid();
-			case "table" :
+			return grid();
+		case "table":
 
-				return table();
-			default :
+			return table();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

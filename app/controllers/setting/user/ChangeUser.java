@@ -11,17 +11,18 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.criteria.Root;
 import javax.security.auth.login.AccountException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.typesafe.config.Config;
+
 import common.system.MessageKeys;
 import controllers.user.UserService;
-import play.mvc.Controller;
 import models.setting.user.changeuser.ChangeFormContent;
 import models.setting.user.changeuser.ChangeUserDao;
 import models.setting.user.changeuser.ChangeUser_;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import com.typesafe.config.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -32,11 +33,12 @@ import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import play.twirl.api.Html;
 
-@PermissionsAllowed(value = {Permission.READ, Permission.WRITE})
+@PermissionsAllowed(value = { Permission.READ, Permission.WRITE })
 public class ChangeUser extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ChangeUser.class);
@@ -156,17 +158,17 @@ public class ChangeUser extends Controller {
 	private Html createReserveHtmlMailBody(final models.setting.user.changeuser.ChangeUser user, final String decisionURL, final Lang lang) {
 
 		switch (lang.code()) {
-			case "ja-JP" :
+		case "ja-JP":
 
-				return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL());
-			default :
+			return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL());
+		default:
 
-				return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL());
+			return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL());
 		}
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	public Result reserveHtmlMail(final String langString) {
 
 		final models.setting.user.changeuser.ChangeUser dummyChangeUser = new models.setting.user.changeuser.ChangeUser();
@@ -175,7 +177,7 @@ public class ChangeUser extends Controller {
 		return ok(createReserveHtmlMailBody(dummyChangeUser, createDecisionURL(dummyChangeUser.getCode()), Lang.forCode(langString)));
 	}
 
-	@PermissionsAllowed(value = {Permission.READ})
+	@PermissionsAllowed(value = { Permission.READ })
 	@Transactional()
 	public Result decision(final String code) {
 
@@ -239,17 +241,17 @@ public class ChangeUser extends Controller {
 	private Html createDecisionHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {
 
 		switch (lang.code()) {
-			case "ja-JP" :
+		case "ja-JP":
 
-				return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL());
-			default :
+			return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL());
+		default:
 
-				return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL());
 		}
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	public Result decisionHtmlMail(final String langString) {
 
 		final models.user.User dummyUser = new models.user.User();

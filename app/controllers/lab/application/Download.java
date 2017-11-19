@@ -29,7 +29,20 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xslf.usermodel.SlideLayout;
+import org.apache.poi.xslf.usermodel.XMLSlideShow;
+import org.apache.poi.xslf.usermodel.XSLFSlide;
+import org.apache.poi.xslf.usermodel.XSLFSlideLayout;
+import org.apache.poi.xslf.usermodel.XSLFSlideMaster;
+import org.apache.poi.xslf.usermodel.XSLFTextParagraph;
+import org.apache.poi.xslf.usermodel.XSLFTextShape;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 
 import akka.NotUsed;
 import akka.actor.Status;
@@ -38,10 +51,10 @@ import akka.stream.javadsl.Source;
 import akka.util.ByteString;
 import common.system.MessageKeys;
 import common.utils.PDFs;
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
 import play.api.PlayException;
 import play.i18n.MessagesApi;
+import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -103,6 +116,98 @@ public class Download extends Controller {
 			cell2.setCellValue("(´･ω･`)");
 
 			workbook.write(outputStream);
+			return ok(outputStream.toByteArray()).as(Http.MimeTypes.BINARY);
+		} catch (IOException e) {
+
+			throw new UncheckedIOException(e);
+		}
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	public Result wordStream() {
+
+		try (final XWPFDocument document = new XWPFDocument(); //
+				final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+
+			final XWPFParagraph header = document.createParagraph();
+			header.setAlignment(ParagraphAlignment.CENTER);
+			final XWPFRun run = header.createRun();
+			run.setText(messages.get(lang(), MessageKeys.WELCOME));
+
+			final XWPFParagraph paragraph0 = document.createParagraph();
+			final XWPFRun run0 = paragraph0.createRun();
+			run0.setText("(｀・ω・´)");
+			final XWPFParagraph paragraph1 = document.createParagraph();
+			final XWPFRun run1 = paragraph1.createRun();
+			run1.setText("(*´ω｀*)");
+			final XWPFParagraph paragraph2 = document.createParagraph();
+			final XWPFRun run2 = paragraph2.createRun();
+			run2.setText("(´･ω･`)");
+
+			final XWPFTable table = document.createTable(1, 3);
+			final XWPFTableCell cell0 = table.getRow(0).getCell(0);
+			final XWPFParagraph cellParagraph0 = cell0.getParagraphs().get(0);
+			final XWPFRun cellRun0 = cellParagraph0.createRun();
+			cellRun0.setText("Plain");
+			cellRun0.setColor("ff0000");
+			final XWPFTableCell cell1 = table.getRow(0).getCell(1);
+			final XWPFParagraph cellParagraph1 = cell1.getParagraphs().get(0);
+			final XWPFRun cellRun1 = cellParagraph1.createRun();
+			cellRun1.setText("Bold");
+			cellRun1.setBold(true);
+			cellRun1.setColor("00ff00");
+			final XWPFTableCell cell2 = table.getRow(0).getCell(2);
+			final XWPFParagraph cellParagraph2 = cell2.getParagraphs().get(0);
+			final XWPFRun cellRun2 = cellParagraph2.createRun();
+			cellRun2.setText("Italic");
+			cellRun2.setItalic(true);
+			cellRun2.setColor("0000ff");
+
+			document.write(outputStream);
+			return ok(outputStream.toByteArray()).as(Http.MimeTypes.BINARY);
+		} catch (IOException e) {
+
+			throw new UncheckedIOException(e);
+		}
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	public Result powerPointStream() {
+
+		try (XMLSlideShow slideShow = new XMLSlideShow(); //
+				final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+
+			slideShow.createSlide();
+
+			final XSLFSlideMaster master = slideShow.getSlideMasters().get(0);
+
+			final XSLFSlideLayout layout1 = master.getLayout(SlideLayout.TITLE);
+			final XSLFSlide slide1 = slideShow.createSlide(layout1);
+			final XSLFTextShape[] ph1 = slide1.getPlaceholders();
+			final XSLFTextShape titlePlaceholder1 = ph1[0];
+			titlePlaceholder1.setText(messages.get(lang(), MessageKeys.WELCOME));
+			final XSLFTextShape subtitlePlaceholder1 = ph1[1];
+			subtitlePlaceholder1.setText(messages.get(lang(), MessageKeys.SYSTEM_NAME));
+
+			final XSLFSlideLayout layout2 = master.getLayout(SlideLayout.TITLE_AND_CONTENT);
+			final XSLFSlide slide2 = slideShow.createSlide(layout2);
+			final XSLFTextShape[] ph2 = slide2.getPlaceholders();
+			final XSLFTextShape titlePlaceholder2 = ph2[0];
+			titlePlaceholder2.setText(messages.get(lang(), MessageKeys.WELCOME));
+			final XSLFTextShape bodyPlaceholder = ph2[1];
+
+			bodyPlaceholder.clearText();
+			final XSLFTextParagraph p1 = bodyPlaceholder.addNewTextParagraph();
+			p1.setIndentLevel(0);
+			p1.addNewTextRun().setText("(｀・ω・´)");
+			final XSLFTextParagraph p2 = bodyPlaceholder.addNewTextParagraph();
+			p2.setIndentLevel(1);
+			p2.addNewTextRun().setText("(*´ω｀*)");
+			final XSLFTextParagraph p3 = bodyPlaceholder.addNewTextParagraph();
+			p3.setIndentLevel(2);
+			p3.addNewTextRun().setText("(´･ω･`)");
+
+			slideShow.write(outputStream);
 			return ok(outputStream.toByteArray()).as(Http.MimeTypes.BINARY);
 		} catch (IOException e) {
 

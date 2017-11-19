@@ -18,6 +18,7 @@ import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.security.auth.login.AccountException;
 
 import org.slf4j.Logger;
@@ -36,7 +37,7 @@ import models.system.System.PermissionsAllowed;
 import models.user.PasswordFormContent;
 import models.user.SignInFormContent;
 import models.user.User.Theme;
-import play.Mode;
+import play.Application;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -55,6 +56,9 @@ public class User extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 
 	@Inject
+	private Provider<Application> applicationProvider;
+
+	@Inject
 	private views.html.user.index index;
 
 	private static Duration TWO_WEEKS = Duration.ofDays(7 * 2);
@@ -64,15 +68,21 @@ public class User extends Controller {
 
 	private static class LazyHolder {
 
-		private static String FIXED_USERS = initFixedUsers();
+		private static String DEV_FIXED_USERS = initDevFixedUsers();
 	}
 
-	public static String getFixedUsers() {
+	public String getFixedUsers() {
 
-		return LazyHolder.FIXED_USERS;
+		if (applicationProvider.get().isProd()) {
+
+			return "[]";
+		} else {
+
+			return LazyHolder.DEV_FIXED_USERS;
+		}
 	}
 
-	private static String initFixedUsers() {
+	private static String initDevFixedUsers() {
 
 		final Function<Path, String> readFixedUsers = (path) -> {
 
@@ -84,26 +94,8 @@ public class User extends Controller {
 				throw new UncheckedIOException(e);
 			}
 		};
-		final Mode mode = play.Environment.simple().mode();
-		System.out.println("Application mode :" + mode);
-		final String users;
-		switch (mode) {
-			case PROD :
 
-				users = "[]";
-				break;
-			case DEV :
-			case TEST :
-
-				// TEST mode ? for Play2.6.0 〜 2.6.2
-				users = readFixedUsers.apply(DEV_USERS_PATH);
-				break;
-			default :
-
-				users = "[]";
-				break;
-		}
-
+		final String users = readFixedUsers.apply(DEV_USERS_PATH);
 		return users;
 	}
 
@@ -235,7 +227,7 @@ public class User extends Controller {
 		return badRequest(index.render(signInForm, getFixedUsers()));
 	}
 
-	@PermissionsAllowed(value = {Permission.READ})
+	@PermissionsAllowed(value = { Permission.READ })
 	@Authenticated(common.core.Authenticator.class)
 	@Transactional()
 	public Result signOut() {
@@ -263,7 +255,7 @@ public class User extends Controller {
 		}
 	}
 
-	@PermissionsAllowed(value = {Permission.READ})
+	@PermissionsAllowed(value = { Permission.READ })
 	@Authenticated(common.core.Authenticator.class)
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@Transactional(readOnly = true)

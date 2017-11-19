@@ -1,0 +1,5 @@
+Processor processItem : MEIKO
+Processor processItem : KAITO
+Processor processItem : Hatsune Miku
+Processor processItem : KAGAMINE RIN/LEN
+Processor processItem : MEGURINE LUKA

@@ -18,8 +18,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
@@ -28,15 +28,15 @@ public class Document extends Controller {
 	public Result index(String state) {
 
 		switch (state) {
-			case "troubleshoot" :
+		case "troubleshoot":
 
-				return troubleshoot();
-			case "faq" :
+			return troubleshoot();
+		case "faq":
 
-				return faq();
-			default :
+			return faq();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

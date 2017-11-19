@@ -29,6 +29,8 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.Size;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.supercsv.cellprocessor.ConvertNullTo;
 import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -37,13 +39,11 @@ import common.system.MessageKeys;
 import models.base.LocaleConverter;
 import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
 import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 
 @Entity
-@Table(name = "ORGANIZATION_UNITS", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID", "ORGANIZATION_ID"})}, indexes = {@Index(columnList = "ID"), @Index(columnList = "ORGANIZATION_ID")})
+@Table(name = "ORGANIZATION_UNITS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "ORGANIZATION_ID" }) }, indexes = { @Index(columnList = "ID"), @Index(columnList = "ORGANIZATION_ID") })
 public class OrganizationUnit {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationUnit.class);
@@ -64,7 +64,7 @@ public class OrganizationUnit {
 	@MapKeyColumn(name = "LOCALE", nullable = false)
 	@Convert(attributeName = "key", converter = LocaleConverter.class)
 	@Column(name = "NAME", nullable = false)
-	@CollectionTable(name = "ORGANIZATION_UNIT_NAMES", uniqueConstraints = {@UniqueConstraint(columnNames = {"ORGANIZATION_UNIT_ID", "LOCALE"})}, joinColumns = @JoinColumn(nullable = false, name = "ORGANIZATION_UNIT_ID", referencedColumnName = "ID"))
+	@CollectionTable(name = "ORGANIZATION_UNIT_NAMES", uniqueConstraints = { @UniqueConstraint(columnNames = { "ORGANIZATION_UNIT_ID", "LOCALE" }) }, joinColumns = @JoinColumn(nullable = false, name = "ORGANIZATION_UNIT_ID", referencedColumnName = "ID"))
 	// JSR
 	@Size(min = 1, message = "constraints.Size")
 	private Map<Locale, String> names;
@@ -120,7 +120,7 @@ public class OrganizationUnit {
 			NAME + "JaJp" //
 	};
 
-	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[]{ //
+	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[] { //
 			new ConvertNullTo(null, new ParseLong()), //
 			new ConvertNullTo(null, new ParseLong()), //
 			new ParseServerLocalDateTime(), //
@@ -128,7 +128,7 @@ public class OrganizationUnit {
 			null //
 	};
 
-	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[]{ //
+	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[] { //
 			null, //
 			null, //
 			new FmtClientLocalDateTime(), //

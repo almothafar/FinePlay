@@ -13,20 +13,21 @@ import javax.persistence.criteria.MapJoin;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import common.utils.CSVs;
-import play.mvc.Controller;
 import models.base.EntityDao;
 import models.company.Company;
 import models.manage.company.ReadFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
+import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -45,7 +46,7 @@ public class Read extends Controller {
 	};
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Transactional()
 	public Result index() {
 
@@ -60,7 +61,7 @@ public class Read extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Transactional()
 	@RequireCSRFCheck
 	public Result read() {
@@ -80,7 +81,7 @@ public class Read extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Transactional()
 	@RequireCSRFCheck
 	public Result download() {

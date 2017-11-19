@@ -15,7 +15,6 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 
 import org.apache.commons.lang3.StringUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,10 +28,10 @@ public class System {
 
 	@Documented
 	@Retention(RUNTIME)
-	@Target({TYPE, METHOD})
+	@Target({ TYPE, METHOD })
 	public @interface PermissionsAllowed {
 
-		Permission[] value() default {Permission.READ, Permission.WRITE, Permission.MANAGE};
+		Permission[] value() default { Permission.READ, Permission.WRITE, Permission.MANAGE };
 	}
 
 	public static boolean isPermissionAllowed(@Nonnull final Set<Permission> permissions, @Nonnull final Set<Permission> userPermissions) {

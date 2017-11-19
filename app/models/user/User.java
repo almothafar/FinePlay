@@ -35,6 +35,8 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.Size;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.supercsv.cellprocessor.ConvertNullTo;
 import org.supercsv.cellprocessor.ParseEnum;
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -51,18 +53,16 @@ import models.company.Company;
 import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
 import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
 import models.system.System.Permission;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.data.validation.Constraints;
-import play.data.validation.ValidationError;
-import play.data.validation.Constraints.Validate;
 import play.data.validation.Constraints.Validatable;
+import play.data.validation.Constraints.Validate;
+import play.data.validation.ValidationError;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 
 @Validate
 @Entity
-@Table(name = "USERS", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID", "USERID"})}, indexes = {@Index(columnList = "USERID")})
+@Table(name = "USERS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "USERID" }) }, indexes = { @Index(columnList = "USERID") })
 public class User implements ExpireHandler, PasswordHandler, Validatable<List<ValidationError>> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
@@ -104,7 +104,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
-	@CollectionTable(name = "USER_ROLES", uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID", "ROLE"})}, joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"))
+	@CollectionTable(name = "USER_ROLES", uniqueConstraints = { @UniqueConstraint(columnNames = { "USER_ID", "ROLE" }) }, joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"))
 	@Column(name = "ROLE", nullable = false)
 	// JSR
 	@Size(min = 1, max = ROLE_COUNT_MAX, message = "constraints.Size")
@@ -191,7 +191,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 			ROLE + "4" //
 	};
 
-	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[]{ //
+	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[] { //
 			null, //
 			new ParseServerLocalDateTime(), //
 			new ConvertNullTo(null, new ParseServerLocalDateTime()), //
@@ -204,7 +204,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 			new ConvertNullTo(null, new ParseEnum(Role.class)) //
 	};
 
-	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[]{ //
+	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[] { //
 			null, //
 			new FmtClientLocalDateTime(), //
 			new ConvertNullTo("", new FmtClientLocalDateTime()), //
@@ -280,24 +280,24 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 		for (final Role role : getRoles()) {
 
 			switch (i) {
-				case 0 :
-					setRole0(role);
-					break;
-				case 1 :
-					setRole1(role);
-					break;
-				case 2 :
-					setRole2(role);
-					break;
-				case 3 :
-					setRole3(role);
-					break;
-				case 4 :
-					setRole4(role);
-					break;
-				default :
+			case 0:
+				setRole0(role);
+				break;
+			case 1:
+				setRole1(role);
+				break;
+			case 2:
+				setRole2(role);
+				break;
+			case 3:
+				setRole3(role);
+				break;
+			case 4:
+				setRole4(role);
+				break;
+			default:
 
-					throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + i);
+				throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + i);
 			}
 
 			i++;

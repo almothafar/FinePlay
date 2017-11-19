@@ -17,6 +17,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.criteria.Root;
 import javax.security.auth.login.AccountException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -27,7 +30,6 @@ import common.data.validation.groups.Update;
 import common.system.MessageKeys;
 import common.utils.DateTimes;
 import controllers.user.UserService;
-import play.mvc.Controller;
 import models.base.EntityDao;
 import models.manage.user.EditFormContent;
 import models.system.System.Permission;
@@ -35,8 +37,6 @@ import models.system.System.PermissionsAllowed;
 import models.user.User.Role;
 import models.user.User.Theme;
 import models.user.User_;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -45,6 +45,7 @@ import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -68,7 +69,7 @@ public class Edit extends Controller {
 	};
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@Transactional()
 	@RequireCSRFCheck
@@ -154,7 +155,7 @@ public class Edit extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@Transactional()
 	@RequireCSRFCheck
@@ -249,7 +250,7 @@ public class Edit extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@PermissionsAllowed(value = {Permission.MANAGE})
+	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@Transactional()
 	@RequireCSRFCheck

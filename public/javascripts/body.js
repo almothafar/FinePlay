@@ -372,6 +372,7 @@ $('#debugButton').on('shown.bs.popover', function () {
 
 	$("#applyBorderButton").on("click", function(){$("*").css("border", "solid 1px lavender");});
 	$("#showResponsiveButton").on("click", function(){$("#system_responsive-bar").removeClass("d-none");});
+	$("#Memory").text($("#debugButton").data("memory"));
 	$("#Play_ver").text($("#debugButton").data("playver"));
 	$("#jQuery_ver").text($.fn.jquery);
 });

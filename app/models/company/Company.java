@@ -27,6 +27,8 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.Size;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.supercsv.cellprocessor.ConvertNullTo;
 import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -36,13 +38,11 @@ import models.base.LocaleConverter;
 import models.company.organization.Organization;
 import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
 import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 
 @Entity
-@Table(name = "COMPANIES", uniqueConstraints = {@UniqueConstraint(columnNames = {"ID"})}, indexes = {@Index(columnList = "ID")})
+@Table(name = "COMPANIES", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) }, indexes = { @Index(columnList = "ID") })
 public class Company {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Company.class);
@@ -63,13 +63,13 @@ public class Company {
 	@MapKeyColumn(name = "LOCALE", nullable = false)
 	@Convert(attributeName = "key", converter = LocaleConverter.class)
 	@Column(name = "NAME", nullable = false)
-	@CollectionTable(name = "COMPANY_NAMES", uniqueConstraints = {@UniqueConstraint(columnNames = {"COMPANY_ID", "LOCALE"})}, joinColumns = @JoinColumn(nullable = false, name = "COMPANY_ID", referencedColumnName = "ID"))
+	@CollectionTable(name = "COMPANY_NAMES", uniqueConstraints = { @UniqueConstraint(columnNames = { "COMPANY_ID", "LOCALE" }) }, joinColumns = @JoinColumn(nullable = false, name = "COMPANY_ID", referencedColumnName = "ID"))
 	// JSR
 	@Size(min = 1, message = "constraints.Size")
 	private Map<Locale, String> names;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "company")
-	@JoinColumns(value = {@JoinColumn(nullable = true, unique = true)})
+	@JoinColumns(value = { @JoinColumn(nullable = true, unique = true) })
 	private Organization organization;
 
 	@Version
@@ -101,14 +101,14 @@ public class Company {
 			NAME + "JaJp" //
 	};
 
-	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[]{ //
+	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[] { //
 			new ConvertNullTo(null, new ParseLong()), //
 			new ParseServerLocalDateTime(), //
 			null, //
 			null //
 	};
 
-	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[]{ //
+	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[] { //
 			null, //
 			new FmtClientLocalDateTime(), //
 			null, //

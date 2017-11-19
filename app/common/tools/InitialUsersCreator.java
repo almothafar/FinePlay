@@ -172,7 +172,7 @@ class InitialUsersCreator {
 			user.setId(i + 1);
 			@SuppressWarnings("null")
 			final String userLine = String.format("INSERT INTO USERS (ID, USERID, SALT, HASHEDPASSWORD, LOCALE, ZONEID, THEME, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP)", //
-					 user.getId(), //
+					user.getId(), //
 					"'" + user.getUserId() + "'", //
 					"'" + user.getSalt().replace("'", "''") + "'", //
 					"'" + user.getHashedPassword().replace("'", "''") + "'", //

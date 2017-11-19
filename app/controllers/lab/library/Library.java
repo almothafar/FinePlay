@@ -22,9 +22,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import common.utils.Barcodes;
 import common.utils.Templates;
-import play.mvc.Controller;
 import models.components.PagingInfo;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -35,78 +35,81 @@ public class Library extends Controller {
 	public Result index(String lib) {
 
 		switch (lib) {
-			case "bootbox" :
+		case "bootbox":
 
-				return bootbox();
-			case "select2" :
+			return bootbox();
+		case "select2":
 
-				return select2();
-			case "pickadate" :
+			return select2();
+		case "pickadate":
 
-				return pickadate();
-			case "chartjs" :
+			return pickadate();
+		case "chartjs":
 
-				return chartjs();
-			case "fullcalendar" :
+			return chartjs();
+		case "fullcalendar":
 
-				return fullcalendar();
-			case "bootstrapslider" :
+			return fullcalendar();
+		case "bootstrapslider":
 
-				return bootstrapslider();
-			case "openlayers" :
+			return bootstrapslider();
+		case "openlayers":
 
-				return openlayers();
-			case "handsontable" :
+			return openlayers();
+		case "handsontable":
 
-				return handsontable();
-			case "highlight" :
+			return handsontable();
+		case "highlight":
 
-				return highlight();
-			case "d3geoprojection" :
+			return highlight();
+		case "d3geoprojection":
 
-				return d3geoprojection();
-			case "cropperjs" :
+			return d3geoprojection();
+		case "cropperjs":
 
-				return cropperjs();
-			case "diff2html" :
+			return cropperjs();
+		case "twentytwenty":
 
-				return diff2html();
-			case "summernote" :
+			return twentytwenty();
+		case "diff2html":
 
-				return summernote();
-			case "parsley" :
+			return diff2html();
+		case "summernote":
 
-				return parsley();
-			case "bootstrapcolorpicker" :
+			return summernote();
+		case "parsley":
 
-				return bootstrapcolorpicker();
-			case "frappegantt" :
+			return parsley();
+		case "bootstrapcolorpicker":
 
-				return frappegantt();
-			case "pdfjs" :
+			return bootstrapcolorpicker();
+		case "frappegantt":
 
-				return pdfjs();
-			case "camera" :
+			return frappegantt();
+		case "pdfjs":
 
-				return camera();
-			case "mustache" :
+			return pdfjs();
+		case "camera":
 
-				return mustache();
-			case "zxing" :
+			return camera();
+		case "mustache":
 
-				return zxing();
-			case "materialicons" :
+			return mustache();
+		case "zxing":
 
-				return materialicons();
-			case "icofont" :
+			return zxing();
+		case "materialicons":
 
-				return icofont();
-			case "3dmol" :
+			return materialicons();
+		case "icofont":
 
-				return tdmol();
-			default :
+			return icofont();
+		case "3dmol":
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return tdmol();
+		default:
+
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 
@@ -199,6 +202,11 @@ public class Library extends Controller {
 	public static Result cropperjs() {
 
 		return ok(views.html.lab.library.cropperjs.render());
+	}
+
+	public static Result twentytwenty() {
+
+		return ok(views.html.lab.library.twentytwenty.render());
 	}
 
 	public static Result diff2html() {

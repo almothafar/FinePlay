@@ -1,7 +1,7 @@
 package controllers.development.http;
 
-import play.mvc.Controller;
 import models.system.System.PermissionsAllowed;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
@@ -10,18 +10,18 @@ public class Http extends Controller {
 	public Result index(String state) {
 
 		switch (state) {
-			case "ajax" :
+		case "ajax":
 
-				return ajax();
-			case "serialajax" :
+			return ajax();
+		case "serialajax":
 
-				return serialAjax();
-			case "parallelajax" :
+			return serialAjax();
+		case "parallelajax":
 
-				return parallelAjax();
-			default :
+			return parallelAjax();
+		default:
 
-				return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
 	}
 

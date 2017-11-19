@@ -45,12 +45,22 @@
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Excel Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.excelStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.excelStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-excel-o", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 lab secret">
+						<h4 class="headline">Word Stream</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.wordStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-word-o", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 lab secret">
+						<h4 class="headline">PowerPoint Stream</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.powerPointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-powerpoint-o", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">PDF Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.pdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.pdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-pdf-o", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">

@@ -47,53 +47,55 @@
 					</div>
 
 					<div class="row mb-3">
-						<div id="campaigns" class="w-100 shadow-inset">
-							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
-								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-								<div class="card-body">
-									<p class="card-text draft"><span>Description.</span></p>
-								</div>
-								<div class="card-footer">
-									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-								</div>
-							}
-							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
-								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-								<div class="card-body">
-									<p class="card-text draft"><span>Description.</span></p>
-								</div>
-								<div class="card-footer">
-									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-								</div>
-							}
-							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
-								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-								<div class="card-body">
-									<p class="card-text draft"><span>Description.</span></p>
-								</div>
-								<div class="card-footer">
-									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-								</div>
-							}
-							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
-								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-								<div class="card-body">
-									<p class="card-text draft"><span>Description.</span></p>
-								</div>
-								<div class="card-footer">
-									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-								</div>
-							}
-							@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3", "align"->"right")){
-								@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
-								<div class="card-body">
-									<p class="card-text draft"><span>Description.</span></p>
-								</div>
-								<div class="card-footer">
-									@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-								</div>
-							}
-							<div class="pl-3"></div>
+						<div id="campaigns-wrapper" class="w-100 shadow-inset">
+							<div id="campaigns">
+								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
+									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+									<div class="card-body">
+										<p class="card-text draft"><span>Description.</span></p>
+									</div>
+									<div class="card-footer">
+										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+									</div>
+								}
+								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
+									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+									<div class="card-body">
+										<p class="card-text draft"><span>Description.</span></p>
+									</div>
+									<div class="card-footer">
+										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+									</div>
+								}
+								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
+									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+									<div class="card-body">
+										<p class="card-text draft"><span>Description.</span></p>
+									</div>
+									<div class="card-footer">
+										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+									</div>
+								}
+								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
+									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+									<div class="card-body">
+										<p class="card-text draft"><span>Description.</span></p>
+									</div>
+									<div class="card-footer">
+										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+									</div>
+								}
+								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
+									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->Messages(MessageKeys.CONTENT)))
+									<div class="card-body">
+										<p class="card-text draft"><span>Description.</span></p>
+									</div>
+									<div class="card-footer">
+										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+									</div>
+								}
+								<div class="pl-3"></div>
+							</div>
 						</div>
 					</div>
 
@@ -112,7 +114,6 @@
 		}
 
 		@libraries.standard.last()
-		@libraries.slick.last()
 		@libraries.holder.last()
 	}
 }

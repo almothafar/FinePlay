@@ -14,6 +14,10 @@ public class System extends Controller {
 				apis.company.routes.javascript.Company.companies(), //
 				apis.development.http.routes.javascript.Http.ajaxdata(), //
 				apis.transrator.routes.javascript.Transrator.translate(), //
+				apis.batch.routes.javascript.Batch.start(), //
+				apis.batch.routes.javascript.Batch.restart(), //
+				apis.batch.routes.javascript.Batch.stop(), //
+				apis.batch.routes.javascript.Batch.abandon(), //
 				controllers.home.routes.javascript.Home.index(), //
 				controllers.user.routes.javascript.User.index(), //
 				controllers.setting.user.routes.javascript.ChangeUser.index(), //
@@ -21,6 +25,7 @@ public class System extends Controller {
 				controllers.manage.company.routes.javascript.Read.index(), //
 				controllers.manage.company.organization.list.routes.javascript.Read.index(), //
 				controllers.manage.company.organization.tree.routes.javascript.Read.index(), //
+				controllers.manage.batch.routes.javascript.Batch.index(), //
 				controllers.framework.defaultpage.routes.javascript.Defaultpage.page(), //
 				controllers.framework.application.routes.javascript.Application.synccache(), //
 				controllers.framework.application.routes.javascript.Application.asynccache(), //
