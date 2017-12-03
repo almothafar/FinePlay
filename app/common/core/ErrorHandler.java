@@ -57,7 +57,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 		final String userId = Controller.session(models.user.User.USERID);
 		if (userId == null) {
 
-			return CompletableFuture.completedFuture(Action.redirect(controllers.user.routes.User.index()));
+			return CompletableFuture.completedFuture(Results.redirect(controllers.user.routes.User.index()));
 		}
 
 		return CompletableFuture.completedFuture(Results.notFound(views.html.system.pages.notfound.render(request.method(), request.uri())));

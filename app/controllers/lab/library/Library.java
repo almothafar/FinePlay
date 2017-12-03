@@ -321,11 +321,11 @@ public class Library extends Controller {
 
 		final Map<String, String> map = new HashMap<>();
 
-		final byte[] ean13 = Barcodes.toEan13(200, 100, "4512223683107");
+		final byte[] ean13 = Barcodes.toEAN13(200, 100, "4512223683107");
 		final String ean13Base64 = Base64.getEncoder().encodeToString(ean13);
 		map.put("EAN-13", ean13Base64);
 
-		final byte[] qrCode = Barcodes.toQrCode(150, 150, "https://www.playframework.com");
+		final byte[] qrCode = Barcodes.toQRCode(150, 150, "https://www.playframework.com");
 		final String qrCodeBase64 = Base64.getEncoder().encodeToString(qrCode);
 		map.put("QR Code", qrCodeBase64);
 

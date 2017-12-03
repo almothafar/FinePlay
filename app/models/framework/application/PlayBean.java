@@ -5,7 +5,6 @@ import static play.libs.F.Tuple;
 import common.system.MessageKeys;
 import play.data.validation.Constraints;
 import play.data.validation.Constraints.Validator;
-import play.libs.F.Tuple;
 
 public class PlayBean {
 
@@ -65,6 +64,7 @@ public class PlayBean {
 		public CustomValidator() {
 		}
 
+		@Override
 		public boolean isValid(String object) {
 			if (object == null || object.isEmpty()) {
 				return true;
@@ -73,6 +73,7 @@ public class PlayBean {
 			return "(*^-^*)".equals(object);
 		}
 
+		@Override
 		public Tuple<String, Object[]> getErrorMessageKey() {
 			return Tuple(message, new Object[] {});
 		}

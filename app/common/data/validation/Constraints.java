@@ -18,7 +18,6 @@ import javax.validation.Payload;
 
 import common.system.MessageKeys;
 import play.data.validation.Constraints.Validator;
-import play.libs.F.Tuple;
 
 public class Constraints {
 

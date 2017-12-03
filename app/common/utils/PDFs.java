@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
@@ -44,7 +45,7 @@ public class PDFs {
 
 		final Path commandPath = getCommandPath();
 		final Path tmpPath = Paths.get(System.getProperty("java.io.tmpdir"));
-		final Path outputPath = tmpPath.resolve(Strings.randomAlphanumeric(16) + ".pdf");
+		final Path outputPath = tmpPath.resolve(UUID.randomUUID() + ".pdf");
 
 		final List<String> command = new ArrayList<>();
 		command.add(commandPath.toString());

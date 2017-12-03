@@ -17,6 +17,8 @@ public class Templates {
 	private Templates() {
 	}
 
+	@SuppressWarnings("null")
+	@Nonnull
 	public static String fill(@Nonnull final String template, @Nonnull final Object replace) {
 
 		try (final Writer writer = new StringWriter()) {
@@ -32,6 +34,8 @@ public class Templates {
 		}
 	}
 
+	@SuppressWarnings("null")
+	@Nonnull
 	public static String fill(@Nonnull final Reader templateReader, @Nonnull final Object replace) {
 
 		try (final Writer writer = new StringWriter()) {

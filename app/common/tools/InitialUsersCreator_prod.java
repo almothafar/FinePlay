@@ -81,6 +81,7 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		return Collections.unmodifiableList(users);
 	}
 
+	@Override
 	protected void writeSQL(final Path loadSQLPath, final List<String> insertSQLLines) throws IOException {
 
 		Files.write(loadSQLPath, insertSQLLines, StandardCharsets.UTF_8);

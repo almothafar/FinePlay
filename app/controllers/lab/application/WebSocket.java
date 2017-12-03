@@ -91,6 +91,7 @@ public class WebSocket extends Controller {
 			}, 0, 75, TimeUnit.MILLISECONDS);
 		}
 
+		@Override
 		public void onReceive(final Object message) throws Exception {
 
 			if (message instanceof String) {

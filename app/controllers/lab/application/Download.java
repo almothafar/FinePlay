@@ -8,13 +8,18 @@ import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
+import javax.annotation.Nonnull;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 
@@ -51,8 +56,15 @@ import akka.stream.javadsl.Source;
 import akka.util.ByteString;
 import common.system.MessageKeys;
 import common.utils.PDFs;
+import common.utils.Reports;
+import common.utils.ZIPs;
+import models.base.EntityDao;
 import models.system.System.PermissionsAllowed;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import play.api.PlayException;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -64,6 +76,12 @@ public class Download extends Controller {
 
 	@Inject
 	private MessagesApi messages;
+
+	@Inject
+	private JPAApi jpaApi;
+
+	private final EntityDao<models.user.User> userDao = new EntityDao<models.user.User>() {
+	};
 
 	@Authenticated(common.core.Authenticator.class)
 	public Result index() {
@@ -216,7 +234,7 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result pdfStream() {
+	public Result pdfboxStream() {
 
 		try (final PDDocument document = new PDDocument(); final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
 
@@ -229,7 +247,7 @@ public class Download extends Controller {
 				final BufferedImage bufferedImage = ImageIO.read(imagePath.toFile());
 				final int imageHeight = 38;
 				final float reduceRate = (float) imageHeight / bufferedImage.getHeight();
-				final int imageWidth = (int) ((float) bufferedImage.getWidth() * reduceRate);
+				final int imageWidth = (int) (bufferedImage.getWidth() * reduceRate);
 
 				final PDImageXObject image = PDImageXObject.createFromFileByContent(imagePath.toFile(), document);
 				float y = PDRectangle.A4.getHeight() - imageHeight;
@@ -278,8 +296,9 @@ public class Download extends Controller {
 		}
 	}
 
+	@SuppressWarnings("null")
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> reportStream() {
+	public CompletionStage<Result> wkhtmltopdfStream() {
 
 		final URI reportPage = URI.create("http://getbootstrap.com");
 		final List<String> arguments = Arrays.asList("--zoom", "2");
@@ -296,5 +315,135 @@ public class Download extends Controller {
 				throw e;
 			}
 		});
+	}
+
+	@FunctionalInterface
+	private static interface Reporter {
+
+		byte[] toReport(@Nonnull final InputStream templateStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource);
+	}
+
+	@Transactional(readOnly = true)
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> reportPdfStream() {
+
+		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toPDF(templateStream, parameters, dataSource);
+		return reportStream(reporter);
+	}
+
+	@Transactional(readOnly = true)
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> reportWordStream() {
+
+		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toDocx(templateStream, parameters, dataSource);
+		return reportStream(reporter);
+	}
+
+	@Transactional(readOnly = true)
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> reportExcelStream() {
+
+		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toXlsx(templateStream, parameters, dataSource);
+		return reportStream(reporter);
+	}
+
+	@Transactional(readOnly = true)
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> reportPowerpointStream() {
+
+		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toPptx(templateStream, parameters, dataSource);
+		return reportStream(reporter);
+	}
+
+	@SuppressWarnings("null")
+	private CompletionStage<Result> reportStream(final Reporter reporter) {
+
+		final Map<String, Object> parameters = new HashMap<>();
+		parameters.put(MessageKeys.USER_USERID, messages.get(lang(), MessageKeys.USER_USERID));
+		parameters.put("bookland", "9784003101");
+		parameters.put("barcode", "4512223683107");
+		parameters.put("qrcode", "https://www.playframework.com");
+		parameters.put(MessageKeys.REPORT, messages.get(lang(), MessageKeys.REPORT));
+		parameters.put(MessageKeys.WELCOME, messages.get(lang(), MessageKeys.WELCOME));
+		parameters.put("ipamjm", "芦田さんは芦\uDB40\uDD01屋のお嬢様だ");
+
+		final List<models.user.User> users = userDao.readList(jpaApi.em(), models.user.User.class);
+		final JRDataSource dataSource = new JRBeanCollectionDataSource(users);
+
+		return CompletableFuture.supplyAsync(() -> {
+
+			byte[] bytes;
+			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/report.jrxml")) {
+
+				bytes = reporter.toReport(templateStream, parameters, dataSource);
+				return ok(bytes).as(Http.MimeTypes.BINARY);
+			} catch (IOException e) {
+
+				throw new UncheckedIOException(e);
+			}
+		});
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> zipStream() {
+
+		final Path path = createExampleArchivePath();
+
+		return CompletableFuture.supplyAsync(() -> {
+
+			final byte[] bytes = ZIPs.archive(path);
+
+			final Path extractPath = ZIPs.extract(bytes);
+			System.out.println(extractPath);
+
+			return ok(bytes).as(Http.MimeTypes.BINARY);
+		});
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> encryptZipStream() {
+
+		final Path path = createExampleArchivePath();
+
+		return CompletableFuture.supplyAsync(() -> {
+
+			final byte[] bytes = ZIPs.archive("password", path);
+
+			final Path extractPath = ZIPs.extract("password", bytes);
+			System.out.println(extractPath);
+
+			return ok(bytes).as(Http.MimeTypes.BINARY);
+		});
+	}
+
+	@Nonnull
+	private static Path createExampleArchivePath() {
+
+		try {
+
+			final Path tmpPath = Paths.get(System.getProperty("java.io.tmpdir"));
+			final Path arcPath = tmpPath.resolve(UUID.randomUUID().toString());
+			Files.createDirectories(arcPath);
+
+			final Path parentPath = arcPath.resolve(Paths.get("parent.txt"));
+			Files.write(parentPath, "(ꈍ ◡ ꈍ)".getBytes(StandardCharsets.UTF_8));
+
+			final Path childrenPath = arcPath.resolve(Paths.get("children"));
+			Files.createDirectories(childrenPath);
+
+			final Path child0Path = childrenPath.resolve(Paths.get("child0.txt"));
+			Files.write(child0Path, "(｀・ω・´)".getBytes(StandardCharsets.UTF_8));
+
+			final Path child1Path = childrenPath.resolve(Paths.get("child1.txt"));
+			Files.write(child1Path, "(*´ω｀*)".getBytes(StandardCharsets.UTF_8));
+
+			final Path child2Path = childrenPath.resolve(Paths.get("child2.txt"));
+			Files.write(child2Path, "(´･ω･`)".getBytes(StandardCharsets.UTF_8));
+
+			return arcPath;
+		} catch (IOException e) {
+
+			throw new UncheckedIOException(e);
+		}
 	}
 }

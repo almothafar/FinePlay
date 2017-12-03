@@ -14,8 +14,8 @@ lazy val root = (project in file("."))
 //    .aggregate(fineplaySub)
 //    .dependsOn(fineplaySub)
 
-// Repository
-//resolvers += "jboss-public-repository-group" at "http://repository.jboss.org/nexus/content/groups/public/"
+// Another Repository
+resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
 //  "hiro20v" %% "fineplay-sub" % "2.6.7-α2-SNAPSHOT",
@@ -39,7 +39,6 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-xml" % "1.0.0",
 //  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
-//  "org.apache.tomcat" % "tomcat-servlet-api" % "9.0.1",
   "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",				//
   "org.hibernate.validator" % "hibernate-validator" % "6.0.5.Final",		// Apache 6.0.2 // into play include
@@ -58,11 +57,12 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi-ooxml" % "3.17",
   "com.google.zxing" % "javase" % "3.3.1",								// Apache 3.3.0
   "org.apache.pdfbox" % "pdfbox" % "2.0.8",								// Apache 2.0.7
-  "org.jsoup" % "jsoup" % "1.11.1",										// MIT 1.10.3
+  "org.jsoup" % "jsoup" % "1.11.2",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.9.0",									// Apache 1.9.0
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",						// Apache 1.2.0.CR1
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
+  "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
   "org.webjars.npm" % "bootstrap" % "4.0.0-beta.2",						// MIT 4.0.0-alpha.6
   "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
@@ -74,10 +74,10 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "font-awesome" % "4.7.0",							// SIL OFL 4.7.0
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.4",								// MIT 4.0.4
-  "org.webjars.bower" % "chartjs" % "2.6.0",								// MIT 2.6.0
+  "org.webjars.npm" % "chart.js" % "2.7.1",								// MIT 2.7.1
   "org.webjars.bower" % "moment" % "2.19.1",								// MIT 2.18.1
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.5.1",							// MIT 3.7.0
+  "org.webjars.bower" % "fullcalendar" % "3.7.0",							// MIT 3.7.0
   "org.webjars" % "openlayers" % "4.3.1",								// 2-Clause BSD 4.2.0
   "org.webjars.bower" % "datatables" % "1.10.16",							// MIT 1.10.16
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",
@@ -98,7 +98,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426
   "org.webjars" % "material-design-icons" % "3.0.1",						// Apache 3.0.1
   "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
-  "org.webjars.npm" % "popper.js" % "1.12.5",							// MIT 1.12.5
+  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"									// MIT 4.1.1
 )
@@ -108,6 +108,15 @@ libraryDependencies ++= Seq(
 // 3Dmol.js																// BSD-3-Clause license 1.1.1
 // IcoFont																// MIT 1.3
 // geckodriver															// ? 0.18.0
+
+// JasperReports library
+libraryDependencies ++= Seq(
+  "net.sf.jasperreports" % "jasperreports" % "6.4.3",						// LGPL 6.4.3
+  "net.sf.jasperreports" % "jasperreports-fonts" % "6.0.0",
+  "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
+  "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",					// BSD-style 1.5-beta1
+  "org.apache.xmlgraphics" % "batik-bridge" % "1.9.1"
+)
 
 // Batch library
 libraryDependencies ++= Seq(

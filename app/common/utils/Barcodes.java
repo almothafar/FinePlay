@@ -24,16 +24,20 @@ public class Barcodes {
 	private Barcodes() {
 	}
 
-	public static byte[] toEan13(final int width, final int height, @Nonnull String contents) {
+	@Nonnull
+	public static byte[] toEAN13(final int width, final int height, @Nonnull String contents) {
 
 		return toBarcode(BarcodeFormat.EAN_13, width, height, contents);
 	}
 
-	public static byte[] toQrCode(final int width, final int height, @Nonnull String contents) {
+	@Nonnull
+	public static byte[] toQRCode(final int width, final int height, @Nonnull String contents) {
 
 		return toBarcode(BarcodeFormat.QR_CODE, width, height, contents);
 	}
 
+	@SuppressWarnings("null")
+	@Nonnull
 	private static byte[] toBarcode(@Nonnull final BarcodeFormat format, final int width, final int height, @Nonnull final String contents) {
 
 		Objects.requireNonNull(format);
@@ -53,16 +57,15 @@ public class Barcodes {
 			throw new IllegalStateException(e);
 		}
 
-		final ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		try {
+		try (final ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
 
 			MatrixToImageWriter.writeToStream(matrix, "png", stream);
+
+			final byte[] bytes = stream.toByteArray();
+			return bytes;
 		} catch (IOException e) {
 
 			throw new UncheckedIOException(e);
 		}
-
-		final byte[] bytes = stream.toByteArray();
-		return bytes;
 	}
 }
