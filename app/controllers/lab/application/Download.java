@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 import javax.imageio.ImageIO;
@@ -55,12 +57,14 @@ import akka.stream.OverflowStrategy;
 import akka.stream.javadsl.Source;
 import akka.util.ByteString;
 import common.system.MessageKeys;
+import common.utils.Offices;
 import common.utils.PDFs;
 import common.utils.Reports;
 import common.utils.ZIPs;
 import models.base.EntityDao;
 import models.system.System.PermissionsAllowed;
 import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import play.api.PlayException;
 import play.db.jpa.JPAApi;
@@ -283,7 +287,7 @@ public class Download extends Controller {
 		final String os = System.getProperty("os.name").toLowerCase();
 		if (os.startsWith("mac")) {
 
-			return Paths.get("/", "/Library", "Fonts", "Microsoft", "MS Gothic.ttf");
+			return Paths.get("/", "Library", "Fonts", "Microsoft", "MS Gothic.ttf");
 		} else if (os.startsWith("linux")) {
 
 			throw new PlayException("Font error.", "This server(Linux) is unsupported.");
@@ -365,17 +369,15 @@ public class Download extends Controller {
 		parameters.put("qrcode", "https://www.playframework.com");
 		parameters.put(MessageKeys.REPORT, messages.get(lang(), MessageKeys.REPORT));
 		parameters.put(MessageKeys.WELCOME, messages.get(lang(), MessageKeys.WELCOME));
-		parameters.put("ipamjm", "芦田さんは芦\uDB40\uDD01屋のお嬢様だ");
 
 		final List<models.user.User> users = userDao.readList(jpaApi.em(), models.user.User.class);
 		final JRDataSource dataSource = new JRBeanCollectionDataSource(users);
 
 		return CompletableFuture.supplyAsync(() -> {
 
-			byte[] bytes;
 			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/report.jrxml")) {
 
-				bytes = reporter.toReport(templateStream, parameters, dataSource);
+				final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
 				return ok(bytes).as(Http.MimeTypes.BINARY);
 			} catch (IOException e) {
 
@@ -445,5 +447,68 @@ public class Download extends Controller {
 
 			throw new UncheckedIOException(e);
 		}
+	}
+
+	@SuppressWarnings("null")
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> ivdPdfStream() {
+
+		final Map<String, Object> parameters = new HashMap<>();
+		parameters.put("hiragino", "{{HIRAGINO}}");
+		parameters.put("ipamjm", "{{IPAMJM}}");
+
+		final JRDataSource dataSource = new JREmptyDataSource();
+
+		return CompletableFuture.supplyAsync(() -> {
+
+			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/ivd.jrxml")) {
+
+				final Path tmpPath = Paths.get(System.getProperty("java.io.tmpdir"));
+
+				final byte[] docxBytes = Reports.toDocx(templateStream, parameters, dataSource);
+				final Path docxPath = tmpPath.resolve(UUID.randomUUID() + ".docx");
+				Files.write(docxPath, docxBytes);
+
+				byte[] fodtBytes = Offices.toFodt(docxPath);
+				fodtBytes = resolveIVD(fodtBytes);
+
+				final Path fodtPath = tmpPath.resolve(UUID.randomUUID() + ".fodt");
+				Files.write(fodtPath, fodtBytes);
+
+				final byte[] bytes = Offices.toPDF(fodtPath);
+
+				return ok(bytes).as(Http.MimeTypes.BINARY);
+			} catch (IOException e) {
+
+				throw new UncheckedIOException(e);
+			}
+		});
+	}
+
+	private byte[] resolveIVD(@Nonnull final byte[] fodtBytes) {
+
+		String fodtXML = new String(fodtBytes, StandardCharsets.UTF_8);
+
+		fodtXML = resolveFont(fodtXML, "Hiragino Kaku Gothic ProN", "ヒラギノ明朝 ProN");
+		fodtXML = fodtXML.replace("{{HIRAGINO}}", "芦\uDB40\uDD00芦\uDB40\uDD01");
+
+		fodtXML = resolveFont(fodtXML, "IPAmjMincho", "IPAmj明朝");
+		fodtXML = fodtXML.replace("{{IPAMJM}}", "芦\uDB40\uDD02芦\uDB40\uDD03芦\uDB40\uDD04芦\uDB40\uDD05芦\uDB40\uDD06芦\uDB40\uDD07芦\uDB40\uDD08芦\uDB40\uDD09");
+
+		return fodtXML.getBytes(StandardCharsets.UTF_8);
+	}
+
+	private static String resolveFont(final String fodtXML, final String target, final String replacement) {
+
+		final Matcher matcher = Pattern.compile("(svg:font-family=\"(?:&apos;)?)" + target + "((?:&apos;)?\")").matcher(fodtXML);
+
+		final StringBuffer buffer = new StringBuffer();
+		while (matcher.find()) {
+
+			matcher.appendReplacement(buffer, "$1" + replacement + "$2");
+		}
+		matcher.appendTail(buffer);
+
+		return buffer.toString();
 	}
 }

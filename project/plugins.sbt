@@ -1,5 +1,5 @@
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.7")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.9")
 
 // Web plugins
 addSbtPlugin("com.typesafe.sbt" % "sbt-jshint" % "1.0.6")
@@ -29,8 +29,8 @@ addSbtPlugin("com.github.sbt" % "sbt-findbugs" % "2.0.0")
 addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
 
 // CheckStyle
-addSbtPlugin("com.etsy" % "sbt-checkstyle-plugin" % "3.0.0")
-dependencyOverrides += "com.puppycrawl.tools" % "checkstyle" % "8.4"
+//addSbtPlugin("com.etsy" % "sbt-checkstyle-plugin" % "3.0.0")
+//dependencyOverrides += "com.puppycrawl.tools" % "checkstyle" % "8.4"
 
 // License report
 addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")

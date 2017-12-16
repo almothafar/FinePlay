@@ -43,6 +43,16 @@
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.stream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
+					<div class="mb-3">
+						<h4 class="headline">Chunk</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.chunks().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Excel Stream</h4>
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.excelStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-excel-o", "text"->Messages(MessageKeys.DOWNLOAD)))
@@ -58,14 +68,19 @@
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.powerPointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-powerpoint-o", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
 					<div class="mb-3 lab secret">
 						<h4 class="headline">PDF Stream</h4>
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.pdfboxStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-pdf-o", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
-					<div class="mb-3 lab secret">
-						<h4 class="headline">Report Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.wkhtmltopdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-pdf-o", "text"->Messages(MessageKeys.DOWNLOAD)))
+					<div class="mb-3 secret">
+
+						<hr class="separator">
 					</div>
 
 					<div class="mb-3 lab secret">
@@ -88,6 +103,11 @@
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportPowerpointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-powerpoint-o", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
 					<div class="mb-3 lab secret">
 						<h4 class="headline">ZIP Stream</h4>
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.zipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-archive-o", "text"->Messages(MessageKeys.DOWNLOAD)))
@@ -98,9 +118,24 @@
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.encryptZipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-archive-o", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
-					<div class="mb-3">
-						<h4 class="headline">Chunk</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.chunks().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
+					<div class="mb-3 lab secret">
+						<h4 class="headline">Report Stream</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.wkhtmltopdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-pdf-o", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 lab secret">
+						<h4 class="headline">IVD Stream</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.ivdPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fa fa-file-pdf-o", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 secret">
+
+						<hr class="separator">
 					</div>
 
 					<div class="mb-3 lab secret">

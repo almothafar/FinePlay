@@ -20,7 +20,6 @@
 	<parameter name="qrcode" class="java.lang.String"/>
 	<parameter name="report" class="java.lang.String"/>
 	<parameter name="welcome" class="java.lang.String"/>
-	<parameter name="ipamjm" class="java.lang.String"/>
 	<parameter name="bookland" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
@@ -153,13 +152,6 @@ element)]]></text>
 					<pen lineWidth="3.0" lineStyle="Dotted" lineColor="#996600"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement x="0" y="660" width="180" height="30" uuid="e086dd01-dfe3-4945-baca-af74204834c5"/>
-				<textElement>
-					<font fontName="IPAmjMincho" size="16" pdfFontName=""/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{ipamjm}]]></textFieldExpression>
-			</textField>
 			<componentElement>
 				<reportElement x="2" y="740" width="100" height="30" uuid="4861d8c4-f233-4dc4-8dca-7eb05b0efce7"/>
 				<jr:EAN13 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">

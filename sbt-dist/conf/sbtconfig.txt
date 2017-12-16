@@ -1,7 +1,5 @@
 # Set the java args to high
 
--Dfile.encoding=UTF-8
-
 -Xmx512M
 
 -XX:MaxPermSize=256m

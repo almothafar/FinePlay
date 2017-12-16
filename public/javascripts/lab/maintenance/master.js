@@ -19,7 +19,7 @@ var postForm = function(form){
 	form.appendTo(document.body).submit();
 }
 
-$('.nextButton').on('click', function(e){
+$('.nextButton').on('click', function(event){
 
 	event.preventDefault();
 

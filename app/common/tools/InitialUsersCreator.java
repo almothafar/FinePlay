@@ -95,7 +95,7 @@ class InitialUsersCreator {
 		final List<User> users = new ArrayList<>();
 
 		final User adminUser = createUser();
-		adminUser.setUserId("admin@company.com");
+		adminUser.setUserId("admin@example.com");
 		adminUser.setPassword("admin1!aA");
 		adminUser.setRoles(EnumSet.of(Role.ADMIN));
 		adminUser.setLocale(Locale.US);
@@ -106,7 +106,7 @@ class InitialUsersCreator {
 		users.add(adminUser);
 
 		final User customerUser = createUser();
-		customerUser.setUserId("customer@company.com");
+		customerUser.setUserId("customer@example.com");
 		customerUser.setPassword("customer1!aA");
 		customerUser.setRoles(EnumSet.of(Role.CUSTOMER));
 		customerUser.setLocale(Locale.US);
@@ -117,7 +117,7 @@ class InitialUsersCreator {
 		users.add(customerUser);
 
 		final User guestUser = createUser();
-		guestUser.setUserId("guest@company.com");
+		guestUser.setUserId("guest@example.com");
 		guestUser.setPassword("guest1!aA");
 		guestUser.setRoles(EnumSet.of(Role.GUEST));
 		guestUser.setLocale(Locale.US);
@@ -127,7 +127,7 @@ class InitialUsersCreator {
 		users.add(guestUser);
 
 		final User adminJaJpUser = createUser();
-		adminJaJpUser.setUserId("adminjajp@company.com");
+		adminJaJpUser.setUserId("adminjajp@example.com");
 		adminJaJpUser.setPassword("adminjajp1!aA");
 		adminJaJpUser.setRoles(EnumSet.of(Role.ADMIN));
 		adminJaJpUser.setLocale(Locale.JAPAN);
@@ -142,7 +142,7 @@ class InitialUsersCreator {
 		users.addAll(IntStream.range(0, 100).mapToObj(i -> {
 
 			final User user = createUser();
-			user.setUserId("user" + i + "@company.com");
+			user.setUserId("user" + i + "@example.com");
 			user.setPassword("user" + i + "1!aA");
 			user.setRoles(EnumSet.of(Role.values()[i % Role.values().length]));
 			user.setLocale(Locale.US);

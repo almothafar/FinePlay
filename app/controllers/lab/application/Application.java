@@ -40,6 +40,8 @@ import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
+import mylib.Greet;
+
 @PermissionsAllowed
 public class Application extends Controller {
 
@@ -74,6 +76,9 @@ public class Application extends Controller {
 		case "authorization":
 
 			return authorization();
+		case "jar":
+
+			return jar();
 		case "jpql":
 
 			return jpql();
@@ -132,6 +137,13 @@ public class Application extends Controller {
 	private static Result authorization() {
 
 		return ok(views.html.lab.application.authorization.render());
+	}
+
+	private Result jar() {
+
+		final Greet greet = new Greet();
+
+		return ok(greet.getHello("User"));
 	}
 
 	private Result jpql() {

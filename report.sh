@@ -14,7 +14,7 @@ LANG=en_US.UTF-8
 ./sbt cpd
 # /fineplay/target/scala-2.11/cpd/cpd.xml
 
-./sbt checkstyle
+#./sbt checkstyle
 # /fineplay/target/checkstyle-report.html
 
 ./sbt dumpLicenseReport
