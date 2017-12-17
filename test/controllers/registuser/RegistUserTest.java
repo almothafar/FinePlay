@@ -106,8 +106,8 @@ public class RegistUserTest {
 				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(registPage.getUrl()));
 				registPage.isAt();
 				assertThat("", registPage.contentTitle(), is(condition.get("registuser.please_regist").toString()));
-				registPage.inputUserId("regist@company.com");
-				assertThat("", registPage.getUserId(), is("regist@company.com"));
+				registPage.inputUserId("regist@example.com");
+				assertThat("", registPage.getUserId(), is("regist@example.com"));
 				registPage.inputPassword("1!aAregist");
 				assertThat("", registPage.getPassword(), is("1!aAregist"));
 				registPage.inputRePassword("1!aAregist");
@@ -148,7 +148,7 @@ public class RegistUserTest {
 				indexPage3.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
 				indexPage3.takeScreenShot(capturePath, locale, counter, "Sign In - After Regular");
-				indexPage3.inputUserId("regist@company.com");
+				indexPage3.inputUserId("regist@example.com");
 				indexPage3.inputPassword("1!aAregist");
 				indexPage3.takeScreenShot(capturePath, locale, counter, "Sign In - Input");
 				indexPage3.clickSignIn();

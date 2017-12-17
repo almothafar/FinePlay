@@ -123,8 +123,8 @@ public class ResetUserTest {
 				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(registPage.getUrl()));
 				registPage.isAt();
 				assertThat("", registPage.contentTitle(), is(condition.get("registuser.please_regist").toString()));
-				registPage.inputUserId("reset@company.com");
-				assertThat("", registPage.getUserId(), is("reset@company.com"));
+				registPage.inputUserId("reset@example.com");
+				assertThat("", registPage.getUserId(), is("reset@example.com"));
 				registPage.inputPassword("1!aAregist");
 				assertThat("", registPage.getPassword(), is("1!aAregist"));
 				registPage.inputRePassword("1!aAregist");
@@ -172,8 +172,8 @@ public class ResetUserTest {
 				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(resetPage.getUrl()));
 				resetPage.isAt();
 				assertThat("", resetPage.contentTitle(), is(condition.get("resetuser.please_reset").toString()));
-				resetPage.inputUserId("reset@company.com");
-				assertThat("", resetPage.getUserId(), is("reset@company.com"));
+				resetPage.inputUserId("reset@example.com");
+				assertThat("", resetPage.getUserId(), is("reset@example.com"));
 				resetPage.takeScreenShot(capturePath, locale, counter, "Reset User - Input");
 				resetPage.clickApply();
 
@@ -231,7 +231,7 @@ public class ResetUserTest {
 
 				indexPage5.takeScreenShot(capturePath, locale, counter, "Sign In - After Change 2");
 
-				indexPage5.inputUserId("reset@company.com");
+				indexPage5.inputUserId("reset@example.com");
 				indexPage5.inputPassword("1!aAreset_2");
 				indexPage5.takeScreenShot(capturePath, locale, counter, "Sign In - Input");
 				indexPage5.clickSignIn();

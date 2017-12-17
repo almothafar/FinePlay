@@ -81,7 +81,7 @@ public class UserDaoTest extends WithApplication {
 			manager.getTransaction().begin();
 
 			final User createUser = new User();
-			createUser.setUserId("test@company.com");
+			createUser.setUserId("test@example.com");
 			createUser.setPassword("test1!aA");
 			createUser.setRoles(EnumSet.of(Role.CUSTOMER));
 			createUser.setLocale(Locale.US);
@@ -179,7 +179,7 @@ public class UserDaoTest extends WithApplication {
 			manager.getTransaction().begin();
 
 			final User readUser = new User();
-			readUser.setUserId("test@company.com");
+			readUser.setUserId("test@example.com");
 			readUser.setPassword("test1!aA");
 			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
 			readUser.setLocale(Locale.US);
@@ -225,7 +225,7 @@ public class UserDaoTest extends WithApplication {
 			manager.getTransaction().begin();
 
 			final User readUser = new User();
-			readUser.setUserId("test@company.com");
+			readUser.setUserId("test@example.com");
 			readUser.setPassword("test1!aA");
 			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
 			readUser.setLocale(Locale.US);
@@ -240,12 +240,12 @@ public class UserDaoTest extends WithApplication {
 				final Root<models.user.User> root = query.from(models.user.User.class);
 
 				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@company.com"));
+				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
 				query.where(predicates.toArray(new Predicate[0]));
 			});
 
-			assertThat("", "test@company.com", is(user.getUserId()));
+			assertThat("", "test@example.com", is(user.getUserId()));
 
 			userDao.delete(manager, readUser);
 
@@ -269,7 +269,7 @@ public class UserDaoTest extends WithApplication {
 			manager.getTransaction().begin();
 
 			final User readUser = new User();
-			readUser.setUserId("test@company.com");
+			readUser.setUserId("test@example.com");
 			readUser.setPassword("test1!aA");
 			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
 			readUser.setLocale(Locale.US);
@@ -284,7 +284,7 @@ public class UserDaoTest extends WithApplication {
 				final Root<models.user.User> root = query.from(models.user.User.class);
 
 				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@company.com"));
+				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
 				query.where(predicates.toArray(new Predicate[0]));
 			}, parameters -> {
@@ -292,7 +292,7 @@ public class UserDaoTest extends WithApplication {
 				parameters.setFirstResult(0);
 			});
 
-			assertThat("", "test@company.com", is(user.getUserId()));
+			assertThat("", "test@example.com", is(user.getUserId()));
 
 			userDao.delete(manager, readUser);
 
@@ -316,7 +316,7 @@ public class UserDaoTest extends WithApplication {
 			manager.getTransaction().begin();
 
 			final User readUser = new User();
-			readUser.setUserId("test@company.com");
+			readUser.setUserId("test@example.com");
 			readUser.setPassword("test1!aA");
 			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
 			readUser.setLocale(Locale.US);
@@ -333,9 +333,9 @@ public class UserDaoTest extends WithApplication {
 
 			final List<User> users = userDao.readList(manager, User.class);
 
-			final List<User> filterUsers = users.stream().filter(user -> "test@company.com".equals(user.getUserId())).collect(Collectors.toList());
+			final List<User> filterUsers = users.stream().filter(user -> "test@example.com".equals(user.getUserId())).collect(Collectors.toList());
 			assertThat("", 1, is(filterUsers.size()));
-			assertThat("", "test@company.com", is(filterUsers.get(0).getUserId()));
+			assertThat("", "test@example.com", is(filterUsers.get(0).getUserId()));
 
 			userDao.delete(manager, readUser);
 
@@ -359,7 +359,7 @@ public class UserDaoTest extends WithApplication {
 			manager.getTransaction().begin();
 
 			final User readUser = new User();
-			readUser.setUserId("test@company.com");
+			readUser.setUserId("test@example.com");
 			readUser.setPassword("test1!aA");
 			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
 			readUser.setLocale(Locale.US);
@@ -374,13 +374,13 @@ public class UserDaoTest extends WithApplication {
 				final Root<models.user.User> root = query.from(models.user.User.class);
 
 				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@company.com"));
+				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
 				query.where(predicates.toArray(new Predicate[0]));
 			});
 
 			assertThat("", 1, is(users.size()));
-			assertThat("", "test@company.com", is(users.get(0).getUserId()));
+			assertThat("", "test@example.com", is(users.get(0).getUserId()));
 
 			userDao.delete(manager, readUser);
 
@@ -404,7 +404,7 @@ public class UserDaoTest extends WithApplication {
 			manager.getTransaction().begin();
 
 			final User readUser = new User();
-			readUser.setUserId("test@company.com");
+			readUser.setUserId("test@example.com");
 			readUser.setPassword("test1!aA");
 			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
 			readUser.setLocale(Locale.US);
@@ -419,7 +419,7 @@ public class UserDaoTest extends WithApplication {
 				final Root<models.user.User> root = query.from(models.user.User.class);
 
 				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@company.com"));
+				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
 				query.where(predicates.toArray(new Predicate[0]));
 			}, parameters -> {
@@ -428,7 +428,7 @@ public class UserDaoTest extends WithApplication {
 			});
 
 			assertThat("", 1, is(users.size()));
-			assertThat("", "test@company.com", is(users.get(0).getUserId()));
+			assertThat("", "test@example.com", is(users.get(0).getUserId()));
 
 			userDao.delete(manager, readUser);
 

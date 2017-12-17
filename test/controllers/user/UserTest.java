@@ -35,7 +35,7 @@ public class UserTest {
 					{
 						put("title.signin", "Sign in | fine✿play");
 						put("title.home", "Home | fine✿play");
-						put("user.id", "admin@company.com");
+						put("user.id", "admin@example.com");
 						put("user.password", "admin1!aA");
 					}
 				}), //
@@ -43,7 +43,7 @@ public class UserTest {
 					{
 						put("title.signin", "サインイン | ファイン✿プレイ");
 						put("title.home", "ホーム | ファイン✿プレイ");
-						put("user.id", "adminjajp@company.com");
+						put("user.id", "adminjajp@example.com");
 						put("user.password", "adminjajp1!aA");
 					}
 				}) //
