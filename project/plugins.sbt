@@ -1,5 +1,5 @@
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.9")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.7")
 
 // Web plugins
 addSbtPlugin("com.typesafe.sbt" % "sbt-jshint" % "1.0.6")

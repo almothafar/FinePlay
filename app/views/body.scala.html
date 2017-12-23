@@ -101,8 +101,7 @@
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.BOOTSTRAP), "icon"->"ii ii-bootstrap if-monochrome if-inverse", "selected"->equalSection("bootstrap")),List(
 					Map("name"->Messages(MessageKeys.COMPONENT), "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.component.routes.Component.index("button").toString(), "selected"->equalWork("bootstrap","component")),
-					Map("name"->Messages(MessageKeys.LAYOUT), "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString(), "selected"->equalWork("bootstrap","layout")),
-					Map("name"->"I Like", "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.ilike.routes.ILike.index().toString(), "selected"->equalWork("bootstrap","ilike"))
+					Map("name"->Messages(MessageKeys.LAYOUT), "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString(), "selected"->equalWork("bootstrap","layout"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FONTAWESOME), "icon"->"fa fa-font-awesome", "selected"->equalSection("fontawesome")),List(
 					Map("name"->Messages(MessageKeys.STYLE), "icon"->"fa fa-file-text-o", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString(), "selected"->equalWork("fontawesome","style"))
@@ -111,7 +110,9 @@
 					Map("name"->Messages(MessageKeys.LIBRARY), "icon"->"fa fa-file-text-o", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
 					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"fa fa-file-text-o", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
 					Map("name"->Messages(MessageKeys.UI), "icon"->"fa fa-file-text-o", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
-					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"fa fa-file-text-o", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance"))
+					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"fa fa-file-text-o", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance")),
+					Map("name"->"Fork", "icon"->"fa fa-code-fork", "link"->controllers.lab.fork.routes.Fork.index().toString(), "selected"->equalWork("bootstrap","fork")),
+					Map("name"->"I Like", "icon"->"fa fa-file-text-o", "link"->controllers.lab.ilike.routes.ILike.index().toString(), "selected"->equalWork("bootstrap","ilike"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.SECTION), "icon"->"fa fa-folder-o", "selected"->equalSection("section")),List(
 					Map("name"->Messages(MessageKeys.WORK), "icon"->"fa fa-file-text-o", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalWork("section","work")),

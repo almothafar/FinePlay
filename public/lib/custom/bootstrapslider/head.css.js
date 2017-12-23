@@ -1,5 +1,5 @@
 'use strict';
 
 injectStyle('.slider-handle', {
-	'background-image': 'linear-gradient(to bottom,' + getTheme().primary.disabledBackgroundColor + ' 0,' + getTheme().primary.backgroundColor + ' 100%);'
+	'background-image': 'linear-gradient(to bottom, ' + getTheme().primary.backgroundColor + ' 0, ' + getTheme().primary.disabledBackgroundColor + ' 100%);'
 });

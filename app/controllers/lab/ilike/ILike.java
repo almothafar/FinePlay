@@ -1,4 +1,4 @@
-package controllers.bootstrap.ilike;
+package controllers.lab.ilike;
 
 import models.system.System.PermissionsAllowed;
 import play.mvc.Controller;
@@ -9,6 +9,6 @@ public class ILike extends Controller {
 
 	public Result index() {
 
-		return ok(views.html.bootstrap.ilike.index.render());
+		return ok(views.html.lab.ilike.index.render());
 	}
 }

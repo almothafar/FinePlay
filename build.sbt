@@ -22,7 +22,7 @@ libraryDependencies ++= Seq(
   javaJdbc,
   ehcache,
   jcache,
-  "org.jsr107.ri" % "cache-annotations-ri-guice" % "1.0.0",
+  "org.jsr107.ri" % "cache-annotations-ri-guice" % "1.1.0",
   javaWs,
   javaJpa,
   filters,
@@ -41,8 +41,8 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
   "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",				//
-  "org.hibernate.validator" % "hibernate-validator" % "6.0.6.Final",		// Apache 6.0.2 // into play include
-  "org.glassfish" % "javax.el" % "3.0.1-b08",
+  "org.hibernate.validator" % "hibernate-validator" % "6.0.7.Final",		// Apache 6.0.2 // into play include
+  "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
@@ -75,7 +75,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.4",								// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.1",								// MIT 2.7.1
-  "org.webjars.bower" % "moment" % "2.19.4",								// MIT 2.19.3
+  "org.webjars.bower" % "moment" % "2.20.1",								// MIT 2.19.3
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.7.0",							// MIT 3.7.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3

@@ -139,11 +139,16 @@ h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline{
 	background-size: cover, cover, 5px 5px, cover;
 }
 
-hr.separator{
-	border-width: 0 0 4px;
-	border-style: solid;
-	border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" width="16" height="4"><circle fill="orange" cx="1" cy="0.5" r="0.5"/></svg>') 0 0 100% repeat;
-	width: 280px;
+hr.separator {
+	border: none;
+	color: rgb(255, 103, 125);
+	text-align: center;
+}
+hr.separator:after {
+	content: '\002726\002726\002726';
+	position: relative;
+	top: -0.7em;
+	font-size: 2em;
 }
 
 .matched {

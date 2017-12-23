@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+@media (max-width:767px) {
+
+	.current-left>#right-content {
+		display: none;
+	}
+	.current-right>#left-content {
+		display: none;
+	}
+}

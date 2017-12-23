@@ -36,6 +36,12 @@ public class Offices {
 		return toFormat("fodt", inputPath);
 	}
 
+	@Nonnull
+	public static byte[] toFodp(@Nonnull final Path inputPath) {
+
+		return toFormat("fodp", inputPath);
+	}
+
 	@SuppressWarnings("null")
 	@Nonnull
 	private static byte[] toFormat(@Nonnull final String extension, @Nonnull final Path inputPath) {

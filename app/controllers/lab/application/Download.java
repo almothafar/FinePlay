@@ -465,17 +465,19 @@ public class Download extends Controller {
 
 				final Path tmpPath = Paths.get(System.getProperty("java.io.tmpdir"));
 
-				final byte[] docxBytes = Reports.toDocx(templateStream, parameters, dataSource);
-				final Path docxPath = tmpPath.resolve(UUID.randomUUID() + ".docx");
-				Files.write(docxPath, docxBytes);
+				final byte[] pptxBytes = Reports.toPptx(templateStream, parameters, dataSource);
+				final Path pptxPath = tmpPath.resolve(UUID.randomUUID() + ".pptx");
+				Files.write(pptxPath, pptxBytes);
+				System.out.println(pptxPath);
 
-				byte[] fodtBytes = Offices.toFodt(docxPath);
-				fodtBytes = resolveIVD(fodtBytes);
+				byte[] fodpBytes = Offices.toFodp(pptxPath);
+				fodpBytes = resolveIVD(fodpBytes);
 
-				final Path fodtPath = tmpPath.resolve(UUID.randomUUID() + ".fodt");
-				Files.write(fodtPath, fodtBytes);
+				final Path fodpPath = tmpPath.resolve(UUID.randomUUID() + ".fodp");
+				Files.write(fodpPath, fodpBytes);
+				System.out.println(fodpPath);
 
-				final byte[] bytes = Offices.toPDF(fodtPath);
+				final byte[] bytes = Offices.toPDF(fodpPath);
 
 				return ok(bytes).as(Http.MimeTypes.BINARY);
 			} catch (IOException e) {
@@ -485,22 +487,22 @@ public class Download extends Controller {
 		});
 	}
 
-	private byte[] resolveIVD(@Nonnull final byte[] fodtBytes) {
+	private static byte[] resolveIVD(@Nonnull final byte[] fodpBytes) {
 
-		String fodtXML = new String(fodtBytes, StandardCharsets.UTF_8);
+		String fodpXML = new String(fodpBytes, StandardCharsets.UTF_8);
 
-		fodtXML = resolveFont(fodtXML, "Hiragino Kaku Gothic ProN", "ヒラギノ明朝 ProN");
-		fodtXML = fodtXML.replace("{{HIRAGINO}}", "芦\uDB40\uDD00芦\uDB40\uDD01");
+//		fodpXML = resolveFont(fodpXML, "Hiragino Mincho ProN", "ヒラギノ明朝 ProN");
+		fodpXML = fodpXML.replace("{{HIRAGINO}}", "芦\uDB40\uDD00芦\uDB40\uDD01");
 
-		fodtXML = resolveFont(fodtXML, "IPAmjMincho", "IPAmj明朝");
-		fodtXML = fodtXML.replace("{{IPAMJM}}", "芦\uDB40\uDD02芦\uDB40\uDD03芦\uDB40\uDD04芦\uDB40\uDD05芦\uDB40\uDD06芦\uDB40\uDD07芦\uDB40\uDD08芦\uDB40\uDD09");
+		fodpXML = resolveFont(fodpXML, "IPAmjMincho", "IPAmj明朝");
+		fodpXML = fodpXML.replace("{{IPAMJM}}", "芦\uDB40\uDD02芦\uDB40\uDD03芦\uDB40\uDD04芦\uDB40\uDD05芦\uDB40\uDD06芦\uDB40\uDD07芦\uDB40\uDD08芦\uDB40\uDD09");
 
-		return fodtXML.getBytes(StandardCharsets.UTF_8);
+		return fodpXML.getBytes(StandardCharsets.UTF_8);
 	}
 
-	private static String resolveFont(final String fodtXML, final String target, final String replacement) {
+	private static String resolveFont(final String fodpXML, final String target, final String replacement) {
 
-		final Matcher matcher = Pattern.compile("(svg:font-family=\"(?:&apos;)?)" + target + "((?:&apos;)?\")").matcher(fodtXML);
+		final Matcher matcher = Pattern.compile("(svg:font-family=\"(?:&apos;)?)" + target + "((?:&apos;)?\")").matcher(fodpXML);
 
 		final StringBuffer buffer = new StringBuffer();
 		while (matcher.find()) {
