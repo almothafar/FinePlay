@@ -28,9 +28,5 @@ addSbtPlugin("com.github.sbt" % "sbt-findbugs" % "2.0.0")
 // PMD/CPD
 addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
 
-// CheckStyle
-//addSbtPlugin("com.etsy" % "sbt-checkstyle-plugin" % "3.0.0")
-//dependencyOverrides += "com.puppycrawl.tools" % "checkstyle" % "8.4"
-
 // License report
 addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")

@@ -96,11 +96,6 @@ $(document).ready(function() {
 	});
 	var datepicker = $('#expireFrom').pickadate( 'picker' );
 	datepicker.set('highlight', jsdate);
-	$('#expireFrom').siblings('span').on('click', function(e){
-
-		$('#expireFrom').trigger("click");
-		e.stopPropagation();
-	});
 
 	$('#expireTo').pickadate({
 		format: 'yyyy-mm-dd',
@@ -109,9 +104,10 @@ $(document).ready(function() {
 	});
 	var datepicker = $('#expireTo').pickadate( 'picker' );
 	datepicker.set('highlight', jsdate);
-	$('#expireTo').siblings('span').on('click', function(e){
 
-		$('#expireTo').trigger("click");
+	$('.input-group .input-group-text').on('click', function(e){
+
+		$(e.currentTarget).parent().parent().find('.picker__input').trigger("click");
 		e.stopPropagation();
 	});
 
@@ -443,14 +439,14 @@ $(document).ready(function() {
 		var selectedFilePaths = selectedFilePath.split(/\\|\\/);
 		var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
 
-		$(this).next('span.custom-file-control').attr('data-filename', selectedFileName);
+		$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
 	});
 
 	$('#uploadButton').on("click", function(){
 
 		initUploadOperation('upload');
 
-		$(this).next('span.custom-file-control').attr('data-filename', '');
+		$(this).next('label.custom-file-label').attr('data-filename', '');
 
 		$('#uploadFile').val("");
 

@@ -52,6 +52,9 @@ public class Component extends Controller {
 		case "card":
 
 			return card();
+		case "modal":
+
+			return modal();
 		default:
 
 			return etc();
@@ -126,6 +129,11 @@ public class Component extends Controller {
 	public static Result card() {
 
 		return ok(views.html.bootstrap.component.card.render());
+	}
+
+	public static Result modal() {
+
+		return ok(views.html.bootstrap.component.modal.render());
 	}
 
 	public static Result etc() {

@@ -72,14 +72,14 @@ public class UserTest {
 				signInPage.clickSignIn();
 
 				final IntroPage introPage = new IntroPage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(introPage.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(introPage.getUrl()));
 				introPage.isAt();
 				assertThat("", browser.window().title(), is((String) condition.get("title.home")));
 				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In - Success");
 				introPage.signOut();
 
 				final IndexPage signOutPage = new IndexPage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(signOutPage.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(signOutPage.getUrl()));
 				signOutPage.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
 				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In - After Sign Out");

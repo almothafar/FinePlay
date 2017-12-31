@@ -60,22 +60,22 @@ This template is unofficial.
 Notice
 ---------------
 
-+ Based on Bootstrap 4β dev
++ This project is not considered to develop continuously. (However, this template is a very thin wrapper for open source software, so don't worry about it.)
++ Based on Bootstrap 4 β3
 
 Release History
 ---------------
 
-+ **2.6.9-α2** - 2017-12-16
++ **2.6.9-α3** - 2018-01-01
 + **2.6.7-α2** - 2017-11-19
 + **2.6.6-α2** - 2017-10-21
-+ **2.6.6-α1** - 2017-10-07
 + **2.6.5-α1** - 2017-09-18
 + **2.6.3-α1** - 2017-08-14
    + First commit
 
 License
 -------
-Copyright &copy; 2017 [hiro20v](https://github.com/hiro20v)  
+Copyright &copy; 2017-2018 [hiro20v](https://github.com/hiro20v)  
 Distributed under the [MIT License][mit].
 
 [MIT]: http://opensource.org/licenses/MIT

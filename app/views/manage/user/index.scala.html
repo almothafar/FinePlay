@@ -111,8 +111,8 @@
 			@deletedialog()
 			@uploaddialog()
 
-			<div class="mb-3">
-				@components.table(Map("id"->"userlist", "class"->"w-100", "responsive"->"true", "bordered"->"true"),
+			<div class="mb-3 table-responsive">
+				@components.table(Map("id"->"userlist", "class"->"w-100", "bordered"->"true"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_USERID)),
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_ROLE)),

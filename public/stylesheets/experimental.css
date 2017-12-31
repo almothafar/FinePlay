@@ -13,21 +13,41 @@
 .w-90 {width: 90% !important;}
 .w-100 {width: 100% !important;}
 
-.w-30p {width: 30px !important;}
-.w-60p {width: 60px !important;}
-.w-120p {width: 120px !important;}
-.w-240p {width: 240px !important;}
+.w-2p {width: 2px !important;}
+.w-3p {width: 3px !important;}
+.w-4p {width: 4px !important;}
+.w-6p {width: 6px !important;}
+.w-9p {width: 9px !important;}
+.w-12p {width: 12px !important;}
+.w-18p {width: 18px !important;}
+.w-24p {width: 24px !important;}
+.w-36p {width: 36px !important;}
+.w-48p {width: 48px !important;}
+.w-54p {width: 54px !important;}
+.w-72p {width: 72px !important;}
+.w-96p {width: 96px !important;}
+.w-108p {width: 108px !important;}
+.w-144p {width: 144px !important;}
+.w-216p {width: 216px !important;}
+.w-288p {width: 288px !important;}
 
-.h-30p {height: 30px !important;}
-.h-60p {height: 60px !important;}
-.h-120p {height: 120px !important;}
-.h-240p {height: 240px !important;}
-
-.scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-}
+.h-2p {height: 2px !important;}
+.h-3p {height: 3px !important;}
+.h-4p {height: 4px !important;}
+.h-6p {height: 6px !important;}
+.h-9p {height: 9px !important;}
+.h-12p {height: 12px !important;}
+.h-18p {height: 18px !important;}
+.h-24p {height: 24px !important;}
+.h-36p {height: 36px !important;}
+.h-48p {height: 48px !important;}
+.h-54p {height: 54px !important;}
+.h-72p {height: 72px !important;}
+.h-96p {height: 96px !important;}
+.h-108p {height: 108px !important;}
+.h-144p {height: 144px !important;}
+.h-216p {height: 216px !important;}
+.h-288p {height: 288px !important;}
 
 /* Fakestrap */
 

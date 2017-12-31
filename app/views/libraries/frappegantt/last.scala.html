@@ -5,7 +5,10 @@
 @()
 
 <!-- moment loaded. -->
-<script type='text/javascript'>moment.locale('@Messages(MessageKeys.FRAPPEGANTT_LANG)');</script>
+<div id="frappegantt_messages" class="d-none" data-messages='{
+	"@MessageKeys.FRAPPEGANTT_LANG":"@Messages(MessageKeys.FRAPPEGANTT_LANG)"
+}'></div>
+<script src='@routes.Assets.versioned("lib/custom/frappegantt/last_before.js")'></script>
 
 <script type='text/javascript' src='@routes.Assets.versioned("lib/gantt/dist/frappe-gantt.min.js")'></script>
 

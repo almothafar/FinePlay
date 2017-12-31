@@ -15,7 +15,6 @@ Install
 e.g.
 
 	github/bootstrap-4.0.0/scss/_variables.scss
-	github/bootstrap-4.0.0/scss/_functions.scss
 
 ### Build ###
 
@@ -40,6 +39,8 @@ Project CSS
 
 	github/FinePlay/public/themes/[Theme name]/theme.css
 
+###### File Content is Optional.
+
 Project library CSS
 ----------
 
@@ -49,5 +50,6 @@ Project library CSS
 	models.user.User.java.THEME.[Theme name]
 
 ### Modify library CSS ###
+###### Optional.
 
 	github/FinePlay/app/views/libraries/[Library name]/head.scala.html

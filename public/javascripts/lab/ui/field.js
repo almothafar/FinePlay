@@ -4,7 +4,7 @@ var initEraceableField = function(selector){
 
 	var updateIconState = function(input){
 
-		var addOn = input.next(".input-group-addon");
+		var addOn = input.next('.input-group-append').children('.input-group-text');
 		var icon = addOn.children().eq(0);
 
 		if(0 == input.val().length){
@@ -27,7 +27,7 @@ var initEraceableField = function(selector){
 	input.each(function(){
 
 		var input = $(this);
-		var addOn = input.next(".input-group-addon");
+		var addOn = input.next('.input-group-append').children('.input-group-text');
 		addOn.css({"border-left-width": "0px", "background-color": getTheme().backgroundColor, "color": "#495057"});
 
 		updateIconState(input);
@@ -47,7 +47,7 @@ var initEraceableField = function(selector){
 		icon.on('click', function(event){
 
 			var currentIcon = $(this);
-			var currentAddOn = currentIcon.parent();
+			var currentAddOn = currentIcon.parent().parent();
 			var currentInput = currentAddOn.prev(".form-control");
 
 			currentInput.val("");

@@ -263,14 +263,14 @@ $(document).ready(function() {
 		var selectedFilePaths = selectedFilePath.split(/\\|\\/);
 		var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
 
-		$(this).next('span.custom-file-control').attr('data-filename', selectedFileName);
+		$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
 	});
 
 	$('#uploadButton').on("click", function(){
 
 		initUploadOperation('upload');
 
-		$(this).next('span.custom-file-control').attr('data-filename', '');
+		$(this).next('label.custom-file-label').attr('data-filename', '');
 
 		$('#uploadFile').val("");
 

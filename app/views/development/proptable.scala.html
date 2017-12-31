@@ -27,12 +27,15 @@
 	tbodyRowToColumnsList.toList
 }
 
-@components.table(Map("id"->id, "type"->"light", "responsive"->"true", "bordered"->"true", "striped"->"true"),
-	Map("id"->""),Tuple2(Map("id"->""),List(
-		Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.KEY)),
-		Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VALUE)))),
-	Map("id"->""), tbodyRowToColumnsList(map),
-	Map("id"->""),Tuple2(Map("id"->""),List(
-	))
-)
+<div class="table-responsive">
+
+	@components.table(Map("id"->id, "type"->"light", "bordered"->"true", "striped"->"true"),
+		Map("id"->""),Tuple2(Map("id"->""),List(
+			Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.KEY)),
+			Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VALUE)))),
+		Map("id"->""), tbodyRowToColumnsList(map),
+		Map("id"->""),Tuple2(Map("id"->""),List(
+		))
+	)
+</div>
 

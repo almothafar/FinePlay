@@ -1,13 +1,7 @@
 // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
 // IT'S JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
-/*!
- * Copyright 2014-2015 The Bootstrap Authors
- * Copyright 2014-2015 Twitter, Inc.
- *
- * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see https://creativecommons.org/licenses/by/3.0/.
- */
+
 // Intended to prevent false-positive bug reports about Bootstrap not working properly in old versions of IE due to folks testing using IE's unreliable emulation modes.
 (function () {
   'use strict'
@@ -27,7 +21,7 @@
     // IE JavaScript conditional compilation docs: https://msdn.microsoft.com/library/121hztk3%28v=vs.94%29.aspx
     // @cc_on docs: https://msdn.microsoft.com/library/8ka90k2e%28v=vs.94%29.aspx
     var jscriptVersion = new Function('/*@cc_on return @_jscript_version; @*/')() // eslint-disable-line no-new-func
-    if (jscriptVersion === undefined) {
+    if (typeof jscriptVersion === 'undefined') {
       return 11 // IE11+ not in emulation mode
     }
     if (jscriptVersion < 9) {

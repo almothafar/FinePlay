@@ -7,31 +7,6 @@
 	tfootRowToColumns:Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]
 )
 
-@responsiveLimitSize(prop:scala.collection.immutable.Map[String, String]) = @{
-
-	var responsiveLimitSize = prop.getOrElse("responsiveLimitSize", "");
-	responsiveLimitSize match {
-		case "" => {
-			""
-		}
-		case "xs" => {
-			"-sm"
-		}
-		case "sm" => {
-			"-md"
-		}
-		case "md" => {
-			"-lg"
-		}
-		case "lg" => {
-			"-xl"
-		}
-		case _ => {
-			throw new IllegalStateException(responsiveLimitSize)
-		}
-	}
-}
-
 @cellTag(prop:scala.collection.immutable.Map[String, String]) = @{
 
 	if(Boolean.valueOf(prop.getOrElse("head", "false"))){
@@ -43,7 +18,7 @@
 	}
 }
 
-<table id="@prop.getOrElse("id", "")" class="table table-@prop.getOrElse("type", "") @("table-responsive".when(Boolean.valueOf(prop.getOrElse("responsive", "false"))))@responsiveLimitSize(prop) @("table-striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) @("table-bordered".when(Boolean.valueOf(prop.getOrElse("bordered", "false")))) @("table-hover".when(Boolean.valueOf(prop.getOrElse("hover", "false")))) table-@prop.getOrElse("size", "") @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
+<table id="@prop.getOrElse("id", "")" class="table table-@prop.getOrElse("type", "") @("table-striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) @("table-bordered".when(Boolean.valueOf(prop.getOrElse("bordered", "false")))) @("table-hover".when(Boolean.valueOf(prop.getOrElse("hover", "false")))) table-@prop.getOrElse("size", "") @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	<thead id="@thead.getOrElse("id", "")" class="thead-@thead.getOrElse("type", "")">
 	@defining(theadRowToColumns._1) { row =>
 	<tr class="table-@row.getOrElse("type", "")">

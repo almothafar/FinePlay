@@ -10,7 +10,7 @@
 @(prop:scala.collection.immutable.Map[String, String], buttons:Seq[scala.collection.immutable.Map[String, String]])(content: Html)
 
 <div id="@prop.getOrElse("id", "")" class="modal fade @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
-	<div class="modal-dialog modal-@prop.getOrElse("size", "")" role="document">
+	<div class="modal-dialog @("modal-dialog-centered".when(Boolean.valueOf(prop.getOrElse("center", "false")))) modal-@prop.getOrElse("size", "")" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">

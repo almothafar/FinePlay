@@ -34,3 +34,5 @@ $('#okButton').on('click', function (e) {
 		"backgroundColor": picker.colorpicker('getValue')
 	});
 })
+
+$('#cp2').colorpicker();

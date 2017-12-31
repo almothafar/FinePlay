@@ -71,9 +71,9 @@
 								<label for="inputType" class="col-sm-3 col-form-label">@Messages(MessageKeys.TYPE)</label>
 								<div class="col-sm-9">
 									@for(character_type <- apis.character.Character.Type.values()) {
-									<label class="custom-control custom-radio">
+									<label class="custom-control custom-radio custom-control-inline">
 										<input class="custom-control-input type" type="radio" name="searchType" value="@character_type.toString()" @("checked".when(apis.character.Character.Type.CHARACTER == character_type))>
-										<span class="custom-control-indicator"></span>
+										<label class="custom-control-label"></label>
 										@Messages(character_type.getMessageKey())
 									</label>
 									}

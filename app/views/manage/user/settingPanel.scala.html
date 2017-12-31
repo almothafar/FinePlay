@@ -15,9 +15,9 @@
 
 @customCheckbox(columnName: String, isChecked: Boolean, isShow: Boolean) = {
 
-	<label class="custom-control custom-checkbox @("d-none".when(!isShow))">
+	<label class="custom-control custom-checkbox custom-control-inline @("d-none".when(!isShow))">
 		<input class="custom-control-input settingDisplayColumns" type="checkbox" name="@columnName" value="@columnName" @("checked".when(isChecked))>
-		<span class="custom-control-indicator"></span>
+		<label class="custom-control-label"></label>
 		@columnName
 	</label>
 }

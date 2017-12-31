@@ -209,9 +209,17 @@
 
 				@components.container(Map("id"->"", "fluid"->"true", "class"->"bg-light py-2")){
 					<div class="input-group">
-						<span class="input-group-addon">@components.icon(Map("id"->"", "icon"->"fa fa-search"))</span>
+						<div class="input-group-append">
+							<span class="input-group-text">
+								@components.icon(Map("id"->"", "icon"->"fa fa-search"))
+							</span>
+						</div>
 						<input id="help-search-text" type="text" class="form-control" aria-label="">
-						<span id="help-search-clear" class="input-group-addon">@components.icon(Map("id"->"", "icon"->"fa fa-times-circle"))</span>
+						<div class="input-group-prepend">
+							<span id="help-search-clear" class="input-group-text">
+								@components.icon(Map("id"->"", "icon"->"fa fa-times-circle"))
+							</span>
+						</div>
 					</div>
 				}
 

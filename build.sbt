@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.9-α2-SNAPSHOT"
+version := "2.6.9-α3-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.6.9-α2-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.9-α3-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -64,23 +64,25 @@ libraryDependencies ++= Seq(
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
-  "org.webjars.npm" % "bootstrap" % "4.0.0-beta.2",						// MIT 4.0.0-alpha.6
+  "org.webjars.npm" % "bootstrap" % "4.0.0-beta.3",						// MIT 4.0.0-alpha.6
+//  "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
+//  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +c
+//  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
   "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",				// MIT 9.8.1
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars.npm" % "tether" % "1.4.0",								// MIT 1.4.0
-  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
   "org.webjars.bower" % "font-awesome" % "4.7.0",							// SIL OFL 4.7.0
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
-  "org.webjars.bower" % "select2" % "4.0.4",								// MIT 4.0.4
+  "org.webjars.bower" % "select2" % "4.0.5",								// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.1",								// MIT 2.7.1
   "org.webjars.bower" % "moment" % "2.20.1",								// MIT 2.19.3
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.7.0",							// MIT 3.7.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
   "org.webjars.bower" % "datatables" % "1.10.16",							// MIT 1.10.16
-  "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",
+  "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",				//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
 //  "org.webjars.bower" % "summernote" % "0.8.8",							// MIT 0.8.8
   "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
@@ -95,15 +97,13 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1
   "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
   "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
-  "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426
+  "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426 +c
   "org.webjars" % "material-design-icons" % "3.0.1",						// Apache 3.0.1
-  "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
-  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"									// MIT 4.1.1
 )
 // TwentyTwenty															// MIT 2017/11/11 master
-// Frappé Gantt															// MIT 2017/8/11 master
+// Frappé Gantt															// MIT build version 0.0.7 master
 // 3Dmol.js																// BSD-3-Clause license 1.1.1
 // IcoFont																// MIT 1.3
 // geckodriver															// ? 0.18.0
@@ -217,9 +217,3 @@ findbugsReportType := Some(com.github.sbt.findbugs.settings.FindbugsReport.Fancy
 // CPD
 cpdLanguage := CpdLanguage.Java
 cpdReportType := CpdReportType.XML
-
-// CheckStyle
-//checkstyleConfigLocation := CheckstyleConfigLocation.File("conf/checkstyle-config.xml")
-//checkstyleXsltTransformations := {
-//  Some(Set(CheckstyleXSLTSettings(baseDirectory(_ / "conf" / "checkstyle-noframes.xml").value, target(_ / "checkstyle-report.html").value)))
-//}

@@ -45,9 +45,11 @@
 							<div class="col-12 col-sm-6">
 								<div class="input-group">
 									<input id='@DateTimeFormContent.DATETIME_DATE' type='text' name="@DateTimeFormContent.DATETIME_DATE" class="form-control datePicker" value="@form(DateTimeFormContent.DATETIME_DATE+"_receive").getValue.orElse("")"/>
-									<span class="input-group-addon">
-										<i class="fa fa-calendar"></i>
-									</span>
+									<div class="input-group-append">
+										<span class="input-group-text">
+											<i class="fa fa-calendar"></i>
+										</span>
+									</div>
 									@for(error <- form(DateTimeFormContent.DATETIME_DATE).errors) {
 										<div class="text-warning">@Messages(error.message)</div>
 									}
@@ -56,9 +58,11 @@
 							<div class="col-12 col-sm-6">
 								<div class="input-group">
 									<input id='@DateTimeFormContent.DATETIME_TIME' type='text' name="@DateTimeFormContent.DATETIME_TIME" class="form-control timePicker" value="@form(DateTimeFormContent.DATETIME_TIME+"_receive").getValue.orElse("")"/>
-									<span class="input-group-addon">
-										<i class="fa fa-clock-o"></i>
-									</span>
+									<div class="input-group-append">
+										<span class="input-group-text">
+											<i class="fa fa-clock-o"></i>
+										</span>
+									</div>
 									@for(error <- form(DateTimeFormContent.DATETIME_TIME).errors) {
 										<div class="text-warning">@Messages(error.message)</div>
 									}
@@ -70,9 +74,11 @@
 							<div class="col-12 col-sm-12">
 								<div class="input-group">
 									<input id='@DateTimeFormContent.DATE_DATE' type='text' name="@DateTimeFormContent.DATE_DATE" class="form-control datePicker" value="@form(DateTimeFormContent.DATE_DATE+"_receive").getValue.orElse("")"/>
-									<span class="input-group-addon">
-										<i class="fa fa-calendar"></i>
-									</span>
+									<div class="input-group-append">
+										<span class="input-group-text">
+											<i class="fa fa-calendar"></i>
+										</span>
+									</div>
 									@for(error <- form(DateTimeFormContent.DATE_DATE).errors) {
 										<div class="text-warning">@Messages(error.message)</div>
 									}
@@ -87,9 +93,11 @@
 							<div class="col-12 col-sm-12">
 								<div class="input-group">
 									<input id='@DateTimeFormContent.TIME_TIME' type='text' name="@DateTimeFormContent.TIME_TIME" class="form-control timePicker" value="@form(DateTimeFormContent.TIME_TIME+"_receive").getValue.orElse("")"/>
-									<span class="input-group-addon">
-										<i class="fa fa-clock-o"></i>
-									</span>
+									<div class="input-group-append">
+										<span class="input-group-text">
+											<i class="fa fa-clock-o"></i>
+										</span>
+									</div>
 									@for(error <- form(DateTimeFormContent.TIME_TIME).errors) {
 										<div class="text-warning">@Messages(error.message)</div>
 									}

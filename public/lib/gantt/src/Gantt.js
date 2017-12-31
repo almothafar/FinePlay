@@ -107,6 +107,11 @@ export default function Gantt(element, tasks, config) {
 			task._start = moment(task.start, self.config.date_format);
 			task._end = moment(task.end, self.config.date_format);
 
+			// make task invalid if duration too large
+			if(task._end.diff(task._start, 'years') > 10) {
+				task.end = null;
+			}
+
 			// cache index
 			task._index = i;
 
@@ -304,7 +309,7 @@ export default function Gantt(element, tasks, config) {
 			.appendTo(self.element_groups.grid);
 
 		self.canvas.attr({
-			height: grid_height + self.config.padding,
+			height: grid_height + self.config.padding + 100,
 			width: '100%'
 		});
 	}

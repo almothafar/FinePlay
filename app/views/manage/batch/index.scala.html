@@ -147,8 +147,8 @@
 				@components.button(Map("id"->"reloadButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-repeat", "text"->Messages(MessageKeys.RELOAD)))
 			</div>
 
-			<div class="mb-3">
-				@components.table(Map("id"->"jobExecutionlist", "class"->"w-100", "responsive"->"true", "bordered"->"true"),
+			<div class="mb-3 table-responsive">
+				@components.table(Map("id"->"jobExecutionlist", "class"->"w-100", "bordered"->"true"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.NAME)),
 						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.PARAMETER)),

@@ -25,7 +25,11 @@
 				<label for="@Company.NAME" class="col-sm-3 col-form-label">@Messages(MessageKeys.COMPANY_NAME)</label>
 				<div class="col-sm-9">
 					<div class="input-group">
-						<div class="input-group-addon"><i class="fa fa-building-o"></i></div>
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<i class="fa fa-building-o"></i>
+							</span>
+						</div>
 						<input id="@Company.NAME" type="text" name="@Company.NAME" class="form-control" placeholder="Name" value="@form(Company.NAME).getValue.orElse("")" autofocus>
 						@for(error <- form(Company.NAME).errors) {
 							<div class="text-warning">@Messages(error.message)</div>

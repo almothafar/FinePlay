@@ -37,10 +37,10 @@
 		<div class="row form-group">
 			<label for="@OrganizationUnit.UPLOADFILE" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.FILE)</label>
 			<div class="col-sm-12">
-				<label class="custom-file w-100">
+				<div class="custom-file">
 					<input id="@OrganizationUnit.UPLOADFILE" type="file" name="@OrganizationUnit.UPLOADFILE" class="custom-file-input" value="" required autofocus>
-					<span class="custom-file-control"></span>
-				</label>
+					<label class="custom-file-label" for="@OrganizationUnit.UPLOADFILE"></label>
+				</div>
 				<small class="text-muted">@Messages(MessageKeys.ABOUT__X, Messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fa fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
 				<div>
 					<p class="text-warning"></p>
@@ -48,14 +48,14 @@
 			</div>
 			<label for="operation" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.OPERATION)</label>
 			<div class="col-sm-12">
-				<label class="custom-control custom-radio">
+				<label class="custom-control custom-radio custom-control-inline">
 					<input class="custom-control-input" id="createRadio" name="operation" type="radio" value="@Operation.CREATE.toString()">
-					<span class="custom-control-indicator"></span>
+					<label class="custom-control-label"></label>
 					@Messages(MessageKeys.CREATE)
 				</label>
-				<label class="custom-control custom-radio">
+				<label class="custom-control custom-radio custom-control-inline">
 					<input class="custom-control-input" id="updateRadio" name="operation" type="radio" value="@Operation.UPDATE.toString()" checked>
-					<span class="custom-control-indicator"></span>
+					<label class="custom-control-label"></label>
 					@Messages(MessageKeys.UPDATE)
 				</label>
 			</div>

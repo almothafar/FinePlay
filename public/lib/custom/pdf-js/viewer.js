@@ -492,7 +492,7 @@ var ProgressBar = function () {
       var container = viewer.parentNode;
       var scrollbarWidth = container.offsetWidth - viewer.offsetWidth;
       if (scrollbarWidth > 0) {
-        this.bar.setAttribute('style', 'width: calc(100% - ' + scrollbarWidth + 'px);');
+        this.bar.style.cssText = 'width: calc(100% - ' + scrollbarWidth + 'px);';
       }
     }
   }, {
@@ -6196,7 +6196,7 @@ var PDFOutlineViewer = function () {
         styleStr += 'font-style: italic;';
       }
       if (styleStr) {
-        element.setAttribute('style', styleStr);
+        element.style.cssText = styleStr;
       }
     }
   }, {
@@ -9321,7 +9321,7 @@ var SecondaryToolbar = function () {
       if (this.containerHeight === this.previousContainerHeight) {
         return;
       }
-      this.toolbarButtonContainer.setAttribute('style', 'max-height: ' + (this.containerHeight - _ui_utils.SCROLLBAR_PADDING) + 'px;');
+      this.toolbarButtonContainer.style.cssText = 'max-height: ' + (this.containerHeight - _ui_utils.SCROLLBAR_PADDING) + 'px;';
       this.previousContainerHeight = this.containerHeight;
     }
   }, {
@@ -9891,13 +9891,13 @@ var Toolbar = function () {
       var select = this.items.scaleSelect;
       _ui_utils.animationStarted.then(function () {
         if (container.clientWidth === 0) {
-          container.setAttribute('style', 'display: inherit;');
+          container.style.cssText = 'display: inherit;';
         }
         if (container.clientWidth > 0) {
-          select.setAttribute('style', 'min-width: inherit;');
+          select.style.cssText = 'min-width: inherit;';
           var width = select.clientWidth + SCALE_SELECT_CONTAINER_PADDING;
-          select.setAttribute('style', 'min-width: ' + (width + SCALE_SELECT_PADDING) + 'px;');
-          container.setAttribute('style', 'min-width: ' + width + 'px; ' + 'max-width: ' + width + 'px;');
+          select.style.cssText = 'min-width: ' + (width + SCALE_SELECT_PADDING) + 'px;';
+          container.style.cssText = 'min-width: ' + width + 'px; ' + 'max-width: ' + width + 'px;';
         }
       });
     }

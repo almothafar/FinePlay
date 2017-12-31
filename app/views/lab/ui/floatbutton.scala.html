@@ -1,0 +1,50 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/floatbutton.css")'>
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->("Float"+" "+Messages(MessageKeys.BUTTON)), "icon"->"fa fa-plus-circle", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"floatbutton"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+
+				<div class="col-md-9">
+
+					<div class="row">
+
+					</div>
+				</div>
+			</div>
+		}
+
+		@components.button(Map("id"->"floatbutton", "type"->"success", "text"->"+", "class"->"rounded-circle shadow"))
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+	}
+}

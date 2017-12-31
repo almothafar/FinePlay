@@ -12,13 +12,10 @@ $('#timepicker').pickatime({
 	formatSubmit: 'HH:i:00.000'
 });
 
-$('.picker__input').each(function(){
+$('.input-group .input-group-text').on('click', function(e){
 
-	$(this).nextAll('span:first').on('click', function(e){
-
-		$(e.currentTarget).prevAll('.picker__input:first').trigger("click");
-		e.stopPropagation();
-	});
+	$(e.currentTarget).parent().parent().find('.picker__input').trigger("click");
+	e.stopPropagation();
 });
 
 var jsdate =  moment(Messages("clientDateTime")).toDate();

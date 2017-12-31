@@ -48,6 +48,7 @@ public class Upload extends Controller {
 			final String contentType = filePart.getContentType();
 			@SuppressWarnings("unused")
 			final Path path = filePart.getFile().toPath();
+			LOGGER.info("" + path);
 
 			flash("success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded");
 			return index();
@@ -70,8 +71,7 @@ public class Upload extends Controller {
 			@SuppressWarnings("unused")
 			final String contentType = filePart.getContentType();
 			final Path path = filePart.getFile().toPath();
-
-			System.out.println(path);
+			LOGGER.info("" + path);
 
 			flash("imageSuccess", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded");
 			return index();
@@ -90,8 +90,8 @@ public class Upload extends Controller {
 		final Map<String, String[]> form = body.asFormUrlEncoded();
 		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
 
-		LOGGER.info("" + form);
-		LOGGER.info("" + filePart);
+		final Path path = filePart.getFile().toPath();
+		LOGGER.info("" + path);
 
 		final ObjectMapper mapper = new ObjectMapper();
 		final ObjectNode result = mapper.createObjectNode();

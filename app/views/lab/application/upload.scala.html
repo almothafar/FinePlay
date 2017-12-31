@@ -44,10 +44,10 @@
 							<div class="row">
 								<div class="col-md-12">
 
-									<label class="custom-file w-100">
+									<div class="custom-file">
 										<input id="file" type="file" name="inputName" class="custom-file-input">
-										<span class="custom-file-control"></span>
-									</label>
+										<label class="custom-file-label" for="file"></label>
+									</div>
 								</div>
 							</div>
 							<input type="submit" class="btn btn-outline-primary" value="@Messages(MessageKeys.UPLOAD)">
@@ -68,10 +68,10 @@
 									<div class="row">
 										<div class="col-md-12">
 
-											<label class="custom-file w-100">
+											<div class="custom-file">
 												<input id="imageFile" type="file" name="inputName" class="custom-file-input">
-												<span class="custom-file-control"></span>
-											</label>
+												<label class="custom-file-label" for="imageFile"></label>
+											</div>
 										</div>
 									</div>
 									<input type="submit" class="btn btn-outline-primary" value="@Messages(MessageKeys.UPLOAD)">
@@ -95,10 +95,10 @@
 							<div class="row">
 								<div class="col-md-12">
 
-									<label class="custom-file w-100">
+									<div class="custom-file">
 										<input id="ajaxFile" type="file" name="inputName" class="custom-file-input">
-										<span class="custom-file-control"></span>
-									</label>
+										<label class="custom-file-label" for="ajaxFile"></label>
+									</div>
 									@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
 											Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal")
 										)){

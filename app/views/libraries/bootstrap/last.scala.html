@@ -8,7 +8,7 @@
 
 		ConfigFactory.defaultApplication().getString("bootstrap.cdn.script")
 	}else{
-		//routes.Assets.versioned("lib/bootstrap-4-dev/dist/js/bootstrap.min.js")
+		//routes.Assets.versioned("lib/bootstrap-4.0.0-beta.3-dist/js/bootstrap.min.js")
 		// npm
 		routes.Assets.versioned("lib/bootstrap/dist/js/bootstrap.min.js")
 	}
@@ -16,6 +16,4 @@
 
 <script type='text/javascript' src='@src()'></script>
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<!-- <script src='@routes.Assets.versioned("lib/bootstrap/assets/js/ie10-viewport-bug-workaround.js")'></script> -->
-<!-- <script src='@routes.Assets.versioned("lib/bootstrap/assets/js/ie-emulation-modes-warning.js")'></script> -->
+<!-- <script src='@routes.Assets.versioned("lib/bootstrap/assets/js/src/ie-emulation-modes-warning.js")'></script> -->

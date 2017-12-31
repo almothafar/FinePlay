@@ -35,7 +35,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
-			<h4 class="headline">Always Width 100%</h4>
+			<h4 class="headline">Always 100%</h4>
 			<div class="mb-3">
 
 				@components.table(Map("id"->"", "class"->"w-100 table-w100"),
@@ -53,61 +53,9 @@
 			</div>
 
 			<h4 class="headline">Responsive</h4>
-			<div class="mb-3">
+			<div class="mb-3 table-responsive">
 
-				@components.table(Map("id"->"", "type"->"primary", "responsive"->"true", "responsiveLimitSize"->"xs", "class"->"w-100 table-w100-sm"),
-					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->"KEY"),
-						Map("id"->"", "head"->"true", "text"->"VALUE1"),
-						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
-					Map("id"->""),List(
-						Tuple2(Map("id"->""),List(
-							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
-					Map("id"->""),Tuple2(Map("id"->""),List())
-				)
-
-				@components.table(Map("id"->"", "type"->"success", "responsive"->"true", "responsiveLimitSize"->"sm", "class"->"w-100 table-w100-md"),
-					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->"KEY"),
-						Map("id"->"", "head"->"true", "text"->"VALUE1"),
-						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
-					Map("id"->""),List(
-						Tuple2(Map("id"->""),List(
-							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
-					Map("id"->""),Tuple2(Map("id"->""),List())
-				)
-
-				@components.table(Map("id"->"", "type"->"info", "responsive"->"true", "responsiveLimitSize"->"md", "class"->"w-100 table-w100-lg"),
-					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->"KEY"),
-						Map("id"->"", "head"->"true", "text"->"VALUE1"),
-						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
-					Map("id"->""),List(
-						Tuple2(Map("id"->""),List(
-							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
-					Map("id"->""),Tuple2(Map("id"->""),List())
-				)
-
-				@components.table(Map("id"->"", "type"->"warning", "responsive"->"true", "responsiveLimitSize"->"lg", "class"->"w-100 table-w100-xl"),
-					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->"KEY"),
-						Map("id"->"", "head"->"true", "text"->"VALUE1"),
-						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
-					Map("id"->""),List(
-						Tuple2(Map("id"->""),List(
-							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
-							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
-					Map("id"->""),Tuple2(Map("id"->""),List())
-				)
-
-				@components.table(Map("id"->"", "type"->"danger", "responsive"->"true"),
+				@components.table(Map("id"->"", "type"->"primary", "class"->"w-100"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
 						Map("id"->"", "head"->"true", "text"->"KEY"),
 						Map("id"->"", "head"->"true", "text"->"VALUE1"),
@@ -121,10 +69,9 @@
 				)
 			</div>
 
-			<h4 class="headline">Responsive(Word break) + Width 100%</h4>
-			<div class="mb-3 scroll">
+			<div class="mb-3 table-responsive-sm">
 
-				@components.table(Map("id"->"", "type"->"primary", "class"->"table-w100 table-w100-wb-sm"),
+				@components.table(Map("id"->"", "type"->"success", "class"->"w-100 table-w100-sm"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
 						Map("id"->"", "head"->"true", "text"->"KEY"),
 						Map("id"->"", "head"->"true", "text"->"VALUE1"),
@@ -138,9 +85,9 @@
 				)
 			</div>
 
-			<div class="mb-3 scroll">
+			<div class="mb-3 table-responsive-md">
 
-				@components.table(Map("id"->"", "type"->"success", "class"->"table-w100 table-w100-wb-md"),
+				@components.table(Map("id"->"", "type"->"info", "class"->"w-100 table-w100-md"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
 						Map("id"->"", "head"->"true", "text"->"KEY"),
 						Map("id"->"", "head"->"true", "text"->"VALUE1"),
@@ -154,9 +101,9 @@
 				)
 			</div>
 
-			<div class="mb-3 scroll">
+			<div class="mb-3 table-responsive-lg">
 
-				@components.table(Map("id"->"", "type"->"info", "class"->"table-w100 table-w100-wb-lg"),
+				@components.table(Map("id"->"", "type"->"warning", "class"->"w-100 table-w100-lg"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
 						Map("id"->"", "head"->"true", "text"->"KEY"),
 						Map("id"->"", "head"->"true", "text"->"VALUE1"),
@@ -170,9 +117,74 @@
 				)
 			</div>
 
-			<div class="mb-3 scroll">
+			<div class="mb-3 table-responsive-xl">
 
-				@components.table(Map("id"->"", "type"->"warning", "class"->"table-w100 table-w100-wb-xl"),
+				@components.table(Map("id"->"", "type"->"danger", "class"->"w-100 table-w100-xl"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<h4 class="headline">Responsive + 100%</h4>
+			<div class="mb-3 table-responsive">
+
+				@components.table(Map("id"->"", "type"->"success", "class"->"table-w100 table-w100-wb-sm"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<div class="mb-3 table-responsive">
+
+				@components.table(Map("id"->"", "type"->"info", "class"->"table-w100 table-w100-wb-md"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<div class="mb-3 table-responsive">
+
+				@components.table(Map("id"->"", "type"->"warning", "class"->"table-w100 table-w100-wb-lg"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"KEY"),
+						Map("id"->"", "head"->"true", "text"->"VALUE1"),
+						Map("id"->"", "head"->"true", "text"->"VALUE2"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890", "scope"->"row"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890"),
+							Map("id"->"", "text"->"12345678901234567890123456789012345678901234567890123456789012345678901234567890")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<div class="mb-3 table-responsive">
+
+				@components.table(Map("id"->"", "type"->"danger", "class"->"table-w100 table-w100-wb-xl"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
 						Map("id"->"", "head"->"true", "text"->"KEY"),
 						Map("id"->"", "head"->"true", "text"->"VALUE1"),
@@ -188,7 +200,6 @@
 		}
 
 		@libraries.standard.last()
-		@libraries.slick.last()
 		@libraries.holder.last()
 	}
 }

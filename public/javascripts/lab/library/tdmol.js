@@ -15,5 +15,4 @@ $(document).ready(function() {
 			viewer.rotate(1);
 		}
 	}, 50);
-
 });

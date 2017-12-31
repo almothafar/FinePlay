@@ -103,7 +103,7 @@ public class RegistUserTest {
 				indexPage.clickRegistUser();
 
 				final RegistPage registPage = new RegistPage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(registPage.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(registPage.getUrl()));
 				registPage.isAt();
 				assertThat("", registPage.contentTitle(), is(condition.get("registuser.please_regist").toString()));
 				registPage.inputUserId("regist@example.com");
@@ -116,7 +116,7 @@ public class RegistUserTest {
 				registPage.clickApply();
 
 				final CompletePage provisionalCompletePage = new CompletePage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(provisionalCompletePage.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(provisionalCompletePage.getUrl()));
 				provisionalCompletePage.isAt();
 				assertThat("", provisionalCompletePage.contentTitle(), is(condition.get("registuser.provisional.complete").toString()));
 				provisionalCompletePage.takeScreenShot(capturePath, locale, counter, "Provisional - Compleate");
@@ -130,21 +130,21 @@ public class RegistUserTest {
 				provisionalCompletePage.clickTop();
 
 				final IndexPage indexPage2 = new IndexPage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage2.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage2.getUrl()));
 				indexPage2.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
 				indexPage2.takeScreenShot(capturePath, locale, counter, "Sign In - After Provisional.png");
 				browser.goTo(regularUrl);
 
 				final controllers.registuser.reqular.CompletePage reqularCompletePage = new controllers.registuser.reqular.CompletePage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(reqularCompletePage.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(reqularCompletePage.getUrl()));
 				reqularCompletePage.isAt();
 				assertThat("", reqularCompletePage.contentTitle(), is((String) condition.get("registuser.regular.complete")));
 				reqularCompletePage.takeScreenShot(capturePath, locale, counter, "Regular - Compleate");
 				reqularCompletePage.clickTop();
 
 				final IndexPage indexPage3 = new IndexPage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage3.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage3.getUrl()));
 				indexPage3.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
 				indexPage3.takeScreenShot(capturePath, locale, counter, "Sign In - After Regular");
@@ -154,7 +154,7 @@ public class RegistUserTest {
 				indexPage3.clickSignIn();
 
 				final IntroPage introPage = new IntroPage(browser);
-				browser.await().atMost(5, TimeUnit.SECONDS).until(() -> browser.url().startsWith(introPage.getUrl()));
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(introPage.getUrl()));
 				introPage.isAt();
 				assertThat("", browser.window().title(), is((String) condition.get("title.home")));
 				introPage.takeScreenShot(capturePath, locale, counter, "Sign In - Success");

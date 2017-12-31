@@ -6,6 +6,9 @@
 .bootbox .close {
 	float: right;
 	margin-top: 0px !important;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
 }
 .bootbox.modal .btn-default {
 	background-color: transparent;

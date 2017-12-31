@@ -10,6 +10,8 @@
 @import javax.json._
 @import java.io._
 
+@import common.system._
+
 @()
 
 @frame(){
@@ -56,58 +58,55 @@
 							@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger"))
 						</div>
 					</div>
+
 					<div class="mb-3">
 
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"0", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"0", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"1", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"1", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"2", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"2", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"3", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"3", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"4", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"4", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"5", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"5", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"6", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"6", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"7", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"7", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"8", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"8", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"9", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"9", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"10", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"10", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"11", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"11", "max"->"12", "class"->"h-2p"))
 						</div>
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"12", "max"->"16"))
+							@components.progress(Map("id"->"", "value"->"12", "max"->"12", "class"->"h-2p"))
 						</div>
+					</div>
+
+					<div class="mb-3">
+
 						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"13", "max"->"16"))
-						</div>
-						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"14", "max"->"16"))
-						</div>
-						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"15", "max"->"16"))
-						</div>
-						<div class="mb-3">
-							@components.progress(Map("id"->"", "value"->"16", "max"->"16"))
+							@components.progress(Map("id"->"progressingBar", "value"->"0", "max"->"100", "class"->"h-24p"))
+							@components.button(Map("id"->"progressingButton", "outline"->"true", "text"->Messages(MessageKeys.START)))
 						</div>
 					</div>
 				</div>
@@ -115,5 +114,6 @@
 		}
 
 		@libraries.standard.last()
+		<script src='@routes.Assets.versioned("javascripts/bootstrap/component/progress.js")'></script>
 	}
 }

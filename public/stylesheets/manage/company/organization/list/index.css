@@ -1,5 +1,5 @@
 @charset "utf-8";
 
-.custom-file-control:empty::after {
+.custom-file-label::before {
 	content: attr(data-filename) !important;
 }

@@ -8,7 +8,7 @@ $('#file').on('change', function(e){
 	var selectedFilePaths = selectedFilePath.split(/\\|\\/);
 	var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
 
-	$(this).next('span.custom-file-control').attr('data-filename', selectedFileName);
+	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
 });
 
 //
@@ -37,7 +37,7 @@ $('#imageFile').on('change', function(e){
 		return;
 	}
 
-	$(this).next('span.custom-file-control').attr('data-filename', selectedFileName);
+	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
 
 	if(window.FileReader){
 
@@ -79,7 +79,7 @@ $('#ajaxFile').on('change', function(e){
 	var selectedFilePaths = selectedFilePath.split(/\\|\\/);
 	var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
 
-	$(this).next('span.custom-file-control').attr('data-filename', selectedFileName);
+	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
 });
 
 $('#ajaxSubmit').on('click', function(e){
