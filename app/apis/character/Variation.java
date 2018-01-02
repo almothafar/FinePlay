@@ -32,7 +32,8 @@ class Variation extends BaseCharacter {
 			ADOBE_JAPAN1("Adobe-Japan1"), //
 			HANYO_DENSHI("Hanyo-Denshi"), //
 			MOJI_JOHO("Moji_Joho"), //
-			MSARG("MSARG");
+			MSARG("MSARG"), //
+			KRNAME("KRName");
 
 			private final String name;
 
@@ -50,6 +51,7 @@ class Variation extends BaseCharacter {
 
 				final Type collection;
 				try {
+
 					collection = Arrays.asList(values()).stream().filter(c -> name.equals(c.getName())).findFirst().get();
 				} catch (NoSuchElementException e) {
 

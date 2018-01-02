@@ -808,11 +808,6 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/jqtree/docs/jqtree-1.4.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/pdfjs/srcs/pdfjs-1.10.88-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/pdfjs/jars/pdfjs-1.10.88.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/pdfjs/docs/pdfjs-1.10.88-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/pdf-js/jars/pdf-js-1.9.426.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/pdf-js/docs/pdf-js-1.9.426-javadoc.jar!/"/>

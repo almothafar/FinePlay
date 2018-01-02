@@ -109,7 +109,7 @@ var search = function(){
 
 					var variation = '<div class="variation' + cssClass + '">' +
 									'<div class="marker">' +
-										'<i id="" class="fa fa-circle"></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i>' +
+										'<i id="" class="fa fa-circle"></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i>' +
 									'</div>' +
 									'<div class="character">' + variationCharacter + '</div>' +
 									'<small class="text-muted">' + variationHex +

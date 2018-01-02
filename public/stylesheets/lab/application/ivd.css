@@ -25,7 +25,10 @@
 	color: #f0ad4e;
 }
 .variation.msarg>.marker>i:nth-child(4){
-	color: #d9534f;
+	color: #0d674b;
+}
+.variation.krname>.marker>i:nth-child(5){
+	color: #bf192d;
 }
 
 .variation>.character{
@@ -41,6 +44,9 @@
 	font-family: IPAmjMincho;
 }
 .variation.msarg>.character{
+
+}
+.variation.krname>.character{
 
 }
 
