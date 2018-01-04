@@ -32,6 +32,7 @@ import org.junit.Test;
 
 import common.utils.Locales;
 import common.utils.Sessions;
+import models.base.EntityDao;
 import models.user.User.Role;
 import models.user.User.Theme;
 import play.db.jpa.JPAApi;
@@ -65,6 +66,71 @@ public class UserDaoTest extends WithApplication {
 
 	@After
 	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testCount() {
+
+		running(Helpers.testServer(), () -> {
+
+			final Http.Context context = getMockContext(Locale.US);
+
+			Http.Context.current.set(context);
+
+			final EntityManager manager = jpaApi.em();
+
+			manager.getTransaction().begin();
+
+			long count;
+			try {
+
+				count = new EntityDao<User>() {
+				}.count(manager, models.user.User.class);
+
+				assertThat("", 104L, is(count));
+			} catch (final Exception e1) {
+
+				fail("");
+			}
+
+			try {
+
+				count = new EntityDao<User>() {
+				}.count(manager, models.user.User.class, (builder, query) -> {
+
+					final Root<User> root = query.from(User.class);
+					query.select(builder.count(root));
+					query.where(builder.equal(root.get(User_.locale), Locale.US));
+				});
+
+				assertThat("", 103L, is(count));
+			} catch (final Exception e1) {
+
+				fail("");
+			}
+
+			try {
+
+				count = new EntityDao<User>() {
+				}.count(manager, models.user.User.class, (builder, query) -> {
+
+					final Root<User> root = query.from(User.class);
+					query.select(builder.count(root));
+					query.where(builder.equal(root.get(User_.locale), Locale.US));
+				}, parameters -> {
+
+				});
+
+				assertThat("", 103L, is(count));
+			} catch (final Exception e1) {
+
+				fail("");
+			}
+
+			manager.getTransaction().commit();
+
+			Http.Context.current.remove();
+		});
 	}
 
 	@Test
@@ -443,7 +509,7 @@ public class UserDaoTest extends WithApplication {
 		final RequestBuilder builder = new RequestBuilder();
 		builder.header("User-Agent", "mocked user-agent");
 		builder.session(User.USERID, "mockUser");
-		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[]{Role.ADMIN})));
+		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[] { Role.ADMIN })));
 		builder.session(models.user.User.THEME, Theme.DEFAULT.name());
 		builder.session(User.ZONEID, ZoneId.of("UTC").getId());
 		builder.cookie(Cookie.builder(models.user.User.THEME, Theme.DEFAULT.name()).build());

@@ -54,6 +54,9 @@ public class UI extends Controller {
 		case "floatbutton":
 
 			return floatbutton();
+		case "summary":
+
+			return summary();
 		case "campaign":
 
 			return campaign();
@@ -152,6 +155,11 @@ public class UI extends Controller {
 	private static Result floatbutton() {
 
 		return ok(views.html.lab.ui.floatbutton.render());
+	}
+
+	private static Result summary() {
+
+		return ok(views.html.lab.ui.summary.render());
 	}
 
 	private static Result campaign() {

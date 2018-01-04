@@ -327,6 +327,7 @@ var MessageKeys = {
 	STOPPING: "stopping",
 	STYLE: "style",
 	SUCCESS: "success",
+	SUMMARY: "summary",
 	SUMMERNOTE_LANG: "summernote.lang",
 	SYSTEM: "system",
 	SYSTEM_CONSTRAINT_HIRAGANA: "system.constraint.hiragana",

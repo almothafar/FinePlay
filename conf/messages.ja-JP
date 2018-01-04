@@ -433,6 +433,7 @@ stopped = 停止済
 stopping = 停止中
 style = スタイル
 success = 成功
+summary = 概要
 system = システム
 table = テーブル
 target = 対象

@@ -433,6 +433,7 @@ stopped = Stopped
 stopping = Stopping
 style = Style
 success = Success
+summary = Summary
 system = System
 table = Table
 target = Target

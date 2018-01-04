@@ -38,6 +38,8 @@ Open URL
 
 [http://localhost:9000](http://localhost:9000)
 
+By clicking the green user icon, users for development can be selected.
+
 Document
 -------
 

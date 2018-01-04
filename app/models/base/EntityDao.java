@@ -20,6 +20,9 @@ public interface EntityDao<ENTITY> {
 			@Nonnull final Class<ENTITY> entityClass) {
 
 		final long count = count(manager, entityClass, (builder, query) -> {
+
+			final Root<ENTITY> root = query.from(entityClass);
+			query.select(builder.count(root));
 		});
 		return count;
 	}
