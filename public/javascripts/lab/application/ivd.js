@@ -109,11 +109,11 @@ var search = function(){
 
 					var variation = '<div class="variation' + cssClass + '">' +
 									'<div class="marker">' +
-										'<i id="" class="fa fa-circle"></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i><i id="" class="fa fa-circle "></i>' +
+										'<i id="" class="fas fa-circle"></i><i id="" class="fas fa-circle "></i><i id="" class="fas fa-circle "></i><i id="" class="fas fa-circle "></i><i id="" class="fas fa-circle "></i>' +
 									'</div>' +
 									'<div class="character">' + variationCharacter + '</div>' +
 									'<small class="text-muted">' + variationHex +
-										'<button id="" type="button" class="btn btn-link btn-sm p-0" title="' + idTip + '" data-toggle="tooltip" data-placement="top"><i id="" class="fa fa-info-circle"></i></button>' +
+										'<button id="" type="button" class="btn btn-link btn-sm p-0" title="' + idTip + '" data-toggle="tooltip" data-placement="top"><i id="" class="fas fa-info-circle"></i></button>' +
 									'</small>' +
 								'</div>';
 					$('#variations').append(variation);

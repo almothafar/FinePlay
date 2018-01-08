@@ -15,6 +15,6 @@
 }
 
 @components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true"), Seq(
-	Map("name"->Messages(MessageKeys.GENERAL), "icon"->"fa fa-pencil", "link"->controllers.setting.user.routes.User.index().toString, "selected"->equalTask("general").toString),
-	Map("name"->Messages(MessageKeys.CHANGEUSER), "icon"->"fa fa-pencil", "link"->controllers.setting.user.routes.ChangeUser.index().toString, "selected"->equalTask("changeuser").toString)
+	Map("name"->Messages(MessageKeys.GENERAL), "icon"->"fas fa-pencil-alt", "link"->controllers.setting.user.routes.User.index().toString, "selected"->equalTask("general").toString),
+	Map("name"->Messages(MessageKeys.CHANGEUSER), "icon"->"fas fa-pencil-alt", "link"->controllers.setting.user.routes.ChangeUser.index().toString, "selected"->equalTask("changeuser").toString)
 ))

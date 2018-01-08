@@ -15,8 +15,8 @@
 }
 
 @components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true"), Seq(
-	Map("name"->Messages(MessageKeys.TASK), "icon"->"fa fa-pencil", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalTask("task").toString),
-	Map("name"->(Messages(MessageKeys.TASK)+" 2"), "icon"->"fa fa-pencil", "link"->controllers.section.work.routes.Work.task2().toString, "selected"->equalTask("task2").toString),
-	Map("name"->(Messages(MessageKeys.TASK)+" 3"), "icon"->"fa fa-pencil", "link"->controllers.section.work.routes.Work.task3().toString, "selected"->equalTask("task3").toString),
-	Map("name"->(Messages(MessageKeys.TASK)+" 4"), "icon"->"fa fa-pencil", "link"->"", "selected"->equalTask("task4").toString, "enabled"->"false")
+	Map("name"->Messages(MessageKeys.TASK), "icon"->"fas fa-pencil-alt", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalTask("task").toString),
+	Map("name"->(Messages(MessageKeys.TASK)+" 2"), "icon"->"fas fa-pencil-alt", "link"->controllers.section.work.routes.Work.task2().toString, "selected"->equalTask("task2").toString),
+	Map("name"->(Messages(MessageKeys.TASK)+" 3"), "icon"->"fas fa-pencil-alt", "link"->controllers.section.work.routes.Work.task3().toString, "selected"->equalTask("task3").toString),
+	Map("name"->(Messages(MessageKeys.TASK)+" 4"), "icon"->"fas fa-pencil-alt", "link"->"", "selected"->equalTask("task4").toString, "enabled"->"false")
 ))

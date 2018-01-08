@@ -55,7 +55,7 @@ $.each(fixedUsersData, function(){
 	fixedUsersHtml = fixedUsersHtml +
 		'<div class="row justify-content-center">' +
 			'<div class="my-1">' +
-				'<button type="button" class="btn btn-success fixedUser_body fixedUserButton rounded-circle"><i class="fa fa-user-o"></i></button>' +
+				'<button type="button" class="btn btn-success fixedUser_body fixedUserButton rounded-circle"><i class="far fa-user"></i></button>' +
 			'</div>' +
 		'</div>' +
 		'<div class="fixedUser_caption"><strong class="fixedUser_UserId">' + fixedUser.userId + '</strong></div>';

@@ -15,8 +15,8 @@
 
 	val lastElement = prop - "id"
 	val elements = scala.collection.mutable.ListBuffer[Map[String, String]](
-		Map("name"->Messages(MessageKeys.LAB), "icon"->"fa fa-flask", "link"->controllers.lab.library.routes.Library.index("bootbox").toString()),
-		Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"fa fa-file-text-o", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString())
+		Map("name"->Messages(MessageKeys.LAB), "icon"->"fas fa-flask", "link"->controllers.lab.library.routes.Library.index("bootbox").toString()),
+		Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"far fa-file-alt", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString())
 	)
 	elements += lastElement
 

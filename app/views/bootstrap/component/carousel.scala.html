@@ -22,7 +22,7 @@
 	@body("bootstrap","component"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->"Carousel", "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->"Carousel", "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -36,9 +36,9 @@
 				<div class="col-md-9">
 
 					@components.carousel(Map("id"->""), List(
-						Map("icon"->"fa fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#777&bg=#555&text=First slide", "alternate"->"First slide", "caption"->"First", "description"->"Description of firfst slide"),
-						Map("icon"->"fa fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#666&bg=#444&text=Second slide", "alternate"->"Second slide", "caption"->"Second", "description"->"Description of second slide"),
-						Map("icon"->"fa fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#555&bg=#333&text=Third slide", "alternate"->"Third slide", "caption"->"Third", "description"->"Description of third slide", "selected"->"true")
+						Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#777&bg=#555&text=First slide", "alternate"->"First slide", "caption"->"First", "description"->"Description of firfst slide"),
+						Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#666&bg=#444&text=Second slide", "alternate"->"Second slide", "caption"->"Second", "description"->"Description of second slide"),
+						Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#555&bg=#333&text=Third slide", "alternate"->"Third slide", "caption"->"Third", "description"->"Description of third slide", "selected"->"true")
 					))
 				</div>
 			</div>

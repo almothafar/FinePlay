@@ -14,7 +14,7 @@
 
 @(form: play.data.Form[models.manage.company.organization.tree.ReadFormContent])
 
-@components.modal(Map("id"->"updateDialog", "icon"->"fa fa-hdd-o", "title"->Messages(MessageKeys.SAVE), "closable"->"false", "data-backdrop"->"static"), List(
+@components.modal(Map("id"->"updateDialog", "icon"->"far fa-hdd", "title"->Messages(MessageKeys.SAVE), "closable"->"false", "data-backdrop"->"static"), List(
 		Map("id"->"updateCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 		Map("id"->"updateOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
 	)){

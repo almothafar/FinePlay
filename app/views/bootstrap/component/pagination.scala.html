@@ -22,7 +22,7 @@
 	@body("bootstrap","component"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->"Pagination", "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->"Pagination", "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -36,29 +36,29 @@
 				<div class="col-md-9">
 
 					@components.pagination(Map("id"->""),
-						Map("icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
-						Map("icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						Map("icon"->"fas fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						Map("icon"->"fas fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
 						List(
-							Map("name"->"1", "icon"->"fa fa-spinner fa-pulse", "link"->"", "selected"->"true"),
-							Map("name"->"2", "icon"->"fa fa-spinner fa-pulse", "link"->""),
-							Map("name"->"3", "icon"->"fa fa-spinner fa-pulse", "link"->""),
-							Map("name"->"4", "icon"->"fa fa-spinner fa-pulse", "link"->""),
-							Map("name"->"5", "icon"->"fa fa-spinner fa-pulse", "link"->"")),
-						Map("icon"->"fa fa-spinner fa-pulse", "link"->""),
-						Map("icon"->"fa fa-spinner fa-pulse", "link"->"")
+							Map("name"->"1", "icon"->"fas fa-spinner fa-pulse", "link"->"", "selected"->"true"),
+							Map("name"->"2", "icon"->"fas fa-spinner fa-pulse", "link"->""),
+							Map("name"->"3", "icon"->"fas fa-spinner fa-pulse", "link"->""),
+							Map("name"->"4", "icon"->"fas fa-spinner fa-pulse", "link"->""),
+							Map("name"->"5", "icon"->"fas fa-spinner fa-pulse", "link"->"")),
+						Map("icon"->"fas fa-spinner fa-pulse", "link"->""),
+						Map("icon"->"fas fa-spinner fa-pulse", "link"->"")
 					)
 
 					@components.pagination(Map("id"->""),
-						Map("name"->"«", "icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
-						Map("name"->"‹", "icon"->"fa fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						Map("name"->"«", "icon"->"fas fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
+						Map("name"->"‹", "icon"->"fas fa-spinner fa-pulse", "link"->"", "enabled"->"false"),
 						List(
-							Map("name"->"1", "icon"->"fa fa-spinner fa-pulse", "link"->"", "selected"->"true"),
-							Map("name"->"2", "icon"->"fa fa-spinner fa-pulse", "link"->""),
-							Map("name"->"3", "icon"->"fa fa-spinner fa-pulse", "link"->""),
-							Map("name"->"4", "icon"->"fa fa-spinner fa-pulse", "link"->""),
-							Map("name"->"5", "icon"->"fa fa-spinner fa-pulse", "link"->"")),
-						Map("name"->"›", "icon"->"fa fa-spinner fa-pulse", "link"->""),
-						Map("name"->"»", "icon"->"fa fa-spinner fa-pulse", "link"->"")
+							Map("name"->"1", "icon"->"fas fa-spinner fa-pulse", "link"->"", "selected"->"true"),
+							Map("name"->"2", "icon"->"fas fa-spinner fa-pulse", "link"->""),
+							Map("name"->"3", "icon"->"fas fa-spinner fa-pulse", "link"->""),
+							Map("name"->"4", "icon"->"fas fa-spinner fa-pulse", "link"->""),
+							Map("name"->"5", "icon"->"fas fa-spinner fa-pulse", "link"->"")),
+						Map("name"->"›", "icon"->"fas fa-spinner fa-pulse", "link"->""),
+						Map("name"->"»", "icon"->"fas fa-spinner fa-pulse", "link"->"")
 					)
 
 					@components.adjust.pagination(Map("id"->"", "link"->"#", "pageIndex"->"0", "pageCount"->"5", "visibleCount"->"3"))

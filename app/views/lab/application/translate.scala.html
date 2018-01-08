@@ -37,7 +37,7 @@
 	@body("lab","application"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TRANSLATE), "icon"->"fa fa-exchange", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TRANSLATE), "icon"->"fas fa-exchange-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -66,7 +66,7 @@
 						</div>
 					</div>
 
-					@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+					@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
 							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
 						)){
 						<div class="wordwrap">
@@ -77,7 +77,7 @@
 					}
 					<div class="mt-3 mb-3 text-right">
 
-						@components.button(Map("id"->"translateButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-exchange", "text"->Messages(MessageKeys.TRANSLATE), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+						@components.button(Map("id"->"translateButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-exchange-alt", "text"->Messages(MessageKeys.TRANSLATE), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
 					</div>
 				</div>
 			</div>

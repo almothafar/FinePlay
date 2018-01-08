@@ -20,7 +20,7 @@
 	@body("lab","maintenance"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.MASTER), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.MASTER), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"masterContent", "fluid"->"true", "class"->"d-none")){
@@ -36,10 +36,10 @@
 						Map("id"->""),List(
 							Tuple2(Map("id"->""),List(
 								Map("id"->"", "text"->"T00001"),
-								Map("id"->"", "text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fa fa-arrow-circle-right", "text"->"")).toString()))),
+								Map("id"->"", "text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fas fa-arrow-circle-right", "text"->"")).toString()))),
 							Tuple2(Map("id"->""),List(
 								Map("id"->"", "text"->"T00002"),
-								Map("id"->"", "text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fa fa-arrow-circle-right", "text"->"")).toString())))),
+								Map("id"->"", "text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fas fa-arrow-circle-right", "text"->"")).toString())))),
 						Map("id"->""),Tuple2(Map("id"->""),List(
 							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.TARGET)),
 							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.DETAIL))))

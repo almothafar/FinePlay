@@ -248,7 +248,7 @@ $("#helpButton").on('click', function(event) {
 
 						errorMessage = '' +
 							'<div class="alert alert-warning m-3" role="alert">' +
-								'<i class="fa fa-exclamation-triangle"></i>' +
+								'<i class="fas fa-exclamation-triangle"></i>' +
 								' ' + bodyMessages("getHelpError") +
 							'</div>';
 						break;

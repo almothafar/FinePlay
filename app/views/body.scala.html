@@ -65,33 +65,33 @@
 		<div id="system_work-menu">
 
 			@workmenu(Map("id"->"system_sections"), List(
-				(Map("name"->Messages(MessageKeys.HOME), "icon"->"fa fa-home", "selected"->equalSection("home")),List(
-					Map("name"->Messages(MessageKeys.INTRO), "icon"->"fa fa-file-text-o", "link"->controllers.home.routes.Home.index().toString(), "selected"->equalWork("home","intro")),
-					Map("name"->Messages(MessageKeys.VIDEO), "icon"->"fa fa-film", "link"->controllers.home.routes.Home.video().toString(), "selected"->equalWork("home","video"))
+				(Map("name"->Messages(MessageKeys.HOME), "icon"->"fas fa-home", "selected"->equalSection("home")),List(
+					Map("name"->Messages(MessageKeys.INTRO), "icon"->"far fa-file-alt", "link"->controllers.home.routes.Home.index().toString(), "selected"->equalWork("home","intro")),
+					Map("name"->Messages(MessageKeys.VIDEO), "icon"->"fas fa-film", "link"->controllers.home.routes.Home.video().toString(), "selected"->equalWork("home","video"))
 				)),
-				(Map("name"->Messages(MessageKeys.SETTING), "icon"->"fa fa-cog", "selected"->equalSection("setting")),List(
-					Map("name"->Messages(MessageKeys.SYSTEM), "icon"->"fa fa-desktop", "link"->controllers.setting.system.routes.System.index().toString(), "selected"->equalWork("setting","system")),
-					Map("name"->Messages(MessageKeys.USER), "icon"->"fa fa-user", "link"->controllers.setting.user.routes.User.index().toString(), "selected"->equalWork("setting","user"))
+				(Map("name"->Messages(MessageKeys.SETTING), "icon"->"fas fa-cog", "selected"->equalSection("setting")),List(
+					Map("name"->Messages(MessageKeys.SYSTEM), "icon"->"fas fa-desktop", "link"->controllers.setting.system.routes.System.index().toString(), "selected"->equalWork("setting","system")),
+					Map("name"->Messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.setting.user.routes.User.index().toString(), "selected"->equalWork("setting","user"))
 				)),
-				(Map("name"->Messages(MessageKeys.INFORMATION), "icon"->"fa fa-info-circle", "selected"->equalSection("information")),List(
-					Map("name"->Messages(MessageKeys.CREATOR), "icon"->"fa fa-address-card", "link"->controllers.information.routes.Information.creator().toString(), "selected"->equalWork("information","creator")),
+				(Map("name"->Messages(MessageKeys.INFORMATION), "icon"->"fas fa-info-circle", "selected"->equalSection("information")),List(
+					Map("name"->Messages(MessageKeys.CREATOR), "icon"->"fas fa-address-card", "link"->controllers.information.routes.Information.creator().toString(), "selected"->equalWork("information","creator")),
 					Map("name"->Messages(MessageKeys.LICENSE), "icon"->"ii ii-fineplay", "link"->controllers.information.routes.Information.license().toString(), "selected"->equalWork("information","license"))
 				)),
-				(Map("show"->isShow(Permission.MANAGE).toString(), "name"->Messages(MessageKeys.MANAGE), "icon"->"fa fa-wrench", "selected"->equalSection("manage")),List(
-					Map("name"->Messages(MessageKeys.COMPANY), "icon"->"fa fa-building-o", "link"->controllers.manage.company.routes.Read.index().toString(), "selected"->equalWork("manage","company")),
-					Map("name"->Messages(MessageKeys.USER), "icon"->"fa fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user")),
-					Map("class"->"secret", "name"->Messages(MessageKeys.BATCH), "icon"->"fa fa-tasks", "link"->controllers.manage.batch.routes.Batch.index().toString(), "selected"->equalWork("manage","batch"))
+				(Map("show"->isShow(Permission.MANAGE).toString(), "name"->Messages(MessageKeys.MANAGE), "icon"->"fas fa-wrench", "selected"->equalSection("manage")),List(
+					Map("name"->Messages(MessageKeys.COMPANY), "icon"->"far fa-building", "link"->controllers.manage.company.routes.Read.index().toString(), "selected"->equalWork("manage","company")),
+					Map("name"->Messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user")),
+					Map("class"->"secret", "name"->Messages(MessageKeys.BATCH), "icon"->"fas fa-tasks", "link"->controllers.manage.batch.routes.Batch.index().toString(), "selected"->equalWork("manage","batch"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"nf nf-disclosure_triangle", "selected"->equalSection("development")),List(
-					Map("name"->Messages(MessageKeys.HTTP), "icon"->"fa fa-file-text-o", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
-					Map("name"->Messages(MessageKeys.JAVASCRIPT), "icon"->"fa fa-file-text-o", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
-					Map("name"->Messages(MessageKeys.DESIGN), "icon"->"fa fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),
-					Map("name"->Messages(MessageKeys.DOCUMENT), "icon"->"fa fa-file-text-o", "link"->controllers.development.document.routes.Document.index("troubleshoot").toString(), "selected"->equalWork("development","document")),
-					Map("name"->Messages(MessageKeys.HELP), "icon"->"fa fa-question-circle-o", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
+					Map("name"->Messages(MessageKeys.HTTP), "icon"->"far fa-file-alt", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
+					Map("name"->Messages(MessageKeys.JAVASCRIPT), "icon"->"far fa-file-alt", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
+					Map("name"->Messages(MessageKeys.DESIGN), "icon"->"fas fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),
+					Map("name"->Messages(MessageKeys.DOCUMENT), "icon"->"far fa-file-alt", "link"->controllers.development.document.routes.Document.index("troubleshoot").toString(), "selected"->equalWork("development","document")),
+					Map("name"->Messages(MessageKeys.HELP), "icon"->"far fa-question-circle", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.ENVIRONMENT), "icon"->"fa fa-thermometer-half", "selected"->equalSection("environment")),List(
-					Map("name"->Messages(MessageKeys.JAVA), "icon"->"fa fa-coffee", "link"->controllers.environment.javalang.routes.Java.index().toString(), "selected"->equalWork("environment","java")),
-					Map("name"->Messages(MessageKeys.BROWSER), "icon"->"fa fa-safari", "link"->controllers.environment.browser.routes.Browser.index().toString(), "selected"->equalWork("environment","browser"))
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.ENVIRONMENT), "icon"->"fas fa-thermometer-half", "selected"->equalSection("environment")),List(
+					Map("name"->Messages(MessageKeys.JAVA), "icon"->"fas fa-coffee", "link"->controllers.environment.javalang.routes.Java.index().toString(), "selected"->equalWork("environment","java")),
+					Map("name"->Messages(MessageKeys.BROWSER), "icon"->"fab fa-safari", "link"->controllers.environment.browser.routes.Browser.index().toString(), "selected"->equalWork("environment","browser"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FRAMEWORK), "icon"->"ii ii-play if-monochrome", "selected"->equalSection("framework")),List(
 					Map("name"->Messages(MessageKeys.WELCOME), "icon"->"ii ii-play", "link"->controllers.framework.welcome.routes.Welcome.index().toString(), "selected"->equalWork("framework","welcome")),
@@ -100,24 +100,24 @@
 					Map("name"->Messages(MessageKeys.DATETIME), "icon"->"ef ef-calendar if-monochrome", "link"->controllers.framework.datetime.routes.DateTime.index().toString(), "selected"->equalWork("framework","datetime"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.BOOTSTRAP), "icon"->"ii ii-bootstrap if-monochrome if-inverse", "selected"->equalSection("bootstrap")),List(
-					Map("name"->Messages(MessageKeys.COMPONENT), "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.component.routes.Component.index("button").toString(), "selected"->equalWork("bootstrap","component")),
-					Map("name"->Messages(MessageKeys.LAYOUT), "icon"->"fa fa-file-text-o", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString(), "selected"->equalWork("bootstrap","layout"))
+					Map("name"->Messages(MessageKeys.COMPONENT), "icon"->"far fa-file-alt", "link"->controllers.bootstrap.component.routes.Component.index("button").toString(), "selected"->equalWork("bootstrap","component")),
+					Map("name"->Messages(MessageKeys.LAYOUT), "icon"->"far fa-file-alt", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString(), "selected"->equalWork("bootstrap","layout"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FONTAWESOME), "icon"->"fa fa-font-awesome", "selected"->equalSection("fontawesome")),List(
-					Map("name"->Messages(MessageKeys.STYLE), "icon"->"fa fa-file-text-o", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString(), "selected"->equalWork("fontawesome","style"))
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FONTAWESOME), "icon"->"fab fa-font-awesome", "selected"->equalSection("fontawesome")),List(
+					Map("name"->Messages(MessageKeys.STYLE), "icon"->"far fa-file-alt", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString(), "selected"->equalWork("fontawesome","style"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.LAB), "icon"->"fa fa-flask", "selected"->equalSection("lab")),List(
-					Map("name"->Messages(MessageKeys.LIBRARY), "icon"->"fa fa-file-text-o", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
-					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"fa fa-file-text-o", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
-					Map("name"->Messages(MessageKeys.UI), "icon"->"fa fa-file-text-o", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
-					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"fa fa-file-text-o", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance")),
-					Map("name"->"Fork", "icon"->"fa fa-code-fork", "link"->controllers.lab.fork.routes.Fork.index().toString(), "selected"->equalWork("bootstrap","fork")),
-					Map("name"->"I Like", "icon"->"fa fa-file-text-o", "link"->controllers.lab.ilike.routes.ILike.index().toString(), "selected"->equalWork("bootstrap","ilike"))
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.LAB), "icon"->"fas fa-flask", "selected"->equalSection("lab")),List(
+					Map("name"->Messages(MessageKeys.LIBRARY), "icon"->"far fa-file-alt", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
+					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"far fa-file-alt", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
+					Map("name"->Messages(MessageKeys.UI), "icon"->"far fa-file-alt", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
+					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"far fa-file-alt", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance")),
+					Map("name"->"Fork", "icon"->"fas fa-code-branch", "link"->controllers.lab.fork.routes.Fork.index().toString(), "selected"->equalWork("bootstrap","fork")),
+					Map("name"->"I Like", "icon"->"far fa-file-alt", "link"->controllers.lab.ilike.routes.ILike.index().toString(), "selected"->equalWork("bootstrap","ilike"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.SECTION), "icon"->"fa fa-folder-o", "selected"->equalSection("section")),List(
-					Map("name"->Messages(MessageKeys.WORK), "icon"->"fa fa-file-text-o", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalWork("section","work")),
-					Map("name"->(Messages(MessageKeys.WORK)+" 2"), "icon"->"fa fa-file-text-o", "link"->"", "selected"->equalWork("section","work2")),
-					Map("name"->(Messages(MessageKeys.WORK)+" 3"), "icon"->"fa fa-file-text-o", "link"->"", "selected"->equalWork("section","work3"), "enabled"->"false")
+				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.SECTION), "icon"->"far fa-folder", "selected"->equalSection("section")),List(
+					Map("name"->Messages(MessageKeys.WORK), "icon"->"far fa-file-alt", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalWork("section","work")),
+					Map("name"->(Messages(MessageKeys.WORK)+" 2"), "icon"->"far fa-file-alt", "link"->"", "selected"->equalWork("section","work2")),
+					Map("name"->(Messages(MessageKeys.WORK)+" 3"), "icon"->"far fa-file-alt", "link"->"", "selected"->equalWork("section","work3"), "enabled"->"false")
 				))
 			))
 		</div>
@@ -125,7 +125,7 @@
 		<button id="system_menu-left-corner">
 		</button>
 
-		<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow">
+		<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow-light">
 
 			<div class="d-inline">
 			@components.button(Map("id"->"menuButton", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
@@ -138,18 +138,18 @@
 				</ul>
 				<form class="form-inline float-right align-items-center">
 					@views.html.debug()
-					@components.button(Map("id"->"printButton", "type"->"link", "icon"->"fa fa-print", "text"->"", "class"->"ml-1 d-none"))
-					@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fa fa-angle-double-up", "text"->"", "class"->"ml-1"))
+					@components.button(Map("id"->"printButton", "type"->"link", "icon"->"fas fa-print", "text"->"", "class"->"ml-1 d-none"))
+					@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fas fa-angle-double-up", "text"->"", "class"->"ml-1"))
 					<div class="btn-group">
 						<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USERID)</span>
+							<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USERID)</span>
 						</button>
 						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fa fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
-							<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fa fa-sign-out"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
+							<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
+							<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fas fa-sign-out-alt"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
 						</div>
 					</div>
-					@components.button(Map("id"->"helpButton", "type"->"link", "icon"->"fa fa-question-circle-o", "text"->"", "class"->"ml-1 d-none"))
+					@components.button(Map("id"->"helpButton", "type"->"link", "icon"->"far fa-question-circle", "text"->"", "class"->"ml-1 d-none"))
 				</form>
 			</div>
 		</nav>
@@ -158,7 +158,7 @@
 			@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon"))
 		</nav>
 
-		<div id="system_extension-menu" class="shadow">
+		<div id="system_extension-menu" class="shadow-light">
 		</div>
 
 		<div id="system_content">
@@ -174,7 +174,7 @@
 		<div id="system_notifications">
 		</div>
 
-		@components.modal(Map("id"->"reportErrorDialog", "icon"->"fa fa-bug", "title"->(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR)), "data-backdrop"->"static", "size"->"lg"), List(
+		@components.modal(Map("id"->"reportErrorDialog", "icon"->"fas fa-bug", "title"->(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR)), "data-backdrop"->"static", "size"->"lg"), List(
 				Map("id"->"reportErrorCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 				Map("id"->"reportErrorButton", "type"->"primary", "text"->Messages(MessageKeys.REPORT), "default"->"true")
 			)){
@@ -187,8 +187,8 @@
 			@if(isDev()){
 			<div class="mt-3">
 				<input type="text" class="form-control" id="searchErrorMessage" placeholder="@Messages(MessageKeys.ERROR)">
-				@components.button(Map("id"->"searchStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-stack-overflow", "text"->"Stack Overflow"))
-				@components.button(Map("id"->"searchStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-stack-overflow", "text"->"スタック・オーバーフロー"))
+				@components.button(Map("id"->"searchStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-stack-overflow", "text"->"Stack Overflow"))
+				@components.button(Map("id"->"searchStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-stack-overflow", "text"->"スタック・オーバーフロー"))
 				@components.button(Map("id"->"searchQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
 				@components.button(Map("id"->"searchTeratailButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"teratail"))
 			</div>
@@ -211,13 +211,13 @@
 					<div class="input-group">
 						<div class="input-group-append">
 							<span class="input-group-text">
-								@components.icon(Map("id"->"", "icon"->"fa fa-search"))
+								@components.icon(Map("id"->"", "icon"->"fas fa-search"))
 							</span>
 						</div>
 						<input id="help-search-text" type="text" class="form-control" aria-label="">
 						<div class="input-group-prepend">
 							<span id="help-search-clear" class="input-group-text">
-								@components.icon(Map("id"->"", "icon"->"fa fa-times-circle"))
+								@components.icon(Map("id"->"", "icon"->"fas fa-times-circle"))
 							</span>
 						</div>
 					</div>
@@ -227,14 +227,14 @@
 
 					@components.nav(Map("id"->"","pills"->"true"), List(
 						/* Pair with help-top */
-						Map("icon"->"fa fa-angle-double-up", "link"->"#help-top", "selected"->"true")
+						Map("icon"->"fas fa-angle-double-up", "link"->"#help-top", "selected"->"true")
 					))
 				</nav>
 			</div>
 
 			<div id="system_help-content" class="help-notready">
 
-				<div id="system_help-main" data-spy="scroll" data-target="#system_help-navbar" data-offset="0" class="shadow-inset">
+				<div id="system_help-main" data-spy="scroll" data-target="#system_help-navbar" data-offset="0" class="shadow-light-inset">
 
 					<!-- Pair with nav-link -->
 					<h1 class="bd-title" id="help-top">
@@ -244,7 +244,7 @@
 						<div class="align-self-center w-100">
 							<div class="d-flex justify-content-center">
 								<span class="fa-stack fa-2x rounded bg-secondary opacity-25">
-									@components.icon(Map("id"->"system_help-content-loading", "icon"->"fa fa-spinner fa-pulse fa-stack-1x", "class"->"text-white"))
+									@components.icon(Map("id"->"system_help-content-loading", "icon"->"fas fa-spinner fa-pulse fa-stack-1x", "class"->"text-white"))
 								</span>
 							</div>
 						</div>
@@ -261,7 +261,7 @@
 			<div class="col-2 align-self-center">
 				<div class="row justify-content-center">
 					<div class="d-md-block rounded p-5 bg-secondary opacity-25">
-						<i class="fa fa-circle-o-notch fa-5x fa-spin text-white"></i>
+						<i class="fas fa-circle-notch fa-5x fa-spin text-white"></i>
 					</div>
 				</div>
 			</div>

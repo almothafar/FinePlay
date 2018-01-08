@@ -15,5 +15,5 @@
 }
 
 @components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true"), Seq(
-	Map("name"->Messages(MessageKeys.LIST), "icon"->"fa fa-list", "link"->controllers.manage.user.routes.Read.index().toString, "selected"->equalTask("list").toString)
+	Map("name"->Messages(MessageKeys.LIST), "icon"->"fas fa-list", "link"->controllers.manage.user.routes.Read.index().toString, "selected"->equalTask("list").toString)
 ))

@@ -14,7 +14,7 @@
 
 @()
 
-@components.modal(Map("id"->"updateDialog", "icon"->"fa fa-edit", "title"->Messages(MessageKeys.UPDATE), "closable"->"false", "data-backdrop"->"static"), List(
+@components.modal(Map("id"->"updateDialog", "icon"->"fas fa-edit", "title"->Messages(MessageKeys.UPDATE), "closable"->"false", "data-backdrop"->"static"), List(
 		Map("id"->"updateCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 		Map("id"->"updateOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
 	)){
@@ -72,7 +72,7 @@
 						</div>
 					</div>
 					<div class="col-3">
-						@components.button(Map("id"->("updateDelete"+User.COMPANYID), "type"->"primary", "outline"->"true", "icon"->"fa fa-times-circle", "text"->"", "class"->"float-right"))
+						@components.button(Map("id"->("updateDelete"+User.COMPANYID), "type"->"primary", "outline"->"true", "icon"->"fas fa-times-circle", "text"->"", "class"->"float-right"))
 					</div>
 				</div>
 			</div>

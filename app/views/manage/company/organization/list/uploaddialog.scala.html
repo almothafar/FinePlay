@@ -15,7 +15,7 @@
 
 @(form: play.data.Form[ReadFormContent])
 
-@components.modal(Map("id"->"uploadDialog", "icon"->"fa fa-upload", "title"->("CSV "+Messages(MessageKeys.UPLOAD)), "closable"->"false", "data-backdrop"->"static"), List(
+@components.modal(Map("id"->"uploadDialog", "icon"->"fas fa-upload", "title"->("CSV "+Messages(MessageKeys.UPLOAD)), "closable"->"false", "data-backdrop"->"static"), List(
 		Map("id"->"uploadCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 		Map("id"->"uploadOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
 	)){
@@ -41,7 +41,7 @@
 					<input id="@OrganizationUnit.UPLOADFILE" type="file" name="@OrganizationUnit.UPLOADFILE" class="custom-file-input" value="" required autofocus>
 					<label class="custom-file-label" for="@OrganizationUnit.UPLOADFILE"></label>
 				</div>
-				<small class="text-muted">@Messages(MessageKeys.ABOUT__X, Messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fa fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
+				<small class="text-muted">@Messages(MessageKeys.ABOUT__X, Messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fas fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
 				<div>
 					<p class="text-warning"></p>
 				</div>

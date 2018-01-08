@@ -27,7 +27,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i class="fa fa-envelope-o"></i>
+								<i class="far fa-envelope"></i>
 							</span>
 						</div>
 						<input id="@User.USERID" type="text" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" autofocus>
@@ -64,7 +64,7 @@
 						<input id='@User.EXPIREFROM' type='text' name="@User.EXPIREFROM" class="form-control" value="@form(User.EXPIREFROM).getValue.orElse("")"/>
 						<div class="input-group-append">
 							<span class="input-group-text">
-								<i class="fa fa-calendar"></i>
+								<i class="fas fa-calendar-alt"></i>
 							</span>
 						</div>
 					</div>
@@ -77,7 +77,7 @@
 						<input id='@User.EXPIRETO' type='text' name="@User.EXPIRETO" class="form-control" value="@form(User.EXPIRETO).getValue.orElse("")"/>
 						<div class="input-group-append">
 							<span class="input-group-text">
-								<i class="fa fa-calendar"></i>
+								<i class="fas fa-calendar-alt"></i>
 							</span>
 						</div>
 					</div>
@@ -95,7 +95,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					@components.button(Map("id"->"readButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-refresh", "text"->Messages(MessageKeys.UPDATE), "class"->"float-right"))
+					@components.button(Map("id"->"readButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sync", "text"->Messages(MessageKeys.UPDATE), "class"->"float-right"))
 				</div>
 			</div>
 		}

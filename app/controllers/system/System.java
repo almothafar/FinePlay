@@ -18,6 +18,7 @@ public class System extends Controller {
 				apis.batch.routes.javascript.Batch.restart(), //
 				apis.batch.routes.javascript.Batch.stop(), //
 				apis.batch.routes.javascript.Batch.abandon(), //
+				apis.batch.routes.javascript.Batch.jobExecution(), //
 				controllers.home.routes.javascript.Home.index(), //
 				controllers.user.routes.javascript.User.index(), //
 				controllers.setting.user.routes.javascript.ChangeUser.index(), //

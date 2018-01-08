@@ -22,6 +22,7 @@ GET		/batch/start/:jobName/:userId				apis.batch.Batch.start(jobName: String, us
 GET		/batch/stop/:executionId/:userId				apis.batch.Batch.stop(executionId: Long, userId:String)
 GET		/batch/restart/:executionId/:userId			apis.batch.Batch.restart(executionId: Long, userId:String)
 GET		/batch/abandon/:executionId/:userId			apis.batch.Batch.abandon(executionId: Long, userId:String)
+GET		/batch/jobexecution/:executionId/:userId		apis.batch.Batch.jobExecution(executionId: Long, userId:String)
 
 GET		/test										controllers.test.Test.index()
 
@@ -171,7 +172,7 @@ GET		/lab/application/download/report.pdf			controllers.lab.application.Download
 GET		/lab/application/download/report.docx		controllers.lab.application.Download.reportWordStream()
 GET		/lab/application/download/report.xlsx		controllers.lab.application.Download.reportExcelStream()
 GET		/lab/application/download/report.pptx		controllers.lab.application.Download.reportPowerpointStream()
-GET		/lab/application/download/ivd.pdf			controllers.lab.application.Download.ivdPdfStream()
+GET		/lab/application/download/:executionId/ivd.pdf	controllers.lab.application.Download.ivdPdfStream(executionId: Long)
 GET		/lab/application/download/files.zip			controllers.lab.application.Download.zipStream()
 GET		/lab/application/download/encryptfiles.zip	controllers.lab.application.Download.encryptZipStream()
 GET		/lab/application/upload						controllers.lab.application.Upload.index()

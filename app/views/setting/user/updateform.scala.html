@@ -20,7 +20,7 @@
 			<p class="text-warning">@form.getGlobalError.get.message</p>
 		}
 		<div class="row form-group">
-			<label for="update@User.LOCALE" class="col-sm-3 col-form-label"><i class="fa fa-globe"></i> @Messages(MessageKeys.LANGUAGE)</label>
+			<label for="update@User.LOCALE" class="col-sm-3 col-form-label"><i class="fas fa-globe"></i> @Messages(MessageKeys.LANGUAGE)</label>
 			<div class="col-sm-9">
 				<select id="update@User.LOCALE" name="@User.LOCALE" class="form-control custom-select">
 					@for((localeId,localeName) <- common.utils.Locales.getLocaleIdToNameMap(lang.toLocale)) {
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="row form-group">
-			<label for="update@User.ZONEID" class="col-sm-3 col-form-label"><i class="fa fa-clock-o"></i> @Messages(MessageKeys.TIMEZONE)</label>
+			<label for="update@User.ZONEID" class="col-sm-3 col-form-label"><i class="far fa-clock"></i> @Messages(MessageKeys.TIMEZONE)</label>
 			<div class="col-sm-9">
 				<select id="update@User.ZONEID" name="@User.ZONEID" class="form-control custom-select">
 					@for((zoneId,zoneName) <- common.utils.ZoneIds.getZoneIdToNameMap(lang.toLocale)) {
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<div class="row form-group">
-			<label for="update@User.THEME" class="col-sm-3 col-form-label"><i class="fa fa-paint-brush"></i> @Messages(MessageKeys.THEME)</label>
+			<label for="update@User.THEME" class="col-sm-3 col-form-label"><i class="fas fa-paint-brush"></i> @Messages(MessageKeys.THEME)</label>
 			<div class="col-sm-9">
 				<select id="update@User.THEME" name="@User.THEME" class="form-control custom-select">
 					@for((themeId,themeName) <- common.utils.Themes.getThemeIdToNameMap(lang.toLocale)) {

@@ -21,7 +21,7 @@
 	@body("lab","application"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.PART)+" "+Messages(MessageKeys.PRINT)), "icon"->"fa fa-print", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.PART)+" "+Messages(MessageKeys.PRINT)), "icon"->"fas fa-print", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -37,14 +37,14 @@
 					<div id="printContent0">@components.image(Map("id"->"", "source"->"holder.js/100px200?random=yes", "fluid"->"true", "alternate"->(Messages(MessageKeys.PRINT) + ' ' + Messages(MessageKeys.CONTENT))))</div>
 					<div>
 
-						@components.button(Map("id"->"printContent0Button", "type"->"primary", "outline"->"true", "icon"->"fa fa-print", "text"->Messages(MessageKeys.PRINT)))
+						@components.button(Map("id"->"printContent0Button", "type"->"primary", "outline"->"true", "icon"->"fas fa-print", "text"->Messages(MessageKeys.PRINT)))
 					</div>
 
 					<div class="mt-3"></div>
 					<div id="printContent1">@components.image(Map("id"->"", "source"->"holder.js/100px2000?random=yes", "fluid"->"true", "alternate"->(Messages(MessageKeys.PRINT) + ' ' + Messages(MessageKeys.CONTENT))))</div>
 					<div>
 
-						@components.button(Map("id"->"printContent1Button", "type"->"primary", "outline"->"true", "icon"->"fa fa-print", "text"->Messages(MessageKeys.PRINT)))
+						@components.button(Map("id"->"printContent1Button", "type"->"primary", "outline"->"true", "icon"->"fas fa-print", "text"->Messages(MessageKeys.PRINT)))
 					</div>
 				</div>
 			</div>

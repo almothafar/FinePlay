@@ -20,7 +20,7 @@
 	@body("bootstrap","component"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.LINK)+" "+Messages(MessageKeys.BUTTON)), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.LINK)+" "+Messages(MessageKeys.BUTTON)), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -33,52 +33,52 @@
 				</div>
 				<div class="col-md-9">
 					<div class="mb-3">
-						@components.linkbutton(Map("id"->"", "icon"->"fa fa-spinner fa-pulse", "text"->"Primary"))
-						@components.linkbutton(Map("id"->"", "type"->"secondary", "icon"->"fa fa-spinner fa-pulse", "text"->"Secondary"))
-						@components.linkbutton(Map("id"->"", "type"->"success", "icon"->"fa fa-spinner fa-pulse", "text"->"Success"))
-						@components.linkbutton(Map("id"->"", "type"->"info", "icon"->"fa fa-spinner fa-pulse", "text"->"Info"))
-						@components.linkbutton(Map("id"->"", "type"->"warning", "icon"->"fa fa-spinner fa-pulse", "text"->"Warning"))
-						@components.linkbutton(Map("id"->"", "type"->"danger", "icon"->"fa fa-spinner fa-pulse", "text"->"Danger"))
-						@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fa fa-spinner fa-pulse", "text"->"Link"))
+						@components.linkbutton(Map("id"->"", "icon"->"fas fa-spinner fa-pulse", "text"->"Primary"))
+						@components.linkbutton(Map("id"->"", "type"->"secondary", "icon"->"fas fa-spinner fa-pulse", "text"->"Secondary"))
+						@components.linkbutton(Map("id"->"", "type"->"success", "icon"->"fas fa-spinner fa-pulse", "text"->"Success"))
+						@components.linkbutton(Map("id"->"", "type"->"info", "icon"->"fas fa-spinner fa-pulse", "text"->"Info"))
+						@components.linkbutton(Map("id"->"", "type"->"warning", "icon"->"fas fa-spinner fa-pulse", "text"->"Warning"))
+						@components.linkbutton(Map("id"->"", "type"->"danger", "icon"->"fas fa-spinner fa-pulse", "text"->"Danger"))
+						@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fas fa-spinner fa-pulse", "text"->"Link"))
 					</div>
 					<div class="mb-3">
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Primary"))
-						@components.linkbutton(Map("id"->"", "type"->"secondary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Secondary"))
-						@components.linkbutton(Map("id"->"", "type"->"success", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Success"))
-						@components.linkbutton(Map("id"->"", "type"->"info", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Info"))
-						@components.linkbutton(Map("id"->"", "type"->"warning", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Warning"))
-						@components.linkbutton(Map("id"->"", "type"->"danger", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Danger"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Primary"))
+						@components.linkbutton(Map("id"->"", "type"->"secondary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Secondary"))
+						@components.linkbutton(Map("id"->"", "type"->"success", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Success"))
+						@components.linkbutton(Map("id"->"", "type"->"info", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Info"))
+						@components.linkbutton(Map("id"->"", "type"->"warning", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Warning"))
+						@components.linkbutton(Map("id"->"", "type"->"danger", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Danger"))
 					</div>
 					<div class="mb-3">
-						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fa fa-spinner fa-pulse", "text"->"Small button", "size"->"sm"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fa fa-spinner fa-pulse", "text"->"Active button", "selected"->"true"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fa fa-spinner fa-pulse", "text"->"Disabled button", "enabled"->"false"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fa fa-spinner fa-pulse", "text"->"Large button", "size"->"lg"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fas fa-spinner fa-pulse", "text"->"Small button", "size"->"sm"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fas fa-spinner fa-pulse", "text"->"Active button", "selected"->"true"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fas fa-spinner fa-pulse", "text"->"Disabled button", "enabled"->"false"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "icon"->"fas fa-spinner fa-pulse", "text"->"Large button", "size"->"lg"))
 					</div>
 					<div class="mb-3">
-						@components.linkbutton(Map("id"->"", "block"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Block level button"))
-						@components.linkbutton(Map("id"->"", "type"->"secondary", "block"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Block level button"))
+						@components.linkbutton(Map("id"->"", "block"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Block level button"))
+						@components.linkbutton(Map("id"->"", "type"->"secondary", "block"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Block level button"))
 					</div>
 					<div class="mb-3">
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-check-circle", "text"->"Button", "badge"->"New", "iconType"->"success"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-info-circle", "text"->"Button", "badge"->"1", "iconType"->"info"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-exclamation-circle", "text"->"Button", "badge"->"2", "iconType"->"warning"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-ban", "text"->"Button", "badge"->"3", "iconType"->"danger"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-check-circle", "text"->"Button", "badge"->"New", "iconType"->"success"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-info-circle", "text"->"Button", "badge"->"1", "iconType"->"info"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-exclamation-circle", "text"->"Button", "badge"->"2", "iconType"->"warning"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-ban", "text"->"Button", "badge"->"3", "iconType"->"danger"))
 					</div>
 					<div class="mb-3">
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Tooltip on top", "data-toggle"->"tooltip", "title"->"Tooltip on top"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Tooltip on right", "data-toggle"->"tooltip", "title"->"Tooltip on right", "data-placement"->"right"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Tooltip on bottom", "data-toggle"->"tooltip", "title"->"Tooltip on bottom", "data-placement"->"bottom"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Tooltip on left", "data-toggle"->"tooltip", "title"->"Tooltip on left", "data-placement"->"left", "data-trigger"->"click"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"<em>Tooltip</em> <u>with</u> <b>HTML</b>", "data-toggle"->"tooltip", "data-html"->"true", "title"->"<em>Tooltip</em> <u>with</u> <b>HTML</b>", "data-placement"->"top"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Tooltip on top", "data-toggle"->"tooltip", "title"->"Tooltip on top"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Tooltip on right", "data-toggle"->"tooltip", "title"->"Tooltip on right", "data-placement"->"right"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Tooltip on bottom", "data-toggle"->"tooltip", "title"->"Tooltip on bottom", "data-placement"->"bottom"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Tooltip on left", "data-toggle"->"tooltip", "title"->"Tooltip on left", "data-placement"->"left", "data-trigger"->"click"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"<em>Tooltip</em> <u>with</u> <b>HTML</b>", "data-toggle"->"tooltip", "data-html"->"true", "title"->"<em>Tooltip</em> <u>with</u> <b>HTML</b>", "data-placement"->"top"))
 					</div>
 
 					<div class="mb-3">
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Popover on top", "data-toggle"->"popover", "title"->"Popover on top", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement"->"top"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Popover on right", "data-toggle"->"popover", "title"->"Popover on right", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Popover on bottom", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement"->"bottom"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"Popover on left", "data-toggle"->"popover", "title"->"Popover on left", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement"->"left", "data-trigger"->"hover focus"))
-						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fa fa-spinner fa-pulse", "text"->"<em>Popover</em> <u>with</u> <b>HTML</b>", "data-toggle"->"popover", "data-html"->"true", "title"->"<em>Popover</em> <u>with</u> <b>HTML</b>", "data-content"->"<em>Popover</em> <u>with</u> <b>HTML</b>", "data-placement"->"top"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Popover on top", "data-toggle"->"popover", "title"->"Popover on top", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement"->"top"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Popover on right", "data-toggle"->"popover", "title"->"Popover on right", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Popover on bottom", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement"->"bottom"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Popover on left", "data-toggle"->"popover", "title"->"Popover on left", "data-content"->"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement"->"left", "data-trigger"->"hover focus"))
+						@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"<em>Popover</em> <u>with</u> <b>HTML</b>", "data-toggle"->"popover", "data-html"->"true", "title"->"<em>Popover</em> <u>with</u> <b>HTML</b>", "data-content"->"<em>Popover</em> <u>with</u> <b>HTML</b>", "data-placement"->"top"))
 					</div>
 				</div>
 			</div>

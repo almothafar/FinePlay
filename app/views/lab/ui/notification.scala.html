@@ -24,7 +24,7 @@
 	@body("lab","notification"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.NOTIFICATION), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.NOTIFICATION), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -39,20 +39,20 @@
 
 					<div class="mb-3">
 						<h2 class="headline">Plain</h2>
-						@components.button(Map("id"->"notificationButton", "type"->"primary", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"notificationButton", "type"->"primary", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
 					</div>
 
 					<div class="mb-3">
 						<h2 class="headline">Bootstrap</h2>
-						@components.button(Map("id"->"successAlertButton", "type"->"success", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
-						@components.button(Map("id"->"infoAlertButton", "type"->"info", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
-						@components.button(Map("id"->"warningAlertButton", "type"->"warning", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
-						@components.button(Map("id"->"dangerAlertButton", "type"->"danger", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"successAlertButton", "type"->"success", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"infoAlertButton", "type"->"info", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"warningAlertButton", "type"->"warning", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"dangerAlertButton", "type"->"danger", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
 					</div>
 
 					<div class="mb-3">
 						<h2 class="headline">Rich</h2>
-						@components.button(Map("id"->"richAlertButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"richAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
 					</div>
 
 					<div class="mb-3">
@@ -66,7 +66,7 @@
 
 							<input id="waitSlider" data-slider-id='waitSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
 						</div>
-						@components.button(Map("id"->"htmlNotificationButton", "type"->"primary", "outline"->"true", "icon"->"fa fa-comment-o", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"htmlNotificationButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
 					</div>
 				</div>
 			</div>

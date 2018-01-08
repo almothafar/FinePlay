@@ -22,7 +22,7 @@
 	@body("lab","ui"){
 
 		@components.container(Map("id"->"breadcrumbContainer", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.SUMMARY), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.SUMMARY), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -45,7 +45,7 @@
 							<div class="d-none d-sm-block col-sm-6 col-md-9 col-xl-10">
 							</div>
 							<div class="col-12 col-sm-6 col-md-3 col-xl-2">
-								@components.button(Map("id"->"", "block"->"true", "icon"->"", "text"->"Full text", "class"->"expandButton"))
+								@components.button(Map("id"->"", "block"->"true", "icon"->"", "text"->Messages(MessageKeys.FULL__TEXT), "class"->"expandButton"))
 							</div>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 							<div class="d-none d-sm-block col-sm-6 col-md-9 col-xl-10">
 							</div>
 							<div class="col-12 col-sm-6 col-md-3 col-xl-2">
-								@components.button(Map("id"->"", "block"->"true", "icon"->"", "text"->"Full text", "class"->"expandButton"))
+								@components.button(Map("id"->"", "block"->"true", "icon"->"", "text"->Messages(MessageKeys.FULL__TEXT), "class"->"expandButton"))
 							</div>
 						</div>
 					</div>

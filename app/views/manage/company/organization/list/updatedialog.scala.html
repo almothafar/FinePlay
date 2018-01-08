@@ -14,7 +14,7 @@
 
 @(form: play.data.Form[ReadFormContent])
 
-@components.modal(Map("id"->"updateDialog", "icon"->"fa fa-edit", "title"->Messages(MessageKeys.UPDATE), "closable"->"false", "data-backdrop"->"static"), List(
+@components.modal(Map("id"->"updateDialog", "icon"->"fas fa-edit", "title"->Messages(MessageKeys.UPDATE), "closable"->"false", "data-backdrop"->"static"), List(
 		Map("id"->"updateCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 		Map("id"->"updateOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
 	)){

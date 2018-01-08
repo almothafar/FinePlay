@@ -13,7 +13,7 @@
 
 @()
 
-@components.modal(Map("id"->"confirmDialog", "icon"->"fa fa-lock", "title"->Messages(MessageKeys.AUTHENTICATION), "closable"->"false", "data-backdrop"->"static"), List(
+@components.modal(Map("id"->"confirmDialog", "icon"->"fas fa-lock", "title"->Messages(MessageKeys.AUTHENTICATION), "closable"->"false", "data-backdrop"->"static"), List(
 		Map("id"->"confirmCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 		Map("id"->"confirmOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
 	)){

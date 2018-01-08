@@ -13,7 +13,7 @@
 }
 
 @components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true", "foldSize"->"xs"), Seq(
-	Map("name"->"System Properties", "icon"->"fa fa-pencil", "link"->controllers.environment.javalang.routes.Java.index("systemproperties").toString, "selected"->equalTask("systemproperties").toString),
-	Map("name"->"System Env", "icon"->"fa fa-pencil", "link"->controllers.environment.javalang.routes.Java.index("systemenv").toString, "selected"->equalTask("systemenv").toString),
-	Map("name"->"Runtime", "icon"->"fa fa-pencil", "link"->controllers.environment.javalang.routes.Java.index("runtime").toString, "selected"->equalTask("runtime").toString)
+	Map("name"->"System Properties", "icon"->"fas fa-pencil-alt", "link"->controllers.environment.javalang.routes.Java.index("systemproperties").toString, "selected"->equalTask("systemproperties").toString),
+	Map("name"->"System Env", "icon"->"fas fa-pencil-alt", "link"->controllers.environment.javalang.routes.Java.index("systemenv").toString, "selected"->equalTask("systemenv").toString),
+	Map("name"->"Runtime", "icon"->"fas fa-pencil-alt", "link"->controllers.environment.javalang.routes.Java.index("runtime").toString, "selected"->equalTask("runtime").toString)
 ))

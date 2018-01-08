@@ -40,6 +40,7 @@ public class Design extends Controller {
 		private static List<String> FONTAWESOME_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome.txt"));
 		private static List<String> MATERIAL_DESIGN_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "material-design.txt"));
 		private static List<String> ICOFONT_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt"));
+		private static List<String> EMOJIONEAWESOME_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "emojione.txt"));
 	}
 
 	private static List<String> initIconNames(final Path path) {
@@ -63,6 +64,7 @@ public class Design extends Controller {
 		return ok(views.html.development.design.icon.render(//
 				LazyHolder.FONTAWESOME_ICON_NAMES, //
 				LazyHolder.MATERIAL_DESIGN_ICON_NAMES, //
-				LazyHolder.ICOFONT_ICON_NAMES));
+				LazyHolder.ICOFONT_ICON_NAMES, //
+				LazyHolder.EMOJIONEAWESOME_ICON_NAMES));
 	}
 }

@@ -77,6 +77,9 @@ public class Library extends Controller {
 		case "summernote":
 
 			return summernote();
+		case "emojione":
+
+			return emojione();
 		case "parsley":
 
 			return parsley();
@@ -98,12 +101,9 @@ public class Library extends Controller {
 		case "zxing":
 
 			return zxing();
-		case "materialicons":
+		case "icon":
 
-			return materialicons();
-		case "icofont":
-
-			return icofont();
+			return icon();
 		case "3dmol":
 
 			return tdmol();
@@ -219,6 +219,11 @@ public class Library extends Controller {
 		return ok(views.html.lab.library.summernote.render());
 	}
 
+	public static Result emojione() {
+
+		return ok(views.html.lab.library.emojione.render());
+	}
+
 	public static Result parsley() {
 
 		return ok(views.html.lab.library.parsley.render());
@@ -332,14 +337,9 @@ public class Library extends Controller {
 		return ok(views.html.lab.library.zxing.render(map));
 	}
 
-	public static Result materialicons() {
+	public static Result icon() {
 
-		return ok(views.html.lab.library.materialicons.render());
-	}
-
-	public static Result icofont() {
-
-		return ok(views.html.lab.library.icofont.render());
+		return ok(views.html.lab.library.icon.render());
 	}
 
 	public static Result tdmol() {

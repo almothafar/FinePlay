@@ -7,8 +7,8 @@ var elementHtml=
 			'<input type="text" class="form-control" id="inputElement" placeholder="Element">'+
 		'</div>'+
 		'<div class="form-group col-sm-4">'+
-			'<button id="speakButton" type="button" class="btn btn-outline-primary minusButton"><i class="fa fa-minus" ></i></button>'+
-			'<button id="speakButton" type="button" class="btn btn-outline-primary plusButton"><i class="fa fa-plus" ></i></button>'+
+			'<button id="speakButton" type="button" class="btn btn-outline-primary minusButton"><i class="fas fa-minus" ></i></button>'+
+			'<button id="speakButton" type="button" class="btn btn-outline-primary plusButton"><i class="fas fa-plus" ></i></button>'+
 		'</div>'+
 	'</div>';
 

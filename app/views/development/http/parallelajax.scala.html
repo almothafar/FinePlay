@@ -20,7 +20,7 @@
 	@body("development","http"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->"Parallel Ajax", "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->"Parallel Ajax", "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -63,7 +63,7 @@
 							<input type="number" class="form-control" id="waitTimeField2" placeholder="WaitTime" value="500">
 						</div>
 					</div>
-					@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+					@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
 							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
 						)){
 						<div class="wordwrap">

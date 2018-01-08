@@ -20,7 +20,7 @@
 	@body("lab","application"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.AUTO)+" "+Messages(MessageKeys.SAVE)), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.AUTO)+" "+Messages(MessageKeys.SAVE)), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -33,7 +33,7 @@
 				</div>
 				<div class="col-md-9">
 
-					@components.alert(Map("id"->"permissionWarning", "icon"->"fa fa-exclamation-triangle", "text"->"", "type"->"warning", "closable"->"true"))
+					@components.alert(Map("id"->"permissionWarning", "icon"->"fas fa-exclamation-triangle", "text"->"", "type"->"warning", "closable"->"true"))
 
 					@components.badge(Map("id"->"Notification", "type"->"danger", "text"->"Notification"))
 					@components.badge(Map("id"->"LocalStorage", "type"->"danger", "text"->"LocalStorage"))

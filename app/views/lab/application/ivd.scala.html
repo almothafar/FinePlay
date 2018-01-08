@@ -22,7 +22,7 @@
 	@body("lab","application"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->"IVD", "icon"->"fa fa-print", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->"IVD", "icon"->"fas fa-print", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -37,7 +37,7 @@
 
 					<div class="mb-3">
 
-						@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fa fa-link", "text"->Messages(MessageKeys.SETTING), "link"->controllers.setting.system.routes.System.index("font").toString))
+						@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fas fa-link", "text"->Messages(MessageKeys.SETTING), "link"->controllers.setting.system.routes.System.index("font").toString))
 					</div>
 
 					<div class="mb-3">
@@ -60,7 +60,7 @@
 
 					<div class="mb-3">
 
-						@components.modal(Map("id"->"pickerWindow", "icon"->"fa fa-font", "title"->Messages(MessageKeys.SELECT), "data-backdrop"->"static", "size"->"lg"), List(
+						@components.modal(Map("id"->"pickerWindow", "icon"->"fas fa-font", "title"->Messages(MessageKeys.SELECT), "data-backdrop"->"static", "size"->"lg"), List(
 								Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 								Map("id"->"okButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-toggle"->"modal", "data-target"->"#pickerWindow", "data-whatever"->"okButton", "default"->"true")
 							)){

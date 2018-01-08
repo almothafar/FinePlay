@@ -175,7 +175,7 @@ var notifyAlert = function(type, text, wait){
 	}
 	var text = '<div class="alert alert-' + type + ' alert-dismissible fade show " role="alert">' +
 					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
-					'<i class="fa fa-' + icon +'"></i>' +
+					'<i class="fas fa-' + icon +'"></i>' +
 					'' + text +
 				'</div>';
 

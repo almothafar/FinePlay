@@ -1,3 +1,5 @@
+@import common.system._
+
 @(prop:scala.collection.immutable.Map[String, String])
 
 @equalTask(task:String) = @{
@@ -21,10 +23,10 @@
 	<a href="@controllers.lab.library.routes.Library.index("diff2html").toString()" class="list-group-item @("active".when(equalTask("diff2html")))">diff2html</a>
 	<a href="@controllers.lab.library.routes.Library.index("mustache").toString()" class="list-group-item @("active".when(equalTask("mustache")))">Mustache</a>
 	<a href="@controllers.lab.library.routes.Library.index("zxing").toString()" class="list-group-item @("active".when(equalTask("zxing")))">ZXing</a>
-	<a href="@controllers.lab.library.routes.Library.index("materialicons").toString()" class="list-group-item @("active".when(equalTask("materialicons")))">Material Icons</a>
-	<a href="@controllers.lab.library.routes.Library.index("icofont").toString()" class="list-group-item @("active".when(equalTask("icofont")))">IcoFont</a>
+	<a href="@controllers.lab.library.routes.Library.index("icon").toString()" class="list-group-item @("active".when(equalTask("icon")))">@Messages(MessageKeys.ICON)</a>
 
 	<a href="@controllers.lab.library.routes.Library.index("parsley").toString()" class="list-group-item @("active".when(equalTask("parsley"))) secret">Parsley</a>
+	<a href="@controllers.lab.library.routes.Library.index("emojione").toString()" class="list-group-item @("active".when(equalTask("emojione"))) secret">EmojiOne</a>
 	<a href="@controllers.lab.library.routes.Library.index("bootstrapcolorpicker").toString()" class="list-group-item @("active".when(equalTask("bootstrapcolorpicker"))) secret">bootstrap-colorpicker</a>
 	<a href="@controllers.lab.library.routes.Library.index("frappegantt").toString()" class="list-group-item @("active".when(equalTask("frappegantt"))) secret">Frappé Gantt</a>
 	<a href="@controllers.lab.library.routes.Library.index("pdfjs").toString()" class="list-group-item @("active".when(equalTask("pdfjs"))) secret">PDF.js</a>

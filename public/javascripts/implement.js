@@ -1,9 +1,9 @@
 'use strict';
 
-var injectStyle = function(selector, css){
+var injectStyle = function(selector, css) {
 
 	var rule = selector + "{";
-	for(var key in css){
+	for ( var key in css) {
 
 		var value = css[key];
 		rule = rule + key + ": " + value + ";"

@@ -14,7 +14,7 @@
 
 @(form: play.data.Form[ReadFormContent])
 
-@components.modal(Map("id"->"createDialog", "icon"->"fa fa-plus", "title"->Messages(MessageKeys.CREATE), "closable"->"false", "data-backdrop"->"static"), List(
+@components.modal(Map("id"->"createDialog", "icon"->"fas fa-plus", "title"->Messages(MessageKeys.CREATE), "closable"->"false", "data-backdrop"->"static"), List(
 		Map("id"->"createCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 		Map("id"->"createOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
 	)){

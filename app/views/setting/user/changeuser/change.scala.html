@@ -25,7 +25,7 @@
 	@body("setting","user"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.USER_CHANGE__USERID), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.USER_CHANGE__USERID), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -38,7 +38,7 @@
 			@confirmdialog()
 			@components.container(Map("id"->"contents", "fluid"->"true", "class"->"mt-5 mb-5 text-center")){
 
-				@components.button(Map("id"->"confirmButton", "type"->"primary", "icon"->"fa fa-lock", "text"->Messages(MessageKeys.AUTHENTICATION), "data-toggle"->"modal", "data-target"->"#confirmDialog"))
+				@components.button(Map("id"->"confirmButton", "type"->"primary", "icon"->"fas fa-lock", "text"->Messages(MessageKeys.AUTHENTICATION), "data-toggle"->"modal", "data-target"->"#confirmDialog"))
 			}
 		}else{
 
@@ -49,7 +49,7 @@
 					</div>
 					<div class="col-md-10 col-lg-8 col-xl-6">
 
-						@components.card(Map("id"->"changePanel", "class"->"shadow")){
+						@components.card(Map("id"->"changePanel", "class"->"shadow-light")){
 							<div class="card-header">
 								@Messages(MessageKeys.CHANGEUSER)
 							</div>

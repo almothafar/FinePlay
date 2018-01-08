@@ -15,6 +15,6 @@
 }
 
 @components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true"), Seq(
-	Map("name"->Messages(MessageKeys.THEME), "icon"->"fa fa-paint-brush", "link"->controllers.development.design.routes.Design.index("theme").toString, "selected"->equalTask("theme").toString),
-	Map("name"->Messages(MessageKeys.ICON), "icon"->"fa fa-pencil", "link"->controllers.development.design.routes.Design.index("icon").toString, "selected"->equalTask("icon").toString)
+	Map("name"->Messages(MessageKeys.THEME), "icon"->"fas fa-paint-brush", "link"->controllers.development.design.routes.Design.index("theme").toString, "selected"->equalTask("theme").toString),
+	Map("name"->Messages(MessageKeys.ICON), "icon"->"fas fa-pencil-alt", "link"->controllers.development.design.routes.Design.index("icon").toString, "selected"->equalTask("icon").toString)
 ))

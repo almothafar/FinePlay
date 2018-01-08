@@ -42,7 +42,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i class="fa fa-group"></i>
+								<i class="fas fa-users"></i>
 							</span>
 						</div>
 						<input id="@OrganizationUnit.NAME" type="text" name="@OrganizationUnit.NAME" class="form-control" placeholder="Name" value="@form(OrganizationUnit.NAME).getValue.orElse("")" autofocus>
@@ -64,7 +64,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					@components.button(Map("id"->"readButton", "action"->"submit", "type"->"primary", "icon"->"fa fa-refresh", "text"->Messages(MessageKeys.UPDATE), "class"->"float-right"))
+					@components.button(Map("id"->"readButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sync", "text"->Messages(MessageKeys.UPDATE), "class"->"float-right"))
 				</div>
 			</div>
 		}

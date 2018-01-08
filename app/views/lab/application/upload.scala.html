@@ -21,7 +21,7 @@
 	@body("lab","application"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.UPLOAD), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.UPLOAD), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -36,8 +36,8 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Form</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-check", "text"->play.mvc.Controller.flash("success"), "closable"->"true", "flashKey"->"success"))
-						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-exclamation-triangle", "text"->play.mvc.Controller.flash("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->play.mvc.Controller.flash("success"), "closable"->"true", "flashKey"->"success"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->play.mvc.Controller.flash("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
 
 						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.form()), 'name->"normalForm", 'enctype -> "multipart/form-data") {
 
@@ -56,8 +56,8 @@
 
 					<div class="mb-3">
 						<h4 class="headline">@(Messages(MessageKeys.IMAGE)+" "+Messages(MessageKeys.PREVIEW))</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-check", "text"->play.mvc.Controller.flash("imageSuccess"), "closable"->"true", "flashKey"->"imageSuccess"))
-						@components.adjust.alert(Map("id"->"", "icon"->"fa fa-exclamation-triangle", "text"->play.mvc.Controller.flash("imageWarning"), "type"->"warning", "closable"->"true", "flashKey"->"imageWarning"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->play.mvc.Controller.flash("imageSuccess"), "closable"->"true", "flashKey"->"imageSuccess"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->play.mvc.Controller.flash("imageWarning"), "type"->"warning", "closable"->"true", "flashKey"->"imageWarning"))
 
 						<div class="row">
 
@@ -87,8 +87,8 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Ajax</h4>
-						@components.alert(Map("id"->"ajaxSuccess", "icon"->"fa fa-check", "text"->"", "closable"->"true"))
-						@components.alert(Map("id"->"ajaxWarning", "icon"->"fa fa-exclamation-triangle", "text"->"", "type"->"warning", "closable"->"true"))
+						@components.alert(Map("id"->"ajaxSuccess", "icon"->"fas fa-check", "text"->"", "closable"->"true"))
+						@components.alert(Map("id"->"ajaxWarning", "icon"->"fas fa-exclamation-triangle", "text"->"", "type"->"warning", "closable"->"true"))
 
 						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.direct()), 'name->"ajaxForm", 'enctype -> "multipart/form-data", 'id->"ajaxForm") {
 
@@ -99,7 +99,7 @@
 										<input id="ajaxFile" type="file" name="inputName" class="custom-file-input">
 										<label class="custom-file-label" for="ajaxFile"></label>
 									</div>
-									@components.modal(Map("id"->"ajaxDialog", "icon"->"fa fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+									@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
 											Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal")
 										)){
 										<div class="wordwrap">
@@ -111,7 +111,7 @@
 								</div>
 							</div>
 							<p>
-								@components.button(Map("id"->"ajaxSubmit", "type"->"primary", "outline"->"true", "icon"->"fa fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
+								@components.button(Map("id"->"ajaxSubmit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
 							</p>
 						}
 					</div>

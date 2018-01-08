@@ -23,7 +23,7 @@
 	@body("section","work"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TASK), "icon"->"fa fa-pencil", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TASK), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -35,7 +35,7 @@
 
 			<div class=" mt-3">
 
-				@components.badge(Map("id"->"", "type"->"success", "icon"->"fa fa-comment-o", "text"->message))
+				@components.badge(Map("id"->"", "type"->"success", "icon"->"far fa-comment", "text"->message))
 			</div>
 		}
 

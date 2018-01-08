@@ -7,7 +7,9 @@ import java.util.Properties;
 
 import javax.annotation.Nonnull;
 import javax.batch.operations.JobOperator;
+import javax.batch.operations.NoSuchJobExecutionException;
 import javax.batch.runtime.BatchRuntime;
+import javax.batch.runtime.JobExecution;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,14 +41,12 @@ public class Batch extends Controller {
 
 		if (!new UserIdValidator().isValid(decodedUserId)) {
 
-			createErrorResult(UserIdValidator.message);
+			return ok(createErrorResult(UserIdValidator.message));
 		}
 
 		final Properties jobParameters = new Properties();
 		jobParameters.putAll(ctx().request().queryString());
 		jobParameters.remove("csrfToken");
-		jobParameters.remove("jobName");
-		jobParameters.remove("userId");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
 		final long executionId = jobOperator.start(jobName, jobParameters);
@@ -76,14 +76,8 @@ public class Batch extends Controller {
 
 		if (!new UserIdValidator().isValid(decodedUserId)) {
 
-			createErrorResult(UserIdValidator.message);
+			return ok(createErrorResult(UserIdValidator.message));
 		}
-
-		final Properties jobParameters = new Properties();
-		jobParameters.putAll(ctx().request().queryString());
-		jobParameters.remove("csrfToken");
-		jobParameters.remove("executionId");
-		jobParameters.remove("userId");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
 		jobOperator.stop(executionId);
@@ -112,14 +106,12 @@ public class Batch extends Controller {
 
 		if (!new UserIdValidator().isValid(decodedUserId)) {
 
-			createErrorResult(UserIdValidator.message);
+			return ok(createErrorResult(UserIdValidator.message));
 		}
 
 		final Properties jobParameters = new Properties();
 		jobParameters.putAll(ctx().request().queryString());
 		jobParameters.remove("csrfToken");
-		jobParameters.remove("executionId");
-		jobParameters.remove("userId");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
 		final long newExecutionId = jobOperator.restart(executionId, jobParameters);
@@ -149,14 +141,8 @@ public class Batch extends Controller {
 
 		if (!new UserIdValidator().isValid(decodedUserId)) {
 
-			createErrorResult(UserIdValidator.message);
+			return ok(createErrorResult(UserIdValidator.message));
 		}
-
-		final Properties jobParameters = new Properties();
-		jobParameters.putAll(ctx().request().queryString());
-		jobParameters.remove("csrfToken");
-		jobParameters.remove("executionId");
-		jobParameters.remove("userId");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
 		jobOperator.abandon(executionId);
@@ -170,6 +156,46 @@ public class Batch extends Controller {
 		final ObjectNode result = mapper.createObjectNode();
 
 		result.put("beforeExecutionId", beforeExecutionId);
+
+		return result;
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	@RequireCSRFCheck
+	public Result jobExecution(final long executionId, @Nonnull final String userId) {
+
+		LOGGER.warn("The author is short of knowledge of Batch.");
+
+		final String decodedUserId = decodeUserId(userId);
+		LOGGER.info("Batch#jobexecution executionId={} userId={}", executionId, decodedUserId);
+
+		if (!new UserIdValidator().isValid(decodedUserId)) {
+
+			return ok(createErrorResult(UserIdValidator.message));
+		}
+
+		final JobOperator jobOperator = BatchRuntime.getJobOperator();
+		JobExecution jobExecution = null;
+		try {
+
+			jobExecution = jobOperator.getJobExecution(executionId);
+		} catch (NoSuchJobExecutionException e) {
+
+			return ok(createErrorResult(e.getLocalizedMessage()));
+		}
+
+		return ok(createJobExecutionResult(executionId, jobExecution));
+	}
+
+	private JsonNode createJobExecutionResult(final long executionId, final JobExecution jobExecution) {
+
+		final ObjectMapper mapper = new ObjectMapper();
+		final ObjectNode result = mapper.createObjectNode();
+
+		result.put("executionId", executionId);
+		final ObjectNode jobExecutionNode = result.putObject("jobExecution");
+		jobExecutionNode.put("batchStatus", jobExecution.getBatchStatus().name());
+		jobExecutionNode.put("exitStatus", jobExecution.getExitStatus());
 
 		return result;
 	}
