@@ -22,28 +22,14 @@ $('#dangerAlertButton').on('click', function(e){
 	notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER), 10000);
 });
 
-$('#richAlertButton').on('click', function(e){
+$('#htmlAlertButton').on('click', function(e){
 
-	notify(''+
-		'<div class="alert alert-rich alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">' +
-			'<div class="p-2"><img id="richAlertImg" src="' + Messages("img") + '" class="rounded"></div>' +
-			'<div class="p-2 align-self-stretch w-100">' +
-				'<strong>Rich notification!</strong><br> <a href="@controllers.home.routes.Home.index()" class="alert-link">Link</a> The quick brown fox jumps over the lazy dog.' +
-			'</div>' +
-			'<div class="p-2 d-flex align-items-center">' +
-				'<button type="button" class="p-3 close" data-dismiss="alert" aria-label="Close">' +
-					'<span aria-hidden="true">×</span><span class="sr-only">Close</span>' +
-				'</button>' +
-			'</div>' +
-		'</div>'
-	, 10000);
-});
+	var notificationHtml = $('#htmlText').text();
+	console.log(notificationHtml);
+	var wait = mySlider.bootstrapSlider('getValue') * 1000;
+	console.log(wait);
 
-$('#summernote').summernote({
-	height: 100,
-	minHeight: null,
-	maxHeight: null,
-	focus: true
+	notify('<div class="rounded w-100">' + notificationHtml + '</div>', wait);
 });
 
 var mySlider = $("#waitSlider").bootstrapSlider({
@@ -52,14 +38,4 @@ var mySlider = $("#waitSlider").bootstrapSlider({
 
 		return 'Wait: ' + value;
 	}
-});
-
-$('#htmlNotificationButton').on('click', function(e){
-
-	var notificationHtml = $('#summernote').summernote('code');
-	console.log(notificationHtml);
-	var wait = mySlider.bootstrapSlider('getValue') * 1000;
-	console.log(wait);
-
-	notify('<div class="rounded w-100">' + notificationHtml + '</div>', wait);
 });

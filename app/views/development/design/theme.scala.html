@@ -36,6 +36,11 @@
 
 				<div class="col-12 mt-3">
 
+					@components.image(Map("id"->"theme_image", "class"->"w-144p h-144p", "source"->routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/image.png").toString))
+				</div>
+
+				<div class="col-12 mt-3">
+
 					<h1 class="headline">Head line</h1>
 					<h2 class="headline">Head line</h2>
 					<h3 class="headline">Head line</h3>

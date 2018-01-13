@@ -1,5 +1,20 @@
+@import com.typesafe.config._
+
 @()
 
-<link rel='stylesheet' href='@routes.Assets.versioned("lib/emojione/extras/css/emojione-awesome.css")'>
+@href() = @{
+
+	if(ConfigFactory.defaultApplication().hasPath("emojione-awesome.cdn.style")){
+
+		ConfigFactory.defaultApplication().getString("emojione-awesome.cdn.style")
+	}else{
+
+		// need 3.1.2
+		routes.Assets.versioned("lib/custom/emojione/extras/css/emojione-awesome.css")
+		//routes.Assets.versioned("lib/emojione/extras/css/emojione-awesome.css")
+	}
+}
+
+<link rel='stylesheet' href='@href()'>
 
 <link rel='stylesheet' href='@routes.Assets.versioned("lib/custom/emojione/extras/css/head.css")'>

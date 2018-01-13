@@ -7,6 +7,10 @@ injectStyle('.note-toolbar.card-header', {
 	'background-color': lightColor
 });
 
-injectStyle('.note-editor.note-frame.card', {
+injectStyle('.note-editor', {
+	'border-radius': '0.25rem'
+});
+
+injectStyle('.note-editor>.note-toolbar-wrapper>.note-toolbar', {
 	'border-radius': '0.25rem'
 });

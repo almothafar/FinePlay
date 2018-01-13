@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+.notification-box {
+	position: relative;
+	width: 72px;
+	margin-right: auto !important;
+	margin-left: auto !important;
+	text-align: center;
+}
+
+.notification-box-target {
+	position: relative;
+}
+
+.notification-box-count {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}

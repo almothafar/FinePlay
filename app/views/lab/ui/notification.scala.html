@@ -16,7 +16,6 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		@libraries.summernote.head()
 		@libraries.bootstrapslider.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/notification.css")'>
 	}
@@ -51,22 +50,25 @@
 					</div>
 
 					<div class="mb-3">
-						<h2 class="headline">Rich</h2>
-						@components.button(Map("id"->"richAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
-					</div>
-
-					<div class="mb-3">
-						<h2 class="headline">Custom</h2>
-						<div id="summernote">Hello Summernote</div>
-						<!-- <textarea name="htmlEditor" id="htmlEditor" rows="10" cols="40">
-
-							This is my textarea to be replaced with CKEditor.
-						</textarea> -->
+						<h2 class="headline">HTML</h2>
+						<textarea class="form-control" id="htmlText" rows="10">
+<div class="alert alert-rich alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">
+	<div class="p-2"><img id="richAlertImg" src="@routes.Assets.versioned("images/favicon.png")" class="rounded"></div>
+	<div class="p-2 align-self-stretch w-100">
+		<strong>Rich notification!</strong><br> <a href="@controllers.home.routes.Home.index()" class="alert-link">Link</a> The quick brown fox jumps over the lazy dog.
+	</div>
+	<div class="p-2 d-flex align-items-center">
+		<button type="button" class="p-3 close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+		</button>
+	</div>
+</div>
+						</textarea>
 						<div>
 
 							<input id="waitSlider" data-slider-id='waitSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
 						</div>
-						@components.button(Map("id"->"htmlNotificationButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"htmlAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
 					</div>
 				</div>
 			</div>
@@ -77,12 +79,10 @@
 			"@MessageKeys.SUCCESS":"@Messages(MessageKeys.SUCCESS)",
 			"@MessageKeys.INFO":"@Messages(MessageKeys.INFO)",
 			"@MessageKeys.WARNING":"@Messages(MessageKeys.WARNING)",
-			"@MessageKeys.DANGER":"@Messages(MessageKeys.DANGER)",
-			"img":"@routes.Assets.versioned("images/favicon.png")"
+			"@MessageKeys.DANGER":"@Messages(MessageKeys.DANGER)"
 		}'></div>
 
 		@libraries.standard.last()
-		@libraries.summernote.last()
 		@libraries.bootstrapslider.last()
 		<script src='@routes.Assets.versioned("javascripts/lab/ui/notification.js")'></script>
 	}

@@ -7,6 +7,8 @@
 @import views.html._
 @import views.html.components
 
+@import common.system._
+
 @()
 
 @frame(){
@@ -15,6 +17,7 @@
 
 		@libraries.standard.head()
 		@libraries.summernote.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/summernote.css")'>
 	}
 
 	@body("lab","library"){
@@ -34,7 +37,16 @@
 				<div class="col-md-9">
 
 					<div class="mb-3">
-					<div id="summernote"><p>Hello Summernote</p></div>
+
+						<div id="summernote">
+							<p>Hello Summernote</p>
+						</div>
+						@components.button(Map("id"->"previewButton", "type"->"primary", "outline"->"true", "icon"->"far fa-eye", "text"->Messages(MessageKeys.PREVIEW)))
+					</div>
+
+					<div id="codeArea" class="h-288p text-success bg-dark mb-3"></div>
+
+					<div id="previewArea" class="h-288p mb-3">
 					</div>
 				</div>
 			</div>

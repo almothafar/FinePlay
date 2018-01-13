@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.10-α3-SNAPSHOT"
+version := "2.6.11-α3-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.6.10-α3-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.11-α3-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -75,10 +75,10 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "tether" % "1.4.0",								// MIT 1.4.0
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",								// MIT 4.0.4
-  "org.webjars.npm" % "chart.js" % "2.7.1",								// MIT 2.7.1
+  "org.webjars.npm" % "chart.js" % "2.7.1",								// MIT 2.7.1 +patch
   "org.webjars.bower" % "moment" % "2.20.1",								// MIT 2.19.3
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.7.0",							// MIT 3.7.0
+  "org.webjars.bower" % "fullcalendar" % "3.8.0",							// MIT 3.8.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
   "org.webjars.bower" % "datatables" % "1.10.16",							// MIT 1.10.16
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",				//
@@ -113,7 +113,7 @@ libraryDependencies ++= Seq(
 																		// Fonts — SIL OFL 5.0.2
 																		// Code — MIT 5.0.2
   "org.webjars" % "material-design-icons" % "3.0.1",						// Apache 3.0.1
-  "org.webjars.npm" % "emojione" % "3.1.2",								// EmojiOne Artwork Free license 3.1.2
+  "org.webjars.npm" % "emojione" % "3.1.2",								// EmojiOne Artwork Free license 3.1.2 +patch
   																		// EmojiOne Non-Artwork MIT 3.1.2
   "org.webjars.npm" % "emojione-assets" % "3.1.1"							// Free License 3.1.1
 )

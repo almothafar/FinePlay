@@ -1,3 +1,5 @@
+@import java.time._
+@import java.time.format._
 @import views.html._
 @import views.html.components
 @import views.html.development
@@ -11,6 +13,11 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
+
+@datetime() = @{
+
+	common.utils.DateTimes.getClientDateTime(LocalDateTime.now())
+}
 
 @frame(){
 
@@ -40,7 +47,12 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"clientDateTime":"@datetime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)"
+		}'></div>
+
 		@libraries.standard.last()
+		@libraries.moment.last()
 		<script src='@routes.Assets.versioned("javascripts/framework/application/datetime.js")'></script>
 	}
 }
