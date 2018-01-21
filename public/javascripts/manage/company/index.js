@@ -76,7 +76,7 @@ $(document).ready(function() {
 
 	$('.nextButton').on('click', function(e){
 
-		event.preventDefault();
+		e.preventDefault();
 
 		var selectedRows = $(this).parent().parent();
 		var company = createCompanies(selectedRows)[0];

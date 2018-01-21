@@ -1,5 +1,6 @@
 package apis.system;
 
+import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class PDF extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PDF.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private FormFactory formFactory;

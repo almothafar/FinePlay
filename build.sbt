@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.11-α3-SNAPSHOT"
+version := "2.6.11-β1-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.6.11-α3-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.11-β1-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -64,7 +64,7 @@ libraryDependencies ++= Seq(
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
-  "org.webjars.npm" % "bootstrap" % "4.0.0-beta.3",						// MIT 4.0.0-alpha.6
+  "org.webjars.npm" % "bootstrap" % "4.0.0",								// MIT 4.0.0-alpha.6
 //  "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0

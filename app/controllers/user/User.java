@@ -3,6 +3,7 @@ package controllers.user;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.invoke.MethodHandles;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -53,7 +54,7 @@ import play.mvc.Security.Authenticated;
 
 public class User extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private Provider<Application> applicationProvider;

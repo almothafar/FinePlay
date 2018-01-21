@@ -1,5 +1,6 @@
 package controllers.setting.user;
 
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -41,7 +42,7 @@ import play.twirl.api.Html;
 @PermissionsAllowed(value = { Permission.READ, Permission.WRITE })
 public class ChangeUser extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ChangeUser.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static long ONE_DAY = Duration.ofDays(1).toDays();
 

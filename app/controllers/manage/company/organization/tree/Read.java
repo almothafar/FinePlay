@@ -1,5 +1,6 @@
 package controllers.manage.company.organization.tree;
 
+import java.lang.invoke.MethodHandles;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +43,7 @@ import play.mvc.Security.Authenticated;
 
 public class Read extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Read.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;

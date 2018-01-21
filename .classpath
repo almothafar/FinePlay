@@ -4,7 +4,7 @@
   <classpathentry excluding="resources/" kind="src" path="test"/>
   <classpathentry kind="src" path="generate"/>
   <classpathentry kind="lib" path="./lib/jar.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.4.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.4-sources.jar" kind="lib" path="/Users/hiro/.sbt/boot/scala-2.12.4/lib/scala-library.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.12.4-javadoc.jar!/"/>
     </attributes>
@@ -140,7 +140,7 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/docs/play-functional_2.12-2.6.8-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.12.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.12.4.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.12.4-sources.jar" kind="lib" path="/Users/hiro/.sbt/boot/scala-2.12.4/lib/scala-reflect.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.12.4-javadoc.jar!/"/>
     </attributes>
@@ -626,9 +626,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/docs/jquery-3.2.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/srcs/bootstrap-4.0.0-beta.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/jars/bootstrap-4.0.0-beta.3.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/srcs/bootstrap-4.0.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/jars/bootstrap-4.0.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/docs/bootstrap-4.0.0-beta.3-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/docs/bootstrap-4.0.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootbox/srcs/bootbox-4.4.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootbox/jars/bootbox-4.4.0.jar">

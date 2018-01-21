@@ -40,21 +40,18 @@
 			<div class="row form-group">
 				<label for="inputRole" class="col-sm-3 form-control-label">@Messages(MessageKeys.USER_ROLE)</label>
 				<div class="col-sm-9">
-					<label class="custom-control custom-checkbox custom-control-inline">
-						<input class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[0]")" value="@User.Role.GUEST.toString()" @("checked".when(form.get().getRoles().contains(User.Role.GUEST)))>
-						<label class="custom-control-label"></label>
-						@Messages(MessageKeys.USER_ROLE_GUEST)
-					</label>
-					<label class="custom-control custom-checkbox custom-control-inline">
-						<input class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[1]")" value="@User.Role.CUSTOMER.toString()" @("checked".when(form.get().getRoles().contains(User.Role.CUSTOMER)))>
-						<label class="custom-control-label"></label>
-						@Messages(MessageKeys.USER_ROLE_CUSTOMER)
-					</label>
-					<label class="custom-control custom-checkbox custom-control-inline">
-						<input class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[2]")" value="@User.Role.ADMIN.toString()" @("checked".when(form.get().getRoles().contains(User.Role.ADMIN)))>
-						<label class="custom-control-label"></label>
-						@Messages(MessageKeys.USER_ROLE_ADMIN)
-					</label>
+					<div class="custom-control custom-checkbox custom-control-inline">
+						<input id="readRoles@User.Role.GUEST.toString()" class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[0]")" value="@User.Role.GUEST.toString()" @("checked".when(form.get().getRoles().contains(User.Role.GUEST)))>
+						<label class="custom-control-label" for="readRoles@User.Role.GUEST.toString()">@Messages(MessageKeys.USER_ROLE_GUEST)</label>
+					</div>
+					<div class="custom-control custom-checkbox custom-control-inline">
+						<input id="readRoles@User.Role.CUSTOMER.toString()" class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[1]")" value="@User.Role.CUSTOMER.toString()" @("checked".when(form.get().getRoles().contains(User.Role.CUSTOMER)))>
+						<label class="custom-control-label" for="readRoles@User.Role.CUSTOMER.toString()">@Messages(MessageKeys.USER_ROLE_CUSTOMER)</label>
+					</div>
+					<div class="custom-control custom-checkbox custom-control-inline">
+						<input id="readRoles@User.Role.ADMIN.toString()" class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[2]")" value="@User.Role.ADMIN.toString()" @("checked".when(form.get().getRoles().contains(User.Role.ADMIN)))>
+						<label class="custom-control-label" for="readRoles@User.Role.ADMIN.toString()">@Messages(MessageKeys.USER_ROLE_ADMIN)</label>
+					</div>
 				</div>
 			</div>
 			<div class="row form-group">

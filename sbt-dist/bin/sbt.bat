@@ -1,16 +1,19 @@
 @REM SBT launcher script
-@REM 
+@REM
 @REM Envioronment:
 @REM JAVA_HOME - location of a JDK home dir (mandatory)
 @REM SBT_OPTS  - JVM options (optional)
 @REM Configuration:
 @REM sbtconfig.txt found in the SBT_HOME.
 
-@REM   ZOMG! We need delayed expansion to build up CFG_OPTS later 
+@REM   ZOMG! We need delayed expansion to build up CFG_OPTS later
 @setlocal enabledelayedexpansion
 
 @echo off
 set SBT_HOME=%~dp0
+
+@REM Java 9
+@REM set SBT_OPTS="--add-modules java.xml.bind"
 
 rem FIRST we load the config file of extra options.
 set FN=%SBT_HOME%\..\conf\sbtconfig.txt

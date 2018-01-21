@@ -1,5 +1,6 @@
 package models.company.organization;
 
+import java.lang.invoke.MethodHandles;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +47,7 @@ import play.mvc.Controller;
 @Table(name = "ORGANIZATION_UNITS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "ORGANIZATION_ID" }) }, indexes = { @Index(columnList = "ID"), @Index(columnList = "ORGANIZATION_ID") })
 public class OrganizationUnit {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationUnit.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static final int NAME_COUNT_MAX = 2;
 

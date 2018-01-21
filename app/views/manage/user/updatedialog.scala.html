@@ -41,21 +41,18 @@
 		<div class="row form-group">
 			<label for="inputRoles" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_ROLE)</label>
 			<div class="col-sm-9">
-				<label class="custom-control custom-checkbox custom-control-inline">
-					<input class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[0]")" value="@User.Role.GUEST.toString()">
-					<label class="custom-control-label"></label>
-					@Messages(MessageKeys.USER_ROLE_GUEST)
-				</label>
-				<label class="custom-control custom-checkbox custom-control-inline">
-					<input class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[1]")" value="@User.Role.CUSTOMER.toString()">
-					<label class="custom-control-label"></label>
-					@Messages(MessageKeys.USER_ROLE_CUSTOMER)
-				</label>
-				<label class="custom-control custom-checkbox custom-control-inline">
-					<input class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[2]")" value="@User.Role.ADMIN.toString()">
-					<label class="custom-control-label"></label>
-					@Messages(MessageKeys.USER_ROLE_ADMIN)
-				</label>
+				<div class="custom-control custom-checkbox custom-control-inline">
+					<input id="updateRoles@User.Role.GUEST.toString()" class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[0]")" value="@User.Role.GUEST.toString()">
+					<label class="custom-control-label" for="updateRoles@User.Role.GUEST.toString()">@Messages(MessageKeys.USER_ROLE_GUEST)</label>
+				</div>
+				<div class="custom-control custom-checkbox custom-control-inline">
+					<input id="updateRoles@User.Role.CUSTOMER.toString()" class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[1]")" value="@User.Role.CUSTOMER.toString()">
+					<label class="custom-control-label" for="updateRoles@User.Role.CUSTOMER.toString()">@Messages(MessageKeys.USER_ROLE_CUSTOMER)</label>
+				</div>
+				<div class="custom-control custom-checkbox custom-control-inline">
+					<input id="updateRoles@User.Role.ADMIN.toString()"  class="custom-control-input update@User.ROLES" type="checkbox" name="@(User.ROLES+"[2]")" value="@User.Role.ADMIN.toString()">
+					<label class="custom-control-label" for="updateRoles@User.Role.ADMIN.toString()">@Messages(MessageKeys.USER_ROLE_ADMIN)</label>
+				</div>
 			</div>
 		</div>
 		<div class="row form-group">

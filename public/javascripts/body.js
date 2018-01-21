@@ -91,12 +91,14 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
 	if (string.indexOf(substring) > -1){
 
 		reportErrorContent = {
+			userAgent: navigator.userAgent,
 			userid: userId,
 			message: msg
 		}
 	} else {
 
 		reportErrorContent = {
+			userAgent: navigator.userAgent,
 			userid: userId,
 			message: msg,
 			sourceURL: url,
@@ -112,37 +114,37 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
 
 //
 
-$("#menuButton").on('click', function(event) {
+$("#menuButton").on('click', function(e) {
 
 	$("#system_base").toggleClass('system_expand');
 	return false;
 });
 
-getContent().on('click', function(event) {
+getContent().on('click', function(e) {
 
 	$("#system_base").removeClass('system_expand');
 	$("#system_base").removeClass('system_help-expand');
 });
 
-$("#printButton").on('click', function(event) {
+$("#printButton").on('click', function(e) {
 
 	$(window).trigger('beforeprint');
 	window.print();
 	$(window).trigger('afterprint');
 });
 
-$("#scrollTopButton").on('click', function(event) {
+$("#scrollTopButton").on('click', function(e) {
 
 	getContent().animate({ scrollTop: 0 }, 'fast');
 });
 
-$('#signOutLink').on('click', function(event){
+$('#signOutLink').on('click', function(e){
 
-	event.preventDefault();
+	e.preventDefault();
 
 	var signOutLinkUrl = $(this).prop('href');
 
-	fadeOutToFront('body', function(event){
+	fadeOutToFront('body', function(e){
 
 		window.location.href = signOutLinkUrl;
 	});
@@ -166,7 +168,7 @@ var refreshHelp = function(){
 	$('#system_help-main .btn-clipboard').tooltip();
 }
 
-$("#helpButton").on('click', function(event) {
+$("#helpButton").on('click', function(e) {
 
 	var helpNav = $('#system_help-header>#system_help-navbar');
 	var helpMain = $('#system_help-content>#system_help-main');
@@ -361,7 +363,7 @@ $("#help-search-text").on('focus', function () {
 
 //
 
-$("#system_magnify-text").on('click', function(event) {
+$("#system_magnify-text").on('click', function(e) {
 
 	hideMagnifyText();
 });
@@ -373,6 +375,7 @@ $('#debugButton').on('shown.bs.popover', function () {
 	$("#applyBorderButton").on("click", function(){$("*").css("border", "solid 1px lavender");});
 	$("#showResponsiveButton").on("click", function(){$("#system_responsive-bar").removeClass("d-none");});
 	$("#Memory").text($("#debugButton").data("memory"));
+	$("#Java_ver").text($("#debugButton").data("javaver"));
 	$("#Play_ver").text($("#debugButton").data("playver"));
 	$("#jQuery_ver").text($.fn.jquery);
 });

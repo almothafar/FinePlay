@@ -19,9 +19,9 @@ var postForm = function(form){
 	form.appendTo(document.body).submit();
 }
 
-$('.nextButton').on('click', function(event){
+$('.nextButton').on('click', function(e){
 
-	event.preventDefault();
+	e.preventDefault();
 
 	var target = $(this).parent().parent().find('td').eq(0).text();
 

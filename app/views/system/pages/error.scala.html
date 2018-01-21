@@ -17,14 +17,14 @@
 	injector.instanceOf(classOf[play.api.Environment]).mode == play.api.Mode.Dev
 }
 
-@isUsefulException(error: play.api.UsefulException) = @{
+@isPlayException(error: play.api.UsefulException) = @{
 
-	!"Execution exception".equals(error.title)
+	error.cause.getCause().isInstanceOf[play.api.PlayException]
 }
 
-@title(isUsefulException: Boolean) = @{
+@title(isPlayException: Boolean) = @{
 
-	if(isUsefulException){
+	if(isPlayException){
 
 		error.title
 	}else{
@@ -55,11 +55,11 @@
 
 	@body("error","error"){
 
-		@components.modal(Map("id"->"errorModal", "title"->title(isUsefulException(error)), "size"->"lg"), List(
+		@components.modal(Map("id"->"errorModal", "title"->title(isPlayException(error)), "size"->"lg"), List(
 				Map("id"->"errorModalOk", "type"->"primary", "text"->"OK", "default"->"true")
 			)){
 
-			@if(isUsefulException(error)){
+			@if(isPlayException(error)){
 
 				<i class="fas fa-exclamation-triangle fa-3x fa-pull-left fa-border text-warning"></i>
 			}else{
@@ -86,7 +86,7 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"isUseful":@isUsefulException(error)
+			"isPlayException":@isPlayException(error)
 		}'></div>
 
 		@libraries.standard.last()

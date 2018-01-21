@@ -1,6 +1,7 @@
 package apis.character;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,7 +32,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class Character extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Character.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;

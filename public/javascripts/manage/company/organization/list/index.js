@@ -438,7 +438,7 @@ if(document.location.origin+Routes.controllers.manage.company.Read.index().url =
 
 $('#previousButton').on('click', function(e){
 
-	event.preventDefault();
+	e.preventDefault();
 
 	hideToRight('#detailContent', function(e){
 

@@ -22,7 +22,7 @@ $('#imageFile').on('change', function(e){
 	if(!this.files.length){
 
 		document.imageForm.inputName.value = '';
-		$('#imageFileStyle').replaceWith(template.replace('fileName',''));
+		$(this).next('label.custom-file-label').attr('data-filename', '');
 		$('#imagePreview').css('background-image', '');
 		return;
 	}
@@ -32,7 +32,7 @@ $('#imageFile').on('change', function(e){
 	if(!/^image.*/.test(file.type)){
 
 		document.imageForm.inputName.value = '';
-		$('#imageFileStyle').replaceWith(template.replace('fileName',''));
+		$(this).next('label.custom-file-label').attr('data-filename', '');
 		$('#imagePreview').css('background-image', '');
 		return;
 	}

@@ -1,5 +1,6 @@
 package controllers.setting.user;
 
+import java.lang.invoke.MethodHandles;
 import java.time.ZoneId;
 import java.util.Locale;
 
@@ -29,7 +30,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed(value = { Permission.READ, Permission.WRITE })
 public class User extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;

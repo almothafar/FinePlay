@@ -6,7 +6,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.invoke.MethodHandles;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -57,6 +61,7 @@ import akka.stream.OverflowStrategy;
 import akka.stream.javadsl.Source;
 import akka.util.ByteString;
 import common.system.MessageKeys;
+import common.utils.Locales;
 import common.utils.PDFs;
 import common.utils.Reports;
 import common.utils.ZIPs;
@@ -76,7 +81,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class Download extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Download.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;
@@ -448,6 +453,33 @@ public class Download extends Controller {
 			LOGGER.error(e.getLocalizedMessage());
 			throw new UncheckedIOException(e);
 		}
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	public Result fileName() {
+
+		final String fileName = messages.get(Locales.toLang(Locale.US), MessageKeys.FILE_NAME)+".txt";
+		final String userFileName;
+		try {
+
+			userFileName = URLEncoder.encode(messages.get(lang(), MessageKeys.FILE_NAME).replaceAll("\\s", "_"), StandardCharsets.UTF_8.name())+".txt";;
+		} catch (UnsupportedEncodingException e) {
+
+			throw new UncheckedIOException(e);
+		}
+
+		final StringBuilder builder = new StringBuilder("attachment;");
+		builder.append("filename=\"").append(fileName).append("\";");
+		builder.append("filename*=UTF-8''").append(userFileName);
+
+		response().setHeader(Http.HeaderNames.CONTENT_DISPOSITION, builder.toString());
+		return ok("(｀・ω・´)\r\n(*´ω｀*)\r\n(´･ω･`)\r\n".getBytes(StandardCharsets.UTF_8)).as(Http.MimeTypes.BINARY);
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	public Result urlFileName(final String urlFileName) {
+
+		return ok("(｀・ω・´)\r\n(*´ω｀*)\r\n(´･ω･`)\r\n".getBytes(StandardCharsets.UTF_8)).as(Http.MimeTypes.BINARY);
 	}
 
 	@Authenticated(common.core.Authenticator.class)

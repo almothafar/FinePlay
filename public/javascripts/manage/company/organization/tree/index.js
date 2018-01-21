@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 	$('#unitTree').bind(
 		'tree.move',
-		function(event) {
+		function(e) {
 
 			$("#unsavedInfo>span").html("<strong>" + Messages(MessageKeys.SAVE) + " " + Messages(MessageKeys.INFO) + "</strong> " + Messages(MessageKeys.SYSTEM_ERROR_DATA_UNSAVE));
 			$("#unsavedInfo").show();
@@ -158,7 +158,7 @@ if(document.location.origin+Routes.controllers.manage.company.Read.index().url =
 
 $('#previousButton').on('click', function(e){
 
-	event.preventDefault();
+	e.preventDefault();
 
 	hideToRight('#detailContent', function(e){
 

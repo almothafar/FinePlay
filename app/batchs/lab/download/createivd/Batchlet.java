@@ -3,6 +3,7 @@ package batchs.lab.download.createivd;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,7 +31,7 @@ import net.sf.jasperreports.engine.JREmptyDataSource;
 @Named
 public class Batchlet extends AbstractBatchlet {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Batchlet.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private JobContext jobCtx;
@@ -61,7 +62,7 @@ public class Batchlet extends AbstractBatchlet {
 		return null;
 	}
 
-	public byte[] createIVDData() {
+	private byte[] createIVDData() {
 
 		final Map<String, Object> parameters = new HashMap<>();
 		parameters.put("hiragino", "{{HIRAGINO}}");

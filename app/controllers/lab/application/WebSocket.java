@@ -1,5 +1,6 @@
 package controllers.lab.application;
 
+import java.lang.invoke.MethodHandles;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -31,7 +32,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class WebSocket extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(WebSocket.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private final ActorSystem actorSystem;
 	private final Materializer materializer;

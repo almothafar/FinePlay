@@ -1,5 +1,6 @@
 package common.core;
 
+import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -36,7 +37,7 @@ import play.mvc.Results;
 
 public class ActionCreator extends DefaultActionCreator {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ActionCreator.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Transactional
 	@SuppressWarnings("rawtypes")

@@ -1,5 +1,6 @@
 package common.core;
 
+import java.lang.invoke.MethodHandles;
 import java.time.ZoneId;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -21,7 +22,7 @@ import play.inject.ApplicationLifecycle;
 @Singleton
 public class Global {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Global.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	public Global(ApplicationLifecycle lifecycle) {

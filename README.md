@@ -12,8 +12,8 @@ How to play
 
 ##### Environment #####
 
-	macOS High Sierra version 10.13.2(17C88)
-	java version "1.8.0_152"
+	macOS High Sierra version 10.13.2(17C205)
+	java version "1.8.0_162"
 	Safari version 11.0.2 (13604.4.7.1.3)
 
 ##### Java #####
@@ -63,16 +63,13 @@ Notice
 ---------------
 
 + This project is not considered to develop continuously. (However, this template is a very thin wrapper for open source software, so don't worry about it.)
-+ Based on Bootstrap 4 β3
 
 Release History
 ---------------
 
-+ **2.6.11-α3** - 2018-01-14
++ **2.6.11-β1** - 2018-01-19
 + **2.6.10-α3** - 2018-01-08
-+ **2.6.9-α3** - 2018-01-01
 + **2.6.7-α2** - 2017-11-19
-+ **2.6.6-α2** - 2017-10-21
 + **2.6.5-α1** - 2017-09-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

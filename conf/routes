@@ -172,9 +172,11 @@ GET		/lab/application/download/report.pdf			controllers.lab.application.Download
 GET		/lab/application/download/report.docx		controllers.lab.application.Download.reportWordStream()
 GET		/lab/application/download/report.xlsx		controllers.lab.application.Download.reportExcelStream()
 GET		/lab/application/download/report.pptx		controllers.lab.application.Download.reportPowerpointStream()
-GET		/lab/application/download/:executionId/ivd.pdf	controllers.lab.application.Download.ivdPdfStream(executionId: Long)
 GET		/lab/application/download/files.zip			controllers.lab.application.Download.zipStream()
 GET		/lab/application/download/encryptfiles.zip	controllers.lab.application.Download.encryptZipStream()
+GET		/lab/application/download/:executionId/ivd.pdf	controllers.lab.application.Download.ivdPdfStream(executionId: Long)
+GET		/lab/application/download/filename			controllers.lab.application.Download.fileName()
+GET		/lab/application/download/:urlfilename		controllers.lab.application.Download.urlFileName(urlfilename: String)
 GET		/lab/application/upload						controllers.lab.application.Upload.index()
 POST		/lab/application/upload/form					controllers.lab.application.Upload.form()
 POST		/lab/application/upload/image				controllers.lab.application.Upload.image()
@@ -189,4 +191,3 @@ GET		/section/work/task3							controllers.section.work.Work.task3()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-#GET     /assets/*file               controllers.Assets.at(path="/public", file)

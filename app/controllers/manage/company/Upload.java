@@ -1,6 +1,7 @@
 package controllers.manage.company;
 
 import java.io.File;
+import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,7 +54,7 @@ import play.mvc.Security.Authenticated;
 
 public class Upload extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Upload.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;

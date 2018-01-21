@@ -14,11 +14,10 @@
 
 @customCheckbox(columnName: String, isChecked: Boolean, isShow: Boolean) = {
 
-	<label class="custom-control custom-checkbox custom-control-inline @("d-none".when(!isShow))">
-		<input class="custom-control-input settingDisplayColumns" type="checkbox" name="@columnName" value="@columnName" @("checked".when(isChecked))>
-		<label class="custom-control-label"></label>
-		@columnName
-	</label>
+	<div class="custom-control custom-checkbox custom-control-inline @("d-none".when(!isShow))">
+		<input id="columns@columnName" class="custom-control-input settingDisplayColumns" type="checkbox" name="@columnName" value="@columnName" @("checked".when(isChecked))>
+		<label class="custom-control-label" for="columns@columnName">@columnName</label>
+	</div>
 }
 
 <div class="collapse" id="settingCollapse">

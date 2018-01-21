@@ -26,6 +26,17 @@
 	}
 }
 
+@encodedFileName() = @{
+
+	try {
+
+		"URL_" + Messages(MessageKeys.FILE_NAME).replaceAll("\\s", "_") + ".txt";
+	} catch {
+
+		case e: UnsupportedEncodingException => throw new RuntimeException(e)
+	}
+}
+
 @frame(){
 
 	@head("lab"){
@@ -132,6 +143,21 @@
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Encrypt ZIP Stream</h4>
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.encryptZipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-archive", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
+					<div class="mb-3 lab secret">
+						<h4 class="headline">File name</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.fileName().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 lab secret">
+						<h4 class="headline">URL File name</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.urlFileName(encodedFileName).toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">

@@ -1,6 +1,7 @@
 package controllers.lab.application;
 
 import java.io.File;
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import java.util.Map;
 
@@ -13,7 +14,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import common.system.MessageKeys;
-import controllers.user.User;
 import models.system.System.PermissionsAllowed;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
@@ -25,7 +25,7 @@ import play.mvc.Result;
 @PermissionsAllowed
 public class Upload extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;

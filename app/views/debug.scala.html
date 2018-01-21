@@ -14,7 +14,8 @@
 	<button id="showResponsiveButton" type="button" class="btn btn-outline-primary"><i id="" class="fas fa-desktop"></i></button>
 
 	<div><strong>Memory</strong>&nbsp;<span id="Memory"></span></div>
+	<div><strong>Java</strong>&nbsp;<span id="Java_ver"></span></div>
 	<div><strong>Play</strong>&nbsp;<span id="Play_ver"></span></div>
 	<div><strong>jQuery</strong>&nbsp;<span id="jQuery_ver"></span></div>
 
-"""), "data-placement"->"bottom", "class"->"d-none", "data-memory"->(((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000) + "/" + (Runtime.getRuntime().totalMemory())/1000000), "data-playver"->play.core.PlayVersion.current))
+"""), "data-placement"->"bottom", "class"->"d-none", "data-memory"->(((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000) + "/" + (Runtime.getRuntime().totalMemory())/1000000), "data-javaver"->System.getProperty("java.version"), "data-playver"->play.core.PlayVersion.current))

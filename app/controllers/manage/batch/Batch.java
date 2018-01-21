@@ -2,6 +2,7 @@ package controllers.manage.batch;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,7 +26,7 @@ import play.mvc.Security.Authenticated;
 
 public class Batch extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Batch.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })

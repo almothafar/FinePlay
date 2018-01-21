@@ -1,5 +1,7 @@
 package controllers.manage.system;
 
+import java.lang.invoke.MethodHandles;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 
@@ -17,7 +19,7 @@ import play.mvc.Security.Authenticated;
 
 public class System extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(System.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private Provider<Application> applicationProvider;

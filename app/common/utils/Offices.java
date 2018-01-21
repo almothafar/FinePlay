@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -23,6 +24,8 @@ public class Offices {
 
 	@Inject
 	private static Config config;
+
+	private static final ReentrantLock toFormatLock = new ReentrantLock();
 
 	@Nonnull
 	public static byte[] toPDF(@Nonnull final Path inputPath) {
@@ -72,6 +75,7 @@ public class Offices {
 
 		try {
 
+			toFormatLock.lock();
 			final Process process = builder.start();
 			final boolean isSuccess = process.waitFor(30, TimeUnit.SECONDS);
 			if (isSuccess) {
@@ -91,6 +95,7 @@ public class Offices {
 			throw new RuntimeException(e);
 		} finally {
 
+			toFormatLock.unlock();
 			try {
 
 				Files.deleteIfExists(outputDirPath);

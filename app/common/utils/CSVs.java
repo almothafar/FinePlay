@@ -35,7 +35,6 @@ public class CSVs {
 		final String csv;
 		try (final StringWriter stringWriter = new StringWriter(); final ICsvBeanWriter writer = new CsvBeanWriter(stringWriter, CsvPreference.STANDARD_PREFERENCE)) {
 
-			stringWriter.write('\uFEFF');
 			writer.writeHeader(headers);
 			for (int i = 0; i < beans.size(); i++) {
 

@@ -1,6 +1,7 @@
 package batchs.manage.hello.batchlet;
 
 import java.io.File;
+import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.jar.JarFile;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import javax.batch.api.AbstractBatchlet;
@@ -23,12 +23,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.management.ObjectName;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Named
 public class Batchlet extends AbstractBatchlet {
 
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Batchlet.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private JobContext jobCtx;
@@ -91,7 +92,7 @@ public class Batchlet extends AbstractBatchlet {
 
 	@Inject
 	@BatchProperty(name = "logger")
-	Logger logger;
+	java.util.logging.Logger logger;
 
 	@Inject
 	@BatchProperty(name = "pattern")

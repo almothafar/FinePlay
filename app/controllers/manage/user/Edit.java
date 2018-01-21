@@ -1,5 +1,6 @@
 package controllers.manage.user;
 
+import java.lang.invoke.MethodHandles;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -51,7 +52,7 @@ import play.mvc.Security.Authenticated;
 
 public class Edit extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Edit.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;

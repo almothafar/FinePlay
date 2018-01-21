@@ -1,6 +1,8 @@
 package common.core.image;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -20,20 +22,13 @@ import org.slf4j.LoggerFactory;
 @Singleton
 public class DefaultImage implements Image {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultImage.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static final Pattern IMAGE = Pattern.compile(".+\\.(png|jpg|jpeg)$", Pattern.CASE_INSENSITIVE);
 
-	@Override
-	@Nonnull
-	public String getName() {
+	private static final List<Path> IMAGE_PATHS = initImagePaths();
 
-		return "Sign in image";
-	}
-
-	@Override
-	@Nonnull
-	public URI getLink() {
+	private static List<Path> initImagePaths() {
 
 		try {
 
@@ -49,10 +44,30 @@ public class DefaultImage implements Image {
 				throw new IllegalStateException("Sign in image not found.");
 			}
 
-			final Path path = imagePaths.get(RandomUtils.nextInt(0, imagePaths.size()));
+			return imagePaths;
+		} catch (IOException e) {
+
+			throw new UncheckedIOException(e);
+		}
+	}
+
+	@Override
+	@Nonnull
+	public String getName() {
+
+		return "Sign in image";
+	}
+
+	@Override
+	@Nonnull
+	public URI getLink() {
+
+		final Path path = IMAGE_PATHS.get(RandomUtils.nextInt(0, IMAGE_PATHS.size()));
+
+		try {
 
 			return new URI("/assets/images/signins/" + path.getFileName());
-		} catch (IOException | URISyntaxException e) {
+		} catch (URISyntaxException e) {
 
 			throw new RuntimeException(e);
 		}

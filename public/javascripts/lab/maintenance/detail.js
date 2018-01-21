@@ -2,11 +2,11 @@
 
 showFromRight('#detailContent');
 
-$('#previousButton').on('click', function(event){
+$('#previousButton').on('click', function(e){
 
-	event.preventDefault();
+	e.preventDefault();
 
-	hideToRight('#detailContent', function(event){
+	hideToRight('#detailContent', function(e){
 
 		window.location.href = Routes.controllers.lab.maintenance.Maintenance.master().url;
 	});

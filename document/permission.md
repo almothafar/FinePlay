@@ -1,5 +1,11 @@
 |PACKAGE             |CLASS                                                                 |METHOD                        |  READ| WRITE|MANAGE|
 |--------------------|----------------------------------------------------------------------|------------------------------|------|------|------|
+|apis                |apis.batch.Batch                                                      |                              |     O|     O|     O|
+|                    |                                                                      |abandon                       |      |      |      |
+|                    |                                                                      |jobExecution                  |      |      |      |
+|                    |                                                                      |restart                       |      |      |      |
+|                    |                                                                      |start                         |      |      |      |
+|                    |                                                                      |stop                          |      |      |      |
 |apis                |apis.character.Character                                              |                              |     O|     O|     O|
 |                    |                                                                      |character                     |      |      |      |
 |apis                |apis.company.Company                                                  |                              |      |      |      |
@@ -15,8 +21,6 @@
 |apis                |apis.transrator.Transrator                                            |                              |     O|     O|     O|
 |                    |                                                                      |translate                     |      |      |      |
 |controllers         |controllers.bootstrap.component.Component                             |                              |     O|     O|     O|
-|                    |                                                                      |index                         |      |      |      |
-|controllers         |controllers.bootstrap.ilike.ILike                                     |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.bootstrap.layout.Layout                                   |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
@@ -73,12 +77,23 @@
 |                    |                                                                      |paging                        |      |      |      |
 |controllers         |controllers.lab.application.Download                                  |                              |     O|     O|     O|
 |                    |                                                                      |chunks                        |      |      |      |
+|                    |                                                                      |encryptZipStream              |      |      |      |
 |                    |                                                                      |excelStream                   |      |      |      |
 |                    |                                                                      |file                          |      |      |      |
+|                    |                                                                      |fileName                      |      |      |      |
 |                    |                                                                      |index                         |      |      |      |
-|                    |                                                                      |pdfStream                     |      |      |      |
-|                    |                                                                      |reportStream                  |      |      |      |
+|                    |                                                                      |ivdPdfStream                  |      |      |      |
+|                    |                                                                      |pdfboxStream                  |      |      |      |
+|                    |                                                                      |powerPointStream              |      |      |      |
+|                    |                                                                      |reportExcelStream             |      |      |      |
+|                    |                                                                      |reportPdfStream               |      |      |      |
+|                    |                                                                      |reportPowerpointStream        |      |      |      |
+|                    |                                                                      |reportWordStream              |      |      |      |
 |                    |                                                                      |stream                        |      |      |      |
+|                    |                                                                      |urlFileName                   |      |      |      |
+|                    |                                                                      |wkhtmltopdfStream             |      |      |      |
+|                    |                                                                      |wordStream                    |      |      |      |
+|                    |                                                                      |zipStream                     |      |      |      |
 |controllers         |controllers.lab.application.Upload                                    |                              |     O|     O|     O|
 |                    |                                                                      |direct                        |      |      |      |
 |                    |                                                                      |form                          |      |      |      |
@@ -87,6 +102,10 @@
 |controllers         |controllers.lab.application.WebSocket                                 |                              |     O|     O|     O|
 |                    |                                                                      |connect                       |      |      |      |
 |                    |                                                                      |index                         |      |      |      |
+|controllers         |controllers.lab.fork.Fork                                             |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
+|controllers         |controllers.lab.ilike.ILike                                           |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.lab.library.Library                                       |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.lab.maintenance.Maintenance                               |                              |     O|     O|     O|
@@ -94,6 +113,8 @@
 |                    |                                                                      |master                        |      |      |      |
 |controllers         |controllers.lab.ui.UI                                                 |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
+|controllers         |controllers.manage.batch.Batch                                        |                              |      |      |      |
+|                    |                                                                      |index                         |      |      |     O|
 |controllers         |controllers.manage.company.Edit                                       |                              |      |      |      |
 |                    |                                                                      |create                        |      |      |     O|
 |                    |                                                                      |delete                        |      |      |     O|

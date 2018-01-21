@@ -1,5 +1,6 @@
 package controllers.lab.application;
 
+import java.lang.invoke.MethodHandles;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -45,7 +46,7 @@ import mylib.Greet;
 @PermissionsAllowed
 public class Application extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private JPAApi jpaApi;

@@ -1,5 +1,7 @@
 package batchs.manage.fail;
 
+import java.lang.invoke.MethodHandles;
+
 import javax.batch.api.AbstractBatchlet;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,7 +20,7 @@ import play.libs.mailer.MailerClient;
 @Named
 public class Batchlet extends AbstractBatchlet {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Batchlet.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private Config config;

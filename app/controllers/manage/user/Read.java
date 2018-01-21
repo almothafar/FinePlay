@@ -1,5 +1,7 @@
 package controllers.manage.user;
 
+import java.lang.invoke.MethodHandles;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import javax.persistence.criteria.SetJoin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import common.utils.Binaries;
 import common.utils.CSVs;
 import common.utils.DateTimes;
 import models.base.EntityDao;
@@ -36,7 +39,7 @@ import play.mvc.Security.Authenticated;
 
 public class Read extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Read.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private JPAApi jpaApi;
@@ -110,7 +113,7 @@ public class Read extends Controller {
 				final String csv = CSVs.toCSV(models.user.User.getHeaders(), models.user.User.getWriteCellProcessors(), downloadUsers);
 
 				response().setHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=users.csv");
-				return ok(csv).as(Http.MimeTypes.BINARY);
+				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8))).as(Http.MimeTypes.BINARY);
 			} else {
 
 				return failureRead(downloadForm);

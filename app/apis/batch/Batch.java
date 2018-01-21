@@ -1,6 +1,7 @@
 package apis.batch;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.invoke.MethodHandles;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
@@ -28,7 +29,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class Batch extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Batch.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck

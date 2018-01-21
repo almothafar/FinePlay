@@ -1,5 +1,6 @@
 package apis.system;
 
+import java.lang.invoke.MethodHandles;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
@@ -25,7 +26,7 @@ import play.mvc.Security.Authenticated;
 @PermissionsAllowed
 public class Logger extends Controller {
 
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Logger.class);
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private MessagesApi messages;

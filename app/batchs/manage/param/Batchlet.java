@@ -1,5 +1,6 @@
 package batchs.manage.param;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Properties;
 
 import javax.batch.api.AbstractBatchlet;
@@ -14,7 +15,7 @@ import org.slf4j.LoggerFactory;
 @Named
 public class Batchlet extends AbstractBatchlet {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Batchlet.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private JobContext jobCtx;

@@ -38,16 +38,14 @@
 			</div>
 			<label for="operation" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.OPERATION)</label>
 			<div class="col-sm-12">
-				<label class="custom-control custom-radio custom-control-inline">
-					<input class="custom-control-input" id="createRadio" name="operation" type="radio" value="@Operation.CREATE.toString()">
-					<label class="custom-control-label"></label>
-					@Messages(MessageKeys.CREATE)
-				</label>
-				<label class="custom-control custom-radio custom-control-inline">
-					<input class="custom-control-input" id="updateRadio" name="operation" type="radio" value="@Operation.UPDATE.toString()" checked>
-					<label class="custom-control-label"></label>
-					@Messages(MessageKeys.UPDATE)
-				</label>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input id="createRadio" class="custom-control-input" name="operation" type="radio" value="@Operation.CREATE.toString()">
+					<label class="custom-control-label" for="createRadio">@Messages(MessageKeys.CREATE)</label>
+				</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input id="updateRadio" class="custom-control-input" name="operation" type="radio" value="@Operation.UPDATE.toString()" checked>
+					<label class="custom-control-label" for="updateRadio">@Messages(MessageKeys.UPDATE)</label>
+				</div>
 			</div>
 		</div>
 	}

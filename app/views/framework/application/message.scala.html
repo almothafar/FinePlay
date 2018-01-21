@@ -69,11 +69,10 @@
 
 					<div id="langSelect">
 						@for(i <- 0 until displaySystemLangs.length) {
-						<label class="custom-control custom-checkbox custom-control-inline">
-							<input class="custom-control-input" type="checkbox" name="@i" value="@i" checked>
-							<label class="custom-control-label"></label>
-							@displaySystemLangs(i)
-						</label>
+						<div class="custom-control custom-checkbox custom-control-inline">
+							<input id="displaySystemLangs@i" class="custom-control-input" type="checkbox" name="@i" value="@i" checked>
+							<label class="custom-control-label" for="displaySystemLangs@i">@displaySystemLangs(i)</label>
+						</div>
 						}
 					</div>
 

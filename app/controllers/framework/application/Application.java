@@ -1,5 +1,6 @@
 package controllers.framework.application;
 
+import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.sql.DatabaseMetaData;
@@ -92,7 +93,7 @@ import scala.Tuple2;
 @PermissionsAllowed
 public class Application extends Controller {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private Config config;

@@ -1,6 +1,6 @@
 @(prop:scala.collection.immutable.Map[String, String], groupToElementsList:Seq[Tuple2[ /*section*/ scala.collection.immutable.Map[String, String], /*work*/ Seq[scala.collection.immutable.Map[String, String]]]])
 
-<div id="@prop.getOrElse("id", "")" role="tablist" aria-multiselectable="true">
+<div id="@prop.getOrElse("id", "workmenu")" role="tablist" aria-multiselectable="true">
 	@for(i <- 0 to groupToElementsList.size() - 1){
 		@defining(groupToElementsList.get(i)) { groupToElements =>
 			@defining(groupToElements._1) { group =>
@@ -9,14 +9,14 @@
 
 		<div class="px-3" role="tab" id="heading@i">
 			<h4 class="">
-				<a class="@("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false"))))" data-toggle="collapse" data-parent="#@prop.getOrElse("id", "")" href="#collapse@i" aria-expanded="false" aria-controls="collapse@i">
+				<a class="@("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false"))))" data-toggle="collapse" data-target="#collapse@i" aria-expanded="false" aria-controls="collapse@i">
 					<i class="@group.getOrElse("icon", "")"></i>
 					@group.get("name")
 				</a>
 			</h4>
 		</div>
 
-		<div id="collapse@i" class="worksbase collapse @("show".when(Boolean.valueOf(group.getOrElse("selected", "false"))))" role="tabpanel" aria-labelledby="heading@i">
+		<div id="collapse@i" class="worksbase collapse @("show".when(Boolean.valueOf(group.getOrElse("selected", "false"))))" role="tabpanel" aria-labelledby="heading@i" data-parent="#@prop.getOrElse("id", "workmenu")">
 			<ul class="works nav flex-column">
 				@defining(groupToElements._2) { elements =>
 					@for(j <- 0 to elements.size - 1){

@@ -63,11 +63,10 @@ public class Sessions {
 
 			writer.write(list);
 			writer.flush();
-			;
 
 			final String value = stringWriter.toString();
 
-			return value;
+			return Strings.removeNewLine(value);
 		} catch (final IOException e) {
 
 			throw new UncheckedIOException(e);

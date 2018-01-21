@@ -30,14 +30,14 @@ e.g.
 
 to
 
-	github/fineplay/public/themes/[Theme name]/bootstrap.min.css
+	github/fineplay/public/themes/[theme name]/bootstrap.min.css
 
 Project CSS
 ----------
 
 ### Make ###
 
-	github/FinePlay/public/themes/[Theme name]/theme.css
+	github/FinePlay/public/themes/[theme name]/theme.css
 
 ###### File Content is Optional.
 
@@ -47,9 +47,27 @@ Project library CSS
 ### Add enum ###
 
 	models.user.User.java
-	models.user.User.java.THEME.[Theme name]
+	models.user.User.Theme.[THEME NAME]
+
+### Add Message ###
+
+	github/FinePlay/conf/messages[|.[lang-CODE]]
+	theme.[theme name] = [Theme name]
+
+	github/FinePlay/app/common/system/MessageKeys.java
+	public static final String THEME_[THEME NAME] = "theme.[theme name]";
+
+	github/FinePlay/public/javascripts/messages.js
+	THEME_[THEME NAME]: "theme.[theme name]",
+
+###### Use MessagesCreator & MessageKeysCreator.
+
+### Add Util code ###
+
+	common.utils.Themes.java#getThemeIdToNameMap()
+	themeIdToNameMap.put(Theme.[THEME NAME].name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_[THEME NAME]));
 
 ### Modify library CSS ###
 ###### Optional.
 
-	github/FinePlay/app/views/libraries/[Library name]/head.scala.html
+	github/FinePlay/app/views/libraries/[library name]/head.scala.html

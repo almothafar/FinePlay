@@ -1,5 +1,6 @@
 package models.company.organization;
 
+import java.lang.invoke.MethodHandles;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,7 +36,7 @@ import play.i18n.MessagesApi;
 @Table(name = "ORGANIZATIONS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "COMPANY_ID" }) }, indexes = { @Index(columnList = "ID"), @Index(columnList = "COMPANY_ID") })
 public class Organization {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Organization.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	@Transient

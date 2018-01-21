@@ -1,5 +1,6 @@
 package models.user;
 
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -65,7 +66,7 @@ import play.mvc.Controller;
 @Table(name = "USERS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "USERID" }) }, indexes = { @Index(columnList = "USERID") })
 public class User implements ExpireHandler, PasswordHandler, Validatable<List<ValidationError>> {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	public static final int ROLE_COUNT_MAX = 5;
 

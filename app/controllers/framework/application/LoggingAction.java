@@ -1,5 +1,6 @@
 package controllers.framework.application;
 
+import java.lang.invoke.MethodHandles;
 import java.util.concurrent.CompletionStage;
 
 import org.slf4j.Logger;
@@ -12,7 +13,7 @@ import play.mvc.Result;
 
 class LoggingAction extends Simple {
 
-	private final Logger LOGGER = LoggerFactory.getLogger("access");
+	private final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Override
 	public CompletionStage<Result> call(Context ctx) {

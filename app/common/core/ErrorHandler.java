@@ -1,5 +1,6 @@
 package common.core;
 
+import java.lang.invoke.MethodHandles;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
@@ -17,7 +18,6 @@ import play.api.OptionalSourceMapper;
 import play.api.UsefulException;
 import play.api.routing.Router;
 import play.http.DefaultHttpErrorHandler;
-import play.mvc.Action;
 import play.mvc.Controller;
 import play.mvc.Http.RequestHeader;
 import play.mvc.Result;
@@ -25,7 +25,7 @@ import play.mvc.Results;
 
 public class ErrorHandler extends DefaultHttpErrorHandler {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ErrorHandler.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
 	private Config config;
