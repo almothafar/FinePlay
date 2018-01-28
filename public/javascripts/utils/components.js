@@ -6,7 +6,14 @@ var Components = function() {
 
 		var icons = $(selector).find('.i').filter(function (i) {
 
-			var isIconEnabled = $(this).hasClass('fa') || $(this).hasClass('icon') || $(this).hasClass('mi');
+			var isIconEnabled =
+				$(this).hasClass('fas') ||
+				$(this).hasClass('far') ||
+				$(this).hasClass('fal') ||
+				$(this).hasClass('fab') ||
+				$(this).hasClass('material-icons') ||
+				$(this).hasClass('icofont') ||
+				$(this).hasClass('emojione');
 			return isIconEnabled;
 		});
 

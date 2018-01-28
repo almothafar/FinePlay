@@ -55,25 +55,37 @@ class LibraryUpdateChecker {
 		System.exit(0);
 	}
 
-	// @SuppressWarnings("null")
 	@SuppressWarnings("null")
 	private static @Nonnull List<Artifact> toArtifacts(@Nonnull final List<String> lines) {
 
 		final List<Artifact> artifacts = new ArrayList<>();
 		boolean isStart = false;
+		int libBlockCount = 0;
 		for (final String line : lines) {
 
 			if (line.startsWith("libraryDependencies ++= Seq(")) {
 
 				isStart = true;
 				continue;
-			} else if (line.startsWith(")")) {
+			} else if (!(libBlockCount <= 3)) {
 
 				break;
 			}
 
 			if (!isStart)
 				continue;
+
+			if (line.isEmpty())
+				continue;
+
+			if (line.startsWith("//"))
+				continue;
+
+			if (line.startsWith(")")) {
+
+				libBlockCount++;
+				continue;
+			}
 
 			if (!line.contains("%"))
 				continue;
@@ -84,7 +96,7 @@ class LibraryUpdateChecker {
 			final Matcher matcher = PATTERN_SBT_LIB.matcher(line);
 			if (!matcher.matches()) {
 
-				throw new IllegalStateException("");
+				throw new IllegalStateException(line);
 			}
 			final String groupId = matcher.group(1);
 			final String artifactId = matcher.group(2);

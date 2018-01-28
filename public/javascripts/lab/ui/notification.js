@@ -24,7 +24,7 @@ $('#dangerAlertButton').on('click', function(e){
 
 $('#htmlAlertButton').on('click', function(e){
 
-	var notificationHtml = $('#htmlText').text();
+	var notificationHtml = $('#htmlText').val();
 	console.log(notificationHtml);
 	var wait = mySlider.bootstrapSlider('getValue') * 1000;
 	console.log(wait);

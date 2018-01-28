@@ -564,6 +564,19 @@ public class Application extends Controller {
 			platformMap.put("DatabaseProductVersion", metaData.getDatabaseProductVersion());
 			platformMap.put("DriverName", metaData.getDriverName());
 			platformMap.put("DriverVersion", metaData.getDriverVersion());
+
+			switch (metaData.getDatabaseProductName()) {
+			case "H2":
+
+				// Database depend code is here.
+				break;
+			case "PostgreSQL":
+
+				// Database depend code is here.
+				break;
+			default:
+				break;
+			}
 		} catch (HibernateException | SQLException e) {
 
 			throw new RuntimeException();

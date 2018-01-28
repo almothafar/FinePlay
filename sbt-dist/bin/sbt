@@ -2,6 +2,7 @@
 
 # Java 9
 #SBT_OPTS="--add-modules java.xml.bind"
+#MAVEN_OPTS="--add-modules java.annotations.common"
 
 ###  ------------------------------- ###
 ###  Helper methods for BASH scripts ###

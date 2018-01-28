@@ -39,6 +39,7 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-xml" % "1.0.0",
 //  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
+//  "net.logstash.logback" % "logstash-logback-encoder" % "4.11",			// Apache 4.11
   "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",				//
   "org.hibernate.validator" % "hibernate-validator" % "6.0.7.Final",		// Apache 6.0.2 // into play include
@@ -47,7 +48,7 @@ libraryDependencies ++= Seq(
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.2",							// Apache 1.1
-  "org.postgresql" % "postgresql" % "42.1.4",							// BSD 2-clause 4.2.14
+  "org.postgresql" % "postgresql" % "42.2.1",							// BSD 2-clause 42.2.1
   "org.mockito" % "mockito-inline" % "2.13.0",
 //  "org.mockito" % "mockito-core" % "2.13.0",							// MIT 2.13.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",								// Apache 3.16
@@ -63,7 +64,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
-  "org.webjars.npm" % "jquery" % "3.2.1",								// MIT 3.2.1
+  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.0.0",								// MIT 4.0.0-alpha.6
 //  "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
@@ -92,6 +93,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
   "org.webjars.npm" % "marked" % "0.3.6",								// MIT 0.3.6
+  "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
   "org.webjars.bower" % "parsleyjs" % "2.8.0",							// MIT 2.7.2
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1
   "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
@@ -102,8 +104,8 @@ libraryDependencies ++= Seq(
 )
 // TwentyTwenty															// MIT 2017/11/11 master
 // Frappé Gantt															// MIT build version 0.0.7 master
-// 3Dmol.js																// BSD-3-Clause license 1.1.1
-// geckodriver															// ? 0.18.0
+// 3Dmol.js																// BSD-3-Clause license 1.3.0
+// geckodriver															// Mozilla Public License 0.18.0
 // LibreOffice															// Mozilla Public License
 // wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4
 
@@ -122,7 +124,7 @@ libraryDependencies ++= Seq(
 
 // JasperReports library
 libraryDependencies ++= Seq(
-  "net.sf.jasperreports" % "jasperreports" % "6.4.3",						// LGPL 6.4.3
+  "net.sf.jasperreports" % "jasperreports" % "6.5.1",						// LGPL 6.4.3
   "net.sf.jasperreports" % "jasperreports-fonts" % "6.0.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",					// BSD-style 1.5-beta1
@@ -133,7 +135,7 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "javax.enterprise" % "cdi-api" % "2.0",
   "org.jboss.weld.se" % "weld-se" % "2.4.5.Final",						// Apache 2.4.5.Final
-  "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.0.Final",
+  "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.1.Final",
   "org.jboss.marshalling" % "jboss-marshalling" % "2.0.2.Final",			// Apache 2.0.2.Final
   "org.jboss.logging" % "jboss-logging" % "3.3.1.Final",
   "org.jberet" % "jberet-core" % "1.2.5.Final",							// Eclipse Public 1.2.5.Final

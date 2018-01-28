@@ -67,6 +67,8 @@ ban
 bandcamp
 barcode
 bars
+baseball-ball
+basketball-ball
 bath
 battery-empty
 battery-full
@@ -98,6 +100,7 @@ bolt
 bomb
 book
 bookmark
+bowling-ball
 braille
 briefcase
 btc
@@ -147,6 +150,14 @@ chart-pie
 check
 check-circle
 check-square
+chess
+chess-bishop
+chess-board
+chess-king
+chess-knight
+chess-pawn
+chess-queen
+chess-rook
 chevron-circle-down
 chevron-circle-left
 chevron-circle-right
@@ -225,6 +236,7 @@ earlybirds
 edge
 edit
 eject
+elementor
 ellipsis-h
 ellipsis-v
 ember
@@ -281,6 +293,7 @@ flag
 flag-checkered
 flask
 flickr
+flipboard
 fly
 folder
 folder-open
@@ -290,6 +303,7 @@ font-awesome-alt
 font-awesome-flag
 fonticons
 fonticons-fi
+football-ball
 fort-awesome
 fort-awesome-alt
 forumbee
@@ -320,6 +334,7 @@ glide
 glide-g
 globe
 gofore
+golf-ball
 goodreads
 goodreads-g
 google
@@ -356,8 +371,10 @@ heading
 headphones
 heart
 heartbeat
+hips
 hire-a-helper
 history
+hockey-puck
 home
 hooli
 hospital
@@ -514,6 +531,7 @@ phoenix-framework
 phone
 phone-square
 phone-volume
+php
 pied-piper
 pied-piper-alt
 pied-piper-pp
@@ -540,6 +558,8 @@ qq
 qrcode
 question
 question-circle
+quidditch
+quinscape
 quora
 quote-left
 quote-right
@@ -628,6 +648,7 @@ speakap
 spinner
 spotify
 square
+square-full
 stack-exchange
 stack-overflow
 star
@@ -662,6 +683,7 @@ supple
 sync
 sync-alt
 table
+table-tennis
 tablet
 tablet-alt
 tachometer-alt
@@ -752,6 +774,7 @@ vimeo-v
 vine
 vk
 vnv
+volleyball-ball
 volume-down
 volume-off
 volume-up
@@ -787,3 +810,4 @@ yelp
 yen-sign
 yoast
 youtube
+youtube-square

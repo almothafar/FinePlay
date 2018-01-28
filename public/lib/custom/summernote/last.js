@@ -40,9 +40,9 @@ if ('' == lang) {
 		}
 
 		if (//
-		$(this).hasClass('dropdown-menu') || //
-		$(this).hasClass('note-color-palette') || //
-		$(this).hasClass('note-editable')) {
+			$(this).hasClass('dropdown-menu') || //
+			$(this).hasClass('note-color-palette') || //
+			$(this).hasClass('note-editable')) {
 
 			$(this).find('*').each(function() {
 

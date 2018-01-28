@@ -1,0 +1,100 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import common.utils._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"Viz.js", "icon"->"far fa-share-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"vizjs"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<textarea class="form-control" id="dotText" rows="10">
+digraph G {
+
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		node [style=filled,color=white];
+		a0 -> a1 -> a2 -> a3;
+		label = "process #1";
+	}
+
+	subgraph cluster_1 {
+		node [style=filled];
+		b0 -> b1 -> b2 -> b3;
+		label = "process #2";
+		color=blue
+	}
+	start -> a0;
+	start -> b0;
+	a1 -> b3;
+	b2 -> a3;
+	a3 -> a0;
+	a3 -> end;
+	b3 -> end;
+
+	start [shape=Mdiamond];
+	end [shape=Msquare];
+}
+						</textarea>
+					</div>
+
+					<div class="mt-3 mb-3">
+
+						<div class="row">
+							<div class="col-6">
+								<select id="engine" name="engine" class="form-control custom-select">
+									<option value="circo">circo</option>
+									<option value="dot" selected>dot</option>
+									<option value="fdp">fdp</option>
+									<option value="neato">neato</option>
+									<option value="osage">osage</option>
+									<option value="twopi">twopi</option>
+								</select>
+							</div>
+							<div class="col-6 text-right">
+
+								@components.button(Map("id"->"previewButton", "type"->"primary", "outline"->"true", "icon"->"far fa-eye", "text"->Messages(MessageKeys.PREVIEW)))
+							</div>
+						</div>
+					</div>
+
+					<div id="graph" class="table-responsive">
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.vizjs.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/library/vizjs.js")'></script>
+	}
+}

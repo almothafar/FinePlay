@@ -89,6 +89,9 @@ public class Library extends Controller {
 		case "frappegantt":
 
 			return frappegantt();
+		case "vizjs":
+
+			return vizjs();
 		case "pdfjs":
 
 			return pdfjs();
@@ -237,6 +240,11 @@ public class Library extends Controller {
 	public static Result frappegantt() {
 
 		return ok(views.html.lab.library.frappegantt.render());
+	}
+
+	public static Result vizjs() {
+
+		return ok(views.html.lab.library.vizjs.render());
 	}
 
 	public static Result pdfjs() {
