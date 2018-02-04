@@ -56,10 +56,12 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "3.17",										// Apache 3.16
   "org.apache.poi" % "poi-scratchpad" % "3.17",
   "org.apache.poi" % "poi-ooxml" % "3.17",
-  "com.google.zxing" % "javase" % "3.3.1",								// Apache 3.3.0
+  "org.apache.tika" % "tika-core" % "1.17",								// Apache 1.17
+  "org.apache.tika" % "tika-parsers" % "1.17",
+  "com.google.zxing" % "javase" % "3.3.2",								// Apache 3.3.0
   "org.apache.pdfbox" % "pdfbox" % "2.0.8",								// Apache 2.0.7
   "org.jsoup" % "jsoup" % "1.11.2",										// MIT 1.11.2
-  "com.squareup" % "javapoet" % "1.9.0",									// Apache 1.9.0
+  "com.squareup" % "javapoet" % "1.10.0",								// Apache 1.9.0
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",						// Apache 1.2.0.CR1
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5

@@ -78,7 +78,7 @@ class LibraryUpdateChecker {
 			if (line.isEmpty())
 				continue;
 
-			if (line.startsWith("//"))
+			if (line.startsWith("// \""))
 				continue;
 
 			if (line.startsWith(")")) {

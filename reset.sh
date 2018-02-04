@@ -6,7 +6,7 @@ rm -r ./bin/*
 rm -r ./generate/*
 touch ./generate/.empty
 
-rm -r ./document/tabledef/*
+rm -r ./document/tabledef_prod/*
 rm -r ./project/project/
 rm -r ./project/target/
 find ./ -name '.DS_Store' | xargs rm
