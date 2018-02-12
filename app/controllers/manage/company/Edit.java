@@ -147,8 +147,7 @@ public class Edit extends Controller {
 
 							final Root<Company> root = query.from(Company.class);
 							query.where(builder.and(//
-									builder.equal(root.get(Company_.id), id), //
-									builder.equal(root.get(Company_.updateDateTime), serverDateTime)));
+									builder.equal(root.get(Company_.id), id)));
 						});
 					} catch (final NoResultException e) {
 
@@ -225,8 +224,7 @@ public class Edit extends Controller {
 
 							final Root<Company> root = query.from(Company.class);
 							query.where(builder.and(//
-									builder.equal(root.get(Company_.id), id), //
-									builder.equal(root.get(Company_.updateDateTime), serverDateTime)));
+									builder.equal(root.get(Company_.id), id)));
 						});
 					} catch (final NoResultException e) {
 

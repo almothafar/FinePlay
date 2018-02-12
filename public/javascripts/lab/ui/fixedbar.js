@@ -6,10 +6,11 @@ $(document).ready(function () {
 
 	$('#backButton').on('click', function(){
 
+		var start = menuHeight() + extensionMenuHeight();
 		var currentPosition = getContent().scrollTop();
 		var beforePositions = $('div[id^="group_"]').map(function(){
 
-				return offsetTopFromTarget('#system_content', this);
+				return offsetTopFromTarget('#system_content', this) - start;
 			}).filter(function(){
 
 				return this < currentPosition;
@@ -26,13 +27,14 @@ $(document).ready(function () {
 
 	$('#nextButton').on('click', function(){
 
+		var start = menuHeight() + extensionMenuHeight();
 		var currentPosition = getContent().scrollTop();
 		var nextPositions = $('div[id^="group_"]').map(function(){
 
-				return offsetTopFromTarget('#system_content', this);
+				return offsetTopFromTarget('#system_content', this) - start;
 			}).filter(function(){
 
-				return currentPosition < this;
+				return currentPosition < this - 1;
 			});
 		var nextPosition = nextPositions[0];
 		if(nextPosition){

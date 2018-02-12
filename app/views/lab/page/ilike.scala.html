@@ -1,25 +1,24 @@
-@import scala.collection.JavaConversions._
-@import scala.collection.JavaConverters._
-
-@import views.html._
-@import views.html.components
-
-@()
-
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
 
 @frame(){
 
 	@head("Lab"){
 
 		@libraries.standard.head()
-		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ilike/index.css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/page/ilike.css")'>
 	}
 
-	@body("lab","ilike"){
+	@body("lab","page"){
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
@@ -107,6 +106,9 @@
 				</div>
 			</div>
 		}
+
+		@tasks(Map("id"->"", "task"->"ilike"))
+		@components.button(Map("id"->"tasksbutton", "type"->"success", "text"->"+", "class"->"rounded-circle shadow", "data-toggle"->"modal", "data-target"->"#tasksDialog"))
 
 		@libraries.standard.last()
 	}

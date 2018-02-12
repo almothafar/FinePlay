@@ -1,0 +1,68 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/page/fork.css")'>
+	}
+
+	@body("lab","page"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3 d-md-none")){
+
+			<div id="select-content" class="row">
+				<div class="col-6">
+						@components.button(Map("id"->"", "block"->"true", "icon"->"", "text"->Messages(MessageKeys.LEFT)))
+				</div>
+				<div class="col-6">
+						@components.button(Map("id"->"", "outline"->"true", "block"->"true", "icon"->"", "text"->Messages(MessageKeys.RIGHT)))
+				</div>
+			</div>
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			<div id="double-content" class="row current-left">
+				<div id="left-content" class="col-12 col-md-6">
+					<h4 class="headline">@(Messages(MessageKeys.LEFT) + ' ' + Messages(MessageKeys.CONTENT))</h4>
+					<div class="jumbotron jumbotron-fluid">
+						<div class="container">
+							<h1 class="display-4 draft">Fluid jumbotron</h1>
+							<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+							@components.image(Map("id"->"", "source"->"holder.js/100px200?random=yes", "fluid"->"true", "alternate"->(Messages(MessageKeys.LEFT) + ' ' + Messages(MessageKeys.CONTENT))))
+						</div>
+					</div>
+				</div>
+				<div id="right-content" class="col-12 col-md-6">
+					<h4 class="headline">@(Messages(MessageKeys.RIGHT) + ' ' + Messages(MessageKeys.CONTENT))</h4>
+					<div class="jumbotron jumbotron-fluid">
+						<div class="container">
+							<h1 class="display-4 draft">Fluid jumbotron</h1>
+							<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+							@components.image(Map("id"->"", "source"->"holder.js/100px300?random=yes", "fluid"->"true", "alternate"->(Messages(MessageKeys.RIGHT) + ' ' + Messages(MessageKeys.CONTENT))))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@tasks(Map("id"->"", "task"->"fork"))
+		@components.button(Map("id"->"tasksbutton", "type"->"success", "text"->"+", "class"->"rounded-circle shadow", "data-toggle"->"modal", "data-target"->"#tasksDialog"))
+
+		@libraries.standard.last()
+		@libraries.holder.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/page/fork.js")'></script>
+	}
+}

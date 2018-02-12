@@ -74,6 +74,7 @@ var MessageKeys = {
 	DATE: "date",
 	DATETIME: "datetime",
 	DAY: "day",
+	DAYLIGHT__SAVING__TIME: "daylight_saving_time",
 	DEFAULT: "default",
 	DELETE: "delete",
 	DESCRIPTION: "description",

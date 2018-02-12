@@ -30,6 +30,9 @@ public class Helps {
 
 		final Document document = Jsoup.parse(html.body());
 		document.select("script").remove();
+		document.select("#system_content-left-corner").remove();
+		document.select("#system_menu").remove();
+		document.select("#system_extension-menu").remove();
 		document.select("#system_credit-container").remove();
 		final Element helpContent = getHelpContent(document);
 		final Elements preTags = helpContent.select("pre");

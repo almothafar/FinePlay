@@ -110,9 +110,8 @@
 					Map("name"->Messages(MessageKeys.LIBRARY), "icon"->"far fa-file-alt", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
 					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"far fa-file-alt", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
 					Map("name"->Messages(MessageKeys.UI), "icon"->"far fa-file-alt", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
-					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"far fa-file-alt", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance")),
-					Map("name"->"Fork", "icon"->"fas fa-code-branch", "link"->controllers.lab.fork.routes.Fork.index().toString(), "selected"->equalWork("bootstrap","fork")),
-					Map("name"->"I Like", "icon"->"far fa-file-alt", "link"->controllers.lab.ilike.routes.ILike.index().toString(), "selected"->equalWork("bootstrap","ilike"))
+					Map("name"->Messages(MessageKeys.PAGE), "icon"->"far fa-file-alt", "link"->controllers.lab.page.routes.Page.index("landing").toString(), "selected"->equalWork("lab","page")),
+					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"far fa-file-alt", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.SECTION), "icon"->"far fa-folder", "selected"->equalSection("section")),List(
 					Map("name"->Messages(MessageKeys.WORK), "icon"->"far fa-file-alt", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalWork("section","work")),
@@ -122,46 +121,42 @@
 			))
 		</div>
 
-		<button id="system_menu-left-corner">
-		</button>
-
-		<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow-light">
-
-			<div class="d-inline">
-			@components.button(Map("id"->"menuButton", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
-			<a class="navbar-brand d-none d-md-inline ml-1 mt-1" href="@controllers.home.routes.Home.index()">
-				@components.image(Map("id"->"system_logo", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "alternate"->"System logo."))
-			</a>
-			</div>
-			<div class="" id="">
-				<ul class="navbar-nav mr-auto">
-				</ul>
-				<form class="form-inline float-right align-items-center">
-					@views.html.debug()
-					@components.button(Map("id"->"printButton", "type"->"link", "icon"->"fas fa-print", "text"->"", "class"->"ml-1 d-none"))
-					@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fas fa-angle-double-up", "text"->"", "class"->"ml-1"))
-					<div class="btn-group">
-						<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USERID)</span>
-						</button>
-						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
-							<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fas fa-sign-out-alt"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
-						</div>
-					</div>
-					@components.button(Map("id"->"helpButton", "type"->"link", "icon"->"far fa-question-circle", "text"->"", "class"->"ml-1 d-none"))
-				</form>
-			</div>
-		</nav>
-
-		<nav class="navbar invisible">
-			@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon"))
-		</nav>
-
-		<div id="system_extension-menu" class="shadow-light">
-		</div>
-
 		<div id="system_content">
+
+			<button id="system_content-left-corner">
+			</button>
+
+			<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow-light sticky-top">
+
+				<div class="d-inline">
+				@components.button(Map("id"->"menuButton", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
+				<a class="navbar-brand d-none d-md-inline ml-1 mt-1" href="@controllers.home.routes.Home.index()">
+					@components.image(Map("id"->"system_logo", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "alternate"->"System logo."))
+				</a>
+				</div>
+				<div class="" id="">
+					<ul class="navbar-nav mr-auto">
+					</ul>
+					<form class="form-inline float-right align-items-center">
+						@views.html.debug()
+						@components.button(Map("id"->"printButton", "type"->"link", "icon"->"fas fa-print", "text"->"", "class"->"ml-1 d-none"))
+						@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fas fa-angle-double-up", "text"->"", "class"->"ml-1"))
+						<div class="btn-group">
+							<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USERID)</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
+								<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fas fa-sign-out-alt"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
+							</div>
+						</div>
+						@components.button(Map("id"->"helpButton", "type"->"link", "icon"->"far fa-question-circle", "text"->"", "class"->"ml-1 d-none"))
+					</form>
+				</div>
+			</nav>
+
+			<div id="system_extension-menu" class="shadow-light sticky-top">
+			</div>
 
 			@content
 
@@ -209,13 +204,13 @@
 
 				@components.container(Map("id"->"", "fluid"->"true", "class"->"bg-light py-2")){
 					<div class="input-group">
-						<div class="input-group-append">
+						<div class="input-group-prepend">
 							<span class="input-group-text">
 								@components.icon(Map("id"->"", "icon"->"fas fa-search"))
 							</span>
 						</div>
 						<input id="help-search-text" type="text" class="form-control" aria-label="">
-						<div class="input-group-prepend">
+						<div class="input-group-append">
 							<span id="help-search-clear" class="input-group-text">
 								@components.icon(Map("id"->"", "icon"->"fas fa-times-circle"))
 							</span>

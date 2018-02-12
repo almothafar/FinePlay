@@ -51,9 +51,6 @@ public class UI extends Controller {
 		case "arrow":
 
 			return arrow();
-		case "floatbutton":
-
-			return floatbutton();
 		case "summary":
 
 			return summary();
@@ -150,11 +147,6 @@ public class UI extends Controller {
 	private static Result arrow() {
 
 		return ok(views.html.lab.ui.arrow.render());
-	}
-
-	private static Result floatbutton() {
-
-		return ok(views.html.lab.ui.floatbutton.render());
 	}
 
 	private static Result summary() {

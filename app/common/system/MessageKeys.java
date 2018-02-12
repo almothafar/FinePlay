@@ -153,6 +153,8 @@ public class MessageKeys {
 
   public static final String DAY = "day";
 
+  public static final String DAYLIGHT__SAVING__TIME = "daylight_saving_time";
+
   public static final String DEFAULT = "default";
 
   public static final String DELETE = "delete";

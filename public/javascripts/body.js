@@ -15,6 +15,10 @@ $(document).ready(function () {
 $(window).on('load', function () {
 
 	console.log('completely loaded.');
+
+	refreshMenu();
+	refreshExtensionMenu();
+	refreshContent();
 });
 
 if(("Dev" == getMode()) && window.Popper){
@@ -357,7 +361,7 @@ $("#help-search-text").on('focus', function () {
 
 	if(!$("#system_base").hasClass("system_help-expand")){
 
-		$('#system_menu-left-corner').focus();
+		$('#system_content-left-corner').focus();
 	}
 });
 
@@ -378,6 +382,7 @@ $('#debugButton').on('shown.bs.popover', function () {
 	$("#Java_ver").text($("#debugButton").data("javaver"));
 	$("#Play_ver").text($("#debugButton").data("playver"));
 	$("#jQuery_ver").text($.fn.jquery);
+	$("#Bootstrap_ver").text(bootstrap.Button.VERSION);
 });
 
 //

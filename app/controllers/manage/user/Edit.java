@@ -197,8 +197,7 @@ public class Edit extends Controller {
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//
-									builder.equal(root.get(User_.userId), userId), //
-									builder.equal(root.get(User_.updateDateTime), serverDateTime)));
+									builder.equal(root.get(User_.userId), userId)));
 						});
 					} catch (final NoResultException e) {
 
@@ -279,8 +278,7 @@ public class Edit extends Controller {
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//
-									builder.equal(root.get(User_.userId), userId), //
-									builder.equal(root.get(User_.updateDateTime), serverDateTime)));
+									builder.equal(root.get(User_.userId), userId)));
 						});
 					} catch (final NoResultException e) {
 

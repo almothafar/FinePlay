@@ -279,6 +279,7 @@ danger = 危険
 date = 日
 datetime = 日時
 day = 日
+daylight_saving_time = 夏時間
 default = 標準
 delete = 削除
 description = 説明

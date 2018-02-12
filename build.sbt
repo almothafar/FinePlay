@@ -108,7 +108,7 @@ libraryDependencies ++= Seq(
 // Frappé Gantt															// MIT build version 0.0.7 master
 // 3Dmol.js																// BSD-3-Clause license 1.3.0
 // geckodriver															// Mozilla Public License 0.18.0
-// LibreOffice															// Mozilla Public License
+// LibreOffice															// Mozilla Public License 6.0.3
 // wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4
 
 // Icon library

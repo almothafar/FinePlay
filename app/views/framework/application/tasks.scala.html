@@ -21,6 +21,7 @@
 	<a href="@controllers.framework.application.routes.Application.index("exception").toString()" class="list-group-item @("active".when(equalTask("exception")))">Exception</a>
 	<a href="@controllers.framework.application.routes.Application.index("reporterror").toString()" class="list-group-item @("active".when(equalTask("reporterror")))">@(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR))</a>
 	<a href="@controllers.framework.application.routes.Application.index("datetime").toString()" class="list-group-item @("active".when(equalTask("datetime")))">@Messages(MessageKeys.DATETIME)</a>
+	<a href="@controllers.framework.application.routes.Application.index("daylightsavingtime").toString()" class="list-group-item @("active".when(equalTask("daylightsavingtime")))">@Messages(MessageKeys.DAYLIGHT__SAVING__TIME)</a>
 	<a href="@controllers.framework.application.routes.Application.index("entitymanager").toString()" class="list-group-item @("active".when(equalTask("entitymanager")))">EntityManager</a>
 	<a href="@controllers.framework.application.routes.Application.index("user").toString()" class="list-group-item @("active".when(equalTask("user")))">@Messages(MessageKeys.USER)</a>
 </div>

@@ -85,18 +85,73 @@ var offsetTopFromTarget = function(targetSelector, selector){
 var extendMenu = function(selector){
 
 	$(selector).appendTo($('#system_extension-menu'));
+	refreshMenu();
+	refreshExtensionMenu();
+	refreshContent();
+}
 
-	var getMenuBarHeight = function() {
+var setFontSize = function(size){
 
-		return $('#system_menu')[0].offsetHeight;
+	// There are many places that don't change.
+	$('html').css('font-size', size + 'px');
+	refreshMenu();
+	refreshExtensionMenu();
+	refreshContent();
+}
+
+var refreshMenu = function(){
+
+	if(isStickySupported){
+
+		$('#system_menu').css('top', 0 + 'px');
+	}else{
+		console.log('polyfill for IE.');
+
+		$('#system_menu').removeClass('sticky-top').css('position', 'absolute');
+		var refreshMenuPosition = function(){
+
+			var contentPosition = $("#system_content-left-corner").position().top;
+			$('#system_menu').css('top', 0 - contentPosition + 'px');
+		}
+		refreshMenuPosition();
+		$('#system_content').scroll(function(){
+
+			refreshMenuPosition();
+		});
 	}
+}
 
-	var getExtensionMenuHeight = function() {
+var refreshExtensionMenu = function(){
 
-		return $('#system_extension-menu')[0].offsetHeight;
+	if(isStickySupported){
+
+		$('#system_extension-menu').css('top', menuHeight() + 'px');
+	}else{
+		console.log('polyfill for IE.');
+
+		$('#system_extension-menu').removeClass('sticky-top').css('position', 'absolute');
+		var refreshExtensionMenuPosition = function(){
+
+			var contentPosition = $("#system_content-left-corner").position().top;
+			$('#system_extension-menu').css('top', menuHeight() - contentPosition + 'px');
+		}
+		refreshExtensionMenuPosition();
+		$('#system_content').scroll(function(){
+
+			refreshExtensionMenuPosition();
+		});
 	}
+}
 
-	getContent().css('top', getMenuBarHeight() + getExtensionMenuHeight() + 'px');
+var refreshContent = function(){
+
+	if(isStickySupported){
+
+	}else{
+		console.log('polyfill for IE.');
+
+		$('#system_content').css('padding-top', menuHeight() + extensionMenuHeight() + 'px');
+	}
 }
 
 var getTheme = function(){

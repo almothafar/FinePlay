@@ -110,7 +110,7 @@ var fadeInFromFront = function(selector, func){
 			}).one('transitionend', function(){
 
 				$(this).css({
-					'transform':'scale(1,1)',
+					'transform':'initial',
 					'opacity':'1',
 					'transition':'0.2s ease-out'
 				}).one('transitionend', func)
@@ -262,6 +262,11 @@ var scrollContent = function(position){
 var menuHeight = function(){
 
 	return $('#system_menu').outerHeight()
+}
+
+var extensionMenuHeight = function(){
+
+	return $('#system_extension-menu').outerHeight()
 }
 
 var creditHeight = function(){

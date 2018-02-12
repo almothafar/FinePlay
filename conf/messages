@@ -279,6 +279,7 @@ danger = Danger
 date = Date
 datetime = Date time
 day = Day
+daylight_saving_time = Daylight saving time
 default = Default
 delete = Delete
 description = Description

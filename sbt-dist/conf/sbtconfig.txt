@@ -1,5 +1,10 @@
 # Set the java args to high
 
+# Patch for Error of
+# com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException: Invalid byte 1 of 1-byte UTF-8 sequence.
+# in Japan
+-Dfile.encoding=UTF-8
+
 -Xmx512M
 
 -XX:MaxPermSize=256m

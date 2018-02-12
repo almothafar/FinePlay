@@ -14,3 +14,13 @@ var injectStyle = function(selector, css) {
 	var sheet = sheets[sheets.length - 1];
 	sheet.insertRule(rule, sheet.cssRules.length);
 }
+
+var isStickySupported = function() {
+
+	return [ '', '-webkit-', '-moz-', '-ms-' ].some(function(prefix){
+
+		var elem = document.createElement('div');
+		elem.style = 'position:' + prefix + 'sticky' + ';';
+		return elem.style.position.indexOf('sticky') !== -1;
+	});
+}();

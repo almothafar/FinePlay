@@ -32,7 +32,6 @@ body {
 #system_menu {
 	border-bottom: 1px LightGray solid;
 	opacity:0.9;
-	position: absolute;
 	left: 0px;
 	right: 0px;
 	z-index: 1030;
@@ -54,7 +53,7 @@ body {
 #system_content {
 	position: absolute;
 	width: 100%;
-	top: 57px;
+	top: 0px;
 	bottom: 0px;
 	overflow: auto;
 	left: 0px;
@@ -65,9 +64,7 @@ body {
 }
 
 #system_extension-menu {
-	position: absolute;
 	width: 100%;
-	top: 57px;
 	z-index: 1029;
 	left: 0px;
 	right: 100%;

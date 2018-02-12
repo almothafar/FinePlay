@@ -14,6 +14,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
+import org.apache.tika.metadata.HttpHeaders;
 import org.apache.tika.metadata.Metadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +77,8 @@ public class Upload extends Controller {
 		if (filePart != null) {
 
 			@SuppressWarnings("unused")
-			final String fileName = filePart.getFilename();
+			final Path fileNamePath = Paths.get(filePart.getFilename());
+			final String fileName = fileNamePath.getName(fileNamePath.getNameCount() -1).toString();
 			@SuppressWarnings("unused")
 			final String contentType = filePart.getContentType();
 			final Path path = filePart.getFile().toPath();
@@ -85,7 +87,7 @@ public class Upload extends Controller {
 			try {
 
 				final Metadata metadata = Binaries.getMetadata(Files.readAllBytes(path));
-				final String realContentType = metadata.get(Metadata.CONTENT_TYPE);
+				final String realContentType = metadata.get(HttpHeaders.CONTENT_TYPE);
 				final Set<String> acceptContentTypes = new HashSet<>(Arrays.asList("image/png", "image/jpeg", "image/gif"));
 				LOGGER.info("Accept : Content types={} Content type={}", acceptContentTypes, realContentType);
 				if (!acceptContentTypes.contains(realContentType)) {

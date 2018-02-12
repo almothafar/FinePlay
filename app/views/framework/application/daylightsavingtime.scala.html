@@ -1,0 +1,223 @@
+@import java.time._
+@import java.time.format._
+@import views.html._
+@import views.html.components
+@import views.html.development
+@import play.api.i18n._
+
+@import common.system._
+
+@(startDayInfo: List[List[String]], endDayInfo: List[List[String]])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@datetime() = @{
+
+	common.utils.DateTimes.getClientDateTime(LocalDateTime.now())
+}
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("framework","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DAYLIGHT__SAVING__TIME), "icon"->"fas fa-sun", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"daylightsavingtime"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<h4 class="headline">@(Messages(MessageKeys.START) + " " + Messages(MessageKeys.DAY))</h4>
+					<div class="table-responsive">
+						<table class="table table-sm">
+							<thead>
+								<tr>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="2">3/12 9:00</td>
+									<td>@startDayInfo.get(0).get(0)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(0).get(1)</td>
+									<td></td>
+									<td>@startDayInfo.get(0).get(2)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(0).get(3)</td>
+								</tr>
+								<tr>
+									<td>@startDayInfo.get(1).get(0)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(1).get(1)</td>
+									<td></td>
+									<td>@startDayInfo.get(1).get(2)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(1).get(3)</td>
+								</tr>
+								<tr>
+									<td rowspan="2"></td>
+									<td class="bg-dark">@startDayInfo.get(2).get(0)</td>
+									<td class="bg-dark">→</td>
+									<td class="bg-dark">@startDayInfo.get(2).get(1)</td>
+									<td></td>
+									<td class="bg-warning">@startDayInfo.get(2).get(2)</td>
+									<td class="bg-warning">→</td>
+									<td class="bg-warning">@startDayInfo.get(2).get(3)</td>
+								</tr>
+								<tr>
+									<td class="bg-dark">@startDayInfo.get(3).get(0)</td>
+									<td class="bg-dark">→</td>
+									<td class="bg-dark">@startDayInfo.get(3).get(1)</td>
+									<td></td>
+									<td class="bg-warning">@startDayInfo.get(3).get(2)</td>
+									<td class="bg-warning">→</td>
+									<td class="bg-warning">@startDayInfo.get(3).get(3)</td>
+								</tr>
+								<tr>
+									<td rowspan="2">3/12 10:00</td>
+									<td>@startDayInfo.get(4).get(0)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(4).get(1)</td>
+									<td></td>
+									<td>@startDayInfo.get(4).get(2)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(4).get(3)</td>
+								</tr>
+								<tr>
+									<td>@startDayInfo.get(5).get(0)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(5).get(1)</td>
+									<td></td>
+									<td>@startDayInfo.get(5).get(2)</td>
+									<td>→</td>
+									<td>@startDayInfo.get(5).get(3)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<h4 class="headline">@(Messages(MessageKeys.END) + " " + Messages(MessageKeys.DAY))</h4>
+					<div class="table-responsive">
+						<table class="table table-sm">
+							<thead>
+								<tr>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col"></th>
+									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="2">11/05 7:00</td>
+									<td>@endDayInfo.get(0).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(0).get(1)</td>
+									<td></td>
+									<td>@endDayInfo.get(0).get(2)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(0).get(3)</td>
+								</tr>
+								<tr>
+									<td>@endDayInfo.get(1).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(1).get(1)</td>
+									<td></td>
+									<td>@endDayInfo.get(1).get(2)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(1).get(3)</td>
+								</tr>
+								<tr>
+									<td rowspan="2">11/05 8:00</td>
+									<td>@endDayInfo.get(2).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(2).get(1)</td>
+									<td></td>
+									<td>@endDayInfo.get(2).get(2)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(2).get(3)</td>
+								</tr>
+								<tr>
+									<td>@endDayInfo.get(3).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(3).get(1)</td>
+									<td></td>
+									<td>@endDayInfo.get(3).get(2)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(3).get(3)</td>
+								</tr>
+								<tr>
+									<td rowspan="2">11/05 9:00</td>
+									<td>@endDayInfo.get(4).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(4).get(1)</td>
+									<td></td>
+									<td class="bg-danger">@endDayInfo.get(4).get(2)</td>
+									<td class="bg-danger">→</td>
+									<td class="bg-danger">@endDayInfo.get(4).get(3)</td>
+								</tr>
+								<tr>
+									<td>@endDayInfo.get(5).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(5).get(1)</td>
+									<td></td>
+									<td class="bg-danger">@endDayInfo.get(5).get(2)</td>
+									<td class="bg-danger">→</td>
+									<td class="bg-danger">@endDayInfo.get(5).get(3)</td>
+								</tr>
+									<td rowspan="2">11/05 10:00</td>
+									<td>@endDayInfo.get(6).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(6).get(1)</td>
+									<td></td>
+									<td>@endDayInfo.get(6).get(2)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(6).get(3)</td>
+								</tr>
+								<tr>
+									<td>@endDayInfo.get(7).get(0)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(7).get(1)</td>
+									<td></td>
+									<td>@endDayInfo.get(7).get(2)</td>
+									<td>→</td>
+									<td>@endDayInfo.get(7).get(3)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

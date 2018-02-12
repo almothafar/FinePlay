@@ -164,6 +164,9 @@ public class Application extends Controller {
 		case "datetime":
 
 			return datetime();
+		case "daylightsavingtime":
+
+			return daylightsavingtime();
 		case "entitymanager":
 
 			return entitymanager();
@@ -548,6 +551,29 @@ public class Application extends Controller {
 		map.put("Client(ThaiBuddhist) Year of Era", thaiBuddhistDate.format(DateTimeFormatter.ofPattern("G y").withLocale(lang().toLocale())));
 
 		return ok(views.html.framework.application.datetime.render(map));
+	}
+
+	public Result daylightsavingtime() {
+
+		final List<List<String>> startDayInfo = new ArrayList<>();
+		startDayInfo.add(Arrays.asList("2017-03-12T09:00Z", ZonedDateTime.parse("2017-03-12T09:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-03-12T01:00:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-03-12T01:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		startDayInfo.add(Arrays.asList("2017-03-12T09:30Z", ZonedDateTime.parse("2017-03-12T09:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-03-12T01:30:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-03-12T01:30:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		startDayInfo.add(Arrays.asList("", "", /* ! */"2017-03-12T02:00:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-03-12T02:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		startDayInfo.add(Arrays.asList("", "", /* ! */"2017-03-12T02:30:00-07:00[US/Pacific]", ZonedDateTime.parse("2017-03-12T02:30:00-07:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		startDayInfo.add(Arrays.asList("2017-03-12T10:00Z", ZonedDateTime.parse("2017-03-12T10:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-03-12T03:00:00-07:00[US/Pacific]", ZonedDateTime.parse("2017-03-12T03:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		startDayInfo.add(Arrays.asList("2017-03-12T10:30Z", ZonedDateTime.parse("2017-03-12T10:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-03-12T03:30:00-07:00[US/Pacific]", ZonedDateTime.parse("2017-03-12T03:30:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+
+		final List<List<String>> endDayInfo = new ArrayList<>();
+		endDayInfo.add(Arrays.asList("2017-11-05T07:00Z", ZonedDateTime.parse("2017-11-05T07:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T00:00:00-07:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T00:00:00-07:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		endDayInfo.add(Arrays.asList("2017-11-05T07:30Z", ZonedDateTime.parse("2017-11-05T07:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T00:30:00-07:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T00:30:00-07:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		endDayInfo.add(Arrays.asList("2017-11-05T08:00Z", ZonedDateTime.parse("2017-11-05T08:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T01:00:00-07:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T01:00:00-07:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		endDayInfo.add(Arrays.asList("2017-11-05T08:30Z", ZonedDateTime.parse("2017-11-05T08:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T01:30:00-07:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T01:30:00-07:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		endDayInfo.add(Arrays.asList("2017-11-05T09:00Z", ZonedDateTime.parse("2017-11-05T09:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T01:00:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T01:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		endDayInfo.add(Arrays.asList("2017-11-05T09:30Z", ZonedDateTime.parse("2017-11-05T09:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T01:30:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T01:30:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		endDayInfo.add(Arrays.asList("2017-11-05T10:00Z", ZonedDateTime.parse("2017-11-05T10:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T02:00:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T02:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+		endDayInfo.add(Arrays.asList("2017-11-05T10:30Z", ZonedDateTime.parse("2017-11-05T10:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T02:30:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T02:30:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
+
+		return ok(views.html.framework.application.daylightsavingtime.render(startDayInfo, endDayInfo));
 	}
 
 	public Result entitymanager() {
