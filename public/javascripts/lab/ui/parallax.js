@@ -2,21 +2,11 @@
 
 $(document).ready(function () {
 
-	injectStyle('.contentFrame:nth-child(1)>.imageContent', {
-		'background-image': 'url(' + Messages("img1") + ')'
-	});
-	injectStyle('.contentFrame:nth-child(2)>.imageContent', {
-		'background-image': 'url(' + Messages("img2") + ')'
-	});
-	injectStyle('.contentFrame:nth-child(3)>.imageContent', {
-		'background-image': 'url(' + Messages("img3") + ')'
-	});
-	injectStyle('.contentFrame:nth-child(4)>.imageContent', {
-		'background-image': 'url(' + Messages("img4") + ')'
-	});
-	injectStyle('.contentFrame:nth-child(5)>.imageContent', {
-		'background-image': 'url(' + Messages("img5") + ')'
-	});
+	$('.contentFrame:nth-child(1)>.imageContent').css('background-image', 'url(' + Messages("img1") + ')');
+	$('.contentFrame:nth-child(2)>.imageContent').css('background-image', 'url(' + Messages("img2") + ')');
+	$('.contentFrame:nth-child(3)>.imageContent').css('background-image', 'url(' + Messages("img3") + ')');
+	$('.contentFrame:nth-child(4)>.imageContent').css('background-image', 'url(' + Messages("img4") + ')');
+	$('.contentFrame:nth-child(5)>.imageContent').css('background-image', 'url(' + Messages("img5") + ')');
 
 	var breadcrumbHeight = 15 + $('.breadcrumb').outerHeight(true); //79
 

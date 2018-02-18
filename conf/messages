@@ -143,6 +143,7 @@ mycompany.link = https://github.com/hiro20v
 theme = Theme
 theme.default = Default
 theme.pretty = Pretty
+theme.japan = Japan
 
 #
 
@@ -233,6 +234,7 @@ add = Add
 after = After
 alignment = Alignment
 all = All
+ambiguous = Ambiguous
 analyses = Analyses
 answer = Answer
 application = Application

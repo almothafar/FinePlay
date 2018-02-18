@@ -23,6 +23,8 @@ public class MessageKeys {
 
   public static final String ALL = "all";
 
+  public static final String AMBIGUOUS = "ambiguous";
+
   public static final String ANALYSES = "analyses";
 
   public static final String ANSWER = "answer";
@@ -736,6 +738,8 @@ public class MessageKeys {
   public static final String THEME = "theme";
 
   public static final String THEME_DEFAULT = "theme.default";
+
+  public static final String THEME_JAPAN = "theme.japan";
 
   public static final String THEME_PRETTY = "theme.pretty";
 

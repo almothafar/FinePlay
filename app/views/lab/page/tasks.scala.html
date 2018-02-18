@@ -24,3 +24,5 @@
 		<a href="@controllers.lab.page.routes.Page.index("fork").toString()" class="list-group-item @("active".when(equalTask("fork")))">Fork</a>
 	</div>
 }
+
+@components.button(Map("id"->"tasksbutton", "type"->"success", "icon"->"fas fa-list", "class"->"rounded-circle shadow", "data-toggle"->"modal", "data-target"->"#tasksDialog"))

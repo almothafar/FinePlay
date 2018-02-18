@@ -75,7 +75,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	}
 
 	public enum Theme {
-		DEFAULT, PRETTY
+		DEFAULT, PRETTY, JAPAN
 	}
 
 	@Inject

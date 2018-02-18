@@ -1,6 +1,6 @@
 'use strict';
 
-$(document).ready(function () {
+$(window).on('load', function () {
 
 	$("#twentytwentyContainer").twentytwenty({
 		default_offset_pct: 0.95,

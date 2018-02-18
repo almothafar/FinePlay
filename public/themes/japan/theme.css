@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+/* Basic frame */
+
+body {
+	background-color: #fffceb !important;
+	background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.01) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.01) 75%, rgba(0, 0, 0, 0.01)),
+		linear-gradient(-45deg, rgba(0, 0, 0, 0.01) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.01) 75%, rgba(0, 0, 0, 0.01));
+	background-size: 100px 100px
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Top menu */
+#system_menu{
+	background-color: rgb(250, 250, 255) !important;
+	border-bottom: 3px rgb(100, 143, 224) solid;
+}
+
+
+
+
+
+
+/* Side menu */
+
+#system_work-menu {
+	background-color: #5e6433;
+}
+
+
+
+
+#system_work-menu a {
+	color: #cbd6ef;
+}
+#system_work-menu a.disabled {
+	color: #7c8292;
+}
+
+#system_work-menu .worksbase{
+	background-color: #434825;
+}
+
+#system_work-menu .works .work{
+	border-left: transparent 6px solid;
+}
+#system_work-menu .works .work.selected{
+	border-left: rgb(255, 48, 21) 6px solid;
+	background-color: #32361b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Table custom style */
+
+.bg-primary, .bg-primary>th, .bg-primary>td {
+	color: #fff;
+	background-color: #234868;
+}
+
+/* Nav custom style */
+
+.nav-tabs a.nav-link{
+	border-top:transparent solid 3px;
+}
+
+.nav-tabs a.nav-link.active{
+	border-top: #00346c solid 3px;
+}
+
+/* Breadcrumb custom style */
+
+.breadcrumb{
+
+}
+
+/* Jumbotron custom style */
+
+.jumbotron{
+
+}
+
+/* Credit */
+#system_credit-container{
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgb(135, 18, 41) 5%, rgb(92, 12, 28) 10%);
+}
+
+/* Project style */
+
+h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline {
+	background-color: rgb(203, 218, 227);
+	padding-left: 10px;
+	font-family: serif;
+	border-radius: 2rem;
+	box-shadow: 0 0 7px 5px rgb(203, 218, 227);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+hr.separator {
+	border-top: 0px;
+	height: 10px;
+	background-image: linear-gradient(45deg, hsla(0, 0%, 5%, 0), hsla(0, 0%, 5%, 0) 33.33%, #5f3d20 33.33%, #5f3d20 66.67%, hsla(0, 0%, 5%, 0) 66.67%, hsla(0, 0%, 5%, 0) 100%);
+	background-size: 10px 100%;
+}
+
+
+
+
+
+
+.matched {
+	background-color: #d9c4fc;
+}

@@ -1,9 +1,13 @@
 @()
 
 @session.get(models.user.User.THEME) match {
-	case "PRETTY" => { 
+	case "PRETTY" => {
 
 		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/atelier-dune-light.css")'>
+	}
+	case "JAPAN" => {
+
+		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/rainbow.css")'>
 	}
 	case "DEFAULT" | _ => {
 

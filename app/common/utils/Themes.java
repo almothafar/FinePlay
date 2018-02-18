@@ -27,6 +27,7 @@ public class Themes {
 		final Map<String, String> themeIdToNameMap = new LinkedHashMap<>();
 		themeIdToNameMap.put(Theme.DEFAULT.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_DEFAULT));
 		themeIdToNameMap.put(Theme.PRETTY.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_PRETTY));
+		themeIdToNameMap.put(Theme.JAPAN.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_JAPAN));
 
 		return themeIdToNameMap;
 	}

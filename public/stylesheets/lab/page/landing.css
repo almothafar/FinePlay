@@ -121,15 +121,3 @@
 		margin-top: 7rem;
 	}
 }
-
-#tasksbutton {
-	padding-top: 0rem;
-	font-size: 24px;
-	line-height: 50px;
-	width: 55px;
-	height: 55px;
-	position: fixed;
-	bottom: 25px;
-	right: 25px;
-	z-index: 3000;
-}

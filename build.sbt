@@ -49,8 +49,8 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.2",							// Apache 1.1
   "org.postgresql" % "postgresql" % "42.2.1",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.13.0",
-//  "org.mockito" % "mockito-core" % "2.13.0",							// MIT 2.13.0
+  "org.mockito" % "mockito-inline" % "2.15.0",
+//  "org.mockito" % "mockito-core" % "2.15.0",							// MIT 2.13.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",								// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",										// Apache 3.16
@@ -94,7 +94,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
-  "org.webjars.npm" % "marked" % "0.3.6",								// MIT 0.3.6
+  "org.webjars.npm" % "marked" % "0.3.12",								// MIT 0.3.14
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
   "org.webjars.bower" % "parsleyjs" % "2.8.0",							// MIT 2.7.2
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1
@@ -138,8 +138,8 @@ libraryDependencies ++= Seq(
   "javax.enterprise" % "cdi-api" % "2.0",
   "org.jboss.weld.se" % "weld-se" % "2.4.5.Final",						// Apache 2.4.5.Final
   "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.1.Final",
-  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.2.Final",			// Apache 2.0.2.Final
-  "org.jboss.logging" % "jboss-logging" % "3.3.1.Final",
+  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.3.Final",			// Apache 2.0.2.Final
+  "org.jboss.logging" % "jboss-logging" % "3.3.2.Final",
   "org.jberet" % "jberet-core" % "1.2.5.Final",							// Eclipse Public 1.2.5.Final
   "org.jberet" % "jberet-support" % "1.2.0.Final",
   "org.jberet" % "jberet-se" % "1.2.0.Final",

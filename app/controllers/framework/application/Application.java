@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -573,7 +574,33 @@ public class Application extends Controller {
 		endDayInfo.add(Arrays.asList("2017-11-05T10:00Z", ZonedDateTime.parse("2017-11-05T10:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T02:00:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T02:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
 		endDayInfo.add(Arrays.asList("2017-11-05T10:30Z", ZonedDateTime.parse("2017-11-05T10:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T02:30:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T02:30:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
 
-		return ok(views.html.framework.application.daylightsavingtime.render(startDayInfo, endDayInfo));
+		final SortedSet<LocalDateTime> dateTimeSet = createDateTimeSet();
+		final SortedMap<String, Boolean> dateTimeMap = dateTimeSet.stream()
+				.collect(Collectors.toMap(//
+						dateTime -> dateTime.toString(), //
+						dateTime -> DateTimes.isServerDateTimeConvertible(dateTime), //
+						(dateTime, judgment) -> {
+							throw new IllegalStateException(dateTime.toString());
+						}, //
+						TreeMap::new));
+
+		return ok(views.html.framework.application.daylightsavingtime.render(startDayInfo, endDayInfo, dateTimeMap));
+	}
+
+	private static SortedSet<LocalDateTime> createDateTimeSet() {
+
+		final SortedSet<LocalDateTime> dateTimes = new TreeSet<>();
+
+		final LocalDateTime start = LocalDateTime.parse("2017-01-01T00:00:00");
+
+		int minutes = 0;
+		for (int i = 0; i < 24 * 365; i++) {
+
+			dateTimes.add(start.plusMinutes(minutes));
+			minutes = minutes + 60;
+		}
+
+		return Collections.unmodifiableSortedSet(dateTimes);
 	}
 
 	public Result entitymanager() {

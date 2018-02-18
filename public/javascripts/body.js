@@ -345,8 +345,6 @@ $("#help-search-text").on('keyup', function () {
 
 				filterHighlightHelp();
 			}
-
-			refreshHelp();
 		}
 	}, 1000);
 });

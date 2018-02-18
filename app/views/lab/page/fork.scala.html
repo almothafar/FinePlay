@@ -15,6 +15,7 @@
 	@head("Lab"){
 
 		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/page/tasks.css")'>
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/page/fork.css")'>
 	}
 
@@ -59,7 +60,6 @@
 		}
 
 		@tasks(Map("id"->"", "task"->"fork"))
-		@components.button(Map("id"->"tasksbutton", "type"->"success", "text"->"+", "class"->"rounded-circle shadow", "data-toggle"->"modal", "data-target"->"#tasksDialog"))
 
 		@libraries.standard.last()
 		@libraries.holder.last()

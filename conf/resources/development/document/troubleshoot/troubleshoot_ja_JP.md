@@ -63,4 +63,10 @@ PHP > Debug > DEbugger > XDebug
 
 の、デバッグ・ポートを変更
 
+### npm install のエラー
 
+	npm WARN bootstrap@4.0.0 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer dependencies yourself.
+というエラーの場合、
+
+	npm install jquery --save
+を実行
