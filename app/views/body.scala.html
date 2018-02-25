@@ -1,3 +1,5 @@
+@import java.lang.invoke.MethodHandles
+
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
@@ -7,8 +9,9 @@
 
 @import play.api.i18n._
 @import play.api.inject._
-@import play.api.Logger
 @import play.filters.csrf._
+
+@import org.slf4j.LoggerFactory
 
 @import models.system._
 @import models.system.System._
@@ -29,7 +32,7 @@
 
 @isShow(permissions:Permission*) = @{
 
-	Logger.info("Menu");
+	LoggerFactory.getLogger(MethodHandles.lookup().lookupClass()).info("Menu");
 	val roleValues = session().getOrDefault(User.ROLES, /* Direct access of not signin */"");
 	models.system.System.isPermissionAllowed(EnumSet.copyOf(permissions.asJava), User.getPermissions(Sessions.toRoles(roleValues)))
 }

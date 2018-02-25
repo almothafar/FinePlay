@@ -9,9 +9,9 @@
 
 		<div class="px-3" role="tab" id="heading@i">
 			<h4 class="">
-				<a class="@("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false"))))" data-toggle="collapse" data-target="#collapse@i" aria-expanded="false" aria-controls="collapse@i">
+				<a class="@("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false")))) d-flex flex-row" data-toggle="collapse" data-target="#collapse@i" aria-expanded="false" aria-controls="collapse@i">
 					<i class="@group.getOrElse("icon", "")"></i>
-					@group.get("name")
+					&nbsp;<span>@group.get("name")</span>
 				</a>
 			</h4>
 		</div>
@@ -22,9 +22,9 @@
 					@for(j <- 0 to elements.size - 1){
 						@if(Boolean.valueOf(elements.get(j).getOrElse("show", "true"))){
 				<li class="work nav-item @elements.get(j).getOrElse("class", "") @("selected".when(Boolean.valueOf(elements.get(j).getOrElse("selected", "false"))))">
-					<a href="@(elements.get(j).getOrElse("link","#"))" class="nav-link @("disabled".when(!Boolean.valueOf(elements.get(j).getOrElse("enabled", "true"))))">
+					<a href="@(elements.get(j).getOrElse("link","#"))" class="nav-link @("disabled".when(!Boolean.valueOf(elements.get(j).getOrElse("enabled", "true")))) d-flex flex-row">
 						<i class="@elements.get(j).getOrElse("icon", "")"></i>
-						&nbsp;@elements.get(j).get("name")
+						&nbsp;<span>@elements.get(j).get("name")</span>
 					</a>
 				</li>
 						}

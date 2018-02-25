@@ -917,6 +917,11 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.github.jai-imageio/jai-imageio-core/docs/jai-imageio-core-1.3.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/quagga/srcs/quagga-0.11.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/quagga/jars/quagga-0.11.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/quagga/docs/quagga-0.11.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.squareup/javapoet/srcs/javapoet-1.10.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.squareup/javapoet/jars/javapoet-1.10.0.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.squareup/javapoet/docs/javapoet-1.10.0-javadoc.jar!/"/>
@@ -1059,14 +1064,14 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net/docs/datatables.net-1.10.9-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/srcs/handsontable-0.34.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/jars/handsontable-0.34.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/srcs/handsontable-0.36.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/jars/handsontable-0.36.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/docs/handsontable-0.34.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/handsontable/docs/handsontable-0.36.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/srcs/numbro-1.9.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/jars/numbro-1.9.3.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/srcs/numbro-1.11.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/jars/numbro-1.11.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/docs/numbro-1.9.3-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/numbro/docs/numbro-1.11.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/pikaday/srcs/pikaday-1.6.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/pikaday/jars/pikaday-1.6.1.jar">
@@ -1094,9 +1099,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/diff2html/docs/diff2html-2.3.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/marked/srcs/marked-0.3.12-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/marked/jars/marked-0.3.12.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/marked/srcs/marked-0.3.16-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/marked/jars/marked-0.3.16.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/marked/docs/marked-0.3.12-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/marked/docs/marked-0.3.16-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/viz.js/srcs/viz.js-1.8.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/viz.js/jars/viz.js-1.8.0.jar">
@@ -1104,9 +1109,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/viz.js/docs/viz.js-1.8.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/srcs/parsleyjs-2.8.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/jars/parsleyjs-2.8.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/srcs/parsleyjs-2.8.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/jars/parsleyjs-2.8.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/docs/parsleyjs-2.8.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/docs/parsleyjs-2.8.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/tether-shepherd/srcs/tether-shepherd-1.8.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/tether-shepherd/jars/tether-shepherd-1.8.1.jar">

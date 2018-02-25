@@ -1,0 +1,55 @@
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/jsqr.css")'>
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"jsQR", "icon"->"fas fa-barcode", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"jsqr"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@components.alert(Map("id"->"cameraNotEnable", "icon"->"fas fa-exclamation-triangle", "text"->Messages(MessageKeys.SYSTEM_ERROR_X_NOTENABLE, Messages(MessageKeys.CAMERA)), "type"->"warning"))
+					<h3 class="headline">QR cdode reader</h3>
+					<div id="loadingMessage">
+					</div>
+					<canvas id="canvas" hidden></canvas>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.jsqr.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/library/jsqr.js")'></script>
+	}
+}

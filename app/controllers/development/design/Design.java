@@ -37,7 +37,9 @@ public class Design extends Controller {
 
 	private static class LazyHolder {
 
-		private static List<String> FONTAWESOME_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome.txt"));
+		private static List<String> FONTAWESOME_SOLID_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-solid.txt"));
+		private static List<String> FONTAWESOME_REGULAR_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-regular.txt"));
+		private static List<String> FONTAWESOME_BRANDS_REGULAR_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-brands-regular.txt"));
 		private static List<String> MATERIAL_DESIGN_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "material-design.txt"));
 		private static List<String> ICOFONT_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt"));
 		private static List<String> EMOJIONEAWESOME_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "emojione.txt"));
@@ -62,7 +64,9 @@ public class Design extends Controller {
 	public static Result icon() {
 
 		return ok(views.html.development.design.icon.render(//
-				LazyHolder.FONTAWESOME_ICON_NAMES, //
+				LazyHolder.FONTAWESOME_SOLID_ICON_NAMES, //
+				LazyHolder.FONTAWESOME_REGULAR_ICON_NAMES, //
+				LazyHolder.FONTAWESOME_BRANDS_REGULAR_ICON_NAMES, //
 				LazyHolder.MATERIAL_DESIGN_ICON_NAMES, //
 				LazyHolder.ICOFONT_ICON_NAMES, //
 				LazyHolder.EMOJIONEAWESOME_ICON_NAMES));

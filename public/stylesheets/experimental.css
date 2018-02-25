@@ -111,9 +111,9 @@
 	border-radius: 4rem;
 	margin-bottom: 1rem;
 	list-style: none;
-	background-image: -webkit-linear-gradient(#ffffff 0%, #ffffff 37%, #eceeef 38%, #eceeef 62%, #ffffff 63%, #ffffff 100%);
-	background-image: -o-linear-gradient(#ffffff 0%, #ffffff 37%, #eceeef 38%, #eceeef 62%, #ffffff 63%, #ffffff 100%);
-	background-image: linear-gradient(#ffffff 0%, #ffffff 37%, #eceeef 38%, #eceeef 62%, #ffffff 63%, #ffffff 100%);
+	background-image: -webkit-linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
+	background-image: -o-linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
+	background-image: linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
 }
 
 .process-item{

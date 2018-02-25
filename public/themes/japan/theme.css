@@ -110,10 +110,12 @@ body {
 
 h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline {
 	background-color: rgb(203, 218, 227);
-	padding-left: 10px;
+	padding-left: 8px;
 	font-family: serif;
-	border-radius: 2rem;
-	box-shadow: 0 0 7px 5px rgb(203, 218, 227);
+	font-weight: 700;
+	border-radius: 6px;
+	box-shadow: 0 0 5px 3px rgb(203, 218, 227);
+	margin: 5px;
 }
 
 
@@ -153,4 +155,10 @@ hr.separator {
 
 .matched {
 	background-color: #d9c4fc;
+}
+
+/* Fakestrap */
+
+.process-item.active{
+	background-color: #234868;
 }

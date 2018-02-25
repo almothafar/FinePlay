@@ -59,6 +59,8 @@ public class MessageKeys {
 
   public static final String BUTTON = "button";
 
+  public static final String CAMERA = "camera";
+
   public static final String CAMPAIGN = "campaign";
 
   public static final String CANCEL = "cancel";
@@ -509,6 +511,8 @@ public class MessageKeys {
 
   public static final String OTHER = "other";
 
+  public static final String OUTLINE = "outline";
+
   public static final String PAGE = "page";
 
   public static final String PARAMETER = "parameter";
@@ -712,6 +716,8 @@ public class MessageKeys {
   public static final String SYSTEM_ERROR_USERID_NOTEXIST = "system.error.userid.notexist";
 
   public static final String SYSTEM_ERROR_X_EXIST = "system.error.x.exist";
+
+  public static final String SYSTEM_ERROR_X_NOTENABLE = "system.error.x.notenable";
 
   public static final String SYSTEM_ERROR_X_NOTEXIST = "system.error.x.notexist";
 

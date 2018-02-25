@@ -1,16 +1,16 @@
 @charset "utf-8";
 
+img.first-slide, img.second-slide, img.third-slide {
+	max-width: 150%;
+	height: auto;
+}
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
 	margin-bottom: 4rem;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-	bottom: 3rem;
-	z-index: 10;
 }
 
 /* Declare heights because of positioning of img element */
@@ -81,26 +81,26 @@
 -------------------------------------------------- */
 
 .carousel-caption h1 {
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 }
 @media (min-width:576px) {
 	.carousel-caption h1 {
-		font-size: 1.9rem;
+		font-size: 1.7rem;
 	}
 }
 @media (min-width:768px) {
 	.carousel-caption h1 {
-		font-size: 2.1rem;
+		font-size: 1.9rem;
 	}
 }
 @media (min-width:992px) {
 	.carousel-caption h1 {
-		font-size: 2.3rem;
+		font-size: 2.1rem;
 	}
 }
 @media (min-width:1200px) {
 	.carousel-caption h1 {
-		font-size: 2.5rem;
+		font-size: 2.3rem;
 	}
 }
 

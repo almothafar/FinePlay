@@ -110,7 +110,7 @@ system.error.expiretime.past = Past Expire time
 
 system.error.x.exist = Exist {0}
 system.error.x.notexist = Not exist {0}
-
+system.error.x.notenable = Not enable {0}
 system.error.data.illegal = Data is illegal
 system.error.data.unsave = Unsaved data exists.
 system.error.x_data.illegal = {0} Data is illegal
@@ -251,6 +251,7 @@ bottom = Bottom
 browse = Browse
 browser = Browser
 button = Button
+camera = Camera
 campaign = Campaign
 cancel = Cancel
 card = Card
@@ -385,6 +386,7 @@ organizationunit = Organization unit
 organizationunit.name = Organization unit name
 organizationunit.name.description = Description of Organization unit name
 other = Other
+outline = Outline
 page = Page
 parameter = Parameter
 part = Part

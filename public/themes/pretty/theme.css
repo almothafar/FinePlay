@@ -141,14 +141,14 @@ h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline{
 
 hr.separator {
 	border: none;
-	color: rgb(255, 103, 125);
+	color: rgb(255, 160, 76);
 	text-align: center;
 }
 hr.separator:after {
 	content: '\002726\002726\002726';
 	position: relative;
 	top: -0.7em;
-	font-size: 2em;
+	font-size: 1.4em;
 }
 
 .matched {

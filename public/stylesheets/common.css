@@ -281,6 +281,11 @@ body {
 	width: 1.5rem;
 	text-align: center;
 }
+#system_sections>.system_section i+span{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 
 /* accordion & card fix */
 

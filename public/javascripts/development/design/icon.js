@@ -2,8 +2,6 @@
 
 $(window).on('load', function () {
 
-	$('#fa>.icon_list>.icon_container').filter(function(){return 1>=$(this).children('.icon_body').width()}).remove();
-
 	var colors = ["#ff6666", "#ffcc66", "#66ff66", "#66ccff", "#6666ff", "#cc66ff", "#ff66ff"];
 	$('.icon_body').each(function(){
 

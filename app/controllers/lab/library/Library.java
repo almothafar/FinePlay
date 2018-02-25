@@ -104,6 +104,12 @@ public class Library extends Controller {
 		case "zxing":
 
 			return zxing();
+		case "quaggajs":
+
+			return quaggajs();
+		case "jsqr":
+
+			return jsqr();
 		case "icon":
 
 			return icon();
@@ -343,6 +349,16 @@ public class Library extends Controller {
 		map.put("QR Code", qrCodeBase64);
 
 		return ok(views.html.lab.library.zxing.render(map));
+	}
+
+	public static Result quaggajs() {
+
+		return ok(views.html.lab.library.quaggajs.render());
+	}
+
+	public static Result jsqr() {
+
+		return ok(views.html.lab.library.jsqr.render());
 	}
 
 	public static Result icon() {

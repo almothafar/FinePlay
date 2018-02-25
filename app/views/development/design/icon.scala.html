@@ -3,7 +3,7 @@
 
 @import common.system._
 
-@(fontAwesomeIconNames: List[String], materialDesignIconNames: List[String], icoFontNames: List[String], emojiOneFontNames: List[String])
+@(fontAwesomeSolidIconNames: List[String], fontAwesomeRegularIconNames: List[String], fontAwesomeBrandsRegularIconNames: List[String], materialDesignIconNames: List[String], icoFontNames: List[String], emojiOneFontNames: List[String])
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -53,17 +53,19 @@
 				</div>
 				<div class="row mt-3 icon_list">
 
-					@for(fontAwesomeIconName <- fontAwesomeIconNames) {
+					@for(fontAwesomeIconName <- fontAwesomeSolidIconNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("fas fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
 						<div class="icon_caption">@fontAwesomeIconName</div>
 					</div>
+					}
+					@for(fontAwesomeIconName <- fontAwesomeRegularIconNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("far fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
 						<div class="icon_caption">@fontAwesomeIconName</div>
 					</div>
 					}
-					@for(fontAwesomeIconName <- fontAwesomeIconNames) {
+					@for(fontAwesomeIconName <- fontAwesomeBrandsRegularIconNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("fab fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
 						<div class="icon_caption">@fontAwesomeIconName</div>

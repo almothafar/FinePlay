@@ -59,6 +59,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-core" % "1.17",								// Apache 1.17
   "org.apache.tika" % "tika-parsers" % "1.17",
   "com.google.zxing" % "javase" % "3.3.2",								// Apache 3.3.0
+  "org.webjars.bower" % "quagga" % "0.11.6",								// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.8",								// Apache 2.0.7
   "org.jsoup" % "jsoup" % "1.11.2",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.10.0",								// Apache 1.9.0
@@ -87,16 +88,16 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",				//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
 //  "org.webjars.bower" % "summernote" % "0.8.9",							// MIT 0.8.9
-  "org.webjars.bower" % "handsontable" % "0.34.0",						// MIT 0.34.0
+  "org.webjars.bower" % "handsontable" % "0.36.0",						// MIT 0.34.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.1.3",								// MIT 1.1.3
 //  "org.webjars.npm" % "d3" % "4.10.2",									// BSD-3-Clause license 4.10.2
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
-  "org.webjars.npm" % "marked" % "0.3.12",								// MIT 0.3.14
+  "org.webjars.npm" % "marked" % "0.3.16",								// MIT 0.3.15
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
-  "org.webjars.bower" % "parsleyjs" % "2.8.0",							// MIT 2.7.2
+  "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1
   "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
   "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
@@ -106,6 +107,7 @@ libraryDependencies ++= Seq(
 )
 // TwentyTwenty															// MIT 2017/11/11 master
 // Frappé Gantt															// MIT build version 0.0.7 master
+// jsQR																	// Apache 2018/2/24 master
 // 3Dmol.js																// BSD-3-Clause license 1.3.0
 // geckodriver															// Mozilla Public License 0.18.0
 // LibreOffice															// Mozilla Public License 6.0.3
