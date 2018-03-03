@@ -102,8 +102,8 @@ body {
 }
 
 /* Credit */
-#system_credit-container{
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgb(135, 18, 41) 5%, rgb(92, 12, 28) 10%);
+#system_footer-container{
+	background: linear-gradient(rgba(255, 255, 255, 0), rgba(135, 18, 41, 0.79) 5%, rgba(130, 17, 39, 0.86) 10%);
 }
 
 /* Project style */

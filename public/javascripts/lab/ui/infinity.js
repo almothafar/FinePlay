@@ -11,14 +11,13 @@ $(document).ready(function () {
 			var lastY = lastItem.offset().top;
 			if(lastY < appendY){
 
-				appndItems();
+				appndItems(document.createDocumentFragment());
 			}
 		}
 	});
 
-	var appndItems = function(){
+	var appndItems = function(fragment){
 
-		var fragment = document.createDocumentFragment();
 		for(var i=0; i<10; i++){
 
 			var newItem = $('' +
@@ -40,5 +39,5 @@ $(document).ready(function () {
 		lastItem = $('#infinityItems>.infinityItem').last();
 	}
 
-	appndItems();
+	appndItems(document.createDocumentFragment());
 });

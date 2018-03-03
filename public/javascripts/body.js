@@ -132,6 +132,9 @@ getContent().on('click', function(e) {
 
 $("#printButton").on('click', function(e) {
 
+	$('#printSheet').remove();
+	$('#system_base').removeClass('d-print-none');
+
 	$(window).trigger('beforeprint');
 	window.print();
 	$(window).trigger('afterprint');

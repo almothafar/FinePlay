@@ -269,9 +269,9 @@ var extensionMenuHeight = function(){
 	return $('#system_extension-menu').outerHeight()
 }
 
-var creditHeight = function(){
+var footerHeight = function(){
 
-	return $('#system_credit-container').outerHeight()
+	return $('#system_footer-container').outerHeight()
 }
 
 var getContent = function() {

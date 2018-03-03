@@ -2,8 +2,12 @@
 
 var printPart = function(selector){
 
-	var printSheet = $("<div></div>", {
-		id:'printSheet',
+	$('#printSheet').remove();
+	$('#system_base').addClass('d-print-none');
+
+	var printSheet = $('<div></div>', {
+		id: 'printSheet',
+		class: 'd-none d-print-block',
 		css: {
 			width: '100%',
 			position: 'absolute',
@@ -16,35 +20,10 @@ var printPart = function(selector){
 	printArea.attr('id', printArea.attr('id')+'Area');
 
 	printSheet.append(printArea);
+	// It exists until the next printing time.
 	$('body').append(printSheet);
 
-	$('#system_base').addClass('d-print-none');
-
-	var endPrint = function(){
-
-		$('#system_base').removeClass('d-print-none');
-		printSheet.remove();
-	}
-
-	ready('#system_base.d-print-none', function(){
-
-		var start = new Date().getTime();
-		window.print();
-		var end = new Date().getTime();
-
-		var isBlockingDialog = 500 < (end - start);
-		if(isBlockingDialog){
-
-			endPrint();
-		}else{
-
-			// for iOS Non bloking dialog.
-			setTimeout(function(){
-
-				endPrint();
-			}, 2000);
-		}
-	});
+	window.print();
 }
 
 var offsetTopFromTarget = function(targetSelector, selector){

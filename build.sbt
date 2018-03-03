@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.11-β1-SNAPSHOT"
+version := "2.6.12-β2-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.6.11-β1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.12-β2-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -31,15 +31,15 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "6.0.1",							// Apache 6.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.6.8",
-  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.3",
+  "com.typesafe.play" %% "play-json" % "2.6.9",
+  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.6",
   "com.h2database" % "h2" % "1.4.196",
 //  "com.h2database" % "h2" % "1.4.196" % Test,
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-json" % "1.0.0",
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-xml" % "1.0.0",
 //  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
-//  "net.logstash.logback" % "logstash-logback-encoder" % "4.11",			// Apache 4.11
+//  "net.logstash.logback" % "logstash-logback-encoder" % "5.0",			// Apache 4.11
   "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",				//
   "org.hibernate.validator" % "hibernate-validator" % "6.0.7.Final",		// Apache 6.0.2 // into play include
@@ -95,7 +95,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
-  "org.webjars.npm" % "marked" % "0.3.16",								// MIT 0.3.15
+  "org.webjars.npm" % "marked" % "0.3.17",								// MIT 0.3.15
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1
@@ -140,7 +140,7 @@ libraryDependencies ++= Seq(
   "javax.enterprise" % "cdi-api" % "2.0",
   "org.jboss.weld.se" % "weld-se" % "2.4.5.Final",						// Apache 2.4.5.Final
   "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.1.Final",
-  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.3.Final",			// Apache 2.0.2.Final
+  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.4.Final",			// Apache 2.0.2.Final
   "org.jboss.logging" % "jboss-logging" % "3.3.2.Final",
   "org.jberet" % "jberet-core" % "1.2.5.Final",							// Eclipse Public 1.2.5.Final
   "org.jberet" % "jberet-support" % "1.2.0.Final",

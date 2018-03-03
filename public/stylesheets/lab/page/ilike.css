@@ -11,7 +11,7 @@
 	boader-right: 0px;
 	border-radius: 0px;
 }
-@media (min-width:576px) {
+@media (min-width:768px) {
 
 	.i_detail {
 		border-left: 0.5px solid darkgray;

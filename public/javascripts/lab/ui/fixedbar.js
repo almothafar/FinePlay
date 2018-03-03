@@ -42,7 +42,7 @@ $(document).ready(function () {
 			scrollContent(nextPosition);
 		} else {
 
-			scrollContent(($('#breadcrumbContainer').outerHeight() + 15 + $('#contentsContainer').outerHeight()) - creditHeight());
+			scrollContent(($('#breadcrumbContainer').outerHeight() + 15 + $('#contentsContainer').outerHeight()) - footerHeight());
 		}
 	});
 });

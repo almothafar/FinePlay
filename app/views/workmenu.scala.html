@@ -23,7 +23,7 @@
 						@if(Boolean.valueOf(elements.get(j).getOrElse("show", "true"))){
 				<li class="work nav-item @elements.get(j).getOrElse("class", "") @("selected".when(Boolean.valueOf(elements.get(j).getOrElse("selected", "false"))))">
 					<a href="@(elements.get(j).getOrElse("link","#"))" class="nav-link @("disabled".when(!Boolean.valueOf(elements.get(j).getOrElse("enabled", "true")))) d-flex flex-row">
-						<i class="@elements.get(j).getOrElse("icon", "")"></i>
+						<i class="@elements.get(j).getOrElse("icon", "") align-self-center"></i>
 						&nbsp;<span>@elements.get(j).get("name")</span>
 					</a>
 				</li>
