@@ -12,7 +12,7 @@ public class System extends Controller {
 				apis.system.routes.javascript.Logger.log(), //
 				apis.character.routes.javascript.Character.character(), //
 				apis.company.routes.javascript.Company.companies(), //
-				apis.development.http.routes.javascript.Http.ajaxdata(), //
+				apis.development.http.routes.javascript.Http.postData(), //
 				apis.transrator.routes.javascript.Transrator.translate(), //
 				apis.batch.routes.javascript.Batch.start(), //
 				apis.batch.routes.javascript.Batch.restart(), //

@@ -39,10 +39,10 @@ body {
 
 
 
-#system_work-menu a {
+#system_work-menu .system_work-name {
 	color: #cbd6ef;
 }
-#system_work-menu a.disabled {
+#system_work-menu .system_work-name.disabled {
 	color: #7c8292;
 }
 

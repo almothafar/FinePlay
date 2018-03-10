@@ -6,4 +6,5 @@ div[id^="group_"]{
 
 #toolbar{
 	border-bottom: 1px LightGray solid;
+	opacity: 0.9;
 }

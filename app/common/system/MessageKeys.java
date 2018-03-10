@@ -825,6 +825,8 @@ public class MessageKeys {
 
   public static final String VIDEO = "video";
 
+  public static final String VIEWER = "viewer";
+
   public static final String WARNING = "warning";
 
   public static final String WEB = "web";

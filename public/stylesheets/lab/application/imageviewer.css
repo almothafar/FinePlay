@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+.modal-viewer .modal-content {
+	background-color: transparent;
+	border-style: none;
+	box-shadow: none ;
+}
+.modal-viewer .modal-content>.modal-header {
+	border-style: none;
+}
+.modal-viewer .modal-content>.modal-header>.close {
+	color: white;
+}
+.modal-viewer .modal-content>.modal-body{
+	padding: 0;
+}
+
+.modal-viewer .figure>.figure-caption{
+	color: white;
+}
+
+/* Hide initialize */
+.slick-container>div>figure{
+	visibility: hidden;
+}
+.slick-prev{
+	left: 25px;
+	z-index: 1;
+}
+.slick-next{
+	right: 25px;
+	z-index: 1;
+}
+.slick-dots{
+	bottom: 50px;
+	z-index: 1;
+}

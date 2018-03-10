@@ -68,6 +68,9 @@ public class Application extends Controller {
 		case "firsttimeaccess":
 
 			return firstTimeAccess();
+		case "imageviewer":
+
+			return imageviewer();
 		case "partprint":
 
 			return partPrint();
@@ -123,6 +126,11 @@ public class Application extends Controller {
 	private static Result firstTimeAccess() {
 
 		return ok(views.html.lab.application.firsttimeaccess.render());
+	}
+
+	private static Result imageviewer() {
+
+		return ok(views.html.lab.application.imageviewer.render());
 	}
 
 	private static Result partPrint() {

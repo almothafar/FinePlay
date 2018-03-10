@@ -1,6 +1,6 @@
 'use strict';
 
-$('#requestButton').click(function() {
+$('#postButton').click(function() {
 
 	$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
 	$('#ajaxCancel').prop('disabled', true);
@@ -11,7 +11,7 @@ $('#requestButton').click(function() {
 	var wait = $('#waitTimeField').val();
 	$.ajax({
 		method: "POST",
-		url: Routes.apis.development.http.Http.ajaxdata().url + "?" + getToken(),
+		url: Routes.apis.development.http.Http.postData().url + "?" + getToken(),
 		data: JSON.stringify({
 			request: "dummyRequest",
 			mock: {

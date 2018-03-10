@@ -14,7 +14,7 @@ import play.mvc.Result;
 public class Http extends Controller {
 
 	@BodyParser.Of(BodyParser.Json.class)
-	public CompletionStage<Result> ajaxdata() {
+	public CompletionStage<Result> postData() {
 
 		final JsonNode jsonNode = request().body().asJson();
 

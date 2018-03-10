@@ -291,3 +291,11 @@ a:not(.collapsed)>.nf-disclosure_triangle:before{
 .secret {
   display: none !important;
 }
+
+/* provisional coped for Bug? of Mobile Safari */
+
+.modal-open #system_work-menu,
+.modal-open #system_content,
+.modal-open #system_help-main{
+	overflow: initial;
+}

@@ -23,7 +23,7 @@ $('#requestButton').click(function() {
 
 			return $.ajax({
 				method:"POST",
-				url:Routes.apis.development.http.Http.ajaxdata().url + "?" + getToken(),
+				url:Routes.apis.development.http.Http.postData().url + "?" + getToken(),
 				data:JSON.stringify({
 					request: "dummyRequest",
 					mock: {
@@ -49,7 +49,7 @@ $('#requestButton').click(function() {
 
 			return $.ajax({
 				method:"POST",
-				url:Routes.apis.development.http.Http.ajaxdata().url + "?" + getToken(),
+				url:Routes.apis.development.http.Http.postData().url + "?" + getToken(),
 				data:JSON.stringify({
 					request: "dummyRequest",
 					mock: {
@@ -75,7 +75,7 @@ $('#requestButton').click(function() {
 
 			return $.ajax({
 				method:"POST",
-				url:Routes.apis.development.http.Http.ajaxdata().url + "?" + getToken(),
+				url:Routes.apis.development.http.Http.postData().url + "?" + getToken(),
 				data:JSON.stringify({
 					request: "dummyRequest",
 					mock: {

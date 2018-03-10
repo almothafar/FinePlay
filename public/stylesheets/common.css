@@ -56,6 +56,8 @@ body {
 	top: 0px;
 	bottom: 0px;
 	overflow: auto;
+	overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
 	left: 0px;
 	right: 100%;
 	transition-property: left,right;
@@ -105,6 +107,8 @@ body {
 	width: 260px;
 	height: 100%;
 	overflow: auto;
+	overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
 	left: -260px;
 	transition-property: left;
 	transition-duration: 0.2s;
@@ -221,7 +225,7 @@ body {
 @media (min-width:1200px) {
 	#system_help-base {
 		/* for Bootstrap xl */
-	width: 1120px;
+		width: 1120px;
 		right: -1120px;
 	}
 	.system_help-expand>#system_menu,
@@ -251,13 +255,19 @@ body {
 	position: relative;
 	height: 100%;
 	overflow: auto;
+	overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
 }
 #system_help-content>#system_help-main>#help-wrapper>#help-top {
 	height:10px;
-	xmargin-top: initial;
 }
 
 /* Side menu */
+
+.system_work-name {
+	background-color: transparent;
+	border-width: 0px;
+}
 
 #system_sections {
 	padding-top: 1rem !important;

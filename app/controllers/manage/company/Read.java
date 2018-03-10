@@ -137,6 +137,7 @@ public class Read extends Controller {
 
 	private List<String> readNameList(final EntityManager manager, final String name) {
 
+		// Relation mapping is better.
 		final Query nativeQuery = manager.createNativeQuery("SELECT NAME FROM COMPANY_NAMES WHERE NAME LIKE ?");
 		nativeQuery.setParameter(1, "%" + name + "%");
 

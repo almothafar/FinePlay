@@ -1,0 +1,94 @@
+@import models.components._
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.slick.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/application/imageviewer.css")'>
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.IMAGE)+" "+Messages(MessageKeys.VIEWER)), "icon"->"far fa-image", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"imageviewer"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="single" class="mb-3">
+
+						<h4 class="headline">Single</h4>
+
+							@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2680.JPG").toString, "thumbnail"->"true", "class"->"w-96p"))
+							@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2702.JPG").toString, "thumbnail"->"true", "class"->"w-96p"))
+							@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2715.JPG").toString, "thumbnail"->"true", "class"->"w-96p"))
+
+							@components.modal(Map("id"->"singleViewer", "class"->"modal-viewer", "title"->"", "closable"->"true", "center"->"true", "size"->"lg"), List(
+								)){
+
+								@components.figure(Map("id"->"", "icon"->"far fa-image", "text"->"A caption for the above image.", "class"->"text-white")){
+									@components.image(Map("id"->"image", "source"->"", "class"->"w-100"))
+								}
+							}
+					</div>
+
+					<div id="multi" class="mb-3">
+
+						<h4 class="headline">Multi</h4>
+
+							@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2757.JPG").toString, "thumbnail"->"true", "class"->"w-96p"))
+							@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2758.JPG").toString, "thumbnail"->"true", "class"->"w-96p"))
+							@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2794.JPG").toString, "thumbnail"->"true", "class"->"w-96p"))
+
+							@components.modal(Map("id"->"multiViewer", "class"->"modal-viewer", "title"->"", "closable"->"true", "center"->"true", "size"->"lg"), List(
+								)){
+
+								<div class="slick-container">
+									<div>
+										@components.figure(Map("id"->"", "icon"->"far fa-image", "text"->"A caption for the above image.", "class"->"text-white")){
+											@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2757.JPG").toString, "class"->"w-100"))
+										}
+									</div>
+									<div>
+										@components.figure(Map("id"->"", "icon"->"far fa-image", "text"->"A caption for the above image.", "class"->"text-white")){
+											@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2758.JPG").toString, "class"->"w-100"))
+										}
+									</div>
+									<div>
+										@components.figure(Map("id"->"", "icon"->"far fa-image", "text"->"A caption for the above image.", "class"->"text-white")){
+											@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2794.JPG").toString, "class"->"w-100"))
+										}
+									</div>
+								</div>
+							}
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.slick.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/application/imageviewer.js")'></script>
+	}
+}

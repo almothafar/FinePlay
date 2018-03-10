@@ -75,6 +75,7 @@ public class Offices {
 
 		try {
 
+			// Not parallel.
 			toFormatLock.lock();
 			final Process process = builder.start();
 			final boolean isSuccess = process.waitFor(30, TimeUnit.SECONDS);

@@ -410,6 +410,7 @@ var MessageKeys = {
 	VERSION: "version",
 	VERTICAL: "vertical",
 	VIDEO: "video",
+	VIEWER: "viewer",
 	WARNING: "warning",
 	WEB: "web",
 	WEEK: "week",
