@@ -16,6 +16,7 @@
 	@head("lab"){
 
 		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/bootbox.css")'>
 	}
 
 	@body("lab","library"){
@@ -36,6 +37,7 @@
 
 					<div class="mb-3">
 
+						<h4 class="headline">Basic Usage</h4>
 						@components.button(Map("id"->"alert", "type"->"primary", "outline"->"true", "text"->"Alert"))
 						@components.button(Map("id"->"confirm", "type"->"primary", "outline"->"true", "text"->"Confirm"))
 						@components.button(Map("id"->"prompt", "type"->"primary", "outline"->"true", "text"->"Prompt"))
@@ -44,9 +46,18 @@
 					</div>
 					<div class="mb-3">
 
+						<h4 class="headline">Advanced Usage</h4>
 						@components.button(Map("id"->"keyAlert", "type"->"primary", "outline"->"true", "icon"->"far fa-keyboard", "text"->"Alert"))
 						@components.button(Map("id"->"keyConfirm", "type"->"primary", "outline"->"true", "icon"->"far fa-keyboard", "text"->"Confirm"))
 						@components.button(Map("id"->"keyPrompt", "type"->"primary", "outline"->"true", "icon"->"far fa-keyboard", "text"->"Prompt"))
+					</div>
+					<div class="mb-3 secret">
+
+						<h4 class="headline">Vertically centered</h4>
+						@components.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->"<strong>Warning!</strong> In <a href=\"https://github.com/makeusabrew/bootbox/issues/545\" class=\"alert-link\">v5.0.0</a>, I think that it is supported by bootbox.", "type"->"warning"))
+						@components.button(Map("id"->"centerAlert", "type"->"primary", "outline"->"true", "text"->"Alert"))
+						@components.button(Map("id"->"centerConfirm", "type"->"primary", "outline"->"true", "text"->"Confirm"))
+						@components.button(Map("id"->"centerPrompt", "type"->"primary", "outline"->"true", "text"->"Prompt"))
 					</div>
 				</div>
 			</div>

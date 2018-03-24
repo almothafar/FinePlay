@@ -33,8 +33,8 @@ libraryDependencies ++= Seq(
   guice,
   "com.typesafe.play" %% "play-json" % "2.6.9",
   "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.6",
-  "com.h2database" % "h2" % "1.4.196",
-//  "com.h2database" % "h2" % "1.4.196" % Test,
+  "com.h2database" % "h2" % "1.4.197",
+//  "com.h2database" % "h2" % "1.4.197" % Test,
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-json" % "1.0.0",
 //  "com.typesafe.play" %% "play-ahc-ws-standalone-xml" % "1.0.0",
 //  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
@@ -47,10 +47,10 @@ libraryDependencies ++= Seq(
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
-  "org.apache.commons" % "commons-text" % "1.2",							// Apache 1.1
+  "org.apache.commons" % "commons-text" % "1.3",							// Apache 1.3
   "org.postgresql" % "postgresql" % "42.2.1",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.15.0",
-//  "org.mockito" % "mockito-core" % "2.15.0",							// MIT 2.13.0
+  "org.mockito" % "mockito-inline" % "2.16.0",
+//  "org.mockito" % "mockito-core" % "2.16.0",							// MIT 2.13.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",								// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",										// Apache 3.16
@@ -60,7 +60,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-parsers" % "1.17",
   "com.google.zxing" % "javase" % "3.3.2",								// Apache 3.3.0
   "org.webjars.bower" % "quagga" % "0.11.6",								// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.8",								// Apache 2.0.7
+  "org.apache.pdfbox" % "pdfbox" % "2.0.9",								// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.2",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.10.0",								// Apache 1.9.0
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",						// Apache 1.2.0.CR1
@@ -68,8 +68,8 @@ libraryDependencies ++= Seq(
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
-  "org.webjars.npm" % "bootstrap" % "4.0.0",								// MIT 4.0.0-alpha.6
-//  "org.webjars.bower" % "clipboard" % "1.7.1",							// MIT 1.7.1
+  "org.webjars.npm" % "bootstrap" % "4.0.0",								// MIT 4.0.0
+  "org.webjars.bower" % "clipboard" % "2.0.0",							// MIT 2.0.0
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
   "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
@@ -82,7 +82,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2 +patch
   "org.webjars.bower" % "moment" % "2.21.0",								// MIT 2.21.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.8.0",							// MIT 3.8.0
+  "org.webjars.bower" % "fullcalendar" % "3.9.0",							// MIT 3.8.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
   "org.webjars.bower" % "datatables" % "1.10.16",							// MIT 1.10.16
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",				//
@@ -115,9 +115,9 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-//  "org.webjars.bower" % "font-awesome" % "5.0.2",						// Icons — CC 5.0.2
-																		// Fonts — SIL OFL 5.0.2
-																		// Code — MIT 5.0.2
+//  "org.webjars.bower" % "font-awesome" % "5.0.2",						// Icons — CC 5.0.8
+																		// Fonts — SIL OFL 5.0.8
+																		// Code — MIT 5.0.8
   "org.webjars" % "material-design-icons" % "3.0.1",						// Apache 3.0.1
   "org.webjars.npm" % "emojione" % "3.1.2",								// EmojiOne Artwork Free license 3.1.2 +patch
   																		// EmojiOne Non-Artwork MIT 3.1.2
@@ -140,7 +140,7 @@ libraryDependencies ++= Seq(
   "javax.enterprise" % "cdi-api" % "2.0",
   "org.jboss.weld.se" % "weld-se" % "2.4.5.Final",						// Apache 2.4.5.Final
   "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.1.Final",
-  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.4.Final",			// Apache 2.0.2.Final
+  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.5.Final",			// Apache 2.0.2.Final
   "org.jboss.logging" % "jboss-logging" % "3.3.2.Final",
   "org.jberet" % "jberet-core" % "1.2.5.Final",							// Eclipse Public 1.2.5.Final
   "org.jberet" % "jberet-support" % "1.2.0.Final",

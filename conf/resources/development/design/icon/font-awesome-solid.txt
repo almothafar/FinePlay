@@ -39,6 +39,7 @@ audio-description
 backward
 balance-scale
 ban
+band-aid
 barcode
 bars
 baseball-ball
@@ -63,6 +64,8 @@ bomb
 book
 bookmark
 bowling-ball
+box
+boxes
 braille
 briefcase
 bug
@@ -118,6 +121,8 @@ child
 circle
 circle-notch
 clipboard
+clipboard-check
+clipboard-list
 clock
 clone
 closed-captioning
@@ -146,7 +151,10 @@ cut
 database
 deaf
 desktop
+dna
 dollar-sign
+dolly
+dolly-flatbed
 dot-circle
 download
 edit
@@ -189,6 +197,7 @@ film
 filter
 fire
 fire-extinguisher
+first-aid
 flag
 flag-checkered
 flask
@@ -231,6 +240,7 @@ history
 hockey-puck
 home
 hospital
+hospital-symbol
 hourglass
 hourglass-end
 hourglass-half
@@ -305,6 +315,7 @@ object-group
 object-ungroup
 outdent
 paint-brush
+pallet
 paper-plane
 paperclip
 paragraph
@@ -318,6 +329,7 @@ percent
 phone
 phone-square
 phone-volume
+pills
 plane
 play
 play-circle
@@ -362,6 +374,7 @@ share-square
 shekel-sign
 shield-alt
 ship
+shipping-fast
 shopping-bag
 shopping-basket
 shopping-cart
@@ -405,6 +418,7 @@ sun
 superscript
 sync
 sync-alt
+syringe
 table
 table-tennis
 tablet
@@ -420,6 +434,7 @@ text-width
 th
 th-large
 th-list
+thermometer
 thermometer-empty
 thermometer-full
 thermometer-half
@@ -472,6 +487,8 @@ volleyball-ball
 volume-down
 volume-off
 volume-up
+warehouse
+weight
 wheelchair
 wifi
 window-close

@@ -14,13 +14,13 @@
 @for(i <- 0 to elements.size - 1){
 
 	@components.card(Map("id"->"", "type"->"", "outline"->"true", "class"->"mb-3")){
-		<div class="card-body">
-			<h5 class="card-title">
-				@components.icon(Map("icon"->elements(i).getOrElse("icon", "")))
-				@elements(i).get("name")
-			</h5>
-			<p class="card-text">@elements(i).getOrElse("info", "")</p>
-			@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "link"->elements(i).getOrElse("link","#"), "text"->Messages(MessageKeys.LICENSE), "target"->"_blank", "size"->"sm"))<br>
-		</div>
+
+		<blockquote class="blockquote mb-0 card-body">
+			<p class="mb-0">@components.icon(Map("icon"->elements(i).getOrElse("icon", "")))@if(!elements(i).getOrElse("icon", "").isEmpty()){&nbsp;}@elements(i).get("name")</p>
+			<footer class="blockquote-footer">
+				<small class="text-muted">@elements(i).getOrElse("info", "")</small>
+			</footer>
+			@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "link"->elements(i).getOrElse("link","#"), "text"->Messages(MessageKeys.LICENSE), "target"->"_blank", "size"->"sm"))
+		</blockquote>
 	}
 }

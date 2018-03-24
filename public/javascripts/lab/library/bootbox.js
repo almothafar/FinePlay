@@ -159,3 +159,46 @@ $(window).on('keydown', function(e){
 		e.preventDefault();
 	}
 });
+
+$('#centerAlert').on('click', function(e){
+
+	bootbox.alert({
+
+		message: "Hello world!",
+		className: "bootbox-centered",
+		callback: function() {
+
+			notifyAlert('info', 'Closed.');
+		}
+	});
+});
+
+$('#centerConfirm').on('click', function(e){
+
+	bootbox.confirm({
+
+		message: "Are you sure?",
+		className: "bootbox-centered",
+		callback: function(result) {
+
+			notifyAlert('info', 'Closed. :'+result);
+		}
+	});
+});
+
+$('#centerPrompt').on('click', function(e){
+
+	bootbox.prompt({
+
+		title: "What is your real name?",
+		className: "bootbox-centered",
+		callback: function(result) {
+
+			if (result === null) {
+				notifyAlert('info', 'Canceled.');
+			} else {
+				notifyAlert('info', 'OK :'+result);
+			}
+		}
+	});
+});

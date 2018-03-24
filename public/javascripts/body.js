@@ -223,7 +223,7 @@ $("#helpButton").on('click', function(e) {
 				refreshHelp();
 
 				// enable clipboard
-				var clipboard = new Clipboard('#system_help-main .btn-clipboard', {
+				var clipboard = new ClipboardJS('#system_help-main .btn-clipboard', {
 					target: function (trigger) {
 						return trigger.parentNode.nextElementSibling
 					}

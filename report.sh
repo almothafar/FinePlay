@@ -16,3 +16,6 @@ LANG=en_US.UTF-8
 
 ./sbt dumpLicenseReport
 # /fineplay/target/license-reports/fineplay-licenses.html
+
+./sbt dependencyDot
+# /fineplay/target/dependencies-compile.dot

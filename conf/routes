@@ -6,7 +6,7 @@
 
 GET		/routes.js									controllers.system.System.routes
 
-POST		/development/http/ajax						apis.development.http.Http.postData()
+POST		/development/http/post						apis.development.http.Http.postData()
 
 POST		/system/log									apis.system.Logger.log()
 POST		/system/pdf									apis.system.PDF.index()
