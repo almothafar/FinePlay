@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.security.auth.login.AccountException;
 
+import common.system.MessageKeys;
 import common.utils.DateTimes;
 import controllers.user.UserService;
 import models.framework.datetime.DateTimeFormContent;
@@ -20,12 +21,16 @@ import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
 public class DateTime extends Controller {
+
+	@Inject
+	private MessagesApi messages;
 
 	@Inject
 	private JPAApi jpaApi;
@@ -82,7 +87,15 @@ public class DateTime extends Controller {
 
 			final DateTimeFormContent datetimeFormContent = datetimeForm.get();
 
-			final models.framework.datetime.DateTime updatedDateTime = updateDateTime(jpaApi.em(), datetimeFormContent);
+			final models.framework.datetime.DateTime updatedDateTime;
+			try {
+
+				updatedDateTime = updateDateTime(jpaApi.em(), datetimeFormContent);
+			} catch (IllegalStateException e) {
+
+				flash("dateTimeWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage());
+				return failureRead(datetimeForm);
+			}
 			final DateTimeFormContent updatedDateTimeFormContent = setDateTimeFormContentValue(updatedDateTime);
 
 			final Form<DateTimeFormContent> updatedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(updatedDateTimeFormContent);
@@ -102,6 +115,11 @@ public class DateTime extends Controller {
 		LocalDateTime serverDateTime_DateTime = null;
 		if (Objects.nonNull(dateTime_Date) && Objects.nonNull(dateTime_Time)) {
 
+			if (!DateTimes.isServerDateTimeConvertible(LocalDateTime.of(dateTime_Date, dateTime_Time))) {
+
+				throw new IllegalStateException(getIllegalDateTimeMessage());
+			}
+
 			serverDateTime_DateTime = DateTimes.getServerDateTime(LocalDateTime.of(dateTime_Date, dateTime_Time));
 		}
 
@@ -111,6 +129,11 @@ public class DateTime extends Controller {
 		final LocalTime time_Time = datetimeFormContent.getTime_Time();
 		LocalTime serverTime = null;
 		if (Objects.nonNull(time_Time)) {
+
+			if (!DateTimes.isServerDateTimeConvertible(LocalDateTime.of(time_Date, time_Time))) {
+
+				throw new IllegalStateException(getIllegalDateTimeMessage());
+			}
 
 			final LocalDateTime serverTime_DateTime = DateTimes.getServerDateTime(LocalDateTime.of(time_Date, time_Time));
 			serverTime = serverTime_DateTime.toLocalTime();
@@ -146,6 +169,21 @@ public class DateTime extends Controller {
 			manager.merge(datetime);
 		}
 		return datetime;
+	}
+
+	private String getIllegalDateTimeMessage() {
+
+		final String message = messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_ILLEGAL, messages.get(lang(), MessageKeys.DATETIME)) + //
+				"(" + //
+				messages.get(lang(), MessageKeys.X__IS__X, //
+						messages.get(lang(), MessageKeys.DATETIME), //
+						messages.get(lang(), MessageKeys.X__OF__X, //
+								messages.get(lang(), MessageKeys.X__OR__X, //
+										messages.get(lang(), MessageKeys.START), //
+										messages.get(lang(), MessageKeys.END)), //
+								messages.get(lang(), MessageKeys.DAYLIGHT__SAVING__TIME)))
+				+ ")";
+		return message;
 	}
 
 	@Nonnull

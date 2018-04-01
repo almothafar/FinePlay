@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.text.NumberFormat;
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
@@ -120,6 +121,9 @@ public class Application extends Controller {
 	@Inject
 	private FormFactory formFactory;
 
+	@Inject
+	private Clock clock;
+
 	@With(LoggingAction.class)
 	@Authenticated(common.core.Authenticator.class)
 	@Transactional(readOnly = true)
@@ -162,6 +166,9 @@ public class Application extends Controller {
 		case "reporterror":
 
 			return reporterror();
+		case "clock":
+
+			return clock();
 		case "datetime":
 
 			return datetime();
@@ -494,6 +501,12 @@ public class Application extends Controller {
 		return ok(views.html.framework.application.reporterror.render());
 	}
 
+	public Result clock() {
+
+		final LocalDateTime serverDateTime = LocalDateTime.now(clock);
+		return ok(views.html.framework.application.clock.render(serverDateTime));
+	}
+
 	public Result datetime() {
 
 		final Map<String, Object> map = new LinkedHashMap<>();
@@ -575,7 +588,7 @@ public class Application extends Controller {
 		endDayInfo.add(Arrays.asList("2017-11-05T10:30Z", ZonedDateTime.parse("2017-11-05T10:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T02:30:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T02:30:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
 
 		final SortedSet<LocalDateTime> dateTimeSet = createDateTimeSet();
-		final SortedMap<String, Boolean> dateTimeMap = dateTimeSet.stream()
+		final SortedMap<String, Boolean> dateTimeMap = dateTimeSet.stream()//
 				.collect(Collectors.toMap(//
 						dateTime -> dateTime.toString(), //
 						dateTime -> DateTimes.isServerDateTimeConvertible(dateTime), //
@@ -757,7 +770,8 @@ public class Application extends Controller {
 
 	public Result playException() {
 
-		throw new PlayException(messages.get(lang(), MessageKeys.TITLE), messages.get(lang(), MessageKeys.DESCRIPTION));
+		throw new PlayException(messages.get(lang(), MessageKeys.TITLE), messages.get(lang(), MessageKeys.DESCRIPTION) + //
+				"&nbsp;<a href=\"" + controllers.framework.application.routes.Application.index("exception").url() + "\">" + messages.get(lang(), MessageKeys.RECOVERY) + "</a>");
 	}
 
 	public Result runtimeException() {

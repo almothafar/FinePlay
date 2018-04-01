@@ -71,7 +71,7 @@
 
 			@for(cause <- causes(error)){
 
-				@cause.getLocalizedMessage()
+				@Html(cause.getLocalizedMessage())
 			}
 
 			@if(isDev()){

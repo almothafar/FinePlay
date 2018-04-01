@@ -12,9 +12,9 @@ How to play
 
 ##### Environment #####
 
-	macOS High Sierra version 10.13.3(17D102)
+	macOS High Sierra version 10.13.4（17E199）
 	java version "1.8.0_162"
-	Safari version 11.0.3 (13604.5.6)
+	Safari version 11.1 (13605.1.33.1.2)
 
 ##### Java #####
 
@@ -67,7 +67,7 @@ Notice
 Release History
 ---------------
 
-+ **2.6.12-β2** - 2018-03-04
++ **2.6.12-β3** - 2018-04-01
 + **2.6.3-α1** - 2017-08-14
    + First commit
 

@@ -95,6 +95,8 @@ public class MessageKeys {
 
   public static final String CLIENT = "client";
 
+  public static final String CLOCK = "clock";
+
   public static final String CLOSE = "close";
 
   public static final String CODEPOINT = "codepoint";
@@ -555,6 +557,8 @@ public class MessageKeys {
 
   public static final String RECEIVE = "receive";
 
+  public static final String RECOVERY = "recovery";
+
   public static final String REDO = "redo";
 
   public static final String REGIST = "regist";
@@ -717,6 +721,8 @@ public class MessageKeys {
 
   public static final String SYSTEM_ERROR_X_EXIST = "system.error.x.exist";
 
+  public static final String SYSTEM_ERROR_X_ILLEGAL = "system.error.x.illegal";
+
   public static final String SYSTEM_ERROR_X_NOTENABLE = "system.error.x.notenable";
 
   public static final String SYSTEM_ERROR_X_NOTEXIST = "system.error.x.notexist";
@@ -841,9 +847,15 @@ public class MessageKeys {
 
   public static final String WORLD = "world";
 
+  public static final String X__AND__X = "x_and_x";
+
   public static final String X__CASE__SELECTED = "x_case_selected";
 
   public static final String X__IS__X = "x_is_x";
+
+  public static final String X__OF__X = "x_of_x";
+
+  public static final String X__OR__X = "x_or_x";
 
   public static final String YOUR__X__IS__X = "your_x_is_x";
 

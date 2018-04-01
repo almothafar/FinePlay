@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.12-β2-SNAPSHOT"
+version := "2.6.12-β3-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -18,7 +18,8 @@ lazy val root = (project in file("."))
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.6.12-β2-SNAPSHOT",
+  "javax.xml.bind" % "jaxb-api" % "2.3.0",
+//  "hiro20v" %% "fineplay-sub" % "2.6.12-β3-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -42,15 +43,15 @@ libraryDependencies ++= Seq(
 //  "net.logstash.logback" % "logstash-logback-encoder" % "5.0",			// Apache 4.11
   "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
   "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",				//
-  "org.hibernate.validator" % "hibernate-validator" % "6.0.8.Final",		// Apache 6.0.8 // into play include
+  "org.hibernate.validator" % "hibernate-validator" % "6.0.9.Final",		// Apache 6.0.8 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.3",							// Apache 1.3
   "org.postgresql" % "postgresql" % "42.2.1",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.16.0",
-//  "org.mockito" % "mockito-core" % "2.16.0",							// MIT 2.13.0
+  "org.mockito" % "mockito-inline" % "2.17.0",
+//  "org.mockito" % "mockito-core" % "2.17.0",							// MIT 2.13.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",								// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",										// Apache 3.16

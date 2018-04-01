@@ -12,9 +12,6 @@
 @echo off
 set SBT_HOME=%~dp0
 
-@REM Java 9
-@REM set SBT_OPTS="--add-modules java.xml.bind"
-
 rem FIRST we load the config file of extra options.
 set FN=%SBT_HOME%\..\conf\sbtconfig.txt
 set CFG_OPTS=

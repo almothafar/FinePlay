@@ -4,7 +4,22 @@ table.dataTable {
 	border-collapse: collapse !important;
 }
 
-.dataTables_wrapper.container-fluid.dt-bootstrap4{
+.dataTables_wrapper.container-fluid.dt-bootstrap4 {
 	padding-left: 0;
 	padding-right: 0;
+}
+
+.dataTable-responsive>.dataTables_wrapper>.row:nth-child(2) {
+	padding-right: 1rem !important;
+	padding-left: 1rem !important;
+}
+
+.dataTable-responsive>.dataTables_wrapper>.row:nth-child(2)>.col-sm-12 {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
 }

@@ -99,7 +99,7 @@ class InitialUsersCreator {
 		adminUser.setPassword("admin1!aA");
 		adminUser.setRoles(EnumSet.of(Role.ADMIN));
 		adminUser.setLocale(Locale.US);
-		adminUser.setZoneId(ZoneId.of("UTC"));
+		adminUser.setZoneId(ZoneId.of("US/Pacific"));
 		adminUser.setTheme(Theme.DEFAULT);
 		adminUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		adminUser.setUpdateDateTime(LocalDateTime.now());
@@ -110,7 +110,7 @@ class InitialUsersCreator {
 		customerUser.setPassword("customer1!aA");
 		customerUser.setRoles(EnumSet.of(Role.CUSTOMER));
 		customerUser.setLocale(Locale.US);
-		customerUser.setZoneId(ZoneId.of("UTC"));
+		customerUser.setZoneId(ZoneId.of("US/Pacific"));
 		customerUser.setTheme(Theme.DEFAULT);
 		customerUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		customerUser.setUpdateDateTime(LocalDateTime.now());
@@ -121,7 +121,7 @@ class InitialUsersCreator {
 		guestUser.setPassword("guest1!aA");
 		guestUser.setRoles(EnumSet.of(Role.GUEST));
 		guestUser.setLocale(Locale.US);
-		guestUser.setZoneId(ZoneId.of("UTC"));
+		guestUser.setZoneId(ZoneId.of("US/Pacific"));
 		guestUser.setTheme(Theme.DEFAULT);
 		guestUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(guestUser);

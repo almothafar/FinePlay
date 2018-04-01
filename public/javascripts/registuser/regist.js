@@ -3,9 +3,7 @@
 var currentDate = new Date();
 
 var offsetSecond = currentDate.getTimezoneOffset() * -1 * 60;
-if(offsetSecond){
-	$('#offsetSecond').attr('value', offsetSecond);
-}
+$('#offsetSecond').attr('value', offsetSecond);
 
 var shortZoneId = (/.*\((.*)\).*/.exec(currentDate.toString())||[])[1];
 if(shortZoneId){
