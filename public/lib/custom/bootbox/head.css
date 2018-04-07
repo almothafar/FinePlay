@@ -1,20 +1,7 @@
 @charset "utf-8";
 
-.bootbox .modal-header {
-	display: block;
-}
-.bootbox .close {
-	float: right;
-	margin-top: 0px !important;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-}
-.bootbox.modal .btn-default {
+.bootbox.modal .btn-default,
+.bootbox.modal .btn-secondary {
 	background-color: transparent;
 	background-image: none;
-}
-.modal-footer .btn + .btn {
-	margin-bottom: 0;
-	margin-left: 5px;
 }

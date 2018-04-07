@@ -118,7 +118,7 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
 
 //
 
-$("#menuButton").on('click', function(e) {
+$("#system_work-menu-button").on('click', function(e) {
 
 	$("#system_base").toggleClass('system_expand');
 	return false;

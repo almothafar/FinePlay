@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.12-β3-SNAPSHOT"
+version := "2.6.13-β3-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -19,7 +19,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "javax.xml.bind" % "jaxb-api" % "2.3.0",
-//  "hiro20v" %% "fineplay-sub" % "2.6.12-β3-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.13-β3-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -73,7 +73,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "clipboard" % "2.0.0",							// MIT 2.0.0
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
-  "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
+//  "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",				// MIT 9.8.1
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
@@ -81,7 +81,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",								// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2 +patch
-  "org.webjars.bower" % "moment" % "2.21.0",								// MIT 2.21.0
+  "org.webjars.bower" % "moment" % "2.22.0",								// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",							// MIT 3.8.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
@@ -96,7 +96,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
-  "org.webjars.npm" % "marked" % "0.3.17",								// MIT 0.3.15
+  "org.webjars.npm" % "marked" % "0.3.19",								// MIT 0.3.19
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1

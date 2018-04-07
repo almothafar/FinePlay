@@ -101,6 +101,20 @@ body {
 	}
 }
 
+#system_base.system_expand #system_work-menu-button>.navbar-toggler-icon {
+	animation: expand 0.2s;
+	transform: rotate(90deg);
+}
+
+@keyframes expand {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(90deg);
+	}
+}
+
 #system_work-menu {
 	position: absolute;
 	top: 0px;

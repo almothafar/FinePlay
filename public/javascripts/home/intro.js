@@ -52,7 +52,7 @@ $(document).ready(function () {
 	tour.addStep('followup', {
 		title: Messages(MessageKeys.MENU) + ' ' + Messages(MessageKeys.BUTTON),
 		text: '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>',
-		attachTo: '#menuButton bottom',
+		attachTo: '#system_work-menu-button bottom',
 		buttons: [
 			{
 				text: Messages(MessageKeys.PREVIOUS),

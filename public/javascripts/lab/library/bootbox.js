@@ -165,7 +165,7 @@ $('#centerAlert').on('click', function(e){
 	bootbox.alert({
 
 		message: "Hello world!",
-		className: "bootbox-centered",
+		centerVertical: true,
 		callback: function() {
 
 			notifyAlert('info', 'Closed.');
@@ -178,7 +178,7 @@ $('#centerConfirm').on('click', function(e){
 	bootbox.confirm({
 
 		message: "Are you sure?",
-		className: "bootbox-centered",
+		centerVertical: true,
 		callback: function(result) {
 
 			notifyAlert('info', 'Closed. :'+result);
@@ -191,7 +191,7 @@ $('#centerPrompt').on('click', function(e){
 	bootbox.prompt({
 
 		title: "What is your real name?",
-		className: "bootbox-centered",
+		centerVertical: true,
 		callback: function(result) {
 
 			if (result === null) {

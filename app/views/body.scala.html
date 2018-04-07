@@ -132,7 +132,7 @@
 			<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow-light sticky-top">
 
 				<div class="d-inline">
-				@components.button(Map("id"->"menuButton", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
+				@components.button(Map("id"->"system_work-menu-button", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
 				<a class="navbar-brand d-none d-md-inline ml-1 mt-1" href="@controllers.home.routes.Home.index()">
 					@components.image(Map("id"->"system_logo", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "alternate"->"System logo."))
 				</a>
@@ -153,7 +153,7 @@
 								<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fas fa-sign-out-alt"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
 							</div>
 						</div>
-						@components.button(Map("id"->"helpButton", "type"->"link", "icon"->"far fa-question-circle", "text"->"", "class"->"ml-1 d-none"))
+						@components.button(Map("id"->"helpButton", "type"->"info", "icon"->"far fa-question", "text"->"", "class"->"ml-1 d-none"))
 					</form>
 				</div>
 			</nav>
