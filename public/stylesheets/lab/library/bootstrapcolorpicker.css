@@ -19,3 +19,12 @@
 .colorpicker-2x .colorpicker-color div {
 	height: 30px;
 }
+
+.colorpicker-swatch+.colorpicker-swatch {
+	margin-left: 0px;
+}
+
+.colorpicker-swatch {
+	height: 44px;
+	width: 44px;
+}

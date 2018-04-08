@@ -100,7 +100,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",						// MIT 1.8.1
-  "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
+//  "org.webjars.bower" % "github-com-farbelous-bootstrap-colorpicker" % "2.5.1",	// Apache 2.5.1
   "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
   "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426 +patch
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
