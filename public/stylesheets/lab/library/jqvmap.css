@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+.jqvmap-container {
+	height: 300px;
+}
+
+@media ( min-width :576px) {
+	.jqvmap-container {
+		height: 350px;;
+	}
+}
+
+@media ( min-width :768px) {
+	.jqvmap-container {
+		height: 400px;;
+	}
+}
+
+@media ( min-width :992px) {
+	.jqvmap-container {
+		height: 450px;;
+	}
+}
+
+@media ( min-width :1200px) {
+	.jqvmap-container {
+		height: 500px;;
+	}
+}
+
+.jqvmap-zoomout {
+	top: 55px;
+	width: 44px;
+	height: 44px;
+	line-height: 38px;
+}
+
+.jqvmap-zoomin {
+	width: 44px;
+	height: 44px;
+	line-height: 38px;
+}

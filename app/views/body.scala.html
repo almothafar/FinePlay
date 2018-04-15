@@ -93,7 +93,7 @@
 					Map("name"->Messages(MessageKeys.HELP), "icon"->"far fa-question-circle", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.ENVIRONMENT), "icon"->"fas fa-thermometer-half", "selected"->equalSection("environment")),List(
-					Map("name"->Messages(MessageKeys.JAVA), "icon"->"fas fa-coffee", "link"->controllers.environment.javalang.routes.Java.index().toString(), "selected"->equalWork("environment","java")),
+					Map("name"->Messages(MessageKeys.JAVA), "icon"->"fab fa-java", "link"->controllers.environment.javalang.routes.Java.index().toString(), "selected"->equalWork("environment","java")),
 					Map("name"->Messages(MessageKeys.BROWSER), "icon"->"fab fa-safari", "link"->controllers.environment.browser.routes.Browser.index().toString(), "selected"->equalWork("environment","browser"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FRAMEWORK), "icon"->"ii ii-play if-monochrome", "selected"->equalSection("framework")),List(
@@ -129,7 +129,7 @@
 			<button id="system_content-left-corner">
 			</button>
 
-			<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow-light sticky-top">
+			<nav id="system_menu" class="navbar navbar-expand-xs navbar-light bg-light md-3 shadow-sm sticky-top">
 
 				<div class="d-inline">
 				@components.button(Map("id"->"system_work-menu-button", "type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "aria-expanded"->"false", "aria-label"->"Toggle navigation"))
@@ -158,7 +158,7 @@
 				</div>
 			</nav>
 
-			<div id="system_extension-menu" class="shadow-light sticky-top">
+			<div id="system_extension-menu" class="shadow-sm sticky-top">
 			</div>
 
 			@content
@@ -232,7 +232,7 @@
 
 			<div id="system_help-content" class="help-notready">
 
-				<div id="system_help-main" data-spy="scroll" data-target="#system_help-navbar" data-offset="0" class="shadow-light-inset">
+				<div id="system_help-main" data-spy="scroll" data-target="#system_help-navbar" data-offset="0" class="shadow-sm-inset">
 
 					<!-- Pair with nav-link -->
 					<h1 class="bd-title" id="help-top">

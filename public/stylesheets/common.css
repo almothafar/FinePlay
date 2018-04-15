@@ -442,28 +442,16 @@ label.required:after{
 
 /* Shadow */
 
-.shadow-light {
-	box-shadow: 0 0 18px -6px rgba(180, 180, 180, 0.66);
-}
-
-.shadow-light-inset {
-	box-shadow: 0 0 18px -6px rgba(180, 180, 180, 0.66) inset;
-}
-
-.shadow {
-	box-shadow: 0 0 18px -3px rgba(120, 120, 120, 0.76);
+.shadow-sm-inset {
+	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) inset !important
 }
 
 .shadow-inset {
-	box-shadow: 0 0 18px -3px rgba(120, 120, 120, 0.76) inset;
+	box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) inset !important
 }
 
-.shadow-dark {
-	box-shadow: 0 0 18px 0px rgba(60, 60, 60, 0.86);
-}
-
-.shadow-dark-inset {
-	box-shadow: 0 0 18px 0px rgba(60, 60, 60, 0.86) inset;
+.shadow-xs-inset {
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) inset !important
 }
 
 /* Opacity */

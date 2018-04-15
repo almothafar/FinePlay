@@ -155,6 +155,7 @@ internet-explorer
 ioxhost
 itunes
 itunes-note
+java
 jenkins
 joget
 joomla
@@ -214,6 +215,7 @@ phoenix-framework
 php
 pied-piper
 pied-piper-alt
+pied-piper-hat
 pied-piper-pp
 pinterest
 pinterest-p
@@ -227,6 +229,7 @@ quinscape
 quora
 ravelry
 react
+readme
 rebel
 red-river
 reddit

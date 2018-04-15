@@ -38,6 +38,6 @@ setTimeout(function() {
 		var fromRequest = requestMoment.clone().add(progressSec, 'second')
 				.format('YYYY-MM-DDTHH:mm:ss');
 
-		console.log(fromRequest + ' (' + fromZero + ')');
+		console.log('Unverified: ' + fromRequest + ' (' + fromZero + ')');
 	}, 1000);
 }, 3000);

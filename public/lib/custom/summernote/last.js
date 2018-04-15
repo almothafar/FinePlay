@@ -30,7 +30,7 @@ if ('' == lang) {
 		if (arguments[0]) {
 
 			var copyTarget = 'inline-style';
-			var replacedValue = arguments[0].replace(/style/g, copyTarget);
+			var replacedValue = arguments[0].replace(/style=/g, copyTarget + '=');
 			result = orignHtmlFunc.call(this, replacedValue);
 		} else {
 

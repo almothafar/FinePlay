@@ -8,25 +8,25 @@ Bootstrap CSS customize
 
 Install
 
-[Build tools](http://getbootstrap.com/docs/4.0/getting-started/build-tools/)
+[Build tools](https://getbootstrap.com/docs/4.1/getting-started/build-tools/)
 
 ### Customize ###
 
 e.g.
 
-	github/bootstrap-4.0.0/scss/_variables.scss
+	github/bootstrap-4.1.0/scss/_variables.scss
 
 ### Build ###
 
 ##### Console #####
 
-	MacBook:~ user$ cd github/bootstrap-4.0.0
-	MacBook:bootstrap-4.0.0 user$ npm install
-	MacBook:bootstrap-4.0.0 user$ npm run dist
+	MacBook:~ user$ cd github/bootstrap-4.1.0
+	MacBook:bootstrap-4.1.0 user$ npm install
+	MacBook:bootstrap-4.1.0 user$ npm run dist
 
 ### Deploy ###
 
-	github/bootstrap-4.0.0/dist/css/bootstrap.min.css
+	github/bootstrap-4.1.0/dist/css/bootstrap.min.css
 
 to
 

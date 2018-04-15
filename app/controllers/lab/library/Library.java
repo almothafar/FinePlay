@@ -56,6 +56,9 @@ public class Library extends Controller {
 		case "openlayers":
 
 			return openlayers();
+		case "jqvmap":
+
+			return jqvmap();
 		case "handsontable":
 
 			return handsontable();
@@ -155,6 +158,11 @@ public class Library extends Controller {
 	public static Result openlayers() {
 
 		return ok(views.html.lab.library.openlayers.render());
+	}
+
+	public static Result jqvmap() {
+
+		return ok(views.html.lab.library.jqvmap.render());
 	}
 
 	public static Result handsontable() {

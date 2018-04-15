@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.13-β3-SNAPSHOT"
+version := "2.6.13-β4-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -19,7 +19,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "javax.xml.bind" % "jaxb-api" % "2.3.0",
-//  "hiro20v" %% "fineplay-sub" % "2.6.13-β3-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.13-β4-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -49,9 +49,9 @@ libraryDependencies ++= Seq(
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.3",							// Apache 1.3
-  "org.postgresql" % "postgresql" % "42.2.1",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.17.0",
-//  "org.mockito" % "mockito-core" % "2.17.0",							// MIT 2.13.0
+  "org.postgresql" % "postgresql" % "42.2.2",							// BSD 2-clause 42.2.1
+  "org.mockito" % "mockito-inline" % "2.18.0",
+//  "org.mockito" % "mockito-core" % "2.18.0",							// MIT 2.13.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",								// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",										// Apache 3.16
@@ -69,8 +69,8 @@ libraryDependencies ++= Seq(
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
-  "org.webjars.npm" % "bootstrap" % "4.0.0",								// MIT 4.0.0
-  "org.webjars.bower" % "clipboard" % "2.0.0",							// MIT 2.0.0
+  "org.webjars.npm" % "bootstrap" % "4.1.0",								// MIT 4.0.0
+//  "org.webjars.bower" % "clipboard" % "2.0.0",							// MIT 2.0.0
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",								// MIT 4.4.0
@@ -94,6 +94,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "cropperjs" % "1.1.3",								// MIT 1.1.3
 //  "org.webjars.npm" % "d3" % "4.10.2",									// BSD-3-Clause license 4.10.2
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
+  "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
   "org.webjars.npm" % "marked" % "0.3.19",								// MIT 0.3.19
@@ -116,7 +117,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-//  "org.webjars.bower" % "font-awesome" % "5.0.2",						// Icons — CC 5.0.8
+  "org.webjars" % "font-awesome" % "5.0.10",							// Icons — CC 5.0.8
 																		// Fonts — SIL OFL 5.0.8
 																		// Code — MIT 5.0.8
   "org.webjars" % "material-design-icons" % "3.0.1",						// Apache 3.0.1
@@ -124,7 +125,6 @@ libraryDependencies ++= Seq(
   																		// EmojiOne Non-Artwork MIT 3.1.2
   "org.webjars.npm" % "emojione-assets" % "3.1.1"							// Free License 3.1.1
 )
-// Font Awesome															//
 // IcoFont																// MIT 1.3
 
 // JasperReports library

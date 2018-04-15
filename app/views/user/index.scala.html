@@ -43,7 +43,7 @@
 			<div class="col-sm-1 col-md-2 col-lg-3 col-xl-3">
 			</div>
 			<div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 p-0">
-				@components.card(Map("id"->"signInPanel", "class"->"text-xs-center shadow-light m-3")){
+				@components.card(Map("id"->"signInPanel", "class"->"text-xs-center shadow-sm m-3")){
 					<div class="card-header">
 						@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"logo"))
 						@if(isDev()){
@@ -126,7 +126,7 @@
 					<div class="card-columns w-100">
 						@license.liblist(List(
 							Map("name"->common.system.System.getImage().getName(), "icon"->"far fa-image", "link"->common.system.System.getImage().getCredit().getLink().toString(), "info"->common.system.System.getImage().getInformation()),
-							Map("name"->"Java", "icon"->"fas fa-coffee", "link"->"http://www.oracle.com", "info"->""),
+							Map("name"->"Java", "icon"->"fab fa-java", "link"->"http://www.oracle.com", "info"->""),
 							Map("name"->"Hibernate", "icon"->"fas fa-database", "link"->"http://hibernate.org", "info"->""),
 							Map("name"->"geckodriver", "icon"->"fab fa-firefox", "link"->" https://github.com/mozilla/geckodriver", "info"->""),
 							Map("name"->"sbt-dependency-graph", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/jrudolph/sbt-dependency-graph", "info"->""),
@@ -180,7 +180,8 @@
 							Map("name"->"Cropper.js", "icon"->"fas fa-crop", "link"->"https://fengyuanchen.github.io/cropperjs/", "info"->""),
 							Map("name"->"TwentyTwenty", "icon"->"fas fa-pencil-alt", "link"->"https://zurb.com/playground/twentytwenty", "info"->""),
 							Map("name"->"D3.js", "icon"->"fas fa-pencil-alt", "link"->"https://d3js.org", "info"->""),
-							Map("name"->"d3-geo-projection", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/d3/d3-geo-projection", "info"->""),
+							Map("name"->"d3-geo-projection", "icon"->"far fa-map", "link"->"https://github.com/d3/d3-geo-projection", "info"->""),
+							Map("name"->"JQVMAP", "icon"->"far fa-map", "link"->"https://www.10bestdesign.com/jqvmap/", "info"->""),
 							Map("name"->"highlight.js", "icon"->"fas fa-code", "link"->"https://highlightjs.org", "info"->""),
 							Map("name"->"diff2html", "icon"->"fas fa-pencil-alt", "link"->"https://diff2html.xyz", "info"->""),
 							Map("name"->"marked", "icon"->"fas fa-code", "link"->"https://github.com/chjj/marked", "info"->""),

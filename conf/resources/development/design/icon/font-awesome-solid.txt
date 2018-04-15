@@ -5,6 +5,7 @@ align-center
 align-justify
 align-left
 align-right
+allergies
 ambulance
 american-sign-language-interpreting
 anchor
@@ -65,13 +66,16 @@ book
 bookmark
 bowling-ball
 box
+box-open
 boxes
 braille
 briefcase
+briefcase-medical
 bug
 building
 bullhorn
 bullseye
+burn
 bus
 calculator
 calendar
@@ -82,6 +86,7 @@ calendar-plus
 calendar-times
 camera
 camera-retro
+capsules
 car
 caret-down
 caret-left
@@ -137,11 +142,14 @@ cogs
 columns
 comment
 comment-alt
+comment-dots
+comment-slash
 comments
 compass
 compress
 copy
 copyright
+couch
 credit-card
 crop
 crosshairs
@@ -151,11 +159,14 @@ cut
 database
 deaf
 desktop
+diagnoses
 dna
 dollar-sign
 dolly
 dolly-flatbed
+donate
 dot-circle
+dove
 download
 edit
 eject
@@ -189,6 +200,8 @@ file-audio
 file-code
 file-excel
 file-image
+file-medical
+file-medical-alt
 file-pdf
 file-powerpoint
 file-video
@@ -218,6 +231,9 @@ globe
 golf-ball
 graduation-cap
 h-square
+hand-holding
+hand-holding-heart
+hand-holding-usd
 hand-lizard
 hand-paper
 hand-peace
@@ -229,6 +245,8 @@ hand-pointer
 hand-rock
 hand-scissors
 hand-spock
+hands
+hands-helping
 handshake
 hashtag
 hdd
@@ -240,6 +258,7 @@ history
 hockey-puck
 home
 hospital
+hospital-alt
 hospital-symbol
 hourglass
 hourglass-end
@@ -248,6 +267,7 @@ hourglass-start
 i-cursor
 id-badge
 id-card
+id-card-alt
 image
 images
 inbox
@@ -311,6 +331,7 @@ mouse-pointer
 music
 neuter
 newspaper
+notes-medical
 object-group
 object-ungroup
 outdent
@@ -318,6 +339,7 @@ paint-brush
 pallet
 paper-plane
 paperclip
+parachute-box
 paragraph
 paste
 pause
@@ -325,10 +347,13 @@ pause-circle
 paw
 pen-square
 pencil-alt
+people-carry
 percent
 phone
+phone-slash
 phone-square
 phone-volume
+piggy-bank
 pills
 plane
 play
@@ -338,9 +363,13 @@ plus
 plus-circle
 plus-square
 podcast
+poo
 pound-sign
 power-off
+prescription-bottle
+prescription-bottle-alt
 print
+procedures
 puzzle-piece
 qrcode
 question
@@ -356,6 +385,7 @@ registered
 reply
 reply-all
 retweet
+ribbon
 road
 rocket
 rss
@@ -366,6 +396,7 @@ save
 search
 search-minus
 search-plus
+seedling
 server
 share
 share-alt
@@ -379,6 +410,7 @@ shopping-bag
 shopping-basket
 shopping-cart
 shower
+sign
 sign-in-alt
 sign-language
 sign-out-alt
@@ -386,6 +418,7 @@ signal
 sitemap
 sliders-h
 smile
+smoking
 snowflake
 sort
 sort-alpha-down
@@ -423,9 +456,11 @@ table
 table-tennis
 tablet
 tablet-alt
+tablets
 tachometer-alt
 tag
 tags
+tape
 tasks
 taxi
 terminal
@@ -458,6 +493,8 @@ trash-alt
 tree
 trophy
 truck
+truck-loading
+truck-moving
 tty
 tv
 umbrella
@@ -482,7 +519,10 @@ utensils
 venus
 venus-double
 venus-mars
+vial
+vials
 video
+video-slash
 volleyball-ball
 volume-down
 volume-off
@@ -495,6 +535,8 @@ window-close
 window-maximize
 window-minimize
 window-restore
+wine-glass
 won-sign
 wrench
+x-ray
 yen-sign

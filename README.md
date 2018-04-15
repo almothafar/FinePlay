@@ -1,6 +1,6 @@
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.6 & Bootstrap 4  
+Play(Java) 2.6 & Bootstrap 4.1  
 multilingual responsive project template.
 
 | Phone | Tablet    |
@@ -55,7 +55,7 @@ Document
 
 [Play Framework](https://www.playframework.com/documentation/2.6.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.0)
+[Bootstrap](http://getbootstrap.com/docs/4.1)
 
 This template is unofficial.
 
@@ -67,7 +67,7 @@ Notice
 Release History
 ---------------
 
-+ **2.6.13-β3** - 2018-04-07
++ **2.6.13-β4** - 2018-04-15
 + **2.6.3-α1** - 2017-08-14
    + First commit
 
