@@ -1,6 +1,7 @@
 @import com.typesafe.config._
 @import play.api.i18n._
 
+@import common.core._
 @import common.system._
 
 @()
@@ -17,7 +18,7 @@
 	}
 }
 
-<link rel='stylesheet' href='@href()'>
+<link rel='stylesheet' href='@href()' integrity="sha384-@IntegrityValues.BOOTSTRAP_STYLE" crossorigin="anonymous">
 
 <meta id="bootstrap_messages" class="d-none" data-messages='{
 	"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",

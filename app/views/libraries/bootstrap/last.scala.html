@@ -1,5 +1,7 @@
 @import com.typesafe.config._
 
+@import common.core._
+
 @()
 
 @src() = @{
@@ -14,6 +16,6 @@
 	}
 }
 
-<script type='text/javascript' src='@src()'></script>
+<script type='text/javascript' src='@src()' integrity="sha384-@IntegrityValues.BOOTSTRAP_SCRIPT" crossorigin="anonymous"></script>
 
 <!-- <script src='@routes.Assets.versioned("lib/bootstrap/assets/js/src/ie-emulation-modes-warning.js")'></script> -->

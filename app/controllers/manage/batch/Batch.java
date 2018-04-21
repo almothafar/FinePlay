@@ -44,7 +44,7 @@ public class Batch extends Controller {
 
 				final String fileName = path.getFileName().toString();
 				return fileName.endsWith("xml");
-			}).filter(path->{
+			}).filter(path -> {
 
 				final String fileName = path.getFileName().toString();
 				final boolean isDisplay = !fileName.startsWith("batch-createivd-job");

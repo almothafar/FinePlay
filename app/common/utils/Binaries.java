@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.nio.ByteBuffer;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +26,57 @@ import org.xml.sax.SAXException;
 public class Binaries {
 
 	private Binaries() {
+	}
+
+	@Nonnull
+	public static byte[] toHash(@Nonnull final String algorithm, @Nonnull final byte[] bytes) {
+
+		Objects.requireNonNull(algorithm);
+		Objects.requireNonNull(bytes);
+
+		MessageDigest messageDigest = null;
+		try {
+
+			messageDigest = MessageDigest.getInstance(algorithm);
+		} catch (final NoSuchAlgorithmException e) {
+
+			throw new IllegalStateException(e);
+		}
+
+		messageDigest.update(bytes);
+		final byte[] hash = messageDigest.digest();
+		int length = -1;
+		switch (algorithm) {
+		case "SHA-512":
+
+			length = 64;
+			break;
+		case "SHA-384":
+
+			length = 48;
+			break;
+		case "SHA-256":
+
+			length = 32;
+			break;
+		case "SHA-224":
+
+			length = 28;
+			break;
+		case "SHA-1":
+		case "MD5":
+		case "MD2":
+		default:
+
+			throw new IllegalStateException(": " + algorithm);
+		}
+
+		if (length != hash.length) {
+
+			throw new IllegalStateException(": " + hash.length);
+		}
+
+		return hash;
 	}
 
 	@SuppressWarnings("null")

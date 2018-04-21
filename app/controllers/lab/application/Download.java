@@ -458,11 +458,11 @@ public class Download extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	public Result fileName() {
 
-		final String fileName = messages.get(Locales.toLang(Locale.US), MessageKeys.FILE_NAME)+".txt";
+		final String fileName = messages.get(Locales.toLang(Locale.US), MessageKeys.FILE_NAME) + ".txt";
 		final String userFileName;
 		try {
 
-			userFileName = URLEncoder.encode(messages.get(lang(), MessageKeys.FILE_NAME).replaceAll("\\s", "_"), StandardCharsets.UTF_8.name())+".txt";;
+			userFileName = URLEncoder.encode(messages.get(lang(), MessageKeys.FILE_NAME).replaceAll("\\s", "_"), StandardCharsets.UTF_8.name()) + ".txt";
 		} catch (UnsupportedEncodingException e) {
 
 			throw new UncheckedIOException(e);

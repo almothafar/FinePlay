@@ -798,9 +798,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.jdom/jdom2/docs/jdom2-2.0.4-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/srcs/jsoup-1.11.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/jars/jsoup-1.11.2.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/srcs/jsoup-1.11.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jsoup/jsoup/jars/jsoup-1.11.3.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.jsoup/jsoup/docs/jsoup-1.11.2-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.jsoup/jsoup/docs/jsoup-1.11.3-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.itadaki/bzip2/srcs/bzip2-0.9.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.itadaki/bzip2/jars/bzip2-0.9.1.jar">
@@ -1011,14 +1011,14 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/color-name/docs/color-name-1.1.3-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/moment/srcs/moment-2.22.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/moment/jars/moment-2.22.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/moment/srcs/moment-2.22.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/moment/jars/moment-2.22.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/moment/docs/moment-2.22.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/moment/docs/moment-2.22.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/srcs/moment-2.22.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/jars/moment-2.22.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/srcs/moment-2.22.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/jars/moment-2.22.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/moment/docs/moment-2.22.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/moment/docs/moment-2.22.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/srcs/Snap.svg-0.5.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/jars/Snap.svg-0.5.1.jar">

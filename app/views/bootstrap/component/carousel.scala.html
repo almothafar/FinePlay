@@ -35,11 +35,23 @@
 				</div>
 				<div class="col-md-9">
 
-					@components.carousel(Map("id"->""), List(
-						Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#777&bg=#555&text=First slide", "alternate"->"First slide", "caption"->"First", "description"->"Description of firfst slide"),
-						Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#666&bg=#444&text=Second slide", "alternate"->"Second slide", "caption"->"Second", "description"->"Description of second slide"),
-						Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#555&bg=#333&text=Third slide", "alternate"->"Third slide", "caption"->"Third", "description"->"Description of third slide", "selected"->"true")
-					))
+					<div class="mb-3">
+
+						@components.carousel(Map("id"->""), List(
+							Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#777&bg=#555&text=First slide", "alternate"->"First slide", "caption"->"First", "description"->"Description of firfst slide", "selected"->"true"),
+							Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#666&bg=#444&text=Second slide", "alternate"->"Second slide", "caption"->"Second", "description"->"Description of second slide"),
+							Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#555&bg=#333&text=Third slide", "alternate"->"Third slide", "caption"->"Third", "description"->"Description of third slide")
+						))
+					</div>
+
+					<div class="mb-3">
+
+						@components.carousel(Map("id"->"", "fade"->"true"), List(
+							Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#777&bg=#555&text=First slide", "alternate"->"First slide", "caption"->"First", "description"->"Description of firfst slide", "selected"->"true"),
+							Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#666&bg=#444&text=Second slide", "alternate"->"Second slide", "caption"->"Second", "description"->"Description of second slide"),
+							Map("icon"->"fas fa-spinner fa-pulse", "source"->"holder.js/100px500?auto=yes&fg=#555&bg=#333&text=Third slide", "alternate"->"Third slide", "caption"->"Third", "description"->"Description of third slide")
+						))
+					</div>
 				</div>
 			</div>
 		}

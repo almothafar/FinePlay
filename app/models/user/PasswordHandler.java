@@ -1,8 +1,6 @@
 package models.user;
 
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
@@ -36,27 +34,12 @@ public interface PasswordHandler {
 		return Strings.randomAscii(SALT_SIZE_MAX);
 	}
 
+	@SuppressWarnings("null")
 	@Nonnull
 	default String toHashedPassword(@Nonnull final String passwordAndSalt) {
 
 		Objects.requireNonNull(passwordAndSalt);
 
-		MessageDigest messageDigest = null;
-		try {
-
-			messageDigest = MessageDigest.getInstance("SHA-256");
-		} catch (final NoSuchAlgorithmException e) {
-
-			throw new IllegalStateException(e);
-		}
-
-		messageDigest.update(passwordAndSalt.getBytes(StandardCharsets.UTF_8));
-		final byte[] hash = messageDigest.digest();
-		if (hash.length != 32) {
-
-			throw new IllegalStateException(": " + hash.length);
-		}
-
-		return Binaries.toHexString(hash);
+		return Binaries.toHexString(Binaries.toHash("SHA-256", passwordAndSalt.getBytes(StandardCharsets.UTF_8)));
 	}
 }

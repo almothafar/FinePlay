@@ -1,8 +1,27 @@
 @import play.api.i18n._
 
+@import common.core._
 @import common.system._
 
 @()
+
+@integrity(theme:String) = @{
+
+	theme match {
+		case "PRETTY" => {
+
+			IntegrityValues.BOOTSTRAP_STYLE_PRETTY
+		}
+		case "JAPAN" => {
+
+			IntegrityValues.BOOTSTRAP_STYLE_JAPAN
+		}
+		case "DEFAULT" | _ => {
+
+			IntegrityValues.BOOTSTRAP_STYLE
+		}
+	}
+}
 
 @session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()) match {
 
@@ -13,7 +32,9 @@
 	case _ => {
 
 		<link rel='stylesheet'
-			href='@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/bootstrap.min.css")'>
+			href='@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/bootstrap.min.css")'
+			integrity="sha384-@integrity(session.get(models.user.User.THEME))"
+			crossorigin="anonymous">
 
 		<div id="bootstrap_messages" class="d-none" data-messages='{
 			"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",

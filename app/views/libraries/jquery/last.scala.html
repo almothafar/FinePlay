@@ -1,5 +1,7 @@
 @import com.typesafe.config._
 
+@import common.core._
+
 @()
 
 @src() = @{
@@ -13,4 +15,4 @@
 	}
 }
 
-<script type='text/javascript' src='@src()'></script>
+<script type='text/javascript' src='@src()' integrity="sha384-@IntegrityValues.JQUERY_SCRIPT" crossorigin="anonymous"></script>
