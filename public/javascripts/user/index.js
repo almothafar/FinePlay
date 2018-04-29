@@ -89,6 +89,7 @@ $('.fixedUserButton').on('click', function(event){
 
 		$('#userId').val(userId);
 		$('#password').val(password);
+		$('#signInForm').parsley().validate();
 	}
 });
 
@@ -96,3 +97,12 @@ if(1 <= fixedUsersData.length){
 
 	$('#selectUserContainer').removeClass("d-none");
 }
+
+window.Parsley.addValidator('userid',　ParsleyValidators.UserIdValidator);
+window.Parsley.addValidator('password',　ParsleyValidators.PasswordValidator);
+$('#signInForm').parsley();
+
+window.Parsley.on('form:error', function() {
+
+	shake('#signInPanel');
+});

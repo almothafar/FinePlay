@@ -50,15 +50,15 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.3",							// Apache 1.3
   "org.postgresql" % "postgresql" % "42.2.2",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.18.0",
-//  "org.mockito" % "mockito-core" % "2.18.0",							// MIT 2.13.0
+  "org.mockito" % "mockito-inline" % "2.18.3",
+//  "org.mockito" % "mockito-core" % "2.18.3",							// MIT 2.13.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",								// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",										// Apache 3.16
   "org.apache.poi" % "poi-scratchpad" % "3.17",
   "org.apache.poi" % "poi-ooxml" % "3.17",
-  "org.apache.tika" % "tika-core" % "1.17",								// Apache 1.17
-  "org.apache.tika" % "tika-parsers" % "1.17",
+  "org.apache.tika" % "tika-core" % "1.18",								// Apache 1.17
+  "org.apache.tika" % "tika-parsers" % "1.18",
   "com.google.zxing" % "javase" % "3.3.2",								// Apache 3.3.0
   "org.webjars.bower" % "quagga" % "0.11.6",								// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.9",								// Apache 2.0.9
@@ -89,12 +89,12 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",				//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
 //  "org.webjars.bower" % "summernote" % "0.8.9",							// MIT 0.8.9
-  "org.webjars.bower" % "handsontable" % "0.36.0",						// MIT 0.34.0
+  "org.webjars.bower" % "handsontable" % "2.0.0",						// MIT 2.0.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.1.3",								// MIT 1.1.3
 //  "org.webjars.npm" % "d3" % "4.10.2",									// BSD-3-Clause license 4.10.2
 //  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
-  "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT 1.5.1
+  "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",							// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
   "org.webjars.npm" % "marked" % "0.3.19",								// MIT 0.3.19

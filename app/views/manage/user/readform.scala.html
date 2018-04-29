@@ -19,7 +19,7 @@
 		@helper.form(helper.CSRF(controllers.manage.user.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
 			<h5 class="form-read-heading">@Messages(MessageKeys.CONDITION)</h5>
 			@if(form.hasGlobalErrors) {
-				<p class="text-warning">@form.getGlobalError.get.message</p>
+				<p class="text-danger">@form.getGlobalError.get.message</p>
 			}
 			<div class="row form-group">
 				<label for="@User.USERID" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>
@@ -32,7 +32,7 @@
 						</div>
 						<input id="@User.USERID" type="text" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" autofocus>
 						@for(error <- form(User.USERID).errors) {
-							<div class="text-warning">@Messages(error.message)</div>
+							<div class="text-danger">@Messages(error.message)</div>
 						}
 					</div>
 				</div>

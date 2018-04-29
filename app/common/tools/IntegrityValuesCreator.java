@@ -81,7 +81,7 @@ class IntegrityValuesCreator {
 
 		final TypeSpec typeSpec = builder.build();
 
-		final JavaFile javaFile = JavaFile.builder("common.core", typeSpec).build();
+		final JavaFile javaFile = JavaFile.builder("common.system", typeSpec).build();
 
 		final Path constantsPath = Paths.get(".", "app");
 		javaFile.writeTo(constantsPath);

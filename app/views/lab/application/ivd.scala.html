@@ -22,6 +22,7 @@
 	@body("lab","application"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
 			@breadcrumb(Map("id"->"", "name"->"IVD", "icon"->"fas fa-print", "selected"->"true"))
 		}
 
@@ -53,7 +54,7 @@
 						<h4 class="headline">@Messages(MessageKeys.FONT_IPAMJMINCHO)</h4>
 						<div class="row form-group">
 							<div class="col-12">
-								<input id="hanyo-denshiText" class="form-control inputText hanyo-denshi" type="text" placeholder="" value="">
+								<input id="moji_johoText" class="form-control inputText moji_joho" type="text" placeholder="" value="">
 							</div>
 						</div>
 					</div>
@@ -65,7 +66,7 @@
 								Map("id"->"okButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-toggle"->"modal", "data-target"->"#pickerWindow", "data-whatever"->"okButton", "default"->"true")
 							)){
 							<div>
-								<p class="text-warning"></p>
+								<p class="text-danger"></p>
 							</div>
 							<div class="row form-group mb-0">
 								<label for="inputType" class="col-sm-3 col-form-label">@Messages(MessageKeys.TYPE)</label>
@@ -84,7 +85,7 @@
 									<input id="searchText" type="text" name="searchText" class="form-control" placeholder="" value="" required autofocus>
 									<small class="text-muted">Description of search value.</small>
 									<div>
-										<p class="text-warning"></p>
+										<p class="text-danger"></p>
 									</div>
 								</div>
 							</div>

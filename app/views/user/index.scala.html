@@ -26,6 +26,7 @@
 
 		@libraries.standard.head()
 
+		@libraries.parsley.head()
 		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/user/index.css")">
 	}
 
@@ -51,27 +52,27 @@
 						}
 					</div>
 					<div class="card-body text-xs-left pb-0">
-					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin") {
+					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin", 'name->"signInForm", 'id->"signInForm") {
 						<h5 class="form-signin-heading">@Messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
 						<div id="selectUserContainer" class="d-none">
 							<div class="row justify-content-center">
 								<div class="my-3">
-									@components.button(Map("id"->"selectFixedUser", "type"->"success", "icon"->"far fa-user", "class"->"fixedUserButton rounded-circle", "data-toggle"->"modal", "data-target"->"#usersDialog"))
+									@components.button(Map("id"->"selectFixedUser", "type"->"success", "icon"->"far fa-user", "class"->"rounded-circle", "data-toggle"->"modal", "data-target"->"#usersDialog"))
 								</div>
 							</div>
 						</div>
 						@if(form.hasGlobalErrors) {
-							<p class="text-warning">@form.getGlobalError.get.message</p>
+							<p class="text-danger">@form.getGlobalError.get.message</p>
 						}
 						<label for="@User.USERID" class="sr-only">User ID</label>
-						<input id="@User.USERID" type="email" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" required autofocus>
+						<input id="@User.USERID" type="email" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change" data-parsley-userid="">
 						@for(error <- form(User.USERID).errors) {
-							<div class="text-warning">@Messages(error.message)</div>
+							<div class="text-danger">@Messages(error.message)</div>
 						}
 						<label for="@User.PASSWORD" class="sr-only">Password</label>
-						<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).getValue.orElse("")" required>
+						<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).getValue.orElse("")" required maxlength="16" data-parsley-trigger="change" data-parsley-password="">
 						@for(error <- form(User.PASSWORD).errors) {
-							<div class="text-warning">@Messages(error.message)</div>
+							<div class="text-danger">@Messages(error.message)</div>
 						}
 						<input id="@User.OFFSETSECOND" type="hidden" name="@User.OFFSETSECOND" class="form-control" required>
 						<input id="@User.SHORTZONEID" type="hidden" name="@User.SHORTZONEID" class="form-control">
@@ -132,25 +133,25 @@
 							Map("name"->"sbt-dependency-graph", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/jrudolph/sbt-dependency-graph", "info"->""),
 							Map("name"->"Play Framework", "icon"->"ii ii-play", "link"->"https://www.playframework.com", "info"->"The High Velocity Web Framework"),
 							Map("name"->"play-mailer", "icon"->"far fa-envelope", "link"->"https://github.com/playframework/play-mailer", "info"->""),
-							Map("name"->"MapStruct", "icon"->"fas fa-pencil-alt", "link"->"http://mapstruct.org", "info"->""),
-							Map("name"->"jQuery", "icon"->"fas fa-pencil-alt", "link"->"http://jquery.com", "info"->""),
+							Map("name"->"MapStruct", "icon"->"fas fa-cubes", "link"->"http://mapstruct.org", "info"->""),
+							Map("name"->"jQuery", "icon"->"fab fa-js", "link"->"http://jquery.com", "info"->""),
 							Map("name"->"Bootstrap", "icon"->"ii ii-bootstrap", "link"->"http://getbootstrap.com", "info"->"The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web."),
-							Map("name"->"Bootstrap Docs", "icon"->"fas fa-pencil-alt", "link"->"http://getbootstrap.com", "info"->""),
-							Map("name"->"Popper.js", "icon"->"fas fa-pencil-alt", "link"->"https://popper.js.org", "info"->""),
-							Map("name"->"Tether", "icon"->"fas fa-pencil-alt", "link"->"http://github.hubspot.com/tether/", "info"->""),
+							Map("name"->"Bootstrap Docs", "icon"->"fas fa-book", "link"->"http://getbootstrap.com", "info"->""),
+							Map("name"->"Popper.js", "icon"->"fas fa-comment-alt", "link"->"https://popper.js.org", "info"->""),
+							Map("name"->"Tether", "icon"->"fas fa-comment-alt", "link"->"http://github.hubspot.com/tether/", "info"->""),
 							Map("name"->"Font Awesome", "icon"->"fas fa-flag", "link"->"https://fontawesome.com", "info"->""),
 							Map("name"->"Material Icons", "icon"->"fas fa-font", "link"->"http://google.github.io/material-design-icons/", "info"->""),
 							Map("name"->"IcoFont", "icon"->"fas fa-font", "link"->"http://icofont.com/", "info"->""),
 							Map("name"->"EmojiOne", "icon"->"fas fa-smile", "link"->"https://www.emojione.com/", "info"->""),
 							Map("name"->"EmojiOne Assets", "icon"->"fas fa-smile", "link"->"https://github.com/emojione/emojione-assets", "info"->""),
 							Map("name"->"PostgreSQL JDBC", "icon"->"fas fa-database", "link"->"https://jdbc.postgresql.org", "info"->""),
-							Map("name"->"jQuery UI", "icon"->"fas fa-pencil-alt", "link"->"http://jqueryui.com", "info"->""),
-							Map("name"->"jQuery UI Touch Punch", "icon"->"fas fa-pencil-alt", "link"->"http://touchpunch.furf.com", "info"->""),
-							Map("name"->"Super CSV", "icon"->"fas fa-pencil-alt", "link"->"http://super-csv.github.io/super-csv", "info"->""),
+							Map("name"->"jQuery UI", "icon"->"fas fa-mouse-pointer", "link"->"http://jqueryui.com", "info"->""),
+							Map("name"->"jQuery UI Touch Punch", "icon"->"fas fa-hand-point-up", "link"->"http://touchpunch.furf.com", "info"->""),
+							Map("name"->"Super CSV", "icon"->"fas fa-th", "link"->"http://super-csv.github.io/super-csv", "info"->""),
 							Map("name"->"POI", "icon"->"far fa-file-alt", "link"->"https://poi.apache.org", "info"->""),
 							Map("name"->"Tika", "icon"->"far fa-file-alt", "link"->"http://tika.apache.org", "info"->""),
 							Map("name"->"ZXing", "icon"->"fas fa-barcode", "link"->"https://zxing.appspot.com", "info"->""),
-							Map("name"->"Commons Text", "icon"->"fas fa-pencil-alt", "link"->"http://commons.apache.org/proper/commons-text/", "info"->""),
+							Map("name"->"Commons Text", "icon"->"fas fa-text-width", "link"->"http://commons.apache.org/proper/commons-text/", "info"->""),
 							Map("name"->"PDFBox", "icon"->"far fa-file-pdf", "link"->"http://pdfbox.apache.org", "info"->""),
 							Map("name"->"JasperReports® Library", "icon"->"far fa-file-alt", "link"->"https://community.jaspersoft.com/project/jasperreports-library", "info"->""),
 							Map("name"->"Barbecue", "icon"->"fas fa-barcode", "link"->"http://barbecue.sourceforge.net", "info"->""),
@@ -159,28 +160,28 @@
 							Map("name"->"IPAex", "icon"->"fas fa-font", "link"->"http://ipafont.ipa.go.jp", "info"->""),
 							Map("name"->"IPAmjMincho", "icon"->"fas fa-font", "link"->"http://mojikiban.ipa.go.jp/1300.html", "info"->""),
 							Map("name"->"jsoup", "icon"->"fas fa-code", "link"->"http://jsoup.org", "info"->""),
-							Map("name"->"javapoet", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/square/javapoet", "info"->""),
+							Map("name"->"javapoet", "icon"->"fas fa-cube", "link"->"https://github.com/square/javapoet", "info"->""),
 							Map("name"->"mustache.java", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/spullara/mustache.java", "info"->""),
 							Map("name"->"Zip4j", "icon"->"far fa-file-archive", "link"->"http://www.lingala.net/zip4j", "info"->""),
-							Map("name"->"Weld", "icon"->"fas fa-pencil-alt", "link"->"http://weld.cdi-spec.org", "info"->""),
+							Map("name"->"Weld", "icon"->"fas fa-syringe", "link"->"http://weld.cdi-spec.org", "info"->""),
 							Map("name"->"JBoss Marshalling", "icon"->"fas fa-pencil-alt", "link"->"http://www.jboss.org/jbossmarshalling", "info"->""),
 							Map("name"->"JBeret", "icon"->"fas fa-tasks", "link"->"https://github.com/jberet/jsr352", "info"->""),
 							Map("name"->"WildFly Security Manager", "icon"->"fas fa-key", "link"->"https://github.com/wildfly-security/security-manager", "info"->""),
 							Map("name"->"Logback JSON encoder", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/logstash/logstash-logback-encoder", "info"->""),
 							Map("name"->"SchemaSpy", "icon"->"fas fa-database", "link"->"http://schemaspy.org", "info"->""),
-							Map("name"->"Bootbox.js", "icon"->"fas fa-pencil-alt", "link"->"http://bootboxjs.com", "info"->""),
+							Map("name"->"Bootbox.js", "icon"->"far fa-window-maximize", "link"->"http://bootboxjs.com", "info"->""),
 							Map("name"->"pickadate", "icon"->"fas fa-calendar-alt", "link"->"http://amsul.ca/pickadate.js", "info"->""),
 							Map("name"->"bootstrap-slider", "icon"->"fas fa-sliders-h", "link"->"https://github.com/seiyria/bootstrap-slider", "info"->""),
-							Map("name"->"Select2", "icon"->"fas fa-pencil-alt", "link"->"http://select2.github.io", "info"->""),
+							Map("name"->"Select2", "icon"->"fas fa-list", "link"->"http://select2.github.io", "info"->""),
 							Map("name"->"DataTables", "icon"->"fas fa-table", "link"->"http://www.datatables.net", "info"->""),
 							Map("name"->"summernote", "icon"->"far fa-edit", "link"->"http://summernote.org", "info"->""),
 							Map("name"->"Handsontable", "icon"->"fas fa-table", "link"->"https://handsontable.com", "info"->""),
 							Map("name"->"Chart.js", "icon"->"far fa-chart-bar", "link"->"http://www.chartjs.org", "info"->""),
 							Map("name"->"slick", "icon"->"far fa-image", "link"->"http://kenwheeler.github.io/slick/", "info"->""),
 							Map("name"->"Cropper.js", "icon"->"fas fa-crop", "link"->"https://fengyuanchen.github.io/cropperjs/", "info"->""),
-							Map("name"->"TwentyTwenty", "icon"->"fas fa-pencil-alt", "link"->"https://zurb.com/playground/twentytwenty", "info"->""),
-							Map("name"->"D3.js", "icon"->"fas fa-pencil-alt", "link"->"https://d3js.org", "info"->""),
-							Map("name"->"d3-geo-projection", "icon"->"far fa-map", "link"->"https://github.com/d3/d3-geo-projection", "info"->""),
+							Map("name"->"TwentyTwenty", "icon"->"far fa-image", "link"->"https://zurb.com/playground/twentytwenty", "info"->""),
+							Map("name"->"D3.js", "icon"->"fas fa-chart-area", "link"->"https://d3js.org", "info"->""),
+							Map("name"->"d3-geo-projection", "icon"->"fas fa-globe", "link"->"https://github.com/d3/d3-geo-projection", "info"->""),
 							Map("name"->"JQVMAP", "icon"->"far fa-map", "link"->"https://www.10bestdesign.com/jqvmap/", "info"->""),
 							Map("name"->"highlight.js", "icon"->"fas fa-code", "link"->"https://highlightjs.org", "info"->""),
 							Map("name"->"diff2html", "icon"->"fas fa-pencil-alt", "link"->"https://diff2html.xyz", "info"->""),
@@ -194,19 +195,19 @@
 							Map("name"->"PDF.js", "icon"->"far fa-file-pdf", "link"->"https://github.com/mozilla/pdf.js", "info"->""),
 							Map("name"->"LibreOffice", "icon"->"far fa-file-alt", "link"->"https://www.libreoffice.org", "info"->""),
 							Map("name"->"wkhtmltopdf", "icon"->"far fa-file-pdf", "link"->"https://wkhtmltopdf.org", "info"->""),
-							Map("name"->"3Dmol.js", "icon"->"fas fa-pencil-alt", "link"->"http://3dmol.csb.pitt.edu", "info"->""),
+							Map("name"->"3Dmol.js", "icon"->"fas fa-dna", "link"->"http://3dmol.csb.pitt.edu", "info"->""),
 							Map("name"->"moment", "icon"->"far fa-clock", "link"->"http://momentjs.com", "info"->""),
 							Map("name"->"FullCalendar", "icon"->"fas fa-calendar-alt", "link"->"http://fullcalendar.io", "info"->""),
 							Map("name"->"OpenLayers", "icon"->"far fa-map", "link"->"http://www.openlayers.org/", "info"->""),
-							Map("name"->"Shepherd", "icon"->"fas fa-pencil-alt", "link"->"http://github.hubspot.com/shepherd/docs/welcome/", "info"->""),
+							Map("name"->"Shepherd", "icon"->"fas fa-binoculars", "link"->"http://github.hubspot.com/shepherd/docs/welcome/", "info"->""),
 							Map("name"->"QuaggaJS", "icon"->"fas fa-barcode", "link"->"https://github.com/serratus/quaggaJS", "info"->""),
 							Map("name"->"jsQR", "icon"->"fas fa-qrcode", "link"->"https://github.com/cozmo/jsQR", "info"->""),
 							Map("name"->"Material Icons", "icon"->"fas fa-font", "link"->"http://google.github.io/material-design-icons/", "info"->""),
 							Map("name"->"IcoFont", "icon"->"fas fa-font", "link"->"http://icofont.com/", "info"->""),
-							Map("name"->"Holder.js", "icon"->"fas fa-pencil-alt", "link"->"http://imsky.github.io/holder/", "info"->""),
+							Map("name"->"Holder.js", "icon"->"fas fa-square", "link"->"http://imsky.github.io/holder/", "info"->""),
 							Map("name"->"clipboard.js", "icon"->"fas fa-clipboard", "link"->"https://clipboardjs.com/", "info"->""),
 							Map("name"->"mockito", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/mockito/mockito", "info"->""),
-							Map("name"->"Mocha", "icon"->"fas fa-pencil-alt", "link"->"http://mochajs.org", "info"->""),
+							Map("name"->"Mocha", "icon"->"fas fa-stethoscope", "link"->"http://mochajs.org", "info"->""),
 							Map("name"->"Chai", "icon"->"fas fa-pencil-alt", "link"->"http://chaijs.com", "info"->"")
 						))
 					</div>
@@ -225,6 +226,8 @@
 		}'></div>
 
 		@libraries.standard.last()
+		@libraries.parsley.last()
+		@libraries.parsleyvalidators.last()
 		<script src='@routes.Assets.versioned("javascripts/user/index.js")'></script>
 		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	}

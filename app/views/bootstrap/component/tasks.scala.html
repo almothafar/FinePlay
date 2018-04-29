@@ -9,15 +9,15 @@
 
 <div id="@prop.getOrElse("id", "")" class="list-group mb-3">
 	<a href="@controllers.bootstrap.component.routes.Component.index("button").toString()" class="list-group-item @("active".when(equalTask("button")))">@Messages(MessageKeys.BUTTON)</a>
-	<a href="@controllers.bootstrap.component.routes.Component.index("linkbutton").toString()" class="list-group-item @("active".when(equalTask("linkbutton")))">@(Messages(MessageKeys.LINK)+" "+Messages(MessageKeys.BUTTON))</a>
-	<a href="@controllers.bootstrap.component.routes.Component.index("badge").toString()" class="list-group-item @("active".when(equalTask("badge")))">Badge</a>
+	<a href="@controllers.bootstrap.component.routes.Component.index("linkbutton").toString()" class="list-group-item @("active".when(equalTask("linkbutton")))">@Messages(MessageKeys.X__X, Messages(MessageKeys.LINK), Messages(MessageKeys.BUTTON))</a>
+	<a href="@controllers.bootstrap.component.routes.Component.index("badge").toString()" class="list-group-item @("active".when(equalTask("badge")))">@Messages(MessageKeys.BADGE)</a>
 	<a href="@controllers.bootstrap.component.routes.Component.index("dropdown").toString()" class="list-group-item @("active".when(equalTask("dropdown")))">Dropdown</a>
-	<a href="@controllers.bootstrap.component.routes.Component.index("buttongroup").toString()" class="list-group-item @("active".when(equalTask("buttongroup")))">@(Messages(MessageKeys.BUTTON)+" group")</a>
-	<a href="@controllers.bootstrap.component.routes.Component.index("listgroup").toString()" class="list-group-item @("active".when(equalTask("listgroup")))">List group</a>
+	<a href="@controllers.bootstrap.component.routes.Component.index("buttongroup").toString()" class="list-group-item @("active".when(equalTask("buttongroup")))">@Messages(MessageKeys.X__X, Messages(MessageKeys.BUTTON), Messages(MessageKeys.GROUP))</a>
+	<a href="@controllers.bootstrap.component.routes.Component.index("listgroup").toString()" class="list-group-item @("active".when(equalTask("listgroup")))">@Messages(MessageKeys.X__X, Messages(MessageKeys.LIST), Messages(MessageKeys.GROUP))</a>
 	<a href="@controllers.bootstrap.component.routes.Component.index("nav").toString()" class="list-group-item @("active".when(equalTask("nav")))">Nav</a>
-	<a href="@controllers.bootstrap.component.routes.Component.index("alerts").toString()" class="list-group-item @("active".when(equalTask("alerts")))">Alerts</a>
+	<a href="@controllers.bootstrap.component.routes.Component.index("alerts").toString()" class="list-group-item @("active".when(equalTask("alerts")))">@Messages(MessageKeys.ALERT)</a>
 	<a href="@controllers.bootstrap.component.routes.Component.index("progress").toString()" class="list-group-item @("active".when(equalTask("progress")))">@Messages(MessageKeys.PROGRESS)</a>
-	<a href="@controllers.bootstrap.component.routes.Component.index("pagination").toString()" class="list-group-item @("active".when(equalTask("pagination")))">Pagination</a>
+	<a href="@controllers.bootstrap.component.routes.Component.index("pagination").toString()" class="list-group-item @("active".when(equalTask("pagination")))">@Messages(MessageKeys.PAGE)</a>
 	<a href="@controllers.bootstrap.component.routes.Component.index("image").toString()" class="list-group-item @("active".when(equalTask("image")))">@Messages(MessageKeys.IMAGE)</a>
 	<a href="@controllers.bootstrap.component.routes.Component.index("carousel").toString()" class="list-group-item @("active".when(equalTask("carousel")))">Carousel</a>
 	<a href="@controllers.bootstrap.component.routes.Component.index("table").toString()" class="list-group-item @("active".when(equalTask("table")))">@Messages(MessageKeys.TABLE)</a>

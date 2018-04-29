@@ -21,7 +21,7 @@
 
 	@helper.form(helper.CSRF(controllers.manage.company.routes.Edit.create()), 'name->"createForm", 'id->"createForm") {
 		<div>
-			<p class="text-warning"></p>
+			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
 			<label for="create@Company.NAME" class="col-sm-3 col-form-label required">@Messages(MessageKeys.COMPANY_NAME)</label>
@@ -29,7 +29,7 @@
 				<input id="create@Company.NAME" type="text" name="@Company.NAME" class="form-control" placeholder="Name" value="" required autofocus>
 				<small class="text-muted">@Messages(MessageKeys.COMPANY_NAME_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 				<input id="create@Company.LOCALNAME" type="text" name="@Company.LOCALNAME" class="form-control" placeholder="LocalName" value="">
 				<small class="text-muted">@Messages(MessageKeys.LOCAL_NAME_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>

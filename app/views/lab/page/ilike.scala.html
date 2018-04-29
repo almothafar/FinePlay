@@ -38,11 +38,29 @@
 					</div>
 					<div class="i_space">
 
-						@components.listgroup(Map("id"->""), List(
-							Map("id"->"", "type"->"", "iconType"->"danger", "icon"->"fas fa-square fa-fw", "text"->"Cras justo odio"),
-							Map("id"->"", "type"->"", "iconType"->"secondary", "icon"->"fas fa-square fa-fw", "text"->"Cras justo odio"),
-							Map("id"->"", "type"->"", "iconType"->"primary", "icon"->"fas fa-moon fa-fw", "text"->"Cras justo odio")
-						))
+						<div class="list-group">
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("type"->"danger", "icon"->"fas fa-square fa-fw"))
+								Cras justo odio
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"default", "class"->"mb-0"))
+								</div>
+							</a>
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("type"->"secondary", "icon"->"fas fa-square fa-fw"))
+								Dapibus ac facilisis in
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"unchecked", "class"->"mb-0", "selected"->"false"))
+								</div>
+							</a>
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("type"->"primary", "icon"->"fas fa-square fa-fw"))
+								Morbi leo risus
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"checked", "class"->"mb-0", "selected"->"true"))
+								</div>
+							</a>
+						</div>
 					</div>
 					<div class="i_space">
 
@@ -70,11 +88,29 @@
 					</div>
 					<div class="i_space">
 
-						@components.listgroup(Map("id"->""), List(
-							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio"),
-							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio"),
-							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio")
-						))
+						<div class="list-group">
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("icon"->"fas fa-square"))
+								Cras justo odio
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"default", "class"->"mb-0"))
+								</div>
+							</a>
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("icon"->"fas fa-square"))
+								Dapibus ac facilisis in
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"unchecked", "class"->"mb-0", "selected"->"false"))
+								</div>
+							</a>
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("icon"->"fas fa-square"))
+								Morbi leo risus
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"checked", "class"->"mb-0", "selected"->"true"))
+								</div>
+							</a>
+						</div>
 					</div>
 					<div class="i_space">
 

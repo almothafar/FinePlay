@@ -42,7 +42,7 @@
 								<h4 class="card-title">@Messages(MessageKeys.INQUIRY_SEND)</h4>
 								<p class="card-text">@Messages(MessageKeys.INQUIRY_SEND_DESCRIPTION)</p>
 								@if(form.hasGlobalErrors) {
-									<p class="text-warning">@form.getGlobalError.get.message</p>
+									<p class="text-danger">@form.getGlobalError.get.message</p>
 								}
 								<div class="form-group row">
 									<label for="@Inquiry.USERID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.EMAIL)</label>
@@ -50,7 +50,7 @@
 										<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).getValue.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change">
 										<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
 										@for(error <- form(Inquiry.USERID).errors) {
-											<div class="text-warning">@Messages(error.message)</div>
+											<div class="text-danger">@Messages(error.message)</div>
 										}
 									</div>
 								</div>
@@ -59,7 +59,7 @@
 									<div class="col-sm-9">
 										<input id="@Inquiry.NAME" type="text" name="@Inquiry.NAME" class="form-control" placeholder="Name" value="@form(Inquiry.NAME).getValue.orElse("")" maxlength="64" data-parsley-trigger="change">
 										@for(error <- form(Inquiry.NAME).errors) {
-											<div class="text-warning">@Messages(error.message)</div>
+											<div class="text-danger">@Messages(error.message)</div>
 										}
 									</div>
 								</div>
@@ -73,7 +73,7 @@
 											}
 										</select>
 										@for(error <- form(Inquiry.TYPE).errors) {
-											<div class="text-warning">@Messages(error.message)</div>
+											<div class="text-danger">@Messages(error.message)</div>
 										}
 									</div>
 								</div>
@@ -82,7 +82,7 @@
 									<div class="col-sm-9">
 										<input id="@Inquiry.TITLE" type="text" name="@Inquiry.TITLE" class="form-control" placeholder="Title" value="@form(Inquiry.TITLE).getValue.orElse("")" required maxlength="64" data-parsley-trigger="change">
 										@for(error <- form(Inquiry.TITLE).errors) {
-											<div class="text-warning">@Messages(error.message)</div>
+											<div class="text-danger">@Messages(error.message)</div>
 										}
 									</div>
 								</div>
@@ -91,7 +91,7 @@
 									<div class="col-sm-9">
 										<textarea id="inquiry_@Inquiry.CONTENT" name="@Inquiry.CONTENT" class="form-control" placeholder="Content" rows="8" required maxlength="1000" data-parsley-trigger="change"></textarea>
 										@for(error <- form(Inquiry.CONTENT).errors) {
-											<div class="text-warning">@Messages(error.message)</div>
+											<div class="text-danger">@Messages(error.message)</div>
 										}
 									</div>
 								</div>

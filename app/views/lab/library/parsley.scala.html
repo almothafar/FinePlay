@@ -25,6 +25,7 @@
 	@body("lab","library"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
 			@breadcrumb(Map("id"->"", "name"->"Parsley", "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
@@ -41,7 +42,7 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Custom validator</h4>
-						@components.card(Map("id"->"inquiryPanel", "class"->"shadow-sm m-3")){
+						@components.card(Map("id"->"inquiryPanel", "class"->"shadow-sm")){
 							<div class="card-header">
 								Parsley
 							</div>
@@ -49,6 +50,18 @@
 
 								@helper.form(helper.CSRF(controllers.lab.library.routes.Library.index("parsley")), 'name->"parsleyForm", 'id->"parsleyForm") {
 
+									<div class="form-group row">
+										<label for="userid" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
+										<div class="col-sm-9">
+											<input id="userid" type="text" name="userid" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-userid="">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="password" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
+										<div class="col-sm-9">
+											<input id="password" type="text" name="password" class="form-control" placeholder="" value="" required autofocus maxlength="16" data-parsley-trigger="change focusout" data-parsley-password="">
+										</div>
+									</div>
 									<div class="form-group row">
 										<label for="hiragana" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_HIRAGANA)</label>
 										<div class="col-sm-9">

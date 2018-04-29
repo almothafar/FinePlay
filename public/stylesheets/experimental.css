@@ -132,6 +132,65 @@
 	color: #fff;
 }
 
+.custom-switch {
+	position: relative;
+	display: block;
+	vertical-align: top;
+	height: 24px;
+	cursor: pointer;
+}
+
+.custom-switch.disabled {
+	opacity: 0.65;
+}
+
+.custom-switch.custom-control-inline {
+	display: inline-block;
+	margin-right: 1rem;
+}
+
+.custom-switch>input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.custom-switch>.custom-switch-base {
+	position: relative;
+	display: inline-block;
+	height: inherit;
+	width: 48px;
+	background-color: #dedfe0;
+	border-radius: 2em !important;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) inset;
+}
+
+.custom-switch-label {
+	vertical-align: top;
+}
+
+.custom-switch>input:checked ~ .custom-switch-base {
+	background: #007bff !important;
+}
+
+.custom-switch>.custom-switch-handle {
+	position: absolute;
+	top: -2px;
+	left: 0;
+	width: 28px;
+	height: 28px;
+	background: #fff;
+	transition: left .2s ease-out;
+	border: 0;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+	border-radius: 50% !important;
+}
+
+.custom-switch>input:checked ~ .custom-switch-handle {
+	left: 20px;
+}
+
 /* Icon Filter */
 
 .if-monochrome {

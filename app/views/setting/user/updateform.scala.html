@@ -17,7 +17,7 @@
 
 	@helper.form(helper.CSRF(controllers.setting.user.routes.User.update()), 'name->"updateForm", 'id->"updateForm") {
 		@if(form.hasGlobalErrors) {
-			<p class="text-warning">@form.getGlobalError.get.message</p>
+			<p class="text-danger">@form.getGlobalError.get.message</p>
 		}
 		<div class="row form-group">
 			<label for="update@User.LOCALE" class="col-sm-3 col-form-label"><i class="fas fa-globe"></i> @Messages(MessageKeys.LANGUAGE)</label>
@@ -29,7 +29,7 @@
 				</select>
 				<small class="text-muted"></small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 				</select>
 				<small class="text-muted"></small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 				</select>
 				<small class="text-muted"></small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>

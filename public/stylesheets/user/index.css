@@ -102,12 +102,14 @@ body {
 	color: white;
 }
 
+#selectFixedUser,
 .fixedUserButton{
 	padding: 8px 6px;
 	width: 52px;
 	height: 52px;
 }
 
+#selectFixedUser>i,
 .fixedUserButton>i{
 	font-size: 2em;
 }

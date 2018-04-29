@@ -30,6 +30,11 @@ class ImageMetadataRemover {
 
 	private static void removeMetadata(@Nonnull final Path path) throws IOException {
 
+		final String name = path.getName(path.getNameCount() - 1).toString();
+		if (".DS_Store".equals(name)) {
+
+			return;
+		}
 		final BufferedImage image = ImageIO.read(path.toFile());
 		final String ext = com.google.common.io.Files.getFileExtension(path.getName(path.getNameCount() - 1).toString());
 		ImageIO.write(image, ext, path.toFile());

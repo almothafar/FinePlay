@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import common.utils.Sessions;
 import models.system.System;
@@ -54,6 +55,8 @@ public class ActionCreator extends DefaultActionCreator {
 			@Override
 			public CompletionStage<Result> call(Context ctx) {
 
+				MDC.put(User.USERID, ctx.session().get(User.USERID));
+
 				LOGGER.info(createArgsMessage(ctx.args));
 				LOGGER.info(createRequestHeadersMessage(ctx.request().getHeaders()));
 				LOGGER.info(createSessionMessage(ctx.session()));
@@ -71,6 +74,7 @@ public class ActionCreator extends DefaultActionCreator {
 				}
 
 				LOGGER.info("========================================================");
+				MDC.remove(User.USERID);
 				return stage;
 			}
 

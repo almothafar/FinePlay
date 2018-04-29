@@ -28,7 +28,7 @@ var hanyoDenshiPosition;
 $('#pickerWindow').on('shown.bs.modal', function (e) {
 
 	adobeJapan1Position = getPosition('#adobe-japan1Text');
-	hanyoDenshiPosition = getPosition('#hanyo-denshiText');
+	hanyoDenshiPosition = getPosition('#moji_johoText');
 
 	initInput();
 	initResult();
@@ -170,7 +170,7 @@ $('#okButton').on('click', function (e) {
 
 	// possibility of dependant browser
 	insertText('#adobe-japan1Text', adobeJapan1Position[0], adobeJapan1Position[1], selectedCharacter);
-	insertText('#hanyo-denshiText', hanyoDenshiPosition[0], hanyoDenshiPosition[1], selectedCharacter);
+	insertText('#moji_johoText', hanyoDenshiPosition[0], hanyoDenshiPosition[1], selectedCharacter);
 })
 
 $(window).on('keydown', function(e){

@@ -19,6 +19,8 @@ public class MessageKeys {
 
   public static final String AFTER = "after";
 
+  public static final String ALERT = "alert";
+
   public static final String ALIGNMENT = "alignment";
 
   public static final String ALL = "all";
@@ -42,6 +44,8 @@ public class MessageKeys {
   public static final String AUTHORIZATION = "authorization";
 
   public static final String AUTO = "auto";
+
+  public static final String BADGE = "badge";
 
   public static final String BATCH = "batch";
 
@@ -549,7 +553,9 @@ public class MessageKeys {
 
   public static final String QUESTION = "question";
 
-  public static final String RADIOBUTTON = "radiobutton";
+  public static final String RADIO = "radio";
+
+  public static final String RANGE = "range";
 
   public static final String READ = "read";
 
@@ -678,6 +684,8 @@ public class MessageKeys {
   public static final String SUMMARY = "summary";
 
   public static final String SUMMERNOTE_LANG = "summernote.lang";
+
+  public static final String SWITCH = "switch";
 
   public static final String SYSTEM = "system";
 
@@ -856,6 +864,8 @@ public class MessageKeys {
   public static final String X__OF__X = "x_of_x";
 
   public static final String X__OR__X = "x_or_x";
+
+  public static final String X__X = "x_x";
 
   public static final String YOUR__X__IS__X = "your_x_is_x";
 

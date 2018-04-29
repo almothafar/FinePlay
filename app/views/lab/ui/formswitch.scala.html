@@ -1,0 +1,88 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.SWITCH), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"switch"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<h4 class="headline">Simple</h4>
+						<div>
+							@components.forms.customswitch(Map("id"->"defaultSwitch", "name"->"default"))
+							@components.forms.customswitch(Map("id"->"uncheckedSwitch", "name"->"unchecked", "selected"->"false"))
+							@components.forms.customswitch(Map("id"->"checkedSwitch", "name"->"checked", "selected"->"true"))
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<h4 class="headline">with text</h4>
+						<div>
+							@components.forms.customswitch(Map("id"->"defaultTextSwitch", "name"->"default", "text"->"One"))
+							@components.forms.customswitch(Map("id"->"uncheckedTextSwitch", "name"->"unchecked", "text"->"Two", "selected"->"false"))
+							@components.forms.customswitch(Map("id"->"checkedTextSwitch", "name"->"checked", "text"->"Three", "selected"->"true"))
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<h4 class="headline">Disabled</h4>
+						<div>
+							@components.forms.customswitch(Map("id"->"disabledDefaultSwitch", "name"->"default", "enabled"->"false"))
+							@components.forms.customswitch(Map("id"->"disableduncheckedSwitch", "name"->"unchecked", "enabled"->"false", "selected"->"false"))
+							@components.forms.customswitch(Map("id"->"disabledcheckedSwitch", "name"->"checked", "enabled"->"false", "selected"->"true"))
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<h4 class="headline">Inline</h4>
+						<div>
+							@components.forms.customswitch(Map("id"->"defaultSwitchInline", "name"->"default", "inline"->"true"))
+							@components.forms.customswitch(Map("id"->"uncheckedSwitchInline", "name"->"unchecked", "inline"->"true", "selected"->"false"))
+							@components.forms.customswitch(Map("id"->"checkedSwitchInline", "name"->"checked", "inline"->"true", "selected"->"true"))
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<h4 class="headline">Inline with text</h4>
+						<div>
+							@components.forms.customswitch(Map("id"->"defaultTextSwitchInline", "name"->"default", "text"->"One", "inline"->"true"))
+							@components.forms.customswitch(Map("id"->"uncheckedTextSwitchInline", "name"->"unchecked", "text"->"Two", "inline"->"true", "selected"->"false"))
+							@components.forms.customswitch(Map("id"->"checkedTextSwitchInline", "name"->"checked", "text"->"Three", "inline"->"true", "selected"->"true"))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.jqueryuitouchpunch.last()
+	}
+}

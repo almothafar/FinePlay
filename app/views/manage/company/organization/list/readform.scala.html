@@ -19,7 +19,7 @@
 		@helper.form(helper.CSRF(controllers.manage.company.organization.list.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
 			<h5 class="form-read-heading">@Messages(MessageKeys.CONDITION)</h5>
 			@if(form.hasGlobalErrors) {
-				<p class="text-warning">@form.getGlobalError.get.message</p>
+				<p class="text-danger">@form.getGlobalError.get.message</p>
 			}
 			<div class="row form-group">
 				<div class="col-sm-9">
@@ -47,7 +47,7 @@
 						</div>
 						<input id="@OrganizationUnit.NAME" type="text" name="@OrganizationUnit.NAME" class="form-control" placeholder="Name" value="@form(OrganizationUnit.NAME).getValue.orElse("")" autofocus>
 						@for(error <- form(OrganizationUnit.NAME).errors) {
-							<div class="text-warning">@Messages(error.message)</div>
+							<div class="text-danger">@Messages(error.message)</div>
 						}
 					</div>
 				</div>

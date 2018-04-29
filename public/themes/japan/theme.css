@@ -162,3 +162,7 @@ hr.separator {
 .process-item.active{
 	background-color: #234868;
 }
+
+.custom-switch>input:checked ~ .custom-switch-base {
+	background: #234868 !important;
+}

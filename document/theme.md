@@ -32,6 +32,12 @@ to
 
 	github/fineplay/public/themes/[theme name]/bootstrap.min.css
 
+### Update Integrity ###
+
+	github/fineplay/app/views/libraries/adjust/bootstrap/head.scala.html
+
+###### Use IntegrityValuesCreator.
+
 Project CSS
 ----------
 

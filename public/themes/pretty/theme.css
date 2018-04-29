@@ -160,3 +160,7 @@ hr.separator:after {
 .process-item.active{
 	background-color: #e88cae;
 }
+
+.custom-switch>input:checked ~ .custom-switch-base {
+	background: #e88cae !important;
+}

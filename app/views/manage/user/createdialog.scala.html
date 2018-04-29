@@ -21,7 +21,7 @@
 
 	@helper.form(helper.CSRF(controllers.manage.user.routes.Edit.create()), 'name->"createForm", 'id->"createForm") {
 		<div>
-			<p class="text-warning"></p>
+			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
 			<label for="inputUserId" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_USERID)</label>
@@ -29,7 +29,7 @@
 				<input id="create@User.USERID" type="email" name="@User.USERID" class="form-control" placeholder="Email" value="" required autofocus>
 				<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 				<input id="create@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="" required>
 				<small class="text-muted">@Messages(MessageKeys.USER_PASSWORD_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 				<input id="create@User.REPASSWORD" type="password" name="@User.REPASSWORD" class="form-control" placeholder="RePassword" value="" required>
 				<small class="text-muted">@Messages(MessageKeys.USER_REPASSWORD_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -80,7 +80,7 @@
 						</select>
 						<small class="text-muted">@Messages(MessageKeys.COMPANY_NAME_DESCRIPTION)</small>
 						<div>
-							<p class="text-warning"></p>
+							<p class="text-danger"></p>
 						</div>
 					</div>
 					<div class="col-3">

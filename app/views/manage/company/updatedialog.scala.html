@@ -21,7 +21,7 @@
 
 	@helper.form(helper.CSRF(controllers.manage.company.routes.Edit.update()), 'name->"updateForm", 'id->"updateForm") {
 		<div>
-			<p class="text-warning"></p>
+			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
 			<div class="col-sm-9">
@@ -34,7 +34,7 @@
 				<input id="update@Company.NAME" type="text" name="@Company.NAME" class="form-control" placeholder="NewName" value="" required autofocus>
 				<small class="text-muted">@Messages(MessageKeys.COMPANY_NAME_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 				<input id="update@Company.LOCALNAME" type="text" name="@Company.LOCALNAME" class="form-control" placeholder="LocalName" value="">
 				<small class="text-muted">@Messages(MessageKeys.LOCAL_NAME_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>

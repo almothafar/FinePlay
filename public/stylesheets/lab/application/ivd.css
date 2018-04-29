@@ -37,9 +37,6 @@
 .variation.adobe-japan1>.character{
 	font-family: HiraginoSans-W3;
 }
-.variation.hanyo-denshi>.character{
-	font-family: IPAmjMincho;
-}
 .variation.moji_joho>.character{
 	font-family: IPAmjMincho;
 }
@@ -61,6 +58,6 @@
 .inputText.adobe-japan1{
 	font-family: HiraginoSans-W3;
 }
-.inputText.hanyo-denshi{
+.inputText.moji_joho{
 	font-family: IPAmjMincho;
 }

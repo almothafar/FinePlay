@@ -21,7 +21,7 @@
 
 	@helper.form(helper.CSRF(controllers.manage.user.routes.Edit.delete()), 'name->"deleteForm", 'id->"deleteForm") {
 		<div>
-			<p class="text-warning"></p>
+			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
 			<label for="inputUserId" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>

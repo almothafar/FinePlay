@@ -22,7 +22,7 @@
 
 	@helper.form(helper.CSRF(controllers.manage.user.routes.Upload.upload()), 'name->"uploadForm", 'id->"uploadForm", 'enctype -> "multipart/form-data") {
 		<div>
-			<p class="text-warning"></p>
+			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
 			<label for="@User.UPLOADFILE" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.FILE)</label>
@@ -33,7 +33,7 @@
 				</div>
 				<small class="text-muted">@Messages(MessageKeys.ABOUT__X, Messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fas fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 			<label for="operation" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.OPERATION)</label>

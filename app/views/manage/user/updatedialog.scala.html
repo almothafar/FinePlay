@@ -21,7 +21,7 @@
 
 	@helper.form(helper.CSRF(controllers.manage.user.routes.Edit.update()), 'name->"updateForm", 'id->"updateForm") {
 		<div>
-			<p class="text-warning"></p>
+			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
 			<div class="col-sm-9">
@@ -34,7 +34,7 @@
 				<input id="update@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="NewEmail" value="" required autofocus>
 				<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
 				<div>
-					<p class="text-warning"></p>
+					<p class="text-danger"></p>
 				</div>
 			</div>
 		</div>
@@ -65,7 +65,7 @@
 						</select>
 						<small class="text-muted">@Messages(MessageKeys.COMPANY_NAME_DESCRIPTION)</small>
 						<div>
-							<p class="text-warning"></p>
+							<p class="text-danger"></p>
 						</div>
 					</div>
 					<div class="col-3">
