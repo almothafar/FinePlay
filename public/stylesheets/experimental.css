@@ -49,50 +49,6 @@
 .h-216p {height: 216px !important;}
 .h-288p {height: 288px !important;}
 
-.text-red { color: #f44336 !important; }
-.text-pink { color: #e91e63 !important; }
-.text-purple { color: #9c27b0 !important; }
-.text-deep-purple { color: #673ab7 !important; }
-.text-indigo { color: #3f51b5 !important; }
-.text-blue { color: #2196f3 !important; }
-.text-light-blue { color: #03a9f4 !important; }
-.text-cyan { color: #00bcd4 !important; }
-.text-teal { color: #009688 !important; }
-.text-green { color: #4caf50 !important; }
-.text-light-green { color: #8bc34a !important; }
-.text-lime { color: #cddc39 !important; }
-.text-yellow { color: #ffeb3b !important; }
-.text-amber { color: #ffc107 !important; }
-.text-orange { color: #ff9800 !important; }
-.text-deep-orange { color: #ff5722 !important; }
-.text-brown { color: #795548 !important; }
-.text-grey { color: #9e9e9e !important; }
-.text-blue-grey { color: #607d8b !important; }
-.text-white { color: #ffffff !important; }
-.text-black { color: #000000 !important; }
-
-.bg-red { background-color: #f44336 !important; }
-.bg-pink { background-color: #e91e63 !important; }
-.bg-purple { background-color: #9c27b0 !important; }
-.bg-deep-purple { background-color: #673ab7 !important; }
-.bg-indigo { background-color: #3f51b5 !important; }
-.bg-blue { background-color: #2196f3 !important; }
-.bg-light-blue { background-color: #03a9f4 !important; }
-.bg-cyan { background-color: #00bcd4 !important; }
-.bg-teal { background-color: #009688 !important; }
-.bg-green { background-color: #4caf50 !important; }
-.bg-light-green { background-color: #8bc34a !important; }
-.bg-lime { background-color: #cddc39 !important; }
-.bg-yellow { background-color: #ffeb3b !important; }
-.bg-amber { background-color: #ffc107 !important; }
-.bg-orange { background-color: #ff9800 !important; }
-.bg-deep-orange { background-color: #ff5722 !important; }
-.bg-brown { background-color: #795548 !important; }
-.bg-grey { background-color: #9e9e9e !important; }
-.bg-blue-grey { background-color: #607d8b !important; }
-.bg-white { background-color: #ffffff !important; }
-.bg-black { background-color: #000000 !important; }
-
 /* Fakestrap */
 
 .process{

@@ -2,7 +2,7 @@ message.code = en-US
 country.flag = 🇺🇸
 
 #
-# Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+# Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
 #
 
 # Default messages
@@ -167,66 +167,71 @@ pdfjs.lang = en-US
 
 
 
-#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+map.rotate.lambda = 77
+map.rotate.phi = 0
+map.rotate.gamma = 0
 
 #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+
 
 
 

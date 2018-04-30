@@ -11,6 +11,7 @@
 	<a href="@controllers.lab.application.routes.Download.index().toString()" class="list-group-item @("active".when(equalTask("download")))">@Messages(MessageKeys.DOWNLOAD)</a>
 	<a href="@controllers.lab.application.routes.Upload.index().toString()" class="list-group-item @("active".when(equalTask("upload")))">@Messages(MessageKeys.UPLOAD)</a>
 	<a href="@controllers.lab.application.routes.Application.paging(0, 100).toString()" class="list-group-item @("active".when(equalTask("paging")))">@Messages(MessageKeys.PAGE)</a>
+	<a href="@controllers.lab.application.routes.Application.index("color").toString()" class="list-group-item @("active".when(equalTask("color")))">@Messages(MessageKeys.COLOR)</a>
 	<a href="@controllers.lab.application.routes.Application.index("autosave").toString()" class="list-group-item @("active".when(equalTask("autosave")))">@(Messages(MessageKeys.AUTO)+" "+Messages(MessageKeys.SAVE))</a>
 	<a href="@controllers.lab.application.routes.Application.index("storeform").toString()" class="list-group-item @("active".when(equalTask("storeform")))">Store Form</a>
 	<a href="@controllers.lab.application.routes.Application.index("firsttimeaccess").toString()" class="list-group-item @("active".when(equalTask("firsttimeaccess")))">@(Messages(MessageKeys.FIRST__TIME)+" "+Messages(MessageKeys.ACCESS))</a>

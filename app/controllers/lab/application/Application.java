@@ -74,6 +74,9 @@ public class Application extends Controller {
 		case "partprint":
 
 			return partPrint();
+		case "color":
+
+			return color();
 		case "ivd":
 
 			return ivd();
@@ -136,6 +139,11 @@ public class Application extends Controller {
 	private static Result partPrint() {
 
 		return ok(views.html.lab.application.partprint.render());
+	}
+
+	private static Result color() {
+
+		return ok(views.html.lab.application.color.render());
 	}
 
 	private static Result ivd() {

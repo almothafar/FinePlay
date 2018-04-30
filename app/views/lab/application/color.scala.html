@@ -1,0 +1,387 @@
+@import models.components._
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.COLOR), "icon"->"fas fa-paint-brush", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"color"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row">
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"primary", "class"->"text-primary"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"secondary", "class"->"text-secondary"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"success", "class"->"text-success"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"danger", "class"->"text-danger"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"warning", "class"->"text-warning"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"info", "class"->"text-info"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light", "class"->"text-light bg-dark"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"dark", "class"->"text-dark"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"body", "class"->"text-body"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"muted", "class"->"text-muted"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"white", "class"->"text-white bg-dark"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"black-50", "class"->"text-black-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"white-50", "class"->"text-white-50 bg-dark")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"primary", "class"->"text-white bg-primary"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"secondary", "class"->"text-white bg-secondary"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"success", "class"->"text-white bg-success"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"danger", "class"->"text-white bg-danger"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"warning", "class"->"text-dark bg-warning"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"info", "class"->"text-white bg-info"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light", "class"->"text-dark bg-light"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"dark", "class"->"text-white bg-dark"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"white", "class"->"text-dark bg-white"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"transparent", "class"->"text-dark bg-transparent")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red", "class"->"text-white bg-red"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-50", "class"->"text-white bg-red-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-100", "class"->"text-white bg-red-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-200", "class"->"text-white bg-red-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-300", "class"->"text-white bg-red-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-400", "class"->"text-white bg-red-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-500", "class"->"text-white bg-red-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-600", "class"->"text-white bg-red-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-700", "class"->"text-white bg-red-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-800", "class"->"text-white bg-red-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"red-900", "class"->"text-white bg-red-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink", "class"->"text-white bg-pink"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-50", "class"->"text-white bg-pink-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-100", "class"->"text-white bg-pink-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-200", "class"->"text-white bg-pink-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-300", "class"->"text-white bg-pink-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-400", "class"->"text-white bg-pink-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-500", "class"->"text-white bg-pink-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-600", "class"->"text-white bg-pink-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-700", "class"->"text-white bg-pink-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-800", "class"->"text-white bg-pink-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"pink-900", "class"->"text-white bg-pink-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple", "class"->"text-white bg-purple"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-50", "class"->"text-white bg-purple-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-100", "class"->"text-white bg-purple-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-200", "class"->"text-white bg-purple-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-300", "class"->"text-white bg-purple-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-400", "class"->"text-white bg-purple-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-500", "class"->"text-white bg-purple-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-600", "class"->"text-white bg-purple-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-700", "class"->"text-white bg-purple-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-800", "class"->"text-white bg-purple-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"purple-900", "class"->"text-white bg-purple-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple", "class"->"text-white bg-deep-purple"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-50", "class"->"text-white bg-deep-purple-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-100", "class"->"text-white bg-deep-purple-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-200", "class"->"text-white bg-deep-purple-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-300", "class"->"text-white bg-deep-purple-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-400", "class"->"text-white bg-deep-purple-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-500", "class"->"text-white bg-deep-purple-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-600", "class"->"text-white bg-deep-purple-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-700", "class"->"text-white bg-deep-purple-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-800", "class"->"text-white bg-deep-purple-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-purple-900", "class"->"text-white bg-deep-purple-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo", "class"->"text-white bg-indigo"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-50", "class"->"text-white bg-indigo-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-100", "class"->"text-white bg-indigo-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-200", "class"->"text-white bg-indigo-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-300", "class"->"text-white bg-indigo-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-400", "class"->"text-white bg-indigo-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-500", "class"->"text-white bg-indigo-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-600", "class"->"text-white bg-indigo-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-700", "class"->"text-white bg-indigo-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-800", "class"->"text-white bg-indigo-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"indigo-900", "class"->"text-white bg-indigo-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue", "class"->"text-white bg-blue"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-50", "class"->"text-white bg-blue-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-100", "class"->"text-white bg-blue-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-200", "class"->"text-white bg-blue-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-300", "class"->"text-white bg-blue-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-400", "class"->"text-white bg-blue-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-500", "class"->"text-white bg-blue-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-600", "class"->"text-white bg-blue-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-700", "class"->"text-white bg-blue-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-800", "class"->"text-white bg-blue-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-900", "class"->"text-white bg-blue-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue", "class"->"text-white bg-light-blue"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-50", "class"->"text-white bg-light-blue-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-100", "class"->"text-white bg-light-blue-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-200", "class"->"text-white bg-light-blue-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-300", "class"->"text-white bg-light-blue-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-400", "class"->"text-white bg-light-blue-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-500", "class"->"text-white bg-light-blue-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-600", "class"->"text-white bg-light-blue-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-700", "class"->"text-white bg-light-blue-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-800", "class"->"text-white bg-light-blue-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-blue-900", "class"->"text-white bg-light-blue-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan", "class"->"text-white bg-cyan"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-50", "class"->"text-white bg-cyan-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-100", "class"->"text-white bg-cyan-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-200", "class"->"text-white bg-cyan-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-300", "class"->"text-white bg-cyan-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-400", "class"->"text-white bg-cyan-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-500", "class"->"text-white bg-cyan-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-600", "class"->"text-white bg-cyan-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-700", "class"->"text-white bg-cyan-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-800", "class"->"text-white bg-cyan-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"cyan-900", "class"->"text-white bg-cyan-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal", "class"->"text-white bg-teal"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-50", "class"->"text-white bg-teal-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-100", "class"->"text-white bg-teal-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-200", "class"->"text-white bg-teal-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-300", "class"->"text-white bg-teal-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-400", "class"->"text-white bg-teal-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-500", "class"->"text-white bg-teal-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-600", "class"->"text-white bg-teal-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-700", "class"->"text-white bg-teal-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-800", "class"->"text-white bg-teal-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"teal-900", "class"->"text-white bg-teal-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green", "class"->"text-white bg-green"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-50", "class"->"text-white bg-green-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-100", "class"->"text-white bg-green-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-200", "class"->"text-white bg-green-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-300", "class"->"text-white bg-green-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-400", "class"->"text-white bg-green-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-500", "class"->"text-white bg-green-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-600", "class"->"text-white bg-green-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-700", "class"->"text-white bg-green-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-800", "class"->"text-white bg-green-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"green-900", "class"->"text-white bg-green-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green", "class"->"text-white bg-light-green"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-50", "class"->"text-white bg-light-green-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-100", "class"->"text-white bg-light-green-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-200", "class"->"text-white bg-light-green-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-300", "class"->"text-white bg-light-green-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-400", "class"->"text-white bg-light-green-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-500", "class"->"text-white bg-light-green-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-600", "class"->"text-white bg-light-green-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-700", "class"->"text-white bg-light-green-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-800", "class"->"text-white bg-light-green-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"light-green-900", "class"->"text-white bg-light-green-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime", "class"->"text-white bg-lime"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-50", "class"->"text-white bg-lime-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-100", "class"->"text-white bg-lime-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-200", "class"->"text-white bg-lime-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-300", "class"->"text-white bg-lime-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-400", "class"->"text-white bg-lime-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-500", "class"->"text-white bg-lime-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-600", "class"->"text-white bg-lime-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-700", "class"->"text-white bg-lime-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-800", "class"->"text-white bg-lime-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"lime-900", "class"->"text-white bg-lime-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow", "class"->"text-white bg-yellow"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-50", "class"->"text-white bg-yellow-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-100", "class"->"text-white bg-yellow-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-200", "class"->"text-white bg-yellow-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-300", "class"->"text-white bg-yellow-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-400", "class"->"text-white bg-yellow-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-500", "class"->"text-white bg-yellow-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-600", "class"->"text-white bg-yellow-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-700", "class"->"text-white bg-yellow-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-800", "class"->"text-white bg-yellow-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"yellow-900", "class"->"text-white bg-yellow-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange", "class"->"text-white bg-orange"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-50", "class"->"text-white bg-orange-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-100", "class"->"text-white bg-orange-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-200", "class"->"text-white bg-orange-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-300", "class"->"text-white bg-orange-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-400", "class"->"text-white bg-orange-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-500", "class"->"text-white bg-orange-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-600", "class"->"text-white bg-orange-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-700", "class"->"text-white bg-orange-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-800", "class"->"text-white bg-orange-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"orange-900", "class"->"text-white bg-orange-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange", "class"->"text-white bg-deep-orange"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-50", "class"->"text-white bg-deep-orange-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-100", "class"->"text-white bg-deep-orange-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-200", "class"->"text-white bg-deep-orange-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-300", "class"->"text-white bg-deep-orange-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-400", "class"->"text-white bg-deep-orange-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-500", "class"->"text-white bg-deep-orange-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-600", "class"->"text-white bg-deep-orange-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-700", "class"->"text-white bg-deep-orange-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-800", "class"->"text-white bg-deep-orange-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"deep-orange-900", "class"->"text-white bg-deep-orange-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown", "class"->"text-white bg-brown"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-50", "class"->"text-white bg-brown-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-100", "class"->"text-white bg-brown-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-200", "class"->"text-white bg-brown-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-300", "class"->"text-white bg-brown-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-400", "class"->"text-white bg-brown-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-500", "class"->"text-white bg-brown-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-600", "class"->"text-white bg-brown-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-700", "class"->"text-white bg-brown-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-800", "class"->"text-white bg-brown-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"brown-900", "class"->"text-white bg-brown-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey", "class"->"text-white bg-grey"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-50", "class"->"text-white bg-grey-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-100", "class"->"text-white bg-grey-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-200", "class"->"text-white bg-grey-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-300", "class"->"text-white bg-grey-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-400", "class"->"text-white bg-grey-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-500", "class"->"text-white bg-grey-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-600", "class"->"text-white bg-grey-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-700", "class"->"text-white bg-grey-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-800", "class"->"text-white bg-grey-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"grey-900", "class"->"text-white bg-grey-900")
+							))
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							@components.listgroup(Map("id"->""), List(
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey", "class"->"text-white bg-blue-grey"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-50", "class"->"text-white bg-blue-grey-50"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-100", "class"->"text-white bg-blue-grey-100"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-200", "class"->"text-white bg-blue-grey-200"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-300", "class"->"text-white bg-blue-grey-300"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-400", "class"->"text-white bg-blue-grey-400"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-500", "class"->"text-white bg-blue-grey-500"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-600", "class"->"text-white bg-blue-grey-600"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-700", "class"->"text-white bg-blue-grey-700"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-800", "class"->"text-white bg-blue-grey-800"),
+								Map("id"->"", "type"->"", "icon"->"far fa-gem", "text"->"blue-grey-900", "class"->"text-white bg-blue-grey-900")
+							))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

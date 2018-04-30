@@ -39,8 +39,7 @@
 					<div id="graphContainer" class="mb-3">
 
 						<h4 class="headline">@(Messages(MessageKeys.WORLD) + ' ' + Messages(MessageKeys.MAP))</h4>
-						<svg id="geoGraph"></svg>
-
+						<svg id="geoGraph" class="bg-light-blue-50"></svg>
 					</div>
 				</div>
 			</div>
@@ -48,7 +47,10 @@
 
 		<div id="system_messages" class="d-none" data-messages='{
 			"@MessageKeys.NATURALEARTHDATA_LANG":"@Messages(MessageKeys.NATURALEARTHDATA_LANG)",
-			"map":"@routes.Assets.versioned("javascripts/lab/library/ne_50m_admin_0_countries.json")"
+			"map":"@routes.Assets.versioned("javascripts/lab/library/ne_50m_admin_0_countries.json")",
+			"lambda":@Integer.valueOf(Messages(MessageKeys.MAP_ROTATE_LAMBDA)),
+			"phi":@Integer.valueOf(Messages(MessageKeys.MAP_ROTATE_PHI)),
+			"gamma":@Integer.valueOf(Messages(MessageKeys.MAP_ROTATE_GAMMA))
 		}'></div>
 
 		@libraries.standard.last()

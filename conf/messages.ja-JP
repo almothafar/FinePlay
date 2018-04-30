@@ -2,7 +2,7 @@ message.code = ja-JP
 country.flag = 🇯🇵
 
 #
-# Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> = # Japanese messages Copyright (C) 2017-2017 hiro20v. <https://github.com/hiro20v>
+# Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> = # Japanese messages Copyright (C) 2017-2018 hiro20v. <https://github.com/hiro20v>
 #
 
 # Default messages
@@ -167,6 +167,10 @@ pdfjs.lang = ja
 speech.synthesis.lang = ja-JP
 naturalearthdata.lang = Japan
 
+map.rotate.lambda = 200
+map.rotate.phi = 0
+map.rotate.gamma = 0
+
 #
 
 user.userid = ユーザーID
@@ -266,6 +270,7 @@ client = クライアント
 clock = 時計
 close = 閉じる
 codepoint = コード位置
+color = 色
 column = 列
 company = 会社
 company.name = 会社名

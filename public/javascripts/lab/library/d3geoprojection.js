@@ -2,42 +2,40 @@
 
 $(document).ready(function() {
 
-	var update = function(){
+	var graphContainer = $('#graphContainer');
+	var svgWidth = graphContainer.width();
+	var svgHeight = svgWidth / 2;
 
-		var graphContainer = $('#graphContainer');
-		var svgWidth = graphContainer.width();
-		var svgHeight = svgWidth;
+	var svg = $('#geoGraph');
+	svg.outerWidth(svgWidth);
+	svg.outerHeight(svgHeight);
 
-		var svg = $('svg');
-		svg.empty();
-		svg.outerWidth(svgWidth);
-		svg.outerHeight(svgHeight);
+	var earth = d3.geoNaturalEarth1()
+		.translate([svgWidth / 2, svgHeight / 2])
+		.scale(svgWidth / 640 * 100)
+		.rotate([Messages("lambda"), Messages("phi"), Messages("gamma")])
 
-		var path = d3.geoPath()
-			.projection(
-				d3.geoMercator()
-				.translate([svgWidth/2, svgHeight/2])
-				.scale(svgWidth / 640 * 100)
-			)
+	var path = d3.geoPath()
+		.projection(earth)
 
-		d3.json(Messages("map"), function(error, world) {
-			d3.select("#geoGraph")
-				.selectAll("path")
-				.data(world.features)
-				.enter()
-				.append("path")
-				.attr("d", path)
-				.style("fill", function(d, i){
-					if (d.properties.name == "Antarctica"){
-						return "#fff";
-					}
-					if (d.properties.name == Messages(MessageKeys.NATURALEARTHDATA_LANG)){
-						return "red";
-					}
-					return "#eee";
-				})
-		})
-	};
+	var earthPath
+	d3.json(Messages("map"), function(error, world) {
+		earthPath = d3.select("#geoGraph")
+			.selectAll("path")
+			.data(world.features)
+			.enter()
+			.append("path")
+			.attr("d", path)
+			.style("fill", function(d, i) {
+				if (d.properties.name == "Antarctica") {
+					return "#fff";
+				}
+				if (d.properties.name == Messages(MessageKeys.NATURALEARTHDATA_LANG)) {
+					return "red";
+				}
+				return "#eee";
+			})
+	})
 
 	var timer = false;
 	$(window).resize(function() {
@@ -48,9 +46,15 @@ $(document).ready(function() {
 		}
 		timer = setTimeout(function() {
 
-			update();
+			svgWidth = graphContainer.width();
+			svgHeight = svgWidth / 2;
+
+			svg.outerWidth(svgWidth);
+			svg.outerHeight(svgHeight);
+
+			earth.translate([svgWidth / 2, svgHeight / 2])
+				.scale(svgWidth / 640 * 100);
+			earthPath.attr("d", path);
 		}, 100);
 	});
-
-	update();
 });

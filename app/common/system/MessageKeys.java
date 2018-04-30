@@ -105,6 +105,8 @@ public class MessageKeys {
 
   public static final String CODEPOINT = "codepoint";
 
+  public static final String COLOR = "color";
+
   public static final String COLUMN = "column";
 
   public static final String COMPANY = "company";
@@ -460,6 +462,12 @@ public class MessageKeys {
   public static final String MANAGE = "manage";
 
   public static final String MAP = "map";
+
+  public static final String MAP_ROTATE_GAMMA = "map.rotate.gamma";
+
+  public static final String MAP_ROTATE_LAMBDA = "map.rotate.lambda";
+
+  public static final String MAP_ROTATE_PHI = "map.rotate.phi";
 
   public static final String MASTER = "master";
 

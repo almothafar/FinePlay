@@ -2,7 +2,7 @@ message.code = Default
 country.flag = Undefined
 
 #
-# Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+# Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
 #
 
 # Default messages
@@ -167,6 +167,10 @@ pdfjs.lang = en
 speech.synthesis.lang = en-US
 naturalearthdata.lang = United States
 
+map.rotate.lambda = 0
+map.rotate.phi = 0
+map.rotate.gamma = 0
+
 #
 
 user.userid = User ID
@@ -266,6 +270,7 @@ client = Client
 clock = Clock
 close = Close
 codepoint = Code point
+color = Color
 column = Column
 company = Company
 company.name = Company name
