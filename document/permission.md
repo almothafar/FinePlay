@@ -83,6 +83,7 @@
 |                    |                                                                      |fileName                      |      |      |      |
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |ivdPdfStream                  |      |      |      |
+|                    |                                                                      |paperPdfStream                |      |      |      |
 |                    |                                                                      |pdfboxStream                  |      |      |      |
 |                    |                                                                      |powerPointStream              |      |      |      |
 |                    |                                                                      |reportExcelStream             |      |      |      |

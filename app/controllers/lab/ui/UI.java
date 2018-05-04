@@ -78,6 +78,9 @@ public class UI extends Controller {
 		case "block":
 
 			return block();
+		case "autumnboard":
+
+			return autumnboard();
 		case "window":
 
 			return window();
@@ -195,6 +198,11 @@ public class UI extends Controller {
 	private static Result block() {
 
 		return ok(views.html.lab.ui.block.render());
+	}
+
+	private static Result autumnboard() {
+
+		return ok(views.html.lab.ui.autumnboard.render());
 	}
 
 	private static Result window() {

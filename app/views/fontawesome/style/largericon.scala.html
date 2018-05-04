@@ -17,7 +17,6 @@
 	@head(Messages(MessageKeys.FONTAWESOME)){
 
 		@libraries.standard.head()
-		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/fontawesome/style/largericon.css")'>
 	}
 
 	@body("fontawesome","style"){
@@ -102,28 +101,6 @@
 						<div class="text-center float-left w-144p">
 							@components.icon(Map("id"->"", "icon"->"fab fa-edge fa-4x", "class"->"text-blue"))
 							<p>Edge</p>
-						</div>
-					</div>
-
-					<div class="row mt-3 secret">
-
-						<div class="text-center float-left w-144p">
-							<div class="notification-box bg-success rounded py-2">
-								@components.icon(Map("id"->"", "class"->"notification-box-target text-white", "icon"->"fas fa-phone fa-3x"))
-								@components.badge(Map("id"->"", "class"->"notification-box-count", "type"->"danger", "pill"->"true", "text"->"16"))
-							</div>
-						</div>
-						<div class="text-center float-left w-144p">
-							<div class="notification-box bg-primary rounded py-2">
-								@components.icon(Map("id"->"", "class"->"notification-box-target text-white", "icon"->"fas fa-envelope fa-3x"))
-								@components.badge(Map("id"->"", "class"->"notification-box-count", "type"->"danger", "pill"->"true", "text"->"65536"))
-							</div>
-						</div>
-						<div class="text-center float-left w-144p">
-							<div class="notification-box bg-success rounded py-2">
-								@components.icon(Map("id"->"", "class"->"notification-box-target text-white", "icon"->"fas fa-comment fa-3x"))
-								@components.badge(Map("id"->"", "class"->"notification-box-count", "type"->"danger", "pill"->"true", "text"->"256"))
-							</div>
 						</div>
 					</div>
 				</div>

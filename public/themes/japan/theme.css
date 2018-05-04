@@ -95,6 +95,11 @@ body {
 
 }
 
+.breadcrumb-item + .breadcrumb-item::before {
+	content: ">"
+}
+
+
 /* Jumbotron custom style */
 
 .jumbotron{

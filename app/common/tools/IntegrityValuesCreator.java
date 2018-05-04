@@ -58,6 +58,7 @@ class IntegrityValuesCreator {
 			throw new RuntimeException("Not exists subresource. : " + subresourcePath);
 		}
 
+		System.out.println("Processing... " + subresourcePath);
 		return toHashedValue(Files.readAllBytes(subresourcePath));
 	}
 

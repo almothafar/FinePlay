@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -68,6 +69,7 @@ import common.utils.ZIPs;
 import models.base.EntityDao;
 import models.system.System.PermissionsAllowed;
 import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import play.api.PlayException;
 import play.db.jpa.JPAApi;
@@ -381,6 +383,35 @@ public class Download extends Controller {
 		return CompletableFuture.supplyAsync(() -> {
 
 			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/report.jrxml")) {
+
+				final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
+				return ok(bytes).as(Http.MimeTypes.BINARY);
+			} catch (IOException e) {
+
+				throw new UncheckedIOException(e);
+			}
+		});
+	}
+
+	@Transactional(readOnly = true)
+	@Authenticated(common.core.Authenticator.class)
+	public CompletionStage<Result> paperPdfStream() {
+
+		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toPDF(templateStream, parameters, dataSource);
+		return paperStream(reporter);
+	}
+
+	@SuppressWarnings("null")
+	private CompletionStage<Result> paperStream(final Reporter reporter) {
+
+		final Map<String, Object> parameters = new HashMap<>();
+		parameters.put(MessageKeys.USER_USERID, messages.get(lang(), MessageKeys.USER_USERID));
+
+		final JRDataSource dataSource = new JREmptyDataSource();
+
+		return CompletableFuture.supplyAsync(() -> {
+
+			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/paper.jrxml")) {
 
 				final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
 				return ok(bytes).as(Http.MimeTypes.BINARY);

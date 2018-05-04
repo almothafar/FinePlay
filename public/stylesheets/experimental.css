@@ -294,6 +294,38 @@ a:not(.collapsed)>.nf-disclosure_triangle:before{
 	}
 }
 
+/* Undecided */
+
+.undecided {
+	transform-origin: center center;
+	animation-name: undecided;
+	animation-duration: 0.4s;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+}
+
+@keyframes undecided {
+	20% {
+		transform: rotate(2deg)
+	}
+
+	50% {
+		transform: rotate(-2deg)
+	}
+
+	60% {
+		transform: rotate(2deg)
+	}
+
+	80% {
+		transform: rotate(-2deg)
+	}
+
+	to {
+		transform: rotate(0deg)
+	}
+}
+
 /* Draft */
 
 .draft span {
@@ -304,7 +336,7 @@ a:not(.collapsed)>.nf-disclosure_triangle:before{
 /* Secret */
 
 .secret {
-  display: none !important;
+	display: none !important;
 }
 
 /* provisional coped for Bug? of Mobile Safari */

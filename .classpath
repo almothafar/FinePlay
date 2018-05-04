@@ -555,7 +555,7 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/docs/curvesapi-1.04-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/srcs/tika-core-1.18-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/bundles/tika-core-1.18.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/srcs/tika-core-1.18-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/jars/tika-core-1.18.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/docs/tika-core-1.18-javadoc.jar!/"/>
     </attributes>
@@ -844,7 +844,7 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.commons/commons-csv/docs/commons-csv-1.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-utility/srcs/sis-utility-0.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-utility/bundles/sis-utility-0.8.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-utility/srcs/sis-utility-0.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-utility/jars/sis-utility-0.8.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-utility/docs/sis-utility-0.8-javadoc.jar!/"/>
     </attributes>
@@ -874,12 +874,12 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-feature/docs/sis-feature-0.8-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-metadata/srcs/sis-metadata-0.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-metadata/bundles/sis-metadata-0.8.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-metadata/srcs/sis-metadata-0.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-metadata/jars/sis-metadata-0.8.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-metadata/docs/sis-metadata-0.8-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-referencing/srcs/sis-referencing-0.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-referencing/bundles/sis-referencing-0.8.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-referencing/srcs/sis-referencing-0.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-referencing/jars/sis-referencing-0.8.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.sis.core/sis-referencing/docs/sis-referencing-0.8-javadoc.jar!/"/>
     </attributes>
@@ -950,9 +950,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/quagga/docs/quagga-0.11.6-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.squareup/javapoet/srcs/javapoet-1.10.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.squareup/javapoet/jars/javapoet-1.10.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.squareup/javapoet/srcs/javapoet-1.11.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.squareup/javapoet/jars/javapoet-1.11.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.squareup/javapoet/docs/javapoet-1.10.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.squareup/javapoet/docs/javapoet-1.11.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/srcs/mapstruct-jdk8-1.2.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mapstruct/mapstruct-jdk8/jars/mapstruct-jdk8-1.2.0.Final.jar">
@@ -980,9 +980,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/docs/jquery-3.3.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/srcs/bootstrap-4.1.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/jars/bootstrap-4.1.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/srcs/bootstrap-4.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/jars/bootstrap-4.1.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/docs/bootstrap-4.1.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/docs/bootstrap-4.1.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/jars/pickadate.js-3.5.6.jar">
@@ -1009,6 +1009,11 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/tether/srcs/tether-1.4.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/tether/jars/tether-1.4.0.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/tether/docs/tether-1.4.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/hammerjs/srcs/hammerjs-2.0.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/hammerjs/jars/hammerjs-2.0.8.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/hammerjs/docs/hammerjs-2.0.8-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/srcs/select2-4.0.5-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/jars/select2-4.0.5.jar">

@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+.races-popover.popover,
+.races-popover.popover > .popover-body {
+	max-width: 340px;
+	width: 340px;
+}

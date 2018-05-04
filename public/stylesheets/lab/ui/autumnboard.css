@@ -1,18 +1,29 @@
 @charset "utf-8";
 
-.notification-box {
+.icon-frame {
 	position: relative;
-	width: 72px;
+	width: 54px;
 	margin-right: auto !important;
 	margin-left: auto !important;
 	text-align: center;
 }
 
-.notification-box-target {
+.icon-body {
 	position: relative;
 }
 
-.notification-box-count {
+.icon-close {
+	display: none;
+	position: absolute;
+	top: -7px;
+	left: -7px;
+}
+
+.undecided.icon-frame > .icon-close {
+	display: block;
+}
+
+.icon-notification {
 	position: absolute;
 	top: -7px;
 	right: -7px;

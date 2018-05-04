@@ -95,6 +95,11 @@ body {
 	background-color: Cornsilk;
 }
 
+.breadcrumb-item + .breadcrumb-item::before {
+	color: rgb(255, 160, 76);
+	content: "❧"
+}
+
 /* Jumbotron custom style */
 
 .jumbotron{

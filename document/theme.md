@@ -14,19 +14,19 @@ Install
 
 e.g.
 
-	github/bootstrap-4.1.0/scss/_variables.scss
+	github/bootstrap-4.1.1/scss/_variables.scss
 
 ### Build ###
 
 ##### Console #####
 
-	MacBook:~ user$ cd github/bootstrap-4.1.0
-	MacBook:bootstrap-4.1.0 user$ npm install
-	MacBook:bootstrap-4.1.0 user$ npm run dist
+	MacBook:~ user$ cd github/bootstrap-4.1.1
+	MacBook:bootstrap-4.1.1 user$ npm install
+	MacBook:bootstrap-4.1.1 user$ npm run dist
 
-### Deploy ###
+### Position ###
 
-	github/bootstrap-4.1.0/dist/css/bootstrap.min.css
+	github/bootstrap-4.1.1/dist/css/bootstrap.min.css
 
 to
 
@@ -35,6 +35,13 @@ to
 ### Update Integrity ###
 
 	github/fineplay/app/views/libraries/adjust/bootstrap/head.scala.html
+	github/fineplay/app/views/libraries/bootstrap/head.scala.html
+	github/fineplay/app/views/libraries/bootstrap/last.scala.html
+	github/fineplay/public/themes/[theme name]/bootstrap.min.css
+	github/fineplay/app/views/libraries/jquery/last.scala.html
+	github/fineplay/app/views/libraries/jqueryui/head.scala.html
+	github/fineplay/app/views/libraries/jqueryui/last.scala.html
+	etc...
 
 ###### Use IntegrityValuesCreator.
 

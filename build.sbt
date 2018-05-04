@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.13-β4-SNAPSHOT"
+version := "2.6.13-β5-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -19,7 +19,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "javax.xml.bind" % "jaxb-api" % "2.3.0",
-//  "hiro20v" %% "fineplay-sub" % "2.6.13-β4-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.13-β5-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -63,13 +63,13 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "quagga" % "0.11.6",								// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.9",								// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
-  "com.squareup" % "javapoet" % "1.10.0",								// Apache 1.9.0
+  "com.squareup" % "javapoet" % "1.11.0",								// Apache 1.9.0
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",						// Apache 1.2.0.CR1
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",				// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
-  "org.webjars.npm" % "bootstrap" % "4.1.0",								// MIT 4.0.0
+  "org.webjars.npm" % "bootstrap" % "4.1.1",								// MIT 4.0.0
 //  "org.webjars.bower" % "clipboard" % "2.0.0",							// MIT 2.0.0
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
@@ -78,6 +78,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",				// MIT 9.8.1
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars.npm" % "tether" % "1.4.0",								// MIT 1.4.0
+  "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",								// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2 +patch

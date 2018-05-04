@@ -48,7 +48,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DOWNLOAD), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DOWNLOAD), "icon"->"fas fa-download", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -129,6 +129,16 @@
 					<div class="mb-3 lab secret">
 						<h4 class="headline">PowerPoint Report Stream</h4>
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportPowerpointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-powerpoint", "text"->Messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
+					<div class="mb-3 lab secret">
+						<h4 class="headline">Paper unless Stream</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.paperPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">

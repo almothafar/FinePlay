@@ -172,6 +172,7 @@ GET		/lab/application/download/report.pdf			controllers.lab.application.Download
 GET		/lab/application/download/report.docx		controllers.lab.application.Download.reportWordStream()
 GET		/lab/application/download/report.xlsx		controllers.lab.application.Download.reportExcelStream()
 GET		/lab/application/download/report.pptx		controllers.lab.application.Download.reportPowerpointStream()
+GET		/lab/application/download/paper.pdf			controllers.lab.application.Download.paperPdfStream()
 GET		/lab/application/download/files.zip			controllers.lab.application.Download.zipStream()
 GET		/lab/application/download/encryptfiles.zip	controllers.lab.application.Download.encryptZipStream()
 GET		/lab/application/download/:executionId/ivd.pdf	controllers.lab.application.Download.ivdPdfStream(executionId: Long)

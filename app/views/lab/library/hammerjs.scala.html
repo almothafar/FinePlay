@@ -1,0 +1,72 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import java.time._
+@import java.time.format._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.emojioneawesome.head()
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/hammerjs.css")'>
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Hammer.js", "icon"->"fas fa-hand-point-up", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"hammerjs"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mt-3">
+						<div class="d-none">
+							<div id="races">
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"e1a e1a-girl fa-3x", "data-tone"->""))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"e1a e1a-girl_tone1 fa-3x", "data-tone"->"_tone1"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"e1a e1a-girl_tone2 fa-3x", "data-tone"->"_tone2"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"e1a e1a-girl_tone3 fa-3x", "data-tone"->"_tone3"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"e1a e1a-girl_tone4 fa-3x", "data-tone"->"_tone4"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"e1a e1a-girl_tone5 fa-3x", "data-tone"->"_tone5"))
+							</div>
+						</div>
+						<div class="col">
+							<h4 class="headline">Press</h4>
+							@components.icon(Map("id"->"girlIcon", "icon"->"e1a e1a-girl fa-3x", "data-placement"->"top"))
+						</div>
+					</div>
+
+					<div class="mb-3">
+
+						<small class="text-muted">Emoji icons provided free by <a href='https://www.emojione.com'>EmojiOne</a></small>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.hammerjs.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/library/hammerjs.js")'></script>
+	}
+}

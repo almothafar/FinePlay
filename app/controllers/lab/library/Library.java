@@ -86,6 +86,9 @@ public class Library extends Controller {
 		case "parsley":
 
 			return parsley();
+		case "hammerjs":
+
+			return hammerjs();
 		case "bootstrapcolorpicker":
 
 			return bootstrapcolorpicker();
@@ -244,6 +247,11 @@ public class Library extends Controller {
 	public static Result parsley() {
 
 		return ok(views.html.lab.library.parsley.render());
+	}
+
+	public static Result hammerjs() {
+
+		return ok(views.html.lab.library.hammerjs.render());
 	}
 
 	public static Result bootstrapcolorpicker() {
