@@ -21,19 +21,19 @@
 <table id="@prop.getOrElse("id", "")" class="table table-@prop.getOrElse("type", "") @("table-striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) @("table-bordered".when(Boolean.valueOf(prop.getOrElse("bordered", "false")))) @("table-hover".when(Boolean.valueOf(prop.getOrElse("hover", "false")))) table-@prop.getOrElse("size", "") @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	<thead id="@thead.getOrElse("id", "")" class="thead-@thead.getOrElse("type", "")">
 	@defining(theadRowToColumns._1) { row =>
-	<tr class="table-@row.getOrElse("type", "")">
-		@defining(theadRowToColumns._2) { columns =>
-			@for(column <- columns) {
-		<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+		<tr class="table-@row.getOrElse("type", "") @Attributes.classValue(row)">
+			@defining(theadRowToColumns._2) { columns =>
+				@for(column <- columns) {
+			<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+				}
 			}
-		}
-	</tr>
+		</tr>
 	}
 	</thead>
 	<tbody id="@tbody.getOrElse("id", "")" class="table-@tbody.getOrElse("type", "")">
 	@for(tbodyRowToColumns <- tbodyRowToColumnsList) {
 		@defining(tbodyRowToColumns._1) { row =>
-		<tr class="table-@row.getOrElse("type", "")">
+		<tr class="table-@row.getOrElse("type", "") @Attributes.classValue(row)">
 			@defining(tbodyRowToColumns._2) { columns =>
 				@for(column <- columns) {
 			<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")" @Html(Attributes.datas(column))>@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
@@ -45,7 +45,7 @@
 	</tbody>
 	<tfoot id="@tfoot.getOrElse("id", "")" class="thead-@tfoot.getOrElse("type", "")">
 	@defining(tfootRowToColumns._1) { row =>
-	<tr class="table-@row.getOrElse("type", "")">
+	<tr class="table-@row.getOrElse("type", "") @Attributes.classValue(row)">
 		@defining(tfootRowToColumns._2) { columns =>
 			@for(column <- columns) {
 		<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>

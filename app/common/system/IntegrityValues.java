@@ -13,7 +13,7 @@ public class IntegrityValues {
 
   public static final String BOOTSTRAP_STYLE_JAPAN = "y9cpQTq+kHdGqrZNRqEv0FfWtq3qGBH89pCXmUjWrWh9XMNDkCGd9ktOn2gV/Sot";
 
-  public static final String BOOTSTRAP_STYLE_PRETTY = "GX5+zFzUk7QendD2UmTGbuAV7hnPc80+e++2lPDH8fi499/qslNobFHRD6swXNHw";
+  public static final String BOOTSTRAP_STYLE_PRETTY = "f7OfdxFAxDMKGFCcQPL5jmfUpuDksra9YAuY0mTN+2xZlgkukow0fisNTLHNGHxb";
 
   public static final String JQUERY_SCRIPT = "tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT";
 

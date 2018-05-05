@@ -217,7 +217,7 @@
 .nf-disclosure_triangle:before{
 	content: "\25B6";
 }
-a:not(.collapsed)>.nf-disclosure_triangle:before{
+button:not(.collapsed)>.nf-disclosure_triangle:before{
 	content: "\25BC" !important;
 }
 
