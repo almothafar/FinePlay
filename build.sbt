@@ -77,7 +77,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",				// MIT 9.8.1
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
-  "org.webjars.npm" % "tether" % "1.4.0",								// MIT 1.4.0
+  "org.webjars.bower" % "tether" % "1.4.3",								// MIT 1.4.4
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",								// MIT 4.0.4
@@ -110,7 +110,7 @@ libraryDependencies ++= Seq(
 )
 // TwentyTwenty															// MIT 2017/11/11 master
 // Frappé Gantt															// MIT build version 0.0.7 master
-// jsQR																	// Apache 2018/2/24 master
+// jsQR																	// Apache 2018/05/05 master
 // 3Dmol.js																// BSD-3-Clause license 1.3.0
 // geckodriver															// Mozilla Public License 0.18.0
 // LibreOffice															// Mozilla Public License 6.0.3

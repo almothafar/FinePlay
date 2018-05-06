@@ -291,7 +291,7 @@ $(function() {
 				'<div class="p-2 d-flex align-items-center"><button type="button" class="p-3 close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></div>' +
 			'</div>';
 
-			notify('<div class="rounded">' + notificationHtml + '</div>', 7000);
+			notify('<div class="rounded">' + notificationHtml + '</div>', 3000);
 		}
 	});
 });

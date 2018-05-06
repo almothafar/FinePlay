@@ -8,6 +8,10 @@ injectStyle('.shepherd-element.shepherd-theme-default.shepherd-has-title .shephe
 	'background': getTheme().primary.disabledBackgroundColor
 });
 
+injectStyle('.shepherd-element.shepherd-theme-default.shepherd-has-cancel-link .shepherd-content header h3', {
+	'color': getTheme().primary.color
+});
+
 injectStyle('.shepherd-element.shepherd-theme-default .shepherd-content footer .shepherd-buttons li .shepherd-button', {
 	'background': getTheme().primary.backgroundColor
 });
