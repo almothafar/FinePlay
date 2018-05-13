@@ -75,12 +75,12 @@ body {
 	transition-timing-function: linear;
 }
 
-#system_footer-container{
+#system_footer{
 	background-color: rgb(92, 136, 169);
 	width: 100%;
 }
 
-#system_footer-container .system_credit{
+#system_footer .system_credit{
 	color: white;
 }
 
@@ -354,6 +354,13 @@ body {
 	box-shadow: 0 0 24px -6px rgba(179, 179, 179, 0.52);
 }
 
+/* Surface */
+
+#system_surface {
+	position: absolute;
+	z-index: 3070;
+}
+
 /* Cover */
 
 #system_cover {
@@ -377,7 +384,7 @@ body {
 	font-size: 3rem;
 	display: none;
 	color: white;
-	font-style: bold;
+	font-weight: bold;
 }
 @media (min-width:576px) {
 	#system_magnify-text {

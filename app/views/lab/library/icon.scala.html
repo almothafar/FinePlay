@@ -38,65 +38,131 @@
 				</div>
 				<div class="col-md-9">
 
-					<h4 class="headline">Material Icons</h4>
+					<div class="">
 
-					<div class="mb-3">
-						@components.button(Map("id"->"", "type"->"primary", "icon"->"material-icons mi-refresh fa-spin", "text"->"Primary"))
-						@components.button(Map("id"->"", "type"->"secondary", "icon"->"material-icons mi-refresh fa-spin", "text"->"Secondary"))
-						@components.button(Map("id"->"", "type"->"success", "icon"->"material-icons mi-refresh fa-spin", "text"->"Success"))
-						@components.button(Map("id"->"", "type"->"info", "icon"->"material-icons mi-refresh fa-spin", "text"->"Info"))
-						@components.button(Map("id"->"", "type"->"warning", "icon"->"material-icons mi-refresh fa-spin", "text"->"Warning"))
-						@components.button(Map("id"->"", "type"->"danger", "icon"->"material-icons mi-refresh fa-spin", "text"->"Danger"))
-						@components.button(Map("id"->"", "type"->"link", "icon"->"material-icons mi-refresh fa-spin", "text"->"Link"))
-					</div>
-					<div class="mb-3">
+						<h4 class="headline">Material Icons</h4>
 
-						@components.alert(Map("id"->"", "icon"->"material-icons mi-check", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
-						@components.alert(Map("id"->"", "icon"->"material-icons mi-info", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
-						@components.alert(Map("id"->"", "icon"->"material-icons mi-warning", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
-						@components.alert(Map("id"->"", "icon"->"material-icons mi-block", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
-					</div>
+						<div class="mb-3">
+							@components.button(Map("id"->"", "type"->"primary", "icon"->"material-icons mi-refresh fa-spin", "text"->"Primary"))
+							@components.button(Map("id"->"", "type"->"secondary", "icon"->"material-icons mi-refresh fa-spin", "text"->"Secondary"))
+							@components.button(Map("id"->"", "type"->"success", "icon"->"material-icons mi-refresh fa-spin", "text"->"Success"))
+							@components.button(Map("id"->"", "type"->"info", "icon"->"material-icons mi-refresh fa-spin", "text"->"Info"))
+							@components.button(Map("id"->"", "type"->"warning", "icon"->"material-icons mi-refresh fa-spin", "text"->"Warning"))
+							@components.button(Map("id"->"", "type"->"danger", "icon"->"material-icons mi-refresh fa-spin", "text"->"Danger"))
+							@components.button(Map("id"->"", "type"->"link", "icon"->"material-icons mi-refresh fa-spin", "text"->"Link"))
+						</div>
+						<div class="mb-3">
 
-					<h4 class="headline">IcoFont</h4>
-
-					<div class="mb-3">
-						@components.button(Map("id"->"", "type"->"primary", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Primary"))
-						@components.button(Map("id"->"", "type"->"secondary", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Secondary"))
-						@components.button(Map("id"->"", "type"->"success", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Success"))
-						@components.button(Map("id"->"", "type"->"info", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Info"))
-						@components.button(Map("id"->"", "type"->"warning", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Warning"))
-						@components.button(Map("id"->"", "type"->"danger", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Danger"))
-						@components.button(Map("id"->"", "type"->"link", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Link"))
-					</div>
-					<div class="mb-3">
-
-						@components.alert(Map("id"->"", "icon"->"icofont icofont-check", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
-						@components.alert(Map("id"->"", "icon"->"icofont icofont-info-circle", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
-						@components.alert(Map("id"->"", "icon"->"icofont icofont-exclamation-tringle", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
-						@components.alert(Map("id"->"", "icon"->"icofont icofont-ban", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+							@components.alert(Map("id"->"", "icon"->"material-icons mi-check", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
+							@components.alert(Map("id"->"", "icon"->"material-icons mi-info", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
+							@components.alert(Map("id"->"", "icon"->"material-icons mi-warning", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
+							@components.alert(Map("id"->"", "icon"->"material-icons mi-block", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+						</div>
 					</div>
 
-					<h4 class="headline">EmojiOne</h4>
+					<div class="">
 
-					<div class="mb-3">
-						@components.button(Map("id"->"", "type"->"primary", "icon"->"emojione e1a-gear fa-spin", "text"->"Primary"))
-						@components.button(Map("id"->"", "type"->"secondary", "icon"->"emojione e1a-gear fa-spin", "text"->"Secondary"))
-						@components.button(Map("id"->"", "type"->"success", "icon"->"emojione e1a-gear fa-spin", "text"->"Success"))
-						@components.button(Map("id"->"", "type"->"info", "icon"->"emojione e1a-gear fa-spin", "text"->"Info"))
-						@components.button(Map("id"->"", "type"->"warning", "icon"->"emojione e1a-gear fa-spin", "text"->"Warning"))
-						@components.button(Map("id"->"", "type"->"danger", "icon"->"emojione e1a-gear fa-spin", "text"->"Danger"))
-						@components.button(Map("id"->"", "type"->"link", "icon"->"emojione e1a-gear fa-spin", "text"->"Link"))
+						<h4 class="headline">IcoFont</h4>
+
+						<div class="mb-3">
+							@components.button(Map("id"->"", "type"->"primary", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Primary"))
+							@components.button(Map("id"->"", "type"->"secondary", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Secondary"))
+							@components.button(Map("id"->"", "type"->"success", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Success"))
+							@components.button(Map("id"->"", "type"->"info", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Info"))
+							@components.button(Map("id"->"", "type"->"warning", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Warning"))
+							@components.button(Map("id"->"", "type"->"danger", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Danger"))
+							@components.button(Map("id"->"", "type"->"link", "icon"->"icofont icofont-spinner fa-pulse", "text"->"Link"))
+						</div>
+						<div class="mb-3">
+
+							@components.alert(Map("id"->"", "icon"->"icofont icofont-check", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
+							@components.alert(Map("id"->"", "icon"->"icofont icofont-info-circle", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
+							@components.alert(Map("id"->"", "icon"->"icofont icofont-exclamation-tringle", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
+							@components.alert(Map("id"->"", "icon"->"icofont icofont-ban", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+						</div>
 					</div>
-					<div class="mb-3">
 
-						@components.alert(Map("id"->"", "icon"->"emojione e1a-ballot_box_with_check", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
-						@components.alert(Map("id"->"", "icon"->"emojione e1a-information_source", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
-						@components.alert(Map("id"->"", "icon"->"emojione e1a-warning", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
-						@components.alert(Map("id"->"", "icon"->"emojione e1a-no_entry_sign", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+					<div class="">
+
+						<h4 class="headline">EmojiOne</h4>
+
+						<div class="mb-3">
+							@components.button(Map("id"->"", "type"->"primary", "icon"->"emojione e1a-gear fa-spin", "text"->"Primary"))
+							@components.button(Map("id"->"", "type"->"secondary", "icon"->"emojione e1a-gear fa-spin", "text"->"Secondary"))
+							@components.button(Map("id"->"", "type"->"success", "icon"->"emojione e1a-gear fa-spin", "text"->"Success"))
+							@components.button(Map("id"->"", "type"->"info", "icon"->"emojione e1a-gear fa-spin", "text"->"Info"))
+							@components.button(Map("id"->"", "type"->"warning", "icon"->"emojione e1a-gear fa-spin", "text"->"Warning"))
+							@components.button(Map("id"->"", "type"->"danger", "icon"->"emojione e1a-gear fa-spin", "text"->"Danger"))
+							@components.button(Map("id"->"", "type"->"link", "icon"->"emojione e1a-gear fa-spin", "text"->"Link"))
+						</div>
+						<div class="mb-3">
+
+							@components.alert(Map("id"->"", "icon"->"emojione e1a-ballot_box_with_check", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
+							@components.alert(Map("id"->"", "icon"->"emojione e1a-information_source", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
+							@components.alert(Map("id"->"", "icon"->"emojione e1a-warning", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
+							@components.alert(Map("id"->"", "icon"->"emojione e1a-no_entry_sign", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+						</div>
 					</div>
-					<div class="mb-3">
 
-						<small class="text-muted">Emoji icons provided free by <a href='https://www.emojione.com'>EmojiOne</a></small>
+					<div class="secret">
+
+						<h4 class="headline">Native Font</h4>
+
+						<div class="mb-3">
+							@components.button(Map("id"->"", "type"->"primary", "icon"->"nf nf-gear fa-spin", "text"->"Primary"))
+							@components.button(Map("id"->"", "type"->"secondary", "icon"->"nf nf-gear fa-spin", "text"->"Secondary"))
+							@components.button(Map("id"->"", "type"->"success", "icon"->"nf nf-gear fa-spin", "text"->"Success"))
+							@components.button(Map("id"->"", "type"->"info", "icon"->"nf nf-gear fa-spin", "text"->"Info"))
+							@components.button(Map("id"->"", "type"->"warning", "icon"->"nf nf-gear fa-spin", "text"->"Warning"))
+							@components.button(Map("id"->"", "type"->"danger", "icon"->"nf nf-gear fa-spin", "text"->"Danger"))
+							@components.button(Map("id"->"", "type"->"link", "icon"->"nf nf-gear fa-spin", "text"->"Link"))
+						</div>
+						<div class="mb-3">
+
+							@components.alert(Map("id"->"", "icon"->"nf nf-success", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
+							@components.alert(Map("id"->"", "icon"->"nf nf-info", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
+							@components.alert(Map("id"->"", "icon"->"nf nf-warning", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
+							@components.alert(Map("id"->"", "icon"->"nf nf-danger", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+						</div>
+					</div>
+
+					<div class="secret">
+
+						<h4 class="headline">Emoji Font</h4>
+
+						<div class="mb-3">
+							@components.button(Map("id"->"", "type"->"primary", "icon"->"ef ef-gear fa-spin", "text"->"Primary"))
+							@components.button(Map("id"->"", "type"->"secondary", "icon"->"ef ef-gear fa-spin", "text"->"Secondary"))
+							@components.button(Map("id"->"", "type"->"success", "icon"->"ef ef-gear fa-spin", "text"->"Success"))
+							@components.button(Map("id"->"", "type"->"info", "icon"->"ef ef-gear fa-spin", "text"->"Info"))
+							@components.button(Map("id"->"", "type"->"warning", "icon"->"ef ef-gear fa-spin", "text"->"Warning"))
+							@components.button(Map("id"->"", "type"->"danger", "icon"->"ef ef-gear fa-spin", "text"->"Danger"))
+							@components.button(Map("id"->"", "type"->"link", "icon"->"ef ef-gear fa-spin", "text"->"Link"))
+						</div>
+						<div class="mb-3">
+
+							@components.alert(Map("id"->"", "icon"->"ef ef-success", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
+							@components.alert(Map("id"->"", "icon"->"ef ef-info", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
+							@components.alert(Map("id"->"", "icon"->"ef ef-warning", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
+							@components.alert(Map("id"->"", "icon"->"ef ef-danger", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+						</div>
+					</div>
+
+					<div class="secret">
+
+						<h4 class="headline">@Messages(MessageKeys.IMAGE)</h4>
+
+						<div class="mb-3">
+							@components.button(Map("id"->"", "type"->"primary", "icon"->"ii ii-play fa-spin", "text"->"Primary"))
+							@components.button(Map("id"->"", "type"->"secondary", "icon"->"ii ii-bootstrap fa-spin", "text"->"Secondary"))
+							@components.button(Map("id"->"", "type"->"success", "icon"->"ii ii-fineplay fa-spin", "text"->"Success"))
+						</div>
+						<div class="mb-3">
+
+							@components.alert(Map("id"->"", "icon"->"ii ii-play", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
+							@components.alert(Map("id"->"", "icon"->"ii ii-bootstrap", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
+							@components.alert(Map("id"->"", "icon"->"ii ii-fineplay", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
+						</div>
 					</div>
 				</div>
 			</div>

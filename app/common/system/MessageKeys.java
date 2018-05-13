@@ -667,6 +667,8 @@ public class MessageKeys {
 
   public static final String SETTING = "setting";
 
+  public static final String SLIDE = "slide";
+
   public static final String SORT = "sort";
 
   public static final String SPEECH_SYNTHESIS_LANG = "speech.synthesis.lang";

@@ -38,11 +38,60 @@
 				<div class="col-md-9">
 
 					<div class="mb-3">
-						<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-					</div>
+						@components.card(Map("id"->"sliderPanel", "class"->"shadow-sm")){
+							<div class="card-header">
+								bootstrap-slider
+							</div>
+							<div class="card-body">
 
-					<div class="mb-3">
-						Filter by price interval: <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
+								@helper.form(helper.CSRF(controllers.lab.library.routes.Library.index("bootstrapslider")), 'name->"sliderForm", 'id->"sliderForm") {
+
+									<div class="form-group row secret">
+										<label for="" class="col-sm-3 col-form-label required">Bootstrap</label>
+										<div class="col-sm-9">
+											<input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Basic</label>
+										<div class="col-sm-9">
+											<input id="ex1" class="span2 w-100" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Range selector</label>
+										<div class="col-sm-9">
+											<div class="d-flex justify-content-between">
+											    <div class="p-2"><b>€ 10</b></div>
+											    <div class="p-2 flex-fill"><input id="ex2" class="span2 w-100" data-slider-id='ex2Slider' type="text" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/></div>
+											    <div class="p-2"><b>€ 1000</b></div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Vertical</label>
+										<div class="col-sm-9">
+											<input id="ex4" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="-3" data-slider-orientation="vertical"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Disabled</label>
+										<div class="col-sm-9">
+											<input id="ex7" class="span2 w-100" data-slider-id='ex7Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14" data-slider-enabled="false"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Tick marks and labels</label>
+										<div class="col-sm-9">
+											<input id="ex13" class="w-100" data-slider-id='ex13Slider' type="text" value="0" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'/>
+										</div>
+									</div>
+								}
+
+							</div>
+							<div class="card-footer text-muted">
+							</div>
+						}
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,7 @@ public class Helps {
 		document.select("#system_content-left-corner").remove();
 		document.select("#system_menu").remove();
 		document.select("#system_extension-menu").remove();
-		document.select("#system_footer-container").remove();
+		document.select("#system_footer").remove();
 		final Element helpContent = getHelpContent(document);
 		final Elements preTags = helpContent.select("pre");
 

@@ -67,7 +67,7 @@
 
 <ul id="@prop.getOrElse("id", "")" class="nav @("nav-tabs".when(Boolean.valueOf(prop.getOrElse("tabs", "false")))) @("nav-pills".when(Boolean.valueOf(prop.getOrElse("pills", "false")))) @("flex-column".when(Boolean.valueOf(prop.getOrElse("stacked", "false")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 
-		<li class="nav-item dropdown @dropDownSize(prop)">
+		<li class="nav-item dropdown @dropDownSize(prop) position-absolute"><!-- absolute for IE -->
 			@for(i <- 0 to elements.size - 1){
 				@if(Boolean.valueOf(elements(i).getOrElse("selected", "false"))){
 			<a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -86,6 +86,7 @@
 			</div>
 		</li>
 
+		<li class="nav-item w-0"><a href="#" class="nav-link">@components.icon(Map("icon"->"fas fa-pencil-alt"))</a></li><!-- for IE -->
 		@for(i <- 0 to elements.size - 1){
 		<li class="nav-item @tabSize(prop)">
 			<a href="@elements(i).getOrElse("link", "#")" class="nav-link @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))  @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true"))))">

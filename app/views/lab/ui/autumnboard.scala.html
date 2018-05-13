@@ -35,7 +35,14 @@
 				</div>
 				<div class="col-md-9">
 
-					<div class="row mx-0 mb-3 icon-board px-4 pt-4 bg-dark rounded">
+					<div id="lockView" class="h-288p bg-cyan-300 rounded">
+
+						<div class="h-144p"></div>
+						@components.unlock(Map("id"->"unlockView", "class"->"mx-auto w-288p", "text"->Messages(MessageKeys.SLIDE)))
+
+					</div>
+
+					<div id="homeView" class="row mx-0 mb-3 icon-board px-4 pt-4 bg-dark rounded d-none">
 
 						<div class="icon-frame-wrapper text-center float-left w-96p">
 							<div class="icon-frame bg-green-400 rounded mb-4 py-2">
@@ -149,6 +156,7 @@
 
 		@libraries.standard.last()
 		@libraries.hammerjs.last()
+		@libraries.jqueryuitouchpunch.last()
 		<script src='@routes.Assets.versioned("javascripts/lab/ui/autumnboard.js")'></script>
 	}
 }

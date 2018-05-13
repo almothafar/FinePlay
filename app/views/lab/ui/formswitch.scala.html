@@ -21,7 +21,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.SWITCH), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.SWITCH), "icon"->"fas fa-toggle-on", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -35,48 +35,60 @@
 				<div class="col-md-9">
 
 					<div class="mb-3">
-						<h4 class="headline">Simple</h4>
-						<div>
-							@components.forms.customswitch(Map("id"->"defaultSwitch", "name"->"default"))
-							@components.forms.customswitch(Map("id"->"uncheckedSwitch", "name"->"unchecked", "selected"->"false"))
-							@components.forms.customswitch(Map("id"->"checkedSwitch", "name"->"checked", "selected"->"true"))
-						</div>
-					</div>
+						@components.card(Map("id"->"switchPanel", "class"->"shadow-sm")){
+							<div class="card-header">
+								@Messages(MessageKeys.SWITCH)
+							</div>
+							<div class="card-body">
 
-					<div class="mb-3">
-						<h4 class="headline">with text</h4>
-						<div>
-							@components.forms.customswitch(Map("id"->"defaultTextSwitch", "name"->"default", "text"->"One"))
-							@components.forms.customswitch(Map("id"->"uncheckedTextSwitch", "name"->"unchecked", "text"->"Two", "selected"->"false"))
-							@components.forms.customswitch(Map("id"->"checkedTextSwitch", "name"->"checked", "text"->"Three", "selected"->"true"))
-						</div>
-					</div>
+								@helper.form(helper.CSRF(controllers.lab.ui.routes.UI.index("formswitch")), 'name->"switchForm", 'id->"switchForm") {
 
-					<div class="mb-3">
-						<h4 class="headline">Disabled</h4>
-						<div>
-							@components.forms.customswitch(Map("id"->"disabledDefaultSwitch", "name"->"default", "enabled"->"false"))
-							@components.forms.customswitch(Map("id"->"disableduncheckedSwitch", "name"->"unchecked", "enabled"->"false", "selected"->"false"))
-							@components.forms.customswitch(Map("id"->"disabledcheckedSwitch", "name"->"checked", "enabled"->"false", "selected"->"true"))
-						</div>
-					</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Simple</label>
+										<div class="col-sm-9">
+											@components.forms.customswitch(Map("id"->"defaultSwitch", "name"->"default"))
+											@components.forms.customswitch(Map("id"->"uncheckedSwitch", "name"->"unchecked", "selected"->"false"))
+											@components.forms.customswitch(Map("id"->"checkedSwitch", "name"->"checked", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">with text</label>
+										<div class="col-sm-9">
+											@components.forms.customswitch(Map("id"->"defaultTextSwitch", "name"->"default", "text"->"One"))
+											@components.forms.customswitch(Map("id"->"uncheckedTextSwitch", "name"->"unchecked", "text"->"Two", "selected"->"false"))
+											@components.forms.customswitch(Map("id"->"checkedTextSwitch", "name"->"checked", "text"->"Three", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Disabled</label>
+										<div class="col-sm-9">
+											@components.forms.customswitch(Map("id"->"disabledDefaultSwitch", "name"->"default", "enabled"->"false"))
+											@components.forms.customswitch(Map("id"->"disableduncheckedSwitch", "name"->"unchecked", "enabled"->"false", "selected"->"false"))
+											@components.forms.customswitch(Map("id"->"disabledcheckedSwitch", "name"->"checked", "enabled"->"false", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Inline</label>
+										<div class="col-sm-9">
+											@components.forms.customswitch(Map("id"->"defaultSwitchInline", "name"->"default", "inline"->"true"))
+											@components.forms.customswitch(Map("id"->"uncheckedSwitchInline", "name"->"unchecked", "inline"->"true", "selected"->"false"))
+											@components.forms.customswitch(Map("id"->"checkedSwitchInline", "name"->"checked", "inline"->"true", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Inline with text</label>
+										<div class="col-sm-9">
+											@components.forms.customswitch(Map("id"->"defaultTextSwitchInline", "name"->"default", "text"->"One", "inline"->"true"))
+											@components.forms.customswitch(Map("id"->"uncheckedTextSwitchInline", "name"->"unchecked", "text"->"Two", "inline"->"true", "selected"->"false"))
+											@components.forms.customswitch(Map("id"->"checkedTextSwitchInline", "name"->"checked", "text"->"Three", "inline"->"true", "selected"->"true"))
+										</div>
+									</div>
+								}
 
-					<div class="mb-3">
-						<h4 class="headline">Inline</h4>
-						<div>
-							@components.forms.customswitch(Map("id"->"defaultSwitchInline", "name"->"default", "inline"->"true"))
-							@components.forms.customswitch(Map("id"->"uncheckedSwitchInline", "name"->"unchecked", "inline"->"true", "selected"->"false"))
-							@components.forms.customswitch(Map("id"->"checkedSwitchInline", "name"->"checked", "inline"->"true", "selected"->"true"))
-						</div>
-					</div>
-
-					<div class="mb-3">
-						<h4 class="headline">Inline with text</h4>
-						<div>
-							@components.forms.customswitch(Map("id"->"defaultTextSwitchInline", "name"->"default", "text"->"One", "inline"->"true"))
-							@components.forms.customswitch(Map("id"->"uncheckedTextSwitchInline", "name"->"unchecked", "text"->"Two", "inline"->"true", "selected"->"false"))
-							@components.forms.customswitch(Map("id"->"checkedTextSwitchInline", "name"->"checked", "text"->"Three", "inline"->"true", "selected"->"true"))
-						</div>
+							</div>
+							<div class="card-footer text-muted">
+							</div>
+						}
 					</div>
 				</div>
 			</div>

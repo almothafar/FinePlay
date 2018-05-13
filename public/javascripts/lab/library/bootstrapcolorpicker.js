@@ -8,20 +8,20 @@ $('#picker').colorpicker({
 	inline: true,
 	sliders: {
 		saturation: {
+//			callLeft: 'setSaturationRatio',//3.0.0-beta.1
+//			callTop: 'setBrightnessRatio',//3.0.0-beta.1
 			maxLeft: 200,
-			maxTop: 200,
-			callLeft: 'setSaturationRatio',
-			callTop: 'setBrightnessRatio'
+			maxTop: 200
 		},
 		hue: {
-			maxTop: 200,
-			callLeft: false,
-			callTop: 'setHueRatio'
+//			callLeft: false,//3.0.0-beta.1
+//			callTop: 'setHueRatio',//3.0.0-beta.1
+			maxTop: 200
 		},
 		alpha: {
-			maxTop: 200,
-			callLeft: false,
-			callTop: 'setAlphaRatio'
+//			callLeft: false,//3.0.0-beta.1
+//			callTop: 'setAlphaRatio',//3.0.0-beta.1
+			maxTop: 200
 		}
 	},
 	extensions: [
@@ -49,9 +49,12 @@ $('#okButton').on('click', function (e) {
 
 	var picker = button.parent().parent().find('#picker');
 	console.dir(picker.colorpicker('getValue'));
-	console.dir(picker.data('colorpicker').color.toRgb());
+//	console.dir(picker.data('colorpicker').color.toRgb());//3.0.0-beta.1
+//	console.dir(picker.data('colorpicker').color.toHex());//3.0.0-beta.1
+//	console.dir(picker.data('colorpicker').color.toHsl());//3.0.0-beta.1
+	console.dir(picker.data('colorpicker').color.toRGB());
 	console.dir(picker.data('colorpicker').color.toHex());
-	console.dir(picker.data('colorpicker').color.toHsl());
+	console.dir(picker.data('colorpicker').color.toHSL());
 
 	$('#getButton').css({
 		"backgroundColor": picker.colorpicker('getValue')

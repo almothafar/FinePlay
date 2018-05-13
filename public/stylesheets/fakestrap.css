@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+/* Fakestrap */
+
+.process{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-pack: justify !important;
+	-webkit-justify-content: space-between !important;
+	-ms-flex-pack: justify !important;
+	justify-content: space-between !important;
+	padding: 0rem 0rem;
+	border-radius: 4rem;
+	margin-bottom: 1rem;
+	list-style: none;
+	background-image: -webkit-linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
+	background-image: -o-linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
+	background-image: linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
+}
+
+.process-item{
+	float: left;
+	padding: .2em .6em;
+	border-radius: 4rem;
+	background-color: #eceeef;
+}
+
+.process-item.active{
+	background-color: #007bff;
+	color: #fff;
+}
+
+.process-item.active>a{
+	color: #fff;
+}
+
+.custom-switch {
+	position: relative;
+	display: block;
+	vertical-align: top;
+	height: 24px;
+	cursor: pointer;
+}
+
+.custom-switch.disabled {
+	opacity: 0.65;
+}
+
+.custom-switch.custom-control-inline {
+	display: inline-block;
+	margin-right: 1rem;
+}
+
+.custom-switch>input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.custom-switch>.custom-switch-base {
+	position: relative;
+	display: inline-block;
+	height: inherit;
+	width: 48px;
+	background-color: #dedfe0;
+	border-radius: 2em !important;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) inset;
+}
+
+.custom-switch-label {
+	vertical-align: top;
+}
+
+.custom-switch>input:checked ~ .custom-switch-base {
+	background: #007bff !important;
+}
+
+.custom-switch>.custom-switch-handle {
+	position: absolute;
+	top: -2px;
+	left: 0;
+	width: 28px;
+	height: 28px;
+	background: #fff;
+	transition: left .2s ease-out;
+	border: 0;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+	border-radius: 50% !important;
+}
+
+.custom-switch>input:checked ~ .custom-switch-handle {
+	left: 20px;
+}

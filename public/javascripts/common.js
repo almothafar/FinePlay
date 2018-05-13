@@ -271,7 +271,7 @@ var extensionMenuHeight = function(){
 
 var footerHeight = function(){
 
-	return $('#system_footer-container').outerHeight()
+	return $('#system_footer').outerHeight()
 }
 
 var getContent = function() {

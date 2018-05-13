@@ -441,6 +441,7 @@ send = Send
 server = Server
 set = Set
 setting = Setting
+slide = Slide
 sort = Sort
 start = Start
 started = Started

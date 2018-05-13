@@ -2,6 +2,7 @@
 
 /* Project style */
 
+.w-0 {width: 0% !important;}
 .w-10 {width: 10% !important;}
 .w-20 {width: 20% !important;}
 .w-30 {width: 30% !important;}
@@ -49,104 +50,6 @@
 .h-216p {height: 216px !important;}
 .h-288p {height: 288px !important;}
 
-/* Fakestrap */
-
-.process{
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-wrap: wrap;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	-webkit-box-pack: justify !important;
-	-webkit-justify-content: space-between !important;
-	-ms-flex-pack: justify !important;
-	justify-content: space-between !important;
-	padding: 0rem 0rem;
-	border-radius: 4rem;
-	margin-bottom: 1rem;
-	list-style: none;
-	background-image: -webkit-linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
-	background-image: -o-linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
-	background-image: linear-gradient(transparent 0%, transparent 37%, #eceeef 38%, #eceeef 62%, transparent 63%, transparent 100%);
-}
-
-.process-item{
-	float: left;
-	padding: .2em .6em;
-	border-radius: 4rem;
-	background-color: #eceeef;
-}
-
-.process-item.active{
-	background-color: #007bff;
-	color: #fff;
-}
-
-.process-item.active>a{
-	color: #fff;
-}
-
-.custom-switch {
-	position: relative;
-	display: block;
-	vertical-align: top;
-	height: 24px;
-	cursor: pointer;
-}
-
-.custom-switch.disabled {
-	opacity: 0.65;
-}
-
-.custom-switch.custom-control-inline {
-	display: inline-block;
-	margin-right: 1rem;
-}
-
-.custom-switch>input {
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-}
-
-.custom-switch>.custom-switch-base {
-	position: relative;
-	display: inline-block;
-	height: inherit;
-	width: 48px;
-	background-color: #dedfe0;
-	border-radius: 2em !important;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) inset;
-}
-
-.custom-switch-label {
-	vertical-align: top;
-}
-
-.custom-switch>input:checked ~ .custom-switch-base {
-	background: #007bff !important;
-}
-
-.custom-switch>.custom-switch-handle {
-	position: absolute;
-	top: -2px;
-	left: 0;
-	width: 28px;
-	height: 28px;
-	background: #fff;
-	transition: left .2s ease-out;
-	border: 0;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-	border-radius: 50% !important;
-}
-
-.custom-switch>input:checked ~ .custom-switch-handle {
-	left: 20px;
-}
-
 /* Icon Filter */
 
 .if-monochrome {
@@ -177,18 +80,14 @@
 
 .ii {
 	display: inline-block;
-	font: normal normal normal 14px / 1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	font-size: inherit;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
 }
 
 .ii:before{
-	content: "\3000";
+	content: "\1F178";
+	color: transparent;
 }
 
 .ii-bootstrap{
@@ -214,6 +113,22 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.nf-gear:before {
+	content: "\2699\FE0E";
+}
+.nf-success:before {
+	content: "\2714\FE0E";
+}
+.nf-info:before {
+	content: "\2757\FE0E";
+}
+.nf-warning:before {
+	content: "\26A0\FE0E";
+}
+.nf-danger:before {
+	content: "\00D7";
+}
+
 .nf-disclosure_triangle:before{
 	content: "\25B6";
 }
@@ -230,6 +145,22 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.ef-gear:before {
+	content: "\2699";
+}
+.ef-success:before {
+	content: "\2714";
+}
+.ef-info:before {
+	content: "\2757";
+}
+.ef-warning:before {
+	content: "\26A0";
+}
+.ef-danger:before {
+	content: "\1F6AB";
 }
 
 .ef-note:before{

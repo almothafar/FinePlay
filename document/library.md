@@ -21,17 +21,44 @@ Selection criteria
 - Delivery WebJars/Maven repository
 - License of not copyleft
 
-ECMAScript/CSS Include
+Java Include
 -------
-
-There are a variety of cases depending on the library.
 
 ### Position ###
 
+###### Maven
+
+write to
+
+	github/fineplay/build.sbt
+
+or
+
+###### Manual
+
+	github/fineplay/lib/[library].jar
+
+ECMAScript/CSS Include
+-------
+
+- There are a variety of cases depending on the library.
+- As of 2018, most libraries do not support content security policy.
+- As of 2018, there are a growing number of libraries that do not support Internet Explorer.
+
+### Position ###
+
+###### WebJars
+
+write to
+
+	github/fineplay/build.sbt
+
+or
+
+###### Manual
+
 	github/fineplay/public/[library name]/[library].min.css
 	github/fineplay/public/[library name]/[library].min.js
-
-###### WebJars or Manual
 
 ### Make Library wrapper template ###
 ###### Optional.
@@ -39,7 +66,7 @@ There are a variety of cases depending on the library.
 	github/fineplay/app/views/libraries/[library name]/head.scala.html
 	github/fineplay/app/views/libraries/[library name]/last.scala.html
 
-### Use Library(wrapper template) ###
+### Use Library ###
 
 	github/fineplay/app/views/[view name].scala.html
 

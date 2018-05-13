@@ -331,6 +331,7 @@ var MessageKeys = {
 	SERVER: "server",
 	SET: "set",
 	SETTING: "setting",
+	SLIDE: "slide",
 	SORT: "sort",
 	SPEECH_SYNTHESIS_LANG: "speech.synthesis.lang",
 	START: "start",

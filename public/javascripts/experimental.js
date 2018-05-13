@@ -69,6 +69,17 @@ var extendMenu = function(selector){
 	refreshContent();
 }
 
+var extendSurface = function(selector){
+
+	$(selector).appendTo($('#system_surface'));
+}
+
+
+var hideFooter = function(func){
+
+	$('#system_footer').addClass('d-none');
+}
+
 var setFontSize = function(size){
 
 	// There are many places that don't change.

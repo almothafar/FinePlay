@@ -1,6 +1,12 @@
 @charset "utf-8";
 
 #ex1Slider .slider-selection {
+  background: #BABABA;
+}
 
-	background: #BABABA;
+#ex1Slider.slider.slider-horizontal,
+#ex2Slider.slider.slider-horizontal,
+#ex7Slider.slider.slider-horizontal,
+#ex13Slider.slider.slider-horizontal {
+  width: 100%;
 }

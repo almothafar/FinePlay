@@ -15,10 +15,14 @@
 	@head("lab"){
 
 		@libraries.standard.head()
-		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/drawer.css")'>
 	}
 
 	@body("lab","ui"){
+
+		<div id="drawer" class="">
+
+			@components.button(Map("id"->"drawerCloseButton", "type"->"link", "icon"->"fas fa-times-circle", "class"->"text-white"))
+		</div>
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
@@ -33,18 +37,9 @@
 				</div>
 				<div class="mt-3 d-md-none">
 				</div>
-				<div class="col-md-9 pr-0">
+				<div class="col-md-9">
 
-					<div id="taskbase">
-						<div id="taskcontent" class="pr-3">
-
-							@components.button(Map("id"->"taskmenuButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-bars"))
-						</div>
-						<div id="taskmenu">
-
-							@components.button(Map("id"->"taskmenuCloseButton", "type"->"link", "icon"->"fas fa-times-circle"))
-						</div>
-					</div>
+					@components.button(Map("id"->"drawerButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-bars"))
 				</div>
 			</div>
 		}

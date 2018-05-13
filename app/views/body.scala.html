@@ -163,7 +163,7 @@
 
 			@content
 
-			<footer id="system_footer-container" class="container-fluid d-print-none">
+			<footer id="system_footer" class="container-fluid d-print-none">
 
 				@footer()
 			</footer>
@@ -253,26 +253,27 @@
 
 	</div>
 
+	<div id="system_surface">
+	</div>
+
 	<div id="system_cover">
 		<div class="row h-100 mx-3">
-			<div class="col-5"></div>
-			<div class="col-2 align-self-center">
+			<div class="m-auto align-self-center">
 				<div class="row justify-content-center">
 					<div class="d-md-block rounded p-5 bg-secondary opacity-25">
 						<i class="fas fa-circle-notch fa-5x fa-spin text-white"></i>
 					</div>
 				</div>
 			</div>
-			<div class="col-5"></div>
 		</div>
 	</div>
 
 	<div id="system_magnify-text">
 		<div class="row h-100 mx-3">
 			<div class="col-12 align-self-center">
-				<div class="row justify-content-center">
-					<div class="d-md-block rounded px-3 m-3 bg-secondary opacity-75">
-						<span id="system_magnify-text-content"></span>
+				<div class="row d-inline">
+					<div class="d-md-block rounded px-3 m-3 bg-secondary opacity-75 text-center">
+						<span id="system_magnify-text-content" class="d-inline-block"></span>
 					</div>
 				</div>
 			</div>

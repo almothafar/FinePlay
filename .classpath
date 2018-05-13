@@ -990,11 +990,6 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/docs/pickadate.js-3.5.6-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/seiyria-bootstrap-slider/srcs/seiyria-bootstrap-slider-9.7.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/seiyria-bootstrap-slider/jars/seiyria-bootstrap-slider-9.7.2.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/seiyria-bootstrap-slider/docs/seiyria-bootstrap-slider-9.7.2-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars/jquery-ui-touch-punch/srcs/jquery-ui-touch-punch-0.2.3-2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/jquery-ui-touch-punch/jars/jquery-ui-touch-punch-0.2.3-2.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/jquery-ui-touch-punch/docs/jquery-ui-touch-punch-0.2.3-2-javadoc.jar!/"/>
@@ -1150,6 +1145,11 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/tether-shepherd/srcs/tether-shepherd-1.8.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/tether-shepherd/jars/tether-shepherd-1.8.1.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/tether-shepherd/docs/tether-shepherd-1.8.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-colorpicker/srcs/bootstrap-colorpicker-2.5.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-colorpicker/jars/bootstrap-colorpicker-2.5.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-colorpicker/docs/bootstrap-colorpicker-2.5.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/jqtree/srcs/jqtree-1.4.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/jqtree/jars/jqtree-1.4.2.jar">

@@ -57,7 +57,9 @@ Document
 
 [Bootstrap](http://getbootstrap.com/docs/4.1)
 
-This template is unofficial.
+[Font Awesome](https://fontawesome.com)
+
+This **template** is unofficial.
 
 Notice
 ---------------

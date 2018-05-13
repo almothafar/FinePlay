@@ -1,6 +1,6 @@
 'use strict';
 
-var frappeganttMessages = function(messageKey){
+var frappeganttMessages = function(messageKey) {
 
 	return $("#frappegantt_messages").data('messages')[messageKey];
 }
