@@ -2,42 +2,42 @@
 
 $('#alertButton').on('click', function(e){
 
-	notify(Messages(MessageKeys.NOTIFICATION));
+	tell(Messages(MessageKeys.ALERT));
 });
 $('#stopAlertButton').on('click', function(e){
 
-	notify(Messages(MessageKeys.NOTIFICATION), -1);
+	tell(Messages(MessageKeys.ALERT), -1);
 });
 $('#optionalAlertButton').on('click', function(e){
 
-	notify(Messages(MessageKeys.NOTIFICATION), 10000);
+	tell(Messages(MessageKeys.ALERT), 10000);
 });
 
 $('#successAlertButton').on('click', function(e){
 
-	notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS));
+	tellAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS));
 });
 $('#infoAlertButton').on('click', function(e){
 
-	notifyAlert('info', '<strong>' + Messages(MessageKeys.INFO) + '</strong> ' + Messages(MessageKeys.INFO));
+	tellAlert('info', '<strong>' + Messages(MessageKeys.INFO) + '</strong> ' + Messages(MessageKeys.INFO));
 });
 $('#warningAlertButton').on('click', function(e){
 
-	notifyAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + Messages(MessageKeys.WARNING));
+	tellAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + Messages(MessageKeys.WARNING));
 });
 $('#dangerAlertButton').on('click', function(e){
 
-	notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER));
+	tellAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER));
 });
 
 $('#htmlAlertButton').on('click', function(e){
 
-	var notifyHtml = $('#htmlText').val();
-	console.log(notifyHtml);
+	var alertHtml = $('#htmlText').val();
+	console.log(alertHtml);
 	var wait = mySlider.bootstrapSlider('getValue') * 1000;
 	console.log(wait);
 
-	notify('<div class="rounded w-100">' + notifyHtml + '</div>', wait);
+	tell('<div class="rounded w-100">' + alertHtml + '</div>', wait);
 });
 
 var mySlider = $("#waitSlider").bootstrapSlider({
@@ -59,5 +59,5 @@ $('#progressAlertButton').on('click', function(e){
 			'<div class="alert-progress-bar position-absolute w-0p h-4p bg-orange grow-width"></div>' +
 		'</div>';
 
-	notify('<div class="bg-secondary opacity-75 w-100">' + alertHtml + '</div>', 5000);
+	tell('<div class="bg-secondary opacity-75 w-100">' + alertHtml + '</div>', 5000);
 });

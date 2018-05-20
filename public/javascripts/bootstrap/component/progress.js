@@ -2,9 +2,7 @@
 
 $(document).ready(function() {
 
-	$('#progressingButton').on('click', function() {
-
-		var startButton = $(this);
+	$('#progressRate').on('input change', function() {
 
 		var progressRate = $('#progressRate').val();
 

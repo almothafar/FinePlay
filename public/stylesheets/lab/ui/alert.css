@@ -2,7 +2,7 @@
 
 .alert-rich {
 	background-color: whitesmoke;
-	border: gray 1px solid;
+	border: lightgray 1px solid;
 	color: dimgray;
 }
 .alert-rich button.close {

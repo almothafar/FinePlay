@@ -31,11 +31,14 @@ $(document).ready(function() {
 			break;
 		case 'press':
 
-			var isIcon = target.hasClass('icon-body');
-			if(isIcon){
+			if(!$('.icon-frame').hasClass('undecided')){
 
-				$('.icon-board').sortable('enable');
-				$('.icon-frame').addClass('undecided');
+				var isIcon = target.hasClass('icon-body');
+				if(isIcon){
+
+					$('.icon-board').sortable('enable');
+					$('.icon-frame').addClass('undecided');
+				}
 			}
 			break;
 		default:

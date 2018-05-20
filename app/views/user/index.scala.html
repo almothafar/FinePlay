@@ -134,6 +134,7 @@
 							Map("name"->"Play Framework", "icon"->"ii ii-play", "link"->"https://www.playframework.com", "info"->"The High Velocity Web Framework"),
 							Map("name"->"play-mailer", "icon"->"far fa-envelope", "link"->"https://github.com/playframework/play-mailer", "info"->""),
 							Map("name"->"MapStruct", "icon"->"fas fa-cubes", "link"->"http://mapstruct.org", "info"->""),
+							Map("name"->"core-js", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/zloirock/core-js", "info"->""),
 							Map("name"->"jQuery", "icon"->"fab fa-js", "link"->"http://jquery.com", "info"->""),
 							Map("name"->"Bootstrap", "icon"->"ii ii-bootstrap", "link"->"http://getbootstrap.com", "info"->"The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web."),
 							Map("name"->"Bootstrap Docs", "icon"->"fas fa-book", "link"->"http://getbootstrap.com", "info"->""),
@@ -219,7 +220,7 @@
 
 		<div class="container text-center">
 
-			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-secondary"))
+			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-grey-400"))
 		</div>
 
 		<div id="system_messages" class="d-none" data-messages='{

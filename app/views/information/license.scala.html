@@ -29,12 +29,13 @@
 	@body("information","license"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@information.breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.LICENSE), "icon"->"ii ii-fineplay", "selected"->"true"))
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.LICENSE), "icon"->"ii ii-fineplay", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"")){
 
-			<div class="jumbotron">
+			<div class="jumbotron ">
 
 				<div id="projectImage" class="img-thumbnail mb-3">
 				</div>
@@ -49,15 +50,84 @@
 				<blockquote class="blockquote text-right">
 				  <footer class="blockquote-footer"><cite title="Let's insourcing!">Let's insourcing!</cite></footer>
 				</blockquote>
-				<hr class="m-y-2">
-				<div>The software is licensed under the <a href="http://opensource.org/licenses/MIT" alt="MIT">MIT</a>.</div>
-				<div>Try to get from the link below.</div>
 
-				<p class="lead mt-3">
-					@components.linkbutton(Map("id"->"myGitHubLink", "type"->"primary", "icon"->"ii ii-fineplay", "iconType"->"warning", "text"->"fine✿play", "link"->"https://github.com/hiro20v/fineplay"))
+				<hr class="m-y-2">
+				<p class="lead">
+					The software is licensed under the <a href="http://opensource.org/licenses/MIT" alt="MIT">MIT</a>.<br>
+					Try to get from the link below.
 				</p>
 
+				@components.linkbutton(Map("id"->"myGitHubLink", "type"->"primary", "icon"->"ii ii-fineplay", "iconType"->"warning", "text"->"fine✿play", "link"->"https://github.com/hiro20v/fineplay"))
 			</div>
+
+			<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+				<h1 class="display-4">Pricing</h1>
+				<p class="lead">
+					This system has been created by the free, open source project  "fine✿play" in MIT License.
+					It is free, but donations are welcome.
+				</p>
+			</div>
+
+			@components.container(Map("id"->"")){
+
+				<div class="card-deck mb-3 text-center">
+
+					@components.card(Map("id"->"", "class"->"mb-4 shadow-sm")){
+						<div class="card-header">
+							<h4 class="my-0 font-weight-normal">Free</h4>
+						</div>
+						<div class="card-body">
+							<h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+							<ul class="list-unstyled mt-3 mb-4">
+								<li>Unlimited service</li>
+								<li>Unlimited developer</li>
+								<li>Amateur design</li>
+								<li>Fickle update</li>
+								<li>Fickle document</li>
+								<li>GitHub issues access</li>
+								<li>MIT license</li>
+							</ul>
+							@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "size"->"lg", "block"->"true", "text"->"Try it for free", "link"->"https://github.com/hiro20v/fineplay"))
+						</div>
+					}
+					@components.card(Map("id"->"", "class"->"mb-4 shadow-sm")){
+						<div class="card-header">
+							<h4 class="my-0 font-weight-normal">Pro</h4>
+						</div>
+						<div class="card-body">
+							<h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+							<ul class="list-unstyled mt-3 mb-4">
+								<li>Unlimited service</li>
+								<li>Unlimited developer</li>
+								<li>Amateur design</li>
+								<li>Fickle update</li>
+								<li>Fickle document</li>
+								<li>GitHub issues access</li>
+								<li>MIT license</li>
+							</ul>
+							@components.linkbutton(Map("id"->"", "type"->"primary", "size"->"lg", "block"->"true", "text"->"Get started", "link"->"https://github.com/hiro20v/fineplay"))
+						</div>
+					}
+					@components.card(Map("id"->"", "class"->"mb-4 shadow-sm")){
+						<div class="card-header">
+							<h4 class="my-0 font-weight-normal">Enterprise</h4>
+						</div>
+						<div class="card-body">
+							<h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+							<ul class="list-unstyled mt-3 mb-4">
+								<li>Unlimited service</li>
+								<li>Unlimited developer</li>
+								<li>Amateur design</li>
+								<li>Fickle update</li>
+								<li>Fickle document</li>
+								<li>GitHub issues access</li>
+								<li>MIT license</li>
+							</ul>
+							@components.linkbutton(Map("id"->"", "type"->"primary", "size"->"lg", "block"->"true", "text"->"Contact us", "link"->"https://github.com/hiro20v/fineplay"))
+						</div>
+					}
+				</div>
+			}
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{

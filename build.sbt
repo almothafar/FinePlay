@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.13-β5-SNAPSHOT"
+version := "2.6.13-β6-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -19,7 +19,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "javax.xml.bind" % "jaxb-api" % "2.3.0",
-//  "hiro20v" %% "fineplay-sub" % "2.6.13-β5-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.13-β6-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -41,9 +41,9 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
 //  "net.logstash.logback" % "logstash-logback-encoder" % "5.0",		// Apache 4.11
-  "org.hibernate" % "hibernate-core" % "5.2.12.Final",					// LGPL 5.2.10
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.2.12.Final",			//
-  "org.hibernate.validator" % "hibernate-validator" % "6.0.9.Final",	// Apache 6.0.8 // into play include
+  "org.hibernate" % "hibernate-core" % "5.3.0.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.0.Final",			//
+  "org.hibernate.validator" % "hibernate-validator" % "6.0.10.Final",	// Apache 6.0.10 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
   "javax.json" % "javax.json-api" % "1.1.2",
@@ -63,11 +63,12 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "quagga" % "0.11.6",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.9",								// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
-  "com.squareup" % "javapoet" % "1.11.0",								// Apache 1.9.0
+  "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0.CR1
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
+  "org.webjars.npm" % "core-js" % "2.5.6",								// MIT 2.5.6
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.1.1",							// MIT 4.0.0
 //  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
@@ -89,7 +90,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "datatables" % "1.10.16",						// MIT 1.10.16
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
-//  "org.webjars.bower" % "summernote" % "0.8.9",						// MIT 0.8.9
+  "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10
   "org.webjars.bower" % "handsontable" % "2.0.0",						// MIT 2.0.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.1.3",							// MIT 1.1.3
@@ -102,7 +103,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
-  "org.webjars.npm" % "bootstrap-colorpicker" % "2.5.2",				// Apache 2.5.1
+  "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.0-beta.1",			// MIT 3.0.0-beta.1
   "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
   "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426 +patch
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
@@ -118,7 +119,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.0.10",							// Icons — CC 5.0.8
+  "org.webjars" % "font-awesome" % "5.0.13",							// Icons — CC 5.0.8
 																		// Fonts — SIL OFL 5.0.8
 																		// Code — MIT 5.0.8
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
@@ -144,9 +145,9 @@ libraryDependencies ++= Seq(
   "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.1.Final",
   "org.jboss.marshalling" % "jboss-marshalling" % "2.0.5.Final",		// Apache 2.0.2.Final
   "org.jboss.logging" % "jboss-logging" % "3.3.2.Final",
-  "org.jberet" % "jberet-core" % "1.2.5.Final",							// Eclipse Public 1.2.5.Final
-  "org.jberet" % "jberet-support" % "1.2.0.Final",
-  "org.jberet" % "jberet-se" % "1.2.0.Final",
+  "org.jberet" % "jberet-core" % "1.3.0.Final",							// Eclipse Public 1.3.0.Final
+  "org.jberet" % "jberet-support" % "1.3.0.Final",
+  "org.jberet" % "jberet-se" % "1.3.0.Final",
   "org.wildfly.security" % "wildfly-security-manager" % "1.1.2.Final"	// ? 1.1.2.Final
 )
 

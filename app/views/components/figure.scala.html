@@ -29,6 +29,6 @@
 	@imageContent
 	<figcaption class="figure-caption @alignClass()">
 		@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))
-		@prop.getOrElse("text","")
+		@Html(prop.getOrElse("text",""))
 	</figcaption>
 </figure>

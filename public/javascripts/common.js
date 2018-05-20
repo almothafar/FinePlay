@@ -149,6 +149,95 @@ var fadeOutToFront = function(selector, func){
 	}
 }
 
+var tellAlert = function(type, text, wait){
+
+	var icon ='';
+	switch (type) {
+	case 'success':
+
+		icon = 'check';
+		break;
+	case 'info':
+
+		icon = 'info-circle';
+		break;
+	case 'warning':
+
+		icon = 'exclamation-triangle';
+		break;
+	case 'danger':
+
+		icon = 'ban';
+		break;
+	default:
+
+		break;
+	}
+	var html = '<div class="alert alert-' + type + ' alert-dismissible fade show " role="alert">' +
+					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
+					'<i class="fas fa-' + icon +'"></i>' +
+					'\t' + text +
+				'</div>';
+
+	tell(html, wait);
+}
+
+var tell = function(text, wait){
+
+	var isHtml = /<(".*?"|'.*?'|[^'"])*?>/.test(text);
+	var html;
+	if(isHtml){
+
+		html = text;
+	}else{
+
+		html = '<div class="alert alert-secondary alert-dismissible fade show " role="alert">' +
+					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
+					'<i class="fas fa-bullhorn"></i>' +
+					'\t' + text +
+				'</div>';
+	}
+
+	var element = $('<div class="mb-3">' + html + '</div>');
+	var elementId = new Date().getTime() + Math.floor( Math.random()*1000 );
+	element.attr('id', elementId);
+
+	var selector = '#'+element.attr('id');
+
+	if(0 == $('#system_alerts').length){
+
+		throw new Error("Not exist #system_alerts.");
+	}
+
+	$('#system_alerts').prepend(element);
+
+	$(selector).effect( 'bounce', {}, 500);
+
+	if(wait == null){
+		// null or undefined
+
+		wait = -1;
+	}
+
+	if(-1 == wait){
+
+		return;
+	}
+
+	var expire = function(){
+
+		$(selector).fadeOut( "default", function(){
+
+			$(selector).remove();
+		});
+	};
+
+	setTimeout(function(){
+
+		expire();
+	},wait);
+};
+
 var notifyAlert = function(type, text, wait){
 
 	var icon ='';
@@ -173,31 +262,42 @@ var notifyAlert = function(type, text, wait){
 
 		break;
 	}
-	var text = '<div class="alert alert-' + type + ' alert-dismissible fade show " role="alert">' +
+	var html = '<div class="alert alert-' + type + ' border-' + type + ' alert-dismissible fade show " role="alert">' +
 					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
 					'<i class="fas fa-' + icon +'"></i>' +
 					'\t' + text +
 				'</div>';
 
-	notify(text, wait);
+	notify(html, wait);
 }
 
 var notify = function(text, wait){
 
 	var isHtml = /<(".*?"|'.*?'|[^'"])*?>/.test(text);
-	var notification = $('<div class="m-3">' + text + '</div>');
-	var notificationId = new Date().getTime() + Math.floor( Math.random()*1000 );
-	notification.attr('id', notificationId).hide();
-	if(!isHtml){
+	var html;
+	if(isHtml){
 
-		notification.css({ backgroundColor:"WhiteSmoke", borderRadius:".25rem", padding:"0.7rem", fontSize:"0.9rem", border:"1px solid lightgray"});
-		notification.addClass("system_notification");
-	} else {
+		html = text;
+	}else{
 
-		notification.children().addClass("system_notification");
+		html = '<div class="alert alert-secondary border-secondary alert-dismissible fade show" role="alert">' +
+					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
+					'<i class="far fa-comment-alt"></i>' +
+					'\t' + text +
+				'</div>';
 	}
 
-	$('#system_notifications').prepend(notification);
+	var element = $('<div class="m-3">' + html + '</div>');
+	element.children().addClass('shadow');
+	var elementId = new Date().getTime() + Math.floor( Math.random()*1000 );
+	element.attr('id', elementId);
+
+	var selector = '#'+element.attr('id');
+
+	element.hide();
+	$('#system_notifications').prepend(element);
+
+	showFromRight(selector);
 
 	if(wait == null){
 		// null or undefined
@@ -205,13 +305,16 @@ var notify = function(text, wait){
 		wait = 7000;
 	}
 
-	showFromRight('#'+notificationId);
+	if(-1 == wait){
+
+		return;
+	}
 
 	var expire = function(){
 
-		hideToRight('#'+notificationId, function(){
+		hideToRight(selector, function(){
 
-			notification.remove();
+			$(selector).remove();
 		});
 	};
 

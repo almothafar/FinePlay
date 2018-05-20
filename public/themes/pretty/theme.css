@@ -115,6 +115,7 @@ body {
 
 h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline{
 	color: White !important;
+	font-weight: 400;
 	text-shadow: 0 1px #8563a7 !important;
 	padding: 10px 16px;
 	text-transform: uppercase;
@@ -143,6 +144,8 @@ h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline{
 		linear-gradient(white, white);
 	background-size: cover, cover, 5px 5px, cover;
 }
+
+
 
 hr.separator {
 	border: none;

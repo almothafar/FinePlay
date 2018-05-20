@@ -14,6 +14,7 @@
 .w-90 {width: 90% !important;}
 .w-100 {width: 100% !important;}
 
+.w-0p {width: 0px !important;}
 .w-2p {width: 2px !important;}
 .w-3p {width: 3px !important;}
 .w-4p {width: 4px !important;}
@@ -32,6 +33,7 @@
 .w-216p {width: 216px !important;}
 .w-288p {width: 288px !important;}
 
+.h-0p {height: 0px !important;}
 .h-2p {height: 2px !important;}
 .h-3p {height: 3px !important;}
 .h-4p {height: 4px !important;}
@@ -107,7 +109,7 @@
 .nf {
 	display: inline-block;
 	font: normal normal normal 14px / 1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	font-size: inherit;
+	font-size: 2.4ex;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -141,10 +143,11 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 .ef {
 	display: inline-block;
 	font: normal normal normal 14px / 1 "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Symbola";
-	font-size: inherit;
+	font-size: 2.4ex;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	vertical-align: -0.08em;
 }
 
 .ef-gear:before {
@@ -254,6 +257,24 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 
 	to {
 		transform: rotate(0deg)
+	}
+}
+
+/* Grow-width */
+
+.grow-width{
+	animation-duration: 7s;
+	animation-name: grow-width;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease;
+}
+
+@keyframes grow-width {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 100%;
 	}
 }
 

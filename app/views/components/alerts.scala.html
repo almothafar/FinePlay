@@ -1,0 +1,15 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])(content: Html)
+
+<div id="@prop.getOrElse("id", "system_alerts")" class="@Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
+
+	@content
+</div>

@@ -17,21 +17,31 @@
 
 		@libraries.standard.head()
 		@libraries.bootstrapslider.head()
-		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/notification.css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/alert.css")'>
 	}
 
 	@body("lab","notification"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.NOTIFICATION), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.ALERT), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@components.alerts(Map("id"->"system_alerts")){
+
+				@components.alert(Map("id"->"", "icon"->"far fa-comment", "text"->"<strong>Look!</strong> This is <a href=\"#\" class=\"alert-link\">initial alert</a>.", "type"->"light"))
+			}
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
 			<div class="row">
+
 				<div class="col-md-3">
 
-					@tasks(Map("id"->"", "task"->"notification"))
+					@tasks(Map("id"->"", "task"->"alert"))
 				</div>
 				<div class="mt-3 d-md-none">
 				</div>
@@ -55,7 +65,7 @@
 					<div class="mb-3">
 						<h2 class="headline">HTML</h2>
 						<textarea class="form-control" id="htmlText" rows="10">
-<div class="alert alert-rich border-secondary alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">
+<div class="alert alert-rich alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">
 	<div class="p-2"><img id="richAlertImg" src="@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/image.png")" class="rounded"></div>
 	<div class="p-2 align-self-stretch w-100">
 		<strong>Rich notification!</strong><br> <a href="@controllers.home.routes.Home.index()" class="alert-link">Link</a> The quick brown fox jumps over the lazy dog.
@@ -92,6 +102,6 @@
 
 		@libraries.standard.last()
 		@libraries.bootstrapslider.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/ui/notification.js")'></script>
+		<script src='@routes.Assets.versioned("javascripts/lab/ui/alert.js")'></script>
 	}
 }

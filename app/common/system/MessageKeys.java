@@ -273,6 +273,8 @@ public class MessageKeys {
 
   public static final String ESSENTIAL = "essential";
 
+  public static final String ETERNAL = "eternal";
+
   public static final String EXAMPLE = "example";
 
   public static final String FAILED = "failed";
@@ -512,6 +514,8 @@ public class MessageKeys {
   public static final String OPEN = "open";
 
   public static final String OPERATION = "operation";
+
+  public static final String OPTIONAL = "optional";
 
   public static final String ORDER = "order";
 

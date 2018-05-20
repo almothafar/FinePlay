@@ -113,6 +113,9 @@ body {
 
 /* Project style */
 
+h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline {
+	font-weight: 400;
+}
 h1.headline{
 	border-left: 7px solid #007bff;
 	padding-left: 6px;

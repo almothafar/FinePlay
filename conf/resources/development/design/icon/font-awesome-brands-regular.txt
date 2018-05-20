@@ -60,6 +60,18 @@ connectdevelop
 contao
 cpanel
 creative-commons
+creative-commons-by
+creative-commons-nc
+creative-commons-nc-eu
+creative-commons-nc-jp
+creative-commons-nd
+creative-commons-pd
+creative-commons-pd-alt
+creative-commons-remix
+creative-commons-sa
+creative-commons-sampling
+creative-commons-sampling-plus
+creative-commons-share
 css3
 css3-alt
 cuttlefish
@@ -82,6 +94,7 @@ dropbox
 drupal
 dyalog
 earlybirds
+ebay
 edge
 elementor
 ember
@@ -97,6 +110,7 @@ facebook-messenger
 facebook-square
 firefox
 first-order
+first-order-alt
 firstdraft
 flickr
 flipboard
@@ -104,6 +118,7 @@ fly
 font-awesome
 font-awesome-alt
 font-awesome-flag
+font-awesome-logo-full
 fonticons
 fonticons-fi
 fort-awesome
@@ -112,6 +127,9 @@ forumbee
 foursquare
 free-code-camp
 freebsd
+fulcrum
+galactic-republic
+galactic-senate
 get-pocket
 gg
 gg-circle
@@ -156,12 +174,14 @@ ioxhost
 itunes
 itunes-note
 java
+jedi-order
 jenkins
 joget
 joomla
 js
 js-square
 jsfiddle
+keybase
 keycdn
 kickstarter
 kickstarter-k
@@ -178,6 +198,8 @@ linode
 linux
 lyft
 magento
+mandalorian
+mastodon
 maxcdn
 medapps
 medium
@@ -199,6 +221,7 @@ ns8
 nutritionix
 odnoklassniki
 odnoklassniki-square
+old-republic
 opencart
 openid
 opera
@@ -212,6 +235,7 @@ paypal
 periscope
 phabricator
 phoenix-framework
+phoenix-squadron
 php
 pied-piper
 pied-piper-alt
@@ -227,6 +251,7 @@ python
 qq
 quinscape
 quora
+r-project
 ravelry
 react
 readme
@@ -238,6 +263,7 @@ reddit-square
 rendact
 renren
 replyd
+researchgate
 resolving
 rocketchat
 rockrms
@@ -252,6 +278,7 @@ servicestack
 shirtsinbulk
 simplybuilt
 sistrix
+sith
 skyatlas
 skype
 slack
@@ -278,10 +305,12 @@ stumbleupon
 stumbleupon-circle
 superpowers
 supple
+teamspeak
 telegram
 telegram-plane
 tencent-weibo
 themeisle
+trade-federation
 trello
 tripadvisor
 tumblr
@@ -315,6 +344,7 @@ whatsapp-square
 whmcs
 wikipedia-w
 windows
+wolf-pack-battalion
 wordpress
 wordpress-simple
 wpbeginner

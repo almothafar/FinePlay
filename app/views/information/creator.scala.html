@@ -29,7 +29,8 @@
 	@body("information","creator"){
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
-			@information.breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.CREATOR), "icon"->"fas fa-address-card", "selected"->"true"))
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.CREATOR), "icon"->"fas fa-address-card", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"")){

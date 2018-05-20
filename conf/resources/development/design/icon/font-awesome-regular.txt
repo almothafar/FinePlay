@@ -28,6 +28,7 @@ clone
 closed-captioning
 comment
 comment-alt
+comment-dots
 comments
 compass
 copy
@@ -37,6 +38,7 @@ dot-circle
 edit
 envelope
 envelope-open
+eye
 eye-slash
 file
 file-alt
@@ -52,6 +54,7 @@ file-word
 flag
 folder
 folder-open
+font-awesome-logo-full
 frown
 futbol
 gem

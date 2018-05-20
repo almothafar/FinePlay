@@ -23,3 +23,7 @@ table.dataTable {
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+div.dataTables_wrapper div.dataTables_length select {
+	width: 100px;
+}

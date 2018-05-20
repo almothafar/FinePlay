@@ -107,11 +107,7 @@
 
 						<div class="mb-3">
 							@components.progress(Map("id"->"progressingBar", "value"->"0", "max"->"100", "class"->"h-24p"))
-							<div class="form-inline">
-
-								<input class="form-control" type="number" value="50" id="progressRate" name="">
-								@components.button(Map("id"->"progressingButton", "outline"->"true", "text"->Messages(MessageKeys.START)))
-							</div>
+							<input type="range" class="custom-range" min="0" max="100" step="0.5" value="0" id="progressRate">
 						</div>
 					</div>
 				</div>

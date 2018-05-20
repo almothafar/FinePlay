@@ -57,7 +57,7 @@ Document
 
 [Bootstrap](http://getbootstrap.com/docs/4.1)
 
-[Font Awesome](https://fontawesome.com)
+[Font Awesome](https://fontawesome.com/how-to-use)
 
 This **template** is unofficial.
 
@@ -69,7 +69,7 @@ Notice
 Release History
 ---------------
 
-+ **2.6.13-β5** - 2018-05-04
++ **2.6.13-β6** - 2018-05-20
 + **2.6.3-α1** - 2017-08-14
    + First commit
 

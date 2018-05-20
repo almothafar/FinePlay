@@ -77,8 +77,8 @@
 			@if(isDev()){
 			<div class="mt-3">
 				<input type="text" class="form-control" id="searchServerErrorMessage" placeholder="@Messages(MessageKeys.ERROR)" value="@error.getLocalizedMessage()">
-				@components.button(Map("id"->"searchServerStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-stack-overflow", "text"->"Stack Overflow"))
-				@components.button(Map("id"->"searchServerStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-stack-overflow", "text"->"スタック・オーバーフロー"))
+				@components.button(Map("id"->"searchServerStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"Stack Overflow"))
+				@components.button(Map("id"->"searchServerStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"スタック・オーバーフロー"))
 				@components.button(Map("id"->"searchServerQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
 				@components.button(Map("id"->"searchServerTeratailButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"teratail"))
 			</div>

@@ -21,18 +21,9 @@ $(document).ready(function() {
 		normalizeFunction: 'polynomial',
 		onRegionClick: function(element, code, region) {
 			if (!touch_detect()) {
-				var message = 'You clicked "' + region +
-					'" which has the code: ' +
-					code.toUpperCase();
-				alert(message);
-			}
-		},
-		onRegionOver: function(element, code, region) {
-			if (touch_detect()) {
-				var message = 'You clicked "' + region +
-					'" which has the code: ' +
-					code.toUpperCase();
-				alert(message);
+				var message = 'You clicked "<strong>' + region + '</strong>" ' +
+				'which has the code: <strong>' + code.toUpperCase() + '<strong>';
+				notifyAlert('info', message, 3000);
 			}
 		}
 	});

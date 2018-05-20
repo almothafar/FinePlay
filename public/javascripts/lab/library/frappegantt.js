@@ -47,13 +47,13 @@ $(document).ready(function() {
 		},
 		custom_popup_html: function(task) {
 			const end_date = task._end.format('MMM D');
-			return `
-				<div class="details-container">
-					<h5>${task.name}</h5>
-					<p>Expected to finish by ${end_date}</p>
-					<p>${task.progress}% completed!</p>
-				</div>
-			`;
+  			return '' +
+				'<div class="details-container">' +
+					'<h5>' + task.name + '</h5>' +
+					'<p>Expected to finish by ' + end_date + '</p>' +
+					'<p>' + task.progress + '% completed!</p>' +
+				'</div>' +
+			'';
 		}
 	});
 	gantt.change_view_mode('Week');

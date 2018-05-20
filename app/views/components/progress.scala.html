@@ -5,12 +5,13 @@
 	val value = Integer.valueOf(valueString:String)
 	val max = Integer.valueOf(maxString:String)
 
-	if(value != 0 && max != 0){
+	var percent = ((value*100) / max) / 10 * 10;
+	if(0 == percent){
 
-		String.valueOf(((value*100) / max) / 10 * 10)
+		""
 	}else{
 
-		"0"
+		String.valueOf(percent)
 	}
 }
 

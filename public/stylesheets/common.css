@@ -350,10 +350,6 @@ body {
 	}
 }
 
-.system_notification:not(:empty) {
-	box-shadow: 0 0 24px -6px rgba(179, 179, 179, 0.52);
-}
-
 /* Surface */
 
 #system_surface {
