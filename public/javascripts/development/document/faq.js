@@ -7,7 +7,7 @@ var highlight = function(text, searchText){
 	if(result){
 		for(var i=0;i < result.length;i++){
 
-			highlighted = highlighted.replace(new RegExp(result[i]), '<mark class="px-0">' + result[i] + '</mark>');
+			highlighted = highlighted.replace(new RegExp(result[i]), '<mark class="px-0 matched">' + result[i] + '</mark>');
 		}
 	}
 	return highlighted;

@@ -42,8 +42,8 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
 //  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
 //  "net.logstash.logback" % "logstash-logback-encoder" % "5.0",		// Apache 4.11
-  "org.hibernate" % "hibernate-core" % "5.3.0.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.0.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.3.1.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.1.Final",			//
   "org.hibernate.validator" % "hibernate-validator" % "6.0.10.Final",	// Apache 6.0.10 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0

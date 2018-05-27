@@ -89,35 +89,6 @@ body {
 	border-top: #00346c solid 3px;
 }
 
-/* Breadcrumb custom style */
-
-.breadcrumb{
-
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-	content: ">"
-}
-
-
-/* Jumbotron custom style */
-
-.jumbotron{
-
-}
-
-/* Card custom style */
-
-.card{
-	background-color: rgb(255, 247, 236);
-}
-
-/* Modal custom style */
-
-.modal-dialog>.modal-content{
-	background-color: rgb(255, 247, 236);
-}
-
 /* Credit */
 #system_footer{
 	background: linear-gradient(rgba(255, 255, 255, 0), rgba(135, 18, 41, 0.79) 5%, rgba(130, 17, 39, 0.86) 10%);

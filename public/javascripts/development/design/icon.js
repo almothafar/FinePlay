@@ -1,14 +1,5 @@
 'use strict';
 
-$(window).on('load', function () {
-
-	var colors = ["#ff6666", "#ffcc66", "#66ff66", "#66ccff", "#6666ff", "#cc66ff", "#ff66ff"];
-	$('.icon_body').each(function(){
-
-		$(this).css('color', colors[0|Math.random() * colors.length]);
-	});
-});
-
 var faIconList = $('#fa>.icon_list');
 var faIconResultList = $('#fa>.icon_result_list');
 var miIconList = $('#materialicons>.icon_list');

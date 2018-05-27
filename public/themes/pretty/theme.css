@@ -12,7 +12,7 @@ body {
 
 
 
-::-moz-selection{
+::-moz-selection {
 	background: MistyRose;
 }
 ::selection {
@@ -88,35 +88,6 @@ body {
 .nav-tabs a.nav-link.active{
 	border-top: #ff6fcf solid 3px;
 }
-
-/* Breadcrumb custom style */
-
-.breadcrumb{
-	background-color: Cornsilk;
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-	color: rgb(255, 160, 76);
-	content: "❧"
-}
-
-/* Jumbotron custom style */
-
-.jumbotron{
-	background-color: Cornsilk;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Credit */
 #system_footer{

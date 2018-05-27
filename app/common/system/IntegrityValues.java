@@ -11,9 +11,9 @@ public class IntegrityValues {
 
   public static final String BOOTSTRAP_STYLE = "WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB";
 
-  public static final String BOOTSTRAP_STYLE_JAPAN = "y9cpQTq+kHdGqrZNRqEv0FfWtq3qGBH89pCXmUjWrWh9XMNDkCGd9ktOn2gV/Sot";
+  public static final String BOOTSTRAP_STYLE_JAPAN = "gMCUyN8KCncg/MbyWgTrwa60xYDxwDJAvpiTXdrJnhPOddQlxOlfMZsZs4o2TAxg";
 
-  public static final String BOOTSTRAP_STYLE_PRETTY = "f7OfdxFAxDMKGFCcQPL5jmfUpuDksra9YAuY0mTN+2xZlgkukow0fisNTLHNGHxb";
+  public static final String BOOTSTRAP_STYLE_PRETTY = "3REt251B84/m1gIt7Tbv5dhOhVaHh3rXtbsmJuAFq/bQ9sh62FSSPcM7hRTh1XSP";
 
   public static final String JQUERY_SCRIPT = "tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT";
 

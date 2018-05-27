@@ -57,19 +57,19 @@
 					@for(fontAwesomeIconName <- fontAwesomeSolidIconNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("fas fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
-						<div class="icon_caption">@fontAwesomeIconName</div>
+						<div class="icon_caption">@("fas fa-" + fontAwesomeIconName)</div>
 					</div>
 					}
 					@for(fontAwesomeIconName <- fontAwesomeRegularIconNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("far fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
-						<div class="icon_caption">@fontAwesomeIconName</div>
+						<div class="icon_caption">@("far fa-" + fontAwesomeIconName)</div>
 					</div>
 					}
 					@for(fontAwesomeIconName <- fontAwesomeBrandsRegularIconNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("fab fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
-						<div class="icon_caption">@fontAwesomeIconName</div>
+						<div class="icon_caption">@("fab fa-" + fontAwesomeIconName)</div>
 					</div>
 					}
 				</div>
@@ -85,7 +85,7 @@
 					@for(materialDesignIconName <- materialDesignIconNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("material-icons mi-" + materialDesignIconName + " fa-2x"), "class"->"icon_body"))
-						<div class="icon_caption">@materialDesignIconName</div>
+						<div class="icon_caption">@("material-icons mi-" + materialDesignIconName)</div>
 					</div>
 					}
 				</div>
@@ -101,7 +101,7 @@
 					@for(icoFontName <- icoFontNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("icofont icofont-" + icoFontName + " fa-2x"), "class"->"icon_body"))
-						<div class="icon_caption">@icoFontName</div>
+						<div class="icon_caption">@("icofont icofont-" + icoFontName)</div>
 					</div>
 					}
 				</div>
@@ -117,7 +117,7 @@
 					@for(emojiOneFontName <- emojiOneFontNames) {
 					<div class="icon_container mb-3 wordwrap">
 						@components.icon(Map("id"->"", "icon"->("emojione e1a-" + emojiOneFontName + " fa-2x"), "class"->"icon_body"))
-						<div class="icon_caption">@emojiOneFontName</div>
+						<div class="icon_caption">@("emojione e1a-" + emojiOneFontName)</div>
 					</div>
 					}
 				</div>
