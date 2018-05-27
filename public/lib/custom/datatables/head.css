@@ -21,7 +21,7 @@ table.dataTable {
 	width: 100%;
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
-	-ms-overflow-style: -ms-autohiding-scrollbar;
+	-ms-overflow-style: initial;
 }
 
 div.dataTables_wrapper div.dataTables_length select {

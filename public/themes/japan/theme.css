@@ -4,8 +4,8 @@
 
 body {
 	background-color: #fffceb !important;
-	background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.01) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.01) 75%, rgba(0, 0, 0, 0.01)),
-		linear-gradient(-45deg, rgba(0, 0, 0, 0.01) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.01) 75%, rgba(0, 0, 0, 0.01));
+	background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.02) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.02) 75%, rgba(0, 0, 0, 0.02)),
+		linear-gradient(-45deg, rgba(0, 0, 0, 0.02) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.02) 75%, rgba(0, 0, 0, 0.02));
 	background-size: 100px 100px
 }
 
@@ -104,6 +104,18 @@ body {
 
 .jumbotron{
 
+}
+
+/* Card custom style */
+
+.card{
+	background-color: rgb(255, 247, 236);
+}
+
+/* Modal custom style */
+
+.modal-dialog>.modal-content{
+	background-color: rgb(255, 247, 236);
 }
 
 /* Credit */

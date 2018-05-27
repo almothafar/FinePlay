@@ -184,7 +184,7 @@
 					<div class="mb-3 lab secret">
 						<h4 class="headline">IVD Stream</h4>
 						@components.button(Map("id"->"createIVDButton", "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.CREATE)))
-						@components.icon(Map("id"->"createIVDIcon", "icon"->("fas fa-spinner fa-spin"), "class"->"d-none"))
+						@components.icon(Map("id"->"createIVDIcon", "icon"->("fas fa-spinner fa-pulse"), "class"->"d-none"))
 						@components.linkbutton(Map("id"->"downloadIVDButton", "link"->controllers.lab.application.routes.Download.ivdPdfStream(-1).toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.DOWNLOAD), "class"->"d-none"))
 					</div>
 

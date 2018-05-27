@@ -28,7 +28,7 @@ body {
 	z-index: 2;
 }
 
-.form-signin input[type="text"] {
+.form-signin input[name="userId"] {
 	margin-bottom: -1px;
 	border-top-left-radius: .32rem;
 	border-top-right-radius: .32rem;
@@ -36,12 +36,16 @@ body {
 	border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-signin input[name="password"] {
 	margin-bottom: 10px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: .32rem;
 	border-bottom-left-radius: .32rem;
+}
+
+.form-signin input[name="storeAccount"] + label::before {
+	border: 1px solid #007bff !important;
 }
 
 .form-signin .forget-password {

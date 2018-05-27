@@ -86,7 +86,7 @@
 			</div>
 		</li>
 
-		<li class="nav-item w-0"><a href="#" class="nav-link">@components.icon(Map("icon"->"fas fa-pencil-alt"))</a></li><!-- for IE -->
+		<li class="nav-item w-0"><a href="#" class="nav-link">@components.icon(Map("icon"->"fas fa-pencil-alt", "class"->"text-transparent"))</a></li><!-- for IE -->
 		@for(i <- 0 to elements.size - 1){
 		<li class="nav-item @tabSize(prop)">
 			<a href="@elements(i).getOrElse("link", "#")" class="nav-link @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))  @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true"))))">

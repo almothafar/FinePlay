@@ -1,3 +1,5 @@
+.text-transparent { color: transparent !important; }
+
 .text-red { color: #f44336 !important; }
 .text-red-50 { color: #ffebee !important; }
 .text-red-100 { color: #ffcdd2 !important; }

@@ -17,6 +17,19 @@
 	-moz-appearance: none;
 	appearance: none;
 }
+@media (max-width: 767.98px) {
+	.picker__select--month, .picker__select--year {
+		padding: .375rem 1.25rem .375rem .25rem;
+	}
+}
+
+.picker__select--month {
+	width: 28%
+}
+
+.picker__select--year {
+	width: 29.5%
+}
 .picker__select--month::-ms-expand, .picker__select--year::-ms-expand {
 	opacity: 0
 }

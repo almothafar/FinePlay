@@ -15,6 +15,7 @@ lazy val root = (project in file("."))
 //    .dependsOn(fineplaySub)
 
 // Another Repository
+resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
@@ -135,7 +136,7 @@ libraryDependencies ++= Seq(
   "net.sf.jasperreports" % "jasperreports-fonts" % "6.0.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1
-  "org.apache.xmlgraphics" % "batik-bridge" % "1.9.1"
+  "org.apache.xmlgraphics" % "batik-bridge" % "1.10"
 )
 
 // Batch library

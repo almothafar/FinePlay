@@ -51,7 +51,9 @@
 									</div>
 								</div>
 							</div>
-							<input type="submit" class="btn btn-outline-primary" value="@Messages(MessageKeys.UPLOAD)">
+							<p>
+								@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
+							</p>
 						}
 					</div>
 
@@ -75,7 +77,9 @@
 											</div>
 										</div>
 									</div>
-									<input type="submit" class="btn btn-outline-primary" value="@Messages(MessageKeys.UPLOAD)">
+									<p>
+										@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
+									</p>
 								}
 							</div>
 

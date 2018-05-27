@@ -85,6 +85,7 @@
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
+	width: 2.0ex;
 }
 
 .ii:before{
@@ -278,6 +279,13 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 	}
 }
 
+/* Touch action */
+
+.touch-none {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+
 /* Draft */
 
 .draft span {
@@ -289,12 +297,4 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 
 .secret {
 	display: none !important;
-}
-
-/* provisional coped for Bug? of Mobile Safari */
-
-.modal-open #system_work-menu,
-.modal-open #system_content,
-.modal-open #system_help-main{
-	overflow: initial;
 }

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/* provisional coped for Edge scroll of Bootstrap 4.1.1 */
+
+.table-responsive {
+	-ms-overflow-style: initial;
+}
+
+/* provisional coped for Bug? of Mobile Safari */
+
+.modal-open #system_work-menu,
+.modal-open #system_content,
+.modal-open #system_help-main{
+	overflow: initial;
+}

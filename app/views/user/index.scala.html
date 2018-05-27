@@ -80,10 +80,9 @@
 
 							<div class="row justify-content-between">
 
-								<div class="checkbox">
-									<label>
-										<input id="@User.STOREACCOUNT" type="checkbox" name="@User.STOREACCOUNT" class="form-control d-inline-block" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).getValue.orElse(""))))> @Messages(MessageKeys.USER_STORE__ACCOUNT)
-									</label>
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" name="@User.STOREACCOUNT" id="@User.STOREACCOUNT" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).getValue.orElse(""))))>
+									<label class="custom-control-label" for="@User.STOREACCOUNT">@Messages(MessageKeys.USER_STORE__ACCOUNT)</label>
 								</div>
 								@components.button(Map("id"->"signInButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sign-in-alt", "text"->Messages(MessageKeys.USER_SIGNIN), "default"->"true", "class"->"float-right"))
 							</div>

@@ -1,7 +1,7 @@
 'use strict';
 
-$(".removeButtonColumn").css("width", "46px").hide();
-$(".sortHandleColumn").css("width", "46px").hide();
+$(".removeButtonColumn").css("width", "46px").addClass('d-none');
+$(".sortHandleColumn").css("width", "46px").addClass('d-none touch-none');
 
 $(function() {
 
@@ -25,8 +25,8 @@ $(function() {
 
 $("#editButton").on('click', function(e) {
 
-	$(".removeButtonColumn").toggle();
-	$(".sortHandleColumn").toggle();
+	$(".removeButtonColumn").toggleClass('d-none');
+	$(".sortHandleColumn").toggleClass('d-none');
 
 	var isStartEdit = $("#editButton").attr('aria-pressed') == 'false';
 	if(isStartEdit){

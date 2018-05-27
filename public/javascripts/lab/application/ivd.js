@@ -140,7 +140,7 @@ $('input[name=searchType]').on('change', function () {
 });
 
 var keyupEvents = [];
-$('input[name=searchText]').on('keyup', function () {
+$('input[name=searchText]').on('change keyup', function () {
 
 	keyupEvents.push('keyup');
 

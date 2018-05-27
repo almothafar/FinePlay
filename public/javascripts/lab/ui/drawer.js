@@ -6,21 +6,26 @@ $(document).ready(function () {
 	var surface = $('#drawer').parent();
 	var surfaceId = surface.attr('id');
 
-	surface.addClass('bg-secondary d-none rounded').css({
+	surface.addClass('d-none').css({
 		"width": '260px',
 		"height": '80%',
 		"top": '10%',
 		"right": 0,
-		"bottom": '10%'
+		"bottom": '10%',
+		"overflow": 'hidden'
 	});
 
 	$("#drawerCloseButton").on('click', function(event) {
 
-		hideToRight('#' + surfaceId);
+		hideToRight('#drawer', function(){
+
+			$('#' + surfaceId).addClass('d-none');
+		});
 	});
 
 	$("#drawerButton").on('click', function(event) {
 
-		showFromRight('#' + surfaceId);
+		$('#' + surfaceId).removeClass('d-none');
+		showFromRight('#drawer');
 	});
 });
