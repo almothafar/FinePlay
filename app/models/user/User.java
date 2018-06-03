@@ -63,7 +63,9 @@ import play.mvc.Controller;
 
 @Validate
 @Entity
-@Table(name = "USERS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "USERID" }) }, indexes = { @Index(columnList = "USERID") })
+@Table(name = "USERS", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { User_.ID, User_.USER_ID }) }, //
+		indexes = { @Index(columnList = User_.USER_ID) })
 public class User implements ExpireHandler, PasswordHandler, Validatable<List<ValidationError>> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -108,7 +110,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	@CollectionTable(name = "USER_ROLES", uniqueConstraints = { @UniqueConstraint(columnNames = { "USER_ID", "ROLE" }) }, joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"))
 	@Column(name = "ROLE", nullable = false)
 	// JSR
-	@Size(min = 1, max = ROLE_COUNT_MAX, message = "constraints.Size")
+	@Size(min = 1, max = ROLE_COUNT_MAX, message = MessageKeys.JAVA_ERROR_SIZE)
 	private Set<Role> roles = EnumSet.noneOf(Role.class);
 
 	@Column(nullable = false)
@@ -153,18 +155,18 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	@Transient
 	private Role role4;
 
-	private static final String ID = "id";
-	public static final String USERID = "userId";
+	public static final String ID = User_.ID;
+	public static final String USER_ID = User_.USER_ID;
 	public static final String PASSWORD = "password";
 	private static final String ROLE = "role";
-	public static final String ROLES = "roles";
-	public static final String THEME = "theme";
-	public static final String LOCALE = "locale";
-	public static final String ZONEID = "zoneId";
-	public static final String EXPIREDATETIME = "expireDateTime";
-	public static final String SIGNINDATETIME = "signInDateTime";
-	public static final String SIGNOUTDATETIME = "signOutDateTime";
-	public static final String UPDATEDATETIME = "updateDateTime";
+	public static final String ROLES = User_.ROLES;
+	public static final String THEME = User_.THEME;
+	public static final String LOCALE = User_.LOCALE;
+	public static final String ZONE_ID = User_.ZONE_ID;
+	public static final String EXPIRE_DATE_TIME = User_.EXPIRE_DATE_TIME;
+	public static final String SIGN_IN_DATE_TIME = User_.SIGN_IN_DATE_TIME;
+	public static final String SIGN_OUT_DATE_TIME = User_.SIGN_OUT_DATE_TIME;
+	public static final String UPDATE_DATE_TIME = User_.UPDATE_DATE_TIME;
 
 	public static final String NEWUSERID = "newUserId";
 	public static final String REPASSWORD = "rePassword";
@@ -180,11 +182,11 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	public static final String SHORTZONEID = "shortZoneId";
 
 	private static final String[] HEADERS = { //
-			USERID, //
-			EXPIREDATETIME, //
-			SIGNINDATETIME, //
-			SIGNOUTDATETIME, //
-			UPDATEDATETIME, //
+			User_.USER_ID, //
+			User_.EXPIRE_DATE_TIME, //
+			User_.SIGN_IN_DATE_TIME, //
+			User_.SIGN_OUT_DATE_TIME, //
+			User_.UPDATE_DATE_TIME, //
 			ROLE + "0", //
 			ROLE + "1", //
 			ROLE + "2", //
@@ -221,7 +223,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	public static boolean hasAnyRole(@Nonnull final Role... roles) {
 
 		final Set<Role> requestRoles = EnumSet.copyOf(Arrays.asList(roles));
-		final String roleValues = Controller.ctx().session().get(ROLES);
+		final String roleValues = Controller.ctx().session().get(User_.ROLES);
 		final Set<Role> userRoles = Sessions.toRoles(roleValues);
 		return userRoles.stream().anyMatch(role -> requestRoles.contains(role));
 	}

@@ -19,7 +19,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-  "javax.xml.bind" % "jaxb-api" % "2.3.0",
+//  "javax.xml.bind" % "jaxb-api" % "2.3.0",
 //  "hiro20v" %% "fineplay-sub" % "2.6.13-β6-SNAPSHOT",
   javaJdbc,
   ehcache,
@@ -60,7 +60,7 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi-ooxml" % "3.17",
   "org.apache.tika" % "tika-core" % "1.18",								// Apache 1.17
   "org.apache.tika" % "tika-parsers" % "1.18",
-  "com.google.zxing" % "javase" % "3.3.2",								// Apache 3.3.0
+  "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.11.6",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.9",								// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
@@ -84,7 +84,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2 +patch
-  "org.webjars.bower" % "moment" % "2.22.1",							// MIT 2.22.0
+  "org.webjars.bower" % "moment" % "2.22.2",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
@@ -100,7 +100,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
-  "org.webjars.npm" % "marked" % "0.3.19",								// MIT 0.3.19
+  "org.webjars.npm" % "marked" % "0.4.0",								// MIT 0.4.0
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
@@ -132,7 +132,7 @@ libraryDependencies ++= Seq(
 
 // JasperReports library
 libraryDependencies ++= Seq(
-  "net.sf.jasperreports" % "jasperreports" % "6.5.1",					// LGPL 6.4.3
+  "net.sf.jasperreports" % "jasperreports" % "6.6.0",					// LGPL 6.6.0
   "net.sf.jasperreports" % "jasperreports-fonts" % "6.0.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1

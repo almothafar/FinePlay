@@ -54,7 +54,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 	@Override
 	protected CompletionStage<Result> onNotFound(RequestHeader request, String message) {
 
-		final String userId = Controller.session(models.user.User.USERID);
+		final String userId = Controller.session(models.user.User_.USER_ID);
 		if (userId == null) {
 
 			return CompletableFuture.completedFuture(Results.redirect(controllers.user.routes.User.index()));
@@ -94,7 +94,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 	@Override
 	protected CompletionStage<Result> onProdServerError(RequestHeader request, UsefulException exception) {
 
-		final String userId = Controller.session(models.user.User.USERID);
+		final String userId = Controller.session(models.user.User_.USER_ID);
 		if (userId == null) {
 
 			return super.onProdServerError(request, exception);

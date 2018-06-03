@@ -10,10 +10,8 @@ import java.util.Map.Entry;
 import java.util.Objects;
 
 import javax.inject.Inject;
-import javax.persistence.CollectionTable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
@@ -37,14 +36,15 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import common.system.MessageKeys;
-import models.base.LocaleConverter;
 import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
 import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 
 @Entity
-@Table(name = "ORGANIZATION_UNITS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "ORGANIZATION_ID" }) }, indexes = { @Index(columnList = "ID"), @Index(columnList = "ORGANIZATION_ID") })
+@Table(name = "ORGANIZATION_UNITS", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { OrganizationUnit_.ID, "ORGANIZATION_ID" }) }, //
+		indexes = { @Index(columnList = OrganizationUnit_.ID), @Index(columnList = "ORGANIZATION_ID") })
 public class OrganizationUnit {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -61,14 +61,11 @@ public class OrganizationUnit {
 	// Play
 	private long id;
 
-	@ElementCollection
-	@MapKeyColumn(name = "LOCALE", nullable = false)
-	@Convert(attributeName = "key", converter = LocaleConverter.class)
-	@Column(name = "NAME", nullable = false)
-	@CollectionTable(name = "ORGANIZATION_UNIT_NAMES", uniqueConstraints = { @UniqueConstraint(columnNames = { "ORGANIZATION_UNIT_ID", "LOCALE" }) }, joinColumns = @JoinColumn(nullable = false, name = "ORGANIZATION_UNIT_ID", referencedColumnName = "ID"))
-	// JSR
-	@Size(min = 1, message = "constraints.Size")
-	private Map<Locale, String> names;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@PrimaryKeyJoinColumn(name = OrganizationUnitName_.ORGANIZATION_UNIT__ID)
+	@MapKeyColumn(name = OrganizationUnitName_.LOCALE)
+	@Size(min = 1, message = MessageKeys.JAVA_ERROR_SIZE)
+	private Map<Locale, OrganizationUnitName> names;
 
 	@OneToMany(fetch = FetchType.LAZY/* , cascade = CascadeType.ALL */, mappedBy = "parent")
 	@OrderColumn(name = "sortOrder")
@@ -99,10 +96,10 @@ public class OrganizationUnit {
 	private String nameJaJp;
 
 	public static final String ORGANIZATION_ID = "organizationId";
-	public static final String ID = "id";
+	public static final String ID = OrganizationUnit_.ID;
 	public static final String NAME = "name";
-	public static final String NAMES = "names";
-	public static final String UPDATEDATETIME = "updateDateTime";
+	public static final String NAMES = OrganizationUnit_.NAMES;
+	public static final String UPDATE_DATE_TIME = OrganizationUnit_.UPDATE_DATE_TIME;
 
 	public static final String COMPANYID = "companyId";
 	public static final String ORGANIZATIONID = "organizationId";
@@ -115,8 +112,8 @@ public class OrganizationUnit {
 
 	private static final String[] HEADERS = { //
 			ORGANIZATION_ID, //
-			ID, //
-			UPDATEDATETIME, //
+			OrganizationUnit_.ID, //
+			OrganizationUnit_.UPDATE_DATE_TIME, //
 			NAME, //
 			NAME + "JaJp" //
 	};
@@ -157,10 +154,10 @@ public class OrganizationUnit {
 		setOrganizationId(getOrganization().getId());
 
 		int i = 0;
-		for (final Entry<Locale, String> localeToName : getNames().entrySet()) {
+		for (final Entry<Locale, OrganizationUnitName> localeToName : getNames().entrySet()) {
 
 			final Locale locale = localeToName.getKey();
-			final String name = localeToName.getValue();
+			final String name = localeToName.getValue().getName();
 			if (Locale.US == locale) {
 
 				setName(name);
@@ -178,11 +175,11 @@ public class OrganizationUnit {
 
 	public void afterRead() {
 
-		final Map<Locale, String> names = new HashMap<>();
-		names.put(Locale.US, getName());
+		final Map<Locale, OrganizationUnitName> names = new HashMap<>();
+		names.put(Locale.US, new OrganizationUnitName(this.getId(), Locale.US, getName()));
 		if (Objects.nonNull(getNameJaJp())) {
 
-			names.put(Locale.JAPAN, getNameJaJp());
+			names.put(Locale.JAPAN, new OrganizationUnitName(this.getId(), Locale.JAPAN, getNameJaJp()));
 		}
 
 		if (!(1 <= names.size())) {
@@ -203,12 +200,12 @@ public class OrganizationUnit {
 		this.id = id;
 	}
 
-	public Map<Locale, String> getNames() {
+	public Map<Locale, OrganizationUnitName> getNames() {
 
 		return names;
 	}
 
-	public void setNames(Map<Locale, String> names) {
+	public void setNames(Map<Locale, OrganizationUnitName> names) {
 
 		this.names = names;
 	}

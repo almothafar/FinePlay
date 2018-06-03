@@ -80,7 +80,7 @@ public class Read extends Controller {
 	private String readCompanyName(final EntityManager manager, final long companyId) {
 
 		final Company company = manager.find(Company.class, companyId);
-		final String companyName = company.getNames().getOrDefault(lang().toLocale(), company.getNames().get(Locale.US));
+		final String companyName = company.getNames().getOrDefault(lang().toLocale(), company.getNames().get(Locale.US)).getName();
 
 		return companyName;
 	}
@@ -151,7 +151,7 @@ public class Read extends Controller {
 
 			final ObjectNode objectNode = mapper.createObjectNode();
 			objectNode.put("id", unit.getId());
-			objectNode.put("name", unit.getNames().getOrDefault(lang().toLocale(), unit.getNames().get(Locale.US)));
+			objectNode.put("name", unit.getNames().getOrDefault(lang().toLocale(), unit.getNames().get(Locale.US)).getName());
 			arrayNode.add(objectNode);
 
 			final List<OrganizationUnit> children = unit.getChildren();

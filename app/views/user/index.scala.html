@@ -64,9 +64,9 @@
 						@if(form.hasGlobalErrors) {
 							<p class="text-danger">@form.getGlobalError.get.message</p>
 						}
-						<label for="@User.USERID" class="sr-only">User ID</label>
-						<input id="@User.USERID" type="email" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change" data-parsley-userid="">
-						@for(error <- form(User.USERID).errors) {
+						<label for="@User.USER_ID" class="sr-only">User ID</label>
+						<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).getValue.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change" data-parsley-userid="">
+						@for(error <- form(User.USER_ID).errors) {
 							<div class="text-danger">@Messages(error.message)</div>
 						}
 						<label for="@User.PASSWORD" class="sr-only">Password</label>

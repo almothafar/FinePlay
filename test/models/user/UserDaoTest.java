@@ -508,10 +508,10 @@ public class UserDaoTest extends WithApplication {
 
 		final RequestBuilder builder = new RequestBuilder();
 		builder.header("User-Agent", "mocked user-agent");
-		builder.session(User.USERID, "mockUser");
+		builder.session(User.USER_ID, "mockUser");
 		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[] { Role.ADMIN })));
 		builder.session(models.user.User.THEME, Theme.DEFAULT.name());
-		builder.session(User.ZONEID, ZoneId.of("UTC").getId());
+		builder.session(User.ZONE_ID, ZoneId.of("UTC").getId());
 		builder.cookie(Cookie.builder(models.user.User.THEME, Theme.DEFAULT.name()).build());
 
 		final Http.Context mockContext = Helpers.httpContext(builder.build());

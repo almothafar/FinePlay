@@ -155,7 +155,7 @@ public class Read extends Controller {
 				predicates.add(builder.lessThanOrEqualTo(root.get(User_.expireDateTime), expireTo));
 			}
 
-			final SetJoin<models.user.User, Role> rolesJoin = root.joinSet(models.user.User.ROLES);
+			final SetJoin<models.user.User, Role> rolesJoin = root.joinSet(models.user.User_.ROLES);
 			predicates.add(rolesJoin.in(roles));
 
 			query.where(predicates.toArray(new Predicate[0])).distinct(true);

@@ -25,6 +25,7 @@ import models.system.System;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
+import models.user.User_;
 import models.user.User.Role;
 import play.db.jpa.Transactional;
 import play.http.DefaultActionCreator;
@@ -55,13 +56,13 @@ public class ActionCreator extends DefaultActionCreator {
 			@Override
 			public CompletionStage<Result> call(Context ctx) {
 
-				MDC.put(User.USERID, ctx.session().get(User.USERID));
+				MDC.put(User_.USER_ID, ctx.session().get(User_.USER_ID));
 
 				LOGGER.info(createArgsMessage(ctx.args));
 				LOGGER.info(createRequestHeadersMessage(ctx.request().getHeaders()));
 				LOGGER.info(createSessionMessage(ctx.session()));
 
-				final String rolesValue = ctx.session().get(User.ROLES);
+				final String rolesValue = ctx.session().get(User_.ROLES);
 				final boolean isSignIn = rolesValue != null && !rolesValue.isEmpty();
 				final CompletionStage<Result> stage;
 				if (!isSignIn) {
@@ -74,7 +75,7 @@ public class ActionCreator extends DefaultActionCreator {
 				}
 
 				LOGGER.info("========================================================");
-				MDC.remove(User.USERID);
+				MDC.remove(User_.USER_ID);
 				return stage;
 			}
 

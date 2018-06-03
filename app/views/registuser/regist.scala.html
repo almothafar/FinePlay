@@ -43,11 +43,11 @@
 									<p class="text-danger">@form.getGlobalError.get.message</p>
 								}
 								<div class="form-group row">
-									<label for="@User.USERID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_USERID)</label>
+									<label for="@User.USER_ID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_USERID)</label>
 									<div class="col-sm-9">
-										<input id="@User.USERID" type="email" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" required autofocus>
+										<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).getValue.orElse("")" required autofocus>
 										<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
-										@for(error <- form(User.USERID).errors) {
+										@for(error <- form(User.USER_ID).errors) {
 											<div class="text-danger">@Messages(error.message)</div>
 										}
 									</div>

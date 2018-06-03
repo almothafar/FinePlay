@@ -5,14 +5,12 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Map.Entry;
 
 import javax.inject.Inject;
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +19,9 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
@@ -35,7 +35,6 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import common.system.MessageKeys;
-import models.base.LocaleConverter;
 import models.company.organization.Organization;
 import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
 import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
@@ -43,7 +42,9 @@ import play.i18n.MessagesApi;
 import play.mvc.Controller;
 
 @Entity
-@Table(name = "COMPANIES", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) }, indexes = { @Index(columnList = "ID") })
+@Table(name = "COMPANIES", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { Company_.ID }) }, //
+		indexes = { @Index(columnList = Company_.ID) })
 public class Company {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -60,14 +61,11 @@ public class Company {
 	// Play
 	private long id;
 
-	@ElementCollection
-	@MapKeyColumn(name = "LOCALE", nullable = false)
-	@Convert(attributeName = "key", converter = LocaleConverter.class)
-	@Column(name = "NAME", nullable = false)
-	@CollectionTable(name = "COMPANY_NAMES", uniqueConstraints = { @UniqueConstraint(columnNames = { "COMPANY_ID", "LOCALE" }) }, joinColumns = @JoinColumn(nullable = false, name = "COMPANY_ID", referencedColumnName = "ID"))
-	// JSR
-	@Size(min = 1, message = "constraints.Size")
-	private Map<Locale, String> names;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@PrimaryKeyJoinColumn(name = CompanyName_.COMPANY__ID)
+	@MapKeyColumn(name = CompanyName_.LOCALE)
+	@Size(min = 1, message = MessageKeys.JAVA_ERROR_SIZE)
+	private Map<Locale, CompanyName> names;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "company")
 	@JoinColumns(value = { @JoinColumn(nullable = true, unique = true) })
@@ -83,12 +81,12 @@ public class Company {
 	@Transient
 	private String nameJaJp;
 
-	public static final String ID = "id";
+	public static final String ID = Company_.ID;
 	public static final String CODE = "code";
 	public static final String CODES = "codes";
 	public static final String NAME = "name";
-	public static final String NAMES = "names";
-	public static final String UPDATEDATETIME = "updateDateTime";
+	public static final String NAMES = Company_.NAMES;
+	public static final String UPDATE_DATE_TIME = Company_.UPDATE_DATE_TIME;
 
 	public static final String MAXRESULT = "maxResult";
 	public static final String LOCALNAME = "localName";
@@ -96,8 +94,8 @@ public class Company {
 	public static final String OPERATION = "operation";
 
 	private static final String[] HEADERS = { //
-			ID, //
-			UPDATEDATETIME, //
+			Company_.ID, //
+			Company_.UPDATE_DATE_TIME, //
 			NAME, //
 			NAME + "JaJp" //
 	};
@@ -134,10 +132,10 @@ public class Company {
 	public void beforeWrite() {
 
 		int i = 0;
-		for (final Entry<Locale, String> localeToName : getNames().entrySet()) {
+		for (final Entry<Locale, CompanyName> localeToName : getNames().entrySet()) {
 
 			final Locale locale = localeToName.getKey();
-			final String name = localeToName.getValue();
+			final String name = localeToName.getValue().getName();
 			if (Locale.US == locale) {
 
 				setName(name);
@@ -155,9 +153,12 @@ public class Company {
 
 	public void afterRead() {
 
-		final Map<Locale, String> names = new HashMap<>();
-		names.put(Locale.US, getName());
-		names.put(Locale.JAPAN, getNameJaJp());
+		final Map<Locale, CompanyName> names = new HashMap<>();
+		names.put(Locale.US, new CompanyName(this.getId(), Locale.US, getName()));
+		if (Objects.nonNull(getNameJaJp())) {
+
+			names.put(Locale.JAPAN, new CompanyName(this.getId(), Locale.JAPAN, getNameJaJp()));
+		}
 
 		if (!(1 <= names.size())) {
 
@@ -177,12 +178,12 @@ public class Company {
 		this.id = id;
 	}
 
-	public Map<Locale, String> getNames() {
+	public Map<Locale, CompanyName> getNames() {
 
 		return names;
 	}
 
-	public void setNames(Map<Locale, String> names) {
+	public void setNames(Map<Locale, CompanyName> names) {
 
 		this.names = names;
 	}

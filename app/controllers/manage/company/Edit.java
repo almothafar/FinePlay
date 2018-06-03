@@ -27,6 +27,7 @@ import common.utils.DateTimes;
 import models.base.EntityDao;
 import models.company.Company;
 import models.company.Company_;
+import models.company.CompanyName;
 import models.manage.company.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
@@ -80,18 +81,18 @@ public class Edit extends Controller {
 				try {
 
 					company = new Company();
-					final Map<Locale, String> names = new HashMap<>();
-					names.put(Locale.US, name);
+					companyDao.create(manager, company);
+
+					final Map<Locale, CompanyName> names = new HashMap<>();
+					names.put(Locale.US, new CompanyName(company.getId(), Locale.US, name));
 					if (!Locale.US.equals(lang().toLocale())) {
 
 						if (localName != null && !localName.isEmpty()) {
 
-							names.put(lang().toLocale(), localName);
+							names.put(lang().toLocale(), new CompanyName(company.getId(), lang().toLocale(), localName));
 						}
 					}
 					company.setNames(names);
-
-					companyDao.create(manager, company);
 				} catch (final Exception e) {
 
 					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(createFormContent);
@@ -157,13 +158,27 @@ public class Edit extends Controller {
 								e);
 					}
 
-					final Map<Locale, String> names = company.getNames();
-					names.put(Locale.US, name);
+					final Map<Locale, CompanyName> names = company.getNames();
+					final CompanyName companyName = names.get(Locale.US);
+					companyName.setName(name);
 					if (!Locale.US.equals(lang().toLocale())) {
 
 						if (localName != null && !localName.isEmpty()) {
 
-							names.put(lang().toLocale(), localName);
+							final CompanyName localCompanyName;
+							if(!names.containsKey(lang().toLocale())) {
+
+								localCompanyName = new CompanyName();
+								localCompanyName.setCompany_Id(company.getId());
+								localCompanyName.setLocale(lang().toLocale());
+								localCompanyName.setName(localName);
+								names.put(lang().toLocale(), localCompanyName);
+								manager.persist(localCompanyName);
+							}else {
+
+								localCompanyName = names.get(lang().toLocale());
+								localCompanyName.setName(localName);
+							}
 						} else {
 
 							names.remove(lang().toLocale());
@@ -235,7 +250,6 @@ public class Edit extends Controller {
 					}
 
 					companyDao.delete(manager, company);
-					manager.flush();
 				} catch (final Exception e) {
 
 					final Form<EditFormContent> failureDeleteForm = formFactory.form(EditFormContent.class).fill(deleteFormContent);

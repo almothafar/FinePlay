@@ -22,7 +22,8 @@ import models.user.PasswordHandler;
 import play.data.validation.Constraints;
 
 @Entity
-@Table(name = "REGIST_USERS", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
+@Table(name = "REGIST_USERS", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { RegistUser_.ID }) })
 public class RegistUser implements ExpireHandler, PasswordHandler {
 
 	private static final int CODE_SIZE_MAX = 64;

@@ -62,5 +62,25 @@ $('#okButton').on('click', function (e) {
 })
 
 $('#cp2').colorpicker({
-	color: '#0000ff'
+
+	customClass: 'colorpicker-2x',
+	color: '#0000ff',
+	sliders: {
+		saturation: {
+			callLeft: 'setSaturationRatio',//3.0.0-beta.1
+			callTop: 'setBrightnessRatio',//3.0.0-beta.1
+			maxLeft: 200,
+			maxTop: 200
+		},
+		hue: {
+			callLeft: false,//3.0.0-beta.1
+			callTop: 'setHueRatio',//3.0.0-beta.1
+			maxTop: 200
+		},
+		alpha: {
+			callLeft: false,//3.0.0-beta.1
+			callTop: 'setAlphaRatio',//3.0.0-beta.1
+			maxTop: 200
+		}
+	}
 });

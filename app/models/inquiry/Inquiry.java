@@ -20,7 +20,9 @@ import models.base.LocaleConverter;
 import play.data.validation.Constraints;
 
 @Entity
-@Table(name = "INQUIRIES", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) }, indexes = { @Index(columnList = "ID") })
+@Table(name = "INQUIRIES", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { Inquiry_.ID }) }, //
+		indexes = { @Index(columnList = Inquiry_.ID) })
 public class Inquiry {
 
 	public enum Type {

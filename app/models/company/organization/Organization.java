@@ -33,7 +33,9 @@ import models.company.Company;
 import play.i18n.MessagesApi;
 
 @Entity
-@Table(name = "ORGANIZATIONS", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID", "COMPANY_ID" }) }, indexes = { @Index(columnList = "ID"), @Index(columnList = "COMPANY_ID") })
+@Table(name = "ORGANIZATIONS", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { Organization_.ID, "COMPANY_ID" }) }, //
+		indexes = { @Index(columnList = Organization_.ID), @Index(columnList = "COMPANY_ID") })
 public class Organization {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -59,8 +61,8 @@ public class Organization {
 	@Column(nullable = false)
 	private LocalDateTime updateDateTime;
 
-	public static final String ID = "id";
-	public static final String UPDATEDATETIME = "updateDateTime";
+	public static final String ID = Organization_.ID;
+	public static final String UPDATE_DATE_TIME = Organization_.UPDATE_DATE_TIME;
 
 	public Map<Long, OrganizationUnit> getIdToUnitMap() {
 

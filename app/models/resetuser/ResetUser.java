@@ -16,7 +16,8 @@ import models.user.ExpireHandler;
 import play.data.validation.Constraints;
 
 @Entity
-@Table(name = "RESET_USERS", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
+@Table(name = "RESET_USERS", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { ResetUser_.ID }) })
 public class ResetUser implements ExpireHandler {
 
 	private static final int CODE_SIZE_MAX = 64;

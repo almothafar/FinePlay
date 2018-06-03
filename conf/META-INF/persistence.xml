@@ -15,8 +15,10 @@
 		<class>models.resetuser.ResetUser</class>
 		<class>models.setting.user.changeuser.ChangeUser</class>
 		<class>models.company.Company</class>
+		<class>models.company.CompanyName</class>
 		<class>models.company.organization.Organization</class>
 		<class>models.company.organization.OrganizationUnit</class>
+		<class>models.company.organization.OrganizationUnitName</class>
 		<class>models.inquiry.Inquiry</class>
 		<class>models.framework.datetime.DateTime</class>
 
@@ -54,8 +56,10 @@
 		<class>models.resetuser.ResetUser</class>
 		<class>models.setting.user.changeuser.ChangeUser</class>
 		<class>models.company.Company</class>
+		<class>models.company.CompanyName</class>
 		<class>models.company.organization.Organization</class>
 		<class>models.company.organization.OrganizationUnit</class>
+		<class>models.company.organization.OrganizationUnitName</class>
 		<class>models.inquiry.Inquiry</class>
 		<class>models.framework.datetime.DateTime</class>
 

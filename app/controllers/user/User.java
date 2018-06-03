@@ -114,12 +114,12 @@ public class User extends Controller {
 
 	public Result index() {
 
-		session(models.user.User.THEME, Theme.DEFAULT.name());
+		session(models.user.User_.THEME, Theme.DEFAULT.name());
 
 		final SignInFormContent signInFormContent = new SignInFormContent();
-		if (request().cookie(models.user.User.USERID) != null) {
+		if (request().cookie(models.user.User_.USER_ID) != null) {
 
-			final String userId = request().cookie(models.user.User.USERID).value();
+			final String userId = request().cookie(models.user.User_.USER_ID).value();
 			final String decodedUserId;
 			try {
 
@@ -192,23 +192,23 @@ public class User extends Controller {
 					throw new RuntimeException(e);
 				}
 
-				response().setCookie(Cookie.builder(models.user.User.USERID, encodedUserId).withMaxAge(TWO_WEEKS).build());
+				response().setCookie(Cookie.builder(models.user.User_.USER_ID, encodedUserId).withMaxAge(TWO_WEEKS).build());
 				response().setCookie(Cookie.builder(models.user.User.PASSWORD, encodedPassword).withMaxAge(TWO_WEEKS).build());
 			} else {
 
-				response().discardCookie(models.user.User.USERID);
+				response().discardCookie(models.user.User_.USER_ID);
 				response().discardCookie(models.user.User.PASSWORD);
 			}
 
-			session(models.user.User.THEME, user.getTheme().name());
+			session(models.user.User_.THEME, user.getTheme().name());
 
 			final Lang selectedLang = Locales.toLang(user.getLocale());
 			changeLang(selectedLang);
 
-			session(models.user.User.ZONEID, user.getZoneId().getId());
+			session(models.user.User_.ZONE_ID, user.getZoneId().getId());
 
-			session(models.user.User.USERID, userId);
-			session(models.user.User.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())));
+			session(models.user.User_.USER_ID, userId);
+			session(models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())));
 			session(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString());
 
 			String requestUrl = ctx().session().get(SessionKeys.REQUEST_URL);
@@ -249,7 +249,7 @@ public class User extends Controller {
 		final models.user.User user;
 		try {
 
-			user = userAuthenticator.signOut(lang(), session(models.user.User.USERID));
+			user = userAuthenticator.signOut(lang(), session(models.user.User_.USER_ID));
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -270,7 +270,7 @@ public class User extends Controller {
 
 				final PasswordFormContent passwordFormContent = passwordForm.get();
 
-				final String userId = session().get(models.user.User.USERID);
+				final String userId = session().get(models.user.User_.USER_ID);
 				final String password = passwordFormContent.getPassword();
 
 				final models.user.User user;

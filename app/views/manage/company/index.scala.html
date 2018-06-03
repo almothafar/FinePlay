@@ -35,8 +35,8 @@
 
 		val columnsList = List[scala.collection.immutable.Map[String, String]](
 			Map("text"->String.valueOf(company.getId())),
-			Map("text"->company.getNames().get(Locale.US)),
-			Map("text"->company.getNames().getOrDefault(lang.toLocale(), "")),
+			Map("text"->company.getNames().get(Locale.US).getName()),
+			Map("text"->(if(company.getNames().containsKey(lang.toLocale())){company.getNames().get(lang.toLocale()).getName()}else{""})),
 			Map("text"->datetime(company.getUpdateDateTime()).toString),
 			Map("text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fas fa-arrow-circle-right", "text"->"")).toString())
 		);

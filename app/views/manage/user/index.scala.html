@@ -39,7 +39,7 @@
 			Map("text"->user.getRoles().map(role=>Messages("user.role."+role.name().toLowerCase())).mkString(" / ")),
 			Map("text"->JSONs.toJSON(user.getRoles())),
 			Map("text"->(if(user.getCompany != null){user.getCompany.getId.toString}else{""})),
-			Map("text"->(if(user.getCompany != null){user.getCompany.getNames.getOrElse(lang.locale, user.getCompany.getNames.get(Locale.US))}else{""})),
+			Map("text"->(if(user.getCompany != null){user.getCompany.getNames.getOrElse(lang.locale, user.getCompany.getNames.get(Locale.US)).getName}else{""})),
 			Map("text"->datetimeFormat(datetime(user.getExpireDateTime))),
 			Map("text"->(if(user.getSignInDateTime != null){datetimeFormat(datetime(user.getSignInDateTime))}else{""})),
 			Map("text"->(if(user.getSignOutDateTime != null){datetimeFormat(datetime(user.getSignOutDateTime))}else{""})),

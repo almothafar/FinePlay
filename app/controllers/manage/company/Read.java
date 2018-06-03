@@ -5,13 +5,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.criteria.MapJoin;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -124,8 +122,8 @@ public class Read extends Controller {
 
 			if (Objects.nonNull(name) && !name.isEmpty()) {
 
-				final MapJoin<String, Locale, String> namesJoin = root.joinMap(Company.NAMES);
-				predicates.add(namesJoin.in(readNameList(manager, name)));
+				final Join<models.company.Company, models.company.CompanyName> namesJoin = root.join(models.company.Company_.names);
+				predicates.add(builder.like(namesJoin.get(models.company.CompanyName_.name), "%" + name + "%"));
 			}
 
 			query.where(predicates.toArray(new Predicate[0])).distinct(true);
@@ -133,17 +131,6 @@ public class Read extends Controller {
 
 			parameters.setFirstResult(startPosition).setMaxResults(maxResult);
 		});
-	}
-
-	private List<String> readNameList(final EntityManager manager, final String name) {
-
-		// Relation mapping is better.
-		final Query nativeQuery = manager.createNativeQuery("SELECT NAME FROM COMPANY_NAMES WHERE NAME LIKE ?");
-		nativeQuery.setParameter(1, "%" + name + "%");
-
-		@SuppressWarnings("unchecked")
-		final List<String> list = nativeQuery.getResultList();
-		return list;
 	}
 
 	private Result failureRead(final Form<ReadFormContent> searchForm) {

@@ -1,0 +1,9 @@
+target/
+logs/
+bin/
+generate/models/
+
+document/tabledef_prod/
+document/doxygen/
+project/project/
+project/target/

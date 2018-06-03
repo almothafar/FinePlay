@@ -22,7 +22,7 @@
 				<p class="text-danger">@form.getGlobalError.get.message</p>
 			}
 			<div class="row form-group">
-				<label for="@User.USERID" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>
+				<label for="@User.USER_ID" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>
 				<div class="col-sm-9">
 					<div class="input-group">
 						<div class="input-group-prepend">
@@ -30,8 +30,8 @@
 								<i class="far fa-envelope"></i>
 							</span>
 						</div>
-						<input id="@User.USERID" type="text" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" autofocus>
-						@for(error <- form(User.USERID).errors) {
+						<input id="@User.USER_ID" type="text" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).getValue.orElse("")" autofocus>
+						@for(error <- form(User.USER_ID).errors) {
 							<div class="text-danger">@Messages(error.message)</div>
 						}
 					</div>

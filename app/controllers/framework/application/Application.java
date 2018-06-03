@@ -70,6 +70,7 @@ import models.framework.application.Jsr380Bean;
 import models.framework.application.PlayBean;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
+import models.user.User_;
 import play.api.PlayException;
 import play.cache.AsyncCacheApi;
 import play.cache.SyncCacheApi;
@@ -521,7 +522,7 @@ public class Application extends Controller {
 		final OffsetDateTime serverOffsetTime = OffsetDateTime.of(serverTime, serverZoneId.getRules().getOffset(serverTime));
 		final ZonedDateTime serverZonedTime = ZonedDateTime.of(serverTime, serverZoneId);
 
-		final ZoneId clientZoneId = ZoneId.of(session(models.user.User.ZONEID));
+		final ZoneId clientZoneId = ZoneId.of(session(models.user.User_.ZONE_ID));
 		final ZonedDateTime clientZonedTime = serverZonedTime.withZoneSameInstant(clientZoneId);
 		final LocalDateTime clientTime = clientZonedTime.toLocalDateTime();
 		final OffsetDateTime clientOffsetTime = OffsetDateTime.of(clientTime, clientZoneId.getRules().getOffset(clientTime));
@@ -661,14 +662,14 @@ public class Application extends Controller {
 		final User user;
 		try {
 
-			user = userService.read(jpaApi.em(), session(User.USERID));
+			user = userService.read(jpaApi.em(), session(User_.USER_ID));
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
 		}
 
-		map.put(User.USERID, user.getUserId());
-		map.put(User.ROLES, user.getRoles());
+		map.put(User_.USER_ID, user.getUserId());
+		map.put(User_.ROLES, user.getRoles());
 		map.put("permissions", user.getPermissions());
 		map.put("expireTime(UTC)", user.getExpireDateTime().toString());
 		map.put("signInTime(UTC)", Objects.toString(user.getSignInDateTime(), ""));

@@ -97,7 +97,7 @@ public class Read extends Controller {
 	private String readCompanyName(final EntityManager manager, final long companyId) {
 
 		final Company company = manager.find(Company.class, companyId);
-		final String companyName = company.getNames().getOrDefault(lang().toLocale(), company.getNames().get(Locale.US));
+		final String companyName = company.getNames().getOrDefault(lang().toLocale(), company.getNames().get(Locale.US)).getName();
 
 		return companyName;
 	}
@@ -166,7 +166,7 @@ public class Read extends Controller {
 
 			if (Objects.nonNull(name) && !name.isEmpty()) {
 
-				return unit.getNames().values().stream().anyMatch(unitName -> unitName.contains(name));
+				return unit.getNames().values().stream().anyMatch(unitName -> unitName.getName().contains(name));
 			} else {
 
 				return true;

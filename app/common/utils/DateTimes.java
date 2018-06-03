@@ -64,6 +64,6 @@ public class DateTimes {
 	@Nonnull
 	private static ZoneId getClientZoneId() {
 
-		return ZoneId.of(Controller.session(models.user.User.ZONEID));
+		return ZoneId.of(Controller.session(models.user.User_.ZONE_ID));
 	}
 }

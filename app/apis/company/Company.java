@@ -2,14 +2,12 @@ package apis.company;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.criteria.MapJoin;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -69,8 +67,8 @@ public class Company extends Controller {
 
 			if (Objects.nonNull(name) && !name.isEmpty()) {
 
-				final MapJoin<String, Locale, String> namesJoin = root.joinMap(models.company.Company.NAMES);
-				predicates.add(namesJoin.in(readNameList(manager, name)));
+				final Join<models.company.Company, models.company.CompanyName> namesJoin = root.join(models.company.Company_.names);
+				predicates.add(builder.like(namesJoin.get(models.company.CompanyName_.name), "%" + name + "%"));
 			}
 
 			query.where(predicates.toArray(new Predicate[0])).distinct(true);
@@ -90,8 +88,8 @@ public class Company extends Controller {
 
 			if (Objects.nonNull(name) && !name.isEmpty()) {
 
-				final MapJoin<String, Locale, String> namesJoin = root.joinMap(models.company.Company.NAMES);
-				predicates.add(namesJoin.in(readNameList(manager, name)));
+				final Join<models.company.Company, models.company.CompanyName> namesJoin = root.join(models.company.Company_.names);
+				predicates.add(builder.like(namesJoin.get(models.company.CompanyName_.name), "%" + name + "%"));
 			}
 
 			query.where(predicates.toArray(new Predicate[0])).distinct(true);
@@ -99,16 +97,6 @@ public class Company extends Controller {
 
 			parameters.setFirstResult(pageStart).setMaxResults(pageSize);
 		});
-	}
-
-	private List<String> readNameList(@Nonnull final EntityManager manager, @Nonnull final String name) {
-
-		final Query nativeQuery = manager.createNativeQuery("SELECT NAME FROM COMPANY_NAMES WHERE NAME LIKE ?");
-		nativeQuery.setParameter(1, "%" + name + "%");
-
-		@SuppressWarnings("unchecked")
-		final List<String> list = nativeQuery.getResultList();
-		return list;
 	}
 
 	private Result createResult(final long totalCount, @Nonnull final List<models.company.Company> companies) {
@@ -128,7 +116,7 @@ public class Company extends Controller {
 			final ObjectNode namesNode = mapper.createObjectNode();
 			company.getNames().forEach((locale, name) -> {
 
-				namesNode.put(locale.toLanguageTag(), name);
+				namesNode.put(locale.toLanguageTag(), name.getName());
 			});
 			companyNode.set("names", namesNode);
 		});

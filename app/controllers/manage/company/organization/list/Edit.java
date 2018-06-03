@@ -30,6 +30,7 @@ import models.base.EntityDao;
 import models.company.Company;
 import models.company.organization.Organization;
 import models.company.organization.OrganizationUnit;
+import models.company.organization.OrganizationUnitName;
 import models.company.organization.OrganizationUnit_;
 import models.manage.company.organization.list.EditFormContent;
 import models.system.System.Permission;
@@ -122,13 +123,15 @@ public class Edit extends Controller {
 
 					organizationUnit = new OrganizationUnit();
 					organizationUnit.setOrganization(organization);
-					final Map<Locale, String> names = new HashMap<>();
-					names.put(Locale.US, name);
+					organizationUnitDao.create(manager, organizationUnit);
+
+					final Map<Locale, OrganizationUnitName> names = new HashMap<>();
+					names.put(Locale.US, new OrganizationUnitName(organizationUnit.getId(), Locale.US, name));
 					if (!Locale.US.equals(lang().toLocale())) {
 
 						if (localName != null && !localName.isEmpty()) {
 
-							names.put(lang().toLocale(), localName);
+							names.put(lang().toLocale(), new OrganizationUnitName(organizationUnit.getId(), lang().toLocale(), localName));
 						}
 					}
 					organizationUnit.setNames(names);
@@ -229,13 +232,27 @@ public class Edit extends Controller {
 								messages.get(lang(), MessageKeys.SYSTEM_ERROR_STATE_NOTCONSISTENT), e);
 					}
 
-					final Map<Locale, String> names = organizationUnit.getNames();
-					names.put(Locale.US, name);
+					final Map<Locale, OrganizationUnitName> names = organizationUnit.getNames();
+					final OrganizationUnitName organizationUnitName = names.get(Locale.US);
+					organizationUnitName.setName(name);
 					if (!Locale.US.equals(lang().toLocale())) {
 
 						if (localName != null && !localName.isEmpty()) {
 
-							names.put(lang().toLocale(), localName);
+							final OrganizationUnitName localOrganizationUnitName;
+							if(!names.containsKey(lang().toLocale())) {
+
+								localOrganizationUnitName = new OrganizationUnitName();
+								localOrganizationUnitName.setOrganizationUnit_Id(organizationUnit.getId());
+								localOrganizationUnitName.setLocale(lang().toLocale());
+								localOrganizationUnitName.setName(localName);
+								names.put(lang().toLocale(), localOrganizationUnitName);
+								manager.persist(localOrganizationUnitName);
+							}else {
+
+								localOrganizationUnitName = names.get(lang().toLocale());
+								localOrganizationUnitName.setName(localName);
+							}
 						} else {
 
 							names.remove(lang().toLocale());

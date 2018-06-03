@@ -16,6 +16,7 @@ import controllers.user.UserService;
 import models.framework.datetime.DateTimeFormContent;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
+import models.user.User_;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -59,7 +60,7 @@ public class DateTime extends Controller {
 		final User user;
 		try {
 
-			user = userService.read(manager, session(User.USERID));
+			user = userService.read(manager, session(User_.USER_ID));
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -142,7 +143,7 @@ public class DateTime extends Controller {
 		final User user;
 		try {
 
-			user = userService.read(manager, session(User.USERID));
+			user = userService.read(manager, session(User_.USER_ID));
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);

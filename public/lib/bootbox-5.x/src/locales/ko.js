@@ -1,6 +1,6 @@
 // bootbox.js locale configuration
-// locale : Albanian
-// author : Knut Hühne
+// locale : Korean
+// author : rigning
 
 (function (global, factory) {
     if (typeof define === 'function' && define.amd) {
@@ -11,9 +11,9 @@
         factory(global.bootbox);
     }
 }(this, function (bootbox) {
-    bootbox.addLocale('sq', {
-        OK : 'OK',
-        CANCEL : 'Anulo',
-        CONFIRM : 'Prano'
+    bootbox.addLocale('ko', {
+        OK: 'OK',
+        CANCEL: '취소',
+        CONFIRM: '확인'
     });
 }));

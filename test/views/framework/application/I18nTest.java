@@ -23,6 +23,7 @@ import common.utils.Sessions;
 import models.user.User;
 import models.user.User.Role;
 import models.user.User.Theme;
+import models.user.User;
 import play.Logger;
 import play.mvc.Http;
 import play.mvc.Http.Cookie;
@@ -47,9 +48,9 @@ public class I18nTest extends WithApplication {
 
 		final RequestBuilder builder = new RequestBuilder();
 		builder.header("User-Agent", "mocked user-agent");
-		builder.session(User.USERID, "mockUser");
+		builder.session(User.USER_ID, "mockUser");
 		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[]{Role.ADMIN})));
-		builder.session(models.user.User.ZONEID, "UTC");
+		builder.session(models.user.User.ZONE_ID, "UTC");
 		builder.session(models.user.User.THEME, Theme.DEFAULT.name());
 		builder.cookie(Cookie.builder(Helpers.stubMessagesApi().langCookieName(), Locales.toLang(locale).code()).build());
 		builder.cookie(Cookie.builder(models.user.User.THEME, Theme.DEFAULT.name()).build());

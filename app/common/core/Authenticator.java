@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import common.system.SessionKeys;
-import models.user.User;
+import models.user.User_;
 import play.mvc.Http.Context;
 import play.mvc.Result;
 import play.mvc.Security;
@@ -15,7 +15,7 @@ public class Authenticator extends Security.Authenticator {
 	@Override
 	public String getUsername(@Nonnull final Context ctx) {
 
-		final String userId = ctx.session().get(User.USERID);
+		final String userId = ctx.session().get(User_.USER_ID);
 
 		return userId;
 	}

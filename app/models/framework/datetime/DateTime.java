@@ -12,7 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "DATETIMES", uniqueConstraints = { @UniqueConstraint(columnNames = { "USER_ID" }) }, indexes = { @Index(columnList = "USER_ID") })
+@Table(name = "DATETIMES", //
+		uniqueConstraints = { @UniqueConstraint(columnNames = { DateTime_.USER__ID }) }, //
+		indexes = { @Index(columnList = DateTime_.USER__ID) })
 public class DateTime {
 
 	@Id

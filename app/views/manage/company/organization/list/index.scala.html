@@ -35,8 +35,8 @@
 
 		val columnsList = List[scala.collection.immutable.Map[String, String]](
 			Map("text"->String.valueOf(organizationUnit.getId())),
-			Map("text"->organizationUnit.getNames().get(Locale.US)),
-			Map("text"->organizationUnit.getNames().getOrDefault(lang.toLocale(), "")),
+			Map("text"->organizationUnit.getNames().get(Locale.US).getName()),
+			Map("text"->(if(organizationUnit.getNames().containsKey(lang.toLocale())){organizationUnit.getNames().get(lang.toLocale()).getName()}else{""})),
 			Map("text"->datetime(organizationUnit.getUpdateDateTime()).toString)
 		);
 

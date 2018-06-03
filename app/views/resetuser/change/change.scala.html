@@ -44,9 +44,9 @@
 								}
 								<div class="form-group row">
 									<div class="col-sm-9">
-										<input id="@User.USERID" type="hidden" name="@User.USERID" class="form-control" placeholder="Email" value="@form(User.USERID).getValue.orElse("")" required autofocus>
+										<input id="@User.USER_ID" type="hidden" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).getValue.orElse("")" required autofocus>
 										<small class="text-muted"></small>
-										@for(error <- form(User.USERID).errors) {
+										@for(error <- form(User.USER_ID).errors) {
 											<div class="text-danger">@Messages(error.message)</div>
 										}
 									</div>

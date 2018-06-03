@@ -5,8 +5,10 @@ import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -33,6 +35,7 @@ import common.system.MessageKeys;
 import common.utils.CSVs;
 import models.base.EntityDao;
 import models.company.Company;
+import models.company.CompanyName;
 import models.manage.company.UploadFormContent;
 import models.manage.company.UploadFormContent.Operation;
 import models.system.System.Permission;
@@ -228,10 +231,15 @@ public class Upload extends Controller {
 			for (int i = 0; i < uploadCompanies.size(); i++) {
 
 				final Company uploadCompany = uploadCompanies.get(i);
+				final Map<Locale, CompanyName> names = uploadCompany.getNames();
 
 				try {
 
+					uploadCompany.setId(0);
+					uploadCompany.setNames(Collections.emptyMap());
 					companyDao.create(manager, uploadCompany);
+					names.forEach((locale, name) -> name.setCompany_Id(uploadCompany.getId()));
+					uploadCompany.setNames(names);
 				} catch (final EntityExistsException e) {
 
 					throw e;
@@ -262,11 +270,18 @@ public class Upload extends Controller {
 			for (int i = 0; i < uploadCompanies.size(); i++) {
 
 				final Company uploadCompany = uploadCompanies.get(i);
+				final Map<Locale, CompanyName> names = uploadCompany.getNames();
 
 				final Company storedCompany;
 				try {
 
 					storedCompany = manager.find(Company.class, uploadCompany.getId());
+					final Map<Locale, CompanyName> storedNames = storedCompany.getNames();
+					names.forEach((locale, name) -> {
+
+						final CompanyName storedName = storedNames.get(locale);
+						storedName.setName(name.getName());
+					});
 				} catch (final Exception e) {
 
 					throw e;

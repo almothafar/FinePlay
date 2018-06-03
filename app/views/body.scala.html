@@ -146,7 +146,7 @@
 						@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fas fa-angle-double-up", "text"->"", "class"->"ml-1"))
 						<div class="btn-group">
 							<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USERID)</span>
+								<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USER_ID)</span>
 							</button>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
@@ -298,7 +298,7 @@
 		"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)",
 		"currentSection":"@currentSection",
 		"currentWork":"@currentWork",
-		"userId":"@session.get(models.user.User.USERID)",
+		"userId":"@session.get(models.user.User.USER_ID)",
 		"getHelpError":"@Messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, Messages(MessageKeys.HELP))"
 	}'></div>
 

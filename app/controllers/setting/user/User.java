@@ -52,8 +52,8 @@ public class User extends Controller {
 		// final String locale = session(models.user.User.LOCALE);
 		// final String locale =
 		// request().cookie(messages.langCookieName()).value();
-		final String zoneId = session(models.user.User.ZONEID);
-		final String theme = session(models.user.User.THEME);
+		final String zoneId = session(models.user.User_.ZONE_ID);
+		final String theme = session(models.user.User_.THEME);
 
 		editFormContent.setLocale(locale);
 		editFormContent.setZoneId(zoneId);
@@ -73,8 +73,8 @@ public class User extends Controller {
 		if (!editForm.hasErrors()) {
 
 			final Locale locale = Lang.forCode(lang().code()).toLocale();
-			final ZoneId zoneId = ZoneId.of(session(models.user.User.ZONEID));
-			final Theme theme = Theme.valueOf(session(models.user.User.THEME));
+			final ZoneId zoneId = ZoneId.of(session(models.user.User_.ZONE_ID));
+			final Theme theme = Theme.valueOf(session(models.user.User_.THEME));
 
 			final EditFormContent editFormContent = editForm.get();
 			final Locale updatedLocale = Lang.forCode(editFormContent.getLocale()).toLocale();
@@ -91,12 +91,12 @@ public class User extends Controller {
 			}
 			if (!zoneId.equals(updatedZoneId)) {
 
-				session(models.user.User.ZONEID, updatedZoneId.getId());
+				session(models.user.User_.ZONE_ID, updatedZoneId.getId());
 				isUpdated = true;
 			}
 			if (!theme.equals(updatedTheme)) {
 
-				session(models.user.User.THEME, updatedTheme.name());
+				session(models.user.User_.THEME, updatedTheme.name());
 				isUpdated = true;
 			}
 
@@ -107,7 +107,7 @@ public class User extends Controller {
 
 					try {
 
-						user = userService.read(jpaApi.em(), session(models.user.User.USERID));
+						user = userService.read(jpaApi.em(), session(models.user.User_.USER_ID));
 					} catch (final AccountException e) {
 
 						throw e;

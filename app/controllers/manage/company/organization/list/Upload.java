@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -15,6 +16,7 @@ import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -35,6 +37,7 @@ import models.base.EntityDao;
 import models.company.Company;
 import models.company.organization.Organization;
 import models.company.organization.OrganizationUnit;
+import models.company.organization.OrganizationUnitName;
 import models.manage.company.organization.list.UploadFormContent;
 import models.manage.company.organization.list.UploadFormContent.Operation;
 import models.system.System.Permission;
@@ -100,18 +103,6 @@ public class Upload extends Controller {
 								messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR), //
 								messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATION)));
 					}
-					//
-					// final LocalDateTime organizationUpdateServerDateTime =
-					// DateTimes.getServerDateTime(LocalDateTime.parse(uploadFormContent.getOrganizationUpdateDateTime()));
-					// if
-					// (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime))
-					// {
-					//
-					// throw new PlayException(messages.get(lang(),
-					// MessageKeys.SYSTEM_ERROR_STATE_NOTCONSISTENT),
-					// messages.get(lang(), MessageKeys.CONSISTENT) + " " +
-					// messages.get(lang(), MessageKeys.ERROR));
-					// }
 				} else {
 
 					if (!Objects.isNull(organization)) {
@@ -265,27 +256,26 @@ public class Upload extends Controller {
 		}
 
 		@Override
-		public void execute(final EntityManager manager, final Organization organization, final List<OrganizationUnit> uploadCompanies) {
+		public void execute(final EntityManager manager, final Organization organization, final List<OrganizationUnit> uploadOrganizationUnits) {
 
-			final Set<OrganizationUnit> organizationUnits = organization.getOrganizationUnits();
-			for (int i = 0; i < uploadCompanies.size(); i++) {
+			for (int i = 0; i < uploadOrganizationUnits.size(); i++) {
 
-				final OrganizationUnit uploadOrganizationUnit = uploadCompanies.get(i);
+				final OrganizationUnit uploadOrganizationUnit = uploadOrganizationUnits.get(i);
+				final Map<Locale, OrganizationUnitName> names = uploadOrganizationUnit.getNames();
 
-				uploadOrganizationUnit.setId(0);
-				if (organization.getId() != uploadOrganizationUnit.getOrganizationId()) {
+				try {
 
-					throw new PlayException(//
-							messages.get(lang(), MessageKeys.PROCESS) + " " + messages.get(lang(), MessageKeys.ERROR), //
-							messages.get(lang(), MessageKeys.SYSTEM_ERROR_X__DATA_ILLEGAL, uploadOrganizationUnit.getName()));
+					uploadOrganizationUnit.setOrganization(organization);
+					uploadOrganizationUnit.setId(0);
+					uploadOrganizationUnit.setNames(Collections.emptyMap());
+					organizationUnitDao.create(manager, uploadOrganizationUnit);
+					names.forEach((locale, name) -> name.setOrganizationUnit_Id(uploadOrganizationUnit.getId()));
+					uploadOrganizationUnit.setNames(names);
+				} catch (final EntityExistsException e) {
+
+					throw e;
 				}
-				uploadOrganizationUnit.setOrganization(organization);
-				uploadOrganizationUnit.setUpdateDateTime(null);
-
-				organizationUnits.add(uploadOrganizationUnit);
 			}
-
-			manager.merge(organization);
 		}
 	}
 
@@ -312,11 +302,18 @@ public class Upload extends Controller {
 			for (int i = 0; i < uploadCompanies.size(); i++) {
 
 				final OrganizationUnit uploadOrganizationUnit = uploadCompanies.get(i);
+				final Map<Locale, OrganizationUnitName> names = uploadOrganizationUnit.getNames();
 
 				final OrganizationUnit storedOrganizationUnit;
 				try {
 
 					storedOrganizationUnit = idToUnitMap.get(uploadOrganizationUnit.getId());
+					final Map<Locale, OrganizationUnitName> storedNames = storedOrganizationUnit.getNames();
+					names.forEach((locale, name) -> {
+
+						final OrganizationUnitName storedName = storedNames.get(locale);
+						storedName.setName(name.getName());
+					});
 				} catch (final Exception e) {
 
 					throw e;
@@ -329,8 +326,6 @@ public class Upload extends Controller {
 							messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR), //
 							messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATIONUNIT)) + ": " + uploadOrganizationUnit.getId());
 				}
-
-				storedOrganizationUnit.setNames(uploadOrganizationUnit.getNames());
 			}
 
 			manager.merge(organization);
