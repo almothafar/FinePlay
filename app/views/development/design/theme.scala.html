@@ -35,7 +35,7 @@
 
 			<div class="jumbotron mt-3">
 				@components.image(Map("id"->"theme_image", "class"->"w-144p h-144p", "thumbnail"->"true", "alternate"->"...", "source"->routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/image.png").toString))
-				<h1 class="display-4 d-inline align-top">@session.get(models.user.User.THEME)</h1>
+				<h1 class="display-4 d-inline align-top">@Messages(models.user.User.Theme.valueOf(session.get(models.user.User.THEME)).getMessageKey())</h1>
 			</div>
 		}
 

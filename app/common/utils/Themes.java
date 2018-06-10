@@ -25,11 +25,10 @@ public class Themes {
 		final MessagesApi messages = common.system.System.getInjector().instanceOf(MessagesApi.class);
 
 		final Map<String, String> themeIdToNameMap = new LinkedHashMap<>();
-		themeIdToNameMap.put(Theme.DEFAULT.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_DEFAULT));
-		themeIdToNameMap.put(Theme.PRETTY.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_PRETTY));
-		themeIdToNameMap.put(Theme.JAPAN.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_JAPAN));
-		themeIdToNameMap.put(Theme.BUSINESS.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_BUSINESS));
-		themeIdToNameMap.put(Theme.NATURAL.name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_NATURAL));
+		for (final Theme theme : Theme.values()) {
+
+			themeIdToNameMap.put(theme.name(), messages.get(Locales.toLang(locale), theme.getMessageKey()));
+		}
 
 		return themeIdToNameMap;
 	}

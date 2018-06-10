@@ -77,7 +77,31 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	}
 
 	public enum Theme {
-		DEFAULT, PRETTY, JAPAN, BUSINESS, NATURAL
+		DEFAULT, PRETTY, JAPAN, BUSINESS, NATURAL;
+
+		public String getMessageKey() {
+
+			switch (this) {
+			case DEFAULT:
+
+				return MessageKeys.THEME_DEFAULT;
+			case PRETTY:
+
+				return MessageKeys.THEME_PRETTY;
+			case JAPAN:
+
+				return MessageKeys.THEME_JAPAN;
+			case BUSINESS:
+
+				return MessageKeys.THEME_BUSINESS;
+			case NATURAL:
+
+				return MessageKeys.THEME_NATURAL;
+			default:
+
+				throw new IllegalStateException(this.name());
+			}
+		}
 	}
 
 	@Inject

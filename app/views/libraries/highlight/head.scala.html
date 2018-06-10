@@ -9,9 +9,16 @@
 
 		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/rainbow.css")'>
 	}
+	case "BUSINESS" => {
+
+		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/tomorrow-night-blue.css")'>
+	}
+	case "NATURAL" => {
+
+		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/paraiso-light.css")'>
+	}
 	case "DEFAULT" | _ => {
 
 		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/atelier-lakeside-light.css")'>
 	}
 }
-

@@ -75,11 +75,6 @@ Project library CSS
 
 ###### Use MessagesCreator & MessageKeysCreator.
 
-### Add Util code ###
-
-	common.utils.Themes.java#getThemeIdToNameMap()
-	themeIdToNameMap.put(Theme.[THEME NAME].name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_[THEME NAME]));
-
 ### Add Read theme code ###
 
 	github/fineplay/app/views/libraries/adjust/bootstrap/head.scala.html
