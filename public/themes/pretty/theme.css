@@ -9,9 +9,6 @@ body {
 	background-size: 70px 70px;
 }
 
-
-
-
 ::-moz-selection {
 	background: MistyRose;
 }
@@ -53,23 +50,8 @@ body {
 	border-left: transparent 4px solid;
 }
 #system_work-menu .works .work.selected{
-	border-left: transparent 4px solid;
+	border-left: rgb(250, 218, 5) 4px solid;
 	background-color: #2d1706;
-}
-
-#system_work-menu .works .work.selected>a{
-	width: 100%;
-}
-
-#system_work-menu .works .work.selected>a:after{
-	content: '';
-	background-color: rgb(250, 218, 5);
-	border-radius: 50%;
-	border: 2px solid rgb(255, 241, 90);
-	position: absolute;
-	right: 24px;
-	width: 1.1rem;
-	height: 1.1rem;
 }
 
 /* Table custom style */
@@ -127,8 +109,6 @@ h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline{
 		linear-gradient(white, white);
 	background-size: cover, cover, 5px 5px, cover;
 }
-
-
 
 hr.separator {
 	border: none;

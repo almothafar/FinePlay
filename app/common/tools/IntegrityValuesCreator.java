@@ -40,6 +40,8 @@ class IntegrityValuesCreator {
 		constMap.put("BOOTSTRAP_STYLE", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "bootstrap", "dist", "css", "bootstrap.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_PRETTY", createValue(Paths.get(".", "public", "themes", "pretty", "bootstrap.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_JAPAN", createValue(Paths.get(".", "public", "themes", "japan", "bootstrap.min.css")));
+		constMap.put("BOOTSTRAP_STYLE_BUSINESS", createValue(Paths.get(".", "public", "themes", "business", "bootstrap.min.css")));
+		constMap.put("BOOTSTRAP_STYLE_NATURAL", createValue(Paths.get(".", "public", "themes", "natural", "bootstrap.min.css")));
 		constMap.put("BOOTSTRAP_SCRIPT", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "bootstrap", "dist", "js", "bootstrap.min.js")));
 
 		constMap.put("JQUERY_SCRIPT", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "jquery", "dist", "jquery.min.js")));

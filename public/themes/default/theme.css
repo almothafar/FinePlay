@@ -12,32 +12,17 @@ body {
 	background-position: -1.5px -1.5px, -1.5px -1.5px, -1px -1px, -1px -1px
 }
 
-
-
-
-
-
-
-
 /* Top menu */
 
 #system_menu{
 	border-bottom: 1px LightGray solid;
 }
 
-
-
-
-
-
 /* Side menu */
 
 #system_work-menu {
 	background-color: #585858;
 }
-
-
-
 
 #system_work-menu .system_work-name {
 	color: #65c6ff;
@@ -58,20 +43,6 @@ body {
 	background-color: #2e2e2e;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Table custom style */
 
 .bg-primary, .bg-primary>th, .bg-primary>td {
@@ -88,11 +59,6 @@ body {
 .nav-tabs a.nav-link.active{
 	border-top: #007bff solid 3px;
 }
-
-
-
-
-
 
 /* Project style */
 
@@ -124,23 +90,10 @@ h6.headline{
 	padding-left: 6px;
 }
 
-
-
-
-
-
-
 hr.separator{
 	height: 1px;
 	background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), lightgray 50%, rgba(255, 255, 255, 0) 100%);
 }
-
-
-
-
-
-
-
 
 .matched {
 	background-color: #e4fc2f;

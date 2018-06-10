@@ -50,7 +50,7 @@ Project CSS
 
 ### Make ###
 
-	github/FinePlay/public/themes/[theme name]/theme.css
+	github/fineplay/public/themes/[theme name]/theme.css
 
 ###### File Content is Optional.
 
@@ -64,13 +64,13 @@ Project library CSS
 
 ### Add Message ###
 
-	github/FinePlay/conf/messages[|.[lang-CODE]]
+	github/fineplay/conf/messages[|.[lang-CODE]]
 	theme.[theme name] = [Theme name]
 
-	github/FinePlay/app/common/system/MessageKeys.java
+	github/fineplay/app/common/system/MessageKeys.java
 	public static final String THEME_[THEME NAME] = "theme.[theme name]";
 
-	github/FinePlay/public/javascripts/messages.js
+	github/fineplay/public/javascripts/messages.js
 	THEME_[THEME NAME]: "theme.[theme name]",
 
 ###### Use MessagesCreator & MessageKeysCreator.
@@ -80,7 +80,11 @@ Project library CSS
 	common.utils.Themes.java#getThemeIdToNameMap()
 	themeIdToNameMap.put(Theme.[THEME NAME].name(), messages.get(Locales.toLang(locale), MessageKeys.THEME_[THEME NAME]));
 
+### Add Read theme code ###
+
+	github/fineplay/app/views/libraries/adjust/bootstrap/head.scala.html
+
 ### Modify library CSS ###
 ###### Optional.
 
-	github/FinePlay/app/views/libraries/[library name]/head.scala.html
+	github/fineplay/app/views/libraries/[library name]/head.scala.html

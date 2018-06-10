@@ -145,6 +145,8 @@ theme = テーマ
 theme.default = 標準
 theme.pretty = プリティ
 theme.japan = 日本
+theme.business = ビジネス
+theme.natural = 自然
 
 #
 

@@ -145,6 +145,8 @@ theme = Theme
 theme.default = Default
 theme.pretty = Pretty
 theme.japan = Japan
+theme.business = Business
+theme.natural = Natural
 
 #
 

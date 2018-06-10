@@ -771,9 +771,13 @@ public class MessageKeys {
 
   public static final String THEME = "theme";
 
+  public static final String THEME_BUSINESS = "theme.business";
+
   public static final String THEME_DEFAULT = "theme.default";
 
   public static final String THEME_JAPAN = "theme.japan";
+
+  public static final String THEME_NATURAL = "theme.natural";
 
   public static final String THEME_PRETTY = "theme.pretty";
 

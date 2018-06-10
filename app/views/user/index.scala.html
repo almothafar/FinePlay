@@ -78,9 +78,9 @@
 						<input id="@User.SHORTZONEID" type="hidden" name="@User.SHORTZONEID" class="form-control">
 						@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-							<div class="row justify-content-between">
+							<div class="row d-block clearfix">
 
-								<div class="custom-control custom-checkbox">
+								<div class="custom-control custom-checkbox float-left">
 									<input type="checkbox" class="custom-control-input" name="@User.STOREACCOUNT" id="@User.STOREACCOUNT" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).getValue.orElse(""))))>
 									<label class="custom-control-label" for="@User.STOREACCOUNT">@Messages(MessageKeys.USER_STORE__ACCOUNT)</label>
 								</div>
@@ -189,7 +189,7 @@
 							Map("name"->"Parsley", "icon"->"fas fa-pencil-alt", "link"->"http://parsleyjs.org", "info"->""),
 							Map("name"->"Hammer.js", "icon"->"fas fa-hand-point-up", "link"->"http://hammerjs.github.io", "info"->""),
 							Map("name"->"bootstrap-colorpicker", "icon"->"fas fa-tint", "link"->"https://itsjavi.com/bootstrap-colorpicker/", "info"->""),
-							Map("name"->"jqTree", "icon"->"fas fa-sitemap", "link"->"http://mbraak.github.io/jqTree/#node-functions", "info"->""),
+							Map("name"->"jqTree", "icon"->"fas fa-sitemap", "link"->"http://mbraak.github.io/jqTree/", "info"->""),
 							Map("name"->"Snap.svg", "icon"->"fas fa-pencil-alt", "link"->"http://snapsvg.io/", "info"->""),
 							Map("name"->"Frappé Gantt", "icon"->"fas fa-pencil-alt", "link"->"https://frappe.github.io/gantt/", "info"->""),
 							Map("name"->"Viz.js", "icon"->"fas fa-share-alt", "link"->"https://github.com/mdaines/viz.js", "info"->""),

@@ -11,7 +11,11 @@ public class IntegrityValues {
 
   public static final String BOOTSTRAP_STYLE = "WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB";
 
+  public static final String BOOTSTRAP_STYLE_BUSINESS = "vb5iQk+Jsmtfz5Bsnak6ji5sbITpwl6YhPumziQ3uVdHBYFKtwIDsxJpKOuCoxQL";
+
   public static final String BOOTSTRAP_STYLE_JAPAN = "gMCUyN8KCncg/MbyWgTrwa60xYDxwDJAvpiTXdrJnhPOddQlxOlfMZsZs4o2TAxg";
+
+  public static final String BOOTSTRAP_STYLE_NATURAL = "djvtAaLC4cUbeKSZU63wW5mFZ/uGWRi4ZiNABggq9WXHtvO+8hFdlwPqZjw8N31L";
 
   public static final String BOOTSTRAP_STYLE_PRETTY = "3REt251B84/m1gIt7Tbv5dhOhVaHh3rXtbsmJuAFq/bQ9sh62FSSPcM7hRTh1XSP";
 

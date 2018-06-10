@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+/* Basic frame */
+
+/* Top menu */
+
+#system_menu{
+	border-bottom: 1px LightGray solid;
+}
+
+/* Side menu */
+
+#system_work-menu {
+	background-color: white;
+}
+
+#system_work-menu .system_work-name {
+	color: #343a40;
+}
+#system_work-menu .system_work-name.disabled {
+	color: #6c757d;
+}
+
+#system_work-menu .worksbase{
+	background-color: #f3f3f3;
+}
+
+#system_work-menu .works .work{
+	border-left: transparent 4px solid;
+}
+#system_work-menu .works .work.selected{
+	border-left: #00bcf2 4px solid;
+	background-color: #e4e4e4;
+}
+
+/* Table custom style */
+
+.bg-primary, .bg-primary>th, .bg-primary>td {
+	color: #fff;
+	background-color: #0056b3;
+}
+
+/* Nav custom style */
+
+.nav-tabs a.nav-link{
+	border-top:transparent solid 3px;
+}
+
+.nav-tabs a.nav-link.active{
+	border-top: #00188f solid 3px;
+}
+
+/* Credit */
+#system_footer{
+	background-color: rgb(11, 32, 105);
+}
+
+/* Project style */
+
+h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline {
+	color: white;
+	background-color: rgb(0, 120, 212);
+	padding-left: 6px;
+	font-weight: 200;
+}
+
+hr.separator{
+	border-top: 1px solid #bbb;
+}
+
+.matched {
+	background-color: #fff100;
+}
+
+/* Fakestrap */
+
+.process-item.active{
+	background-color: #00188f;
+}
+
+.custom-switch>input:checked ~ .custom-switch-base {
+	background: #00188f !important;
+}

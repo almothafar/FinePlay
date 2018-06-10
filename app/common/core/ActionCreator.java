@@ -106,7 +106,19 @@ public class ActionCreator extends DefaultActionCreator {
 					}
 				}
 
+//				setBadgeText(ctx);
+
 				return delegate.call(ctx);
+			}
+
+			private void setBadgeText(final Context ctx) {
+
+				ctx.flash().put("system_section-development", "New");
+				ctx.flash().put("system_section-work-http", "1");
+				ctx.flash().put("system_section-work-javascript", "2");
+				ctx.flash().put("system_section-work-design", "3");
+				ctx.flash().put("system_section-work-document", "4");
+				ctx.flash().put("system_section-work-help", "5");
 			}
 		};
 	}

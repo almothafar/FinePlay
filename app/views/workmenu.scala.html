@@ -5,14 +5,15 @@
 		@defining(groupToElementsList.get(i)) { groupToElements =>
 			@defining(groupToElements._1) { group =>
 				@if(Boolean.valueOf(group.getOrElse("show", "true"))){
-	<div class="card system_section">
+	<div class="system_section">
 
 		<div class="px-3" id="heading@i">
 			<h4 class="">
-				<button class="pl-0 system_work-name @("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false")))) d-flex flex-row" data-toggle="collapse" data-target="#collapse@i" aria-expanded="false" aria-controls="collapse@i">
+				<button class="pl-0 system_work-name @("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false"))))" data-toggle="collapse" data-target="#collapse@i" aria-expanded="false" aria-controls="collapse@i">
 					<i class="@group.getOrElse("icon", "")"></i>
 					&nbsp;<span>@group.get("name")</span>
 				</button>
+				<small class="float-right bottom pt-1"><span id="" class="badge badge-pill badge-success">@flash.get("system_section-" + group.getOrElse("key", ""))</span></small>
 			</h4>
 		</div>
 
@@ -22,9 +23,10 @@
 					@for(j <- 0 to elements.size - 1){
 						@if(Boolean.valueOf(elements.get(j).getOrElse("show", "true"))){
 				<li class="work nav-item @elements.get(j).getOrElse("class", "") @("selected".when(Boolean.valueOf(elements.get(j).getOrElse("selected", "false"))))">
-					<a href="@(elements.get(j).getOrElse("link","#"))" class="system_work-name nav-link @("disabled".when(!Boolean.valueOf(elements.get(j).getOrElse("enabled", "true")))) d-flex flex-row">
+					<a href="@(elements.get(j).getOrElse("link","#"))" class="system_work-name nav-link @("disabled".when(!Boolean.valueOf(elements.get(j).getOrElse("enabled", "true"))))">
 						<i class="@elements.get(j).getOrElse("icon", "") align-self-center"></i>
 						&nbsp;<span>@elements.get(j).get("name")</span>
+						<span class="float-right bottom"><span id="" class="badge badge-pill badge-success">@flash.get("system_section-work-" + elements.get(j).getOrElse("key", ""))</span></span>
 					</a>
 				</li>
 						}

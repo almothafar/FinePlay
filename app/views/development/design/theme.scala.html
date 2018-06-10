@@ -33,14 +33,17 @@
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
+			<div class="jumbotron mt-3">
+				@components.image(Map("id"->"theme_image", "class"->"w-144p h-144p", "thumbnail"->"true", "alternate"->"...", "source"->routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/image.png").toString))
+				<h1 class="display-4 d-inline align-top">@session.get(models.user.User.THEME)</h1>
+			</div>
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
 			<div class="row">
 
-				<div class="col-12 mt-3">
-
-					@components.image(Map("id"->"theme_image", "class"->"w-144p h-144p", "source"->routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/image.png").toString))
-				</div>
-
-				<div class="col-12 mt-3">
+				<div class="col-12 col-md-6 mt-3">
 
 					<h1 class="headline">Head line</h1>
 					<h2 class="headline">Head line</h2>
@@ -50,9 +53,64 @@
 					<h6 class="headline">Head line</h6>
 				</div>
 
-				<div class="col-12 mt-3">
+				<div class="col-12 col-md-6 mt-3">
 
 					<hr class="separator">
+
+					<p>You can use the mark tag to <mark>highlight</mark> text.</p>
+					<p>You can use the mark tag to <mark class="matched">highlight</mark> text.</p>
+				</div>
+
+				<div class="col-12 col-md-6 mt-3">
+
+					@components.button(Map("id"->"", "icon"->"fas fa-spinner fa-pulse", "text"->"Primary"))
+					@components.button(Map("id"->"", "type"->"secondary", "icon"->"fas fa-spinner fa-pulse", "text"->"Secondary"))
+					@components.button(Map("id"->"", "type"->"success", "icon"->"fas fa-spinner fa-pulse", "text"->"Success"))
+					@components.button(Map("id"->"", "type"->"info", "icon"->"fas fa-spinner fa-pulse", "text"->"Info"))
+					@components.button(Map("id"->"", "type"->"warning", "icon"->"fas fa-spinner fa-pulse", "text"->"Warning"))
+					@components.button(Map("id"->"", "type"->"danger", "icon"->"fas fa-spinner fa-pulse", "text"->"Danger"))
+					@components.button(Map("id"->"", "type"->"light", "icon"->"fas fa-spinner fa-pulse", "text"->"Light"))
+					@components.button(Map("id"->"", "type"->"dark", "icon"->"fas fa-spinner fa-pulse", "text"->"Dark"))
+					@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-spinner fa-pulse", "text"->"Link"))
+				</div>
+
+				<div class="col-12 col-md-6 mt-3">
+
+					@components.badge(Map("id"->"", "type"->"primary", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Primary"))
+					@components.badge(Map("id"->"", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Secondary"))
+					@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Success"))
+					@components.badge(Map("id"->"", "type"->"info", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Info"))
+					@components.badge(Map("id"->"", "type"->"warning", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Warning"))
+					@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Danger"))
+					@components.badge(Map("id"->"", "type"->"light", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Light"))
+					@components.badge(Map("id"->"", "type"->"dark", "icon"->"fas fa-spinner fa-pulse", "pill"->"true", "text"->"Dark"))
+				</div>
+
+				<div class="col-12 col-md-6 mt-3">
+
+					@components.alert(Map("id"->"", "icon"->"fas fa-check", "text"->"<strong>Well done!</strong> You successfully read <a href=\"#\" class=\"alert-link\">this important alert message</a>."))
+					@components.alert(Map("id"->"", "icon"->"fas fa-info-circle", "text"->"<strong>Heads up!</strong> This <a href=\"#\" class=\"alert-link\">alert needs your attention</a>, but it's not super important.", "type"->"info"))
+					@components.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->"<strong>Warning!</strong> Better check yourself, you're <a href=\"#\" class=\"alert-link\">not looking too good</a>.", "type"->"warning"))
+					@components.alert(Map("id"->"", "icon"->"fas fa-ban", "text"->"<strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.", "type"->"danger", "closable"->"true"))
+				</div>
+
+				<div class="col-12 col-md-6 mt-3">
+
+					<div class="mb-3">
+						@components.progress(Map("id"->"", "value"->"20", "max"->"100", "type"->"primary", "striped"->"true", "animated"->"true"))
+					</div>
+					<div class="mb-3">
+						@components.progress(Map("id"->"", "value"->"40", "max"->"100", "type"->"success", "striped"->"true", "animated"->"true"))
+					</div>
+					<div class="mb-3">
+						@components.progress(Map("id"->"", "value"->"60", "max"->"100", "type"->"info", "striped"->"true", "animated"->"true"))
+					</div>
+					<div class="mb-3">
+						@components.progress(Map("id"->"", "value"->"80", "max"->"100", "type"->"warning", "striped"->"true", "animated"->"true"))
+					</div>
+					<div class="mb-3">
+						@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger", "striped"->"true", "animated"->"true"))
+					</div>
 				</div>
 			</div>
 		}

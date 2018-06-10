@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+/* Basic frame */
+
+body {
+	background-color: #f4f4e6;
+	background-image: linear-gradient(0deg, rgba(255,255,255,0.11) 50%, transparent 50%),
+						linear-gradient(0deg, rgba(255,255,255,0.18) 50%, transparent 50%),
+						linear-gradient(0deg, transparent 50%, rgba(255,255,255,0.14) 50%),
+						linear-gradient(0deg, transparent 50%, rgba(255,255,255,0.2) 50%);
+	background-size: 16px, 48px, 26px, 68px;
+}
+
+/* Top menu */
+
+#system_menu{
+	background-color: rgb(250, 250, 255) !important;
+	border-bottom: 3px #46331f solid;
+}
+
+/* Side menu */
+
+#system_work-menu {
+	background-color: #6f5031;
+}
+
+#system_work-menu .system_work-name {
+	color: #9bdb97;
+}
+#system_work-menu .system_work-name.disabled {
+	color: #89a288;
+}
+
+#system_work-menu .worksbase{
+	background-color: #594027;
+}
+
+#system_work-menu .works .work{
+	border-left: transparent 6px solid;
+}
+#system_work-menu .works .work.selected{
+	border-left: rgb(255, 230, 183) 6px solid;
+	background-color: #46331f;
+}
+
+/* Table custom style */
+
+.bg-primary, .bg-primary>th, .bg-primary>td {
+	color: #fff;
+	background-color: #234868;
+}
+
+/* Nav custom style */
+
+.nav-tabs a.nav-link{
+	border-top:transparent solid 3px;
+}
+
+.nav-tabs a.nav-link.active{
+	border-top: #ad6f30 solid 3px;
+}
+
+/* Credit */
+#system_footer{
+	background: #c0ad90;
+	position: relative;
+	-webkit-filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 1px 2px);
+	filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 1px 2px);
+}
+#system_footer:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 0px;
+	width: 100%;
+	height: 10px;
+	background: linear-gradient(45deg, transparent 33.333%, #c0ad90 33.333%, #c0ad90 66.667%, transparent 66.667%),
+				linear-gradient(-45deg, transparent 33.333%, #c0ad90 33.333%, #c0ad90 66.667%, transparent 66.667%);
+	background-size: 20px 40px;
+}
+
+/* Project style */
+
+h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline {
+	position: relative;
+	padding: 0.3rem 0.5rem;
+	background-color: rgba(223, 229, 213, 0.6);
+}
+
+hr.separator {
+	border-top: 2px dashed #cecece;
+}
+hr.separator:after {
+	content: '\002702';
+	display: inline-block;
+	position: relative;
+	top: -1.3rem;
+	left: 100px;
+	color: #cecece;
+	font-size: 1.6rem;
+}
+
+.matched {
+	background-color: #a4fcd4;
+}
+
+/* Fakestrap */
+
+.process-item.active{
+	background-color: #ad6f30;
+}
+
+.custom-switch>input:checked ~ .custom-switch-base {
+	background: #ad6f30 !important;
+}
