@@ -47,6 +47,9 @@ public class Library extends Controller {
 		case "chartjs":
 
 			return chartjs();
+		case "amcharts":
+
+			return amcharts();
 		case "fullcalendar":
 
 			return fullcalendar();
@@ -146,6 +149,11 @@ public class Library extends Controller {
 	public static Result chartjs() {
 
 		return ok(views.html.lab.library.chartjs.render());
+	}
+
+	public static Result amcharts() {
+
+		return ok(views.html.lab.library.amcharts.render());
 	}
 
 	public static Result fullcalendar() {

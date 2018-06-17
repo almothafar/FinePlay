@@ -32,6 +32,11 @@
 .w-144p {width: 144px !important;}
 .w-216p {width: 216px !important;}
 .w-288p {width: 288px !important;}
+.w-384p {height: 384px !important;}
+.w-432p {height: 432px !important;}
+.w-576p {height: 576px !important;}
+.w-768p {height: 768px !important;}
+.w-864p {height: 864px !important;}
 
 .h-0p {height: 0px !important;}
 .h-2p {height: 2px !important;}
@@ -51,6 +56,11 @@
 .h-144p {height: 144px !important;}
 .h-216p {height: 216px !important;}
 .h-288p {height: 288px !important;}
+.h-384p {height: 384px !important;}
+.h-432p {height: 432px !important;}
+.h-576p {height: 576px !important;}
+.h-768p {height: 768px !important;}
+.h-864p {height: 864px !important;}
 
 /* Icon Filter */
 

@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+@media print {
+	.chart {
+		width: initial;
+	}
+}

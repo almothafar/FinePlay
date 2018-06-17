@@ -32,7 +32,7 @@
 	mutableMap += "Date(Medium)"->DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(datetime_now());
 	mutableMap += "Time(Medium)"->DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(datetime_now());
 	mutableMap += "DateTime(Medium)"->DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(datetime_now());
-	mutableMap += "Resource"->components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString));
+	mutableMap += "Resource"->components.image(Map("id"->"", "class"->"w-50", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString));
 }
 
 @frame(){

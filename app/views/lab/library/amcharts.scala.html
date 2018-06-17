@@ -1,0 +1,73 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import play.api.i18n._
+
+@import common.system._
+
+@import java.time._
+@import java.time.format._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/amcharts.css")'>
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"amCharts", "icon"->"far fa-chart-bar", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"amcharts"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mb-3">
+
+						<div class="col-sm-6 chart">
+							<div id="chartdiv" class="w-100 h-576p"></div>
+						</div>
+
+						<div class="col-sm-6 chart">
+							<div id="chart2div" class="w-100 h-576p"></div>
+						</div>
+
+						<div class="col-sm-6 chart">
+							<div id="chart3div" class="w-100 h-576p"></div>
+						</div>
+
+						<div class="col-sm-6 chart">
+							<div id="chart4div" class="w-100 h-576p"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.AMCHARTS_LANG":"am4lang_@Messages(MessageKeys.AMCHARTS_LANG)"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.amcharts.last()
+		<script src='@routes.Assets.versioned("javascripts/lab/library/amcharts.js")'></script>
+	}
+}

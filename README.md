@@ -65,6 +65,8 @@ Notice
 ---------------
 
 + This project is not considered to develop continuously. (However, this template is a very thin wrapper for open source software, so don't worry about it.)
++ This project is not thought to be used for multi purpose. (Since this project is a template, it is forked or modified and used.)
++ Please confirm the license of the library software you are using with this project once again.
 
 Release History
 ---------------

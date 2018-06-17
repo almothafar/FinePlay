@@ -11,6 +11,7 @@ var MessageKeys = {
 	ALIGNMENT: "alignment",
 	ALL: "all",
 	AMBIGUOUS: "ambiguous",
+	AMCHARTS_LANG: "amcharts.lang",
 	ANALYSES: "analyses",
 	ANSWER: "answer",
 	APPLICATION: "application",

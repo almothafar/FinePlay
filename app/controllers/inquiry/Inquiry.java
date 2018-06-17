@@ -1,14 +1,20 @@
 package controllers.inquiry;
 
+import java.lang.invoke.MethodHandles;
 import java.time.LocalDateTime;
 
 import javax.inject.Inject;
 import javax.persistence.EntityExistsException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import common.data.validation.groups.Create;
+import common.utils.Requests;
 import models.base.EntityDao;
 import models.inquiry.Inquiry.Type;
 import models.inquiry.InquiryFormContent;
+import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -18,6 +24,11 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 public class Inquiry extends Controller {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	@Inject
+	private SyncCacheApi syncCache;
 
 	@Inject
 	private FormFactory formFactory;
@@ -42,6 +53,13 @@ public class Inquiry extends Controller {
 	public Result send() {
 
 		final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class, Create.class).bindFromRequest();
+
+		if (!Requests.isFirstSubmit(request(), syncCache)) {
+
+			LOGGER.info("Not first submit.");
+			return ok(views.html.inquiry.send.complete.render(inquiryForm));
+		}
+
 		if (!inquiryForm.hasErrors()) {
 
 			final InquiryFormContent inquiryFormContent = inquiryForm.get();

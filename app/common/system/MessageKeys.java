@@ -27,6 +27,8 @@ public class MessageKeys {
 
   public static final String AMBIGUOUS = "ambiguous";
 
+  public static final String AMCHARTS_LANG = "amcharts.lang";
+
   public static final String ANALYSES = "analyses";
 
   public static final String ANSWER = "answer";
