@@ -308,3 +308,9 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 .secret {
 	display: none !important;
 }
+
+/* Webkit autofill disabled */
+
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #e4f6e1 inset;
+}
