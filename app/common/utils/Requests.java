@@ -44,9 +44,7 @@ public class Requests {
 
 		if (Objects.isNull(submitToken)) {
 
-			// Not target of this method.
 			throw new IllegalStateException("Not target of this method.");
-
 		}
 
 		if (previousSubmitToken.equals(submitToken)) {

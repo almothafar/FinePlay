@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+#girlIcon,
+.raceIcon ,
+.notificationIcon {
+	font-style: normal;
+}
+
 .races-popover.popover,
 .races-popover.popover > .popover-body {
 	max-width: 340px;

@@ -1205,16 +1205,6 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/docs/material-design-icons-3.0.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/emojione/srcs/emojione-3.1.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/emojione/jars/emojione-3.1.2.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/emojione/docs/emojione-3.1.2-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/emojione-assets/srcs/emojione-assets-3.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/emojione-assets/jars/emojione-assets-3.1.1.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/emojione-assets/docs/emojione-assets-3.1.1-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/srcs/jasperreports-6.6.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/jars/jasperreports-6.6.0.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/docs/jasperreports-6.6.0-javadoc.jar!/"/>

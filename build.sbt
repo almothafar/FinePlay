@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.13-β6-SNAPSHOT"
+version := "2.6.13-β7-SNAPSHOT"
 
 scalaVersion := "2.12.4"
 
@@ -20,7 +20,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
 //  "javax.xml.bind" % "jaxb-api" % "2.3.0",
-//  "hiro20v" %% "fineplay-sub" % "2.6.13-β6-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.6.13-β7-SNAPSHOT",
   javaJdbc,
   ehcache,
   jcache,
@@ -84,7 +84,6 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2 +patch
-//  "org.webjars.npm" % "github-com-amcharts-amcharts3" % "3.21.3"		// linkware/commercial 4.0.0-beta.25
   "org.webjars.bower" % "moment" % "2.22.2",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
@@ -121,13 +120,10 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.0.13",							// Icons — CC 5.0.8
+  "org.webjars" % "font-awesome" % "5.0.13",							// Icons — CC/Pro 5.0.8
 																		// Fonts — SIL OFL 5.0.8
 																		// Code — MIT 5.0.8
-  "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
-  "org.webjars.npm" % "emojione" % "3.1.2",								// EmojiOne Artwork Free/Premium license 3.1.2 +patch
-  																		// EmojiOne Non-Artwork MIT 3.1.2
-  "org.webjars.npm" % "emojione-assets" % "3.1.1"						// Free License 3.1.1
+  "org.webjars" % "material-design-icons" % "3.0.1"					// Apache 3.0.1
 )
 // IcoFont																// MIT 1.3
 

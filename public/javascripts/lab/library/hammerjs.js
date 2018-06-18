@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 		var notificationHtml =
 			'<div class="alert bg-pink-200 alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">' +
-				'<div class="p-2"><i class="' + girlIcon.attr('class') + ' w-64p h-64p mt-1 bg-pink-100 rounded"></i></div>' +
+				'<div class="p-2"><i class="w-64p h-64p mt-1 bg-pink-100 rounded fa-3x notificationIcon">' + girlIcon.text() + '</i></div>' +
 				'<div class="p-2 d-flex align-items-center"><button type="button" class="p-3 close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></div>' +
 			'</div>';
 
@@ -46,8 +46,8 @@ $(document).ready(function() {
 	$('.raceIcon').on('click', function(e){
 
 		var raceIcon = $(e.target);
-		var raceTone = raceIcon.data('tone');
-		$('#girlIcon').removeClass('e1a-girl e1a-girl_tone1 e1a-girl_tone2 e1a-girl_tone3 e1a-girl_tone4 e1a-girl_tone5').addClass('e1a-girl' + raceTone);
+		var raceChar = raceIcon.text();
+		$('#girlIcon').text(raceChar);
 
 		$('#girlIcon').popover('hide');
 

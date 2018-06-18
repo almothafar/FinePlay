@@ -40,11 +40,6 @@ class IconNameExtractor {
 		final Path icoFont = Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt");
 		Files.write(icoFont, icoFontNames, StandardCharsets.UTF_8);
 		System.out.println("Created :" + icoFont);
-
-		final List<String> emojiOneAwesomeIconNames = getEmojiOneAwesomeIconNames();
-		final Path emojiOneAwesome = Paths.get(".", "conf", "resources", "development", "design", "icon", "emojione.txt");
-		Files.write(emojiOneAwesome, emojiOneAwesomeIconNames, StandardCharsets.UTF_8);
-		System.out.println("Created :" + emojiOneAwesome);
 	}
 
 	private static final Pattern PATTERN_FONTAWESOME = Pattern.compile("\\.fa-(?<iconName>.*):before.*");
@@ -163,37 +158,6 @@ class IconNameExtractor {
 		final List<String> iconNames = icoFontIconLines.stream().map(line -> {
 
 			final Matcher matcher = PATTERN_ICOFONT.matcher(line);
-			if (!matcher.matches()) {
-
-				throw new IllegalStateException("");
-			}
-
-			final String iconName = matcher.group("iconName");
-
-			return iconName;
-		}).collect(Collectors.toList());
-
-		return iconNames;
-	}
-
-	private static final Pattern PATTERN_EMOJIONEAWESOME = Pattern.compile("\\.e1a-(?<iconName>.*)\\s.*");
-
-	private static List<String> getEmojiOneAwesomeIconNames() throws IOException {
-
-		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "emojione", "extras", "css", "emojione-awesome.css");
-
-		if (!Files.exists(path)) {
-
-			throw new RuntimeException(": " + path);
-		}
-
-		final List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-		final List<String> e1aLines = lines.stream().filter(line -> line.startsWith(".e1a-")).collect(Collectors.toList());
-		final int firstIconIndex = e1aLines.indexOf(".e1a-interrobang {");
-		final List<String> e1aIconLines = e1aLines.subList(firstIconIndex, e1aLines.size());
-		final List<String> iconNames = e1aIconLines.stream().map(line -> {
-
-			final Matcher matcher = PATTERN_EMOJIONEAWESOME.matcher(line);
 			if (!matcher.matches()) {
 
 				throw new IllegalStateException("");
