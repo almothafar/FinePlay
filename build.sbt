@@ -19,7 +19,6 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "javax.xml.bind" % "jaxb-api" % "2.3.0",
 //  "hiro20v" %% "fineplay-sub" % "2.6.13-β7-SNAPSHOT",
   javaJdbc,
   ehcache,
@@ -62,7 +61,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-parsers" % "1.18",
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.11.6",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.9",								// Apache 2.0.9
+  "org.apache.pdfbox" % "pdfbox" % "2.0.10",							// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0.CR1
@@ -88,8 +87,8 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
-  "org.webjars.bower" % "datatables" % "1.10.16",						// MIT 1.10.16
-  "org.webjars.bower" % "datatables.net-plugins" % "1.10.16",			//
+  "org.webjars.bower" % "datatables" % "1.10.18",						// MIT 1.10.16
+  "org.webjars.bower" % "datatables.net-plugins" % "1.10.18",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
   "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10
   "org.webjars.bower" % "handsontable" % "2.0.0",						// MIT 2.0.0

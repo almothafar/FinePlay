@@ -32,11 +32,11 @@
 .w-144p {width: 144px !important;}
 .w-216p {width: 216px !important;}
 .w-288p {width: 288px !important;}
-.w-384p {height: 384px !important;}
-.w-432p {height: 432px !important;}
-.w-576p {height: 576px !important;}
-.w-768p {height: 768px !important;}
-.w-864p {height: 864px !important;}
+.w-384p {width: 384px !important;}
+.w-432p {width: 432px !important;}
+.w-576p {width: 576px !important;}
+.w-768p {width: 768px !important;}
+.w-864p {width: 864px !important;}
 
 .h-0p {height: 0px !important;}
 .h-2p {height: 2px !important;}
@@ -309,7 +309,7 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 	display: none !important;
 }
 
-/* Webkit autofill disabled */
+/* Webkit autofill color disabled */
 
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px #e4f6e1 inset;

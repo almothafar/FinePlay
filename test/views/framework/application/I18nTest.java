@@ -7,6 +7,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 import static play.test.Helpers.contentAsString;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -17,14 +18,14 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import common.utils.Locales;
 import common.utils.Sessions;
 import models.user.User;
 import models.user.User.Role;
 import models.user.User.Theme;
-import models.user.User;
-import play.Logger;
 import play.mvc.Http;
 import play.mvc.Http.Cookie;
 import play.mvc.Http.RequestBuilder;
@@ -33,6 +34,7 @@ import play.test.WithApplication;
 import play.twirl.api.Content;
 import test.Condition;
 import test.Filter;
+import test.LoggerNames;
 
 /**
  *
@@ -41,6 +43,8 @@ import test.Filter;
  *
  */
 public class I18nTest extends WithApplication {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private Http.Context context;
 
@@ -102,7 +106,8 @@ public class I18nTest extends WithApplication {
 			final Content html = views.html.framework.application.i18n.render(new HashMap<>());
 
 			assertThat("text/html", is(html.contentType()));
-			Logger.info(contentAsString(html));
+			final ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(LoggerNames.PLAY_MAILER);
+			LOGGER.info(contentAsString(html));
 			assertTrue(contentAsString(html).contains(condition.get("message.code")));
 		});
 	}

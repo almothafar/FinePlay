@@ -615,8 +615,16 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.brotli/dec/docs/dec-0.1.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/srcs/pdfbox-2.0.9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/bundles/pdfbox-2.0.9.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/srcs/fontbox-2.0.9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/bundles/fontbox-2.0.9.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/srcs/pdfbox-2.0.10-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/bundles/pdfbox-2.0.10.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/docs/pdfbox-2.0.10-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/srcs/fontbox-2.0.10-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/bundles/fontbox-2.0.10.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/docs/fontbox-2.0.10-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.2.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox-tools/srcs/pdfbox-tools-2.0.9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox-tools/jars/pdfbox-tools-2.0.9.jar"/>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/jempbox/srcs/jempbox-1.8.13-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/jempbox/bundles/jempbox-1.8.13.jar">
@@ -1075,14 +1083,14 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/openlayers/docs/openlayers-4.5.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/srcs/datatables-1.10.16-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/jars/datatables-1.10.16.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/srcs/datatables-1.10.18-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/jars/datatables-1.10.18.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/docs/datatables-1.10.16-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/docs/datatables-1.10.18-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/srcs/datatables.net-plugins-1.10.16-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/jars/datatables.net-plugins-1.10.16.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/srcs/datatables.net-plugins-1.10.18-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/jars/datatables.net-plugins-1.10.18.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/docs/datatables.net-plugins-1.10.16-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/docs/datatables.net-plugins-1.10.18-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/srcs/datatables.net-select-1.2.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/jars/datatables.net-select-1.2.3.jar">

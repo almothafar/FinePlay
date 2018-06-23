@@ -3,14 +3,16 @@ package common.core.logging;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.lang.invoke.MethodHandles;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import play.Logger;
-import play.Logger.ALogger;
 import play.test.WithApplication;
 import test.Appender;
 
@@ -22,7 +24,7 @@ import test.Appender;
  */
 public class LoggerTest extends WithApplication {
 
-	private static ALogger LOGGER = Logger.of(LoggerTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -43,10 +45,7 @@ public class LoggerTest extends WithApplication {
 	@Test
 	public void test() {
 
-		// final ch.qos.logback.classic.Logger root =
-		// (ch.qos.logback.classic.Logger)
-		// Logger.of(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME).underlying();
-		final ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) Logger.of(LoggerTest.class).underlying();
+		final ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(LoggerTest.class);
 
 		final Appender testAppender = new Appender();
 		root.addAppender(testAppender);

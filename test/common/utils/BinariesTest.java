@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.apache.tika.metadata.HttpHeaders;
 import org.apache.tika.metadata.Metadata;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -63,29 +64,29 @@ public class BinariesTest {
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("public", "images", "en-US", "logo.png")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("image/png"));
+		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("image/png"));
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("public", "images", "icons", "fineplay.svg")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("image/svg+xml"));
+		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("image/svg+xml"));
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("conf", "messages.xlsx")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
 		// assertThat("", metadata.get(Metadata.CONTENT_TYPE),
 		// is("application/x-tika-ooxml"));
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("conf", "messages")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("text/plain; charset=UTF-8"));
+		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("text/plain; charset=UTF-8"));
 		// assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("text/plain"));
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("conf", "fonts", "ipamjm.ttf")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("application/x-font-ttf"));
+		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("application/x-font-ttf"));
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("target", "web", "web-modules", "main", "webjars", "lib", "pdf-js", "web", "compressed.tracemonkey-pldi-09.pdf")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("application/pdf"));
+		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("application/pdf"));
 	}
 }

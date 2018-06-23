@@ -23,11 +23,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.LoggerFactory;
 
 import controllers.registuser.RegistPage;
 import controllers.registuser.provisional.CompletePage;
 import controllers.user.IndexPage;
-import play.Logger;
 import test.Appender;
 import test.BrowserLocaleFilter;
 import test.Captures;
@@ -107,7 +107,7 @@ public class ResetUserTest {
 				final Counter counter = new Counter(3);
 				final Locale locale = condition.getLocale();
 
-				final ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) Logger.of(LoggerNames.PLAY_MAILER).underlying();
+				final ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(LoggerNames.PLAY_MAILER);
 
 				final Appender testAppender = new Appender();
 				root.addAppender(testAppender);
