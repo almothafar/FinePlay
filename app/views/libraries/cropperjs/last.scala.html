@@ -1,3 +1,5 @@
+@import views.html.helper._
+
 @()
 
-<script src="@routes.Assets.versioned("lib/cropperjs/dist/cropper.min.js")"></script>
+<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/cropperjs/dist/cropper.min.js")"></script>

@@ -5,6 +5,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 @import java.time._
 
 @import models.user._
@@ -60,12 +61,12 @@
 									<h4 class="card-title">@Messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE)</h4>
 									<p class="card-text">@Messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE_DESCRIPTION)</p>
 									@if(form.hasGlobalErrors) {
-										<p class="text-danger">@form.getGlobalError.get.message</p>
+										<p class="text-danger">@form.globalError.get.message</p>
 									}
 									<div class="form-group row">
 										<label for="@User.NEWUSERID" class="col-sm-4 col-form-label required">@Messages(MessageKeys.USER_NEWUSERID)</label>
 										<div class="col-sm-8">
-											<input id="@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="Email" value="@form(User.NEWUSERID).getValue.orElse("")" required autofocus>
+											<input id="@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="Email" value="@form(User.NEWUSERID).value.orElse("")" required autofocus>
 											<small class="text-muted">@Messages(MessageKeys.USER_NEWUSERID_DESCRIPTION)</small>
 											@for(error <- form(User.NEWUSERID).errors) {
 												<div class="text-danger">@Messages(error.message)</div>
@@ -100,6 +101,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		<script src='@routes.Assets.versioned("javascripts/setting/user/changeuser/change.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/setting/user/changeuser/change.js")'></script>
 	}
 }

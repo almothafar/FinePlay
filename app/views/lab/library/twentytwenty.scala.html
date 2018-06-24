@@ -5,6 +5,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import common.utils._
@@ -53,6 +54,6 @@
 
 		@libraries.standard.last()
 		@libraries.twentytwenty.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/library/twentytwenty.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/twentytwenty.js")'></script>
 	}
 }

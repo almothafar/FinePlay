@@ -6,6 +6,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import models.user._
 
@@ -59,6 +60,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		<script src='@routes.Assets.versioned("javascripts/setting/user/changeuser/decision/complete.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/setting/user/changeuser/decision/complete.js")'></script>
 	}
 }

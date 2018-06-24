@@ -2,9 +2,10 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.6.13-β7-SNAPSHOT"
+version := "2.7.0-M1-α1-SNAPSHOT"
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.12.6"
+//scalaVersion := "2.13.0-M3"
 
 //lazy val fineplaySub = (project in file("sub"))
 //    .enablePlugins(PlayJava)
@@ -19,9 +20,9 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.6.13-β7-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M1-α1-SNAPSHOT",
   javaJdbc,
-  ehcache,
+  caffeine,
   jcache,
   "org.jsr107.ri" % "cache-annotations-ri-guice" % "1.1.0",
   javaWs,
@@ -33,17 +34,13 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
   "com.typesafe.play" %% "play-json" % "2.6.9",
-  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.6",
+  "com.typesafe.play" %% "play-ws" % "2.0.0-M2",
+//  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.6",
   "com.h2database" % "h2" % "1.4.197",
 //  "com.h2database" % "h2" % "1.4.197" % Test,
-//  "com.typesafe.play" %% "play-ahc-ws-standalone-json" % "1.0.0",
-//  "com.typesafe.play" %% "play-ahc-ws-standalone-xml" % "1.0.0",
-//  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
-//  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1",
-//  "net.logstash.logback" % "logstash-logback-encoder" % "5.0",		// Apache 4.11
+//  "net.logstash.logback" % "logstash-logback-encoder" % "5.1",		// Apache 5.1
   "org.hibernate" % "hibernate-core" % "5.3.1.Final",					// LGPL 5.3.0
   "org.hibernate" % "hibernate-jpamodelgen" % "5.3.1.Final",			//
-  "org.hibernate.validator" % "hibernate-validator" % "6.0.10.Final",	// Apache 6.0.10 // into play include
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
   "javax.json" % "javax.json-api" % "1.1.2",
@@ -87,10 +84,10 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
   "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
-  "org.webjars.bower" % "datatables" % "1.10.18",						// MIT 1.10.16
+  "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.18",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
-  "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10
+  "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10 +patch
   "org.webjars.bower" % "handsontable" % "2.0.0",						// MIT 2.0.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.1.3",							// MIT 1.1.3
@@ -101,6 +98,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "diff2html" % "2.3.0",							// MIT 2.3.0
   "org.webjars.npm" % "marked" % "0.4.0",								// MIT 0.4.0
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
+  "org.webjars.bower" % "plotly.js" % "1.38.1",							// MIT 1.34.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.0-beta.1",			// MIT 3.0.0-beta.1
@@ -122,7 +120,8 @@ libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.0.13",							// Icons — CC/Pro 5.0.8
 																		// Fonts — SIL OFL 5.0.8
 																		// Code — MIT 5.0.8
-  "org.webjars" % "material-design-icons" % "3.0.1"					// Apache 3.0.1
+  "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
+  "org.webjars.npm" % "ionicons" % "4.0.0-9"							// MIT 4.2
 )
 // IcoFont																// MIT 1.3
 
@@ -145,17 +144,17 @@ libraryDependencies ++= Seq(
   "org.jberet" % "jberet-core" % "1.3.0.Final",							// Eclipse Public 1.3.0.Final
   "org.jberet" % "jberet-support" % "1.3.0.Final",
   "org.jberet" % "jberet-se" % "1.3.0.Final",
-  "org.wildfly.security" % "wildfly-security-manager" % "1.1.2.Final"	// ? 1.1.2.Final
+  "org.wildfly.security" % "wildfly-security-manager" % "1.1.2.Final"	// LGPL(http://www.wildfly.org footer) 1.1.2.Final
 )
 
 excludeDependencies ++= Seq(
-  "org.hibernate" % "hibernate-validator"								// into play include
+//  "[GroupId]" % "[ArtifactId]"
 )
 
 // //////////
 
 javaOptions in Test += "-Dconfig.file=conf/application_test.conf"
-// Support is best in Firefox 52.0.3 and onwards
+// v0.21.0 / Firefox 57
 javaOptions in Test += "-Dwebdriver.gecko.driver=misc/geckodriver"
 
 // Create JPA metamodel
@@ -211,16 +210,16 @@ mappings in Universal ++= {
 // playEnhancerEnabled := false
 
 // JaCoCo
-testOptions in jacocoReportSettings += Tests.Setup( () => {
-	System.setProperty("config.file", "conf/application_test.conf");
-	System.setProperty("webdriver.gecko.driver", "misc/geckodriver");
-} )
-jacocoReportSettings := JacocoReportSettings(
-  "Jacoco Coverage Report",
-  None,
-  JacocoThresholds(),
-  Seq(JacocoReportFormats.ScalaHTML),
-  "utf-8")
+//testOptions in jacocoReportSettings += Tests.Setup( () => {
+//	System.setProperty("config.file", "conf/application_test.conf");
+//	System.setProperty("webdriver.gecko.driver", "misc/geckodriver");
+//} )
+//jacocoReportSettings := JacocoReportSettings(
+//  "Jacoco Coverage Report",
+//  None,
+//  JacocoThresholds(),
+//  Seq(JacocoReportFormats.ScalaHTML),
+//  "utf-8")
 
 // FindBugs
 findbugsReportPath := Some(crossTarget.value / "findbugs" / "report.html")

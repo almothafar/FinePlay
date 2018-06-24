@@ -1,6 +1,6 @@
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.6 & Bootstrap 4.1  
+Play(Java) 2.7 & Bootstrap 4.1  
 multilingual responsive project template.
 
 | Phone | Tablet    |
@@ -13,14 +13,14 @@ How to play
 ##### Environment #####
 
 	macOS High Sierra version 10.13.5（17F77）
-	java version "1.8.0_162"
+	openjdk version "10" 2018-03-20
 	Safari version 11.1.1 (13605.2.8)
 
 ##### Java #####
 
 Install
 
-[Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+[Java](http://jdk.java.net/10/)
 
 ##### Console #####
 
@@ -71,6 +71,7 @@ Notice
 Release History
 ---------------
 
++ **2.7.0-M1-α1** - 2018-06-24 (´・ω・｀)
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

@@ -1,17 +1,19 @@
+@import views.html.helper._
+
 @import common.system._
 
 @()
 
 @libraries.jquery.last()
 
-<script src='@routes.Assets.versioned("javascripts/common.js")'></script>
-<script src='@routes.Assets.versioned("javascripts/experimental.js")'></script>
-<script type="text/javascript" src="@controllers.system.routes.System.routes"></script>
-<script src='@routes.Assets.versioned("javascripts/utils/strings.js")'></script>
-<script src='@routes.Assets.versioned("javascripts/utils/components.js")'></script>
-<script src='@routes.Assets.versioned("javascripts/utils/forms.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/common.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/experimental.js")'></script>
+<script @{CSPNonce.attr} type="text/javascript" src="@controllers.system.routes.System.routes"></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/utils/strings.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/utils/components.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/utils/forms.js")'></script>
 
 @libraries.popper.last()
 @libraries.bootstrap.last()
-<script src='@routes.Assets.versioned("javascripts/fakestrap.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/fakestrap.js")'></script>
 @libraries.jqueryui.last()

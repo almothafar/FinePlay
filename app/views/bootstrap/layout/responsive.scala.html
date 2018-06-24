@@ -3,6 +3,7 @@
 
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @()
 
@@ -97,6 +98,6 @@
 		}
 
 		@libraries.standard.last()
-		<script src='@routes.Assets.versioned("javascripts/bootstrap/layout/responsive.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/bootstrap/layout/responsive.js")'></script>
 	}
 }

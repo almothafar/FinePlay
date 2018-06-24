@@ -7,6 +7,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import models.manage.company.organization.list.UploadFormContent._
@@ -26,12 +27,12 @@
 		</div>
 		<div class="row form-group">
 			<div class="col-sm-9">
-				<input id="@OrganizationUnit.COMPANYID" type="hidden" name="@OrganizationUnit.COMPANYID" class="form-control" placeholder="CompanyId" value="@form(OrganizationUnit.COMPANYID).getValue.orElse("")" required>
+				<input id="@OrganizationUnit.COMPANYID" type="hidden" name="@OrganizationUnit.COMPANYID" class="form-control" placeholder="CompanyId" value="@form(OrganizationUnit.COMPANYID).value.orElse("")" required>
 			</div>
 		</div>
 		<div class="row form-group">
 			<div class="col-sm-9">
-				<input id="@OrganizationUnit.ORGANIZATIONID" type="hidden" name="@OrganizationUnit.ORGANIZATIONID" class="form-control" placeholder="OrganizationId" value="@form(OrganizationUnit.ORGANIZATIONID).getValue.orElse("")" required>
+				<input id="@OrganizationUnit.ORGANIZATIONID" type="hidden" name="@OrganizationUnit.ORGANIZATIONID" class="form-control" placeholder="OrganizationId" value="@form(OrganizationUnit.ORGANIZATIONID).value.orElse("")" required>
 			</div>
 		</div>
 		<div class="row form-group">

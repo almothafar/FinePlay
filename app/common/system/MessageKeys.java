@@ -551,6 +551,8 @@ public class MessageKeys {
 
   public static final String PLEASE__WAIT = "please_wait";
 
+  public static final String PLOTLYJS_LANG = "plotlyjs.lang";
+
   public static final String PREVIEW = "preview";
 
   public static final String PREVIOUS = "previous";

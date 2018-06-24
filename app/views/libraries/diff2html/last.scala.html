@@ -1,4 +1,6 @@
+@import views.html.helper._
+
 @()
 
-<script type="text/javascript" src="@routes.Assets.versioned("lib/diff2html/dist/diff2html-ui.min.js")"></script>
-<script type="text/javascript" src="@routes.Assets.versioned("lib/diff2html/dist/diff2html.min.js")"></script>
+<script @{CSPNonce.attr} type="text/javascript" src="@routes.Assets.versioned("lib/diff2html/dist/diff2html-ui.min.js")"></script>
+<script @{CSPNonce.attr} type="text/javascript" src="@routes.Assets.versioned("lib/diff2html/dist/diff2html.min.js")"></script>

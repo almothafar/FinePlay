@@ -6,6 +6,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 
@@ -99,6 +100,6 @@
 
 		@libraries.standard.last()
 		@libraries.bootstrapslider.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/library/bootstrapslider.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/bootstrapslider.js")'></script>
 	}
 }

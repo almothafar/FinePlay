@@ -6,6 +6,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import models.manage.company._
@@ -19,7 +20,7 @@
 		@helper.form(helper.CSRF(controllers.manage.company.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
 			<h5 class="form-read-heading">@Messages(MessageKeys.CONDITION)</h5>
 			@if(form.hasGlobalErrors) {
-				<p class="text-danger">@form.getGlobalError.get.message</p>
+				<p class="text-danger">@form.globalError.get.message</p>
 			}
 			<div class="row form-group">
 				<label for="@Company.NAME" class="col-sm-3 col-form-label">@Messages(MessageKeys.COMPANY_NAME)</label>
@@ -30,7 +31,7 @@
 								<i class="far fa-building"></i>
 							</span>
 						</div>
-						<input id="@Company.NAME" type="text" name="@Company.NAME" class="form-control" placeholder="Name" value="@form(Company.NAME).getValue.orElse("")" autofocus>
+						<input id="@Company.NAME" type="text" name="@Company.NAME" class="form-control" placeholder="Name" value="@form(Company.NAME).value.orElse("")" autofocus>
 						@for(error <- form(Company.NAME).errors) {
 							<div class="text-danger">@Messages(error.message)</div>
 						}
@@ -41,9 +42,9 @@
 				<label for="@Company.MAXRESULT" class="col-sm-3 col-form-label">@Messages(MessageKeys.MAX__CASE)</label>
 				<div class="col-sm-9">
 					<select id="@Company.MAXRESULT" name="@Company.MAXRESULT" class="form-control custom-select" required>
-						<option value="100" @("selected".when("100".equals(form(Company.MAXRESULT).getValue.orElse(""))))>100</option>
-						<option value="500" @("selected".when("500".equals(form(Company.MAXRESULT).getValue.orElse(""))))>500</option>
-						<option value="1000" @("selected".when("1000".equals(form(Company.MAXRESULT).getValue.orElse(""))))>1000</option>
+						<option value="100" @("selected".when("100".equals(form(Company.MAXRESULT).value.orElse(""))))>100</option>
+						<option value="500" @("selected".when("500".equals(form(Company.MAXRESULT).value.orElse(""))))>500</option>
+						<option value="1000" @("selected".when("1000".equals(form(Company.MAXRESULT).value.orElse(""))))>1000</option>
 					</select>
 				</div>
 			</div>

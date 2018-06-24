@@ -2,6 +2,7 @@
 @import scala.collection.JavaConverters._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 
@@ -49,13 +50,13 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 <!-- This snippet is used in production (included from viewer.html) -->
 	<link rel="resource" type="application/l10n" href="@routes.Assets.versioned("lib/pdf-js/web/locale/locale.properties")">
-	<script src="@routes.Assets.versioned("lib/custom/pdf-js/build/pdf.js")"></script>
+	<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/custom/pdf-js/build/pdf.js")"></script>
 
 
-	<script src="@routes.Assets.versioned("lib/custom/pdf-js/viewer.js")"></script>
+	<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/custom/pdf-js/viewer.js")"></script>
 
 	@libraries.jquery.last()
-	<script src='@routes.Assets.versioned("javascripts/messages.js")'></script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/messages.js")'></script>
 	@libraries.fontawesome.head()
 	<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/system/pdf.css")'>
 
@@ -63,7 +64,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 		"@MessageKeys.PDFJS_LANG":"@Messages(MessageKeys.PDFJS_LANG)",
 		"contentUrl":"@pdfInfo.get(models.system.PDFInfoFormContent.URL)"
 	}'></div>
-	<script src='@routes.Assets.versioned("javascripts/system/pdf1.js")'></script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/pdf1.js")'></script>
   </head>
 
   <body tabindex="1" class="loadingInProgress">
@@ -380,5 +381,5 @@ See https://github.com/adobe-type-tools/cmap-resources
     <div id="printContainer"></div>
 	@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "link"->pdfInfo.get(models.system.PDFInfoFormContent.RETURNURL), "class"->"d-print-none"))
   </body>
-	<script src='@routes.Assets.versioned("javascripts/system/pdf2.js")'></script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/pdf2.js")'></script>
 </html>

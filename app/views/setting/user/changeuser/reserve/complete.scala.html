@@ -6,6 +6,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import models.user._
 @import models.setting.user.changeuser._
@@ -51,7 +52,7 @@
 							<div class="form-group row">
 								<label for="@User.NEWUSERID" class="col-sm-4 col-form-label">@Messages(MessageKeys.USER_NEWUSERID)</label>
 								<div class="col-sm-8">
-									<input id="@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="Email" value="@form(User.NEWUSERID).getValue.orElse("")" required disabled>
+									<input id="@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="Email" value="@form(User.NEWUSERID).value.orElse("")" required disabled>
 								</div>
 							</div>
 

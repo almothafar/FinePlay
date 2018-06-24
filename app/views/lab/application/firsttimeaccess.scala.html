@@ -10,6 +10,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @frame(){
 
@@ -63,6 +64,6 @@
 		@libraries.standard.last()
 		@libraries.slick.last()
 		@libraries.holder.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/application/firsttimeaccess.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/firsttimeaccess.js")'></script>
 	}
 }

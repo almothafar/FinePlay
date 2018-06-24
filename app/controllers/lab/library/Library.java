@@ -80,6 +80,9 @@ public class Library extends Controller {
 		case "summernote":
 
 			return summernote();
+		case "plotlyjs":
+
+			return plotlyjs();
 		case "parsley":
 
 			return parsley();
@@ -234,6 +237,11 @@ public class Library extends Controller {
 	public static Result summernote() {
 
 		return ok(views.html.lab.library.summernote.render());
+	}
+
+	public static Result plotlyjs() {
+
+		return ok(views.html.lab.library.plotlyjs.render());
 	}
 
 	public static Result parsley() {

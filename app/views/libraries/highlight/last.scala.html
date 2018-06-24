@@ -1,5 +1,7 @@
+@import views.html.helper._
+
 @()
 
-<script src="@routes.Assets.versioned("lib/highlightjs/highlight.pack.min.js")"></script>
+<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/highlightjs/highlight.pack.min.js")"></script>
 
-<script src='@routes.Assets.versioned("lib/custom/highlight/last.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/highlight/last.js")'></script>

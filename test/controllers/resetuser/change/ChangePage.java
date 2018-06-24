@@ -38,12 +38,12 @@ public class ChangePage extends Page {
 
 	public String getPassword() {
 
-		return getBrowser().$(withId("password")).value();
+		return getBrowser().$(withId("password")).get(0).value();
 	}
 
 	public String getRePassword() {
 
-		return getBrowser().$(withId("rePassword")).value();
+		return getBrowser().$(withId("rePassword")).get(0).value();
 	}
 
 	public String contentTitle() {

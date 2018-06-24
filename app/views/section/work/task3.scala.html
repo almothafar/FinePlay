@@ -3,6 +3,7 @@
 
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 
@@ -18,7 +19,13 @@
 	@head("section"){
 
 		@libraries.standard.head()
-		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/section/work/task3.css")'>
+		@style('type -> "text/css") {
+
+			#button {
+
+				border: 2px dotted red;
+			}
+		}
 	}
 
 	@body("section","work"){
@@ -42,6 +49,14 @@
 		}
 
 		@libraries.standard.last()
-		<script src='@routes.Assets.versioned("javascripts/section/work/task3.js")'></script>
+		@script(args = 'type -> "text/javascript") {
+
+			'use strict';
+
+			$('#button').on('click', function(){
+
+				alert("Tapped.");
+			});
+		}
 	}
 }

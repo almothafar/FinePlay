@@ -2,6 +2,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 @import views.html.manage
 
 @import common.system._
@@ -78,14 +79,14 @@
 						@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "class"->"mr-3 float-left"))
 					</div>
 					<div class="bd-highlight w-100">
-						@manage.company.detailtasks(Map("id"->"", "task"->"organization", "target"->form(OrganizationUnit.COMPANYID).getValue.orElse("")))
+						@manage.company.detailtasks(Map("id"->"", "task"->"organization", "target"->form(OrganizationUnit.COMPANYID).value.orElse("")))
 					</div>
 				</div>
 			</div>
 
 			<div class="mt-3 mb-3">
 
-				@manage.company.organization.tasks(Map("id"->"tasklist", "task"->"list", "target"->form(OrganizationUnit.COMPANYID).getValue.orElse("")))
+				@manage.company.organization.tasks(Map("id"->"tasklist", "task"->"list", "target"->form(OrganizationUnit.COMPANYID).value.orElse("")))
 			</div>
 
 			<div class="mt-3 mb-3">
@@ -125,7 +126,7 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"companyId":@Long.valueOf(form(OrganizationUnit.COMPANYID).getValue.orElse("")),
+			"companyId":@Long.valueOf(form(OrganizationUnit.COMPANYID).value.orElse("")),
 			"@MessageKeys.X__CASE__SELECTED":"@Messages(MessageKeys.X__CASE__SELECTED)",
 			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
 			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
@@ -136,6 +137,6 @@
 		@libraries.standard.last()
 		@libraries.datatables.last()
 		@libraries.pickadate.last()
-		<script src='@routes.Assets.versioned("javascripts/manage/company/organization/list/index.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/manage/company/organization/list/index.js")'></script>
 	}
 }

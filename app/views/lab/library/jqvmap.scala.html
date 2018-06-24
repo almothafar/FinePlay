@@ -6,6 +6,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 @import play.api.i18n._
 
 @import common.system._
@@ -89,18 +90,18 @@
 		@libraries.standard.last()
 		@libraries.jqvmap.last()
 
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/jquery.vmap.world.js")'></script>
-		<script src='@routes.Assets.versioned("lib/jqvmap/examples/js/jquery.vmap.sampledata.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/jquery.vmap.world.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/examples/js/jquery.vmap.sampledata.js")'></script>
 
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/jquery.vmap.usa.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/jquery.vmap.usa.js")'></script>
 
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.africa.js")'></script>
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.asia.js")'></script>
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.australia.js")'></script>
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.europe.js")'></script>
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.north-america.js")'></script>
-		<script src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.south-america.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.africa.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.asia.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.australia.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.europe.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.north-america.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/jqvmap/dist/maps/continents/jquery.vmap.south-america.js")'></script>
 
-		<script src='@routes.Assets.versioned("javascripts/lab/library/jqvmap.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/jqvmap.js")'></script>
 	}
 }

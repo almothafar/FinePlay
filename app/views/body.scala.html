@@ -19,6 +19,7 @@
 @import models.user.User._
 
 @import views.html._
+@import views.html.helper._
 
 @import common.system._
 @import common.utils._
@@ -302,5 +303,5 @@
 		"getHelpError":"@Messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, Messages(MessageKeys.HELP))"
 	}'></div>
 
-	<script src='@routes.Assets.versioned("javascripts/body.js")'></script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/body.js")'></script>
 </body>

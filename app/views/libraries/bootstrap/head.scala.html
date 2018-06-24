@@ -1,5 +1,6 @@
 @import com.typesafe.config._
 @import play.api.i18n._
+@import views.html.helper._
 
 @import common.system._
 
@@ -24,4 +25,4 @@
 	"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
 	"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
 }'></meta>
-<script src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>

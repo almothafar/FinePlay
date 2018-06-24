@@ -6,6 +6,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import java.time._
 @import java.time.format._
@@ -61,6 +62,6 @@
 
 		@libraries.standard.last()
 		@libraries.hammerjs.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/library/hammerjs.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/hammerjs.js")'></script>
 	}
 }

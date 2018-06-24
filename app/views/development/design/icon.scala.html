@@ -1,9 +1,10 @@
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 
-@(fontAwesomeSolidIconNames: List[String], fontAwesomeRegularIconNames: List[String], fontAwesomeBrandsRegularIconNames: List[String], materialDesignIconNames: List[String], icoFontNames: List[String])
+@(fontAwesomeSolidIconNames: List[String], fontAwesomeRegularIconNames: List[String], fontAwesomeBrandsRegularIconNames: List[String], materialDesignIconNames: List[String], ioniconsNames: List[String], icoFontNames: List[String])
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -15,6 +16,7 @@
 	@head("Development"){
 
 		@libraries.materialicons.head()
+		@libraries.ionicons.head()
 		@libraries.icofont.head()
 		@libraries.standard.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/development/design/icon.css")'>
@@ -90,6 +92,22 @@
 				</div>
 			</div>
 
+			<div id="ionicons" class="mb-3">
+				<h4 class="headline">Ionicons</h4>
+				<div class="row mt-3 icon_result_list">
+
+				</div>
+				<div class="row mt-3 icon_list">
+
+					@for(ioniconsName <- ioniconsNames) {
+					<div class="icon_container mb-3 wordwrap">
+						@components.icon(Map("id"->"", "icon"->("ion ion-" + ioniconsName + " fa-2x"), "class"->"icon_body"))
+						<div class="icon_caption">@("ion ion-" + ioniconsName)</div>
+					</div>
+					}
+				</div>
+			</div>
+
 			<div id="icofont" class="mb-3">
 				<h4 class="headline">IcoFont</h4>
 				<div class="row mt-3 icon_result_list">
@@ -108,6 +126,6 @@
 		}
 
 		@libraries.standard.last()
-		<script src='@routes.Assets.versioned("javascripts/development/design/icon.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/development/design/icon.js")'></script>
 	}
 }

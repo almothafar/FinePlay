@@ -5,6 +5,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import models.inquiry._
 
@@ -42,12 +43,12 @@
 								<h4 class="card-title">@Messages(MessageKeys.INQUIRY_SEND)</h4>
 								<p class="card-text">@Messages(MessageKeys.INQUIRY_SEND_DESCRIPTION)</p>
 								@if(form.hasGlobalErrors) {
-									<p class="text-danger">@form.getGlobalError.get.message</p>
+									<p class="text-danger">@form.globalError.get.message</p>
 								}
 								<div class="form-group row">
 									<label for="@Inquiry.USERID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.EMAIL)</label>
 									<div class="col-sm-9">
-										<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).getValue.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change">
+										<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).value.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change">
 										<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
 										@for(error <- form(Inquiry.USERID).errors) {
 											<div class="text-danger">@Messages(error.message)</div>
@@ -57,7 +58,7 @@
 								<div class="form-group row">
 									<label for="@Inquiry.NAME" class="col-sm-3 col-form-label">@Messages(MessageKeys.FULL__NAME)</label>
 									<div class="col-sm-9">
-										<input id="@Inquiry.NAME" type="text" name="@Inquiry.NAME" class="form-control" placeholder="Name" value="@form(Inquiry.NAME).getValue.orElse("")" maxlength="64" data-parsley-trigger="change">
+										<input id="@Inquiry.NAME" type="text" name="@Inquiry.NAME" class="form-control" placeholder="Name" value="@form(Inquiry.NAME).value.orElse("")" maxlength="64" data-parsley-trigger="change">
 										@for(error <- form(Inquiry.NAME).errors) {
 											<div class="text-danger">@Messages(error.message)</div>
 										}
@@ -69,7 +70,7 @@
 										<select id="@Inquiry.TYPE" class="custom-select w-100" name="@Inquiry.TYPE" size="1" required data-parsley-trigger="change">
 											<option value="" label="@Messages(MessageKeys.PLEASE__SELECT)"></option>
 											@for(inquiry_type <- Inquiry.Type.values()) {
-											<option value="@inquiry_type.name()" label="@Messages(inquiry_type.getMessageKey())" @("selected".when(inquiry_type.name().equals(form(Inquiry.TYPE).getValue.orElse(""))))>@Messages(inquiry_type.getMessageKey())</option>
+											<option value="@inquiry_type.name()" label="@Messages(inquiry_type.getMessageKey())" @("selected".when(inquiry_type.name().equals(form(Inquiry.TYPE).value.orElse(""))))>@Messages(inquiry_type.getMessageKey())</option>
 											}
 										</select>
 										@for(error <- form(Inquiry.TYPE).errors) {
@@ -80,7 +81,7 @@
 								<div class="form-group row">
 									<label for="@Inquiry.TITLE" class="col-sm-3 col-form-label required">@Messages(MessageKeys.TITLE)</label>
 									<div class="col-sm-9">
-										<input id="@Inquiry.TITLE" type="text" name="@Inquiry.TITLE" class="form-control" placeholder="Title" value="@form(Inquiry.TITLE).getValue.orElse("")" required maxlength="64" data-parsley-trigger="change">
+										<input id="@Inquiry.TITLE" type="text" name="@Inquiry.TITLE" class="form-control" placeholder="Title" value="@form(Inquiry.TITLE).value.orElse("")" required maxlength="64" data-parsley-trigger="change">
 										@for(error <- form(Inquiry.TITLE).errors) {
 											<div class="text-danger">@Messages(error.message)</div>
 										}
@@ -118,6 +119,6 @@
 
 		@libraries.standard.last()
 		@libraries.parsley.last()
-		<script src='@routes.Assets.versioned("javascripts/inquiry/inquiry.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/inquiry/inquiry.js")'></script>
 	}
 }

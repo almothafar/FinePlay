@@ -1,12 +1,13 @@
 @import play.api.i18n._
+@import views.html.helper._
 
 @import common.system._
 
 @()
 
-<script src='@routes.Assets.versioned("lib/custom/fullcalendar/head.css.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/fullcalendar/head.css.js")'></script>
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/fullcalendar/dist/fullcalendar.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/fullcalendar/dist/fullcalendar.min.js")'></script>
 @translation() = @{
 
 	var lang = Messages(MessageKeys.FULLCALENDAR_LANG)
@@ -16,7 +17,7 @@
 	}else{
 
 		var path = "lib/fullcalendar/dist/locale/"+lang+".js"
-		Html("<script type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+		Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
 	}
 }
 @translation()

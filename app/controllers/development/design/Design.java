@@ -41,6 +41,7 @@ public class Design extends Controller {
 		private static List<String> FONTAWESOME_REGULAR_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-regular.txt"));
 		private static List<String> FONTAWESOME_BRANDS_REGULAR_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-brands-regular.txt"));
 		private static List<String> MATERIAL_DESIGN_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "material-design.txt"));
+		private static List<String> IONICONS_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "ionicons.txt"));
 		private static List<String> ICOFONT_ICON_NAMES = initIconNames(Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt"));
 	}
 
@@ -67,6 +68,7 @@ public class Design extends Controller {
 				LazyHolder.FONTAWESOME_REGULAR_ICON_NAMES, //
 				LazyHolder.FONTAWESOME_BRANDS_REGULAR_ICON_NAMES, //
 				LazyHolder.MATERIAL_DESIGN_ICON_NAMES, //
+				LazyHolder.IONICONS_NAMES, //
 				LazyHolder.ICOFONT_ICON_NAMES));
 	}
 }

@@ -38,12 +38,12 @@ public class IndexPage extends Page {
 
 	public String getUserId() {
 
-		return getBrowser().$(withId("userId")).value();
+		return getBrowser().$(withId("userId")).get(0).value();
 	}
 
 	public String getPassword() {
 
-		return getBrowser().$(withId("password")).value();
+		return getBrowser().$(withId("password")).get(0).value();
 	}
 
 	public void clickSignIn() {

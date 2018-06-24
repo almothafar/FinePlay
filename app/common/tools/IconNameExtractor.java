@@ -36,6 +36,11 @@ class IconNameExtractor {
 		Files.write(materialDesignIcons, materialDesignIconNames, StandardCharsets.UTF_8);
 		System.out.println("Created :" + materialDesignIcons);
 
+		final List<String> ioniconsNames = getIonicons();
+		final Path ionicons = Paths.get(".", "conf", "resources", "development", "design", "icon", "ionicons.txt");
+		Files.write(ionicons, ioniconsNames, StandardCharsets.UTF_8);
+		System.out.println("Created :" + ionicons);
+
 		final List<String> icoFontNames = getIcoFontNames();
 		final Path icoFont = Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt");
 		Files.write(icoFont, icoFontNames, StandardCharsets.UTF_8);
@@ -140,6 +145,34 @@ class IconNameExtractor {
 		return iconNames;
 	}
 
+	private static final Pattern PATTERN_IONICONS = Pattern.compile("\\.ion-(?<iconName>.*):before.*");
+
+	private static List<String> getIonicons() throws IOException {
+
+		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "ionicons", "dist", "css", "ionicons-core.css");
+		if (!Files.exists(path)) {
+
+			throw new RuntimeException(": " + path);
+		}
+
+		final List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+		final List<String> ioniconsLines = lines.stream().filter(line -> line.startsWith(".ion-")).collect(Collectors.toList());
+		final List<String> iconNames = ioniconsLines.stream().map(line -> {
+
+			final Matcher matcher = PATTERN_IONICONS.matcher(line);
+			if (!matcher.matches()) {
+
+				throw new IllegalStateException(line);
+			}
+
+			final String iconName = matcher.group("iconName");
+
+			return iconName;
+		}).collect(Collectors.toList());
+
+		return iconNames;
+	}
+
 	private static final Pattern PATTERN_ICOFONT = Pattern.compile("\\.icofont-(?<iconName>.*):before.*");
 
 	private static List<String> getIcoFontNames() throws IOException {
@@ -160,7 +193,7 @@ class IconNameExtractor {
 			final Matcher matcher = PATTERN_ICOFONT.matcher(line);
 			if (!matcher.matches()) {
 
-				throw new IllegalStateException("");
+				throw new IllegalStateException(line);
 			}
 
 			final String iconName = matcher.group("iconName");

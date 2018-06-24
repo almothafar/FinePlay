@@ -7,6 +7,7 @@
 @import play.api.inject._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import models.user._
 
@@ -62,15 +63,15 @@
 							</div>
 						</div>
 						@if(form.hasGlobalErrors) {
-							<p class="text-danger">@form.getGlobalError.get.message</p>
+							<p class="text-danger">@form.globalError.get.message</p>
 						}
 						<label for="@User.USER_ID" class="sr-only">User ID</label>
-						<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).getValue.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change" data-parsley-userid="">
+						<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).value.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change" data-parsley-userid="">
 						@for(error <- form(User.USER_ID).errors) {
 							<div class="text-danger">@Messages(error.message)</div>
 						}
 						<label for="@User.PASSWORD" class="sr-only">Password</label>
-						<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).getValue.orElse("")" required maxlength="16" data-parsley-trigger="change" data-parsley-password="">
+						<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).value.orElse("")" required maxlength="16" data-parsley-trigger="change" data-parsley-password="">
 						@for(error <- form(User.PASSWORD).errors) {
 							<div class="text-danger">@Messages(error.message)</div>
 						}
@@ -81,7 +82,7 @@
 							<div class="row d-block clearfix">
 
 								<div class="custom-control custom-checkbox float-left">
-									<input type="checkbox" class="custom-control-input" name="@User.STOREACCOUNT" id="@User.STOREACCOUNT" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).getValue.orElse(""))))>
+									<input type="checkbox" class="custom-control-input" name="@User.STOREACCOUNT" id="@User.STOREACCOUNT" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).value.orElse(""))))>
 									<label class="custom-control-label" for="@User.STOREACCOUNT">@Messages(MessageKeys.USER_STORE__ACCOUNT)</label>
 								</div>
 								@components.button(Map("id"->"signInButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sign-in-alt", "text"->Messages(MessageKeys.USER_SIGNIN), "default"->"true", "class"->"float-right"))
@@ -129,11 +130,11 @@
 							Map("name"->"Java", "icon"->"fab fa-java", "link"->"http://www.oracle.com", "info"->""),
 							Map("name"->"Hibernate", "icon"->"fas fa-database", "link"->"http://hibernate.org", "info"->""),
 							Map("name"->"geckodriver", "icon"->"fab fa-firefox", "link"->" https://github.com/mozilla/geckodriver", "info"->""),
-							Map("name"->"sbt-dependency-graph", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/jrudolph/sbt-dependency-graph", "info"->""),
+							Map("name"->"sbt-dependency-graph", "icon"->"fas fa-project-diagram", "link"->"https://github.com/jrudolph/sbt-dependency-graph", "info"->""),
 							Map("name"->"Play Framework", "icon"->"ii ii-play", "link"->"https://www.playframework.com", "info"->"The High Velocity Web Framework"),
 							Map("name"->"play-mailer", "icon"->"far fa-envelope", "link"->"https://github.com/playframework/play-mailer", "info"->""),
 							Map("name"->"MapStruct", "icon"->"fas fa-cubes", "link"->"http://mapstruct.org", "info"->""),
-							Map("name"->"core-js", "icon"->"fas fa-pencil-alt", "link"->"https://github.com/zloirock/core-js", "info"->""),
+							Map("name"->"core-js", "icon"->"fab fa-js", "link"->"https://github.com/zloirock/core-js", "info"->""),
 							Map("name"->"jQuery", "icon"->"fab fa-js", "link"->"http://jquery.com", "info"->""),
 							Map("name"->"Bootstrap", "icon"->"ii ii-bootstrap", "link"->"http://getbootstrap.com", "info"->"The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web."),
 							Map("name"->"Bootstrap Docs", "icon"->"fas fa-book", "link"->"http://getbootstrap.com", "info"->""),
@@ -141,6 +142,7 @@
 							Map("name"->"Tether", "icon"->"fas fa-comment-alt", "link"->"http://github.hubspot.com/tether/", "info"->""),
 							Map("name"->"Font Awesome", "icon"->"fas fa-flag", "link"->"https://fontawesome.com", "info"->""),
 							Map("name"->"Material Icons", "icon"->"fas fa-font", "link"->"http://google.github.io/material-design-icons/", "info"->""),
+							Map("name"->"Ionicons", "icon"->"fas fa-female", "link"->"https://ionicons.com/", "info"->""),
 							Map("name"->"IcoFont", "icon"->"fas fa-font", "link"->"http://icofont.com/", "info"->""),
 							Map("name"->"PostgreSQL JDBC", "icon"->"fas fa-database", "link"->"https://jdbc.postgresql.org", "info"->""),
 							Map("name"->"jQuery UI", "icon"->"fas fa-mouse-pointer", "link"->"http://jqueryui.com", "info"->""),
@@ -184,6 +186,7 @@
 							Map("name"->"highlight.js", "icon"->"fas fa-code", "link"->"https://highlightjs.org", "info"->""),
 							Map("name"->"diff2html", "icon"->"fas fa-pencil-alt", "link"->"https://diff2html.xyz", "info"->""),
 							Map("name"->"marked", "icon"->"fas fa-code", "link"->"https://github.com/chjj/marked", "info"->""),
+							Map("name"->"plotly.js", "icon"->"far fa-chart-bar", "link"->"https://plot.ly/javascript/", "info"->""),
 							Map("name"->"Parsley", "icon"->"fas fa-pencil-alt", "link"->"http://parsleyjs.org", "info"->""),
 							Map("name"->"Hammer.js", "icon"->"fas fa-hand-point-up", "link"->"http://hammerjs.github.io", "info"->""),
 							Map("name"->"bootstrap-colorpicker", "icon"->"fas fa-tint", "link"->"https://itsjavi.com/bootstrap-colorpicker/", "info"->""),
@@ -228,7 +231,7 @@
 		@libraries.standard.last()
 		@libraries.parsley.last()
 		@libraries.parsleyvalidators.last()
-		<script src='@routes.Assets.versioned("javascripts/user/index.js")'></script>
-		<script async defer src="https://buttons.github.io/buttons.js"></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/user/index.js")'></script>
+		<script @{CSPNonce.attr} async defer src="https://buttons.github.io/buttons.js"></script>
 	}
 }

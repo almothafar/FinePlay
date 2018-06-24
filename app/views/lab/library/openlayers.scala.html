@@ -6,6 +6,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 @import play.api.i18n._
 
 @import common.system._
@@ -58,6 +59,6 @@
 
 		@libraries.standard.last()
 		@libraries.openlayers.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/library/openlayers.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/openlayers.js")'></script>
 	}
 }

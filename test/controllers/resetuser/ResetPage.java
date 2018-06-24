@@ -33,7 +33,7 @@ public class ResetPage extends Page {
 
 	public String getUserId() {
 
-		return getBrowser().$(withId("userId")).value();
+		return getBrowser().$(withId("userId")).get(0).value();
 	}
 
 	public String contentTitle() {

@@ -28,11 +28,11 @@ public class ClockPage extends Page {
 
 	public String getServerDateTime() {
 
-		return getBrowser().$(withId("serverDateTime")).textContent();
+		return getBrowser().$(withId("serverDateTime")).get(0).textContent();
 	}
 
 	public String getClientDateTime() {
 
-		return getBrowser().$(withId("clientDateTime")).textContent();
+		return getBrowser().$(withId("clientDateTime")).get(0).textContent();
 	}
 }

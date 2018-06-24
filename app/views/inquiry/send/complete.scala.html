@@ -6,6 +6,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import models.inquiry._
 
@@ -41,7 +42,7 @@
 							<div class="form-group row">
 								<label for="@Inquiry.USERID" class="col-sm-3 col-form-label">@Messages(MessageKeys.EMAIL)</label>
 								<div class="col-sm-9">
-									<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).getValue.orElse("")" required disabled>
+									<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).value.orElse("")" required disabled>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -62,6 +63,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		<script src='@routes.Assets.versioned("javascripts/inquiry/send/complete.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/inquiry/send/complete.js")'></script>
 	}
 }

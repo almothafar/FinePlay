@@ -1,5 +1,5 @@
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.13")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.0-M1")
 
 // Web plugins
 addSbtPlugin("com.typesafe.sbt" % "sbt-jshint" % "1.0.6")
@@ -21,7 +21,7 @@ addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.0")
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
 // JaCoCo
-addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.0.3")
+//addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.1.0")
 
 // FindBugs
 addSbtPlugin("com.github.sbt" % "sbt-findbugs" % "2.0.0")

@@ -8,6 +8,7 @@
 
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 @import views.html.information
 
 @import javax.json._
@@ -82,7 +83,9 @@
 								<li>Unlimited service</li>
 								<li>Unlimited developer</li>
 								<li>Amateur design</li>
+								<li>Fickle specification</li>
 								<li>Fickle update</li>
+								<li>Fickle test</li>
 								<li>Fickle document</li>
 								<li>GitHub issues access</li>
 								<li>MIT license</li>
@@ -100,7 +103,9 @@
 								<li>Unlimited service</li>
 								<li>Unlimited developer</li>
 								<li>Amateur design</li>
+								<li>Fickle specification</li>
 								<li>Fickle update</li>
+								<li>Fickle test</li>
 								<li>Fickle document</li>
 								<li>GitHub issues access</li>
 								<li>MIT license</li>
@@ -118,7 +123,9 @@
 								<li>Unlimited service</li>
 								<li>Unlimited developer</li>
 								<li>Amateur design</li>
+								<li>Fickle specification</li>
 								<li>Fickle update</li>
+								<li>Fickle test</li>
 								<li>Fickle document</li>
 								<li>GitHub issues access</li>
 								<li>MIT license</li>
@@ -136,6 +143,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		<script src='@routes.Assets.versioned("javascripts/information/license.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/information/license.js")'></script>
 	}
 }

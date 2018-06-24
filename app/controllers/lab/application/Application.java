@@ -31,6 +31,7 @@ import models.components.PagingInfo;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
 import models.user.User_;
+import mylib.Greet;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.libs.Comet;
@@ -40,8 +41,9 @@ import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
-
-import mylib.Greet;
+import play.twirl.api.Html;
+import scala.Symbol;
+import scala.Tuple2;
 
 @PermissionsAllowed
 public class Application extends Controller {
@@ -214,7 +216,7 @@ public class Application extends Controller {
 			e.printStackTrace();
 		}
 
-		return TODO;
+		return TODO();
 	}
 
 	private static Result parallelTask() {
@@ -271,7 +273,7 @@ public class Application extends Controller {
 			e.printStackTrace();
 		}
 
-		return TODO;
+		return TODO();
 	}
 
 	@Authenticated(common.core.Authenticator.class)
@@ -368,6 +370,17 @@ public class Application extends Controller {
 	}
 
 	public Result clock(@Nonnull String zoneId) {
+
+		// TODO script tag in Comet#formatted
+		final String script = views.html.helper.script.render(//
+				new Tuple2[] { new Tuple2<>(Symbol.apply("type"), "text/javascript") }, //
+				Html.apply("(function(){"//
+						+ "var scripts = document.getElementsByTagName('script');"//
+						+ "for(var i=scripts.length-2; 0<=i; i--){"//
+						+ "	scripts[i].parentNode.removeChild(scripts[i]);"//
+						+ "}})();"//
+						+ "parent.clockChanged"),
+				ctx()._requestHeader()).body();
 
 		return ok().chunked(getSource(zoneId).via(Comet.string("(function(){"//
 				+ "var scripts = document.getElementsByTagName('script');"//

@@ -273,6 +273,7 @@ var MessageKeys = {
 	PICKADATE_LANG: "pickadate.lang",
 	PLEASE__SELECT: "please_select",
 	PLEASE__WAIT: "please_wait",
+	PLOTLYJS_LANG: "plotlyjs.lang",
 	PREVIEW: "preview",
 	PREVIOUS: "previous",
 	PRINT: "print",

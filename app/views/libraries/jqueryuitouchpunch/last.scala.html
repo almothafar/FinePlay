@@ -1,5 +1,7 @@
+@import views.html.helper._
+
 @()
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/custom/jqueryuitouchpunch/head.css.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/jqueryuitouchpunch/head.css.js")'></script>
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js")'></script>

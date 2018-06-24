@@ -1,8 +1,9 @@
 @import play.api.i18n._
+@import views.html.helper._
 
 @import common.system._
 
 @()
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/parsleyjs/dist/parsley.min.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("lib/parsleyjs/dist/i18n/"+Messages(MessageKeys.PARSLEY_LANG)+".js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/parsleyjs/dist/parsley.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/parsleyjs/dist/i18n/"+Messages(MessageKeys.PARSLEY_LANG)+".js")'></script>

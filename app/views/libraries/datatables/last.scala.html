@@ -1,17 +1,18 @@
 @import play.api.i18n._
+@import views.html.helper._
 
 @import common.system._
 
 @()
 
-<script src='@routes.Assets.versioned("lib/custom/datatables/last.css.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/datatables/last.css.js")'></script>
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/datatables/media/js/jquery.dataTables.min.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("lib/datatables/media/js/dataTables.bootstrap4.min.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("lib/datatables.net-select/js/dataTables.select.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/datatables/media/js/jquery.dataTables.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/datatables/media/js/dataTables.bootstrap4.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/datatables.net-select/js/dataTables.select.min.js")'></script>
 
 <div id="datatables_messages" class="d-none" data-messages='{
 	"@MessageKeys.FILTER":"@Messages(MessageKeys.FILTER)",
 	"langUrl":"@routes.Assets.versioned("lib/custom/datatables.net-plugins/i18n/"+Messages(MessageKeys.DATATABLES_LANG)+".lang")"
 }'></div>
-<script src='@routes.Assets.versioned("lib/custom/datatables/last.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/datatables/last.js")'></script>

@@ -1,0 +1,65 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import java.time._
+@import java.time.format._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"plotly.js", "icon"->"far fa-chart-bar", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"plotlyjs"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mb-3">
+
+						<div class="col-sm-6 chart">
+							<div id="barChart" class="w-100"></div>
+						</div>
+
+						<div class="col-sm-6 chart">
+							<div id="candlestickChart" class="w-100"></div>
+						</div>
+
+						<div class="col-sm-6 chart">
+							<div id="choroplethMap" class="w-100"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"choroplethMapCSV":"@routes.Assets.versioned("javascripts/lab/library/2014_world_gdp_with_codes.csv").toString"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.plotlyjs.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/plotlyjs.js")'></script>
+	}
+}

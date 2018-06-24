@@ -1,8 +1,10 @@
+@import views.html.helper._
+
 @()
 
-<script src='@routes.Assets.versioned("lib/custom/shepherd/head.css.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/shepherd/head.css.js")'></script>
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/custom/tether/dist/js/tether.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("lib/tether-shepherd/dist/js/shepherd.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/tether/dist/js/tether.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/tether-shepherd/dist/js/shepherd.min.js")'></script>
 
-<script src='@routes.Assets.versioned("lib/custom/shepherd/last.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/shepherd/last.js")'></script>

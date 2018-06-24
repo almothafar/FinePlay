@@ -1,5 +1,6 @@
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import models.components._
@@ -72,6 +73,6 @@
 
 		@libraries.standard.last()
 		@libraries.handsontable.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/library/handsontable.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/handsontable.js")'></script>
 	}
 }

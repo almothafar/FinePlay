@@ -1,15 +1,16 @@
 @import play.api.i18n._
+@import views.html.helper._
 
 @import common.system._
 
 @()
 
-<script type='text/javascript'
+<script @{CSPNonce.attr} type='text/javascript'
 	src='@routes.Assets.versioned("lib/custom/pickadate/head.css.js")'></script>
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.date.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.time.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.date.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.time.js")'></script>
 @translation() = @{
 
 	var lang = Messages(MessageKeys.PICKADATE_LANG)
@@ -19,7 +20,7 @@
 	}else{
 
 		var path = "lib/pickadate.js/compressed/translations/"+lang+".js"
-		Html("<script type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+		Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
 	}
 }
 @translation()
@@ -27,4 +28,4 @@
 <div id="pickadate_messages" class="d-none" data-messages='{
 	"@MessageKeys.CLOSE":"@Messages(MessageKeys.CLOSE)"
 }'></div>
-<script type='text/javascript' src='@routes.Assets.versioned("lib/custom/pickadate/last.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/pickadate/last.js")'></script>

@@ -14,6 +14,8 @@
 |                    |                                                                      |organizationUnits             |      |      |     O|
 |apis                |apis.development.http.Http                                            |                              |     O|     O|     O|
 |                    |                                                                      |postData                      |      |      |      |
+|apis                |apis.system.CSPReport                                                 |                              |      |      |      |
+|                    |                                                                      |log                           |      |      |      |
 |apis                |apis.system.Logger                                                    |                              |     O|     O|     O|
 |                    |                                                                      |log                           |      |      |      |
 |apis                |apis.system.PDF                                                       |                              |     O|     O|     O|

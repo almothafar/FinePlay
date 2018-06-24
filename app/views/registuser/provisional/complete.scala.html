@@ -6,6 +6,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import models.user._
 @import models.registuser._
@@ -42,13 +43,13 @@
 							<div class="form-group row">
 								<label for="@User.USER_ID" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>
 								<div class="col-sm-9">
-									<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).getValue.orElse("")" required disabled>
+									<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).value.orElse("")" required disabled>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="@User.PASSWORD" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_PASSWORD)</label>
 								<div class="col-sm-9">
-									<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).getValue.orElse("")" required disabled>
+									<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).value.orElse("")" required disabled>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -69,6 +70,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
-		<script src='@routes.Assets.versioned("javascripts/registuser/provisional/complete.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/registuser/provisional/complete.js")'></script>
 	}
 }

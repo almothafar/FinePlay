@@ -2,6 +2,7 @@
 @import scala.collection.JavaConverters._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 @import play.api.i18n._
 
 @import common.system._
@@ -101,6 +102,6 @@
 		}'></div>
 
 		@libraries.standard.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/application/translate.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/translate.js")'></script>
 	}
 }

@@ -7,6 +7,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import play.api._
 
@@ -43,6 +44,6 @@
 		}
 
 		@libraries.standard.last()
-		<script src='@routes.Assets.versioned("javascripts/framework/application/reporterror.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/framework/application/reporterror.js")'></script>
 	}
 }

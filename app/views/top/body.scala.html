@@ -12,6 +12,7 @@
 @import models.user.User._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import common.utils._
@@ -68,5 +69,5 @@
 		</div>
 	</div>
 
-	<script src='@routes.Assets.versioned("javascripts/top/body.js")'></script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/top/body.js")'></script>
 </body>

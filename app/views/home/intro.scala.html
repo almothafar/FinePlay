@@ -9,6 +9,7 @@
 
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import javax.json._
 @import java.io._
@@ -96,6 +97,6 @@
 
 		@libraries.standard.last()
 		@libraries.shepherd.last()
-		<script src='@routes.Assets.versioned("javascripts/home/intro.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/home/intro.js")'></script>
 	}
 }

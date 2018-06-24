@@ -39,8 +39,8 @@ public class ApplicationTest {
 						put("user.password", "admin1!aA");
 						//
 						put("title.clock", "Application | fine✿play");
-						put("server", "Jan 1, 2020 1:01:01 AM");
-						put("client", "Dec 31, 2019 5:01:01 PM");
+						put("server", "Jan 1, 2020, 1:01:01 AM");
+						put("client", "Dec 31, 2019, 5:01:01 PM");
 					}
 				}), //
 				new Condition("", Locale.JAPAN, new HashMap<String, Object>() {

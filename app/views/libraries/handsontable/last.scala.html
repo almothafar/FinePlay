@@ -1,11 +1,13 @@
+@import views.html.helper._
+
 @import common.system._
 
 @()
 
 <!-- bower -->
-<!-- <script src="@routes.Assets.versioned("lib/handsontable/dist/handsontable.full.min.js")"></script> -->
+<!-- <script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/handsontable/dist/handsontable.full.min.js")"></script> -->
 <!-- npm -->
-<script src="@routes.Assets.versioned("lib/handsontable/dist/handsontable.full.min.js")"></script>
+<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/handsontable/dist/handsontable.full.min.js")"></script>
 
 <div id="handsontable_messages" class="d-none" data-messages='{
 	"@MessageKeys.INSERT__ROW__ABOVE":"@Messages(MessageKeys.INSERT__ROW__ABOVE)",
@@ -28,4 +30,4 @@
 	"@MessageKeys.COPY":"@Messages(MessageKeys.COPY)",
 	"@MessageKeys.CUT":"@Messages(MessageKeys.CUT)"
 }'></div>
-<script src='@routes.Assets.versioned("lib/custom/handsontable/last.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/handsontable/last.js")'></script>

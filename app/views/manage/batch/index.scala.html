@@ -9,6 +9,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import common.utils._
@@ -183,6 +184,6 @@
 
 		@libraries.standard.last()
 		@libraries.datatables.last()
-		<script src='@routes.Assets.versioned("javascripts/manage/batch/index.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/manage/batch/index.js")'></script>
 	}
 }

@@ -6,6 +6,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import models.manage.company.organization.list._
@@ -19,21 +20,21 @@
 		@helper.form(helper.CSRF(controllers.manage.company.organization.list.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
 			<h5 class="form-read-heading">@Messages(MessageKeys.CONDITION)</h5>
 			@if(form.hasGlobalErrors) {
-				<p class="text-danger">@form.getGlobalError.get.message</p>
+				<p class="text-danger">@form.globalError.get.message</p>
 			}
 			<div class="row form-group">
 				<div class="col-sm-9">
-					<input id="@OrganizationUnit.COMPANYID" type="hidden" name="@OrganizationUnit.COMPANYID" class="form-control" placeholder="CompanyId" value="@form(OrganizationUnit.COMPANYID).getValue.orElse("")" required>
+					<input id="@OrganizationUnit.COMPANYID" type="hidden" name="@OrganizationUnit.COMPANYID" class="form-control" placeholder="CompanyId" value="@form(OrganizationUnit.COMPANYID).value.orElse("")" required>
 				</div>
 			</div>
 			<div class="row form-group">
 				<div class="col-sm-9">
-					<input id="@OrganizationUnit.ORGANIZATIONID" type="hidden" name="@OrganizationUnit.ORGANIZATIONID" class="form-control" placeholder="OrganizationId" value="@form(OrganizationUnit.ORGANIZATIONID).getValue.orElse("")" required>
+					<input id="@OrganizationUnit.ORGANIZATIONID" type="hidden" name="@OrganizationUnit.ORGANIZATIONID" class="form-control" placeholder="OrganizationId" value="@form(OrganizationUnit.ORGANIZATIONID).value.orElse("")" required>
 				</div>
 			</div>
 			<div class="row form-group">
 				<div class="col-sm-9">
-					<input id="@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" type="hidden" name="@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" class="form-control" placeholder="OrganizationUpdateDateTime" value="@form(OrganizationUnit.ORGANIZATIONUPDATEDATETIME).getValue.orElse("")" required>
+					<input id="@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" type="hidden" name="@OrganizationUnit.ORGANIZATIONUPDATEDATETIME" class="form-control" placeholder="OrganizationUpdateDateTime" value="@form(OrganizationUnit.ORGANIZATIONUPDATEDATETIME).value.orElse("")" required>
 				</div>
 			</div>
 			<div class="row form-group">
@@ -45,7 +46,7 @@
 								<i class="fas fa-users"></i>
 							</span>
 						</div>
-						<input id="@OrganizationUnit.NAME" type="text" name="@OrganizationUnit.NAME" class="form-control" placeholder="Name" value="@form(OrganizationUnit.NAME).getValue.orElse("")" autofocus>
+						<input id="@OrganizationUnit.NAME" type="text" name="@OrganizationUnit.NAME" class="form-control" placeholder="Name" value="@form(OrganizationUnit.NAME).value.orElse("")" autofocus>
 						@for(error <- form(OrganizationUnit.NAME).errors) {
 							<div class="text-danger">@Messages(error.message)</div>
 						}
@@ -56,9 +57,9 @@
 				<label for="@OrganizationUnit.MAXRESULT" class="col-sm-3 col-form-label">@Messages(MessageKeys.MAX__CASE)</label>
 				<div class="col-sm-9">
 					<select id="@OrganizationUnit.MAXRESULT" name="@OrganizationUnit.MAXRESULT" class="form-control custom-select" required>
-						<option value="100" @("selected".when("100".equals(form(OrganizationUnit.MAXRESULT).getValue.orElse(""))))>100</option>
-						<option value="500" @("selected".when("500".equals(form(OrganizationUnit.MAXRESULT).getValue.orElse(""))))>500</option>
-						<option value="1000" @("selected".when("1000".equals(form(OrganizationUnit.MAXRESULT).getValue.orElse(""))))>1000</option>
+						<option value="100" @("selected".when("100".equals(form(OrganizationUnit.MAXRESULT).value.orElse(""))))>100</option>
+						<option value="500" @("selected".when("500".equals(form(OrganizationUnit.MAXRESULT).value.orElse(""))))>500</option>
+						<option value="1000" @("selected".when("1000".equals(form(OrganizationUnit.MAXRESULT).value.orElse(""))))>1000</option>
 					</select>
 				</div>
 			</div>

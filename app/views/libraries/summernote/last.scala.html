@@ -1,12 +1,13 @@
 @import play.api.i18n._
+@import views.html.helper._
 
 @import common.system._
 
 @()
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/custom/summernote/head.css.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/summernote/head.css.js")'></script>
 
-<script type='text/javascript' src='@routes.Assets.versioned("lib/summernote/dist/summernote-bs4.min.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/summernote/dist/summernote-bs4.min.js")'></script>
 @translation() = @{
 
 	var lang = Messages(MessageKeys.SUMMERNOTE_LANG)
@@ -16,7 +17,7 @@
 	}else{
 
 		var path = "lib/summernote/dist/lang/summernote-"+lang+".js"
-		Html("<script type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+		Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
 	}
 }
 @translation()
@@ -24,4 +25,4 @@
 <div id="summernote_messages" class="d-none" data-messages='{
 	"@MessageKeys.SUMMERNOTE_LANG":"@Messages(MessageKeys.SUMMERNOTE_LANG)"
 }'></div>
-<script src='@routes.Assets.versioned("lib/custom/summernote/last.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/summernote/last.js")'></script>

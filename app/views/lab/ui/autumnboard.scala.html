@@ -5,6 +5,7 @@
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 
@@ -157,6 +158,6 @@
 		@libraries.standard.last()
 		@libraries.hammerjs.last()
 		@libraries.jqueryuitouchpunch.last()
-		<script src='@routes.Assets.versioned("javascripts/lab/ui/autumnboard.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ui/autumnboard.js")'></script>
 	}
 }

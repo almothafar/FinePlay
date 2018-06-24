@@ -6,6 +6,7 @@
 @import play.api.i18n._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import models.manage.user._
@@ -19,7 +20,7 @@
 		@helper.form(helper.CSRF(controllers.manage.user.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
 			<h5 class="form-read-heading">@Messages(MessageKeys.CONDITION)</h5>
 			@if(form.hasGlobalErrors) {
-				<p class="text-danger">@form.getGlobalError.get.message</p>
+				<p class="text-danger">@form.globalError.get.message</p>
 			}
 			<div class="row form-group">
 				<label for="@User.USER_ID" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>
@@ -30,7 +31,7 @@
 								<i class="far fa-envelope"></i>
 							</span>
 						</div>
-						<input id="@User.USER_ID" type="text" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).getValue.orElse("")" autofocus>
+						<input id="@User.USER_ID" type="text" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).value.orElse("")" autofocus>
 						@for(error <- form(User.USER_ID).errors) {
 							<div class="text-danger">@Messages(error.message)</div>
 						}
@@ -58,7 +59,7 @@
 				<label for="@User.EXPIREFROM" class="col-12 col-sm-3 col-form-label">@Messages(MessageKeys.USER_EXPIRE)</label>
 				<div class="col-10 col-sm-4">
 					<div class="input-group">
-						<input id='@User.EXPIREFROM' type='text' name="@User.EXPIREFROM" class="form-control" value="@form(User.EXPIREFROM).getValue.orElse("")"/>
+						<input id='@User.EXPIREFROM' type='text' name="@User.EXPIREFROM" class="form-control" value="@form(User.EXPIREFROM).value.orElse("")"/>
 						<div class="input-group-append">
 							<span class="input-group-text">
 								<i class="fas fa-calendar-alt"></i>
@@ -71,7 +72,7 @@
 				</div>
 				<div class="col-10 col-sm-4">
 					<div class="input-group">
-						<input id='@User.EXPIRETO' type='text' name="@User.EXPIRETO" class="form-control" value="@form(User.EXPIRETO).getValue.orElse("")"/>
+						<input id='@User.EXPIRETO' type='text' name="@User.EXPIRETO" class="form-control" value="@form(User.EXPIRETO).value.orElse("")"/>
 						<div class="input-group-append">
 							<span class="input-group-text">
 								<i class="fas fa-calendar-alt"></i>
@@ -84,9 +85,9 @@
 				<label for="@User.MAXRESULT" class="col-sm-3 col-form-label">@Messages(MessageKeys.MAX__CASE)</label>
 				<div class="col-sm-9">
 					<select id="@User.MAXRESULT" name="@User.MAXRESULT" class="form-control custom-select" required>
-						<option value="100" @("selected".when("100".equals(form(User.MAXRESULT).getValue.orElse(""))))>100</option>
-						<option value="500" @("selected".when("500".equals(form(User.MAXRESULT).getValue.orElse(""))))>500</option>
-						<option value="1000" @("selected".when("1000".equals(form(User.MAXRESULT).getValue.orElse(""))))>1000</option>
+						<option value="100" @("selected".when("100".equals(form(User.MAXRESULT).value.orElse(""))))>100</option>
+						<option value="500" @("selected".when("500".equals(form(User.MAXRESULT).value.orElse(""))))>500</option>
+						<option value="1000" @("selected".when("1000".equals(form(User.MAXRESULT).value.orElse(""))))>1000</option>
 					</select>
 				</div>
 			</div>

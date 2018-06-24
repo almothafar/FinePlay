@@ -1,4 +1,5 @@
 @import play.api.i18n._
+@import views.html.helper._
 
 @import common.system._
 @import common.utils._
@@ -25,4 +26,4 @@
 	"en_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_KATAKANA)",
 	"ja_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_KATAKANA)"
 }'></div>
-<script src='@routes.Assets.versioned("lib/custom/parsleyvalidators/last.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/parsleyvalidators/last.js")'></script>

@@ -1,3 +1,5 @@
+@import views.html.helper._
+
 @()
 
-<script src='@routes.Assets.versioned("lib/bootstrap/assets/js/vendor/clipboard.min.js")'></script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/bootstrap/assets/js/vendor/clipboard.min.js")'></script>

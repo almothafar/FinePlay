@@ -2,6 +2,7 @@
 @import java.time.format._
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 @import views.html.development
 @import play.api.i18n._
 
@@ -54,6 +55,6 @@
 
 		@libraries.standard.last()
 		@libraries.moment.last()
-		<script src='@routes.Assets.versioned("javascripts/framework/application/datetime.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/framework/application/datetime.js")'></script>
 	}
 }

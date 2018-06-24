@@ -12,6 +12,7 @@ var Components = function() {
 				$(this).hasClass('fal') ||
 				$(this).hasClass('fab') ||
 				$(this).hasClass('material-icons') ||
+				$(this).hasClass('ion') ||
 				$(this).hasClass('icofont');
 			return isIconEnabled;
 		});

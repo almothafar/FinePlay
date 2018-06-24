@@ -6,10 +6,12 @@
 
 GET		/routes.js									controllers.system.System.routes
 
-POST		/development/http/post						apis.development.http.Http.postData()
-
++ nocsrf
+POST		/system/cspreport							apis.system.CSPReport.log()
 POST		/system/log									apis.system.Logger.log()
 POST		/system/pdf									apis.system.PDF.index()
+
+POST		/development/http/post						apis.development.http.Http.postData()
 
 GET		/companies									apis.company.Company.companies(name: String, page:Int ?=0, size:Int ?=100)
 GET		/company/organizationunits					apis.company.organization.Organization.organizationUnits(companyId: Long, name: String, page:Int ?=0, size:Int ?=100)

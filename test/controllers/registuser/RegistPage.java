@@ -43,17 +43,17 @@ public class RegistPage extends Page {
 
 	public String getUserId() {
 
-		return getBrowser().$(withId("userId")).value();
+		return getBrowser().$(withId("userId")).get(0).value();
 	}
 
 	public String getPassword() {
 
-		return getBrowser().$(withId("password")).value();
+		return getBrowser().$(withId("password")).get(0).value();
 	}
 
 	public String getRePassword() {
 
-		return getBrowser().$(withId("rePassword")).value();
+		return getBrowser().$(withId("rePassword")).get(0).value();
 	}
 
 	public String contentTitle() {
