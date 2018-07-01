@@ -672,6 +672,7 @@ tshirt
 tty
 tv
 umbrella
+umbrella-beach
 underline
 undo
 undo-alt
