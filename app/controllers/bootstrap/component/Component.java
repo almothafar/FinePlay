@@ -55,6 +55,9 @@ public class Component extends Controller {
 		case "modal":
 
 			return modal();
+		case "form":
+
+			return form();
 		default:
 
 			return etc();
@@ -134,6 +137,11 @@ public class Component extends Controller {
 	public static Result modal() {
 
 		return ok(views.html.bootstrap.component.modal.render());
+	}
+
+	public static Result form() {
+
+		return ok(views.html.bootstrap.component.form.render());
 	}
 
 	public static Result etc() {

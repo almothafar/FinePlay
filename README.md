@@ -20,7 +20,7 @@ How to play
 
 Install
 
-[Java](http://jdk.java.net/10/)
+[OpenJDK](http://jdk.java.net/10/)
 
 ##### Console #####
 

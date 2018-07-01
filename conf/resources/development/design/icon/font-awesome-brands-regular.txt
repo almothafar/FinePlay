@@ -118,7 +118,6 @@ fly
 font-awesome
 font-awesome-alt
 font-awesome-flag
-font-awesome-logo-full
 fonticons
 fonticons-fi
 fort-awesome
@@ -163,6 +162,7 @@ hacker-news-square
 hips
 hire-a-helper
 hooli
+hornbill
 hotjar
 houzz
 html5
@@ -198,6 +198,7 @@ linode
 linux
 lyft
 magento
+mailchimp
 mandalorian
 mastodon
 maxcdn
@@ -206,6 +207,7 @@ medium
 medium-m
 medrt
 meetup
+megaport
 microsoft
 mix
 mixcloud
@@ -213,6 +215,7 @@ mizuni
 modx
 monero
 napster
+nimblr
 nintendo-switch
 node
 node-js
@@ -276,6 +279,7 @@ sellcast
 sellsy
 servicestack
 shirtsinbulk
+shopware
 simplybuilt
 sistrix
 sith
@@ -290,6 +294,7 @@ snapchat-square
 soundcloud
 speakap
 spotify
+squarespace
 stack-exchange
 stack-overflow
 staylinked
@@ -309,6 +314,7 @@ teamspeak
 telegram
 telegram-plane
 tencent-weibo
+themeco
 themeisle
 trade-federation
 trello
@@ -337,6 +343,7 @@ vine
 vk
 vnv
 vuejs
+weebly
 weibo
 weixin
 whatsapp
@@ -344,6 +351,7 @@ whatsapp-square
 whmcs
 wikipedia-w
 windows
+wix
 wolf-pack-battalion
 wordpress
 wordpress-simple

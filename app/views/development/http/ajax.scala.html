@@ -36,14 +36,14 @@
 				</div>
 				<div class="col-md-9">
 
-					<div class="form-inline">
-						<div class="form-group mr-sm-3">
-							<label for="timeoutField" class="mr-sm-1">Timeout</label>
-							<input type="number" class="form-control" id="timeoutField" placeholder="Timeout" value="10000">
+					<div class="row">
+						<div class="form-group col-sm-6 form-inline container">
+							<label for="timeoutField" class="col-sm-5 pr-2">Timeout</label>
+							<input type="number" class="form-control col-sm-7" id="timeoutField" placeholder="Timeout" value="10000">
 						</div>
-						<div class="form-group ml-sm-3">
-							<label for="waitTimeField" class="mr-sm-1">Wait time</label>
-							<input type="number" class="form-control" id="waitTimeField" placeholder="WaitTime" value="3000">
+						<div class="form-group col-sm-6 form-inline container">
+							<label for="waitTimeField" class="col-sm-5 pr-2">Wait time</label>
+							<input type="number" class="form-control col-sm-7" id="waitTimeField" placeholder="WaitTime" value="3000">
 						</div>
 					</div>
 					@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(

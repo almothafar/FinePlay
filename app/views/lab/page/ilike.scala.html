@@ -24,10 +24,10 @@
 		@components.container(Map("id"->"", "fluid"->"true")){
 
 			<div class="row">
-				<div class="col-md-3 px-0 i_back i_master">
+				<div class="col-md-3 px-0 bg-grey-100 i_master">
 					<div class="i_space">
 
-						@components.listgroup(Map("id"->""), List(
+						@components.listgroup(Map("id"->"", "flush"->"true"), List(
 							Map("id"->"", "type"->"", "iconType"->"warning", "icon"->"fas fa-plane fa-fw", "text"->"Cras justo odio"),
 							Map("id"->"", "type"->"", "iconType"->"primary", "icon"->"fas fa-wifi fa-fw", "text"->"Cras justo odio"),
 							Map("id"->"", "type"->"", "iconType"->"primary", "icon"->"fab fa-bluetooth-b fa-fw", "text"->"Cras justo odio"),
@@ -38,7 +38,7 @@
 					</div>
 					<div class="i_space">
 
-						<div class="list-group">
+						<div class="list-group list-group-flush">
 							<a href="#" class="list-group-item list-group-item-action">
 								@components.icon(Map("type"->"danger", "icon"->"fas fa-square fa-fw"))
 								Cras justo odio
@@ -64,7 +64,7 @@
 					</div>
 					<div class="i_space">
 
-						@components.listgroup(Map("id"->""), List(
+						@components.listgroup(Map("id"->"", "flush"->"true"), List(
 							Map("id"->"", "type"->"", "iconType"->"secondary", "icon"->"fas fa-cog fa-fw", "text"->"Cras justo odio", "selected"->"true"),
 							Map("id"->"", "type"->"", "iconType"->"primary", "icon"->"fas fa-font fa-fw", "text"->"Cras justo odio"),
 							Map("id"->"", "type"->"", "iconType"->"info", "icon"->"fas fa-square fa-fw", "text"->"Cras justo odio"),
@@ -76,7 +76,7 @@
 						))
 					</div>
 				</div>
-				<div class="col-md-9 i_back i_detail">
+				<div class="col-md-9 bg-grey-100 i_detail">
 					<div class="i_space">
 					</div>
 					<div class="i_space">

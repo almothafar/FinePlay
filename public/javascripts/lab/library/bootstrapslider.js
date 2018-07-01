@@ -22,3 +22,20 @@ $("#ex13").bootstrapSlider({
 	ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
 	ticks_snap_bounds: 30
 });
+
+$("#topTooltip").bootstrapSlider({
+	tooltip: 'always',
+	tooltip_position: 'top'
+});
+$("#rightTooltip").bootstrapSlider({
+	tooltip: 'always',
+	tooltip_position: 'right'
+});
+$("#bottomTooltip").bootstrapSlider({
+	tooltip: 'always',
+	tooltip_position: 'bottom'
+});
+$("#leftTooltip").bootstrapSlider({
+	tooltip: 'always',
+	tooltip_position: 'left'
+});

@@ -381,7 +381,7 @@ $('#debugButton').on('shown.bs.popover', function () {
 	$("#showResponsiveButton").on("click", function(){$("#system_responsive-bar").removeClass("d-none");});
 	$("#secretButton").on("click", function(){$('.secret').removeClass('secret');});
 	$("#Memory").text($("#debugButton").data("memory"));
-	$("#Java_ver").text($("#debugButton").data("javaver"));
+	$("#JDK_ver").text($("#debugButton").data("jdkver"));
 	$("#Play_ver").text($("#debugButton").data("playver"));
 	$("#jQuery_ver").text($.fn.jquery);
 	$("#Bootstrap_ver").text(bootstrap.Button.VERSION);

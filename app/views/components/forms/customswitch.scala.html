@@ -12,6 +12,6 @@
 <label id="@prop.getOrElse("id", "")" class="custom-switch @("custom-control-inline".when(Boolean.valueOf(prop.getOrElse("inline", "false")))) @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	<input type="checkbox" name="@prop.getOrElse("name", "")" id="custom-@prop.getOrElse("id", "")" @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) @("checked".when(Boolean.valueOf(prop.getOrElse("selected", ""))))>
 	<span class="custom-switch-base"></span>
-	<label class="custom-switch-label" for="@prop.getOrElse("name", "")">@if(!prop.getOrElse("text", "").isEmpty()){&nbsp;}@Html(prop.getOrElse("text", ""))</label>
+	<label class="custom-switch-label" for="custom-@prop.getOrElse("id", "")">@if(!prop.getOrElse("text", "").isEmpty()){&nbsp;}@Html(prop.getOrElse("text", ""))</label>
 	<span class="custom-switch-handle"></span>
 </label>

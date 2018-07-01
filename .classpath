@@ -634,14 +634,14 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.brotli/dec/docs/dec-0.1.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/srcs/pdfbox-2.0.10-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/bundles/pdfbox-2.0.10.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/srcs/pdfbox-2.0.11-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/bundles/pdfbox-2.0.11.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/docs/pdfbox-2.0.10-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/docs/pdfbox-2.0.11-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/srcs/fontbox-2.0.10-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/bundles/fontbox-2.0.10.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/srcs/fontbox-2.0.11-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/bundles/fontbox-2.0.11.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/docs/fontbox-2.0.10-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/docs/fontbox-2.0.11-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.2.jar"/>
@@ -999,6 +999,16 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/docs/pickadate.js-3.5.6-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/bootstrap-slider/jars/bootstrap-slider-10.0.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/bootstrap-slider/docs/bootstrap-slider-10.0.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars/bootstrap/srcs/bootstrap-3.2.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/bootstrap/jars/bootstrap-3.2.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/bootstrap/docs/bootstrap-3.2.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars/jquery-ui-touch-punch/srcs/jquery-ui-touch-punch-0.2.3-2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/jquery-ui-touch-punch/jars/jquery-ui-touch-punch-0.2.3-2.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/jquery-ui-touch-punch/docs/jquery-ui-touch-punch-0.2.3-2-javadoc.jar!/"/>
@@ -1066,9 +1076,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/docs/jquery-3.3.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/openlayers/jars/openlayers-4.5.0.jar">
+  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/openlayers/jars/openlayers-4.6.5.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/openlayers/docs/openlayers-4.5.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/openlayers/docs/openlayers-4.6.5-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/srcs/datatables-1.10.19-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/jars/datatables-1.10.19.jar">
@@ -1196,14 +1206,19 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/chai/docs/chai-4.1.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.0.13.jar">
+  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.1.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.0.13-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.1.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/jars/material-design-icons-3.0.1.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/docs/material-design-icons-3.0.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/srcs/ionicons-4.0.0-9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/jars/ionicons-4.0.0-9.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.0.0-9-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/srcs/jasperreports-6.6.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/jars/jasperreports-6.6.0.jar">

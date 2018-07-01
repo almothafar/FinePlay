@@ -1,0 +1,17 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
+
+@for(i <- 0 to elements.size - 1){
+	<div id="@prop.getOrElse("id", "")" class="custom-control custom-radio custom-control@("-inline".when(Boolean.valueOf(prop.getOrElse("inline", "false")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
+		<input type="radio" name="@prop.getOrElse("name", "")" id="custom-@elements(i).getOrElse("id", "")" class="custom-control-input" @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) @("checked".when(Boolean.valueOf(elements(i).getOrElse("selected", ""))))>
+		<label class="custom-control-label" for="custom-@elements(i).getOrElse("id", "")">@Html(elements(i).getOrElse("text", "&nbsp;"))</label>
+	</div>
+}

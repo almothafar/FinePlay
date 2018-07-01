@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* Fakestrap */
+/* Process */
 
 .process{
 	display: -webkit-box;
@@ -46,6 +46,8 @@
 	height: 24px;
 	cursor: pointer;
 }
+
+/* Switch */
 
 .custom-switch.disabled {
 	opacity: 0.65;

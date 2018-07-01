@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,11 +49,11 @@ class IconNameExtractor {
 	}
 
 	private static final Pattern PATTERN_FONTAWESOME = Pattern.compile("\\.fa-(?<iconName>.*):before.*");
-	private static final Pattern PATTERN_FONTAWESOME_HEX = Pattern.compile("\\s\\scontent:\\s\"\\\\(?<iconHex>.*)\";.*");
+	private static final Pattern PATTERN_FONTAWESOME_HEX = Pattern.compile(".*content:.*\"\\\\(?<iconHex>.*)\".*");
 
 	private static List<String> getFontAwesomeIconNames(final String style) throws IOException {
 
-		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "font-awesome", "web-fonts-with-css", "css", "fontawesome-all.css");
+		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "font-awesome", "css", "all.css");
 
 		if (!Files.exists(path)) {
 
@@ -61,7 +62,12 @@ class IconNameExtractor {
 
 		final Font font = createFont(style);
 
-		final List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+		String tmp = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+		tmp = Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL).matcher(tmp).replaceAll("");
+		tmp = tmp.replaceAll("\\n", "");
+		tmp = tmp.replaceAll("\\{", "{\n");
+		tmp = tmp.replaceAll("\\}", "}\n");
+		final List<String> lines = Arrays.asList(tmp.split("\n"));
 		final List<String> iconNames = new ArrayList<>();
 		boolean isFirstIcon = false;
 		for (int i = 0; i < lines.size(); i++) {
@@ -70,7 +76,7 @@ class IconNameExtractor {
 
 			if (!isFirstIcon) {
 
-				isFirstIcon = ".fa-500px:before {".equals(line);
+				isFirstIcon = ".fa-500px:before{".equals(line);
 
 				if (!isFirstIcon) {
 
@@ -83,7 +89,7 @@ class IconNameExtractor {
 				final Matcher matcher = PATTERN_FONTAWESOME.matcher(line);
 				if (!matcher.matches()) {
 
-					throw new IllegalStateException("");
+					throw new IllegalStateException(line);
 				}
 				final String iconName = matcher.group("iconName");
 
@@ -91,7 +97,7 @@ class IconNameExtractor {
 				final Matcher nextMatcher = PATTERN_FONTAWESOME_HEX.matcher(nextLine);
 				if (!nextMatcher.matches()) {
 
-					throw new IllegalStateException("");
+					throw new IllegalStateException(nextLine);
 				}
 				final String iconHex = nextMatcher.group("iconHex");
 				final int codePoint = Integer.valueOf(iconHex, 16);

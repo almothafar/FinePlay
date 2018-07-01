@@ -1,0 +1,166 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"form", "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"form"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						@components.card(Map("id"->"checkboxPanel", "class"->"shadow-sm")){
+							<div class="card-header">
+								@Messages(MessageKeys.CHECKBOX)
+							</div>
+							<div class="card-body">
+
+								@helper.form(helper.CSRF(controllers.bootstrap.component.routes.Component.index("form")), 'name->"checkboxForm", 'id->"checkboxForm") {
+
+									<div class="form-group row d-none">
+										<label for="" class="col-sm-3 col-form-label required">Simple</label>
+										<div class="col-sm-9">
+											@components.forms.customcheckbox(Map("id"->"defaultCheckbox", "name"->"default"))
+											@components.forms.customcheckbox(Map("id"->"uncheckedCheckbox", "name"->"unchecked", "selected"->"false"))
+											@components.forms.customcheckbox(Map("id"->"checkedCheckbox", "name"->"checked", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">with text</label>
+										<div class="col-sm-9">
+											@components.forms.customcheckbox(Map("id"->"defaultTextCheckbox", "name"->"default", "text"->"One"))
+											@components.forms.customcheckbox(Map("id"->"uncheckedTextCheckbox", "name"->"unchecked", "text"->"Two", "selected"->"false"))
+											@components.forms.customcheckbox(Map("id"->"checkedTextCheckbox", "name"->"checked", "text"->"Three", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Disabled</label>
+										<div class="col-sm-9">
+											@components.forms.customcheckbox(Map("id"->"disabledDefaultCheckbox", "name"->"default", "text"->"One", "enabled"->"false"))
+											@components.forms.customcheckbox(Map("id"->"disableduncheckedCheckbox", "name"->"unchecked", "text"->"Two", "enabled"->"false", "selected"->"false"))
+											@components.forms.customcheckbox(Map("id"->"disabledcheckedCheckbox", "name"->"checked", "text"->"Three", "enabled"->"false", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row d-none">
+										<label for="" class="col-sm-3 col-form-label required">Inline</label>
+										<div class="col-sm-9">
+											@components.forms.customcheckbox(Map("id"->"defaultCheckboxInline", "name"->"default", "inline"->"true"))
+											@components.forms.customcheckbox(Map("id"->"uncheckedCheckboxInline", "name"->"unchecked", "inline"->"true", "selected"->"false"))
+											@components.forms.customcheckbox(Map("id"->"checkedCheckboxInline", "name"->"checked", "inline"->"true", "selected"->"true"))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Inline with text</label>
+										<div class="col-sm-9">
+											@components.forms.customcheckbox(Map("id"->"defaultTextCheckboxInline", "name"->"default", "text"->"One", "inline"->"true"))
+											@components.forms.customcheckbox(Map("id"->"uncheckedTextCheckboxInline", "name"->"unchecked", "text"->"Two", "inline"->"true", "selected"->"false"))
+											@components.forms.customcheckbox(Map("id"->"checkedTextCheckboxInline", "name"->"checked", "text"->"Three", "inline"->"true", "selected"->"true"))
+										</div>
+									</div>
+								}
+
+							</div>
+							<div class="card-footer text-muted">
+							</div>
+						}
+					</div>
+
+					<div class="mb-3">
+						@components.card(Map("id"->"radioPanel", "class"->"shadow-sm")){
+							<div class="card-header">
+								@Messages(MessageKeys.RADIO)
+							</div>
+							<div class="card-body">
+
+								@helper.form(helper.CSRF(controllers.bootstrap.component.routes.Component.index("form")), 'name->"radioForm", 'id->"radioForm") {
+
+									<div class="form-group row d-none">
+										<label for="" class="col-sm-3 col-form-label required">Simple</label>
+										<div class="col-sm-9">
+											@components.forms.customradio(Map("id"->"", "name"->"simple"), List(
+												Map("id"->"defaultRadio"),
+												Map("id"->"uncheckedRadio", "selected"->"false"),
+												Map("id"->"checkedRadio", "selected"->"true")
+											))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">with text</label>
+										<div class="col-sm-9">
+											@components.forms.customradio(Map("id"->"", "name"->"withText"), List(
+												Map("id"->"defaultTextRadio", "text"->"One"),
+												Map("id"->"uncheckedTextRadio", "text"->"Two", "selected"->"false"),
+												Map("id"->"checkedTextRadio", "text"->"Three", "selected"->"true")
+											))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Disabled</label>
+										<div class="col-sm-9">
+											@components.forms.customradio(Map("id"->"", "name"->"disabled", "enabled"->"false"), List(
+												Map("id"->"disabledDefaultRadio", "text"->"One"),
+												Map("id"->"disableduncheckedRadio", "text"->"Two", "selected"->"false"),
+												Map("id"->"disabledcheckedRadio", "text"->"Three", "selected"->"true")
+											))
+										</div>
+									</div>
+									<div class="form-group row d-none">
+										<label for="" class="col-sm-3 col-form-label required">Inline</label>
+										<div class="col-sm-9">
+											@components.forms.customradio(Map("id"->"", "name"->"inline", "inline"->"true"), List(
+												Map("id"->"defaultRadioInline"),
+												Map("id"->"uncheckedRadioInline", "selected"->"false"),
+												Map("id"->"checkedRadioInline", "selected"->"true")
+											))
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-sm-3 col-form-label required">Inline with text</label>
+										<div class="col-sm-9">
+											@components.forms.customradio(Map("id"->"", "name"->"inlineWithText", "inline"->"true"), List(
+												Map("id"->"defaultTextRadioInline", "text"->"One"),
+												Map("id"->"uncheckedTextRadioInline", "text"->"Two", "selected"->"false"),
+												Map("id"->"checkedTextRadioInline", "text"->"Three", "selected"->"true")
+											))
+										</div>
+									</div>
+								}
+
+							</div>
+							<div class="card-footer text-muted">
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

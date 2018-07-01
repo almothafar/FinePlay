@@ -1,0 +1,15 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+<div id="@prop.getOrElse("id", "")" class="custom-control custom-checkbox custom-control@("-inline".when(Boolean.valueOf(prop.getOrElse("inline", "false")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
+	<input type="checkbox" name="@prop.getOrElse("name", "")" id="custom-@prop.getOrElse("id", "")" class="custom-control-input" @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) @("checked".when(Boolean.valueOf(prop.getOrElse("selected", ""))))>
+	<label class="custom-control-label" for="custom-@prop.getOrElse("id", "")">@Html(prop.getOrElse("text", "&nbsp;"))</label>
+</div>

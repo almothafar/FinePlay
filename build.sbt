@@ -58,7 +58,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-parsers" % "1.18",
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.11.6",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.10",							// Apache 2.0.9
+  "org.apache.pdfbox" % "pdfbox" % "2.0.11",							// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0.CR1
@@ -73,7 +73,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
-//  "org.webjars.bower" % "seiyria-bootstrap-slider" % "9.7.2",			// MIT 10.0.2
+  "org.webjars" % "bootstrap-slider" % "10.0.2",						// MIT 10.0.2
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars.bower" % "tether" % "1.4.3",								// MIT 1.4.4 +patch
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
@@ -83,7 +83,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "moment" % "2.22.2",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
-  "org.webjars" % "openlayers" % "4.5.0",								// 2-Clause BSD 4.6.3
+  "org.webjars" % "openlayers" % "4.6.5",								// 2-Clause BSD 4.6.3
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.18",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
@@ -117,9 +117,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.0.13",							// Icons — CC/Pro 5.0.8
-																		// Fonts — SIL OFL 5.0.8
-																		// Code — MIT 5.0.8
+  "org.webjars" % "font-awesome" % "5.1.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.1.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.0.0-9"							// MIT 4.2
 )
