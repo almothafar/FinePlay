@@ -449,9 +449,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.h2database/h2/docs/h2-1.4.197-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.3.1.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.3.1.Final.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.3.2.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.3.2.Final.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/docs/hibernate-core-5.3.1.Final-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/docs/hibernate-core-5.3.2.Final-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.persistence/javax.persistence-api/srcs/javax.persistence-api-2.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.persistence/javax.persistence-api/jars/javax.persistence-api-2.2.jar">
@@ -475,12 +475,17 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.jboss.spec.javax.transaction/jboss-transaction-api_1.2_spec/docs/jboss-transaction-api_1.2_spec-1.1.1.Final-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jboss/jandex/srcs/jandex-2.0.3.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jboss/jandex/bundles/jandex-2.0.3.Final.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/dom4j/dom4j/srcs/dom4j-1.6.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/dom4j/dom4j/jars/dom4j-1.6.1.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/srcs/hibernate-commons-annotations-5.0.3.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/jars/hibernate-commons-annotations-5.0.3.Final.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.3.1.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.3.1.Final.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jboss/jandex/srcs/jandex-2.0.5.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jboss/jandex/bundles/jandex-2.0.5.Final.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.activation/javax.activation-api/srcs/javax.activation-api-1.2.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.activation/javax.activation-api/jars/javax.activation-api-1.2.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/docs/hibernate-jpamodelgen-5.3.1.Final-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/javax.activation/javax.activation-api/docs/javax.activation-api-1.2.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/dom4j/dom4j/srcs/dom4j-1.6.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/dom4j/dom4j/jars/dom4j-1.6.1.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/srcs/hibernate-commons-annotations-5.0.4.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/jars/hibernate-commons-annotations-5.0.4.Final.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.3.2.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.3.2.Final.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/docs/hibernate-jpamodelgen-5.3.2.Final-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/srcs/javax.el-3.0.1-b09-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/jars/javax.el-3.0.1-b09.jar">
@@ -488,14 +493,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.glassfish/javax.el/docs/javax.el-3.0.1-b09-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.dom4j/dom4j/srcs/dom4j-2.1.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.dom4j/dom4j/jars/dom4j-2.1.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.dom4j/dom4j/srcs/dom4j-2.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.dom4j/dom4j/jars/dom4j-2.1.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.dom4j/dom4j/docs/dom4j-2.1.0-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/jaxen/jaxen/srcs/jaxen-1.1.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/jaxen/jaxen/bundles/jaxen-1.1.6.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/jaxen/jaxen/docs/jaxen-1.1.6-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.dom4j/dom4j/docs/dom4j-2.1.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.json/javax.json-api/srcs/javax.json-api-1.1.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.json/javax.json-api/bundles/javax.json-api-1.1.2.jar">
@@ -1216,9 +1216,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/docs/material-design-icons-3.0.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/srcs/ionicons-4.0.0-9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/jars/ionicons-4.0.0-9.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/srcs/ionicons-4.2.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/jars/ionicons-4.2.4.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.0.0-9-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.2.4-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/srcs/jasperreports-6.6.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/jars/jasperreports-6.6.0.jar">

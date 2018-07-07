@@ -1,0 +1,6 @@
+@(prop:scala.collection.immutable.Map[String, String])(content: Html)
+
+<div id="@prop.getOrElse("id", "")" class="collapse @("show".when(Boolean.valueOf(prop.getOrElse("show", "false")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
+
+	@content
+</div>

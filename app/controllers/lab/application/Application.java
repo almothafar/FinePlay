@@ -364,11 +364,13 @@ public class Application extends Controller {
 		return ok(views.html.lab.application.vertical.render());
 	}
 
+	@Deprecated
 	public static Result comet() {
 
 		return ok(views.html.lab.application.comet.render());
 	}
 
+	@Deprecated
 	public Result clock(@Nonnull String zoneId) {
 
 		// TODO script tag in Comet#formatted

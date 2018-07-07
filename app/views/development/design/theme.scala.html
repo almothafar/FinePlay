@@ -112,38 +112,40 @@
 
 				<div class="col-12 col-md-6 mt-3">
 
-					<div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" name="customCheckboxInline1" class="custom-control-input">
-							<label class="custom-control-label" for="customCheckboxInline1">One</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" name="customCheckboxInline1" class="custom-control-input" disabled>
-							<label class="custom-control-label" for="customCheckboxDisabled">Two</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" name="customCheckboxInline1" class="custom-control-input" checked>
-							<label class="custom-control-label" for="customCheckboxInline2">Three</label>
-						</div>
+					<div class="mb-3">
+						@components.forms.customcheckbox(Map("id"->"defaultTextCheckboxInline", "name"->"default", "text"->"One", "inline"->"true"))
+						@components.forms.customcheckbox(Map("id"->"uncheckedTextCheckboxInline", "name"->"unchecked", "text"->"Two", "inline"->"true", "selected"->"false"))
+						@components.forms.customcheckbox(Map("id"->"checkedTextCheckboxInline", "name"->"checked", "text"->"Three", "inline"->"true", "selected"->"true"))
 					</div>
 
-					<div>
-						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" name="customRadioInline1" class="custom-control-input">
-							<label class="custom-control-label" for="customRadioInline1">One</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" name="customRadioInline1" class="custom-control-input" disabled>
-							<label class="custom-control-label" for="customRadioDisabled">Two</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" name="customRadioInline1" class="custom-control-input" checked>
-							<label class="custom-control-label" for="customRadioInline2">Three</label>
-						</div>
+					<div class="mb-3">
+						@components.forms.customradio(Map("id"->"", "name"->"inlineWithText", "inline"->"true"), List(
+							Map("id"->"defaultTextRadioInline", "text"->"One"),
+							Map("id"->"uncheckedTextRadioInline", "text"->"Two", "selected"->"false"),
+							Map("id"->"checkedTextRadioInline", "text"->"Three", "selected"->"true")
+						))
 					</div>
 
-					<label for="customRange1">Range</label>
 					<input type="range" class="custom-range" id="customRange1">
+				</div>
+
+				<div class="col-12 col-md-6 mt-3">
+
+					<div class="mb-3">
+						@components.nav(Map("id"->"","tabs"->"true"), List(
+							Map("name"->"Tab 1", "icon"->"fas fa-spinner fa-pulse", "link"->"#", "badge"->"New", "selected"->"true"),
+							Map("name"->"Tab 2", "icon"->"fas fa-spinner fa-pulse", "link"->"#", "badge"->"1"),
+							Map("name"->"Tab 3", "icon"->"fas fa-spinner fa-pulse", "link"->"#", "badge"->"2", "enabled"->"false")
+						))
+					</div>
+
+					<div class="mb-3">
+						@components.nav(Map("id"->"","pills"->"true"), List(
+							Map("name"->"Tab 1", "icon"->"fas fa-spinner fa-pulse", "link"->"#", "badge"->"New", "selected"->"true"),
+							Map("name"->"Tab 2", "icon"->"fas fa-spinner fa-pulse", "link"->"#", "badge"->"1"),
+							Map("name"->"Tab 3", "icon"->"fas fa-spinner fa-pulse", "link"->"#", "badge"->"2", "enabled"->"false")
+						))
+					</div>
 				</div>
 			</div>
 		}

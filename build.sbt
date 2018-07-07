@@ -39,10 +39,10 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.197",
 //  "com.h2database" % "h2" % "1.4.197" % Test,
 //  "net.logstash.logback" % "logstash-logback-encoder" % "5.1",		// Apache 5.1
-  "org.hibernate" % "hibernate-core" % "5.3.1.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.1.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.3.2.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.2.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
-  "org.dom4j" % "dom4j" % "2.1.0",										// Origin 2.1.0
+  "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
@@ -119,7 +119,7 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.1.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.1.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
-  "org.webjars.npm" % "ionicons" % "4.0.0-9"							// MIT 4.2
+  "org.webjars.npm" % "ionicons" % "4.2.4"								// MIT 4.2.4
 )
 // IcoFont																// MIT 1.3
 
@@ -220,9 +220,15 @@ mappings in Universal ++= {
 //  "utf-8")
 
 // FindBugs
-findbugsReportPath := Some(crossTarget.value / "findbugs" / "report.html")
-findbugsReportType := Some(com.github.sbt.findbugs.settings.FindbugsReport.FancyHtml)
+//findbugsReportPath := Some(crossTarget.value / "findbugs" / "report.html")
+//findbugsReportType := Some(com.github.sbt.findbugs.settings.FindbugsReport.FancyHtml)
 
 // CPD
 cpdLanguage := CpdLanguage.Java
 cpdReportType := CpdReportType.XML
+
+// CheckStyle
+//checkstyleConfigLocation := CheckstyleConfigLocation.File("conf/checkstyle-config.xml")
+//checkstyleXsltTransformations := {
+//  Some(Set(CheckstyleXSLTSettings(baseDirectory(_ / "conf" / "checkstyle-noframes.xml").value, target(_ / "checkstyle-report.html").value)))
+//}

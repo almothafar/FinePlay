@@ -5,8 +5,7 @@
 	font-style: normal;
 	font-weight: 400;
 	src: url(MaterialIcons-Regular.eot); /* For IE6-8 */
-	src: local('Material Icons'),
-		local('MaterialIcons-Regular'),
+	src: local('Material Icons'), local('MaterialIcons-Regular'),
 		url(MaterialIcons-Regular.woff2) format('woff2'),
 		url(MaterialIcons-Regular.woff) format('woff'),
 		url(MaterialIcons-Regular.ttf) format('truetype');
@@ -16,7 +15,7 @@
 	font-family: 'Material Icons';
 	font-weight: normal;
 	font-style: normal;
-	font-size: 2.4ex;	/* Preferred icon size */
+	font-size: 1.2em;
 	display: inline-block;
 	line-height: 1;
 	text-transform: none;
@@ -25,15 +24,66 @@
 	white-space: nowrap;
 	direction: ltr;
 	vertical-align: -0.18em;
-
 	/* Support for all WebKit browsers. */
 	-webkit-font-smoothing: antialiased;
 	/* Support for Safari and Chrome. */
 	text-rendering: optimizeLegibility;
-
 	/* Support for Firefox. */
 	-moz-osx-font-smoothing: grayscale;
-
 	/* Support for IE. */
 	font-feature-settings: 'liga';
+	display: inline-block;
+}
+
+.material-icons.fa-lg {
+	font-size: 1.599996em;
+	vertical-align: -0.24em;
+}
+
+.material-icons.fa-xs {
+	font-size: .9em
+}
+
+.material-icons.fa-sm {
+	font-size: 1.05em
+}
+
+.material-icons.fa-1x {
+	font-size: 1.2em
+}
+
+.material-icons.fa-2x {
+	font-size: 2.4em
+}
+
+.material-icons.fa-3x {
+	font-size: 3.6em
+}
+
+.material-icons.fa-4x {
+	font-size: 4.8em
+}
+
+.material-icons.fa-5x {
+	font-size: 6em
+}
+
+.material-icons.fa-6x {
+	font-size: 7.2em
+}
+
+.material-icons.fa-7x {
+	font-size: 8.4em;
+}
+
+.material-icons.fa-8x {
+	font-size: 9.6em
+}
+
+.material-icons.fa-9x {
+	font-size: 10.8em
+}
+
+.material-icons.fa-10x {
+	font-size: 12em
 }

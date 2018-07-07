@@ -55,6 +55,9 @@ public class Component extends Controller {
 		case "modal":
 
 			return modal();
+		case "collapse":
+
+			return collapse();
 		case "form":
 
 			return form();
@@ -137,6 +140,11 @@ public class Component extends Controller {
 	public static Result modal() {
 
 		return ok(views.html.bootstrap.component.modal.render());
+	}
+
+	public static Result collapse() {
+
+		return ok(views.html.bootstrap.component.collapse.render());
 	}
 
 	public static Result form() {

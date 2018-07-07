@@ -222,7 +222,6 @@ ios-pie
 ios-pin
 ios-pint
 ios-pizza
-ios-plane
 ios-planet
 ios-play
 ios-play-circle
@@ -602,7 +601,6 @@ md-pie
 md-pin
 md-pint
 md-pizza
-md-plane
 md-planet
 md-play
 md-play-circle

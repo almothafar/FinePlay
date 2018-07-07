@@ -95,7 +95,7 @@
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	width: 2.0ex;
+	width: 1.0em;
 }
 
 .ii:before{
@@ -120,7 +120,7 @@
 .nf {
 	display: inline-block;
 	font: normal normal normal 14px / 1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	font-size: 2.4ex;
+	font-size: 1.3em;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -139,22 +139,66 @@
 	content: "\26A0\FE0E";
 }
 .nf-danger:before {
-	content: "\00D7";
+	content: "\26D4\FE0E";
 }
 
-.nf-disclosure_triangle:before{
-	content: "\25B6";
-}
-button:not(.collapsed)>.nf-disclosure_triangle:before{
-	content: "\25BC" !important;
+.nf.fa-lg {
+	font-size: 1.733329em;
 }
 
+.nf.fa-xs {
+	font-size: .975em
+}
+
+.nf.fa-sm {
+	font-size: 1.1375em
+}
+
+.nf.fa-1x {
+	font-size: 1.3em
+}
+
+.nf.fa-2x {
+	font-size: 2.6em
+}
+
+.nf.fa-3x {
+	font-size: 3.9em
+}
+
+.nf.fa-4x {
+	font-size: 5.2em
+}
+
+.nf.fa-5x {
+	font-size: 6.5em
+}
+
+.nf.fa-6x {
+	font-size: 7.8em
+}
+
+.nf.fa-7x {
+	font-size: 9.1em;
+}
+
+.nf.fa-8x {
+	font-size: 10.4em
+}
+
+.nf.fa-9x {
+	font-size: 11.7em
+}
+
+.nf.fa-10x {
+	font-size: 13em
+}
 /* Emoji Font */
 
 .ef {
 	display: inline-block;
 	font: normal normal normal 14px / 1 "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Symbola";
-	font-size: 2.4ex;
+	font-size: 1.1em;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -307,6 +351,35 @@ button:not(.collapsed)>.nf-disclosure_triangle:before{
 
 .secret {
 	display: none !important;
+}
+
+/* Disclosure */
+
+.disclosure-90[aria-expanded=true]>.fas,
+.disclosure-90[aria-expanded=true]>.far,
+.disclosure-90[aria-expanded=true]>.fal,
+.disclosure-90[aria-expanded=true]>.fab,
+.disclosure-90[aria-expanded=true]>.material-icons,
+.disclosure-90[aria-expanded=true]>.ion,
+.disclosure-90[aria-expanded=true]>.icofont {
+	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+	transform: rotate(90deg)
+}
+
+.disclosure-180[aria-expanded=true]>.fas,
+.disclosure-180[aria-expanded=true]>.far,
+.disclosure-180[aria-expanded=true]>.fal,
+.disclosure-180[aria-expanded=true]>.fab,
+.disclosure-180[aria-expanded=true]>.material-icons,
+.disclosure-180[aria-expanded=true]>.ion,
+.disclosure-180[aria-expanded=true]>.icofont {
+	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+	transform: rotate(180deg)
+}
+
+.disclosure-show[aria-expanded=true]>.fas.fa-folder:before,
+.disclosure-show[aria-expanded=true]>.far.fa-folder:before {
+	content: "\f07c";
 }
 
 /* Webkit autofill color disabled */

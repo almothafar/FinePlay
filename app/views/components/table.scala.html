@@ -1,3 +1,12 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import views.html._
+@import views.html.components
+
 @(prop:scala.collection.immutable.Map[String, String],
 	thead:scala.collection.immutable.Map[String, String],
 	theadRowToColumns:Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]],
@@ -24,7 +33,7 @@
 		<tr class="table-@row.getOrElse("type", "") @Attributes.classValue(row)">
 			@defining(theadRowToColumns._2) { columns =>
 				@for(column <- columns) {
-			<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+			<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){@components.icon(Map("type"->column.getOrElse("iconType", ""), "icon"->column.getOrElse("icon", "")))&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
 				}
 			}
 		</tr>
@@ -36,7 +45,7 @@
 		<tr class="table-@row.getOrElse("type", "") @Attributes.classValue(row)">
 			@defining(tbodyRowToColumns._2) { columns =>
 				@for(column <- columns) {
-			<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")" @Html(Attributes.datas(column))>@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+			<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")" @Html(Attributes.datas(column))>@if(!column.getOrElse("icon", "").isEmpty()){@components.icon(Map("type"->column.getOrElse("iconType", ""), "icon"->column.getOrElse("icon", "")))&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
 				}
 			}
 		</tr>
@@ -48,7 +57,7 @@
 	<tr class="table-@row.getOrElse("type", "") @Attributes.classValue(row)">
 		@defining(tfootRowToColumns._2) { columns =>
 			@for(column <- columns) {
-		<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){<i class="@column.getOrElse("icon", "")"></i>&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
+		<@cellTag(column) class="table-@column.getOrElse("type", "") @Attributes.classValue(column)" colspan="@column.getOrElse("colspan", "")" rowspan="@column.getOrElse("rowspan", "")">@if(!column.getOrElse("icon", "").isEmpty()){@components.icon(Map("type"->column.getOrElse("iconType", ""), "icon"->column.getOrElse("icon", "")))&nbsp}@Html(column.getOrElse("text", ""))</@cellTag(column)>
 			}
 		}
 	</tr>

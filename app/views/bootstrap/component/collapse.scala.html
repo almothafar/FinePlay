@@ -1,0 +1,231 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("Bootstrap"){
+
+		@libraries.standard.head()
+	}
+
+	@body("bootstrap","component"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"ollapse", "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"collapse"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<h4 class="headline">@Messages(MessageKeys.FAQ)</h4>
+					<div class="row mb-3">
+						<div class="col-md-6">
+
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer0", "aria-expanded"->"true"))
+							@components.collapse(Map("id"->"answer0", "show"->"true")){
+								@components.card(Map("id"->"")){
+									<div class="card-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+									</div>
+								}
+							}
+						</div>
+						<div class="col-md-6">
+
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer1", "aria-expanded"->"false"))
+							@components.collapse(Map("id"->"answer1")){
+								@components.card(Map("id"->"")){
+									<div class="card-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+									</div>
+								}
+							}
+						</div>
+					</div>
+
+					<h4 class="headline">Collapse UI</h4>
+					<div class="row mb-3">
+						<div class="col-md-6 mb-3 mb-md-0">
+
+							@components.button(Map("id"->"", "type"->"info", "block"->"true", "icon"->"fas fa-chevron-up", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-180 pl-0", "data-toggle"->"collapse", "data-target"->"#answerb0", "aria-expanded"->"false"))
+							@components.collapse(Map("id"->"answerb0", "show"->"true")){
+								@components.card(Map("id"->"")){
+									<div class="card-body">
+
+										<div class="form-group row">
+											<label for="userid" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
+											<div class="col-sm-9">
+												<input id="userid" type="text" name="userid" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-userid="">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="password" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
+											<div class="col-sm-9">
+												<input id="password" type="text" name="password" class="form-control" placeholder="" value="" required autofocus maxlength="16" data-parsley-trigger="change focusout" data-parsley-password="">
+											</div>
+										</div>
+									</div>
+								}
+							}
+						</div>
+						<div class="col-md-6">
+
+							@components.button(Map("id"->"", "type"->"info", "block"->"true", "icon"->"fas fa-chevron-up", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-180 pl-0", "data-toggle"->"collapse", "data-target"->"#answerb1", "aria-expanded"->"true"))
+							@components.collapse(Map("id"->"answerb1")){
+								@components.card(Map("id"->"")){
+									<div class="card-body">
+
+										<div class="form-group row">
+											<label for="userid" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
+											<div class="col-sm-9">
+												<input id="userid" type="text" name="userid" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-userid="">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="password" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
+											<div class="col-sm-9">
+												<input id="password" type="text" name="password" class="form-control" placeholder="" value="" required autofocus maxlength="16" data-parsley-trigger="change focusout" data-parsley-password="">
+											</div>
+										</div>
+									</div>
+								}
+							}
+						</div>
+					</div>
+
+					<h4 class="headline">Advanced UI</h4>
+					<div class="row mb-3">
+						<div class="col-md-6 mb-3 mb-md-0">
+
+							@components.modal(Map("id"->"dialog0", "title"->Messages(MessageKeys.FAILED), "closable"->"true", "data-backdrop"->"static"), List(
+									Map("id"->"dialogOk", "text"->Messages(MessageKeys.OK), "default"->"true")
+								)){
+								@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger", "striped"->"true", "animated"->"true"))
+								<br>
+								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#collapseMordal0", "aria-expanded"->"true"))
+								@components.collapse(Map("id"->"collapseMordal0", "show"->"true")){
+									@components.card(Map("id"->"")){
+										<div class="card-body">
+<pre>
+java.lang.OutOfMemoryError: Could not initialize class ch.qos.logback.classic.spi.ThrowableProxy
+java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classic.spi.ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:119)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:419)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:383)
+	at ch.qos.logback.classic.Logger.error(Logger.java:558)
+</pre>
+										</div>
+									}
+								}
+							}
+
+							@components.button(Map("id"->"", "text"->"Modal", "data-toggle"->"modal", "data-target"->"#dialog0"))
+						</div>
+						<div class="col-md-6">
+
+							@components.modal(Map("id"->"dialog1", "title"->Messages(MessageKeys.FAILED), "closable"->"true", "data-backdrop"->"static"), List(
+									Map("id"->"centerDialogOk", "text"->Messages(MessageKeys.OK), "default"->"true")
+								)){
+								@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger", "striped"->"true", "animated"->"true"))
+								<br>
+								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure text-dark pl-0 text-left", "show"->"ture", "data-toggle"->"collapse", "data-target"->"#collapseMordal1", "aria-expanded"->"false"))
+								@components.collapse(Map("id"->"collapseMordal1")){
+									@components.card(Map("id"->"")){
+										<div class="card-body">
+<pre>
+java.lang.OutOfMemoryError: Could not initialize class ch.qos.logback.classic.spi.ThrowableProxy
+java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classic.spi.ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:119)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:419)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:383)
+	at ch.qos.logback.classic.Logger.error(Logger.java:558)
+</pre>
+										</div>
+									}
+								}
+							}
+
+							@components.button(Map("id"->"", "text"->"Modal", "data-toggle"->"modal", "data-target"->"#dialog1"))
+						</div>
+					</div>
+
+					<h4 class="headline">Container</h4>
+					<div class="row mb-3">
+						<div class="col-md-6">
+
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container0", "aria-expanded"->"true"))
+							@components.collapse(Map("id"->"container0", "show"->"true")){
+								@components.card(Map("id"->"")){
+									<div class="card-body shadow-sm-inset">
+										<div class="row mt-3">
+
+											<div class="text-center float-left w-96p">
+												@components.icon(Map("id"->"", "icon"->"fas fa-file-audio fa-3x"))
+												<p>Audio</p>
+											</div>
+											<div class="text-center float-left w-96p">
+												@components.icon(Map("id"->"", "icon"->"fas fa-file-image fa-3x"))
+												<p>Image</p>
+											</div>
+											<div class="text-center float-left w-96p">
+												@components.icon(Map("id"->"", "icon"->"fas fa-file-video fa-3x"))
+												<p>Video</p>
+											</div>
+										</div>
+									</div>
+								}
+							}
+						</div>
+						<div class="col-md-6">
+
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"far fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container1", "aria-expanded"->"false"))
+							@components.collapse(Map("id"->"container1")){
+								@components.card(Map("id"->"")){
+									<div class="card-body shadow-sm-inset">
+										<div class="row mt-3">
+
+											<div class="text-center float-left w-96p">
+												@components.icon(Map("id"->"", "icon"->"far fa-file-audio fa-3x"))
+												<p>Audio</p>
+											</div>
+											<div class="text-center float-left w-96p">
+												@components.icon(Map("id"->"", "icon"->"far fa-file-image fa-3x"))
+												<p>Image</p>
+											</div>
+											<div class="text-center float-left w-96p">
+												@components.icon(Map("id"->"", "icon"->"far fa-file-video fa-3x"))
+												<p>Video</p>
+											</div>
+										</div>
+									</div>
+								}
+							}
+						</div>
+					</div>
+
+					<div class="mb-3">
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}
