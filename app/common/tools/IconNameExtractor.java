@@ -46,6 +46,11 @@ class IconNameExtractor {
 		final Path icoFont = Paths.get(".", "conf", "resources", "development", "design", "icon", "icofont.txt");
 		Files.write(icoFont, icoFontNames, StandardCharsets.UTF_8);
 		System.out.println("Created :" + icoFont);
+
+		final List<String> twemojiNames = getTwemojiNames();
+		final Path twemojis = Paths.get(".", "conf", "resources", "development", "design", "icon", "twemoji-awesome.txt");
+		Files.write(twemojis, twemojiNames, StandardCharsets.UTF_8);
+		System.out.println("Created :" + twemojis);
 	}
 
 	private static final Pattern PATTERN_FONTAWESOME = Pattern.compile("\\.fa-(?<iconName>.*):before.*");
@@ -197,6 +202,34 @@ class IconNameExtractor {
 		final List<String> iconNames = icoFontIconLines.stream().map(line -> {
 
 			final Matcher matcher = PATTERN_ICOFONT.matcher(line);
+			if (!matcher.matches()) {
+
+				throw new IllegalStateException(line);
+			}
+
+			final String iconName = matcher.group("iconName");
+
+			return iconName;
+		}).collect(Collectors.toList());
+
+		return iconNames;
+	}
+
+	private static final Pattern PATTERN_TWEMOJI = Pattern.compile("\\.ta-(?<iconName>.*)\\s.*");
+
+	private static List<String> getTwemojiNames() throws IOException {
+
+		final Path path = Paths.get(".", "public", "lib", "twemoji-awesome", "twemojiawesome.css");
+		if (!Files.exists(path)) {
+
+			throw new RuntimeException(": " + path);
+		}
+
+		final List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+		final List<String> twemojiLines = lines.stream().filter(line -> line.startsWith(".ta-")).collect(Collectors.toList());
+		final List<String> iconNames = twemojiLines.stream().map(line -> {
+
+			final Matcher matcher = PATTERN_TWEMOJI.matcher(line);
 			if (!matcher.matches()) {
 
 				throw new IllegalStateException(line);

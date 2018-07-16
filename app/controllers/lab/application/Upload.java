@@ -78,7 +78,7 @@ public class Upload extends Controller {
 
 			@SuppressWarnings("unused")
 			final Path fileNamePath = Paths.get(filePart.getFilename());
-			final String fileName = fileNamePath.getName(fileNamePath.getNameCount() - 1).toString();
+			final String fileName = fileNamePath.getFileName().toString();
 			@SuppressWarnings("unused")
 			final String contentType = filePart.getContentType();
 			final Path path = filePart.getFile().toPath();

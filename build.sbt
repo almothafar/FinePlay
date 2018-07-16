@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M1-α1-SNAPSHOT"
+version := "2.7.0-M1-α2-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M1-α1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M1-α2-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -46,9 +46,9 @@ libraryDependencies ++= Seq(
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
-  "org.postgresql" % "postgresql" % "42.2.2",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.19.0",
-//  "org.mockito" % "mockito-core" % "2.19.0",							// MIT 2.19.0
+  "org.postgresql" % "postgresql" % "42.2.3",							// BSD 2-clause 42.2.1
+  "org.mockito" % "mockito-inline" % "2.19.1",
+//  "org.mockito" % "mockito-core" % "2.19.1",							// MIT 2.19.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",									// Apache 3.16
@@ -67,7 +67,7 @@ libraryDependencies ++= Seq(
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "core-js" % "2.5.6",								// MIT 2.5.6
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
-  "org.webjars.npm" % "bootstrap" % "4.1.1",							// MIT 4.0.0
+  "org.webjars.npm" % "bootstrap" % "4.1.2",							// MIT 4.0.0
 //  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
@@ -119,7 +119,8 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.1.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.1.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
-  "org.webjars.npm" % "ionicons" % "4.2.4"								// MIT 4.2.4
+  "org.webjars.npm" % "ionicons" % "4.2.4",								// MIT 4.2.4
+  "org.webjars.npm" % "twemoji" % "11.0.0"								// Code:MIT, Graphics:CC 11.0.0
 )
 // IcoFont																// MIT 1.3
 

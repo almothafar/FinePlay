@@ -39,6 +39,9 @@ public class UI extends Controller {
 		case "timeline":
 
 			return timeline();
+		case "balloon":
+
+			return balloon();
 		case "alert":
 
 			return alert();
@@ -136,6 +139,11 @@ public class UI extends Controller {
 	private static Result timeline() {
 
 		return ok(views.html.lab.ui.timeline.render());
+	}
+
+	private static Result balloon() {
+
+		return ok(views.html.lab.ui.balloon.render());
 	}
 
 	private static Result alert() {

@@ -4,7 +4,7 @@
 
 @import common.system._
 
-@(fontAwesomeSolidIconNames: List[String], fontAwesomeRegularIconNames: List[String], fontAwesomeBrandsRegularIconNames: List[String], materialDesignIconNames: List[String], ioniconsNames: List[String], icoFontNames: List[String])
+@(fontAwesomeSolidIconNames: List[String], fontAwesomeRegularIconNames: List[String], fontAwesomeBrandsRegularIconNames: List[String], materialDesignIconNames: List[String], ioniconsNames: List[String], icoFontNames: List[String], twemojiAwesomeIconNames: List[String])
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -18,6 +18,7 @@
 		@libraries.materialicons.head()
 		@libraries.ionicons.head()
 		@libraries.icofont.head()
+		@libraries.twemojiawesome.head()
 		@libraries.standard.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/development/design/icon.css")'>
 	}
@@ -57,19 +58,19 @@
 
 					@for(fontAwesomeIconName <- fontAwesomeSolidIconNames) {
 					<div class="icon_container mb-3 wordwrap">
-						@components.icon(Map("id"->"", "icon"->("fas fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
+						@components.icon(Map("id"->"", "icon"->("fas fa-" + fontAwesomeIconName + " fa-3x"), "class"->"icon_body"))
 						<div class="icon_caption">@("fas fa-" + fontAwesomeIconName)</div>
 					</div>
 					}
 					@for(fontAwesomeIconName <- fontAwesomeRegularIconNames) {
 					<div class="icon_container mb-3 wordwrap">
-						@components.icon(Map("id"->"", "icon"->("far fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
+						@components.icon(Map("id"->"", "icon"->("far fa-" + fontAwesomeIconName + " fa-3x"), "class"->"icon_body"))
 						<div class="icon_caption">@("far fa-" + fontAwesomeIconName)</div>
 					</div>
 					}
 					@for(fontAwesomeIconName <- fontAwesomeBrandsRegularIconNames) {
 					<div class="icon_container mb-3 wordwrap">
-						@components.icon(Map("id"->"", "icon"->("fab fa-" + fontAwesomeIconName + " fa-2x"), "class"->"icon_body"))
+						@components.icon(Map("id"->"", "icon"->("fab fa-" + fontAwesomeIconName + " fa-3x"), "class"->"icon_body"))
 						<div class="icon_caption">@("fab fa-" + fontAwesomeIconName)</div>
 					</div>
 					}
@@ -85,7 +86,7 @@
 
 					@for(materialDesignIconName <- materialDesignIconNames) {
 					<div class="icon_container mb-3 wordwrap">
-						@components.icon(Map("id"->"", "icon"->("material-icons mi-" + materialDesignIconName + " fa-2x"), "class"->"icon_body"))
+						@components.icon(Map("id"->"", "icon"->("material-icons mi-" + materialDesignIconName + " fa-3x"), "class"->"icon_body"))
 						<div class="icon_caption">@("material-icons mi-" + materialDesignIconName)</div>
 					</div>
 					}
@@ -101,7 +102,7 @@
 
 					@for(ioniconsName <- ioniconsNames) {
 					<div class="icon_container mb-3 wordwrap">
-						@components.icon(Map("id"->"", "icon"->("ion ion-" + ioniconsName + " fa-2x"), "class"->"icon_body"))
+						@components.icon(Map("id"->"", "icon"->("ion ion-" + ioniconsName + " fa-3x"), "class"->"icon_body"))
 						<div class="icon_caption">@("ion ion-" + ioniconsName)</div>
 					</div>
 					}
@@ -117,8 +118,24 @@
 
 					@for(icoFontName <- icoFontNames) {
 					<div class="icon_container mb-3 wordwrap">
-						@components.icon(Map("id"->"", "icon"->("icofont icofont-" + icoFontName + " fa-2x"), "class"->"icon_body"))
+						@components.icon(Map("id"->"", "icon"->("icofont icofont-" + icoFontName + " fa-3x"), "class"->"icon_body"))
 						<div class="icon_caption">@("icofont icofont-" + icoFontName)</div>
+					</div>
+					}
+				</div>
+			</div>
+
+			<div id="ta" class="mb-3">
+				<h4 class="headline">Twemoji</h4>
+				<div class="row mt-3 icon_result_list">
+
+				</div>
+				<div class="row mt-3 icon_list">
+
+					@for(twemojiAwesomeIconName <- twemojiAwesomeIconNames) {
+					<div class="icon_container mb-3">
+						@components.icon(Map("id"->"", "icon"->("ta ta-" + twemojiAwesomeIconName + " fa-3x"), "class"->"icon_body"))
+						<div class="icon_caption">@("ta ta-" + twemojiAwesomeIconName)</div>
 					</div>
 					}
 				</div>

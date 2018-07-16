@@ -55,7 +55,7 @@ public class Offices {
 		final Path commandPath = getCommandPath();
 		final Path tmpPath = Paths.get(System.getProperty("java.io.tmpdir"));
 		final Path outputDirPath = tmpPath.resolve(UUID.randomUUID().toString());
-		final String withoutExt = com.google.common.io.Files.getNameWithoutExtension(inputPath.getName(inputPath.getNameCount() - 1).toString());
+		final String withoutExt = com.google.common.io.Files.getNameWithoutExtension(inputPath.getFileName().toString());
 		final Path outputPath = outputDirPath.resolve(withoutExt + "." + extension);
 
 		final List<String> command = new ArrayList<>();

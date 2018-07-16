@@ -14,19 +14,19 @@ Install
 
 e.g.
 
-	github/bootstrap-4.1.1/scss/_variables.scss
+	github/bootstrap-4.1.2/scss/_variables.scss
 
 ### Build ###
 
 ##### Console #####
 
-	MacBook:~ user$ cd github/bootstrap-4.1.1
-	MacBook:bootstrap-4.1.1 user$ npm install
-	MacBook:bootstrap-4.1.1 user$ npm run dist
+	MacBook:~ user$ cd github/bootstrap-4.1.2
+	MacBook:bootstrap-4.1.2 user$ npm install
+	MacBook:bootstrap-4.1.2 user$ npm run dist
 
 ### Position ###
 
-	github/bootstrap-4.1.1/dist/css/bootstrap.min.css
+	github/bootstrap-4.1.2/dist/css/bootstrap.min.css
 
 to
 

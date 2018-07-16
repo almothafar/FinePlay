@@ -119,7 +119,7 @@
 								)){
 								@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger", "striped"->"true", "animated"->"true"))
 								<br>
-								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#collapseMordal0", "aria-expanded"->"true"))
+								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#collapseMordal0", "aria-expanded"->"true"))
 								@components.collapse(Map("id"->"collapseMordal0", "show"->"true")){
 									@components.card(Map("id"->"")){
 										<div class="card-body">
@@ -145,7 +145,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 								)){
 								@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger", "striped"->"true", "animated"->"true"))
 								<br>
-								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure text-dark pl-0 text-left", "show"->"ture", "data-toggle"->"collapse", "data-target"->"#collapseMordal1", "aria-expanded"->"false"))
+								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-90 text-dark pl-0 text-left", "show"->"ture", "data-toggle"->"collapse", "data-target"->"#collapseMordal1", "aria-expanded"->"false"))
 								@components.collapse(Map("id"->"collapseMordal1")){
 									@components.card(Map("id"->"")){
 										<div class="card-body">
@@ -220,7 +220,50 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 						</div>
 					</div>
 
+					<h4 class="headline">Accordion</h4>
 					<div class="mb-3">
+
+						<div class="accordion" id="accordionExample">
+							@components.card(Map("id"->"")){
+								<div class="card-header" id="headingOne">
+									<h5 class="mb-0">
+										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play", "text"->"Collapsible Group Item #1", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseOne", "aria-expanded"->"true", "aria-controls"->"collapseOne"))
+									</h5>
+								</div>
+
+								@components.collapse(Map("id"->"collapseOne", "show"->"true", "aria-labelledby"->"headingOne", "data-parent"->"#accordionExample")){
+									<div class="card-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									</div>
+								}
+							}
+							@components.card(Map("id"->"")){
+								<div class="card-header" id="headingTwo">
+									<h5 class="mb-0">
+										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play", "text"->"Collapsible Group Item #2", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseTwo", "aria-expanded"->"false", "aria-controls"->"collapseTwo"))
+									</h5>
+								</div>
+
+								@components.collapse(Map("id"->"collapseTwo", "aria-labelledby"->"headingTwo", "data-parent"->"#accordionExample")){
+									<div class="card-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									</div>
+								}
+							}
+							@components.card(Map("id"->"")){
+								<div class="card-header" id="headingThree">
+									<h5 class="mb-0">
+										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play", "text"->"Collapsible Group Item #3", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseThree", "aria-expanded"->"false", "aria-controls"->"collapseThree"))
+									</h5>
+								</div>
+
+								@components.collapse(Map("id"->"collapseThree", "aria-labelledby"->"headingThree", "data-parent"->"#accordionExample")){
+									<div class="card-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									</div>
+								}
+							}
+						</div>
 					</div>
 				</div>
 			</div>

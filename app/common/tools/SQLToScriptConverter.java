@@ -42,7 +42,7 @@ class SQLToScriptConverter {
 
 	private static void makeToSQLScript(final Path sQLPath, final List<String> sQLLines) throws IOException {
 
-		final Path sQLScriptPath = sQLPath.getParent().resolve(sQLPath.getName(sQLPath.getNameCount() - 1).toString().replaceFirst("\\.sql$", "-script.sql"));
+		final Path sQLScriptPath = sQLPath.getParent().resolve(sQLPath.getFileName().toString().replaceFirst("\\.sql$", "-script.sql"));
 		final List<String> sQLScriptLines = sQLLines.stream().map(sQLLine -> sQLLine + ";").collect(Collectors.toList());
 
 		Files.write(sQLScriptPath, sQLScriptLines, StandardCharsets.UTF_8);

@@ -1,0 +1,310 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.twemojiawesome.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/balloon.css")'>
+	}
+
+	@body("lab","timeline"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Balloon", "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"balloon"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div>
+						<h4 class="headline">@Messages(MessageKeys.SUPPORT)</h4>
+						<div class="row mb-3">
+							<div class="col-auto">
+								@components.icon(Map("id"->"", "icon"->("ta ta-woman-pouting fa-4x"), "class"->""))
+							</div>
+							<div class="col">
+								@components.card(Map("id"->"", "class"->"balloon-right-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+									</div>
+								}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col">
+								@components.card(Map("id"->"", "class"->"balloon-left-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+									</div>
+								}
+							</div>
+							<div class="col-auto">
+								@components.icon(Map("id"->"", "icon"->("ta ta-man-in-tuxedo fa-4x"), "class"->""))
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-auto">
+								@components.icon(Map("id"->"", "icon"->("ta ta-woman-gesturing-ok fa-4x"), "class"->""))
+							</div>
+							<div class="col">
+								@components.card(Map("id"->"", "class"->"balloon-right-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+									</div>
+								}
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="headline">@Messages(MessageKeys.SCIENCE)</h4>
+						<div class="row mb-3">
+							<div class="col-auto">
+								@components.icon(Map("id"->"", "icon"->("ta ta-girl fa-4x"), "class"->""))
+							</div>
+							<div class="col">
+								@components.card(Map("id"->"", "class"->"balloon-right-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+									</div>
+								}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-auto">
+								@components.icon(Map("id"->"", "icon"->("ta ta-boy fa-4x"), "class"->""))
+							</div>
+							<div class="col">
+								@components.card(Map("id"->"", "class"->"balloon-right-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+									</div>
+								}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col">
+								@components.card(Map("id"->"", "class"->"balloon-left-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+									</div>
+								}
+							</div>
+							<div class="col-auto">
+								@components.icon(Map("id"->"", "icon"->("ta ta-man-scientist fa-4x"), "class"->""))
+							</div>
+						</div>
+					</div>
+
+					<div class="secret">
+						<h4 class="headline">@Messages(MessageKeys.CONSULT)</h4>
+						<div class="bg-deep-purple-100 p-3">
+							<div class="row mb-3">
+								<div class="col-auto">
+									@components.icon(Map("id"->"", "icon"->("ta fa-4x"), "class"->""))
+								</div>
+								<div class="col">
+									@components.card(Map("id"->"", "class"->"balloon-left-top rounded-pretty", "type"->"primary", "text"->"white")){
+										<div class="card-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+										</div>
+									}
+								</div>
+								<div class="col-auto">
+									@components.icon(Map("id"->"", "icon"->("ta ta-woman fa-4x"), "class"->""))
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-auto">
+									@components.icon(Map("id"->"", "icon"->("ta fa-4x"), "class"->""))
+								</div>
+								<div class="col">
+									@components.card(Map("id"->"", "class"->"balloon-left-top rounded-pretty", "type"->"primary", "text"->"white")){
+										<div class="card-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+										</div>
+									}
+								</div>
+								<div class="col-auto">
+									@components.icon(Map("id"->"", "icon"->("ta ta-man fa-4x"), "class"->""))
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-auto">
+									@components.icon(Map("id"->"", "icon"->("ta ta-woman-health-worker fa-4x"), "class"->""))
+								</div>
+								<div class="col">
+									@components.card(Map("id"->"", "class"->"balloon-right-top rounded-pretty", "type"->"light")){
+										<div class="card-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+										</div>
+									}
+								</div>
+								<div class="col-auto">
+									@components.icon(Map("id"->"", "icon"->("ta fa-4x"), "class"->""))
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="secret">
+						<div class="row mb-3">
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-middle")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-bottom")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-top")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-middle")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-bottom")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-top", "type"->"primary", "text"->"white")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-middle", "type"->"primary", "text"->"white")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-bottom", "type"->"primary", "text"->"white")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-top", "type"->"primary", "text"->"white")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-middle", "type"->"primary", "text"->"white")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-bottom", "type"->"primary", "text"->"white")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-top", "type"->"light")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-middle", "type"->"light")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-right-bottom", "type"->"light")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-top", "type"->"light")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-middle", "type"->"light")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+							<div class="col-2">
+								@components.card(Map("id"->"", "class"->"balloon-left-bottom", "type"->"light")){
+									<div class="card-body">
+										<span class="draft">Anim pariatur cliche reprehenderit, enim eiusmod high life.</span>
+									</div>
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

@@ -139,6 +139,8 @@ public class MessageKeys {
 
   public static final String CONSTRAINT_REQUIRED = "constraint.required";
 
+  public static final String CONSULT = "consult";
+
   public static final String CONTACT = "contact";
 
   public static final String CONTENT = "content";
@@ -655,6 +657,8 @@ public class MessageKeys {
 
   public static final String SAVE = "save";
 
+  public static final String SCIENCE = "science";
+
   public static final String SEARCH = "search";
 
   public static final String SECTION = "section";
@@ -700,6 +704,8 @@ public class MessageKeys {
   public static final String SUMMARY = "summary";
 
   public static final String SUMMERNOTE_LANG = "summernote.lang";
+
+  public static final String SUPPORT = "support";
 
   public static final String SWITCH = "switch";
 
@@ -758,6 +764,8 @@ public class MessageKeys {
   public static final String SYSTEM_NAME = "system.name";
 
   public static final String TABLE = "table";
+
+  public static final String TALK = "talk";
 
   public static final String TARGET = "target";
 

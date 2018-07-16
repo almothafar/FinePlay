@@ -8,6 +8,8 @@ var ioniconsIconList = $('#ionicons>.icon_list');
 var ioniconsIconResultList = $('#ionicons>.icon_result_list');
 var icoFontIconList = $('#icofont>.icon_list');
 var icoFontIconResultList = $('#icofont>.icon_result_list');
+var taIconList = $('#ta>.icon_list');
+var taIconResultList = $('#ta>.icon_result_list');
 
 var keyupEvents = [];
 $("#searchField").on('keyup', function () {
@@ -25,6 +27,7 @@ $("#searchField").on('keyup', function () {
 			miIconList.show();
 			ioniconsIconList.show();
 			icoFontIconList.show();
+			taIconList.show();
 
 			if(0 == searchText.length){
 
@@ -32,27 +35,32 @@ $("#searchField").on('keyup', function () {
 				miIconResultList.hide();
 				ioniconsIconResultList.hide();
 				icoFontIconResultList.hide();
+				taIconResultList.hide();
 			}else{
 
 				faIconList.hide();
 				miIconList.hide();
 				ioniconsIconList.hide();
 				icoFontIconList.hide();
+				taIconList.hide();
 
 				faIconResultList.empty();
 				miIconResultList.empty();
 				ioniconsIconResultList.empty();
 				icoFontIconResultList.empty();
+				taIconResultList.empty();
 
 				$("#fa .icon_caption:contains('" + searchText + "')").each(function(){faIconResultList.append($(this).parent().clone());});
 				$("#materialicons .icon_caption:contains('" + searchText + "')").each(function(){miIconResultList.append($(this).parent().clone());});
 				$("#ionicons .icon_caption:contains('" + searchText + "')").each(function(){ioniconsIconResultList.append($(this).parent().clone());});
 				$("#icofont .icon_caption:contains('" + searchText + "')").each(function(){icoFontIconResultList.append($(this).parent().clone());});
+				$("#ta .icon_caption:contains('" + searchText + "')").each(function(){taIconResultList.append($(this).parent().clone());});
 
 				faIconResultList.show();
 				miIconResultList.show();
 				ioniconsIconResultList.show();
 				icoFontIconResultList.show();
+				taIconResultList.show();
 			}
 		}
 	}, 500);

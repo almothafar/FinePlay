@@ -2,6 +2,10 @@
 
 /* Project style */
 
+.rounded-pretty {
+  border-radius: .9rem !important;
+}
+
 .w-0 {width: 0% !important;}
 .w-10 {width: 10% !important;}
 .w-20 {width: 20% !important;}
@@ -96,6 +100,8 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	width: 1.0em;
+	height: 1.0em;
+	vertical-align: -0.24em;
 }
 
 .ii:before{
@@ -209,10 +215,10 @@
 	content: "\2699";
 }
 .ef-success:before {
-	content: "\2714";
+	content: "\2705";
 }
 .ef-info:before {
-	content: "\2757";
+	content: "\2139";
 }
 .ef-warning:before {
 	content: "\26A0";

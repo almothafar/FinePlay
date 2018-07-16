@@ -12,15 +12,15 @@ How to play
 
 ##### Environment #####
 
-	macOS High Sierra version 10.13.5（17F77）
-	openjdk version "10" 2018-03-20
+	macOS High Sierra version 10.13.6（17G65）
+	openjdk version "9.0.4"
 	Safari version 11.1.1 (13605.2.8)
 
-##### Java #####
+##### OpenJDK #####
 
 Install
 
-[OpenJDK](http://jdk.java.net/10/)
+[OpenJDK](http://jdk.java.net/9/)
 
 ##### Console #####
 
@@ -71,7 +71,7 @@ Notice
 Release History
 ---------------
 
-+ **2.7.0-M1-α1** - 2018-06-24 (´・ω・｀)
++ **2.7.0-M1-α2** - 2018-07-16 (´・ω・｀)
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit
