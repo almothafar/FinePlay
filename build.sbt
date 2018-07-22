@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M1-α2-SNAPSHOT"
+version := "2.7.0-M2-α3-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M1-α2-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M2-α3-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -39,14 +39,14 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.197",
 //  "com.h2database" % "h2" % "1.4.197" % Test,
 //  "net.logstash.logback" % "logstash-logback-encoder" % "5.1",		// Apache 5.1
-  "org.hibernate" % "hibernate-core" % "5.3.2.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.2.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.3.3.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.3.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
-  "org.postgresql" % "postgresql" % "42.2.3",							// BSD 2-clause 42.2.1
+  "org.postgresql" % "postgresql" % "42.2.4",							// BSD 2-clause 42.2.1
   "org.mockito" % "mockito-inline" % "2.19.1",
 //  "org.mockito" % "mockito-core" % "2.19.1",							// MIT 2.19.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
@@ -57,7 +57,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-core" % "1.18",								// Apache 1.17
   "org.apache.tika" % "tika-parsers" % "1.18",
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
-  "org.webjars.bower" % "quagga" % "0.11.6",							// MIT 0.12.1
+  "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.11",							// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1

@@ -115,3 +115,6 @@ hr.separator:after {
 .custom-switch>input:checked ~ .custom-switch-base {
 	background: #ad6f30 !important;
 }
+.custom-switch>input:focus ~ .custom-switch-base {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 .2rem rgba(173, 111, 48, .25);
+}

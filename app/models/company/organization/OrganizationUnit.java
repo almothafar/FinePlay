@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -110,6 +111,7 @@ public class OrganizationUnit {
 	public static final String OPERATION = "operation";
 	public static final String UNITTREEJSON = "unitTreeJSON";
 
+	@Nonnull
 	private static final String[] HEADERS = { //
 			ORGANIZATION_ID, //
 			OrganizationUnit_.ID, //
@@ -134,6 +136,7 @@ public class OrganizationUnit {
 			null //
 	};
 
+	@Nonnull
 	public static String[] getHeaders() {
 
 		return HEADERS;

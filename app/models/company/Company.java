@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Map.Entry;
 
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -93,6 +94,7 @@ public class Company {
 	public static final String UPLOADFILE = "uploadFile";
 	public static final String OPERATION = "operation";
 
+	@Nonnull
 	private static final String[] HEADERS = { //
 			Company_.ID, //
 			Company_.UPDATE_DATE_TIME, //
@@ -114,6 +116,7 @@ public class Company {
 			null //
 	};
 
+	@Nonnull
 	public static String[] getHeaders() {
 
 		return HEADERS;

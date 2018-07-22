@@ -3,7 +3,6 @@ package controllers.framework.defaultpage;
 import models.system.System.PermissionsAllowed;
 import play.api.PlayException;
 import play.mvc.Controller;
-import play.mvc.Http.RequestHeader;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import scala.Option;

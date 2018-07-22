@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 public class Captures {
 
+	@Nonnull
 	public static Path getFolderPath() {
 
 		final StackTraceElement element = Thread.currentThread().getStackTrace()[2];

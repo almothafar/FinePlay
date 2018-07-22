@@ -103,7 +103,7 @@ public class RegistUser implements ExpireHandler, PasswordHandler {
 	}
 
 	@Override
-	public void setSalt(String salt) {
+	public void setSalt(@Nonnull String salt) {
 
 		this.salt = salt;
 	}
@@ -114,7 +114,7 @@ public class RegistUser implements ExpireHandler, PasswordHandler {
 	}
 
 	@Override
-	public void setHashedPassword(String hashedPassword) {
+	public void setHashedPassword(@Nonnull String hashedPassword) {
 
 		this.hashedPassword = hashedPassword;
 	}

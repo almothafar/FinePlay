@@ -45,7 +45,7 @@ public class PDF extends Controller {
 			return ok(views.html.system.pdf.render(pdfInfo));
 		} else {
 
-			throw new RuntimeException(pdfInfoFormContent.allErrors().toString());
+			throw new RuntimeException(pdfInfoFormContent.errors().toString());
 		}
 	}
 }

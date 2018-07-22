@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import javax.annotation.Nonnull;
 
-import common.system.MessageKeys;
 import models.user.User.Theme;
 import play.i18n.MessagesApi;
 

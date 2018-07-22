@@ -149,7 +149,7 @@ public class Upload extends Controller {
 		result.set("globalErrors", globalErrorsNode);
 
 		final ObjectNode errorsNode = mapper.createObjectNode();
-		uploadForm.allErrors().stream().forEach(error -> {
+		uploadForm.errors().stream().forEach(error -> {
 
 			final String property = error.key();
 

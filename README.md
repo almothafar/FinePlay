@@ -53,7 +53,7 @@ Document
 
 ### Official Document ###
 
-[Play Framework](https://www.playframework.com/documentation/2.6.x)
+[Play Framework](https://www.playframework.com/documentation/2.7.0-M2)
 
 [Bootstrap](http://getbootstrap.com/docs/4.1)
 
@@ -71,7 +71,7 @@ Notice
 Release History
 ---------------
 
-+ **2.7.0-M1-α2** - 2018-07-16 (´・ω・｀)
++ **2.7.0-M2-α3** - 2018-07-22 (｀・ω・´)
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

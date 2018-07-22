@@ -83,6 +83,10 @@
 	background: #007bff !important;
 }
 
+.custom-switch>input:focus ~ .custom-switch-base {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
 .custom-switch>.custom-switch-handle {
 	position: absolute;
 	top: -2px;

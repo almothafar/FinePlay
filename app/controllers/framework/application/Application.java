@@ -29,6 +29,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -437,7 +438,7 @@ public class Application extends Controller {
 		};
 
 		final Form<PlayBean> playForm = formFactory.form(PlayBean.class).bindFromRequest();
-		final Map<String, Object> playMap = playForm.allErrors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
+		final Map<String, Object> playMap = playForm.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
 				entry -> entry.getKey(), //
 				entry -> entry.getValue(), //
 				(u, v) -> {
@@ -446,7 +447,7 @@ public class Application extends Controller {
 				LinkedHashMap::new));
 
 		final Form<Jsr380Bean> jsr380Form = formFactory.form(Jsr380Bean.class).bindFromRequest();
-		final Map<String, Object> jsr380Map = jsr380Form.allErrors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
+		final Map<String, Object> jsr380Map = jsr380Form.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
 				entry -> entry.getKey(), //
 				entry -> entry.getValue(), //
 				(u, v) -> {
@@ -455,7 +456,7 @@ public class Application extends Controller {
 				LinkedHashMap::new));
 
 		final Form<FinePlayBean> fineplayForm = formFactory.form(FinePlayBean.class).bindFromRequest();
-		final Map<String, Object> fineplayMap = fineplayForm.allErrors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
+		final Map<String, Object> fineplayMap = fineplayForm.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
 				entry -> entry.getKey(), //
 				entry -> entry.getValue(), //
 				(u, v) -> {
@@ -702,7 +703,8 @@ public class Application extends Controller {
 		if (value.isEmpty()) {
 			// get
 
-			final String cachedValue = syncCacheApi.get(key);
+			final Optional<String> cachedValueOptional = syncCacheApi.getOptional("previousSubmitToken");
+			final String cachedValue = cachedValueOptional.get();
 
 			result.put("value", cachedValue);
 		} else {
@@ -736,10 +738,10 @@ public class Application extends Controller {
 			if (value.isEmpty()) {
 				// get
 
-				final CompletionStage<String> stage = aSyncCacheApi.get(key);
+				final CompletionStage<Optional<String>> stage = aSyncCacheApi.getOptional(key);
 				try {
 
-					final String cachedValue = stage.toCompletableFuture().get(3, TimeUnit.SECONDS);
+					final String cachedValue = stage.toCompletableFuture().get(3, TimeUnit.SECONDS).get();
 					result.put("value", cachedValue);
 				} catch (InterruptedException | ExecutionException e) {
 

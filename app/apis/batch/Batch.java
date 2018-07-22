@@ -7,8 +7,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import javax.annotation.Nonnull;
+import javax.batch.operations.BatchRuntimeException;
 import javax.batch.operations.JobOperator;
-import javax.batch.operations.NoSuchJobExecutionException;
 import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.JobExecution;
 
@@ -50,9 +50,14 @@ public class Batch extends Controller {
 		jobParameters.remove("csrfToken");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
-		final long executionId = jobOperator.start(jobName, jobParameters);
+		try {
 
-		return ok(createStartResult(jobName, executionId));
+			final long executionId = jobOperator.start(jobName, jobParameters);
+			return ok(createStartResult(jobName, executionId));
+		} catch (BatchRuntimeException e) {
+
+			return ok(createErrorResult(e.getLocalizedMessage()));
+		}
 	}
 
 	private JsonNode createStartResult(@Nonnull final String jobName, final long executionId) {
@@ -81,9 +86,14 @@ public class Batch extends Controller {
 		}
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
-		jobOperator.stop(executionId);
+		try {
 
-		return ok(createStopResult(executionId));
+			jobOperator.stop(executionId);
+			return ok(createStopResult(executionId));
+		} catch (BatchRuntimeException e) {
+
+			return ok(createErrorResult(e.getLocalizedMessage()));
+		}
 	}
 
 	private JsonNode createStopResult(final long beforeExecutionId) {
@@ -115,9 +125,14 @@ public class Batch extends Controller {
 		jobParameters.remove("csrfToken");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
-		final long newExecutionId = jobOperator.restart(executionId, jobParameters);
+		try {
 
-		return ok(createReStartResult(executionId, newExecutionId));
+			final long newExecutionId = jobOperator.restart(executionId, jobParameters);
+			return ok(createReStartResult(executionId, newExecutionId));
+		} catch (BatchRuntimeException e) {
+
+			return ok(createErrorResult(e.getLocalizedMessage()));
+		}
 	}
 
 	private JsonNode createReStartResult(final long beforeExecutionId, final long executionId) {
@@ -146,9 +161,14 @@ public class Batch extends Controller {
 		}
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
-		jobOperator.abandon(executionId);
+		try {
 
-		return ok(createAbandonResult(executionId));
+			jobOperator.abandon(executionId);
+			return ok(createAbandonResult(executionId));
+		} catch (BatchRuntimeException e) {
+
+			return ok(createErrorResult(e.getLocalizedMessage()));
+		}
 	}
 
 	private JsonNode createAbandonResult(final long beforeExecutionId) {
@@ -180,12 +200,11 @@ public class Batch extends Controller {
 		try {
 
 			jobExecution = jobOperator.getJobExecution(executionId);
-		} catch (NoSuchJobExecutionException e) {
+			return ok(createJobExecutionResult(executionId, jobExecution));
+		} catch (BatchRuntimeException e) {
 
 			return ok(createErrorResult(e.getLocalizedMessage()));
 		}
-
-		return ok(createJobExecutionResult(executionId, jobExecution));
 	}
 
 	private JsonNode createJobExecutionResult(final long executionId, final JobExecution jobExecution) {

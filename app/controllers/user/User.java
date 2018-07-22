@@ -316,7 +316,7 @@ public class User extends Controller {
 		}
 
 		final ObjectNode errorsNode = mapper.createObjectNode();
-		passwordForm.allErrors().stream().forEach(error -> {
+		passwordForm.errors().stream().forEach(error -> {
 
 			final String property = error.key();
 

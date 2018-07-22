@@ -8,13 +8,13 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -395,7 +395,7 @@ public class Application extends Controller {
 	private Source<String, ?> getSource(@Nonnull String zoneId) {
 
 		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		final Source<String, Cancellable> tickSource = Source.tick(scala.concurrent.duration.Duration.Zero(), scala.concurrent.duration.Duration.create(1000, TimeUnit.MILLISECONDS), "TICK");
+		final Source<String, Cancellable> tickSource = Source.tick(Duration.ZERO, Duration.of(1000L, ChronoUnit.MILLIS), "TICK");
 		return tickSource.map((tick) -> {
 
 			final LocalDateTime clientDateTime = ZonedDateTime.of(LocalDateTime.now(), ZoneOffset.UTC).withZoneSameInstant(ZoneId.of(zoneId)).toLocalDateTime();

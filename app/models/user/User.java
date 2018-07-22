@@ -385,7 +385,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	}
 
 	@Override
-	public void setSalt(String salt) {
+	public void setSalt(@Nonnull String salt) {
 
 		this.salt = salt;
 	}
@@ -396,7 +396,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	}
 
 	@Override
-	public void setHashedPassword(String hashedPassword) {
+	public void setHashedPassword(@Nonnull String hashedPassword) {
 
 		this.hashedPassword = hashedPassword;
 	}

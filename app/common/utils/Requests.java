@@ -5,6 +5,7 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
@@ -31,7 +32,8 @@ public class Requests {
 		final String submitToken;
 		synchronized (syncCache) {
 
-			previousSubmitToken = syncCache.get("previousSubmitToken");
+			final Optional<String> previousSubmitTokenOptional = syncCache.getOptional("previousSubmitToken");
+			previousSubmitToken = previousSubmitTokenOptional.get();
 			submitToken = request.getQueryString("csrfToken");
 			syncCache.set("previousSubmitToken", submitToken);
 		}

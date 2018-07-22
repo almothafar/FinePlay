@@ -11,7 +11,7 @@
 
 @for(i <- 0 to elements.size - 1){
 	<div id="@prop.getOrElse("id", "")" class="custom-control custom-radio custom-control@("-inline".when(Boolean.valueOf(prop.getOrElse("inline", "false")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
-		<input type="radio" name="@prop.getOrElse("name", "")" id="custom-@elements(i).getOrElse("id", "")" class="custom-control-input" @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) @("checked".when(Boolean.valueOf(elements(i).getOrElse("selected", ""))))>
+		<input type="radio" name="@prop.getOrElse("name", "")" id="custom-@elements(i).getOrElse("id", "")" class="custom-control-input" @("disabled".when(!Boolean.valueOf(prop.getOrElse("enabled", "true")))) @("checked".when(Boolean.valueOf(elements(i).getOrElse("selected", "")))) tabindex="@elements(i).getOrElse("tabindex", "")">
 		<label class="custom-control-label" for="custom-@elements(i).getOrElse("id", "")">@Html(elements(i).getOrElse("text", "&nbsp;"))</label>
 	</div>
 }

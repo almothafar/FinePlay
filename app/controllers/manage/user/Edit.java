@@ -332,7 +332,7 @@ public class Edit extends Controller {
 		result.set("globalErrors", globalErrorsNode);
 
 		final ObjectNode errorsNode = mapper.createObjectNode();
-		editForm.allErrors().stream().forEach(error -> {
+		editForm.errors().stream().forEach(error -> {
 
 			final String property = error.key();
 
