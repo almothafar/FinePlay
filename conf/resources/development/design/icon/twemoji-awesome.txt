@@ -2737,6 +2737,7 @@ woman-white-haired
 woman-white-haired_dark-skin-tone
 woman-white-haired_light-skin-tone
 woman-white-haired_medium-dark-skin-tone
+woman-white-haired_medium-light-skin-tone
 woman-white-haired_medium-skin-tone
 woman-with-headscarf
 woman-with-headscarf_dark-skin-tone
