@@ -46,6 +46,16 @@ class TwemojiCSSCreator {
 		twemojiCSSLines.add("}");
 		twemojiCSSLines.add("");
 
+		twemojiCSSLines.add(".fa-lg>.ta {");
+		twemojiCSSLines.add("	vertical-align: 0.14em;");
+		twemojiCSSLines.add("}");
+		twemojiCSSLines.add("");
+
+		twemojiCSSLines.add(".ta.fa-lg {");
+		twemojiCSSLines.add("	vertical-align: -0.03em;");
+		twemojiCSSLines.add("}");
+		twemojiCSSLines.add("");
+
 		twemojiCSSLines.add(".ta:before{");
 		twemojiCSSLines.add("	content: \"\1F178\";");
 		twemojiCSSLines.add("	color: transparent;");

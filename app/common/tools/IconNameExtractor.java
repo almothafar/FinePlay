@@ -58,7 +58,7 @@ class IconNameExtractor {
 
 	private static List<String> getFontAwesomeIconNames(final String style) throws IOException {
 
-		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "font-awesome", "css", "all.css");
+		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "font-awesome", "css", "all.min.css");
 
 		if (!Files.exists(path)) {
 

@@ -1,6 +1,7 @@
 address-book
 address-card
 adjust
+air-freshener
 align-center
 align-justify
 align-left
@@ -18,6 +19,7 @@ angle-left
 angle-right
 angle-up
 angry
+apple-alt
 archive
 archway
 arrow-alt-circle-down
@@ -39,6 +41,7 @@ assistive-listening-systems
 asterisk
 at
 atlas
+atom
 audio-description
 award
 backspace
@@ -69,15 +72,18 @@ blind
 bold
 bolt
 bomb
+bone
 bong
 book
 book-open
+book-reader
 bookmark
 bowling-ball
 box
 box-open
 boxes
 braille
+brain
 briefcase
 briefcase-medical
 broadcast-tower
@@ -102,6 +108,10 @@ camera-retro
 cannabis
 capsules
 car
+car-alt
+car-battery
+car-crash
+car-side
 caret-down
 caret-left
 caret-right
@@ -115,6 +125,7 @@ cart-plus
 certificate
 chalkboard
 chalkboard-teacher
+charging-station
 chart-area
 chart-bar
 chart-line
@@ -195,6 +206,7 @@ dice-six
 dice-three
 dice-two
 digital-tachograph
+directions
 divide
 dizzy
 dna
@@ -208,6 +220,7 @@ dot-circle
 dove
 download
 drafting-compass
+draw-polygon
 drum
 drum-steelpan
 dumbbell
@@ -378,10 +391,12 @@ kiss-wink-heart
 kiwi-bird
 language
 laptop
+laptop-code
 laugh
 laugh-beam
 laugh-squint
 laugh-wink
+layer-group
 leaf
 lemon
 less-than
@@ -433,6 +448,7 @@ microphone
 microphone-alt
 microphone-alt-slash
 microphone-slash
+microscope
 minus
 minus-circle
 minus-square
@@ -456,6 +472,7 @@ not-equal
 notes-medical
 object-group
 object-ungroup
+oil-can
 outdent
 paint-brush
 paint-roller
@@ -498,6 +515,7 @@ plus-circle
 plus-square
 podcast
 poo
+poop
 portrait
 pound-sign
 power-off
@@ -527,6 +545,7 @@ ribbon
 road
 robot
 rocket
+route
 rss
 rss-square
 ruble-sign
@@ -545,6 +564,7 @@ search-minus
 search-plus
 seedling
 server
+shapes
 share
 share-alt
 share-alt-square
@@ -595,6 +615,7 @@ stamp
 star
 star-half
 star-half-alt
+star-of-life
 step-backward
 step-forward
 stethoscope
@@ -632,12 +653,15 @@ tags
 tape
 tasks
 taxi
+teeth
+teeth-open
 terminal
 text-height
 text-width
 th
 th-large
 th-list
+theater-masks
 thermometer
 thermometer-empty
 thermometer-full
@@ -658,6 +682,7 @@ toggle-on
 toolbox
 tooth
 trademark
+traffic-light
 train
 transgender
 transgender-alt
@@ -667,7 +692,9 @@ tree
 trophy
 truck
 truck-loading
+truck-monster
 truck-moving
+truck-pickup
 tshirt
 tty
 tv

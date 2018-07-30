@@ -97,6 +97,7 @@ earlybirds
 ebay
 edge
 elementor
+ello
 ember
 empire
 envira
@@ -159,6 +160,7 @@ grunt
 gulp
 hacker-news
 hacker-news-square
+hackerrank
 hips
 hire-a-helper
 hooli
@@ -181,6 +183,7 @@ joomla
 js
 js-square
 jsfiddle
+kaggle
 keybase
 keycdn
 kickstarter
@@ -200,6 +203,7 @@ lyft
 magento
 mailchimp
 mandalorian
+markdown
 mastodon
 maxcdn
 medapps
@@ -215,6 +219,7 @@ mizuni
 modx
 monero
 napster
+neos
 nimblr
 nintendo-switch
 node
@@ -268,6 +273,7 @@ renren
 replyd
 researchgate
 resolving
+rev
 rocketchat
 rockrms
 safari
@@ -369,3 +375,4 @@ yelp
 yoast
 youtube
 youtube-square
+zhihu

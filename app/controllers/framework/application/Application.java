@@ -703,8 +703,8 @@ public class Application extends Controller {
 		if (value.isEmpty()) {
 			// get
 
-			final Optional<String> cachedValueOptional = syncCacheApi.getOptional("previousSubmitToken");
-			final String cachedValue = cachedValueOptional.get();
+			final Optional<String> cachedValueOptional = syncCacheApi.getOptional(key);
+			final String cachedValue = cachedValueOptional.orElseGet(() -> "");
 
 			result.put("value", cachedValue);
 		} else {
@@ -741,7 +741,8 @@ public class Application extends Controller {
 				final CompletionStage<Optional<String>> stage = aSyncCacheApi.getOptional(key);
 				try {
 
-					final String cachedValue = stage.toCompletableFuture().get(3, TimeUnit.SECONDS).get();
+					final Optional<String> cachedValueOptional = stage.toCompletableFuture().get(3, TimeUnit.SECONDS);
+					final String cachedValue = cachedValueOptional.orElseGet(() -> "");
 					result.put("value", cachedValue);
 				} catch (InterruptedException | ExecutionException e) {
 

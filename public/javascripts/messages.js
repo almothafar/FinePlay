@@ -269,6 +269,7 @@ var MessageKeys = {
 	PARSLEY_LANG: "parsley.lang",
 	PART: "part",
 	PASTE: "paste",
+	PAUSE: "pause",
 	PDFJS_LANG: "pdfjs.lang",
 	PHOTO: "photo",
 	PICKADATE_LANG: "pickadate.lang",

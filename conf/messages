@@ -406,6 +406,7 @@ page = Page
 parameter = Parameter
 part = Part
 paste = Paste
+pause = Pause
 photo = Photo
 please_select = Please select.
 please_wait = Please wait.

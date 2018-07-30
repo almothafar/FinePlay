@@ -160,7 +160,6 @@ POST		/lab/maintenance/detail						controllers.lab.maintenance.Maintenance.detai
 GET		/lab/application								controllers.lab.application.Application.index(state:String ?="autosave")
 GET		/lab/application:state						controllers.lab.application.Application.index(state:String)
 GET		/lab/application/paging						controllers.lab.application.Application.paging(page:Int, size:Int)
-GET		/lab/application/clock/:zoneId				controllers.lab.application.Application.clock(zoneId:String)
 GET		/lab/application/download					controllers.lab.application.Download.index()
 GET		/lab/application/download/file.txt			controllers.lab.application.Download.file()
 GET		/lab/application/download/stream.txt			controllers.lab.application.Download.stream()

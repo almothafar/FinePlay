@@ -1,5 +1,6 @@
 package common.tools;
 
+import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,15 +10,21 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import net.jodah.failsafe.Failsafe;
+import net.jodah.failsafe.FailsafeException;
+import net.jodah.failsafe.RetryPolicy;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
@@ -25,6 +32,8 @@ import play.mvc.Http;
 import play.test.WSTestClient;
 
 class LibraryUpdateChecker {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static WSClient ws = WSTestClient.newClient(-1);
 
@@ -134,48 +143,59 @@ class LibraryUpdateChecker {
 		wsRequest.addQueryParameter("rows", "20");
 		wsRequest.addQueryParameter("wt", "json");
 
-		final CompletionStage<WSResponse> responsePromise = wsRequest.setRequestTimeout(timeout).get();
+		@SuppressWarnings("unchecked")
+		final RetryPolicy retryPolicy = new RetryPolicy()//
+				.retryOn(InterruptedException.class, ExecutionException.class)//
+				.withMaxDuration(3, TimeUnit.SECONDS)//
+				.withMaxRetries(5);
 
-		final CompletionStage<List<Artifact>> recoverPromise = responsePromise.handle((response, throwable) -> {
-
-			final List<Artifact> repositoryArtifacts = new ArrayList<>();
-			if (throwable == null) {
-
-				if (Http.Status.OK == response.getStatus()) {
-
-					final JsonNode responseJson = response.asJson();
-					final JsonNode docsJson = responseJson.get("response").get("docs");
-					for (int i = 0; i < docsJson.size(); i++) {
-
-						final JsonNode doc = docsJson.get(i);
-						final String groupId = doc.get("g").textValue();
-						final String artifactId = doc.get("a").textValue();
-						final String version = doc.get("latestVersion").textValue();
-						final Artifact repositoryArtifact = new Artifact(groupId, artifactId, version);
-						repositoryArtifacts.add(repositoryArtifact);
-					}
-				} else {
-
-					throw new RuntimeException("HTTP Status is not OK. :" + response.getStatus());
-				}
-			} else {
-
-				throw new RuntimeException(throwable.getLocalizedMessage());
-			}
-
-			return Collections.unmodifiableList(repositoryArtifacts);
-		});
-
-		final List<Artifact> repositoryArtifacts;
 		try {
 
-			repositoryArtifacts = recoverPromise.toCompletableFuture().get();
-		} catch (InterruptedException | ExecutionException e) {
+			final List<Artifact> result = Failsafe.with(retryPolicy)//
+					.onRetry((c, f, ctx) -> LOGGER.warn("Failure #{}. Retrying.", ctx.getExecutions()))//
+					.get(() -> {
+
+						final CompletionStage<WSResponse> responsePromise = wsRequest.setRequestTimeout(timeout).get();
+
+						final CompletionStage<List<Artifact>> recoverPromise = responsePromise.handle((response, throwable) -> {
+
+							final List<Artifact> repositoryArtifacts = new ArrayList<>();
+							if (throwable == null) {
+
+								if (Http.Status.OK == response.getStatus()) {
+
+									final JsonNode responseJson = response.asJson();
+									final JsonNode docsJson = responseJson.get("response").get("docs");
+									for (int i = 0; i < docsJson.size(); i++) {
+
+										final JsonNode doc = docsJson.get(i);
+										final String groupId = doc.get("g").textValue();
+										final String artifactId = doc.get("a").textValue();
+										final String version = doc.get("latestVersion").textValue();
+										final Artifact repositoryArtifact = new Artifact(groupId, artifactId, version);
+										repositoryArtifacts.add(repositoryArtifact);
+									}
+								} else {
+
+									throw new IllegalStateException("HTTP Status is not OK. :" + response.getStatus());
+								}
+							} else {
+
+								throw new IllegalStateException(throwable.getLocalizedMessage());
+							}
+
+							return Collections.unmodifiableList(repositoryArtifacts);
+						});
+
+						final List<Artifact> repositoryArtifacts = recoverPromise.toCompletableFuture().get();
+						return repositoryArtifacts;
+					});
+
+			return result;
+		} catch (FailsafeException e) {
 
 			throw new RuntimeException(e);
 		}
-
-		return repositoryArtifacts;
 	}
 
 	private static class Artifact implements Comparable<Artifact> {

@@ -47,11 +47,6 @@
 
 }
 
-.variation.selected .fa-info-circle{
-	color: white;
-	background-color: @models.user.User.Theme.valueOf(session.get(models.user.User.THEME)).getPrimary().getBackgroundColor().toHex();
-}
-
 .inputText{
 	font-size: 3rem;
 }

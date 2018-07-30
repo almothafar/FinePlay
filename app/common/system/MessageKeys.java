@@ -543,6 +543,8 @@ public class MessageKeys {
 
   public static final String PASTE = "paste";
 
+  public static final String PAUSE = "pause";
+
   public static final String PDFJS_LANG = "pdfjs.lang";
 
   public static final String PHOTO = "photo";

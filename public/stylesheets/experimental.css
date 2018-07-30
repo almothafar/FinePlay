@@ -104,6 +104,14 @@
 	vertical-align: -0.24em;
 }
 
+.fa-lg>.ii {
+	vertical-align: 0.13em;
+}
+
+.ii.fa-lg {
+	vertical-align: 0.06em;
+}
+
 .ii:before{
 	content: "\1F178";
 	color: transparent;
@@ -132,24 +140,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.nf-gear:before {
-	content: "\2699\FE0E";
-}
-.nf-success:before {
-	content: "\2714\FE0E";
-}
-.nf-info:before {
-	content: "\2757\FE0E";
-}
-.nf-warning:before {
-	content: "\26A0\FE0E";
-}
-.nf-danger:before {
-	content: "\26D4\FE0E";
-}
-
 .nf.fa-lg {
 	font-size: 1.733329em;
+	vertical-align: -0.12em;
 }
 
 .nf.fa-xs {
@@ -199,16 +192,38 @@
 .nf.fa-10x {
 	font-size: 13em
 }
+
+.nf-gear:before {
+	content: "\2699\FE0E";
+}
+.nf-success:before {
+	content: "\2714\FE0E";
+}
+.nf-info:before {
+	content: "\2757\FE0E";
+}
+.nf-warning:before {
+	content: "\26A0\FE0E";
+}
+.nf-danger:before {
+	content: "\26D4\FE0E";
+}
+
 /* Emoji Font */
 
 .ef {
 	display: inline-block;
-	font: normal normal normal 14px / 1 "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Symbola";
+	font: normal normal normal 14px / 1 "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	font-size: 1.1em;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	vertical-align: -0.08em;
+}
+
+.ef.fa-lg {
+	font-size: 1.733329em;
+	vertical-align: -0.19em;
 }
 
 .ef-gear:before {

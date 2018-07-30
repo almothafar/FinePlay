@@ -1,6 +1,6 @@
 'use strict';
 
-if(navigator.mediaDevices){$("#MediaDevices").removeClass("badge-danger").addClass("badge-success")}
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){$("#MediaDevices").removeClass("badge-danger").addClass("badge-success")}
 
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
 
@@ -17,6 +17,7 @@ var camera = new Camera("#finderFrame", "#pictureFrame", {
 
 		$('#start').prop('disabled', true);
 		$('#pause').removeAttr("disabled");
+		$('#stop').removeAttr("disabled");
 		$('#take').removeAttr("disabled");
 		playing = true;
 	},
@@ -26,6 +27,7 @@ var camera = new Camera("#finderFrame", "#pictureFrame", {
 
 		$('#start').removeAttr("disabled");
 		$('#pause').prop('disabled', true);
+		$('#stop').prop('disabled', true);
 		$('#take').prop('disabled', true);
 		playing = false;
 	}
@@ -40,10 +42,22 @@ $("#pause").on("click", function(){
 
 	$('#start').removeAttr("disabled");
 	$('#pause').prop('disabled', true);
+	$('#stop').prop('disabled', true);
 	$('#take').prop('disabled', true);
 	playing = false;
 
 	camera.pause();
+});
+
+$("#stop").on("click", function(){
+
+	$('#start').removeAttr("disabled");
+	$('#pause').prop('disabled', true);
+	$('#stop').prop('disabled', true);
+	$('#take').prop('disabled', true);
+	playing = false;
+
+	camera.stop();
 });
 
 $("#take").on("click", function(){

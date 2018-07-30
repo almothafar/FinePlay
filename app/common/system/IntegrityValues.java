@@ -7,17 +7,17 @@ import java.lang.String;
  * @see <a href="https://github.com/square/javapoet">https://github.com/square/javapoet</a>
  */
 public class IntegrityValues {
-  public static final String BOOTSTRAP_SCRIPT = "o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em";
+  public static final String BOOTSTRAP_SCRIPT = "ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy";
 
-  public static final String BOOTSTRAP_STYLE = "Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B";
+  public static final String BOOTSTRAP_STYLE = "MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO";
 
-  public static final String BOOTSTRAP_STYLE_BUSINESS = "H0bbWfYMPU8bFwXNfnjtO/sTcpyRbsWTZWLGKwyczNp+75kgdiEUuPQp+W2C47eo";
+  public static final String BOOTSTRAP_STYLE_BUSINESS = "InVFedneFRZXegP7GWgdS47Y3FYy2DMMCuWEu/Bn5rWMqL4k+G/F3zX6m3xJaSIg";
 
-  public static final String BOOTSTRAP_STYLE_JAPAN = "Cg5i407HsRXptkUhXIf18jREJU2GXUCY5DYXW3cKCwdSIaJ4XEmfcj/IdiMdHOBd";
+  public static final String BOOTSTRAP_STYLE_JAPAN = "P85gWlQm+TVH3JNct1hFzu/jIgqit1W/RdzaiTVZVhjByXSWhwa3Wmh6aQh+SIPq";
 
-  public static final String BOOTSTRAP_STYLE_NATURAL = "5bp4ITynWgVd9T58XoICrraIT0EqlKgv4ah2lBbinbinDa3tsPhduCjeOqTquCjf";
+  public static final String BOOTSTRAP_STYLE_NATURAL = "nY67vqrTslg4Z/kgIcVgXnAAVGi/M9SLpdf95BRibi1KcRSPmIm+A9mnS0HwH4Ue";
 
-  public static final String BOOTSTRAP_STYLE_PRETTY = "VJziHQs7/lubyHG8m9jVMS6QIeGqjdmqPddmQHeo04vCepn5nlMn/VD4DhhzDXg5";
+  public static final String BOOTSTRAP_STYLE_PRETTY = "3cg7OpuECkpgR7KPOSp9Hru+1KdFpk6weNA4vM7vmQ1RkhkyhNWLhYNpUcCR9sJ5";
 
   public static final String JQUERY_SCRIPT = "tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT";
 

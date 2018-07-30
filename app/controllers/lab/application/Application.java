@@ -109,9 +109,6 @@ public class Application extends Controller {
 		case "vertical":
 
 			return vertical();
-		case "comet":
-
-			return comet();
 		default:
 
 			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
@@ -362,44 +359,5 @@ public class Application extends Controller {
 	private Result vertical() {
 
 		return ok(views.html.lab.application.vertical.render());
-	}
-
-	@Deprecated
-	public static Result comet() {
-
-		return ok(views.html.lab.application.comet.render());
-	}
-
-	@Deprecated
-	public Result clock(@Nonnull String zoneId) {
-
-		// TODO script tag in Comet#formatted
-		final String script = views.html.helper.script.render(//
-				new Tuple2[] { new Tuple2<>(Symbol.apply("type"), "text/javascript") }, //
-				Html.apply("(function(){"//
-						+ "var scripts = document.getElementsByTagName('script');"//
-						+ "for(var i=scripts.length-2; 0<=i; i--){"//
-						+ "	scripts[i].parentNode.removeChild(scripts[i]);"//
-						+ "}})();"//
-						+ "parent.clockChanged"),
-				ctx()._requestHeader()).body();
-
-		return ok().chunked(getSource(zoneId).via(Comet.string("(function(){"//
-				+ "var scripts = document.getElementsByTagName('script');"//
-				+ "for(var i=scripts.length-2; 0<=i; i--){"//
-				+ "	scripts[i].parentNode.removeChild(scripts[i]);"//
-				+ "}})();"//
-				+ "parent.clockChanged"))).as(play.mvc.Http.MimeTypes.HTML);
-	}
-
-	private Source<String, ?> getSource(@Nonnull String zoneId) {
-
-		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		final Source<String, Cancellable> tickSource = Source.tick(Duration.ZERO, Duration.of(1000L, ChronoUnit.MILLIS), "TICK");
-		return tickSource.map((tick) -> {
-
-			final LocalDateTime clientDateTime = ZonedDateTime.of(LocalDateTime.now(), ZoneOffset.UTC).withZoneSameInstant(ZoneId.of(zoneId)).toLocalDateTime();
-			return formatter.format(clientDateTime);
-		});
 	}
 }

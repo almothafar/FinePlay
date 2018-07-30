@@ -9,6 +9,14 @@
 	vertical-align: -0.26em;
 }
 
+.fa-lg>.ta {
+	vertical-align: 0.14em;
+}
+
+.ta.fa-lg {
+	vertical-align: -0.03em;
+}
+
 .ta:before{
 	content: "F178";
 	color: transparent;
