@@ -40,16 +40,16 @@ libraryDependencies ++= Seq(
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
 //  "net.logstash.logback" % "logstash-logback-encoder" % "5.1",		// Apache 5.1
-  "org.hibernate" % "hibernate-core" % "5.3.3.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.3.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.3.4.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.4.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.4",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.20.1",
-//  "org.mockito" % "mockito-core" % "2.20.1",							// MIT 2.20.5
+  "org.mockito" % "mockito-inline" % "2.21.0",
+//  "org.mockito" % "mockito-core" % "2.21.0",							// MIT 2.20.5
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "3.17",									// Apache 3.16
@@ -99,7 +99,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "diff2html" % "2.4.0",							// MIT 2.4.0
   "org.webjars.npm" % "marked" % "0.4.0",								// MIT 0.4.0
   "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
-  "org.webjars.bower" % "plotly.js" % "1.38.1",							// MIT 1.34.0
+  "org.webjars.bower" % "plotly.js" % "1.39.3",							// MIT 1.39.4
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
@@ -111,7 +111,7 @@ libraryDependencies ++= Seq(
 )
 // TwentyTwenty															// MIT 2017/11/11 master
 // Frappé Gantt															// MIT build version 0.0.7 master
-// 3Dmol.js																// BSD-3-Clause license 1.3.3
+// 3Dmol.js																// BSD-3-Clause license 1.3.5
 // geckodriver															// Mozilla Public License 0.18.0
 // LibreOffice															// Mozilla Public License 6.0.3
 // wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4
@@ -141,7 +141,7 @@ libraryDependencies ++= Seq(
   "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.1.Final",
   "org.jboss.marshalling" % "jboss-marshalling" % "2.0.5.Final",		// Apache 2.0.2.Final
   "org.jboss.logging" % "jboss-logging" % "3.3.2.Final",
-  "org.jberet" % "jberet-core" % "1.3.0.Final",							// Eclipse Public 1.3.0.Final
+  "org.jberet" % "jberet-core" % "1.3.1.Final",							// Eclipse Public 1.3.0.Final
   "org.jberet" % "jberet-support" % "1.3.0.Final",
   "org.jberet" % "jberet-se" % "1.3.0.Final",
   "org.wildfly.security" % "wildfly-security-manager" % "1.1.2.Final"	// LGPL(http://www.wildfly.org footer) 1.1.2.Final

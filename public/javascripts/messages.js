@@ -255,6 +255,7 @@ var MessageKeys = {
 	OK: "ok",
 	OLD: "old",
 	OPEN: "open",
+	OPENJDK: "openjdk",
 	OPERATION: "operation",
 	OPTIONAL: "optional",
 	ORDER: "order",

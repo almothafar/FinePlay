@@ -400,6 +400,7 @@ organizationunit = Organization unit
 organizationunit.name = Organization unit name
 organizationunit.name.description = Description of Organization unit name
 other = Other
+openjdk = OpenJDK
 optional = Optional
 outline = Outline
 page = Page

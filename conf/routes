@@ -137,8 +137,8 @@ GET		/framework/datetime							controllers.framework.datetime.DateTime.index()
 POST		/framework/datetime/update					controllers.framework.datetime.DateTime.update()
 GET		/framework/mapping							controllers.framework.mapping.Mapping.index()
 
-GET		/environment									controllers.environment.javalang.Java.index(item:String ?="systemproperties")
-GET		/environment/java							controllers.environment.javalang.Java.index(item:String ?="systemproperties")
+GET		/environment									controllers.environment.openjdk.OpenJDK.index(item:String ?="systemproperties")
+GET		/environment/openjdk							controllers.environment.openjdk.OpenJDK.index(item:String ?="systemproperties")
 GET		/environment/browser							controllers.environment.browser.Browser.index(item:String ?="navigator")
 
 GET		/bootstrap									controllers.bootstrap.component.Component.index(component:String ?="button")

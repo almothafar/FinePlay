@@ -515,6 +515,8 @@ public class MessageKeys {
 
   public static final String OPEN = "open";
 
+  public static final String OPENJDK = "openjdk";
+
   public static final String OPERATION = "operation";
 
   public static final String OPTIONAL = "optional";

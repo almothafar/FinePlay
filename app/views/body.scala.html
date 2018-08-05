@@ -94,7 +94,7 @@
 					Map("key"->"help", "name"->Messages(MessageKeys.HELP), "icon"->"far fa-question-circle", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.ENVIRONMENT), "icon"->"fas fa-thermometer-half", "selected"->equalSection("environment")),List(
-					Map("name"->Messages(MessageKeys.JAVA), "icon"->"fab fa-java", "link"->controllers.environment.javalang.routes.Java.index().toString(), "selected"->equalWork("environment","java")),
+					Map("name"->Messages(MessageKeys.OPENJDK), "icon"->"fas fa-coffee", "link"->controllers.environment.openjdk.routes.OpenJDK.index().toString(), "selected"->equalWork("environment","openjdk")),
 					Map("name"->Messages(MessageKeys.BROWSER), "icon"->"fab fa-safari", "link"->controllers.environment.browser.routes.Browser.index().toString(), "selected"->equalWork("environment","browser"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FRAMEWORK), "icon"->"ii ii-play if-monochrome", "selected"->equalSection("framework")),List(

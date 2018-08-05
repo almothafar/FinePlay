@@ -400,6 +400,7 @@ organizationunit = 組織単位
 organizationunit.name = 組織単位名
 organizationunit.name.description = 組織単位名の説明
 other = その他
+
 optional = 任意
 outline = 概要
 page = ページ

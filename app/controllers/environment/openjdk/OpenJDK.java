@@ -1,4 +1,4 @@
-package controllers.environment.javalang;
+package controllers.environment.openjdk;
 
 import java.io.File;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 @PermissionsAllowed
-public class Java extends Controller {
+public class OpenJDK extends Controller {
 
 	public Result index(String item) {
 
@@ -67,12 +67,12 @@ public class Java extends Controller {
 			}
 		});
 
-		return ok(views.html.environment.javalang.systemproperties.render(new TreeMap<>(systemPropertiesMap)));
+		return ok(views.html.environment.openjdk.systemproperties.render(new TreeMap<>(systemPropertiesMap)));
 	}
 
 	public static Result systemenv() {
 
-		return ok(views.html.environment.javalang.systemenv.render(new TreeMap<>(System.getenv())));
+		return ok(views.html.environment.openjdk.systemenv.render(new TreeMap<>(System.getenv())));
 	}
 
 	public static Result runtime() {
@@ -84,6 +84,6 @@ public class Java extends Controller {
 		runtimeMap.put("Total Memory", String.valueOf(runtime.totalMemory()));
 		runtimeMap.put("Free Memory", String.valueOf(runtime.freeMemory()));
 
-		return ok(views.html.environment.javalang.runtime.render(new TreeMap<>(runtimeMap)));
+		return ok(views.html.environment.openjdk.runtime.render(new TreeMap<>(runtimeMap)));
 	}
 }

@@ -68,6 +68,25 @@ Notice
 + This project is not thought to be used for multi purpose. (Since this project is a template, it is forked or modified and used.)
 + Please confirm the license of the library software you are using with this project once again.
 
+TODO
+---------------
+
+###### Whether this project will be updated in the future is undecided. ######
+
+#### FinePlay 2.7.x ####
++ Update Play Framework 2.7.x
++ Update OpenJDK 11 / Apache POI 4.0.0
+
+#### Play Framework 2.7.x ####
++ Update application.conf
++ Update messages
+
+#### Bootstrap 4.2.x ####
++ Rewrite notify implementation to Toast based.
++ Rewrite custom-switch implementation to Switch based.
++ Rename wordbreak class.
++ Move include of Hammer.
+
 Release History
 ---------------
 
