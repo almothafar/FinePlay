@@ -1,0 +1,31 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import views.html.components
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])
+
+@equalTask(task:String) = @{
+
+	task.equals(prop.getOrElse("task", ""))
+}
+
+<nav id="i_detail-header" class="border navbar navbar-light bg-light i_space">
+
+	<div class="h3">I Like</div>
+</nav>
+<div class="i_space">
+
+	@components.listgroup(Map("id"->"", "flush"->"true"), List(
+		Map("id"->"", "class"->"i_task", "type"->"", "iconType"->"secondary", "icon"->"fas fa-cog fa-fw", "text"->Messages(MessageKeys.LIST), "link"->controllers.lab.ilike.routes.ILike.index("list", true).toString, "selected"->equalTask("list").toString),
+		Map("id"->"", "class"->"i_task", "type"->"", "iconType"->"success", "icon"->"fas fa-sort-amount-down fa-fw", "text"->Messages(MessageKeys.ARRANGE), "link"->controllers.lab.ilike.routes.ILike.index("arrange", true).toString, "selected"->equalTask("arrange").toString)
+	))
+</div>
+<div class="i_space">
+
+	@components.listgroup(Map("id"->"", "flush"->"true"), List(
+		Map("id"->"", "class"->"i_task", "type"->"", "iconType"->"primary", "icon"->"fas fa-home fa-fw", "text"->"Autumn board", "link"->controllers.lab.ilike.routes.ILike.index("autumnboard", true).toString, "selected"->equalTask("autumnboard").toString)
+	))
+</div>

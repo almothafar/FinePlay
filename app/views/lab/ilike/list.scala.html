@@ -1,0 +1,110 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@(detail:Boolean)
+
+@frame(){
+
+	@head("Lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ilike/ilike.css")'>
+	}
+
+	@body("lab","ilike"){
+
+		@components.container(Map("id"->"i_content", "fluid"->"true", "class"->("" + "detail".when(detail)))){
+
+			<div class="row">
+
+				<div id="i_master" class="col-md-3 px-0 bg-grey-100">
+
+					@tasks(Map("id"->"", "task"->"list"))
+				</div>
+				<div id="i_detail" class="col-md-9 bg-grey-100">
+
+					<nav id="i_detail-header" class="border navbar navbar-light bg-light justify-content-between">
+
+						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
+						<div class="h5 text-center">@Messages(MessageKeys.LIST)</div>
+						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
+					</nav>
+					<div class="i_space">
+					</div>
+					<div class="i_space">
+
+						@components.listgroup(Map("id"->""), List(
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio")
+						))
+					</div>
+					<div class="i_space">
+
+						<div class="list-group">
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("icon"->"fas fa-square"))
+								Cras justo odio
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"default", "class"->"mb-0"))
+								</div>
+							</a>
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("icon"->"fas fa-square"))
+								Dapibus ac facilisis in
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"unchecked", "class"->"mb-0", "selected"->"false"))
+								</div>
+							</a>
+							<a href="#" class="list-group-item list-group-item-action">
+								@components.icon(Map("icon"->"fas fa-square"))
+								Morbi leo risus
+								<div class="float-right">
+									@components.forms.customswitch(Map("id"->"", "name"->"checked", "class"->"mb-0", "selected"->"true"))
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="i_space">
+
+						@components.listgroup(Map("id"->""), List(
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio")
+						))
+					</div>
+					<div class="i_space">
+
+						@components.listgroup(Map("id"->""), List(
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio")
+						))
+					</div>
+					<div class="i_space">
+
+						@components.listgroup(Map("id"->""), List(
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio")
+						))
+					</div>
+					<div class="i_space">
+
+						@components.listgroup(Map("id"->""), List(
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-square", "text"->"Cras justo odio")
+						))
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ilike/ilike.js")'></script>
+	}
+}

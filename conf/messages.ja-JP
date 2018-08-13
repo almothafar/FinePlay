@@ -253,6 +253,7 @@ audio = 音声
 authentication = 認証
 authorization = 認可
 auto = 自動
+back = 戻る
 badge = バッジ
 batch = 一括処理
 before = ビフォー
@@ -332,6 +333,7 @@ font = 書体
 
 footer = フッタ
 format = 形式
+forward = 進む
 framework = フレームワーク
 full_name = 名前
 full_screen = 全画面

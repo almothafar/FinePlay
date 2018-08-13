@@ -38,10 +38,20 @@
 					<div class="mb-3">
 
 						@helper.form(helper.CSRF(apis.system.routes.PDF.index()), args = 'class -> "form-pdf") {
-							<input id="@models.system.PDFInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.URL" value="@routes.Assets.versioned("lib/pdf-js/web/compressed.tracemonkey-pldi-09.pdf")" required>
+							<input id="@models.system.PDFInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.URL" value="@routes.Assets.versioned("documents/helloworld.pdf")" required>
 							<input id="@models.system.PDFInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("pdfjs").toString()" required>
 
-							@components.button(Map("id"->"pdfButton", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->"PDF"))
+							@components.button(Map("id"->"pdfButton0", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->"PDF"))
+						}
+					</div>
+
+					<div class="mb-3">
+
+						@helper.form(helper.CSRF(apis.system.routes.PDF.index()), args = 'class -> "form-pdf") {
+							<input id="@models.system.PDFInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.URL" value="@routes.Assets.versioned("documents/tracemonkey.pdf")" required>
+							<input id="@models.system.PDFInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("pdfjs").toString()" required>
+
+							@components.button(Map("id"->"pdfButton1", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->"PDF"))
 						}
 					</div>
 				</div>

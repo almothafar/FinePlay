@@ -30,9 +30,6 @@ public class UI extends Controller {
 		case "unlimited":
 
 			return unlimited();
-		case "arrange":
-
-			return arrange();
 		case "draganddrop":
 
 			return draganddrop();
@@ -84,9 +81,6 @@ public class UI extends Controller {
 		case "block":
 
 			return block();
-		case "autumnboard":
-
-			return autumnboard();
 		case "window":
 
 			return window();
@@ -124,11 +118,6 @@ public class UI extends Controller {
 	public static Result unlimited() {
 
 		return ok(views.html.lab.ui.unlimited.render());
-	}
-
-	public static Result arrange() {
-
-		return ok(views.html.lab.ui.arrange.render());
 	}
 
 	public static Result draganddrop() {
@@ -214,11 +203,6 @@ public class UI extends Controller {
 	private static Result block() {
 
 		return ok(views.html.lab.ui.block.render());
-	}
-
-	private static Result autumnboard() {
-
-		return ok(views.html.lab.ui.autumnboard.render());
 	}
 
 	private static Result window() {

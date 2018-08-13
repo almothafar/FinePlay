@@ -1,0 +1,167 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@(detail:Boolean)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ilike/ilike.css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ilike/autumnboard.css")'>
+	}
+
+	@body("lab","ilike"){
+
+		@components.container(Map("id"->"i_content", "fluid"->"true", "class"->("" + "detail".when(detail)))){
+
+			<div class="row">
+
+				<div id="i_master" class="col-md-3 px-0 bg-grey-100">
+
+					@tasks(Map("id"->"", "task"->"autumnboard"))
+				</div>
+				<div id="i_detail" class="col-md-9 bg-grey-100">
+
+					<nav id="i_detail-header" class="border navbar navbar-light bg-light justify-content-between">
+
+						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
+						<div class="h5 text-center">Autumn board</div>
+						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
+					</nav>
+
+					<div id="lockView" class="h-432p bg-cyan-300 rounded my-3">
+
+						<div class="h-216p"></div>
+						@components.unlock(Map("id"->"unlockView", "class"->"mx-auto w-216p", "text"->Messages(MessageKeys.SLIDE)))
+
+					</div>
+
+					<div id="homeView" class="row mx-0 mb-3 icon-board px-4 pt-4 bg-dark rounded d-none my-3">
+
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-green-400 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-phone fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->"16"))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-blue-400 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-envelope fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->"4096"))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-green-400 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-comment fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->"256"))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-grey-400 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-dark", "icon"->"fas fa-camera fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-purple-300 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-star fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-white rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-pink-700", "icon"->"fas fa-music fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-white rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-orange", "icon"->"fas fa-home fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-grey-300 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-dark", "icon"->"fas fa-cog fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->"1"))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-white rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-blue-400", "icon"->"fas fa-folder fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-orange rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-graduation-cap fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-green-400 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-video fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->"2"))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-purple-400 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-podcast fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->"8"))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-grey-300 rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-dark", "icon"->"fas fa-calculator fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-orange rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-white", "icon"->"fas fa-lightbulb fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+						<div class="icon-frame-wrapper text-center float-left w-96p">
+							<div class="icon-frame bg-white rounded mb-4 py-2">
+								@components.icon(Map("id"->"", "class"->"icon-body text-blue-400", "icon"->"fab fa-safari fa-2x"))
+								@components.badge(Map("id"->"", "class"->"icon-close", "pill"->"true", "text"->"×"))
+								@components.badge(Map("id"->"", "class"->"icon-notification", "type"->"danger", "pill"->"true", "text"->""))
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.hammerjs.last()
+		@libraries.jqueryuitouchpunch.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ilike/ilike.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ilike/autumnboard.js")'></script>
+	}
+}

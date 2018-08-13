@@ -7,17 +7,38 @@
 @import play.api.i18n._
 
 @import common.system._
+@import common.utils._
 
-@(startDayInfo: List[List[String]], endDayInfo: List[List[String]], dateTimeMap: Map[String, Boolean])
+@(startDayInfo: List[List[String]], endDayInfo: List[List[String]], dateTimeList: List[List[LocalDateTime]])
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 
-@datetime() = @{
+@datetimeFormat(date: LocalDate) = @{
 
-	common.utils.DateTimes.getClientDateTime(LocalDateTime.now())
+	DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(date)
+}
+
+@tbodyRowToColumnsList(dateTimes: java.util.List[java.util.List[LocalDateTime]]) = @{
+
+	val tbodyRowToColumnsList = scala.collection.mutable.ListBuffer[Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]]();
+	for(dateTimesOfDay <- dateTimes) {
+
+		val tbodyRow = Map[String, String]();
+
+		val columnsList = scala.collection.mutable.ListBuffer[scala.collection.immutable.Map[String, String]]();
+		columnsList += Map("text"->datetimeFormat(dateTimesOfDay.get(0).toLocalDate));
+		for(dateTimeOfDay <- dateTimesOfDay) {
+
+			columnsList += Map("type"->(if(DateTimes.isServerDateTimeConvertible(dateTimeOfDay)){""}else{"danger"}));
+		}
+
+		tbodyRowToColumnsList += Tuple2(tbodyRow, columnsList.toList);
+	}
+
+	tbodyRowToColumnsList.toList
 }
 
 @frame(){
@@ -219,7 +240,39 @@
 					<hr class="separator">
 
 					<h4 class="headline">@Messages(MessageKeys.LIST)</h4>
-					@development.proptable("dstTable", dateTimeMap)
+					<div class="mb-3 table-responsive">
+						@components.table(Map("id"->"", "class"->"", "bordered"->"true", "size"->"sm"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->""),
+								Map("id"->"", "head"->"true", "text"->"0", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"1", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"2", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"3", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"4", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"5", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"6", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"7", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"8", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"9", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"10", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"11", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"12", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"13", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"14", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"15", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"16", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"17", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"18", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"19", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"20", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"21", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"22", "colspan"->"6"),
+								Map("id"->"", "head"->"true", "text"->"23", "colspan"->"6"))),
+							Map("id"->""),
+							tbodyRowToColumnsList(dateTimeList),
+							Map("id"->""),Tuple2(Map("id"->""),List()),
+						)
+					</div>
 				</div>
 			</div>
 		}

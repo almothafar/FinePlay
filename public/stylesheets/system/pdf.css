@@ -12,6 +12,10 @@
 	left: 16px
 }
 
+#outerContainer.sidebarOpen ~ #btn-prev {
+	left: 216px
+}
+
 .btn-primary:hover {
 	color: #fff;
 	background-color: #025aa5;

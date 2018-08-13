@@ -25,30 +25,46 @@ public class DateTimes {
 		return ZonedDateTime.of(serverDateTime, ZoneOffset.UTC).withZoneSameInstant(getClientZoneId()).toLocalDateTime();
 	}
 
+	private static final int[] DST_DIFF_MINUTES = { 30, 60/* , 90 *//* , 120 */ };
+
 	public static boolean isServerDateTimeConvertible(@Nonnull final LocalDateTime clientDateTime) {
 
 		Objects.requireNonNull(clientDateTime);
 
 		final LocalDateTime serverDateTime = getServerDateTime(clientDateTime);
-		final LocalDateTime after1HourServerDateTime = getServerDateTime(clientDateTime.plusHours(1));
+		final LocalDateTime reConvClientDateTime = getClientDateTime(serverDateTime);
 
-		final long hours = Duration.between(serverDateTime, after1HourServerDateTime).toHours();
-		switch ((int) hours) {
-		case 0:
+		final boolean isConvertible = clientDateTime.equals(reConvClientDateTime);
+
+		if (!isConvertible) {
 
 			// daylight saving time start
 			return false;
-		case 1:
-
-			return true;
-		case 2:
-
-			// daylight saving time end
-			return false;
-		default:
-
-			throw new IllegalStateException("" + hours);
 		}
+
+		for (int i = DST_DIFF_MINUTES.length - 1; i >= 0; i--) {
+
+			final int dstDiff = DST_DIFF_MINUTES[i];
+
+			final LocalDateTime afterServerDateTime = getServerDateTime(clientDateTime.plusMinutes(dstDiff));
+
+			final long minutes = Duration.between(serverDateTime, afterServerDateTime).toMinutes();
+			final boolean isNormal = dstDiff == minutes;
+
+			if (!isNormal) {
+
+				if (minutes == dstDiff * 2) {
+
+					// daylight saving time end
+					return false;
+				} else {
+
+					// next diff loop
+				}
+			}
+		}
+
+		return true;
 	}
 
 	@SuppressWarnings("null")

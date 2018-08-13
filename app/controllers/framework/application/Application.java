@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.OffsetDateTime;
+import java.time.Year;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -31,7 +33,6 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -589,33 +590,31 @@ public class Application extends Controller {
 		endDayInfo.add(Arrays.asList("2017-11-05T10:00Z", ZonedDateTime.parse("2017-11-05T10:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T02:00:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T02:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
 		endDayInfo.add(Arrays.asList("2017-11-05T10:30Z", ZonedDateTime.parse("2017-11-05T10:30Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-11-05T02:30:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-11-05T02:30:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
 
-		final SortedSet<LocalDateTime> dateTimeSet = createDateTimeSet();
-		final SortedMap<String, Boolean> dateTimeMap = dateTimeSet.stream()//
-				.collect(Collectors.toMap(//
-						dateTime -> dateTime.toString(), //
-						dateTime -> DateTimes.isServerDateTimeConvertible(dateTime), //
-						(dateTime, judgment) -> {
-							throw new IllegalStateException(dateTime.toString());
-						}, //
-						TreeMap::new));
+		final List<List<LocalDateTime>> dateTimeList = createDateTimeList();
 
-		return ok(views.html.framework.application.daylightsavingtime.render(startDayInfo, endDayInfo, dateTimeMap));
+		return ok(views.html.framework.application.daylightsavingtime.render(startDayInfo, endDayInfo, dateTimeList));
 	}
 
-	private static SortedSet<LocalDateTime> createDateTimeSet() {
+	private static List<List<LocalDateTime>> createDateTimeList() {
 
-		final SortedSet<LocalDateTime> dateTimes = new TreeSet<>();
+		final List<List<LocalDateTime>> dateTimes = new ArrayList<>();
 
-		final LocalDateTime start = LocalDateTime.parse("2017-01-01T00:00:00");
+		final LocalDateTime start = LocalDateTime.of(Year.now().getValue(), Month.JANUARY, 1, 0, 0);
 
-		int minutes = 0;
-		for (int i = 0; i < 24 * 365; i++) {
+		for (int days = 0; days < 365; days++) {
 
-			dateTimes.add(start.plusMinutes(minutes));
-			minutes = minutes + 60;
+			final LocalDateTime day = start.plusDays(days);
+
+			final List<LocalDateTime> dateTimesOfDay = new ArrayList<>();
+			for (int minutes = 0; minutes < 1440; minutes = minutes + 10) {
+
+				final LocalDateTime time = day.plusMinutes(minutes);
+				dateTimesOfDay.add(time);
+			}
+			dateTimes.add(dateTimesOfDay);
 		}
 
-		return Collections.unmodifiableSortedSet(dateTimes);
+		return Collections.unmodifiableList(dateTimes);
 	}
 
 	public Result entitymanager() {

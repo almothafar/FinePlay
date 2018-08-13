@@ -35,25 +35,13 @@ Adobe CMap resources are covered by their own copyright but the same license:
 
 See https://github.com/adobe-type-tools/cmap-resources
 -->
-<html dir="ltr" mozdisallowselectionprint moznomarginboxes>
+<html dir="ltr" mozdisallowselectionprint>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google" content="notranslate">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>PDF.js viewer</title>
-
-
-	<link rel="stylesheet" href="@routes.Assets.versioned("lib/pdf-js/web/viewer.css")">
-
-
-
-<!-- This snippet is used in production (included from viewer.html) -->
-	<link rel="resource" type="application/l10n" href="@routes.Assets.versioned("lib/pdf-js/web/locale/locale.properties")">
-	<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/custom/pdf-js/build/pdf.js")"></script>
-
-
-	<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/custom/pdf-js/viewer.js")"></script>
 
 	@libraries.jquery.last()
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/messages.js")'></script>
@@ -62,9 +50,23 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 	<div id="pdfjs_messages" class="d-none" data-messages='{
 		"@MessageKeys.PDFJS_LANG":"@Messages(MessageKeys.PDFJS_LANG)",
-		"contentUrl":"@pdfInfo.get(models.system.PDFInfoFormContent.URL)"
+		"defaultUrl":"@pdfInfo.get(models.system.PDFInfoFormContent.URL)",
+		"imageResourcesPath":"@routes.Assets.versioned("lib/pdfjs/web/images/")",
+		"cMapUrl":"@routes.Assets.versioned("lib/pdfjs/web/cmaps/")",
+		"workerSrc":"@routes.Assets.versioned("lib/pdfjs/build/pdf.worker.js")"
 	}'></div>
-	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/pdf1.js")'></script>
+	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/pdf.js")'></script>
+
+	<link rel="stylesheet" href="@routes.Assets.versioned("lib/pdfjs/web/viewer.css")">
+
+
+<!-- This snippet is used in production (included from viewer.html) -->
+	<link rel="resource" type="application/l10n" href="@routes.Assets.versioned("lib/pdfjs/web/locale/locale.properties")">
+	<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/pdfjs/build/pdf.js")"></script>
+
+
+	<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/custom/pdfjs/web/viewer.js")"></script>
+
   </head>
 
   <body tabindex="1" class="loadingInProgress">
@@ -92,6 +94,7 @@ See https://github.com/adobe-type-tools/cmap-resources
           <div id="attachmentsView" class="hidden">
           </div>
         </div>
+        <div id="sidebarResizer" class="hidden"></div>
       </div>  <!-- sidebarContainer -->
 
       <div id="mainContainer">
@@ -173,7 +176,31 @@ See https://github.com/adobe-type-tools/cmap-resources
 
             <div class="horizontalToolbarSeparator"></div>
 
-            <button id="documentProperties" class="secondaryToolbarButton documentProperties" title="Document Properties…" tabindex="62" data-l10n-id="document_properties">
+            <button id="scrollVertical" class="secondaryToolbarButton scrollVertical toggled" title="Use Vertical Scrolling" tabindex="62" data-l10n-id="scroll_vertical">
+              <span data-l10n-id="scroll_vertical_label">Vertical Scrolling</span>
+            </button>
+            <button id="scrollHorizontal" class="secondaryToolbarButton scrollHorizontal" title="Use Horizontal Scrolling" tabindex="63" data-l10n-id="scroll_horizontal">
+              <span data-l10n-id="scroll_horizontal_label">Horizontal Scrolling</span>
+            </button>
+            <button id="scrollWrapped" class="secondaryToolbarButton scrollWrapped" title="Use Wrapped Scrolling" tabindex="64" data-l10n-id="scroll_wrapped">
+              <span data-l10n-id="scroll_wrapped_label">Wrapped Scrolling</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="spreadNone" class="secondaryToolbarButton spreadNone toggled" title="Do not join page spreads" tabindex="65" data-l10n-id="spread_none">
+              <span data-l10n-id="spread_none_label">No Spreads</span>
+            </button>
+            <button id="spreadOdd" class="secondaryToolbarButton spreadOdd" title="Join page spreads starting with odd-numbered pages" tabindex="66" data-l10n-id="spread_odd">
+              <span data-l10n-id="spread_odd_label">Odd Spreads</span>
+            </button>
+            <button id="spreadEven" class="secondaryToolbarButton spreadEven" title="Join page spreads starting with even-numbered pages" tabindex="67" data-l10n-id="spread_even">
+              <span data-l10n-id="spread_even_label">Even Spreads</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="documentProperties" class="secondaryToolbarButton documentProperties" title="Document Properties…" tabindex="68" data-l10n-id="document_properties">
               <span data-l10n-id="document_properties_label">Document Properties…</span>
             </button>
           </div>
@@ -356,6 +383,9 @@ See https://github.com/adobe-type-tools/cmap-resources
             <div class="row">
               <span data-l10n-id="document_properties_page_count">Page Count:</span> <p id="pageCountField">-</p>
             </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_page_size">Page Size:</span> <p id="pageSizeField">-</p>
+            </div>
             <div class="buttonRow">
               <button id="documentPropertiesClose" class="overlayButton"><span data-l10n-id="document_properties_close">Close</span></button>
             </div>
@@ -379,7 +409,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     </div> <!-- outerContainer -->
     <div id="printContainer"></div>
-	@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "link"->pdfInfo.get(models.system.PDFInfoFormContent.RETURNURL), "class"->"d-print-none"))
+	@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.BACK), "link"->pdfInfo.get(models.system.PDFInfoFormContent.RETURNURL), "class"->"d-print-none"))
   </body>
-	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/pdf2.js")'></script>
 </html>

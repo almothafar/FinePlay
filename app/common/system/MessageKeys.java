@@ -45,6 +45,8 @@ public class MessageKeys {
 
   public static final String AUTO = "auto";
 
+  public static final String BACK = "back";
+
   public static final String BADGE = "badge";
 
   public static final String BATCH = "batch";
@@ -318,6 +320,8 @@ public class MessageKeys {
   public static final String FORMAT_REAL = "format.real";
 
   public static final String FORMAT_UUID = "format.uuid";
+
+  public static final String FORWARD = "forward";
 
   public static final String FRAMEWORK = "framework";
 

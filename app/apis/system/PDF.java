@@ -30,13 +30,13 @@ public class PDF extends Controller {
 	@RequireCSRFCheck
 	public Result index() {
 
-		final Form<PDFInfoFormContent> pdfInfoFormContent = formFactory.form(PDFInfoFormContent.class).bindFromRequest();
-		if (!pdfInfoFormContent.hasErrors()) {
+		final Form<PDFInfoFormContent> pdfInfoForm = formFactory.form(PDFInfoFormContent.class).bindFromRequest();
+		if (!pdfInfoForm.hasErrors()) {
 
-			final PDFInfoFormContent signInFormContent = pdfInfoFormContent.get();
+			final PDFInfoFormContent pdfInfoFormContent = pdfInfoForm.get();
 
-			final String url = signInFormContent.getUrl();
-			final String returnUrl = signInFormContent.getReturnUrl();
+			final String url = pdfInfoFormContent.getUrl();
+			final String returnUrl = pdfInfoFormContent.getReturnUrl();
 
 			final Map<String, String> pdfInfo = new HashMap<>();
 			pdfInfo.put(PDFInfoFormContent.URL, url);
@@ -45,7 +45,7 @@ public class PDF extends Controller {
 			return ok(views.html.system.pdf.render(pdfInfo));
 		} else {
 
-			throw new RuntimeException(pdfInfoFormContent.errors().toString());
+			throw new RuntimeException(pdfInfoForm.errors().toString());
 		}
 	}
 }

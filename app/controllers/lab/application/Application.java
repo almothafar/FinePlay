@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,15 +16,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import akka.actor.Cancellable;
-import akka.stream.javadsl.Source;
 import models.components.PagingInfo;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
@@ -34,16 +29,12 @@ import models.user.User_;
 import mylib.Greet;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
-import play.libs.Comet;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
-import play.twirl.api.Html;
-import scala.Symbol;
-import scala.Tuple2;
 
 @PermissionsAllowed
 public class Application extends Controller {

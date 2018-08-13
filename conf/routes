@@ -153,6 +153,8 @@ GET		/lab/library									controllers.lab.library.Library.index(lib:String ?="bo
 GET		/lab/library:lib								controllers.lab.library.Library.index(lib:String)
 GET		/lab/ui										controllers.lab.ui.UI.index(ui:String ?="drawer")
 GET		/lab/ui:ui									controllers.lab.ui.UI.index(ui:String)
+GET		/lab/ilike									controllers.lab.ilike.ILike.index(state:String ?="list", detail:Boolean ?=false)
+GET		/lab/ilike/:state/:detail					controllers.lab.ilike.ILike.index(state:String, detail:Boolean)
 GET		/lab/page									controllers.lab.page.Page.index(page:String ?="landing")
 GET		/lab/page:page								controllers.lab.page.Page.index(page:String)
 GET		/lab/maintenance								controllers.lab.maintenance.Maintenance.master()

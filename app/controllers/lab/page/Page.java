@@ -15,9 +15,6 @@ public class Page extends Controller {
 		case "landing":
 
 			return landing();
-		case "ilike":
-
-			return ilike();
 		case "fork":
 
 			return fork();
@@ -30,11 +27,6 @@ public class Page extends Controller {
 	public static Result landing() {
 
 		return ok(views.html.lab.page.landing.render());
-	}
-
-	public static Result ilike() {
-
-		return ok(views.html.lab.page.ilike.render());
 	}
 
 	public static Result fork() {

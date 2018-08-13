@@ -114,6 +114,7 @@
 					Map("name"->Messages(MessageKeys.LIBRARY), "icon"->"far fa-file-alt", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
 					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"far fa-file-alt", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
 					Map("name"->Messages(MessageKeys.UI), "icon"->"far fa-file-alt", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
+					Map("name"->"I Like", "icon"->"fab fa-apple fa-flip-horizontal", "link"->controllers.lab.ilike.routes.ILike.index("list", false).toString(), "selected"->equalWork("lab","ilike")),
 					Map("name"->Messages(MessageKeys.PAGE), "icon"->"far fa-file-alt", "link"->controllers.lab.page.routes.Page.index("landing").toString(), "selected"->equalWork("lab","page")),
 					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"far fa-file-alt", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance"))
 				)),

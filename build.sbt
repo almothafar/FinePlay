@@ -103,8 +103,8 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
-  "org.webjars.npm" % "jqtree" % "1.4.2",								// Apache 1.4.2
-  "org.webjars" % "pdf-js" % "1.9.426",									// Apache 1.9.426 +patch
+  "org.webjars.npm" % "jqtree" % "1.4.8",								// Apache 1.4.8
+//  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
   "org.webjars.npm" % "jsqr" % "1.1.1",									// Apache 2018/06/24 master
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
@@ -127,7 +127,7 @@ libraryDependencies ++= Seq(
 
 // JasperReports library
 libraryDependencies ++= Seq(
-  "net.sf.jasperreports" % "jasperreports" % "6.6.0",					// LGPL 6.6.0
+  "net.sf.jasperreports" % "jasperreports" % "6.7.0",					// LGPL 6.7.0
   "net.sf.jasperreports" % "jasperreports-fonts" % "6.0.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1
