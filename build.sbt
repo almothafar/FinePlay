@@ -40,8 +40,8 @@ libraryDependencies ++= Seq(
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
 //  "net.logstash.logback" % "logstash-logback-encoder" % "5.1",		// Apache 5.1
-  "org.hibernate" % "hibernate-core" % "5.3.4.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.4.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.3.5.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.5.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.2",
@@ -98,7 +98,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.4.0",							// MIT 2.4.0
   "org.webjars.npm" % "marked" % "0.4.0",								// MIT 0.4.0
-  "org.webjars.npm" % "viz.js" % "1.8.0",								// MIT 1.8.0
+  "org.webjars.npm" % "viz.js" % "2.0.0",								// MIT 2.0.0
   "org.webjars.bower" % "plotly.js" % "1.39.3",							// MIT 1.39.4
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
   "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1

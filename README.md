@@ -14,7 +14,7 @@ How to play
 
 	macOS High Sierra version 10.13.6（17G65）
 	openjdk version "9.0.4"
-	Safari version 11.1.1 (13605.2.8)
+	Safari version 11.1.2 (13605.3.8)
 
 ##### OpenJDK #####
 
@@ -86,6 +86,10 @@ TODO
 + Rewrite custom-switch implementation to Switch based.
 + Rename wordbreak class.
 + Move include of Hammer.
+
+#### Drop IE ####
++ Update D3 5.x
++ Refactor system_menu.
 
 Release History
 ---------------

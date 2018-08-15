@@ -2,25 +2,26 @@
 
 $(document).ready(function() {
 
+	var viz = new Viz();
+
 	$('#previewButton').on('click', function() {
 
 		var engine = $('#engine>option:selected').val();
-
-		var scale = 2;
 		var src = $('#dotText').val();
 
-		try {
+		viz.renderSVGElement(src, {
+			engine : engine
+		})
+		.then(function(element) {
 
-			var result = Viz(src, {
-				format : "svg",
-				engine : engine,
-				scale : scale
-			});
+			$('#graph').html(element)
+			$('#graph>svg').addClass("w-100 h-100");
+		})
+		.catch(error => {
 
-			$('#graph').html(result)
-		} catch (e) {
+			viz = new Viz();
 
-			notifyAlert('warning', e.message);
-		}
+			notifyAlert('warning', error.message);
+		});
 	});
 });
