@@ -19,7 +19,7 @@ $(document).ready(function() {
 		.projection(earth)
 
 	var earthPath
-	d3.json(Messages("map"), function(error, world) {
+	d3.json(Messages("map")).then(function(world) {
 		earthPath = d3.select("#geoGraph")
 			.selectAll("path")
 			.data(world.features)
@@ -36,6 +36,10 @@ $(document).ready(function() {
 				return "#eee";
 			})
 	})
+	.catch(function(error) {
+
+		notifyAlert('warning', error.message);
+	});
 
 	var timer = false;
 	$(window).resize(function() {

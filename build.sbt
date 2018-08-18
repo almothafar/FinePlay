@@ -66,7 +66,6 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
-  "org.webjars.npm" % "core-js" % "2.5.6",								// MIT 2.5.6
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.1.3",							// MIT 4.0.0
 //  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
@@ -92,8 +91,8 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "handsontable" % "2.0.0",						// MIT 2.0.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.4.1",							// MIT 1.4.1
-//  "org.webjars.npm" % "d3" % "4.10.2",								// BSD-3-Clause license 4.10.2
-//  "org.webjars.npm" % "d3-geo-projection" % "1.2.1",					// BSD-3-Clause license 2.3.1
+  "org.webjars.npm" % "d3" % "5.5.0",									// BSD-3-Clause license 5.5.0
+  "org.webjars.npm" % "d3-geo-projection" % "2.4.0",					// MIT 2.4.0
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.4.0",							// MIT 2.4.0
@@ -115,6 +114,12 @@ libraryDependencies ++= Seq(
 // geckodriver															// Mozilla Public License 0.18.0
 // LibreOffice															// Mozilla Public License 6.0.3
 // wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4
+
+// Polyfill
+libraryDependencies ++= Seq(
+  "org.webjars.npm" % "core-js" % "2.5.6",								// MIT 2.5.6
+  "org.webjars.bower" % "fetch" % "2.0.4"								// MIT 2.0.4
+)
 
 // Icon library
 libraryDependencies ++= Seq(

@@ -55,6 +55,8 @@
 		}'></div>
 
 		@libraries.standard.last()
+		@libraries.corejs.last()
+		@libraries.fetch.last()
 		@libraries.d3.last()
 		@libraries.d3geoprojection.last()
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/d3geoprojection.js")'></script>

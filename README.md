@@ -88,7 +88,6 @@ TODO
 + Move include of Hammer.
 
 #### Drop IE ####
-+ Update D3 5.x
 + Refactor system_menu.
 
 Release History

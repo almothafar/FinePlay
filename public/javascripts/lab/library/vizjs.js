@@ -15,9 +15,9 @@ $(document).ready(function() {
 		.then(function(element) {
 
 			$('#graph').html(element)
-			$('#graph>svg').addClass("w-100 h-100");
+			$('#graph>svg').addClass("w-100 h-864p");
 		})
-		.catch(error => {
+		.catch(function(error) {
 
 			viz = new Viz();
 
