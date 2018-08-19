@@ -502,8 +502,9 @@ public class Download extends Controller {
 		builder.append("filename=\"").append(fileName).append("\";");
 		builder.append("filename*=UTF-8''").append(userFileName);
 
-		response().setHeader(Http.HeaderNames.CONTENT_DISPOSITION, builder.toString());
-		return ok("(｀・ω・´)\r\n(*´ω｀*)\r\n(´･ω･`)\r\n".getBytes(StandardCharsets.UTF_8)).as(Http.MimeTypes.BINARY);
+		return ok("(｀・ω・´)\r\n(*´ω｀*)\r\n(´･ω･`)\r\n".getBytes(StandardCharsets.UTF_8))//
+				.as(Http.MimeTypes.BINARY)//
+				.withHeader(Http.HeaderNames.CONTENT_DISPOSITION, builder.toString());
 	}
 
 	@Authenticated(common.core.Authenticator.class)

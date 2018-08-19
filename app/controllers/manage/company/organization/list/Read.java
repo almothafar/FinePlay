@@ -120,8 +120,9 @@ public class Read extends Controller {
 				downloadCompanies.stream().forEach(organizationUnit -> organizationUnit.beforeWrite());
 				final String csv = CSVs.toCSV(OrganizationUnit.getHeaders(), OrganizationUnit.getWriteCellProcessors(), downloadCompanies);
 
-				response().setHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=organizationUnits.csv");
-				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8))).as(Http.MimeTypes.BINARY);
+				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8)))//
+						.as(Http.MimeTypes.BINARY)//
+						.withHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=organizationUnits.csv");
 			} else {
 
 				return failureRead(downloadForm, companyId);

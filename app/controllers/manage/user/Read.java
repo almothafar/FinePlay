@@ -112,8 +112,9 @@ public class Read extends Controller {
 				downloadUsers.stream().forEach(user -> user.beforeWrite());
 				final String csv = CSVs.toCSV(models.user.User.getHeaders(), models.user.User.getWriteCellProcessors(), downloadUsers);
 
-				response().setHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=users.csv");
-				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8))).as(Http.MimeTypes.BINARY);
+				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8)))//
+						.as(Http.MimeTypes.BINARY)//
+						.withHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=users.csv");
 			} else {
 
 				return failureRead(downloadForm);

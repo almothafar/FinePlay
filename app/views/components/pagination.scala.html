@@ -27,7 +27,7 @@
 			</a>
 		</li>
 		@for(i <- 0 to pages.size - 1){
-		<li class="page-item @("active".when(Boolean.valueOf(pages(i).getOrElse("selected", "false"))))">
+		<li class="page-item @("active".when(Boolean.valueOf(pages(i).getOrElse("selected", "false")))) @Attributes.classValue(pages(i))">
 			<a class="page-link" href="@pages(i).getOrElse("link", "#")">
 				<i class="@pages(i).getOrElse("icon", "")"></i>
 				@pages(i).getOrElse("name", "")

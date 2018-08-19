@@ -53,7 +53,7 @@
 
 					@dummyPageValues.toString()
 
-					@components.adjust.pagination(Map("id"->"", "link"->ctx().request().path(), "query"->("size="+pagingInfo.getPageSize()), "pageIndex"->pagingInfo.getPageIndex().toString(), "pageCount"->pagingInfo.getPageCount().toString(), "visibleCount"->Math.min(10, pagingInfo.getPageCount()).toString))
+					@components.adjust.pagination(Map("id"->"", "link"->ctx().request().path(), "query"->("size="+pagingInfo.getPageSize()), "pageIndex"->pagingInfo.getPageIndex().toString(), "pageCount"->pagingInfo.getPageCount().toString(), "visibleCount"->Math.min(10, pagingInfo.getPageCount()).toString, "foldSize"->"xs"))
 				</div>
 			</div>
 		}

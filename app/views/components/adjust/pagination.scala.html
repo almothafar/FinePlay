@@ -10,6 +10,34 @@
 
 @(prop:scala.collection.immutable.Map[String, String])
 
+@hidePageSize(prop:scala.collection.immutable.Map[String, String]) = @{
+
+	var foldSize = prop.getOrElse("foldSize", "");
+	foldSize match {
+		case "" => {
+			""
+		}
+		case "xs" => {
+			"d-none d-sm-block"
+		}
+		case "sm" => {
+			"d-none d-md-block"
+		}
+		case "md" => {
+			"d-none d-lg-block"
+		}
+		case "lg" => {
+			"d-none d-xl-block"
+		}
+		case "xl" => {
+			"d-none"
+		}
+		case _ => {
+			throw new IllegalStateException(foldSize)
+		}
+	}
+}
+
 @index() = @{
 
 	prop.get("pageIndex").get.toInt
@@ -79,7 +107,7 @@
 
 	for(i:Int <- Range(visibleIndexs.head, visibleIndexs.last+1)){
 
-		visiblePages += Map("name"->(i+1).toString, "link"->(prop.getOrElse("link", "#")+"?page="+(i)+"&"+prop.getOrElse("query", "")), "selected"->(index() == i).toString)
+		visiblePages += Map("class"->hidePageSize(prop), "name"->(i+1).toString, "link"->(prop.getOrElse("link", "#")+"?page="+(i)+"&"+prop.getOrElse("query", "")), "selected"->(index() == i).toString)
 	}
 
 	visiblePages.toList
