@@ -251,6 +251,7 @@ var MessageKeys = {
 	NAME: "name",
 	NAME_DESCRIPTION: "name.description",
 	NATURALEARTHDATA_LANG: "naturalearthdata.lang",
+	NETWORK: "network",
 	NEW: "new",
 	NEXT: "next",
 	NOTIFICATION: "notification",

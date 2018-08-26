@@ -1,0 +1,106 @@
+{
+	"nodes": [
+		{
+			"id": "Asia",
+			"group": "play",
+			"distance": 120
+		},
+		{
+			"id": "Japan",
+			"group": "bootstrap",
+			"distance": 60
+		},
+		{
+			"id": "Tokyo",
+			"group": "fineplay",
+			"distance": 20
+		},
+		{
+			"id": "Saitama",
+			"group": "fineplay",
+			"distance": 20
+		},
+		{
+			"id": "Tochigi",
+			"group": "fineplay",
+			"distance": 20
+		},
+		{
+			"id": "China",
+			"group": "bootstrap",
+			"distance": 60
+		},
+		{
+			"id": "North America",
+			"group": "play",
+			"distance": 120
+		},
+		{
+			"id": "South America",
+			"group": "play",
+			"distance": 120
+		},
+		{
+			"id": "Europe",
+			"group": "play",
+			"distance": 120
+		},
+		{
+			"id": "Africa",
+			"group": "play",
+			"distance": 120
+		}
+	],
+	"links": [
+		{
+			"source": "Asia",
+			"target": "Japan",
+			"width": 10
+		},
+		{
+			"source": "Japan",
+			"target": "Tokyo",
+			"width": 1
+		},
+		{
+			"source": "Japan",
+			"target": "Saitama",
+			"width": 1
+		},
+		{
+			"source": "Japan",
+			"target": "Tochigi",
+			"width": 1
+		},
+		{
+			"source": "Asia",
+			"target": "China",
+			"width": 10
+		},
+		{
+			"source": "Asia",
+			"target": "North America",
+			"width": 20
+		},
+		{
+			"source": "North America",
+			"target": "South America",
+			"width": 20
+		},
+		{
+			"source": "South America",
+			"target": "Europe",
+			"width": 20
+		},
+		{
+			"source": "Europe",
+			"target": "Africa",
+			"width": 20
+		},
+		{
+			"source": "Africa",
+			"target": "Asia",
+			"width": 20
+		}
+	]
+}

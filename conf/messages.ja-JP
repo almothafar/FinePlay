@@ -389,6 +389,7 @@ min_case = 最小件数
 month = 月
 name = 名前
 name.description = 名前の説明。
+network = ネットワーク
 new = 新
 next = 次
 notification = 通知

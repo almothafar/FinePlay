@@ -65,6 +65,9 @@ public class Library extends Controller {
 		case "highlight":
 
 			return highlight();
+		case "d3":
+
+			return d3();
 		case "d3geoprojection":
 
 			return d3geoprojection();
@@ -212,6 +215,11 @@ public class Library extends Controller {
 	public static Result highlight() {
 
 		return ok(views.html.lab.library.highlight.render());
+	}
+
+	public static Result d3() {
+
+		return ok(views.html.lab.library.d3.render());
 	}
 
 	public static Result d3geoprojection() {

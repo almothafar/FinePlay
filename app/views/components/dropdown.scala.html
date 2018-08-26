@@ -11,7 +11,7 @@
 
 <div id="@prop.getOrElse("id", "")" class="dropdown @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	@components.button(Map("type"->"primary", "outline"->"true", "icon"->prop.getOrElse("icon", ""), "text"->prop.getOrElse("text", ""), "class"->"dropdown-toggle", "data-toggle"->"dropdown", "aria-haspopup"->"true", "aria-expanded"->"false"))
-	<div class="dropdown-menu">
+	<div class="dropdown-menu dropdown-menu-start text-start">
 	@for(i <- 0 to elements.size - 1){
 
 
@@ -37,7 +37,7 @@
 				<a id="@elements(i).getOrElse("id", "")" class="dropdown-item @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true"))))" href="@elements(i).getOrElse("link", "#")">
 					<i class="@elements(i).getOrElse("icon", "")"></i>
 					@Html(elements(i).getOrElse("text", ""))
-					<div class="float-right">
+					<div class="float-end">
 						@if(!elements(i).getOrElse("badge", "").isEmpty()){&nbsp}@components.badge(Map("type"->prop.getOrElse("badgeType", "secondary"), "pill"->"true", "text"->elements(i).getOrElse("badge", "")))
 					</div>
 				</a>

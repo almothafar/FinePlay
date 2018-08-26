@@ -1,0 +1,59 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/d3.css")'>
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"d3", "icon"->"far fa-map", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"d3"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="graphContainer" class="mb-3 table-responsive">
+
+						<h4 class="headline">@Messages(MessageKeys.NETWORK)</h4>
+						<svg id="networkGraph" class="bg-teal-50" width="640" height="480"></svg>
+					</div>
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"network":"@routes.Assets.versioned("javascripts/lab/library/offices.json")"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.corejs.last()
+		@libraries.fetch.last()
+		@libraries.d3.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/d3.js")'></script>
+	}
+}

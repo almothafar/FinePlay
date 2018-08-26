@@ -19,7 +19,10 @@
 }
 
 .alert-progress>.alert-progress-bar {
-	animation-duration: 5s;
 	left: 0;
 	bottom: 0;
+}
+.alert-progress>.alert-progress-bar>div {
+	width: 0;
+	animation-duration: 5s;
 }

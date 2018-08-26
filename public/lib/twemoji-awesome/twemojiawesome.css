@@ -1,6 +1,6 @@
 
 .ta {
-	display: inline-block;
+	display: inline-flex;
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;

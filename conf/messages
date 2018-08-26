@@ -389,6 +389,7 @@ min_case = Min cases
 month = Month
 name = Name
 name.description = Description of name
+network = Network
 new = New
 next = Next
 notification = Notification

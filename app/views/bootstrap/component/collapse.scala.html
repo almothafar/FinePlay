@@ -38,7 +38,7 @@
 					<div class="row mb-3">
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer0", "aria-expanded"->"true"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-direction-flip-horizontal", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark ps-0 text-start", "data-toggle"->"collapse", "data-target"->"#answer0", "aria-expanded"->"true"))
 							@components.collapse(Map("id"->"answer0", "show"->"true")){
 								@components.card(Map("id"->"")){
 									<div class="card-body">
@@ -49,7 +49,7 @@
 						</div>
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer1", "aria-expanded"->"false"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-direction-flip-horizontal", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark ps-0 text-start", "data-toggle"->"collapse", "data-target"->"#answer1", "aria-expanded"->"false"))
 							@components.collapse(Map("id"->"answer1")){
 								@components.card(Map("id"->"")){
 									<div class="card-body">
@@ -170,7 +170,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 					<div class="row mb-3">
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container0", "aria-expanded"->"true"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark ps-0 text-start", "data-toggle"->"collapse", "data-target"->"#container0", "aria-expanded"->"true"))
 							@components.collapse(Map("id"->"container0", "show"->"true")){
 								@components.card(Map("id"->"")){
 									<div class="card-body shadow-sm-inset">
@@ -195,7 +195,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 						</div>
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"far fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container1", "aria-expanded"->"false"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"far fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark ps-0 text-start", "data-toggle"->"collapse", "data-target"->"#container1", "aria-expanded"->"false"))
 							@components.collapse(Map("id"->"container1")){
 								@components.card(Map("id"->"")){
 									<div class="card-body shadow-sm-inset">
@@ -227,7 +227,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 							@components.card(Map("id"->"")){
 								<div class="card-header" id="headingOne">
 									<h5 class="mb-0">
-										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play", "text"->"Collapsible Group Item #1", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseOne", "aria-expanded"->"true", "aria-controls"->"collapseOne"))
+										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play fa-direction-flip-horizontal", "text"->"Collapsible Group Item #1", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseOne", "aria-expanded"->"true", "aria-controls"->"collapseOne"))
 									</h5>
 								</div>
 
@@ -240,7 +240,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 							@components.card(Map("id"->"")){
 								<div class="card-header" id="headingTwo">
 									<h5 class="mb-0">
-										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play", "text"->"Collapsible Group Item #2", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseTwo", "aria-expanded"->"false", "aria-controls"->"collapseTwo"))
+										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play fa-direction-flip-horizontal", "text"->"Collapsible Group Item #2", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseTwo", "aria-expanded"->"false", "aria-controls"->"collapseTwo"))
 									</h5>
 								</div>
 
@@ -253,7 +253,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 							@components.card(Map("id"->"")){
 								<div class="card-header" id="headingThree">
 									<h5 class="mb-0">
-										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play", "text"->"Collapsible Group Item #3", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseThree", "aria-expanded"->"false", "aria-controls"->"collapseThree"))
+										@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-play fa-direction-flip-horizontal", "text"->"Collapsible Group Item #3", "class"->"disclosure-90 pl-0", "data-toggle"->"collapse", "data-target"->"#collapseThree", "aria-expanded"->"false", "aria-controls"->"collapseThree"))
 									</h5>
 								</div>
 

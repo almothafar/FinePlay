@@ -1,10 +1,32 @@
 @()(content: Html)
 
+@mode() = @{
+
+	common.system.System.getInjector().instanceOf(classOf[play.api.Environment]).mode.toString.toLowerCase
+}
+
+@theme() = @{
+
+	session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase
+}
+
+@langDirection() = @{
+
+	if(!(lang.language.startsWith("ar") || lang.language.startsWith("he"))){
+
+		"ltr"
+	}else{
+
+		// Joke.
+		"rtl"
+	}
+}
+
 <!DOCTYPE html>
 
 <html
 	lang="@lang.code"
-	class="theme-@session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase mode-@common.system.System.getInjector().instanceOf(classOf[play.api.Environment]).mode.toString.toLowerCase"
+	class="mode-@mode() direction-@langDirection() theme-@theme()"
 >
 	@content
 </html>

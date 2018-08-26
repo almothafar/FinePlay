@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 			var newItem = $('' +
 				'<li class="media mb-4 infinityItem">' +
-					'<img src="' + Messages("img") + '" class="d-flex mr-3" alt="Picture"></img>' +
+					'<img src="' + Messages("img") + '" class="d-flex me-3" alt="Picture"></img>' +
 					'<div class="media-body draft">' +
 						'<h5 class="mt-0 mb-1"><span class="draft-text">List-based media object</span></h5>' +
 						'<span class="draft-text">Cras sit amet nibh libero, in gravida nulla.' +

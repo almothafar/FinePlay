@@ -49,7 +49,7 @@
 									<label for="@Inquiry.USERID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.EMAIL)</label>
 									<div class="col-sm-9">
 										<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).value.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change">
-										<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
+										<small class="text-muted d-block">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
 										@for(error <- form(Inquiry.USERID).errors) {
 											<div class="text-danger">@Messages(error.message)</div>
 										}
@@ -97,8 +97,8 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<div class="col-12 text-right">
-										@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-paper-plane", "text"->Messages(MessageKeys.SEND), "default"->"true", "class"->"float-right"))
+									<div class="col-12 d-flex justify-content-end">
+										@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-paper-plane", "text"->Messages(MessageKeys.SEND), "default"->"true"))
 									</div>
 								</div>
 							}

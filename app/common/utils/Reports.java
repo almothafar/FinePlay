@@ -41,45 +41,44 @@ public class Reports {
 	}
 
 	@Nonnull
-	public static byte[] toPDF(@Nonnull final InputStream templateStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
+	public static byte[] toPDF(@Nonnull final InputStream jasperStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
 
 		final Exporter<ExporterInput, PdfReportConfiguration, PdfExporterConfiguration, OutputStreamExporterOutput> exporter = new JRPdfExporter();
-		return toReport(exporter, templateStream, parameters, dataSource);
+		return toReport(exporter, jasperStream, parameters, dataSource);
 	}
 
 	@Nonnull
-	public static byte[] toDocx(@Nonnull final InputStream templateStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
+	public static byte[] toDocx(@Nonnull final InputStream jasperStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
 
 		final Exporter<ExporterInput, DocxReportConfiguration, DocxExporterConfiguration, OutputStreamExporterOutput> exporter = new JRDocxExporter();
-		return toReport(exporter, templateStream, parameters, dataSource);
+		return toReport(exporter, jasperStream, parameters, dataSource);
 	}
 
 	@Nonnull
-	public static byte[] toXlsx(@Nonnull final InputStream templateStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
+	public static byte[] toXlsx(@Nonnull final InputStream jasperStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
 
 		final Exporter<ExporterInput, XlsxReportConfiguration, XlsxExporterConfiguration, OutputStreamExporterOutput> exporter = new JRXlsxExporter();
-		return toReport(exporter, templateStream, parameters, dataSource);
+		return toReport(exporter, jasperStream, parameters, dataSource);
 	}
 
 	@Nonnull
-	public static byte[] toPptx(@Nonnull final InputStream templateStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
+	public static byte[] toPptx(@Nonnull final InputStream jasperStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
 
 		final Exporter<ExporterInput, PptxReportConfiguration, PptxExporterConfiguration, OutputStreamExporterOutput> exporter = new JRPptxExporter();
-		return toReport(exporter, templateStream, parameters, dataSource);
+		return toReport(exporter, jasperStream, parameters, dataSource);
 	}
 
 	@SuppressWarnings("null")
 	@Nonnull
-	private static byte[] toReport(@Nonnull final Exporter<ExporterInput, ?, ?, OutputStreamExporterOutput> exporter, @Nonnull final InputStream templateStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
+	private static byte[] toReport(@Nonnull final Exporter<ExporterInput, ?, ?, OutputStreamExporterOutput> exporter, @Nonnull final InputStream jasperStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource) {
 
-		Objects.requireNonNull(templateStream);
+		Objects.requireNonNull(jasperStream);
 		Objects.requireNonNull(parameters);
 		Objects.requireNonNull(dataSource);
 
 		try (final ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
 
-			final JasperReport report = JasperCompileManager.compileReport(templateStream);
-			final JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
+			final JasperPrint print = JasperFillManager.fillReport(jasperStream, parameters, dataSource);
 
 			exporter.setExporterInput(new SimpleExporterInput(print));
 			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(stream));

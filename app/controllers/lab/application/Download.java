@@ -381,7 +381,7 @@ public class Download extends Controller {
 
 		return CompletableFuture.supplyAsync(() -> {
 
-			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/report.jrxml")) {
+			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/report.jasper")) {
 
 				final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
 				return ok(bytes).as(Http.MimeTypes.BINARY);
@@ -410,7 +410,7 @@ public class Download extends Controller {
 
 		return CompletableFuture.supplyAsync(() -> {
 
-			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/paper.jrxml")) {
+			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/paper.jasper")) {
 
 				final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
 				return ok(bytes).as(Http.MimeTypes.BINARY);

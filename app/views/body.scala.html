@@ -86,7 +86,7 @@
 					Map("name"->Messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user")),
 					Map("class"->"secret", "name"->Messages(MessageKeys.BATCH), "icon"->"fas fa-tasks", "link"->controllers.manage.batch.routes.Batch.index().toString(), "selected"->equalWork("manage","batch"))
 				)),
-				(Map("show"->isDev().toString(), "key"->"development", "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"fas fa-play", "selected"->equalSection("development"), "class"->"disclosure-90"),List(
+				(Map("show"->isDev().toString(), "key"->"development", "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"fas fa-play fa-direction-flip-horizontal", "selected"->equalSection("development"), "class"->"disclosure-90"),List(
 					Map("key"->"http", "name"->Messages(MessageKeys.HTTP), "icon"->"far fa-file-alt", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
 					Map("key"->"javascript", "name"->Messages(MessageKeys.JAVASCRIPT), "icon"->"fab fa-js", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
 					Map("key"->"design", "name"->Messages(MessageKeys.DESIGN), "icon"->"fas fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),
@@ -150,7 +150,7 @@
 							<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USER_ID)</span>
 							</button>
-							<div class="dropdown-menu dropdown-menu-right">
+							<div class="dropdown-menu dropdown-menu-end text-start">
 								<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
 								<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fas fa-sign-out-alt"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
 							</div>

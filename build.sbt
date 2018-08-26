@@ -39,7 +39,7 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
-//  "net.logstash.logback" % "logstash-logback-encoder" % "5.1",		// Apache 5.1
+  "net.logstash.logback" % "logstash-logback-encoder" % "5.2",			// Apache 5.2
   "org.hibernate" % "hibernate-core" % "5.3.5.Final",					// LGPL 5.3.0
   "org.hibernate" % "hibernate-jpamodelgen" % "5.3.5.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",

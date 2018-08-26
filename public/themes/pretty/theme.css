@@ -46,11 +46,8 @@ body {
 	background-color: #3f2008;
 }
 
-#system_work-menu .works .work{
-	border-left: transparent 4px solid;
-}
 #system_work-menu .works .work.selected{
-	border-left: rgb(250, 218, 5) 4px solid;
+	border-color: rgb(250, 218, 5);
 	background-color: #2d1706;
 }
 

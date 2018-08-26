@@ -147,6 +147,45 @@
 						))
 					</div>
 				</div>
+
+				<div class="col-12 col-md-6 mt-3">
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->""),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#", "icon"->"fas fa-spinner fa-pulse"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"),
+								Map("id"->"", "head"->"true", "text"->"Column heading", "icon"->"fas fa-spinner fa-pulse"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row", "icon"->"fas fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "icon"->"fas fa-spinner fa-pulse"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row", "icon"->"fas fa-spinner fa-pulse"),
+									Map("id"->"", "text"->"Column content"),
+									Map("id"->"", "text"->"Column content", "icon"->"fas fa-spinner fa-pulse")))),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#", "icon"->"fas fa-spinner fa-pulse"),
+								Map("id"->"", "head"->"true", "text"->"Column heading"),
+								Map("id"->"", "head"->"true", "text"->"Column heading", "icon"->"fas fa-spinner fa-pulse")))
+						)
+					</div>
+				</div>
+
+				<div class="col-12 col-md-6 mt-3">
+
+					<div class="mb-3">
+
+						@components.listgroup(Map("id"->""), List(
+							Map("id"->"", "type"->"", "icon"->"fas fa-spinner fa-pulse", "text"->"Cras justo odio"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-spinner fa-pulse", "text"->"Dapibus ac facilisis in", "selected"->"true"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-spinner fa-pulse", "text"->"Morbi leo risus", "enabled"->"false"),
+							Map("id"->"", "type"->"", "icon"->"fas fa-spinner fa-pulse", "text"->"Porta ac consectetur ac", "badge"->"New")
+						))
+					</div>
+				</div>
 			</div>
 		}
 

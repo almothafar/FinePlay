@@ -70,7 +70,7 @@ public class Batchlet extends AbstractBatchlet {
 
 		final JRDataSource dataSource = new JREmptyDataSource();
 
-		try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/ivd.jrxml")) {
+		try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/ivd.jasper")) {
 
 			final Path tmpPath = Paths.get(System.getProperty("java.io.tmpdir"));
 

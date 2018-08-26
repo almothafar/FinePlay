@@ -279,18 +279,28 @@
 
 /* Elastic */
 
-.elastic-left{
-	transform-origin: right center;
+.elastic-start{
 	animation-duration: 1.3s;
 	animation-iteration-count: infinite;
 	animation-name: elastic;
 }
-
-.elastic-right{
+.direction-ltr .elastic-start{
+	transform-origin: right center;
+}
+.direction-rtl .elastic-start{
 	transform-origin: left center;
+}
+
+.elastic-end{
 	animation-duration: 1.3s;
 	animation-iteration-count: infinite;
 	animation-name: elastic;
+}
+.direction-ltr .elastic-end{
+	transform-origin: left center;
+}
+.direction-rtl .elastic-end{
+	transform-origin: right center;
 }
 
 @keyframes elastic {
@@ -409,3 +419,100 @@
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px #e4f6e1 inset;
 }
+
+/* Direction */
+
+.direction-ltr .text-start {text-align: left !important;}
+.direction-ltr .text-end {text-align: right !important;}
+
+.direction-rtl .text-start {text-align: right !important;}
+.direction-rtl .text-end {text-align: left !important;}
+
+.direction-ltr .float-start {float: left !important;}
+.direction-ltr .float-end {float: right !important;}
+
+.direction-rtl .float-start {float: right !important;}
+.direction-rtl .float-end {float: left !important;}
+
+.direction-ltr .ms-0 {margin-left: 0 !important;}
+.direction-ltr .me-0 {margin-right: 0 !important;}
+.direction-ltr .ms-1 {margin-left: 0.25rem !important;}
+.direction-ltr .me-1 {margin-right: 0.25rem !important;}
+.direction-ltr .ms-2 {margin-left: 0.5rem !important;}
+.direction-ltr .me-2 {margin-right: 0.5rem !important;}
+.direction-ltr .ms-3 {margin-left: 1rem !important;}
+.direction-ltr .me-3 {margin-right: 1rem !important;}
+.direction-ltr .ms-4 {margin-left: 1.5rem !important;}
+.direction-ltr .me-4 {margin-right: 1.5rem !important;}
+.direction-ltr .ms-5 {margin-left: 3rem !important;}
+.direction-ltr .me-5 {margin-right: 3rem !important;}
+
+.direction-rtl .ms-0 {margin-right: 0 !important;}
+.direction-rtl .me-0 {margin-left: 0 !important;}
+.direction-rtl .ms-1 {margin-right: 0.25rem !important;}
+.direction-rtl .me-1 {margin-left: 0.25rem !important;}
+.direction-rtl .ms-2 {margin-right: 0.5rem !important;}
+.direction-rtl .me-2 {margin-left: 0.5rem !important;}
+.direction-rtl .ms-3 {margin-right: 1rem !important;}
+.direction-rtl .me-3 {margin-left: 1rem !important;}
+.direction-rtl .ms-4 {margin-right: 1.5rem !important;}
+.direction-rtl .me-4 {margin-left: 1.5rem !important;}
+.direction-rtl .ms-5 {margin-right: 3rem !important;}
+.direction-rtl .me-5 {margin-left: 3rem !important;}
+
+.direction-ltr .ps-0 {padding-left: 0 !important;}
+.direction-ltr .pe-0 {padding-right: 0 !important;}
+.direction-ltr .ps-1 {padding-left: 0.25rem !important;}
+.direction-ltr .pe-1 {padding-right: 0.25rem !important;}
+.direction-ltr .ps-2 {padding-left: 0.5rem !important;}
+.direction-ltr .pe-2 {padding-right: 0.5rem !important;}
+.direction-ltr .ps-3 {padding-left: 1rem !important;}
+.direction-ltr .pe-3 {padding-right: 1rem !important;}
+.direction-ltr .ps-4 {padding-left: 1.5rem !important;}
+.direction-ltr .pe-4 {padding-right: 1.5rem !important;}
+.direction-ltr .ps-5 {padding-left: 3rem !important;}
+.direction-ltr .pe-5 {padding-right: 3rem !important;}
+
+.direction-rtl .ps-0 {padding-right: 0 !important;}
+.direction-rtl .pe-0 {padding-left: 0 !important;}
+.direction-rtl .ps-1 {padding-right: 0.25rem !important;}
+.direction-rtl .pe-1 {padding-left: 0.25rem !important;}
+.direction-rtl .ps-2 {padding-right: 0.5rem !important;}
+.direction-rtl .pe-2 {padding-left: 0.5rem !important;}
+.direction-rtl .ps-3 {padding-right: 1rem !important;}
+.direction-rtl .pe-3 {padding-left: 1rem !important;}
+.direction-rtl .ps-4 {padding-right: 1.5rem !important;}
+.direction-rtl .pe-4 {padding-left: 1.5rem !important;}
+.direction-rtl .ps-5 {padding-right: 3rem !important;}
+.direction-rtl .pe-5 {padding-left: 3rem !important;}
+
+.direction-rtl .alert-dismissible {
+	padding-left: 4rem;
+	padding-right: 1.25rem;
+}
+.direction-rtl .alert-dismissible .close {
+	left: 0px;
+	right: initial;
+}
+
+.direction-rtl .modal-header .close {
+	padding: 1rem;
+	margin: -1rem auto -1rem -1rem;
+}
+
+.direction-rtl .dropdown-menu-start {
+	right: 0;
+	left: auto;
+}
+
+.direction-ltr .dropdown-menu-end {
+	right: 0;
+	left: auto;
+}
+
+.direction-rtl .fa-direction-flip-horizontal {
+	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+	-webkit-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+}
+

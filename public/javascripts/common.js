@@ -49,7 +49,6 @@ var shake = function(selector, func){
 
 	$(selector).effect('shake', {}, 200, func);
 }
-
 var showFromLeft = function(selector, func){
 
 	$(selector).css({'display':'none'}).removeClass("d-none");
@@ -70,6 +69,50 @@ var showFromRight = function(selector, func){
 var hideToRight = function(selector, func){
 
 	$(selector).effect( 'drop', {'mode':'hide','direction':'right'}, 400, func);
+}
+
+var showFromStart = function(selector, func){
+
+	if(!$('html').hasClass('direction-rtl')){
+
+		showFromLeft(selector, func);
+	}else{
+
+		showFromRight(selector, func);
+	}
+}
+
+var hideToStart = function(selector, func){
+
+	if(!$('html').hasClass('direction-rtl')){
+
+		hideToLeft(selector, func);
+	}else{
+
+		hideToRight(selector, func);
+	}
+}
+
+var showFromEnd = function(selector, func){
+
+	if(!$('html').hasClass('direction-rtl')){
+
+		showFromRight(selector, func);
+	}else{
+
+		showFromLeft(selector, func);
+	}
+}
+
+var hideToEnd = function(selector, func){
+
+	if(!$('html').hasClass('direction-rtl')){
+
+		hideToRight(selector, func);
+	}else{
+
+		hideToLeft(selector, func);
+	}
 }
 
 var showFromUp = function(selector, func){
@@ -173,7 +216,7 @@ var tellAlert = function(type, text, wait){
 
 		break;
 	}
-	var html = '<div class="alert alert-' + type + ' alert-dismissible fade show " role="alert">' +
+	var html = '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">' +
 					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
 					'<i class="fas fa-' + icon +'"></i>' +
 					'\t' + text +
@@ -191,7 +234,7 @@ var tell = function(text, wait){
 		html = text;
 	}else{
 
-		html = '<div class="alert alert-secondary alert-dismissible fade show " role="alert">' +
+		html = '<div class="alert alert-secondary alert-dismissible fade show" role="alert">' +
 					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
 					'<i class="fas fa-bullhorn"></i>' +
 					'\t' + text +
@@ -262,7 +305,7 @@ var notifyAlert = function(type, text, wait){
 
 		break;
 	}
-	var html = '<div class="alert alert-' + type + ' border-' + type + ' alert-dismissible fade show " role="alert">' +
+	var html = '<div class="alert alert-' + type + ' border-' + type + ' alert-dismissible fade show" role="alert">' +
 					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
 					'<i class="fas fa-' + icon +'"></i>' +
 					'\t' + text +
@@ -297,7 +340,7 @@ var notify = function(text, wait){
 	element.hide();
 	$('#system_notifications').prepend(element);
 
-	showFromRight(selector);
+	showFromEnd(selector);
 
 	if(wait == null){
 		// null or undefined
@@ -312,7 +355,7 @@ var notify = function(text, wait){
 
 	var expire = function(){
 
-		hideToRight(selector, function(){
+		hideToEnd(selector, function(){
 
 			$(selector).remove();
 		});

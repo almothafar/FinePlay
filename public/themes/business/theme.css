@@ -25,11 +25,8 @@
 	background-color: #f3f3f3;
 }
 
-#system_work-menu .works .work{
-	border-left: transparent 4px solid;
-}
 #system_work-menu .works .work.selected{
-	border-left: #00bcf2 4px solid;
+	border-color: #00bcf2;
 	background-color: #e4e4e4;
 }
 

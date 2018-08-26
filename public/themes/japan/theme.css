@@ -32,11 +32,8 @@ body {
 	background-color: #434825;
 }
 
-#system_work-menu .works .work{
-	border-left: transparent 6px solid;
-}
 #system_work-menu .works .work.selected{
-	border-left: rgb(255, 48, 21) 6px solid;
+	border-color: rgb(255, 48, 21);
 	background-color: #32361b;
 }
 

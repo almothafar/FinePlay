@@ -507,6 +507,8 @@ public class MessageKeys {
 
   public static final String NATURALEARTHDATA_LANG = "naturalearthdata.lang";
 
+  public static final String NETWORK = "network";
+
   public static final String NEW = "new";
 
   public static final String NEXT = "next";

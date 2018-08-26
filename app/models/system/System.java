@@ -12,12 +12,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import play.mvc.Http.Headers;
 
 public class System {
 
@@ -62,14 +65,8 @@ public class System {
 			match.setUserPermission(userPermission);
 		});
 
-		LOGGER.info(PermissionMatch.toHeadString());
-		LOGGER.info("|" + StringUtils.leftPad("-", 10, '-') + "|" + StringUtils.leftPad("-", 10, '-') + "|-----|");
-
-		permissionMatchings.values().forEach(mathing -> LOGGER.info(mathing.toLineString()));
-
-		LOGGER.info("|" + StringUtils.leftPad("-", 10, '-') + "|" + StringUtils.leftPad("-", 10, '-') + "|-----|");
 		final boolean isPermissionAllowed = permissionMatchings.values().stream().anyMatch(matching -> matching.isAllowed());
-		LOGGER.info(PermissionMatch.toFootString(isPermissionAllowed));
+		LOGGER.info(createPermissionMessage(permissionMatchings, isPermissionAllowed));
 		//
 		// final boolean isPermissionAllowed =
 		// userPermissions.stream().anyMatch(userPermission ->
@@ -78,6 +75,23 @@ public class System {
 		// Permissions : " + userPermissions + " " + isPermissionAllowed);
 
 		return isPermissionAllowed;
+	}
+
+	private static String createPermissionMessage(final Map<Permission, PermissionMatch> permissionMatchings, final boolean isPermissionAllowed) {
+
+		final StringBuilder builder = new StringBuilder();
+
+		builder.append("---------- Permission").append("\n");
+
+		builder.append(PermissionMatch.toHeadString()).append("\n");
+		builder.append("|" + StringUtils.leftPad("-", 10, '-') + "|" + StringUtils.leftPad("-", 10, '-') + "|-----|").append("\n");
+
+		permissionMatchings.values().forEach(mathing -> builder.append(mathing.toLineString()).append("\n"));
+
+		builder.append("|" + StringUtils.leftPad("-", 10, '-') + "|" + StringUtils.leftPad("-", 10, '-') + "|-----|").append("\n");
+		builder.append(PermissionMatch.toFootString(isPermissionAllowed));
+
+		return builder.toString();
 	}
 
 	private static class PermissionMatch {

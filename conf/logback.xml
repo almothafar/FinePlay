@@ -12,12 +12,12 @@
 				<maxFileSize>10MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
-<!--
     <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
--->
+<!--
     <encoder>
       <pattern>%date [%level] from %logger in %thread - %message%n%xException</pattern>
     </encoder>
+-->
   </appender>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
