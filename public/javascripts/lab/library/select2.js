@@ -16,34 +16,43 @@ $(document).ready(function() {
 
 	$(".js-example-basic-single").select2({
 		placeholder: "Select a state",
-		allowClear: true
+		allowClear: true,
+		rtl: $('html').hasClass('dir-rtl')
 	});
 	$(".js-example-basic-multiple").select2({
-		placeholder: "Select a state"
+		placeholder: "Select a state",
+		rtl: $('html').hasClass('dir-rtl')
 	});
 	$(".js-example-tags").select2({
-		tags: true
+		tags: true,
+		rtl: $('html').hasClass('dir-rtl')
 	})
 
 	$(".js-example-basic-single.form-control-lg").select2({
 		placeholder: "Select a state",
-		allowClear: true
+		allowClear: true,
+		rtl: $('html').hasClass('dir-rtl')
 	});
 	$(".js-example-basic-multiple.form-control-lg").select2({
-		placeholder: "Select a state"
+		placeholder: "Select a state",
+		rtl: $('html').hasClass('dir-rtl')
 	});
 	$(".js-example-tags.form-control-lg").select2({
-		tags: true
+		tags: true,
+		rtl: $('html').hasClass('dir-rtl')
 	})
 
 	$(".js-example-basic-single.form-control-sm").select2({
 		placeholder: "Select a state",
-		allowClear: true
+		allowClear: true,
+		rtl: $('html').hasClass('dir-rtl')
 	});
 	$(".js-example-basic-multiple.form-control-sm").select2({
-		placeholder: "Select a state"
+		placeholder: "Select a state",
+		rtl: $('html').hasClass('dir-rtl')
 	});
 	$(".js-example-tags.form-control-sm").select2({
-		tags: true
+		tags: true,
+		rtl: $('html').hasClass('dir-rtl')
 	})
 });

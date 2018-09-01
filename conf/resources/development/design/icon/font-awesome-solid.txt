@@ -1,3 +1,4 @@
+ad
 address-book
 address-card
 adjust
@@ -19,6 +20,7 @@ angle-left
 angle-right
 angle-up
 angry
+ankh
 apple-alt
 archive
 archway
@@ -64,6 +66,7 @@ beer
 bell
 bell-slash
 bezier-curve
+bible
 bicycle
 binoculars
 birthday-cake
@@ -96,6 +99,7 @@ bullseye
 burn
 bus
 bus-alt
+business-time
 calculator
 calendar
 calendar-alt
@@ -154,6 +158,7 @@ child
 church
 circle
 circle-notch
+city
 clipboard
 clipboard-check
 clipboard-list
@@ -173,9 +178,11 @@ coins
 columns
 comment
 comment-alt
+comment-dollar
 comment-dots
 comment-slash
 comments
+comments-dollar
 compact-disc
 compass
 compress
@@ -188,6 +195,7 @@ couch
 credit-card
 crop
 crop-alt
+cross
 crosshairs
 crow
 crown
@@ -197,6 +205,7 @@ cut
 database
 deaf
 desktop
+dharmachakra
 diagnoses
 dice
 dice-five
@@ -230,6 +239,7 @@ ellipsis-h
 ellipsis-v
 envelope
 envelope-open
+envelope-open-text
 envelope-square
 equals
 eraser
@@ -288,13 +298,16 @@ flag-checkered
 flask
 flushed
 folder
+folder-minus
 folder-open
+folder-plus
 font
 football-ball
 forward
 frog
 frown
 frown-open
+funnel-dollar
 futbol
 gamepad
 gas-pump
@@ -310,6 +323,7 @@ globe-africa
 globe-americas
 globe-asia
 golf-ball
+gopuram
 graduation-cap
 greater-than
 greater-than-equal
@@ -330,6 +344,7 @@ grin-wink
 grip-horizontal
 grip-vertical
 h-square
+hamsa
 hand-holding
 hand-holding-heart
 hand-holding-usd
@@ -348,6 +363,7 @@ hands
 hands-helping
 handshake
 hashtag
+haykal
 hdd
 heading
 headphones
@@ -382,13 +398,18 @@ infinity
 info
 info-circle
 italic
+jedi
 joint
+journal-whills
+kaaba
 key
 keyboard
+khanda
 kiss
 kiss-beam
 kiss-wink-heart
 kiwi-bird
+landmark
 language
 laptop
 laptop-code
@@ -422,6 +443,7 @@ low-vision
 luggage-cart
 magic
 magnet
+mail-bulk
 male
 map
 map-marked
@@ -442,6 +464,7 @@ meh
 meh-blank
 meh-rolling-eyes
 memory
+menorah
 mercury
 microchip
 microphone
@@ -463,6 +486,7 @@ money-check-alt
 monument
 moon
 mortar-pestle
+mosque
 motorcycle
 mouse-pointer
 music
@@ -473,6 +497,7 @@ notes-medical
 object-group
 object-ungroup
 oil-can
+om
 outdent
 paint-brush
 paint-roller
@@ -484,10 +509,12 @@ parachute-box
 paragraph
 parking
 passport
+pastafarianism
 paste
 pause
 pause-circle
 paw
+peace
 pen
 pen-alt
 pen-fancy
@@ -504,6 +531,7 @@ phone-square
 phone-volume
 piggy-bank
 pills
+place-of-worship
 plane
 plane-arrival
 plane-departure
@@ -514,11 +542,15 @@ plus
 plus-circle
 plus-square
 podcast
+poll
+poll-h
 poo
 poop
 portrait
 pound-sign
 power-off
+pray
+praying-hands
 prescription
 prescription-bottle
 prescription-bottle-alt
@@ -532,6 +564,7 @@ question-circle
 quidditch
 quote-left
 quote-right
+quran
 random
 receipt
 recycle
@@ -560,6 +593,8 @@ save
 school
 screwdriver
 search
+search-dollar
+search-location
 search-minus
 search-plus
 seedling
@@ -594,6 +629,7 @@ smile-wink
 smoking
 smoking-ban
 snowflake
+socks
 solar-panel
 sort
 sort-alpha-down
@@ -611,10 +647,13 @@ splotch
 spray-can
 square
 square-full
+square-root-alt
 stamp
 star
+star-and-crescent
 star-half
 star-half-alt
+star-of-david
 star-of-life
 step-backward
 step-forward
@@ -639,6 +678,7 @@ surprise
 swatchbook
 swimmer
 swimming-pool
+synagogue
 sync
 sync-alt
 syringe
@@ -681,6 +721,8 @@ toggle-off
 toggle-on
 toolbox
 tooth
+torah
+torii-gate
 trademark
 traffic-light
 train
@@ -743,6 +785,7 @@ vial
 vials
 video
 video-slash
+vihara
 volleyball-ball
 volume-down
 volume-off
@@ -764,3 +807,4 @@ won-sign
 wrench
 x-ray
 yen-sign
+yin-yang

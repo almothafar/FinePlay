@@ -61,56 +61,52 @@ body {
 
 h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline {
 	font-weight: 400;
+	border-style: solid;
+	border-color: #007bff;
 }
 
-.direction-ltr h1.headline{
-	border-left: 7px solid #007bff;
+.dir-ltr h1.headline, .dir-ltr h2.headline, .dir-ltr h3.headline, .dir-ltr h4.headline, .dir-ltr h5.headline, .dir-ltr h6.headline {
 	padding-left: 6px;
 }
-.direction-ltr h2.headline{
-	border-left: 6px solid #007bff;
-	padding-left: 6px;
+.dir-ltr h1.headline{
+	border-width: 0px 0px 0px 7px;
 }
-.direction-ltr h3.headline{
-	border-left: 5px solid #007bff;
-	padding-left: 6px;
+.dir-ltr h2.headline{
+	border-width: 0px 0px 0px 6px;
 }
-.direction-ltr h4.headline{
-	border-left: 4px solid #007bff;
-	padding-left: 6px;
+.dir-ltr h3.headline{
+	border-width: 0px 0px 0px 5px;
 }
-.direction-ltr h5.headline{
-	border-left: 3px solid #007bff;
-	padding-left: 6px;
+.dir-ltr h4.headline{
+	border-width: 0px 0px 0px 4px;
 }
-.direction-ltr h6.headline{
-	border-left: 2px solid #007bff;
-	padding-left: 6px;
+.dir-ltr h5.headline{
+	border-width: 0px 0px 0px 3px;
+}
+.dir-ltr h6.headline{
+	border-width: 0px 0px 0px 2px;
 }
 
-.direction-rtl h1.headline{
-	border-right: 7px solid #007bff;
+.dir-rtl h1.headline, .dir-rtl h2.headline, .dir-rtl h3.headline, .dir-rtl h4.headline, .dir-rtl h5.headline, .dir-rtl h6.headline {
 	padding-right: 6px;
 }
-.direction-rtl h2.headline{
-	border-right: 6px solid #007bff;
-	padding-right: 6px;
+.dir-rtl h1.headline{
+	border-width: 0px 7px 0px 0px;
 }
-.direction-rtl h3.headline{
-	border-right: 5px solid #007bff;
-	padding-right: 6px;
+.dir-rtl h2.headline{
+	border-width: 0px 6px 0px 0px;
 }
-.direction-rtl h4.headline{
-	border-right: 4px solid #007bff;
-	padding-right: 6px;
+.dir-rtl h3.headline{
+	border-width: 0px 5px 0px 0px;
 }
-.direction-rtl h5.headline{
-	border-right: 3px solid #007bff;
-	padding-right: 6px;
+.dir-rtl h4.headline{
+	border-width: 0px 4px 0px 0px;
 }
-.direction-rtl h6.headline{
-	border-right: 2px solid #007bff;
-	padding-right: 6px;
+.dir-rtl h5.headline{
+	border-width: 0px 3px 0px 0px;
+}
+.dir-rtl h6.headline{
+	border-width: 0px 2px 0px 0px;
 }
 
 hr.separator{

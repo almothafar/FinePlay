@@ -75,6 +75,7 @@ public class Page extends FluentPage {
 		// window.setSize(getDimension());
 		// window.setPosition(getPoint());
 
+		// TODO
 		getBrowser().takeScreenShot(path.resolve(Locales.toLang(locale).code()).resolve(counter.increment() + " " + name + ".png").toString());
 	}
 

@@ -193,7 +193,7 @@ public class Edit extends Controller {
 
 						user = userDao.read(manager, models.user.User.class, (builder, query) -> {
 
-							final LocalDateTime serverDateTime = DateTimes.getServerDateTime(updateDateTime);
+							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//
@@ -274,7 +274,7 @@ public class Edit extends Controller {
 
 						user = userDao.read(manager, models.user.User.class, (builder, query) -> {
 
-							final LocalDateTime serverDateTime = DateTimes.getServerDateTime(updateDateTime);
+							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//

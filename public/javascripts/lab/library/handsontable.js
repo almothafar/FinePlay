@@ -1,122 +1,128 @@
 'use strict';
 
-var getData = (function () {
+$(document).ready(function() {
 
-	var data = JSON.parse($('#rowsJson').text());
+	var getData = (function () {
 
-	return function () {
+		var data = JSON.parse($('#rowsJson').text());
 
-		var page = parseInt(window.location.hash.replace('#', ''), 10) || 0,
-			limit = Messages("pageSize"),
-			row	 = page * limit,
-			count = (page + 1) * limit,
-			part = [];
+		return function () {
 
-		for (;row < count;row++) {
-			part.push(data[row]);
+			var page = parseInt(window.location.hash.replace('#', ''), 10) || 0,
+				limit = Messages("pageSize"),
+				row	 = page * limit,
+				count = (page + 1) * limit,
+				part = [];
+
+			for (;row < count;row++) {
+				part.push(data[row]);
+			}
+
+			return part;
 		}
+	})();
 
-		return part;
-	}
-})();
+	var container = document.getElementById('hot_container');
+	var hot = new Handsontable(container, {
 
-var container = document.getElementById('hot_container');
-var hot = new Handsontable(container, {
-
-	data: getData(),
-	rowHeaders: true,
-	colHeaders: true,
-	dropdownMenu: true,
-	contextMenu: true
-});
-
-var redraw = function(){
-
-	hot.updateSettings({
-
-		height: $("#hot_container .htCore").height()
+		data: getData(),
+		rowHeaders: true,
+		colHeaders: true,
+		dropdownMenu: true,
+		contextMenu: true,
+		language: Messages(MessageKeys.HANDSONTABLE_LANG)
 	});
-}
 
-$('#hot_pagination>.pagination>.page-item>a[href^=\"#\"].page-link').on('click', function() {
+	var redraw = function(){
 
-	var currentPage = parseInt(window.location.hash.replace('#', ''), 10) || 0;
+		hot.updateSettings({
 
-	var href = $(this).attr("href");
-	var targetPage;
-	var target = href.replace('#', '')
-	switch (target){
-		case 'p':
-
-			targetPage = currentPage - 1;
-			break;
-		case 'n':
-
-			targetPage = currentPage + 1;
-			break;
-		default:
-
-			targetPage = parseInt(target, 10) || 0;
-			break;
+			height: $("#hot_container .htCore").height()
+		});
 	}
 
-	var visibleCount = 3;
-	var visibleIndexs = [];
+	$('#hot_pagination>.pagination>.page-item>a[href^=\"#\"].page-link').on('click', function() {
 
-	visibleIndexs.push(targetPage);
-	do {
+		var currentPage = parseInt(window.location.hash.replace('#', ''), 10) || 0;
 
-		if (visibleIndexs.length < visibleCount) {
+		var href = $(this).attr("href");
+		var targetPage;
+		var target = href.replace('#', '')
+		switch (target){
+			case 'p':
 
-			var last = visibleIndexs[visibleIndexs.length - 1];
-			if (last < Messages("pageCount") - 1) {
+				targetPage = currentPage - 1;
+				break;
+			case 'n':
 
-				var next = last + 1;
-				visibleIndexs.push(next);
-			}
+				targetPage = currentPage + 1;
+				break;
+			default:
+
+				targetPage = parseInt(target, 10) || 0;
+				break;
 		}
 
-		if (visibleIndexs.length < visibleCount) {
+		var visibleCount = 3;
+		var visibleIndexs = [];
 
-			var head = visibleIndexs[0];
-			if (0 < head) {
+		visibleIndexs.push(targetPage);
+		do {
 
-				var prev = head - 1;
-				visibleIndexs.unshift(prev);
+			if (visibleIndexs.length < visibleCount) {
+
+				var last = visibleIndexs[visibleIndexs.length - 1];
+				if (last < Messages("pageCount") - 1) {
+
+					var next = last + 1;
+					visibleIndexs.push(next);
+				}
 			}
+
+			if (visibleIndexs.length < visibleCount) {
+
+				var head = visibleIndexs[0];
+				if (0 < head) {
+
+					var prev = head - 1;
+					visibleIndexs.unshift(prev);
+				}
+			}
+		} while (visibleIndexs.length < visibleCount);
+
+		var isEnabledFirst = 0 < targetPage;
+		var isEnabledPrevious =  0 < targetPage;
+		var isEnabledNext = targetPage < Messages("pageCount") - 1;
+		var isEnabledLast = targetPage < Messages("pageCount") - 1;
+
+		var pageItems = $('#hot_pagination>.pagination>.page-item');
+		isEnabledFirst ? pageItems.eq(0).removeClass('disabled') : pageItems.eq(0).addClass('disabled');
+		isEnabledPrevious ? pageItems.eq(1).removeClass('disabled') : pageItems.eq(1).addClass('disabled');
+		for(var i = 2;i < pageItems.length -2;i++){
+			var pageItem = pageItems.eq(i);
+			visibleIndexs.indexOf(i-2) != -1 ? pageItem.show() : pageItem.hide();
+			targetPage == (i-2) ? pageItem.addClass('active') : pageItem.removeClass('active');
 		}
-	} while (visibleIndexs.length < visibleCount);
+		isEnabledNext ? pageItems.eq(pageItems.length - 2).removeClass('disabled') : pageItems.eq(pageItems.length - 2).addClass('disabled');
+		isEnabledLast ? pageItems.eq(pageItems.length - 1).removeClass('disabled') : pageItems.eq(pageItems.length - 1).addClass('disabled');
 
-	var isEnabledFirst = 0 < targetPage;
-	var isEnabledPrevious =  0 < targetPage;
-	var isEnabledNext = targetPage < Messages("pageCount") - 1;
-	var isEnabledLast = targetPage < Messages("pageCount") - 1;
+		window.location.hash = targetPage;
 
-	var pageItems = $('#hot_pagination>.pagination>.page-item');
-	isEnabledFirst ? pageItems.eq(0).removeClass('disabled') : pageItems.eq(0).addClass('disabled');
-	isEnabledPrevious ? pageItems.eq(1).removeClass('disabled') : pageItems.eq(1).addClass('disabled');
-	for(var i = 2;i < pageItems.length -2;i++){
-		var pageItem = pageItems.eq(i);
-		visibleIndexs.indexOf(i-2) != -1 ? pageItem.show() : pageItem.hide();
-		targetPage == (i-2) ? pageItem.addClass('active') : pageItem.removeClass('active');
-	}
-	isEnabledNext ? pageItems.eq(pageItems.length - 2).removeClass('disabled') : pageItems.eq(pageItems.length - 2).addClass('disabled');
-	isEnabledLast ? pageItems.eq(pageItems.length - 1).removeClass('disabled') : pageItems.eq(pageItems.length - 1).addClass('disabled');
+		return false;
+	});
 
-	window.location.hash = targetPage;
+	Handsontable.dom.addEvent(window, 'hashchange', function (event) {
 
-	return false;
-});
+		hot.loadData(getData());
+		redraw();
+	});
 
-Handsontable.dom.addEvent(window, 'hashchange', function (event) {
+	$(window).resize(function(){
 
-	hot.loadData(getData());
-	redraw();
-});
-
-$(window).resize(function(){
+		redraw();
+	});
 
 	redraw();
-});
 
-$('#hot_pagination>.pagination>.page-item>a[href^=\"#\"].page-link').eq(0).trigger('click');
+	$('#hot_pagination>.pagination>.page-item>a[href^=\"#\"].page-link').eq(0).trigger('click');
+});

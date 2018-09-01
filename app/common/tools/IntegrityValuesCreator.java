@@ -37,11 +37,16 @@ class IntegrityValuesCreator {
 
 		final SortedMap<String, String> constMap = new TreeMap<>();
 
-		constMap.put("BOOTSTRAP_STYLE", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "bootstrap", "dist", "css", "bootstrap.min.css")));
+		constMap.put("BOOTSTRAP_STYLE", createValue(Paths.get(".", "public", "themes", "default", "bootstrap.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_PRETTY", createValue(Paths.get(".", "public", "themes", "pretty", "bootstrap.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_JAPAN", createValue(Paths.get(".", "public", "themes", "japan", "bootstrap.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_BUSINESS", createValue(Paths.get(".", "public", "themes", "business", "bootstrap.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_NATURAL", createValue(Paths.get(".", "public", "themes", "natural", "bootstrap.min.css")));
+		constMap.put("BOOTSTRAP_STYLE_RTL", createValue(Paths.get(".", "public", "themes", "default", "bootstrap-rtl.min.css")));
+		constMap.put("BOOTSTRAP_STYLE_PRETTY_RTL", createValue(Paths.get(".", "public", "themes", "pretty", "bootstrap-rtl.min.css")));
+		constMap.put("BOOTSTRAP_STYLE_JAPAN_RTL", createValue(Paths.get(".", "public", "themes", "japan", "bootstrap-rtl.min.css")));
+		constMap.put("BOOTSTRAP_STYLE_BUSINESS_RTL", createValue(Paths.get(".", "public", "themes", "business", "bootstrap-rtl.min.css")));
+		constMap.put("BOOTSTRAP_STYLE_NATURAL_RTL", createValue(Paths.get(".", "public", "themes", "natural", "bootstrap-rtl.min.css")));
 		constMap.put("BOOTSTRAP_SCRIPT", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "bootstrap", "dist", "js", "bootstrap.min.js")));
 
 		constMap.put("JQUERY_SCRIPT", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "jquery", "dist", "jquery.min.js")));

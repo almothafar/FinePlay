@@ -93,7 +93,7 @@ public class Edit extends Controller {
 								messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.getServerDateTime(LocalDateTime.parse(createFormContent.getOrganizationUpdateDateTime()));
+					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(LocalDateTime.parse(createFormContent.getOrganizationUpdateDateTime()));
 					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
 
 						throw new PlayException(//
@@ -193,7 +193,7 @@ public class Edit extends Controller {
 								messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.getServerDateTime(LocalDateTime.parse(updateFormContent.getOrganizationUpdateDateTime()));
+					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(LocalDateTime.parse(updateFormContent.getOrganizationUpdateDateTime()));
 					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
 
 						throw new PlayException(//
@@ -219,7 +219,7 @@ public class Edit extends Controller {
 
 						organizationUnit = organizationUnitDao.read(manager, OrganizationUnit.class, (builder, query) -> {
 
-							final LocalDateTime serverDateTime = DateTimes.getServerDateTime(updateDateTime);
+							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<OrganizationUnit> root = query.from(OrganizationUnit.class);
 							query.where(builder.and(//
@@ -316,7 +316,7 @@ public class Edit extends Controller {
 								messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.getServerDateTime(LocalDateTime.parse(deleteFormContent.getOrganizationUpdateDateTime()));
+					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(LocalDateTime.parse(deleteFormContent.getOrganizationUpdateDateTime()));
 					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
 
 						throw new PlayException(//
@@ -340,7 +340,7 @@ public class Edit extends Controller {
 
 						organizationUnit = organizationUnitDao.read(manager, OrganizationUnit.class, (builder, query) -> {
 
-							final LocalDateTime serverDateTime = DateTimes.getServerDateTime(updateDateTime);
+							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<OrganizationUnit> root = query.from(OrganizationUnit.class);
 							query.where(builder.and(//

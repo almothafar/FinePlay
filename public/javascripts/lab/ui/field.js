@@ -2,6 +2,18 @@
 
 var initEraceableField = function(selector){
 
+	var startDirection;
+	var endDirection;
+	if(!$('html').hasClass('dir-rtl')){
+
+		startDirection = "left";
+		endDirection = "right";
+	}else{
+
+		startDirection = "right";
+		endDirection = "left";
+	}
+
 	var updateIconState = function(input){
 
 		var addOn = input.next('.input-group-append').children('.input-group-text');
@@ -17,7 +29,7 @@ var initEraceableField = function(selector){
 	}
 
 	var input = $(selector + ">input");
-	input.css("border-right-width","0px");
+	input.css("border-"+endDirection+"-width","0px");
 	input.on('change', function(event){
 
 		var currentInput = $(this);
@@ -28,7 +40,9 @@ var initEraceableField = function(selector){
 
 		var input = $(this);
 		var addOn = input.next('.input-group-append').children('.input-group-text');
-		addOn.css({"border-left-width": "0px", "background-color": getTheme().backgroundColor, "color": "#495057"});
+		var addOnStyle = {"background-color": getTheme().backgroundColor, "color": "#495057"};
+		addOnStyle["border-"+startDirection+"-width"] = "0px";
+		addOn.css(addOnStyle);
 
 		updateIconState(input);
 

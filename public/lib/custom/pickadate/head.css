@@ -33,3 +33,7 @@
 .picker__select--month::-ms-expand, .picker__select--year::-ms-expand {
 	opacity: 0
 }
+
+.dir-rtl .picker.picker--time {
+	text-align: right;
+}

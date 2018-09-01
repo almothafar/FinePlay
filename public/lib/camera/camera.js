@@ -169,7 +169,10 @@ var Camera = function(finderFrameSelector, pictureFrameSelector, options) {
 
 			picutureScaleX = (pictureFrameWidth - (cropVideoWidth * picutureScale));
 		}
-		picture.style.transformOrigin = picutureScaleX + "px " + picutureScaleY + "px";
+
+		var pictureOriginX = 0;
+		if(!$('html').hasClass('dir-ltr')){pictureOriginX = pictureWidth};
+		picture.style.transformOrigin = pictureOriginX + "px " + picutureScaleY + "px";
 
 		var context = picture.getContext("2d");
 		context.drawImage(finder,

@@ -121,7 +121,7 @@ public class DateTime extends Controller {
 				throw new IllegalStateException(getIllegalDateTimeMessage());
 			}
 
-			serverDateTime_DateTime = DateTimes.getServerDateTime(LocalDateTime.of(dateTime_Date, dateTime_Time));
+			serverDateTime_DateTime = DateTimes.toServerDateTime(LocalDateTime.of(dateTime_Date, dateTime_Time));
 		}
 
 		final LocalDate date_Date = datetimeFormContent.getDate_Date();
@@ -136,7 +136,7 @@ public class DateTime extends Controller {
 				throw new IllegalStateException(getIllegalDateTimeMessage());
 			}
 
-			final LocalDateTime serverTime_DateTime = DateTimes.getServerDateTime(LocalDateTime.of(time_Date, time_Time));
+			final LocalDateTime serverTime_DateTime = DateTimes.toServerDateTime(LocalDateTime.of(time_Date, time_Time));
 			serverTime = serverTime_DateTime.toLocalTime();
 		}
 
@@ -196,7 +196,7 @@ public class DateTime extends Controller {
 
 		if (Objects.nonNull(datetime.getDateTime())) {
 
-			final LocalDateTime clientDateTime = DateTimes.getClientDateTime(datetime.getDateTime());
+			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(datetime.getDateTime());
 			datetimeFormContent.setDateTime_Date_submit(clientDateTime.toLocalDate());
 			datetimeFormContent.setDateTime_Time_submit(clientDateTime.toLocalTime());
 		}
@@ -205,12 +205,12 @@ public class DateTime extends Controller {
 
 		if (Objects.nonNull(datetime.getTime())) {
 
-			final LocalDateTime clientDateTime = DateTimes.getClientDateTime(LocalDateTime.of(LocalDate.now(), datetime.getTime()));
+			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(LocalDateTime.of(LocalDate.now(), datetime.getTime()));
 			datetimeFormContent.setTime_Date(clientDateTime.toLocalDate());
 			datetimeFormContent.setTime_Time_submit(clientDateTime.toLocalTime());
 		} else {
 
-			final LocalDateTime clientDateTime = DateTimes.getClientDateTime(LocalDateTime.now());
+			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(LocalDateTime.now());
 			datetimeFormContent.setTime_Date(clientDateTime.toLocalDate());
 		}
 

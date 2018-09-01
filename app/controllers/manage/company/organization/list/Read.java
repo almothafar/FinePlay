@@ -145,7 +145,7 @@ public class Read extends Controller {
 		}
 
 		readFormContent.setOrganizationId(organization.getId());
-		final LocalDateTime organizationUpdateDateTime = organization.getUpdateDateTime() != null ? DateTimes.getClientDateTime(organization.getUpdateDateTime()) : null;
+		final LocalDateTime organizationUpdateDateTime = organization.getUpdateDateTime() != null ? DateTimes.toClientDateTime(organization.getUpdateDateTime()) : null;
 		readFormContent.setOrganizationUpdateDateTime(organizationUpdateDateTime);
 
 		final String name = readFormContent.getName();

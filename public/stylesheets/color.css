@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .text-transparent { color: transparent !important; }
 
 .text-red { color: #f44336 !important; }

@@ -430,7 +430,7 @@ $('[data-toggle="popover"]').popover();
 
 if(document.location.origin+Routes.controllers.manage.company.Read.index().url == document.referrer){
 
-	showFromRight('#detailContent');
+	showFromEnd('#detailContent');
 }else{
 
 	$('#detailContent').removeClass("d-none");
@@ -440,7 +440,7 @@ $('#previousButton').on('click', function(e){
 
 	e.preventDefault();
 
-	hideToRight('#detailContent', function(e){
+	hideToEnd('#detailContent', function(e){
 
 		window.location.href = Routes.controllers.manage.company.Read.index().url;
 	});

@@ -84,7 +84,7 @@ $(document).ready(function() {
 		var target = company['id'];
 //				var target = $(this).parent().parent().find('td').eq(0).text();
 
-		hideToLeft('#masterContent', function(e){
+		hideToStart('#masterContent', function(e){
 
 			window.location.href = Routes.controllers.manage.company.organization.list.Read.index(target).url;
 		});
@@ -447,7 +447,7 @@ $('[data-toggle="popover"]').popover();
 if(document.location.origin+Routes.controllers.manage.company.organization.list.Read.index(0).url.replace(/\?.*/,'') == document.referrer.replace(/\?.*/,'') ||
 	document.location.origin+Routes.controllers.manage.company.organization.tree.Read.index(0).url.replace(/\?.*/,'') == document.referrer.replace(/\?.*/,'')){
 
-	showFromLeft('#masterContent');
+	showFromStart('#masterContent');
 }else{
 
 	$('#masterContent').removeClass("d-none");

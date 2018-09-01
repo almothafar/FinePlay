@@ -29,6 +29,9 @@ if (!window.console){
 
 console.time('welcome');
 
+console.log("%c", "background: url(http://localhost:9000/assets/images/favicon.png); background-size: 100% 100%; padding: 32px 32px");
+console.log("");
+
 console.log("Welcome to %cfine%c✿%cplay!", "color:black;font-size:24px;","color:pink;font-size:26px;","color:black;font-size:24px;");
 
 console.groupCollapsed('Script log');
@@ -73,7 +76,7 @@ var hideToRight = function(selector, func){
 
 var showFromStart = function(selector, func){
 
-	if(!$('html').hasClass('direction-rtl')){
+	if(!$('html').hasClass('dir-rtl')){
 
 		showFromLeft(selector, func);
 	}else{
@@ -84,7 +87,7 @@ var showFromStart = function(selector, func){
 
 var hideToStart = function(selector, func){
 
-	if(!$('html').hasClass('direction-rtl')){
+	if(!$('html').hasClass('dir-rtl')){
 
 		hideToLeft(selector, func);
 	}else{
@@ -95,7 +98,7 @@ var hideToStart = function(selector, func){
 
 var showFromEnd = function(selector, func){
 
-	if(!$('html').hasClass('direction-rtl')){
+	if(!$('html').hasClass('dir-rtl')){
 
 		showFromRight(selector, func);
 	}else{
@@ -106,7 +109,7 @@ var showFromEnd = function(selector, func){
 
 var hideToEnd = function(selector, func){
 
-	if(!$('html').hasClass('direction-rtl')){
+	if(!$('html').hasClass('dir-rtl')){
 
 		hideToRight(selector, func);
 	}else{

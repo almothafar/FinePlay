@@ -4,30 +4,18 @@
 
 @()
 
-<!-- bower -->
-<!-- <script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/handsontable/dist/handsontable.full.min.js")"></script> -->
 <!-- npm -->
 <script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/handsontable/dist/handsontable.full.min.js")"></script>
+@translation() = @{
 
-<div id="handsontable_messages" class="d-none" data-messages='{
-	"@MessageKeys.INSERT__ROW__ABOVE":"@Messages(MessageKeys.INSERT__ROW__ABOVE)",
-	"@MessageKeys.INSERT__ROW__BELOW":"@Messages(MessageKeys.INSERT__ROW__BELOW)",
-	"@MessageKeys.INSERT__COLUMN__LEFT":"@Messages(MessageKeys.INSERT__COLUMN__LEFT)",
-	"@MessageKeys.INSERT__COLUMN__RIGHT":"@Messages(MessageKeys.INSERT__COLUMN__RIGHT)",
-	"@MessageKeys.REMOVE__ROW":"@Messages(MessageKeys.REMOVE__ROW)",
-	"@MessageKeys.REMOVE__COLUMN":"@Messages(MessageKeys.REMOVE__COLUMN)",
-	"@MessageKeys.UNDO":"@Messages(MessageKeys.UNDO)",
-	"@MessageKeys.REDO":"@Messages(MessageKeys.REDO)",
-	"@MessageKeys.READ__ONLY":"@Messages(MessageKeys.READ__ONLY)",
-	"@MessageKeys.ALIGNMENT":"@Messages(MessageKeys.ALIGNMENT)",
-	"@MessageKeys.LEFT":"@Messages(MessageKeys.LEFT)",
-	"@MessageKeys.CENTER":"@Messages(MessageKeys.CENTER)",
-	"@MessageKeys.RIGHT":"@Messages(MessageKeys.RIGHT)",
-	"@MessageKeys.JUSTIFY":"@Messages(MessageKeys.JUSTIFY)",
-	"@MessageKeys.TOP":"@Messages(MessageKeys.TOP)",
-	"@MessageKeys.MIDDLE":"@Messages(MessageKeys.MIDDLE)",
-	"@MessageKeys.BOTTOM":"@Messages(MessageKeys.BOTTOM)",
-	"@MessageKeys.COPY":"@Messages(MessageKeys.COPY)",
-	"@MessageKeys.CUT":"@Messages(MessageKeys.CUT)"
-}'></div>
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/handsontable/last.js")'></script>
+	var lang = Messages(MessageKeys.HANDSONTABLE_LANG)
+	if(lang.isEmpty){
+
+		Html("")
+	}else{
+
+		var path = "lib/handsontable/dist/languages/"+lang+".js"
+		Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+	}
+}
+@translation()

@@ -51,7 +51,7 @@ var mySlider = $("#waitSlider").bootstrapSlider({
 $('#progressAlertButton').on('click', function(e){
 
 	var alertHtml = '' +
-		'<div class="alert alert-progress bg-dark text-light opacity-75 rounded-0 fade alert-dismissible show text-start" role="alert">' +
+		'<div class="alert alert-progress bg-dark text-light opacity-75 rounded-0 fade alert-dismissible show text-left" role="alert">' +
 			'<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
 				'<span aria-hidden="true">×</span>' +
 			'</button>' +

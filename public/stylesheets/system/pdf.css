@@ -11,9 +11,19 @@
 	top: 45px;
 	left: 16px
 }
+.dir-rtl #btn-prev {
+	position: absolute;
+	top: 45px;
+	left: initial;
+	right: 16px
+}
 
 #outerContainer.sidebarOpen ~ #btn-prev {
 	left: 216px
+}
+.dir-rtl #outerContainer.sidebarOpen ~ #btn-prev {
+	left: initial;
+	right: 216px
 }
 
 .btn-primary:hover {
@@ -57,4 +67,9 @@ a:hover {
 	user-select: none;
 	border: 1px solid transparent;
 	border-radius: .25rem
+}
+
+.dir-rtl .dir-flip-horizontal {
+	-webkit-transform: scale(-1, 1);
+	transform: scale(-1, 1);
 }

@@ -65,7 +65,7 @@
 	}
 }
 
-<ul id="@prop.getOrElse("id", "")" class="nav @("nav-tabs".when(Boolean.valueOf(prop.getOrElse("tabs", "false")))) @("nav-pills".when(Boolean.valueOf(prop.getOrElse("pills", "false")))) @("flex-column".when(Boolean.valueOf(prop.getOrElse("stacked", "false")))) @Attributes.classValue(prop) px-0" @Html(Attributes.datas(prop))>
+<ul id="@prop.getOrElse("id", "")" class="nav @("nav-tabs".when(Boolean.valueOf(prop.getOrElse("tabs", "false")))) @("nav-pills".when(Boolean.valueOf(prop.getOrElse("pills", "false")))) @("flex-column".when(Boolean.valueOf(prop.getOrElse("stacked", "false")))) @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 
 		<li class="nav-item dropdown @dropDownSize(prop) position-absolute"><!-- absolute for IE -->
 			@for(i <- 0 to elements.size - 1){

@@ -20,13 +20,13 @@ public class ParseServerLocalDateTime extends ParseLocalDateTime {
 	@Override
 	protected LocalDateTime parse(String string) {
 
-		return DateTimes.getServerDateTime(super.parse(string));
+		return DateTimes.toServerDateTime(super.parse(string));
 	}
 
 	@SuppressWarnings("null")
 	@Override
 	protected LocalDateTime parse(String string, DateTimeFormatter formatter) {
 
-		return DateTimes.getServerDateTime(super.parse(string, formatter));
+		return DateTimes.toServerDateTime(super.parse(string, formatter));
 	}
 }

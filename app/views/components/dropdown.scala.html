@@ -9,11 +9,26 @@
 
 @(prop:scala.collection.immutable.Map[String, String], elements:Seq[scala.collection.immutable.Map[String, String]])
 
+@alignment() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	val alignment = prop.getOrElse("alignment", "");
+	alignment match {
+		case "right" => {
+
+			if(isLTR) {"right"} else {""}
+		}
+		case "" | _ => {
+
+			if(isLTR) {""} else {"right"}
+		}
+	}
+}
+
 <div id="@prop.getOrElse("id", "")" class="dropdown @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
 	@components.button(Map("type"->"primary", "outline"->"true", "icon"->prop.getOrElse("icon", ""), "text"->prop.getOrElse("text", ""), "class"->"dropdown-toggle", "data-toggle"->"dropdown", "aria-haspopup"->"true", "aria-expanded"->"false"))
-	<div class="dropdown-menu dropdown-menu-start text-start">
+	<div class="dropdown-menu dropdown-menu-@alignment() text-left">
 	@for(i <- 0 to elements.size - 1){
-
 
 		@elements(i).getOrElse("itemType", "item") match {
 			case "header" => {
@@ -37,7 +52,7 @@
 				<a id="@elements(i).getOrElse("id", "")" class="dropdown-item @("disabled".when(!Boolean.valueOf(elements(i).getOrElse("enabled", "true"))))" href="@elements(i).getOrElse("link", "#")">
 					<i class="@elements(i).getOrElse("icon", "")"></i>
 					@Html(elements(i).getOrElse("text", ""))
-					<div class="float-end">
+					<div class="float-right">
 						@if(!elements(i).getOrElse("badge", "").isEmpty()){&nbsp}@components.badge(Map("type"->prop.getOrElse("badgeType", "secondary"), "pill"->"true", "text"->elements(i).getOrElse("badge", "")))
 					</div>
 				</a>

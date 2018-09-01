@@ -13,6 +13,12 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 
+@dir() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if (isLTR){"ltr"} else {"rtl"}
+}
+
 <!DOCTYPE html>
 <!--
 Copyright 2012 Mozilla Foundation
@@ -35,7 +41,7 @@ Adobe CMap resources are covered by their own copyright but the same license:
 
 See https://github.com/adobe-type-tools/cmap-resources
 -->
-<html dir="ltr" mozdisallowselectionprint>
+<html dir="ltr" mozdisallowselectionprint class="dir-@dir()">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -409,6 +415,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     </div> <!-- outerContainer -->
     <div id="printContainer"></div>
-	@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.BACK), "link"->pdfInfo.get(models.system.PDFInfoFormContent.RETURNURL), "class"->"d-print-none"))
+	@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.BACK), "link"->pdfInfo.get(models.system.PDFInfoFormContent.RETURNURL), "class"->"d-print-none dir-flip-horizontal"))
   </body>
 </html>

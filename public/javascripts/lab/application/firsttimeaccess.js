@@ -24,7 +24,8 @@ if(window.localStorage){
 		$('#firstDialog').on('shown.bs.modal', function (e) {
 
 			$('.slick-container').slick({
-				dots: true
+				dots: true,
+				rtl: $('html').hasClass('dir-rtl')
 			});
 		})
 

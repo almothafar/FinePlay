@@ -179,27 +179,6 @@ public class User extends Controller {
 				return failureSignIn(failureSignInForm);
 			}
 
-			if (Boolean.valueOf(signInFormContent.getStoreAccount())) {
-
-				final String encodedUserId;
-				final String encodedPassword;
-				try {
-
-					encodedUserId = URLEncoder.encode(userId, StandardCharsets.UTF_8.name());
-					encodedPassword = URLEncoder.encode(password, StandardCharsets.UTF_8.name());
-				} catch (final UnsupportedEncodingException e) {
-
-					throw new RuntimeException(e);
-				}
-
-				response().setCookie(Cookie.builder(models.user.User_.USER_ID, encodedUserId).withMaxAge(TWO_WEEKS).build());
-				response().setCookie(Cookie.builder(models.user.User.PASSWORD, encodedPassword).withMaxAge(TWO_WEEKS).build());
-			} else {
-
-				response().discardCookie(models.user.User_.USER_ID);
-				response().discardCookie(models.user.User.PASSWORD);
-			}
-
 			session(models.user.User_.THEME, user.getTheme().name());
 
 			final Lang selectedLang = Locales.toLang(user.getLocale());
@@ -216,7 +195,40 @@ public class User extends Controller {
 
 				requestUrl = controllers.home.routes.Home.index().url();
 			}
-			return redirect(requestUrl);
+
+			final Result result = redirect(requestUrl);
+			if (Boolean.valueOf(signInFormContent.getStoreAccount())) {
+				LOGGER.info("Store account");
+
+				final String encodedUserId;
+				final String encodedPassword;
+				try {
+
+					encodedUserId = URLEncoder.encode(userId, StandardCharsets.UTF_8.name());
+					encodedPassword = URLEncoder.encode(password, StandardCharsets.UTF_8.name());
+				} catch (final UnsupportedEncodingException e) {
+
+					throw new RuntimeException(e);
+				}
+
+				// TODO How to set cookie is unknown.
+//				result.withCookies(//
+//						Cookie.builder(models.user.User_.USER_ID, encodedUserId).withMaxAge(TWO_WEEKS).build(), //
+//						Cookie.builder(models.user.User.PASSWORD, encodedPassword).withMaxAge(TWO_WEEKS).build());
+				response().setCookie(Cookie.builder(models.user.User_.USER_ID, encodedUserId).withMaxAge(TWO_WEEKS).build());
+				response().setCookie(Cookie.builder(models.user.User.PASSWORD, encodedPassword).withMaxAge(TWO_WEEKS).build());
+			} else {
+				LOGGER.info("Not Store account");
+
+				// TODO How to set cookie is unknown.
+//				result//
+//						.discardCookie(models.user.User_.USER_ID)//
+//						.discardCookie(models.user.User.PASSWORD);
+				response().discardCookie(models.user.User_.USER_ID);
+				response().discardCookie(models.user.User.PASSWORD);
+			}
+
+			return result;
 		} else {
 
 			return failureSignIn(signInForm);

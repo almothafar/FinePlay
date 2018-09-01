@@ -2,22 +2,26 @@
 
 $(document).ready(function () {
 
+	var drawerDirection;
+	if(!$('html').hasClass('dir-rtl')){drawerDirection = "right";}else{drawerDirection = "left";}
+
 	extendSurface('#drawer');
 	var surface = $('#drawer').parent();
 	var surfaceId = surface.attr('id');
 
-	surface.addClass('d-none').css({
+	var drawerStyle = {
 		"width": '260px',
 		"height": '80%',
 		"top": '10%',
-		"right": 0,
 		"bottom": '10%',
 		"overflow": 'hidden'
-	});
+	};
+	drawerStyle[drawerDirection] = 0;
+	surface.addClass('d-none').css(drawerStyle);
 
 	$("#drawerCloseButton").on('click', function(event) {
 
-		hideToRight('#drawer', function(){
+		hideToEnd('#drawer', function(){
 
 			$('#' + surfaceId).addClass('d-none');
 		});
@@ -26,6 +30,6 @@ $(document).ready(function () {
 	$("#drawerButton").on('click', function(event) {
 
 		$('#' + surfaceId).removeClass('d-none');
-		showFromRight('#drawer');
+		showFromEnd('#drawer');
 	});
 });

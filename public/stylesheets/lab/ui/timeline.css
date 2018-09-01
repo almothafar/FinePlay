@@ -7,16 +7,27 @@
 
 	.event-date {
 	}
-	.event-content-frame {
+	.dir-ltr .event-content-frame {
 		border-left: 5px #eceeef solid;
 	}
-	.event-content {
+	.dir-ltr .event-content {
 		margin-left: 1rem
 	}
-	.event-type {
+	.dir-ltr .event-type {
 		position: absolute;
 		top: 10px;
 		left: -24px;
+	}
+	.dir-rtl .event-content-frame {
+		border-right: 5px #eceeef solid;
+	}
+	.dir-rtl .event-content {
+		margin-right: 1rem
+	}
+	.dir-rtl .event-type {
+		position: absolute;
+		top: 10px;
+		right: -24px;
 	}
 }
 

@@ -1,10 +1,21 @@
 @()
 
-<link rel='stylesheet'
-	href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.css")'>
-<link rel='stylesheet'
-	href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.date.css")'>
-<link rel='stylesheet'
-	href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.time.css")'>
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.css")'>
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.date.css")'>
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.time.css")'>
+
+@translation() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if(isLTR){
+
+		Html("")
+	}else{
+
+		var path = "lib/pickadate.js/themes/rtl.css"
+		Html("<link rel='stylesheet' href='"+routes.Assets.versioned(path)+"'>")
+	}
+}
+@translation()
 
 <link rel='stylesheet' href='@routes.Assets.versioned("lib/custom/pickadate/head.css")'>

@@ -10,23 +10,18 @@
 	session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase
 }
 
-@langDirection() = @{
+@dir() = @{
 
-	if(!(lang.language.startsWith("ar") || lang.language.startsWith("he"))){
-
-		"ltr"
-	}else{
-
-		// Joke.
-		"rtl"
-	}
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if (isLTR){"ltr"} else {"rtl"}
 }
 
 <!DOCTYPE html>
 
 <html
 	lang="@lang.code"
-	class="mode-@mode() direction-@langDirection() theme-@theme()"
+	dir="@dir()"
+	class="mode-@mode() dir-@dir() theme-@theme()"
 >
 	@content
 </html>

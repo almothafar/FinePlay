@@ -13,11 +13,21 @@ public class IntegrityValues {
 
   public static final String BOOTSTRAP_STYLE_BUSINESS = "InVFedneFRZXegP7GWgdS47Y3FYy2DMMCuWEu/Bn5rWMqL4k+G/F3zX6m3xJaSIg";
 
+  public static final String BOOTSTRAP_STYLE_BUSINESS_RTL = "g3aj4e+5VOQweyY/4geiLnoflj4r04LUL+5+zKEq/ZiRabZC4HnRYtRmK8+ustod";
+
   public static final String BOOTSTRAP_STYLE_JAPAN = "P85gWlQm+TVH3JNct1hFzu/jIgqit1W/RdzaiTVZVhjByXSWhwa3Wmh6aQh+SIPq";
+
+  public static final String BOOTSTRAP_STYLE_JAPAN_RTL = "zGo8exZzmj0WGMYFYgQGmod8NqtKTaV4uPNAZdo/hjqjPFqwfa/bUVV6aV0OgS2T";
 
   public static final String BOOTSTRAP_STYLE_NATURAL = "nY67vqrTslg4Z/kgIcVgXnAAVGi/M9SLpdf95BRibi1KcRSPmIm+A9mnS0HwH4Ue";
 
+  public static final String BOOTSTRAP_STYLE_NATURAL_RTL = "fFkxEzz9nwPBXuC8jCMnRNorkXTfXddS5u1PbvkOikzbsGH/hDnC75z0bXxc9Kdr";
+
   public static final String BOOTSTRAP_STYLE_PRETTY = "3cg7OpuECkpgR7KPOSp9Hru+1KdFpk6weNA4vM7vmQ1RkhkyhNWLhYNpUcCR9sJ5";
+
+  public static final String BOOTSTRAP_STYLE_PRETTY_RTL = "TpbsWNU3UuZsi5WdGKhLSAjn+cPhg1yVqpE1LeQBZ2TIgMUxI9khNn3rw6KdnYMx";
+
+  public static final String BOOTSTRAP_STYLE_RTL = "bVYuvOaoT8wOJ3OkXjakZfbP2tmBtmNi2SXY6ygsTljO60UGNXb+OoiXfOvSAxRg";
 
   public static final String JQUERY_SCRIPT = "tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT";
 

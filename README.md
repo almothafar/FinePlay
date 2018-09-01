@@ -76,8 +76,11 @@ TODO
 #### FinePlay 2.7.x ####
 + Update Play Framework 2.7.x
 + Update OpenJDK 11 / Apache POI 4.0.0
++ Update Bootbox 5.0
++ Update Shepherd 2.0.0
 
 #### Play Framework 2.7.x ####
++ Learn how to set cookies with the API of 2.7.x.
 + Update application.conf
 + Update messages
 
@@ -93,7 +96,7 @@ TODO
 Release History
 ---------------
 
-+ **2.7.0-M2-α4** - 2018-07-30
++ **2.7.0-M2-α5** - 2018-09-01
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

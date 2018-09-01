@@ -88,7 +88,7 @@ public class Edit extends Controller {
 								messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.getServerDateTime(updateFormContent.getOrganizationUpdateDateTime());
+					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(updateFormContent.getOrganizationUpdateDateTime());
 					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
 
 						throw new PlayException(//

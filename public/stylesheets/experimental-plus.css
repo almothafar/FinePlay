@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/* Direction */
+
+.dir-rtl .dir-flip-horizontal {
+	-webkit-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+}
+
+/* Disclosure */
+
+.disclosure-90[aria-expanded=true]>.fas,
+.disclosure-90[aria-expanded=true]>.far,
+.disclosure-90[aria-expanded=true]>.fal,
+.disclosure-90[aria-expanded=true]>.fab,
+.disclosure-90[aria-expanded=true]>.material-icons,
+.disclosure-90[aria-expanded=true]>.ion,
+.disclosure-90[aria-expanded=true]>.icofont {
+	transform: rotate(90deg)
+}
+
+.disclosure-180[aria-expanded=true]>.fas,
+.disclosure-180[aria-expanded=true]>.far,
+.disclosure-180[aria-expanded=true]>.fal,
+.disclosure-180[aria-expanded=true]>.fab,
+.disclosure-180[aria-expanded=true]>.material-icons,
+.disclosure-180[aria-expanded=true]>.ion,
+.disclosure-180[aria-expanded=true]>.icofont {
+	transform: rotate(180deg)
+}

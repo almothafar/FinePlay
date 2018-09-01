@@ -1,6 +1,6 @@
 'use strict';
 
-showFromLeft('#masterContent');
+showFromStart('#masterContent');
 
 var buildForm = function(method, action, json){
 
@@ -25,7 +25,7 @@ $('.nextButton').on('click', function(e){
 
 	var target = $(this).parent().parent().find('td').eq(0).text();
 
-	hideToLeft('#masterContent', function(e){
+	hideToStart('#masterContent', function(e){
 
 		var json = {target: target, task: Routes.controllers.lab.maintenance.Maintenance.master().url + "?" + getToken()};
 		var form = buildForm('post', Routes.controllers.lab.maintenance.Maintenance.detail().url + "?" + getToken(), json);

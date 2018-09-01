@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+.dropdown-menu-left {
+	left: 0;
+	auto: auto
+}
+
 /* Process */
 
 .process{

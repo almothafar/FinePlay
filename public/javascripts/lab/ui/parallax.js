@@ -25,7 +25,13 @@ $(document).ready(function () {
 			image.css('background-position-y', reviseFramePosition / 10);
 
 			var text = $(this).find('.textContent');
-			text.css('left', reviseFramePosition + 'px');
+			if(!$('html').hasClass('dir-rtl')){
+
+				text.css('left', reviseFramePosition + 'px');
+			}else{
+
+				text.css('right', reviseFramePosition + 'px');
+			}
 		});
 	}
 

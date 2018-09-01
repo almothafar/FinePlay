@@ -198,20 +198,21 @@ public class Application extends Controller {
 
 	public static Result cookie() {
 
-		response().cookies();// Iterable
-
-		// set
-		// response().setCookie(Cookie.builder("key",
-		// "value").withMaxAge(Duration.ofDays(10)).build());
-
 		// get
 		request().cookie("key");
 
-		// delete
-		response().discardCookie("key");
-
 		final Map<String, Object> map = StreamSupport.stream(request().cookies().spliterator(), false).collect(Collectors.toMap(cookie -> cookie.name(), v -> v.value()));
-		return ok(views.html.framework.application.cookie.render(new TreeMap<>(map)));
+
+		final Result result = ok(views.html.framework.application.cookie.render(new TreeMap<>(map)));
+
+		result.cookies();
+		// set
+		// result.withCookies(Http.Cookie.builder("key","value").withMaxAge(Duration.ofDays(10)).build());
+		// delete
+		// TODO
+//		result.discardCookie("key");
+
+		return result;
 	}
 
 	public static Result sessionlist() {
@@ -675,12 +676,12 @@ public class Application extends Controller {
 		map.put("signInTime(UTC)", Objects.toString(user.getSignInDateTime(), ""));
 		map.put("signOutTime(UTC)", Objects.toString(user.getSignOutDateTime(), ""));
 		map.put("updateTime(UTC)", user.getUpdateDateTime().toString());
-		map.put("expireTime", DateTimes.getClientDateTime(user.getExpireDateTime()).toString());
-		final LocalDateTime signInTime = user.getSignInDateTime() != null ? DateTimes.getClientDateTime(user.getSignInDateTime()) : null;
+		map.put("expireTime", DateTimes.toClientDateTime(user.getExpireDateTime()).toString());
+		final LocalDateTime signInTime = user.getSignInDateTime() != null ? DateTimes.toClientDateTime(user.getSignInDateTime()) : null;
 		map.put("signInTime", Objects.toString(signInTime, ""));
-		final LocalDateTime signOutTime = user.getSignOutDateTime() != null ? DateTimes.getClientDateTime(user.getSignOutDateTime()) : null;
+		final LocalDateTime signOutTime = user.getSignOutDateTime() != null ? DateTimes.toClientDateTime(user.getSignOutDateTime()) : null;
 		map.put("signOutTime", Objects.toString(signOutTime, ""));
-		map.put("updateTime", DateTimes.getClientDateTime(user.getUpdateDateTime()).toString());
+		map.put("updateTime", DateTimes.toClientDateTime(user.getUpdateDateTime()).toString());
 		return ok(views.html.framework.application.user.render(map));
 	}
 

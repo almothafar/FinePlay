@@ -185,6 +185,8 @@ public class MessageKeys {
 
   public static final String DEVELOPMENT = "development";
 
+  public static final String DIRECTION = "direction";
+
   public static final String DISPLAY = "display";
 
   public static final String DOCUMENT = "document";
@@ -342,6 +344,8 @@ public class MessageKeys {
   public static final String GROUP = "group";
 
   public static final String HALF__DAY = "half_day";
+
+  public static final String HANDSONTABLE_LANG = "handsontable.lang";
 
   public static final String HEADER = "header";
 

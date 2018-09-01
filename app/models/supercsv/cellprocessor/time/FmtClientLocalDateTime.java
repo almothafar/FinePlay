@@ -26,7 +26,7 @@ public class FmtClientLocalDateTime extends FmtLocalDateTime {
 			return super.execute(null, context);
 		} else {
 
-			final LocalDateTime clientDateTime = DateTimes.getClientDateTime((LocalDateTime) serverDateTime);
+			final LocalDateTime clientDateTime = DateTimes.toClientDateTime((LocalDateTime) serverDateTime);
 
 			return super.execute(clientDateTime, context);
 		}

@@ -144,7 +144,7 @@ public class Edit extends Controller {
 
 						company = companyDao.read(manager, Company.class, (builder, query) -> {
 
-							final LocalDateTime serverDateTime = DateTimes.getServerDateTime(updateDateTime);
+							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<Company> root = query.from(Company.class);
 							query.where(builder.and(//
@@ -235,7 +235,7 @@ public class Edit extends Controller {
 
 						company = companyDao.read(manager, Company.class, (builder, query) -> {
 
-							final LocalDateTime serverDateTime = DateTimes.getServerDateTime(updateDateTime);
+							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<Company> root = query.from(Company.class);
 							query.where(builder.and(//

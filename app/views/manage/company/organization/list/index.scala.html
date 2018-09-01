@@ -19,7 +19,7 @@
 
 @datetime(dateTime: LocalDateTime) = @{
 
-	common.utils.DateTimes.getClientDateTime(dateTime)
+	common.utils.DateTimes.toClientDateTime(dateTime)
 }
 
 @datetime_now() = @{
@@ -76,7 +76,7 @@
 				<h2>@companyName</h2>
 				<div class="d-flex justify-content-start bd-highlight mb-3">
 					<div class="bd-highlight">
-						@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "class"->"mr-3 float-left"))
+						@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left", "text"->Messages(MessageKeys.PREVIOUS), "class"->"mr-3 float-left dir-flip-horizontal"))
 					</div>
 					<div class="bd-highlight w-100">
 						@manage.company.detailtasks(Map("id"->"", "task"->"organization", "target"->form(OrganizationUnit.COMPANYID).value.orElse("")))

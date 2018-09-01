@@ -1,5 +1,11 @@
 @()
 
-<link rel='stylesheet' href='@routes.Assets.versioned("lib/bootstrap/assets/css/docs.min.css")'>
+@dirSuffix() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if (isLTR){""} else {"-rtl"}
+}
+
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/bootstrap/assets/css/docs"+dirSuffix()+".min.css")'>
 
 <link rel='stylesheet' href='@routes.Assets.versioned("lib/custom/bootstrapdocs/head.css")'>

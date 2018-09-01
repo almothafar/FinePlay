@@ -5,6 +5,7 @@ adn
 adversal
 affiliatetheme
 algolia
+alipay
 amazon
 amazon-pay
 amilia
@@ -320,6 +321,7 @@ teamspeak
 telegram
 telegram-plane
 tencent-weibo
+the-red-yeti
 themeco
 themeisle
 trade-federation

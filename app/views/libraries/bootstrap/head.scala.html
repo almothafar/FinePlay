@@ -1,4 +1,3 @@
-@import com.typesafe.config._
 @import play.api.i18n._
 @import views.html.helper._
 
@@ -6,23 +5,53 @@
 
 @()
 
-@href() = @{
+@dirSuffix() = @{
 
-	if(ConfigFactory.defaultApplication().hasPath("bootstrap.cdn.style")){
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if (isLTR){""} else {"-rtl"}
+}
 
-		ConfigFactory.defaultApplication().getString("bootstrap.cdn.style")
-	}else{
-		//routes.Assets.versioned("lib/bootstrap-4.1.2-dist/css/bootstrap.min.css")
-		// npm
-		routes.Assets.versioned("lib/bootstrap/dist/css/bootstrap.min.css")
+@integrity(theme:String) = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	theme match {
+		case "PRETTY" => {
+
+			if(isLTR) {IntegrityValues.BOOTSTRAP_STYLE_PRETTY} else {IntegrityValues.BOOTSTRAP_STYLE_PRETTY_RTL}
+		}
+		case "JAPAN" => {
+
+			if(isLTR) {IntegrityValues.BOOTSTRAP_STYLE_JAPAN} else {IntegrityValues.BOOTSTRAP_STYLE_JAPAN_RTL}
+		}
+		case "BUSINESS" => {
+
+			if(isLTR) {IntegrityValues.BOOTSTRAP_STYLE_BUSINESS} else {IntegrityValues.BOOTSTRAP_STYLE_BUSINESS_RTL}
+		}
+		case "NATURAL" => {
+
+			if(isLTR) {IntegrityValues.BOOTSTRAP_STYLE_NATURAL} else {IntegrityValues.BOOTSTRAP_STYLE_NATURAL_RTL}
+		}
+		case "DEFAULT" | _ => {
+
+			if(isLTR) {IntegrityValues.BOOTSTRAP_STYLE} else {IntegrityValues.BOOTSTRAP_STYLE_RTL}
+		}
 	}
 }
 
-<link rel='stylesheet' href='@href()' integrity="sha384-@IntegrityValues.BOOTSTRAP_STYLE" crossorigin="anonymous">
+@session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()) match {
 
-<meta id="bootstrap_messages" class="d-none" data-messages='{
-	"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",
-	"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
-	"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
-}'></meta>
-<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>
+	case _ => {
+
+		<link rel='stylesheet'
+			href='@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/bootstrap"+dirSuffix()+".min.css")'
+			integrity="sha384-@integrity(session.get(models.user.User.THEME))"
+			crossorigin="anonymous">
+
+		<meta id="bootstrap_messages" class="d-none" data-messages='{
+			"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",
+			"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
+			"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
+		}'></meta>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>
+	}
+}

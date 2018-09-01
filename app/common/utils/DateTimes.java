@@ -18,7 +18,7 @@ public class DateTimes {
 
 	@SuppressWarnings("null")
 	@Nonnull
-	public static LocalDateTime getClientDateTime(@Nonnull final LocalDateTime serverDateTime) {
+	public static LocalDateTime toClientDateTime(@Nonnull final LocalDateTime serverDateTime) {
 
 		Objects.requireNonNull(serverDateTime);
 
@@ -31,8 +31,8 @@ public class DateTimes {
 
 		Objects.requireNonNull(clientDateTime);
 
-		final LocalDateTime serverDateTime = getServerDateTime(clientDateTime);
-		final LocalDateTime reConvClientDateTime = getClientDateTime(serverDateTime);
+		final LocalDateTime serverDateTime = toServerDateTime(clientDateTime);
+		final LocalDateTime reConvClientDateTime = toClientDateTime(serverDateTime);
 
 		final boolean isConvertible = clientDateTime.equals(reConvClientDateTime);
 
@@ -46,7 +46,7 @@ public class DateTimes {
 
 			final int dstDiff = DST_DIFF_MINUTES[i];
 
-			final LocalDateTime afterServerDateTime = getServerDateTime(clientDateTime.plusMinutes(dstDiff));
+			final LocalDateTime afterServerDateTime = toServerDateTime(clientDateTime.plusMinutes(dstDiff));
 
 			final long minutes = Duration.between(serverDateTime, afterServerDateTime).toMinutes();
 			final boolean isNormal = dstDiff == minutes;
@@ -69,7 +69,7 @@ public class DateTimes {
 
 	@SuppressWarnings("null")
 	@Nonnull
-	public static LocalDateTime getServerDateTime(@Nonnull final LocalDateTime clientDateTime) {
+	public static LocalDateTime toServerDateTime(@Nonnull final LocalDateTime clientDateTime) {
 
 		Objects.requireNonNull(clientDateTime);
 

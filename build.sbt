@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M2-α4-SNAPSHOT"
+version := "2.7.0-M2-α5-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M2-α4-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M2-α5-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -33,21 +33,21 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "6.0.1",						// Apache 6.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.6.9",							// Apache 2.6.9
+  "com.typesafe.play" %% "play-json" % "2.6.10",						// Apache 2.6.9
   "com.typesafe.play" %% "play-ws" % "2.0.0-M2",						// Apache 2.0.0-M2
 //  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.6",
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
   "net.logstash.logback" % "logstash-logback-encoder" % "5.2",			// Apache 5.2
-  "org.hibernate" % "hibernate-core" % "5.3.5.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.5.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.3.6.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.6.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.2",
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
-  "org.postgresql" % "postgresql" % "42.2.4",							// BSD 2-clause 42.2.1
+  "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
   "org.mockito" % "mockito-inline" % "2.21.0",
 //  "org.mockito" % "mockito-core" % "2.21.0",							// MIT 2.20.5
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
@@ -75,7 +75,6 @@ libraryDependencies ++= Seq(
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.2.0",					// MIT 10.2.0
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
-  "org.webjars.bower" % "tether" % "1.4.3",								// MIT 1.4.4 +patch
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
@@ -83,12 +82,12 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "moment" % "2.22.2",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
-  "org.webjars" % "openlayers" % "4.6.5",								// 2-Clause BSD 4.6.3
+  "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.18",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
   "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10 +patch
-  "org.webjars.bower" % "handsontable" % "2.0.0",						// MIT 2.0.0
+  "org.webjars.npm" % "handsontable" % "5.0.0",							// MIT/Pro 5.0.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.4.1",							// MIT 1.4.1
   "org.webjars.npm" % "d3" % "5.5.0",									// BSD-3-Clause license 5.5.0
@@ -100,7 +99,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "2.0.0",								// MIT 2.0.0
   "org.webjars.bower" % "plotly.js" % "1.39.3",							// MIT 1.39.4
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-  "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 1.8.1
+//  "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 2.0.0-beta.23
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.8",								// Apache 1.4.8
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
@@ -123,7 +122,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.2.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.2.0
+  "org.webjars" % "font-awesome" % "5.3.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.2.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.2.4",								// MIT 4.2.5
   "org.webjars.npm" % "twemoji" % "11.0.0"								// Code:MIT, Graphics:CC 11.0.0

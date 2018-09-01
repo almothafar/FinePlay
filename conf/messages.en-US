@@ -161,11 +161,12 @@ country.flag = 🇺🇸
 
 
 
-
-
-
+handsontable.lang = en-US
 
 pdfjs.lang = en-US
+
+
+
 
 
 
@@ -234,6 +235,7 @@ map.rotate.gamma = 0
 
 
 #
+
 
 
 

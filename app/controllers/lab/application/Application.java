@@ -94,9 +94,9 @@ public class Application extends Controller {
 		case "translate":
 
 			return translate();
-		case "righttoleft":
+		case "direction":
 
-			return righttoleft();
+			return direction();
 		case "vertical":
 
 			return vertical();
@@ -342,9 +342,9 @@ public class Application extends Controller {
 		return ok(views.html.lab.application.translate.render());
 	}
 
-	private Result righttoleft() {
+	private Result direction() {
 
-		return ok(views.html.lab.application.righttoleft.render());
+		return ok(views.html.lab.application.direction.render());
 	}
 
 	private Result vertical() {

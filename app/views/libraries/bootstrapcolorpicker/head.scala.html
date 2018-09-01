@@ -1,3 +1,9 @@
 @()
 
-<link rel='stylesheet' href='@routes.Assets.versioned("lib/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css")'>
+@dirSuffix() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if (isLTR){""} else {""}
+}
+
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/custom/bootstrap-colorpicker/dist/css/bootstrap-colorpicker"+dirSuffix()+".min.css")'>
