@@ -283,9 +283,11 @@ body {
 
 .system_section-name-text {
 	width: 130px;
+	vertical-align: text-bottom;
 }
 .system_work-name-text {
 	width: 130px;
+	vertical-align: text-bottom;
 }
 
 #system_sections {

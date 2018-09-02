@@ -69,7 +69,10 @@ a:hover {
 	border-radius: .25rem
 }
 
-.dir-rtl .dir-flip-horizontal {
+/* Direction */
+
+.dir-rtl .dir-flip-horizontal,
+.dir-rtl .fa-dir-flip-horizontal {
 	-webkit-transform: scale(-1, 1);
 	transform: scale(-1, 1);
 }

@@ -86,7 +86,7 @@
 					Map("name"->Messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user")),
 					Map("class"->"secret", "name"->Messages(MessageKeys.BATCH), "icon"->"fas fa-tasks", "link"->controllers.manage.batch.routes.Batch.index().toString(), "selected"->equalWork("manage","batch"))
 				)),
-				(Map("show"->isDev().toString(), "key"->"development", "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"fas fa-play dir-flip-horizontal", "selected"->equalSection("development"), "class"->"disclosure-90"),List(
+				(Map("show"->isDev().toString(), "key"->"development", "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"fas fa-play fa-dir-flip-horizontal", "selected"->equalSection("development"), "class"->"disclosure-90"),List(
 					Map("key"->"http", "name"->Messages(MessageKeys.HTTP), "icon"->"far fa-file-alt", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
 					Map("key"->"javascript", "name"->Messages(MessageKeys.JAVASCRIPT), "icon"->"fab fa-js", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
 					Map("key"->"design", "name"->Messages(MessageKeys.DESIGN), "icon"->"fas fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),

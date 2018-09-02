@@ -9,7 +9,7 @@
 
 		<div class="px-3" id="heading@i">
 			<h4 class="d-flex justify-content-between">
-				<button class="pl-0 system_work-name @("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false")))) @Attributes.classValue(group)" data-toggle="collapse" data-target="#collapse@i" aria-expanded="@group.getOrElse("selected", "false")" aria-controls="collapse@i">
+				<button class="pl-0 pb-0 system_work-name @("collapsed".when(!Boolean.valueOf(group.getOrElse("selected", "false")))) @Attributes.classValue(group)" data-toggle="collapse" data-target="#collapse@i" aria-expanded="@group.getOrElse("selected", "false")" aria-controls="collapse@i">
 					<i class="@group.getOrElse("icon", "")"></i>
 					&nbsp;<span class="d-inline-block text-truncate system_section-name-text text-left">@group.get("name")</span>
 				</button>

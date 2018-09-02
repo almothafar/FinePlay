@@ -39,7 +39,7 @@
 			Map("text"->company.getNames().get(Locale.US).getName()),
 			Map("text"->(if(company.getNames().containsKey(lang.toLocale())){company.getNames().get(lang.toLocale()).getName()}else{""})),
 			Map("text"->datetime(company.getUpdateDateTime()).toString),
-			Map("text"->components.button(Map("id"->"", "class"->"nextButton dir-flip-horizontal", "type"->"link", "icon"->"fas fa-arrow-circle-right", "text"->"")).toString())
+			Map("text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fas fa-arrow-circle-right fa-dir-flip-horizontal", "text"->"")).toString())
 		);
 
 		tbodyRowToColumnsList += Tuple2(tbodyRow, columnsList);
