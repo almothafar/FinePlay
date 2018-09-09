@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M2-α5-SNAPSHOT"
+version := "2.7.0-M3-βc1-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M2-α5-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M3-βc1-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -35,7 +35,6 @@ libraryDependencies ++= Seq(
   guice,
   "com.typesafe.play" %% "play-json" % "2.6.10",						// Apache 2.6.9
   "com.typesafe.play" %% "play-ws" % "2.0.0-M2",						// Apache 2.0.0-M2
-//  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.6",
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
@@ -48,15 +47,13 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-inline" % "2.21.0",
-//  "org.mockito" % "mockito-core" % "2.21.0",							// MIT 2.20.5
+  "org.mockito" % "mockito-core" % "2.21.0",							// MIT 2.20.5
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
-  "org.apache.poi" % "poi" % "3.17",									// Apache 3.16
-  "org.apache.poi" % "poi-scratchpad" % "3.17",
-  "org.apache.poi" % "poi-ooxml" % "3.17",
+  "org.apache.poi" % "poi" % "4.0.0",									// Apache 4.0.0
+  "org.apache.poi" % "poi-scratchpad" % "4.0.0",
+  "org.apache.poi" % "poi-ooxml" % "4.0.0",
   "org.apache.tika" % "tika-core" % "1.18",								// Apache 1.17
-  "org.apache.tika" % "tika-parsers" % "1.18",
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.11",							// Apache 2.0.9

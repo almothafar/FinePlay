@@ -72,14 +72,11 @@ public class BinariesTest {
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("conf", "messages.xlsx")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
-		// assertThat("", metadata.get(Metadata.CONTENT_TYPE),
-		// is("application/x-tika-ooxml"));
+		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("application/x-tika-ooxml"));
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("conf", "messages")));
 		System.out.println(metadata.toString());
-		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("text/plain; charset=UTF-8"));
-		// assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("text/plain"));
+		assertThat("", metadata.get(Metadata.CONTENT_TYPE), is("text/plain"));
 
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("conf", "fonts", "ipamjm.ttf")));
 		System.out.println(metadata.toString());
@@ -88,5 +85,9 @@ public class BinariesTest {
 		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("public", "documents", "tracemonkey.pdf")));
 		System.out.println(metadata.toString());
 		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("application/pdf"));
+
+		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("test", "common", "utils", "fake.png")));
+		System.out.println(metadata.toString());
+		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("text/plain"));
 	}
 }

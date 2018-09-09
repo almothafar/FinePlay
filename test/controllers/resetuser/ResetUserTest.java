@@ -116,7 +116,7 @@ public class ResetUserTest {
 				browser.goTo(indexPage.getUrl());
 				indexPage.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
-				indexPage.takeScreenShot(capturePath, locale, counter, "Sign In");
+				indexPage.takeScreenshot(capturePath, locale, counter, "Sign In");
 				indexPage.clickRegistUser();
 
 				final RegistPage registPage = new RegistPage(browser);
@@ -129,14 +129,14 @@ public class ResetUserTest {
 				assertThat("", registPage.getPassword(), is("1!aAregist"));
 				registPage.inputRePassword("1!aAregist");
 				assertThat("", registPage.getRePassword(), is("1!aAregist"));
-				registPage.takeScreenShot(capturePath, locale, counter, "Regist User - Input");
+				registPage.takeScreenshot(capturePath, locale, counter, "Regist User - Input");
 				registPage.clickApply();
 
 				final CompletePage provisionalCompletePage = new CompletePage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(provisionalCompletePage.getUrl()));
 				provisionalCompletePage.isAt();
 				assertThat("", provisionalCompletePage.contentTitle(), is(condition.get("registuser.provisional.complete").toString()));
-				provisionalCompletePage.takeScreenShot(capturePath, locale, counter, "Provisional - Compleate");
+				provisionalCompletePage.takeScreenshot(capturePath, locale, counter, "Provisional - Compleate");
 				final String provisionalMailLog = testAppender.getEvents().stream()//
 						.filter(event -> event.getFormattedMessage().contains("<html"))//
 						.findFirst()//
@@ -150,7 +150,7 @@ public class ResetUserTest {
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage2.getUrl()));
 				indexPage2.isAt();
 				assertThat("", browser.window().title(), is((String) condition.get("title.signin")));
-				indexPage2.takeScreenShot(capturePath, locale, counter, "Sign In - After Provisional.png");
+				indexPage2.takeScreenshot(capturePath, locale, counter, "Sign In - After Provisional.png");
 				browser.goTo(regularUrl);
 
 				final controllers.registuser.reqular.CompletePage reqularCompletePage = new controllers.registuser.reqular.CompletePage(browser);
@@ -158,14 +158,14 @@ public class ResetUserTest {
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(reqularCompletePage.getUrl()));
 				reqularCompletePage.isAt();
 				assertThat("", reqularCompletePage.contentTitle(), is((String) condition.get("registuser.regular.complete")));
-				reqularCompletePage.takeScreenShot(capturePath, locale, counter, "Regular - Compleate");
+				reqularCompletePage.takeScreenshot(capturePath, locale, counter, "Regular - Compleate");
 				reqularCompletePage.clickTop();
 
 				final IndexPage indexPage3 = new IndexPage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage3.getUrl()));
 				indexPage3.isAt();
 				assertThat("", browser.window().title(), is((String) condition.get("title.signin")));
-				indexPage3.takeScreenShot(capturePath, locale, counter, "Sign In - After Regular");
+				indexPage3.takeScreenshot(capturePath, locale, counter, "Sign In - After Regular");
 				indexPage3.clickResetUser();
 
 				final ResetPage resetPage = new ResetPage(browser);
@@ -174,14 +174,14 @@ public class ResetUserTest {
 				assertThat("", resetPage.contentTitle(), is(condition.get("resetuser.please_reset").toString()));
 				resetPage.inputUserId("reset@example.com");
 				assertThat("", resetPage.getUserId(), is("reset@example.com"));
-				resetPage.takeScreenShot(capturePath, locale, counter, "Reset User - Input");
+				resetPage.takeScreenshot(capturePath, locale, counter, "Reset User - Input");
 				resetPage.clickApply();
 
 				final controllers.resetuser.request.CompletePage requestCompletePage = new controllers.resetuser.request.CompletePage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(requestCompletePage.getUrl()));
 				requestCompletePage.isAt();
 				assertThat("", requestCompletePage.contentTitle(), is(condition.get("resetuser.request.complete").toString()));
-				requestCompletePage.takeScreenShot(capturePath, locale, counter, "Request - Compleate");
+				requestCompletePage.takeScreenshot(capturePath, locale, counter, "Request - Compleate");
 				final String requestMailLog = testAppender.getEvents().stream()//
 						.filter(event -> event.getFormattedMessage().contains("<html"))//
 						.findFirst()//
@@ -194,7 +194,7 @@ public class ResetUserTest {
 				final IndexPage indexPage4 = new IndexPage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage4.getUrl()));
 				indexPage4.isAt();
-				indexPage4.takeScreenShot(capturePath, locale, counter, "Sign In - After Request");
+				indexPage4.takeScreenshot(capturePath, locale, counter, "Sign In - After Request");
 				browser.goTo(changeUrl);
 
 				final controllers.resetuser.change.ChangePage changePage = new controllers.resetuser.change.ChangePage(browser);
@@ -206,14 +206,14 @@ public class ResetUserTest {
 				assertThat("", changePage.getPassword(), is("1!aAreset_2"));
 				changePage.inputRePassword("1!aAreset_2");
 				assertThat("", changePage.getRePassword(), is("1!aAreset_2"));
-				changePage.takeScreenShot(capturePath, locale, counter, "Reset User - Input");
+				changePage.takeScreenshot(capturePath, locale, counter, "Reset User - Input");
 				changePage.clickChange();
 
 				final controllers.resetuser.change.CompletePage changeCompletePage = new controllers.resetuser.change.CompletePage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(changeCompletePage.getUrl()));
 				changeCompletePage.isAt();
 				assertThat("", changeCompletePage.contentTitle(), is(condition.get("resetuser.change.complete").toString()));
-				changeCompletePage.takeScreenShot(capturePath, locale, counter, "Change - Compleate");
+				changeCompletePage.takeScreenshot(capturePath, locale, counter, "Change - Compleate");
 				final String changeMailLog = testAppender.getEvents().stream()//
 						.filter(event -> event.getFormattedMessage().contains("<html"))//
 						.findFirst()//
@@ -226,17 +226,17 @@ public class ResetUserTest {
 				final IndexPage indexPage5 = new IndexPage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(indexPage5.getUrl()));
 				indexPage5.isAt();
-				indexPage5.takeScreenShot(capturePath, locale, counter, "Sign In - After Change");
+				indexPage5.takeScreenshot(capturePath, locale, counter, "Sign In - After Change");
 				browser.goTo(topUrl);
 
-				indexPage5.takeScreenShot(capturePath, locale, counter, "Sign In - After Change 2");
+				indexPage5.takeScreenshot(capturePath, locale, counter, "Sign In - After Change 2");
 
 				indexPage5.inputUserId("reset@example.com");
 				indexPage5.inputPassword("1!aAreset_2");
-				indexPage5.takeScreenShot(capturePath, locale, counter, "Sign In - Input");
+				indexPage5.takeScreenshot(capturePath, locale, counter, "Sign In - Input");
 				indexPage5.clickSignIn();
 
-				indexPage5.takeScreenShot(capturePath, locale, counter, "Sign In - Success");
+				indexPage5.takeScreenshot(capturePath, locale, counter, "Sign In - Success");
 			});
 		});
 	}

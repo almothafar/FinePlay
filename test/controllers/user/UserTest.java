@@ -63,26 +63,26 @@ public class UserTest {
 				browser.goTo(signInPage.getUrl());
 				signInPage.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
-				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In");
+				signInPage.takeScreenshot(capturePath, locale, counter, "Sign In");
 				signInPage.inputUserId(condition.get("user.id"));
 				assertThat("", signInPage.getUserId(), is(condition.get("user.id").toString()));
 				signInPage.inputPassword(condition.get("user.password"));
 				assertThat("", signInPage.getPassword(), is(condition.get("user.password").toString()));
-				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In - Input");
+				signInPage.takeScreenshot(capturePath, locale, counter, "Sign In - Input");
 				signInPage.clickSignIn();
 
 				final IntroPage introPage = new IntroPage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(introPage.getUrl()));
 				introPage.isAt();
 				assertThat("", browser.window().title(), is((String) condition.get("title.home")));
-				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In - Success");
+				signInPage.takeScreenshot(capturePath, locale, counter, "Sign In - Success");
 				introPage.signOut();
 
 				final IndexPage signOutPage = new IndexPage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(signOutPage.getUrl()));
 				signOutPage.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
-				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In - After Sign Out");
+				signInPage.takeScreenshot(capturePath, locale, counter, "Sign In - After Sign Out");
 			});
 		});
 	}

@@ -46,7 +46,6 @@ $(document).ready(function () {
 		if (timer !== false) {
 
 			clearTimeout(timer);
-			return;
 		}
 		timer = setTimeout(function() {
 

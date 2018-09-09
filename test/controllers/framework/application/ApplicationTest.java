@@ -70,12 +70,12 @@ public class ApplicationTest {
 				browser.goTo(signInPage.getUrl());
 				signInPage.isAt();
 				assertThat("", browser.window().title(), anyConditionOf(conditions, "title.signin", String.class));
-				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In");
+				signInPage.takeScreenshot(capturePath, locale, counter, "Sign In");
 				signInPage.inputUserId(condition.get("user.id"));
 				assertThat("", signInPage.getUserId(), is(condition.get("user.id").toString()));
 				signInPage.inputPassword(condition.get("user.password"));
 				assertThat("", signInPage.getPassword(), is(condition.get("user.password").toString()));
-				signInPage.takeScreenShot(capturePath, locale, counter, "Sign In - Input");
+				signInPage.takeScreenshot(capturePath, locale, counter, "Sign In - Input");
 				signInPage.clickSignIn();
 
 				final IntroPage introPage = new IntroPage(browser);
@@ -88,7 +88,7 @@ public class ApplicationTest {
 				assertThat("", browser.window().title(), is((String) condition.get("title.clock")));
 				assertThat("", clockPage.getServerDateTime(), is((String) condition.get("server")));
 				assertThat("", clockPage.getClientDateTime(), is((String) condition.get("client")));
-				clockPage.takeScreenShot(capturePath, locale, counter, "Sign In - Success");
+				clockPage.takeScreenshot(capturePath, locale, counter, "Sign In - Success");
 			});
 		});
 	}

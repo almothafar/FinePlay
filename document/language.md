@@ -3,6 +3,7 @@ Add Language
 
 ### Add Configuration ###
 
+	github/fineplay/conf/application.conf
 	play.i18n.langs = [ "en-US", "ja-JP", "[LANGUAGE]-[COUNTRY]" ]
 
 ###### Country code is required.

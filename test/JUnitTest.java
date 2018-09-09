@@ -1,11 +1,9 @@
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.BDDMockito.given;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,7 +13,6 @@ import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import org.mockito.Incubating;
 
 public class JUnitTest {
 
@@ -59,25 +56,5 @@ public class JUnitTest {
 		assertThat("call#add()", mockList.add("item"), is(false));
 
 		verify(mockList).add("item");
-	}
-
-	private final class FinalClass {
-
-		final String finalMethod() {
-
-			return "result";
-		}
-	}
-
-	@Incubating
-	@Test
-	public void mockitoFinalTest() {
-
-		final FinalClass finalClass = new FinalClass();
-
-		final FinalClass mockFinalClass = mock(FinalClass.class);
-		given(mockFinalClass.finalMethod()).willReturn("mockResult");
-
-		assertThat("", mockFinalClass.finalMethod(), not(finalClass.finalMethod()));
 	}
 }

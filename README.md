@@ -13,14 +13,14 @@ How to play
 ##### Environment #####
 
 	macOS High Sierra version 10.13.6（17G65）
-	openjdk version "9.0.4"
+	openjdk version "11" 2018-09-25 / OpenJDK Runtime Environment 18.9 (build 11+28)
 	Safari version 11.1.2 (13605.3.8)
 
 ##### OpenJDK #####
 
 Install
 
-[OpenJDK](http://jdk.java.net/9/)
+[OpenJDK](http://jdk.java.net/11/)
 
 ##### Console #####
 
@@ -75,7 +75,7 @@ TODO
 
 #### FinePlay 2.7.x ####
 + Update Play Framework 2.7.x
-+ Update OpenJDK 11 / Apache POI 4.0.0
++ Update OpenJDK 11
 + Update Bootbox 5.0
 + Update Shepherd 2.0.0
 
@@ -96,7 +96,7 @@ TODO
 Release History
 ---------------
 
-+ **2.7.0-M2-α5** - 2018-09-01
++ **2.7.0-M3-βc1** - 2018-09-09
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

@@ -48,6 +48,7 @@ public class Page extends FluentPage {
 
 		return getBrowser().getDriver();
 	}
+
 	@Override
 	public String url() {
 		return getBrowser().url();
@@ -65,18 +66,17 @@ public class Page extends FluentPage {
 		assertThat("", getBrowser().url(), is(getUrl()));
 	}
 
-	public void takeScreenShot(//
+	public void takeScreenshot(//
 			@Nonnull final Path path, //
 			@Nonnull final Locale locale, //
 			@Nonnull final Counter counter, //
 			@Nonnull final String name) {
 
 		final Window window = getDriver().manage().window();
-		// window.setSize(getDimension());
-		// window.setPosition(getPoint());
+		window.setSize(getDimension());
+		window.setPosition(getPoint());
 
-		// TODO
-		getBrowser().takeScreenShot(path.resolve(Locales.toLang(locale).code()).resolve(counter.increment() + " " + name + ".png").toString());
+		getBrowser().takeScreenshot(path.resolve(Locales.toLang(locale).code()).resolve(counter.increment() + " " + name + ".png").toString());
 	}
 
 	@SuppressWarnings("null")
