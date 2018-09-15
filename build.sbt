@@ -47,7 +47,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.2",
   "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.21.0",							// MIT 2.20.5
+  "org.mockito" % "mockito-core" % "2.22.0",							// MIT 2.22.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.0.0",									// Apache 4.0.0
@@ -92,7 +92,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.4.0",							// MIT 2.4.0
-  "org.webjars.npm" % "marked" % "0.4.0",								// MIT 0.4.0
+  "org.webjars.npm" % "marked" % "0.5.0",								// MIT 0.5.0
   "org.webjars.npm" % "viz.js" % "2.0.0",								// MIT 2.0.0
   "org.webjars.bower" % "plotly.js" % "1.39.3",							// MIT 1.39.4
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
@@ -104,9 +104,9 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
-// TwentyTwenty															// MIT 2017/11/11 master
+// TwentyTwenty															// ISC? MIT? Aug 7, 2018 master
 // Frappé Gantt															// MIT build version 0.0.7 master
-// 3Dmol.js																// BSD-3-Clause license 1.3.5
+// 3Dmol.js																// BSD-3-Clause license 1.3.6
 // geckodriver															// Mozilla Public License 0.18.0
 // LibreOffice															// Mozilla Public License 6.0.3
 // wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4

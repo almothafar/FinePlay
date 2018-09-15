@@ -1,5 +1,25 @@
 @charset "utf-8";
 
+/* Progress */
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
 /* Dropdown */
 
 .dir-rtl .dropdown-menu:not(.dropdown-menu-right){

@@ -15,6 +15,7 @@ $(document).ready(function () {
 		defaults: {
 			classes: 'shepherd-theme-default',
 			showCancelLink: true,
+			renderLocation: '#system_content',
 			scrollTo: 'system_content'
 		}
 	});

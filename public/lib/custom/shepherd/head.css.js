@@ -11,6 +11,9 @@ injectStyle('.shepherd-element.shepherd-has-title .shepherd-content header', {
 injectStyle('.shepherd-element.shepherd-has-cancel-link .shepherd-content header h3', {
 	'color': getTheme().primary.color
 });
+injectStyle('.shepherd-element .shepherd-content header a.shepherd-cancel-link', {
+	'color': getTheme().primary.color
+});
 
 injectStyle('.shepherd-element .shepherd-content footer .shepherd-buttons li .shepherd-button', {
 	'background': getTheme().primary.backgroundColor
