@@ -87,7 +87,6 @@ TODO
 #### Bootstrap 4.2.x ####
 + Rewrite notify implementation to Toast based.
 + Rewrite custom-switch implementation to Switch based.
-+ Rename wordbreak class.
 + Move include of Hammer.
 
 #### Drop IE ####
