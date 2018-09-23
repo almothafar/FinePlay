@@ -3,6 +3,10 @@ package common.utils;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +59,19 @@ public class JSONsTest {
 	}
 
 	@Test
+	public void testToJSON_DateTime() {
+
+		final DateTime dateTime = new DateTime();
+		dateTime.dateTime = LocalDateTime.of(1234, Month.MAY, 6, 7, 8);
+		dateTime.date = LocalDate.of(1234, Month.MAY, 6);
+		dateTime.time = LocalTime.of(7, 8);
+
+		final String json = JSONs.toJSON(dateTime);
+
+		assertThat("", "{\n  \"dateTime\" : \"1234-05-06T07:08:00\",\n  \"date\" : \"1234-05-06\",\n  \"time\" : \"07:08:00\"\n}", is(json));
+	}
+
+	@Test
 	public void testToBean_List() {
 
 		final String json = "[\"value\"]";
@@ -76,5 +93,49 @@ public class JSONsTest {
 
 		assertThat("", 1, is(map.size()));
 		assertThat("", "value", is(map.get("key")));
+	}
+
+	@Test
+	public void testToBean_DateTime() {
+
+		final String json = "{\n  \"dateTime\" : \"1234-05-06T07:08:00\",\n  \"date\" : \"1234-05-06\",\n  \"time\" : \"07:08:00\"\n}";
+
+		@SuppressWarnings("unchecked")
+		final DateTime dateTime = JSONs.toBean(json, DateTime.class);
+
+		assertThat("", LocalDateTime.of(1234, Month.MAY, 6, 7, 8), is(dateTime.dateTime));
+		assertThat("", LocalDate.of(1234, Month.MAY, 6), is(dateTime.date));
+		assertThat("", LocalTime.of(7, 8), is(dateTime.time));
+	}
+
+	private static class DateTime {
+
+		LocalDateTime dateTime;
+		LocalDate date;
+		LocalTime time;
+
+		public LocalDateTime getDateTime() {
+			return dateTime;
+		}
+
+		public void setDateTime(LocalDateTime dateTime) {
+			this.dateTime = dateTime;
+		}
+
+		public LocalDate getDate() {
+			return date;
+		}
+
+		public void setDate(LocalDate date) {
+			this.date = date;
+		}
+
+		public LocalTime getTime() {
+			return time;
+		}
+
+		public void setTime(LocalTime time) {
+			this.time = time;
+		}
 	}
 }

@@ -1,0 +1,49 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+@import views.html.development
+
+@import common.system._
+
+@(map: Map[String, Object])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head(Messages(MessageKeys.ENVIRONMENT)){
+
+		@libraries.standard.head()
+	}
+
+	@body("environment","browser"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Box", "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@tasks(Map("id"->"", "task"->"event"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"boxback pt-2")){
+
+			<div>@components.linkbutton(Map("id"->"default", "type"->"primary", "outline"->"true", "icon"->"fas fa-link", "link"->"https://github.com/hiro20v", "text"->"Default"))</div>
+			<div>@components.linkbutton(Map("id"->"disableLink", "type"->"primary", "outline"->"true", "icon"->"fas fa-link", "link"->"https://github.com/hiro20v", "text"->"Disable Link"))</div>
+			<div>@components.linkbutton(Map("id"->"disableBubbling", "type"->"primary", "outline"->"true", "icon"->"fas fa-link", "link"->"https://github.com/hiro20v", "text"->"Disable Bubbling"))</div>
+			<div>@components.linkbutton(Map("id"->"disableLinkAndBubbling", "type"->"primary", "outline"->"true", "icon"->"fas fa-link", "link"->"https://github.com/hiro20v", "text"->"Disable Link & Bubbling"))</div>
+			<div>@components.linkbutton(Map("id"->"disableAll", "type"->"primary", "outline"->"true", "icon"->"fas fa-link", "link"->"https://github.com/hiro20v", "text"->"Disable All"))</div>
+		}
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/environment/browser/event.js")'></script>
+	}
+}

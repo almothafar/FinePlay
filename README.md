@@ -14,7 +14,7 @@ How to play
 
 	macOS High Sierra version 10.13.6（17G65）
 	openjdk version "11" 2018-09-25 / OpenJDK Runtime Environment 18.9 (build 11+28)
-	Safari version 11.1.2 (13605.3.8)
+	Safari version 12.0 (13606.2.11)
 
 ##### OpenJDK #####
 

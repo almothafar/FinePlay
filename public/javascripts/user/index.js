@@ -48,7 +48,7 @@ $.each(fixedUsersData, function(){
 		fixedUsersHtml = fixedUsersHtml +
 			'<div class="fixedUser_info">' +
 				'<span class="badge badge-pill badge-info">' + fixedUser.locale + '</span>&nbsp;' +
-				'<span class="badge badge-pill badge-info">' + fixedUser.zoneId.id + '</span>&nbsp;' +
+				'<span class="badge badge-pill badge-info">' + fixedUser.zoneId + '</span>&nbsp;' +
 				'<span class="badge badge-pill badge-info">' + fixedUser.roles + '</span>' +
 			'</div>';
 	}

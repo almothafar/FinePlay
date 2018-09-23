@@ -53,7 +53,7 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.0.0",									// Apache 4.0.0
   "org.apache.poi" % "poi-scratchpad" % "4.0.0",
   "org.apache.poi" % "poi-ooxml" % "4.0.0",
-  "org.apache.tika" % "tika-core" % "1.18",								// Apache 1.17
+  "org.apache.tika" % "tika-core" % "1.19",								// Apache 1.17
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.11",							// Apache 2.0.9
@@ -87,7 +87,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "handsontable" % "5.0.0",							// MIT/Pro 5.0.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.4.1",							// MIT 1.4.1
-  "org.webjars.npm" % "d3" % "5.5.0",									// BSD-3-Clause license 5.5.0
+  "org.webjars.npm" % "d3" % "5.7.0",									// BSD-3-Clause license 5.5.0
   "org.webjars.npm" % "d3-geo-projection" % "2.4.0",					// MIT 2.4.0
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0

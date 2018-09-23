@@ -44,7 +44,7 @@
 |                    |                                                                      |test                          |      |      |      |
 |controllers         |controllers.environment.browser.Browser                               |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
-|controllers         |controllers.environment.javalang.Java                                 |                              |     O|     O|     O|
+|controllers         |controllers.environment.openjdk.OpenJDK                               |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.fontawesome.style.Style                                   |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
@@ -74,7 +74,6 @@
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |send                          |      |      |      |
 |controllers         |controllers.lab.application.Application                               |                              |     O|     O|     O|
-|                    |                                                                      |clock                         |      |      |      |
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |paging                        |      |      |      |
 |controllers         |controllers.lab.application.Download                                  |                              |     O|     O|     O|
@@ -104,6 +103,8 @@
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.lab.application.WebSocket                                 |                              |     O|     O|     O|
 |                    |                                                                      |connect                       |      |      |      |
+|                    |                                                                      |index                         |      |      |      |
+|controllers         |controllers.lab.ilike.ILike                                           |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.lab.library.Library                                       |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |

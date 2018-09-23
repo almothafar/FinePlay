@@ -63,6 +63,9 @@ public class UI extends Controller {
 		case "campaign":
 
 			return campaign();
+		case "detailimage":
+
+			return detailimage();
 		case "group":
 
 			return group();
@@ -173,6 +176,11 @@ public class UI extends Controller {
 	private static Result campaign() {
 
 		return ok(views.html.lab.ui.campaign.render());
+	}
+
+	private static Result detailimage() {
+
+		return ok(views.html.lab.ui.detailimage.render());
 	}
 
 	private static Result group() {

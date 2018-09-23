@@ -68,6 +68,7 @@
 
 .slider.slider-horizontal, .slider.slider-vertical {
   user-select: none;
+  -ms-user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
 }

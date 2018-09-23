@@ -27,6 +27,9 @@ public class Browser extends Controller {
 		case "position":
 
 			return position();
+		case "event":
+
+			return event();
 		default:
 
 			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
@@ -56,5 +59,10 @@ public class Browser extends Controller {
 	public static Result position() {
 
 		return ok(views.html.environment.browser.position.render(new TreeMap<>()));
+	}
+
+	public static Result event() {
+
+		return ok(views.html.environment.browser.event.render(new TreeMap<>()));
 	}
 }
