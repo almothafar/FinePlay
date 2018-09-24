@@ -91,6 +91,9 @@ public class Application extends Controller {
 		case "webservice":
 
 			return webService();
+		case "webfont":
+
+			return webfont();
 		case "translate":
 
 			return translate();
@@ -335,6 +338,11 @@ public class Application extends Controller {
 		}
 
 		return result;
+	}
+
+	private Result webfont() {
+
+		return ok(views.html.lab.application.webfont.render());
 	}
 
 	private Result translate() {

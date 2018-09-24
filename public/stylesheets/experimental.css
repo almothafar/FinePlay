@@ -6,6 +6,19 @@
   border-radius: .9rem !important;
 }
 
+/* Font */
+
+@font-face {
+	font-family: 'TimesSquare';
+	src: url('../fonts/charles-minow_times-square/TIMES_SQ.TTF');
+	font-weight: normal;
+	font-style: normal
+}
+
+.font-family_TimesSquare{
+	font-family: TimesSquare;
+}
+
 /* Icon Filter */
 
 .if-monochrome {

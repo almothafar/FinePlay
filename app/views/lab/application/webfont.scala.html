@@ -1,0 +1,84 @@
+@import java.time._
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/application/webfont.css")'>
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Web Font", "icon"->"fas fa-font", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"webfont"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<form class="">
+						<h4 class="headline">LED</h4>
+						<div class="form-row">
+							<div class="col-md-6 mb-3">
+								<label for="">Red</label>
+								<input type="text" class="form-control form-control-lg bg-dark text-red font-family_TimesSquare h-72p matrix led red" id="" value="@LocalDateTime.now().toString" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="">Green</label>
+								<input type="text" class="form-control form-control-lg bg-dark text-green-300 font-family_TimesSquare h-72p matrix led green" id="" value="@common.utils.DateTimes.toClientDateTime(LocalDateTime.now()).toString" required>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-md-6 mb-3">
+								<label for="">Yellow</label>
+								<input type="text" class="form-control form-control-lg bg-dark text-yellow font-family_TimesSquare h-72p matrix led yellow" id="" value="@LocalDateTime.now().toString" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="">Blue</label>
+								<input type="text" class="form-control form-control-lg bg-dark text-cyan-200 font-family_TimesSquare h-72p matrix led blue" id="" value="@common.utils.DateTimes.toClientDateTime(LocalDateTime.now()).toString" required>
+							</div>
+						</div>
+
+						<h4 class="headline">LCD</h4>
+						<div class="form-row">
+							<div class="col-md-6 mb-3">
+								<label for="">Type A</label>
+								<input type="text" class="form-control form-control-lg bg-light-green-300 text-dark font-family_TimesSquare h-72p matrix lcd type-a" id="" value="@LocalDateTime.now().toString" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="">Type B</label>
+								<input type="text" class="form-control form-control-lg bg-dark text-light font-family_TimesSquare h-72p matrix lcd type-b" id="" value="@common.utils.DateTimes.toClientDateTime(LocalDateTime.now()).toString" required>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}
