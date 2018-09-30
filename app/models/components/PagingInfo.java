@@ -15,8 +15,7 @@ public class PagingInfo {
 	}
 
 	/**
-	 * @param pageIndex
-	 *            the pageIndex to set
+	 * @param pageIndex the pageIndex to set
 	 */
 	public void setPageIndex(int pageIndex) {
 
@@ -32,8 +31,7 @@ public class PagingInfo {
 	}
 
 	/**
-	 * @param pageSize
-	 *            the pageSize to set
+	 * @param pageSize the pageSize to set
 	 */
 	public void setPageSize(int pageSize) {
 
@@ -50,8 +48,7 @@ public class PagingInfo {
 	}
 
 	/**
-	 * @param pageCount
-	 *            the pageCount to set
+	 * @param pageCount the pageCount to set
 	 */
 	public void setPageCount(int pageCount) {
 

@@ -240,7 +240,7 @@ public class Edit extends Controller {
 						if (localName != null && !localName.isEmpty()) {
 
 							final OrganizationUnitName localOrganizationUnitName;
-							if(!names.containsKey(lang().toLocale())) {
+							if (!names.containsKey(lang().toLocale())) {
 
 								localOrganizationUnitName = new OrganizationUnitName();
 								localOrganizationUnitName.setOrganizationUnit_Id(organizationUnit.getId());
@@ -248,7 +248,7 @@ public class Edit extends Controller {
 								localOrganizationUnitName.setName(localName);
 								names.put(lang().toLocale(), localOrganizationUnitName);
 								manager.persist(localOrganizationUnitName);
-							}else {
+							} else {
 
 								localOrganizationUnitName = names.get(lang().toLocale());
 								localOrganizationUnitName.setName(localName);

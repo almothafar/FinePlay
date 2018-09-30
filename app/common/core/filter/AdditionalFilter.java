@@ -16,8 +16,7 @@ public class AdditionalFilter extends EssentialFilter {
 	private final Executor exec;
 
 	/**
-	 * @param exec
-	 *            This class is needed to execute code asynchronously.
+	 * @param exec This class is needed to execute code asynchronously.
 	 */
 	@Inject
 	public AdditionalFilter(Executor exec) {

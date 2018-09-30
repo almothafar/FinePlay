@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M3-βc1-SNAPSHOT"
+version := "2.7.0-M3-βc2-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M3-βc1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M3-βc2-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -59,14 +59,14 @@ libraryDependencies ++= Seq(
   "org.apache.pdfbox" % "pdfbox" % "2.0.11",							// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
-  "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0.CR1
+  "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.1.3",							// MIT 4.0.0
 //  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
-//  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4 +patch
+//  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
@@ -75,7 +75,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
-  "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2 +patch
+  "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2
   "org.webjars.bower" % "moment" % "2.22.2",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
@@ -83,7 +83,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.18",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
-  "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10 +patch
+  "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10
   "org.webjars.npm" % "handsontable" % "5.0.0",							// MIT/Pro 5.0.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.4.1",							// MIT 1.4.1
@@ -222,16 +222,12 @@ mappings in Universal ++= {
 //  Seq(JacocoReportFormats.ScalaHTML),
 //  "utf-8")
 
-// FindBugs
-//findbugsReportPath := Some(crossTarget.value / "findbugs" / "report.html")
-//findbugsReportType := Some(com.github.sbt.findbugs.settings.FindbugsReport.FancyHtml)
-
 // CPD
-cpdLanguage := CpdLanguage.Java
-cpdReportType := CpdReportType.XML
+//cpdLanguage := CpdLanguage.Java
+//cpdReportType := CpdReportType.XML
 
 // CheckStyle
-//checkstyleConfigLocation := CheckstyleConfigLocation.File("conf/checkstyle-config.xml")
-//checkstyleXsltTransformations := {
-//  Some(Set(CheckstyleXSLTSettings(baseDirectory(_ / "conf" / "checkstyle-noframes.xml").value, target(_ / "checkstyle-report.html").value)))
-//}
+checkstyleConfigLocation := CheckstyleConfigLocation.File("conf/checkstyle_checks.xml")
+checkstyleXsltTransformations := {
+  Some(Set(CheckstyleXSLTSettings(baseDirectory(_ / "conf" / "checkstyle-noframes.xml").value, target(_ / "checkstyle-report.html").value)))
+}

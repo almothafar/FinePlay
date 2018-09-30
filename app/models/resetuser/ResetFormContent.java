@@ -53,8 +53,7 @@ public class ResetFormContent {
 	}
 
 	/**
-	 * @param rePassword
-	 *            the rePassword to set
+	 * @param rePassword the rePassword to set
 	 */
 	public void setRePassword(String rePassword) {
 		this.rePassword = rePassword;

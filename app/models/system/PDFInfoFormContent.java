@@ -24,8 +24,7 @@ public class PDFInfoFormContent {
 	}
 
 	/**
-	 * @param url
-	 *            the url to set
+	 * @param url the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -39,8 +38,7 @@ public class PDFInfoFormContent {
 	}
 
 	/**
-	 * @param returnUrl
-	 *            the returnUrl to set
+	 * @param returnUrl the returnUrl to set
 	 */
 	public void setReturnUrl(String returnUrl) {
 		this.returnUrl = returnUrl;

@@ -968,9 +968,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo/docs/d3-geo-1.11.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/srcs/d3-shape-1.2.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/jars/d3-shape-1.2.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/srcs/d3-shape-1.2.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/jars/d3-shape-1.2.2.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/docs/d3-shape-1.2.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/docs/d3-shape-1.2.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/srcs/d3-path-1.0.7-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/jars/d3-path-1.0.7.jar">

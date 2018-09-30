@@ -25,7 +25,7 @@ public class DateTimes {
 		return ZonedDateTime.of(serverDateTime, ZoneOffset.UTC).withZoneSameInstant(getClientZoneId()).toLocalDateTime();
 	}
 
-	private static final int[] DST_DIFF_MINUTES = { 30, 60/* , 90 *//* , 120 */ };
+	private static final int[] DST_DIFF_MINUTES = { 30, 60 };
 
 	public static boolean isServerDateTimeConvertible(@Nonnull final LocalDateTime clientDateTime) {
 

@@ -12,9 +12,9 @@ How to play
 
 ##### Environment #####
 
-	macOS High Sierra version 10.13.6（17G65）
+	macOS Mojave version 10.14（18A391）
 	openjdk version "11" 2018-09-25 / OpenJDK Runtime Environment 18.9 (build 11+28)
-	Safari version 12.0 (13606.2.11)
+	Safari version 12.0 (14606.1.36.1.9)
 
 ##### OpenJDK #####
 
@@ -73,29 +73,31 @@ TODO
 
 ###### Whether this project will be updated in the future is undecided. ######
 
-#### FinePlay 2.7.x ####
-+ Update Play Framework 2.7.x
-+ Update OpenJDK 11
-+ Update Bootbox 5.0
-+ Update Shepherd 2.0.0
+### FinePlay 2.7.0 ###
++ Update Play Framework 2.7.0 release
 
-#### Play Framework 2.7.x ####
-+ Learn how to set cookies with the API of 2.7.x.
+#### Play Framework 2.7.0 ####
++ Learn how to set cookies with the API of 2.7.0.
 + Update application.conf
 + Update messages
 
-#### Bootstrap 4.2.x ####
+### FinePlay 2.7.x ###
++ Update Bootstrap 4.2 release
++ Update Bootbox 5.0 release
++ Update Shepherd 2.0.0 release
+
+#### Bootstrap 4.2 ####
 + Rewrite notify implementation to Toast based.
 + Rewrite custom-switch implementation to Switch based.
 + Move include of Hammer.
 
-#### Drop IE ####
-+ Refactor system_menu.
+### FinePlay x.x.x ###
++ Drop IE / Refactor system_menu.
 
 Release History
 ---------------
 
-+ **2.7.0-M3-βc1** - 2018-09-09
++ **2.7.0-M3-βc2** - 2018-09-30
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

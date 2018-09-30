@@ -166,7 +166,7 @@ public class Edit extends Controller {
 						if (localName != null && !localName.isEmpty()) {
 
 							final CompanyName localCompanyName;
-							if(!names.containsKey(lang().toLocale())) {
+							if (!names.containsKey(lang().toLocale())) {
 
 								localCompanyName = new CompanyName();
 								localCompanyName.setCompany_Id(company.getId());
@@ -174,7 +174,7 @@ public class Edit extends Controller {
 								localCompanyName.setName(localName);
 								names.put(lang().toLocale(), localCompanyName);
 								manager.persist(localCompanyName);
-							}else {
+							} else {
 
 								localCompanyName = names.get(lang().toLocale());
 								localCompanyName.setName(localName);

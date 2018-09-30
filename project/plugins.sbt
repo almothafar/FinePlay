@@ -23,14 +23,12 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 // JaCoCo
 //addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.1.0")
 
-// FindBugs
-//addSbtPlugin("com.github.sbt" % "sbt-findbugs" % "2.0.0")
-
 // PMD/CPD
-addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
+//addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
 
 // CheckStyle
-//addSbtPlugin("com.etsy" % "sbt-checkstyle-plugin" % "3.1.1")
+addSbtPlugin("com.etsy" % "sbt-checkstyle-plugin" % "3.1.1")
+dependencyOverrides += "com.puppycrawl.tools" % "checkstyle" % "8.11"
 
 // License report
 addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")

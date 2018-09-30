@@ -33,7 +33,6 @@ class MessagesCreator {
 			throw new RuntimeException("Not exists messages.xlsx : " + messagesSourcePath);
 		}
 
-		// https://bz.apache.org/bugzilla/show_bug.cgi?id=62187
 		try (final Workbook workbook = new XSSFWorkbook(messagesSourcePath.toFile());) {
 
 			final Sheet sheet = workbook.getSheet("messages");
