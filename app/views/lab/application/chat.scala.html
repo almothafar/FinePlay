@@ -1,0 +1,61 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.CHAT), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"chat"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="enterView" class="mb-3">
+
+						@components.button(Map("id"->"enterButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.ENTER)))
+					</div>
+
+					<div id="roomView" class="d-none">
+
+						<div class="input-group">
+							<input type="text" class="form-control" id="messageField">
+							<div class="input-group-append">
+								@components.button(Map("id"->"sendButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.SEND)))
+							</div>
+						</div>
+
+						<div id="messages" class="p-2"></div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/chat.js")'></script>
+	}
+}

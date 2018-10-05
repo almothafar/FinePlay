@@ -6,6 +6,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -17,10 +18,10 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import akka.actor.UntypedAbstractActor;
 import akka.stream.Materializer;
 import models.system.System.PermissionsAllowed;
 import play.libs.F;
@@ -54,7 +55,7 @@ public class WebSocket extends Controller {
 
 		return play.mvc.WebSocket.Text.acceptOrResult(request -> {
 
-			if (session().get("userId") != null) {
+			if (Objects.nonNull(session().get(models.user.User_.USER_ID))) {
 
 				final ZoneId zoneId = ZoneId.of(session(models.user.User_.ZONE_ID));
 				final Function<ActorRef, Props> createProps = (ref) -> Props.create(Client.class, ref, zoneId);
@@ -67,7 +68,7 @@ public class WebSocket extends Controller {
 		});
 	}
 
-	public static class Client extends UntypedAbstractActor {
+	public static class Client extends AbstractActor {
 
 		public static Props props(final ActorRef out) {
 
@@ -93,12 +94,14 @@ public class WebSocket extends Controller {
 		}
 
 		@Override
-		public void onReceive(final Object message) throws Exception {
+		public Receive createReceive() {
 
-			if (message instanceof String) {
+			return receiveBuilder()//
+					.match(String.class, message -> {
 
-				out.tell("Received: " + message, self());
-			}
+						out.tell("Received: " + message, self());
+					})//
+					.build();
 		}
 
 		private static String toClientTime(final ZoneId zoneId, final LocalDateTime time) {

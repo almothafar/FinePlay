@@ -31,6 +31,7 @@ public class System extends Controller {
 				controllers.framework.application.routes.javascript.Application.synccache(), //
 				controllers.framework.application.routes.javascript.Application.asynccache(), //
 				controllers.lab.application.routes.javascript.WebSocket.connect(), //
+				controllers.lab.application.routes.javascript.Chat.enter(), //
 				controllers.lab.maintenance.routes.javascript.Maintenance.master(), //
 				controllers.lab.maintenance.routes.javascript.Maintenance.detail())//
 		).as("text/javascript");

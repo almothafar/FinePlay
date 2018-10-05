@@ -97,6 +97,8 @@ public class MessageKeys {
 
   public static final String CHARACTER = "character";
 
+  public static final String CHAT = "chat";
+
   public static final String CHECKBOX = "checkbox";
 
   public static final String CLIENT = "client";
@@ -208,6 +210,8 @@ public class MessageKeys {
   public static final String EMPTY = "empty";
 
   public static final String END = "end";
+
+  public static final String ENTER = "enter";
 
   public static final String ENVIRONMENT = "environment";
 

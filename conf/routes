@@ -187,6 +187,8 @@ POST		/lab/application/upload/image				controllers.lab.application.Upload.image(
 POST		/lab/application/upload/direct				controllers.lab.application.Upload.direct()
 GET		/lab/application/websocket					controllers.lab.application.WebSocket.index()
 GET		/lab/application/websocket/connection		controllers.lab.application.WebSocket.connect()
+GET		/lab/application/chat						controllers.lab.application.Chat.index()
+GET		/lab/application/chat/enter					controllers.lab.application.Chat.enter()
 
 GET		/section/work								controllers.section.work.Work.task()
 GET		/section/work/task2							controllers.section.work.Work.task2()
