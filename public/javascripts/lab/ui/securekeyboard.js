@@ -52,11 +52,11 @@ $(document).ready(function() {
 		function(e) {
 			// for Attack of Screen capture.
 
-			$('#keys').addClass('opacity-0');
+			$('.key').addClass('text-transparent');
 		},
 		function(e) {
 
-			$('#keys').removeClass('opacity-0');
+			$('.key').removeClass('text-transparent');
 		}
 	);
 });
