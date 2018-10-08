@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
@@ -83,6 +84,9 @@ public class Library extends Controller {
 		case "summernote":
 
 			return summernote();
+		case "markdeep":
+
+			return markdeep();
 		case "plotlyjs":
 
 			return plotlyjs();
@@ -275,6 +279,20 @@ public class Library extends Controller {
 	public static Result vizjs() {
 
 		return ok(views.html.lab.library.vizjs.render());
+	}
+
+	public static Result markdeep() {
+
+		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/lab/library/markdeep/features.md"); //
+				final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+
+			final String markdeep = reader.lines().collect(Collectors.joining("\n"));
+
+			return ok(views.html.lab.library.markdeep.render(markdeep));
+		} catch (IOException e) {
+
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static Result pdfjs() {

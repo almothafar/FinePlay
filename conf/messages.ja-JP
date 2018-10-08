@@ -367,6 +367,7 @@ intro = 導入
 
 justify = 均等
 key = キー
+keyboard = キーボード
 lab = 実験室
 last = 最後
 layout = 配置
@@ -410,6 +411,7 @@ other = その他
 
 optional = 任意
 outline = 概要
+overview = 概要
 page = ページ
 parameter = パラメーター
 part = 部分
@@ -450,6 +452,7 @@ sample = 見本
 save = 保存
 science = 化学
 search = 検索
+secure = 安全
 section = 課
 select = 選択
 select_file = ファイル選択

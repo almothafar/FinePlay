@@ -84,6 +84,12 @@ public class UI extends Controller {
 		case "block":
 
 			return block();
+		case "securekeyboard":
+
+			return securekeyboard();
+		case "reverse":
+
+			return reverse();
 		case "window":
 
 			return window();
@@ -211,6 +217,16 @@ public class UI extends Controller {
 	private static Result block() {
 
 		return ok(views.html.lab.ui.block.render());
+	}
+
+	private static Result securekeyboard() {
+
+		return ok(views.html.lab.ui.securekeyboard.render());
+	}
+
+	private static Result reverse() {
+
+		return ok(views.html.lab.ui.reverse.render());
 	}
 
 	private static Result window() {

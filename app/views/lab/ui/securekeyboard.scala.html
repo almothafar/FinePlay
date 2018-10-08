@@ -1,0 +1,77 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.X__X, Messages(MessageKeys.SECURE), Messages(MessageKeys.KEYBOARD)), "icon"->"far fa-keyboard", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"securekeyboard"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+						<div class="d-none">
+							<div id="secureKeyboardContent">
+								<div id="keys" class="row">
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"1", "data-key"->"1"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"2", "data-key"->"2"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"3", "data-key"->"3"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"4", "data-key"->"4"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"5", "data-key"->"5"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"6", "data-key"->"6"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"7", "data-key"->"7"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"8", "data-key"->"8"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"9", "data-key"->"9"))</div>
+									<div class="keyPosition col-4 text-center mb-2"></div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"light", "class"->"key font-weight-bold text-grey-600 shadow-sm border", "icon"->"", "text"->"0", "data-key"->"0"))</div>
+									<div class="keyPosition col-4 text-center mb-2"></div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"dark", "class"->"key font-weight-bold text-grey-300 shadow-sm border", "icon"->"fas fa-backspace", "text"->"", "data-key"->"delete"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"dark", "class"->"key font-weight-bold text-grey-300 shadow-sm border", "icon"->"fas fa-eraser", "text"->"", "data-key"->"clear"))</div>
+									<div class="keyPosition col-4 text-center mb-2">@components.button(Map("type"->"dark", "class"->"key font-weight-bold text-grey-300 shadow-sm border", "icon"->"fas fa-random", "text"->"", "data-key"->"shuffle"))</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-group">
+							<input id="inputTextField" type="number" class="form-control" aria-label="">
+							<div id="secureKeyboardButton" class="input-group-append" data-placement="left">
+								<span id="help-search-clear" class="input-group-text">
+									@components.icon(Map("id"->"", "icon"->"far fa-keyboard"))
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ui/securekeyboard.js")'></script>
+	}
+}

@@ -1,0 +1,113 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import java.time._
+@import java.time.format._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head(Messages(MessageKeys.DEVELOPMENT)){
+
+		@libraries.standard.head()
+		@libraries.markdeep.head()
+	}
+
+	@body("development","document"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.OVERVIEW), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"overview"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<h2 class="headline">Overview</h2>
+
+					<h4>Purpose</h4>
+					<div class="mb-3">
+Provide personal learning notes as a template.<br>
+Feedback is welcome.
+					</div>
+
+					<h4>Software</h4>
+					<div class="md diagram-frame mb-3">
++----------------------------------------------------------------------+
+|        fineplay                                                      |
++  +--+--------------------------+------------------+------------------+
+|  |  |                          |                  |                  |
+|  |  |                       +--+                  |                  |
+|  |  |  Bootstrap            |    ECMAScript / CSS | Java             |
+|  |  |                    +--+    libraries        | libraries        |
+|  |  |                    |                        |                  |
+|  |  +--------------------+--+                     |                  |
+|  |     jQuery               |                     |                  |
+|  |                          |                     |                  |
++--+--------------------------+---------------------+------------------+
+|                                                                      |
+|                                                                      |
+|        Play framework                                                |
+|                                                                      |
+|                                                                      |
++----------------------------------------------------------------------+
+					</div>
+
+					<h4>Time manage</h4>
+					<div class="md diagram-frame mb-3">
+.-------------------------------------------------------------------------.     .-----------------------------------------------------------------------.
+| Server                                                                  |    | Database                                                                |
+|  +------+--------+------------------------+--------------------------+  |    |  +------+--------+------------------------+--------------------------+  |
+|  |Server|Timezone|java.time.ZoneId        |UTC Only                  |<-+----+--|Server|Timezone|Text                    |UTC Only                  |  |
+|  |      |Datetime|java.time.LocalDateTime |e.g. 2017-01-01T00:00:00  |--+----+->|      |Datetime|timestamp               |e.g. 2017-01-01T00:00:00  |  |
+|  +------+--------+------------------------+--------------------------+  |    |  +------+--------+------------------------+--------------------------+  |
+|                      |                        ^                         |     '-----------------------------------------------------------------------'
+|                      |                        |                         |
+|               Convert java.time        Convert java.time ---> Error     |
+|                      |                        |                daylight saving time start & end
+|                      v                        |                         |
+|  +------+--------+------------------------+--------------------------+  |
+|  |Client|Timezone|java.time.ZoneId        |e.g. Asia/Tokyo           |  |
+|  |      |Datetime|java.time.LocalDateTime |e.g. 2017-01-01T09:00:00  |  |
+'--+------+--------+------------------------+--------------------------+--'
+                       |                        ^
+                       |                        |
+              Cookie(Play session)    Cookie(Play session)
+                    Output Form             Form submit
+                       |                        |
+                       |                        |
+.----------------------+------------------------+-------------------------.
+| Client               v                        |                         |
+|  .------+--------+------------------------+--------------------------.  |
+|  |Client|Timezone|Form hidden             |e.g. Asia/Tokyo           |  |
+|  |      |Datetime|Form input              |e.g. 2017-01-01T09:00:00  |  |
+|  '------+--------+------------------------+--------------------------'  |
+'-------------------------------------------------------------------------'
+					</div>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.markdeep.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/development/document/overview.js")'></script>
+	}
+}

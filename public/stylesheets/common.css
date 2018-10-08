@@ -470,6 +470,10 @@ label.required:after{
 
 /* Opacity */
 
+.opacity-0 {
+	opacity: 0 !important;
+}
+
 .opacity-25 {
 	opacity: 0.25 !important;
 }

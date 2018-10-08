@@ -8,6 +8,7 @@
 }
 
 <div id="@prop.getOrElse("id", "")" class="list-group mb-3">
+	<a href="@controllers.development.document.routes.Document.index("overview").toString()" class="list-group-item @("active".when(equalTask("overview")))">@Messages(MessageKeys.OVERVIEW)</a>
 	<a href="@controllers.development.document.routes.Document.index("troubleshoot").toString()" class="list-group-item @("active".when(equalTask("troubleshoot")))">@Messages(MessageKeys.TROUBLESHOOT)</a>
 	<a href="@controllers.development.document.routes.Document.index("faq").toString()" class="list-group-item @("active".when(equalTask("faq")))">@Messages(MessageKeys.FAQ)</a>
 </div>

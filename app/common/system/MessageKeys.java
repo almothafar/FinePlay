@@ -447,6 +447,8 @@ public class MessageKeys {
 
   public static final String KEY = "key";
 
+  public static final String KEYBOARD = "keyboard";
+
   public static final String LAB = "lab";
 
   public static final String LANGUAGE = "language";
@@ -548,6 +550,8 @@ public class MessageKeys {
   public static final String OTHER = "other";
 
   public static final String OUTLINE = "outline";
+
+  public static final String OVERVIEW = "overview";
 
   public static final String PAGE = "page";
 
@@ -680,6 +684,8 @@ public class MessageKeys {
   public static final String SEARCH = "search";
 
   public static final String SECTION = "section";
+
+  public static final String SECURE = "secure";
 
   public static final String SELECT = "select";
 

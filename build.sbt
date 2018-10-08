@@ -105,6 +105,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
 // TwentyTwenty															// ISC? MIT? Aug 7, 2018 master
+// markdeep																// BSD archive master(Sep 10, 2018)
 // Frappé Gantt															// MIT build version 0.0.7 master
 // 3Dmol.js																// BSD-3-Clause license 1.3.6
 // geckodriver															// Mozilla Public License 0.18.0

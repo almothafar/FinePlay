@@ -90,7 +90,7 @@
 					Map("key"->"http", "name"->Messages(MessageKeys.HTTP), "icon"->"far fa-file-alt", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
 					Map("key"->"javascript", "name"->Messages(MessageKeys.JAVASCRIPT), "icon"->"fab fa-js", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
 					Map("key"->"design", "name"->Messages(MessageKeys.DESIGN), "icon"->"fas fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),
-					Map("key"->"document", "name"->Messages(MessageKeys.DOCUMENT), "icon"->"far fa-file-alt", "link"->controllers.development.document.routes.Document.index("troubleshoot").toString(), "selected"->equalWork("development","document")),
+					Map("key"->"document", "name"->Messages(MessageKeys.DOCUMENT), "icon"->"far fa-file-alt", "link"->controllers.development.document.routes.Document.index("overview").toString(), "selected"->equalWork("development","document")),
 					Map("key"->"help", "name"->Messages(MessageKeys.HELP), "icon"->"far fa-question-circle", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
 				)),
 				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.ENVIRONMENT), "icon"->"fas fa-thermometer-half", "selected"->equalSection("environment")),List(

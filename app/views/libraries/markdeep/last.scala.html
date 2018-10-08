@@ -1,0 +1,6 @@
+@import views.html.helper._
+
+@()
+
+<script @{CSPNonce.attr}>markdeepOptions={mode: 'script'};</script>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/markdeep/latest/markdeep.min.js")'></script>

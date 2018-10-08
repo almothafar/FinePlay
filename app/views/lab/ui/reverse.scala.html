@@ -1,0 +1,69 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ui/reverse.css")'>
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Reverse", "icon"->"fas fa-arrows-alt-h", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"reverse"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="reverse">
+						<div class="reverse-front">
+							@components.card(Map("id"->"", "align"->"center")){
+								<div class="card-header">Front</div>
+								<div class="card-body">
+									<h4 class="card-title">Reversible Card</h4>
+									<p class="card-text">This is front.</p>
+									@components.button(Map("id"->"toBackButton", "type"->"primary", "text"->"Reverse"))
+								</div>
+							}
+						</div>
+						<div class="reverse-back">
+							@components.card(Map("id"->"", "align"->"center")){
+								<div class="card-header">Back</div>
+								<div class="card-body">
+									<h4 class="card-title">Reversible Card</h4>
+									<p class="card-text">This is back.</p>
+									@components.button(Map("id"->"toFrontButton", "type"->"danger", "text"->"Reverse"))
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ui/reverse.js")'></script>
+	}
+}

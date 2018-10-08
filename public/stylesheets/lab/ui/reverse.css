@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+.reverse {
+	position: relative;
+}
+
+.reverse>.reverse-front {
+	position: relative;
+	transform-origin: center;
+	transition-property: -webkit-transform;
+	transition-duration: 0.3s;
+	transition-timing-function: linear;
+	transition-timing-function: linear;
+	z-index: 1;
+}
+
+.active.reverse>.reverse-front {
+	transform: perspective(2000px) rotateY(180deg);
+	z-index: 0;
+}
+
+.reverse>.reverse-back {
+	position: absolute;
+	transform-origin: center;
+	x-moz-transform-origin: center;
+	x-webkit-transform-origin: center;
+	transition-property: -webkit-transform;
+	transition-duration: 0.3s;
+	transition-timing-function: linear;
+	transform: perspective(2000px) rotateY(-180deg);
+	z-index: 0;
+	width: 100%;
+	top: 0;
+}
+
+.active.reverse>.reverse-back {
+	transform: perspective(2000px) rotateY(-0deg);
+	z-index: 1;
+}

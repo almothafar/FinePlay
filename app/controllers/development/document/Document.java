@@ -28,6 +28,9 @@ public class Document extends Controller {
 	public Result index(String state) {
 
 		switch (state) {
+		case "overview":
+
+			return overview();
 		case "troubleshoot":
 
 			return troubleshoot();
@@ -38,6 +41,11 @@ public class Document extends Controller {
 
 			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
 		}
+	}
+
+	public Result overview() {
+
+		return ok(views.html.development.document.overview.render());
 	}
 
 	public Result troubleshoot() {
