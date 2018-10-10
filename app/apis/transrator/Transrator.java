@@ -113,7 +113,7 @@ public class Transrator extends Controller {
 		final CompletionStage<Map<String, String>> recoverPromise = responsePromise.handle((response, throwable) -> {
 
 			final Map<String, String> map = new LinkedHashMap<>();
-			if (throwable == null) {
+			if (Objects.isNull(throwable)) {
 
 				if (Http.Status.OK == response.getStatus()) {
 

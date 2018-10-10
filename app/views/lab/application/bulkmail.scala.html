@@ -1,0 +1,210 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+@import play.api.i18n._
+
+@import common.system._
+
+@()
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@exampleSmtpapiJSON() = @{
+"""
+{
+  "to": [
+    "user+g1@gmail.com",
+    "user+g2@gmail.com",
+    "user+n1@gmail.com",
+    "user+n2@gmail.com",
+    "user+n3@gmail.com",
+    "user+n4@gmail.com"
+  ],
+  "sub": {
+    "{{name}}": [
+      "キュゥべえ",
+      "鹿目まどか",
+      "暁美ほむら",
+      "巴マミ",
+      "美樹さやか",
+      "佐倉杏子"
+    ],
+    "{{customerType}}": [
+      "{{GOOD}}",
+      "{{GOOD}}",
+      "{{NORMAL}}",
+      "{{NORMAL}}",
+      "{{NORMAL}}",
+      "{{NORMAL}}"
+    ],
+    "{{salesContact}}": [
+      "Jared",
+      "Jared",
+      "Ben",
+      "Ben",
+      "Ben",
+      "Ben"
+    ],
+    "{{contactPhoneNumber}}": [
+      "777.777.7777",
+      "777.777.7777",
+      "000.000.0000",
+      "000.000.0000",
+      "000.000.0000",
+      "000.000.0000"
+    ]
+  },
+  "section": {
+    "{{GOOD}}": "Offer a 10% discount for: {{name}}",
+    "{{NORMAL}}": "Offer a 5% discount for: {{name}}"
+  },
+  "category": [
+    "weekly_news"
+  ],
+  "unique_args": {
+    "newsID": "1234"
+  },
+  "filters": {
+    "bcc": {
+      "settings": {
+        "enable": 1,
+        "email": "user@icloud.com"
+      }
+    }
+  }
+}
+"""
+}
+
+@exampleTemplateText() = @{
+"""
+<html>
+
+<head>
+  <style type="text/css">
+    .junk {
+      color: lightgrey;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Hello {{name}}.<br />
+
+    <p>{{customerType}}<br />
+
+      <span>Regards,</span><br />
+      <span>{{salesContact}}</span><br />
+      <span>{{contactPhoneNumber}}</span><br />
+    </p>
+    <ul class="junk">
+      <li>キュゥべえ</li>
+      <li>鹿目まどか</li>
+      <li>暁美ほむら</li>
+      <li>巴マミ</li>
+      <li>美樹さやか</li>
+      <li>佐倉杏子</li>
+    </ul>
+    <p class="junk">0123456789001234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890</p>
+    <table class="junk">
+      <tr>
+        <td>Adobe-Japan1</td>
+        <td>芦\uDB40\uDD00芦\uDB40\uDD01</td>
+      </tr>
+      <tr>
+        <td>Moji_Joho</td>
+        <td>芦\uDB40\uDD02芦\uDB40\uDD03芦\uDB40\uDD04芦\uDB40\uDD05芦\uDB40\uDD06芦\uDB40\uDD07芦\uDB40\uDD08芦\uDB40\uDD09</td>
+      </tr>
+    </table>
+
+</body>
+
+</html>
+"""
+}
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.X__X, Messages(MessageKeys.BULK), Messages(MessageKeys.MAIL)), "icon"->"far fa-envelope", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@components.alerts(Map("id"->"system_alerts")){
+
+				@components.alert(Map("id"->"", "icon"->"far fa-comment", "text"->"This feature is using SenfGrid's services. It is not free.", "type"->"danger"))
+			}
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"bulkmail"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@helper.form(helper.CSRF(controllers.lab.application.routes.BulkMail.send()), 'name->"bulkMailForm", 'id->"bulkMailForm") {
+
+						@components.nav(Map("id"->"translateTab","tabs"->"true"), List(
+							Map("name"->"X-SMTPAPI", "icon"->"", "link"->"#smtpapi", "selected"->"true", "data-toggle"->"tab"),
+							Map("name"->Messages(MessageKeys.TEMPLATE), "icon"->"", "link"->"#template", "data-toggle"->"tab")
+						))
+
+						<div id="bulkMailTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="smtpapi" role="tabpanel">
+
+								<textarea id="smtpapiJSON" name="smtpapiJSON" class="form-control" placeholder="X-SMTPAPI" rows="8" required maxlength="2000">@exampleSmtpapiJSON()</textarea>
+							</div>
+							<div class="tab-pane" id="template" role="tabpanel">
+
+								<textarea id="templateText" name="templateText" class="form-control" placeholder="Template" rows="8" required maxlength="2000">@exampleTemplateText()</textarea>
+							</div>
+						</div>
+					}
+
+					@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
+						)){
+						<div class="wordwrap">
+							<div id="ajaxMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+							<div id="ajaxDescription">-</div>
+						</div>
+						@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
+					}
+					<div class="mt-3 mb-3 text-right">
+
+						@components.button(Map("id"->"sendButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-paper-plane", "text"->Messages(MessageKeys.SEND), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+					</div>
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"langCode":"@lang.language",
+			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)"
+		}'></div>
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/bulkmail.js")'></script>
+	}
+}

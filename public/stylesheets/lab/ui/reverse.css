@@ -10,7 +10,6 @@
 	transition-property: -webkit-transform;
 	transition-duration: 0.3s;
 	transition-timing-function: linear;
-	transition-timing-function: linear;
 	z-index: 1;
 }
 
@@ -22,8 +21,6 @@
 .reverse>.reverse-back {
 	position: absolute;
 	transform-origin: center;
-	x-moz-transform-origin: center;
-	x-webkit-transform-origin: center;
 	transition-property: -webkit-transform;
 	transition-duration: 0.3s;
 	transition-timing-function: linear;

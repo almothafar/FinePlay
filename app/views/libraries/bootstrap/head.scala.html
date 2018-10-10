@@ -38,20 +38,19 @@
 	}
 }
 
-@session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()) match {
+@theme() = @{
 
-	case _ => {
-
-		<link rel='stylesheet'
-			href='@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/bootstrap"+dirSuffix()+".min.css")'
-			integrity="sha384-@integrity(session.get(models.user.User.THEME))"
-			crossorigin="anonymous">
-
-		<meta id="bootstrap_messages" class="d-none" data-messages='{
-			"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",
-			"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
-			"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
-		}'></meta>
-		<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>
-	}
+	session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name());
 }
+
+<link rel='stylesheet'
+	href='@routes.Assets.versioned("themes/" + theme().toLowerCase + "/bootstrap"+dirSuffix()+".min.css")'
+	integrity="sha384-@integrity(theme())"
+	crossorigin="anonymous">
+
+<meta id="bootstrap_messages" class="d-none" data-messages='{
+	"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",
+	"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
+	"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
+}'></meta>
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>

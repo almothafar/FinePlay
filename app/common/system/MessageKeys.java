@@ -63,6 +63,8 @@ public class MessageKeys {
 
   public static final String BROWSER = "browser";
 
+  public static final String BULK = "bulk";
+
   public static final String BUTTON = "button";
 
   public static final String CAMERA = "camera";
@@ -475,6 +477,8 @@ public class MessageKeys {
 
   public static final String LOCAL_NAME_DESCRIPTION = "local.name.description";
 
+  public static final String MAIL = "mail";
+
   public static final String MAINTENANCE = "maintenance";
 
   public static final String MANAGE = "manage";
@@ -880,6 +884,8 @@ public class MessageKeys {
   public static final String USER_USERID = "user.userid";
 
   public static final String USER_USERID_DESCRIPTION = "user.userid.description";
+
+  public static final String UX = "ux";
 
   public static final String VALUE = "value";
 

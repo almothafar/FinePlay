@@ -76,6 +76,12 @@
 |controllers         |controllers.lab.application.Application                               |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |paging                        |      |      |      |
+|controllers         |controllers.lab.application.BulkMail                                  |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
+|                    |                                                                      |send                          |      |      |      |
+|controllers         |controllers.lab.application.Chat                                      |                              |     O|     O|     O|
+|                    |                                                                      |enter                         |      |      |      |
+|                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.lab.application.Download                                  |                              |     O|     O|     O|
 |                    |                                                                      |chunks                        |      |      |      |
 |                    |                                                                      |encryptZipStream              |      |      |      |
