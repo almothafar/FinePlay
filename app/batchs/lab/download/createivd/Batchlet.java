@@ -77,14 +77,14 @@ public class Batchlet extends AbstractBatchlet {
 			final byte[] pptxBytes = Reports.toPptx(templateStream, parameters, dataSource);
 			final Path pptxPath = tmpPath.resolve(UUID.randomUUID() + ".pptx");
 			Files.write(pptxPath, pptxBytes);
-			System.out.println(pptxPath);
+			LOGGER.info("{}",pptxPath);
 
 			byte[] fodpBytes = Offices.toFodp(pptxPath);
 			fodpBytes = resolveIVD(fodpBytes);
 
 			final Path fodpPath = tmpPath.resolve(UUID.randomUUID() + ".fodp");
 			Files.write(fodpPath, fodpBytes);
-			System.out.println(fodpPath);
+			LOGGER.info("{}",fodpPath);
 
 			final byte[] bytes = Offices.toPDF(fodpPath);
 

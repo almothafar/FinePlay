@@ -45,7 +45,6 @@ import play.api.PlayException.ExceptionSource;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
@@ -63,7 +62,7 @@ public class Upload extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -74,11 +73,10 @@ public class Upload extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(value = BodyParser.MultipartFormData.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public CompletionStage<Result> upload() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final MultipartFormData<File> multipartFormData = request().body().asMultipartFormData();
 			final Form<UploadFormContent> uploadForm = formFactory.form(UploadFormContent.class).bindFromRequest(multipartFormData.asFormUrlEncoded());

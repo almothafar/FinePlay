@@ -33,7 +33,6 @@ import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.Langs;
@@ -57,7 +56,7 @@ public class RegistUser extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private Config config;
@@ -66,7 +65,7 @@ public class RegistUser extends Controller {
 	private FormFactory formFactory;
 
 	@Inject
-	private MailerClient mailerClient;
+	private MailerClient mailer;
 
 	@Inject
 	private UserService userService;
@@ -82,66 +81,69 @@ public class RegistUser extends Controller {
 		return ok(views.html.registuser.regist.render(registForm));
 	}
 
-	@Transactional()
 	@RequireCSRFCheck
 	public Result apply() {
 
-		final Form<RegistFormContent> registForm = formFactory.form(RegistFormContent.class).bindFromRequest();
-		if (!registForm.hasErrors()) {
+		return jpa.withTransaction(manager -> {
 
-			final RegistFormContent registFormContent = registForm.get();
+			final Form<RegistFormContent> registForm = formFactory.form(RegistFormContent.class).bindFromRequest();
+			if (!registForm.hasErrors()) {
 
-			final String userId = registFormContent.getUserId();
-			final String password = registFormContent.getPassword();
-			final String rePassword = registFormContent.getRePassword();
-			final Locale locale = getInferencedLocale();
-			final ZoneId zoneId = getInferencedZoneId(registFormContent);
+				final RegistFormContent registFormContent = registForm.get();
 
-			final models.registuser.RegistUser registUser;
-			try {
+				final String userId = registFormContent.getUserId();
+				final String password = registFormContent.getPassword();
+				final String rePassword = registFormContent.getRePassword();
+				final Locale locale = getInferencedLocale();
+				final ZoneId zoneId = getInferencedZoneId(registFormContent);
 
-				if (!password.equals(rePassword)) {
-
-					registFormContent.setPassword(null);
-					registFormContent.setRePassword(null);
-					throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
-				}
-
-				if (userService.isExist(jpaApi.em(), userId)) {
-
-					registFormContent.setUserId(null);
-					throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_EXIST));
-				}
-
-				registUser = new models.registuser.RegistUser();
-				registUser.setUserId(userId);
-				registUser.setPassword(password);
-				registUser.setLocale(locale);
-				registUser.setZoneId(zoneId);
-				registUser.setCode();
-				registUser.setExpireDateTime(LocalDateTime.now().plusDays(ONE_DAY));
-
+				final models.registuser.RegistUser registUser;
 				try {
 
-					registUserDao.create(jpaApi.em(), registUser);
-				} catch (final EntityExistsException e) {
+					if (!password.equals(rePassword)) {
 
-					throw new RuntimeException(e);
+						registFormContent.setPassword(null);
+						registFormContent.setRePassword(null);
+						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
+					}
+
+					if (userService.isExist(manager, userId)) {
+
+						registFormContent.setUserId(null);
+						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_EXIST));
+					}
+
+					registUser = new models.registuser.RegistUser();
+					registUser.setUserId(userId);
+					registUser.setPassword(password);
+					registUser.setLocale(locale);
+					registUser.setZoneId(zoneId);
+					registUser.setCode();
+					registUser.setExpireDateTime(LocalDateTime.now().plusDays(ONE_DAY));
+
+					try {
+
+						registUserDao.create(manager, registUser);
+					} catch (final EntityExistsException e) {
+
+						throw new RuntimeException(e);
+					}
+				} catch (final AccountException e) {
+
+					final Form<RegistFormContent> failureRegistForm = formFactory.form(RegistFormContent.class)//
+							.fill(registFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
+					return failureApply(failureRegistForm);
 				}
-			} catch (final AccountException e) {
 
-				final Form<RegistFormContent> failureRegistForm = formFactory.form(RegistFormContent.class)//
-						.fill(registFormContent)//
-						.withGlobalError(e.getLocalizedMessage());
-				return failureApply(failureRegistForm);
+				sendProvisionalEmail(registUser);
+				return ok(views.html.registuser.provisional.complete.render(registForm))//
+						.withLang(Locales.toLang(locale), messages);
+			} else {
+
+				return failureApply(registForm);
 			}
-
-			sendProvisionalEmail(registUser);
-			return ok(views.html.registuser.provisional.complete.render(registForm));
-		} else {
-
-			return failureApply(registForm);
-		}
+		});
 	}
 
 	@Nonnull
@@ -163,9 +165,7 @@ public class RegistUser extends Controller {
 			}
 		}
 
-		changeLang(useLang);
-
-		return lang().toLocale();
+		return useLang.toLocale();
 	}
 
 	private static Lang normalizeLang(final Lang useLang) {
@@ -239,7 +239,7 @@ public class RegistUser extends Controller {
 				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
 				.setBodyHtml(createProvisionalHtmlMailBody(registUser, regularURL, lang()).body().trim());
 
-		mailerClient.send(email);
+		mailer.send(email);
 	}
 
 	private Html createProvisionalHtmlMailBody(final models.registuser.RegistUser user, final String regularURL, final Lang lang) {
@@ -263,47 +263,49 @@ public class RegistUser extends Controller {
 		return ok(createProvisionalHtmlMailBody(dummyRegistUser, createRegularURL(dummyRegistUser.getCode()), Lang.forCode(langString)));
 	}
 
-	@Transactional()
 	public Result regular(final String code) {
 
-		models.registuser.RegistUser registUser;
-		try {
+		return jpa.withTransaction(manager -> {
 
-			registUser = registUserDao.read(jpaApi.em(), (builder, query) -> {
+			models.registuser.RegistUser registUser;
+			try {
 
-				final Root<models.registuser.RegistUser> root = query.from(models.registuser.RegistUser.class);
-				query.where(builder.and(builder.equal(root.get(RegistUser_.code), code), builder.greaterThanOrEqualTo(root.get(RegistUser_.expireDateTime), LocalDateTime.now())));
-			});
-		} catch (final NoResultException e) {
+				registUser = registUserDao.read(manager, (builder, query) -> {
 
-			throw new PlayException("", "", e);
-		} catch (final NonUniqueResultException e) {
+					final Root<models.registuser.RegistUser> root = query.from(models.registuser.RegistUser.class);
+					query.where(builder.and(builder.equal(root.get(RegistUser_.code), code), builder.greaterThanOrEqualTo(root.get(RegistUser_.expireDateTime), LocalDateTime.now())));
+				});
+			} catch (final NoResultException e) {
 
-			throw new RuntimeException(e);
-		}
+				throw new PlayException("", "", e);
+			} catch (final NonUniqueResultException e) {
 
-		final models.user.User user = new models.user.User();
-		user.setUserId(registUser.getUserId());
-		user.setSalt(registUser.getSalt());
-		user.setHashedPassword(registUser.getHashedPassword());
-		user.setRoles(EnumSet.of(Role.CUSTOMER));
-		user.setTheme(Theme.DEFAULT);
-		user.setLocale(registUser.getLocale());
-		user.setZoneId(registUser.getZoneId());
-		user.setExpireDateTime(LocalDateTime.now().plusYears(1000));
+				throw new RuntimeException(e);
+			}
 
-		try {
+			final models.user.User user = new models.user.User();
+			user.setUserId(registUser.getUserId());
+			user.setSalt(registUser.getSalt());
+			user.setHashedPassword(registUser.getHashedPassword());
+			user.setRoles(EnumSet.of(Role.CUSTOMER));
+			user.setTheme(Theme.DEFAULT);
+			user.setLocale(registUser.getLocale());
+			user.setZoneId(registUser.getZoneId());
+			user.setExpireDateTime(LocalDateTime.now().plusYears(1000));
 
-			userService.create(jpaApi.em(), user);
-		} catch (final AccountException e) {
+			try {
 
-			throw new PlayException("", "", e);
-		}
+				userService.create(manager, user);
+			} catch (final AccountException e) {
 
-		registUserDao.delete(jpaApi.em(), registUser);
+				throw new PlayException("", "", e);
+			}
 
-		sendRegularEmail(user);
-		return ok(views.html.registuser.regular.complete.render(user));
+			registUserDao.delete(manager, registUser);
+
+			sendRegularEmail(user);
+			return ok(views.html.registuser.regular.complete.render(user));
+		});
 	}
 
 	private String createSystemURL() {
@@ -321,7 +323,7 @@ public class RegistUser extends Controller {
 				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
 				.setBodyHtml(createRegularHtmlMailBody(user, createSystemURL(), lang()).body().trim());
 
-		mailerClient.send(email);
+		mailer.send(email);
 	}
 
 	private Html createRegularHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {

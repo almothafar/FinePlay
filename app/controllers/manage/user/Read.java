@@ -30,7 +30,6 @@ import models.user.User_;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -42,7 +41,7 @@ public class Read extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -52,51 +51,54 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	public Result index() {
 
-		final ReadFormContent readFormContent = new ReadFormContent();
-		readFormContent.setRoles(Arrays.asList(Role.values()));
-		readFormContent.setMaxResult(String.valueOf(1000));
+		return jpa.withTransaction(manager -> {
 
-		final List<models.user.User> users = readList(jpaApi.em(), readFormContent, 0);
+			final ReadFormContent readFormContent = new ReadFormContent();
+			readFormContent.setRoles(Arrays.asList(Role.values()));
+			readFormContent.setMaxResult(String.valueOf(1000));
 
-		final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+			final List<models.user.User> users = readList(manager, readFormContent, 0);
 
-		return ok(views.html.manage.user.index.render(readForm, users));
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+
+			return ok(views.html.manage.user.index.render(readForm, users));
+		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	@RequireCSRFCheck
 	public Result read() {
 
-		final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
-		if (!readForm.hasErrors()) {
+		return jpa.withTransaction(manager -> {
 
-			final ReadFormContent readFormContent = readForm.get();
-			if (readFormContent.getRoles() == null) {
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+			if (!readForm.hasErrors()) {
 
-				readFormContent.setRoles(Collections.emptyList());
+				final ReadFormContent readFormContent = readForm.get();
+				if (readFormContent.getRoles() == null) {
+
+					readFormContent.setRoles(Collections.emptyList());
+				}
+
+				final List<models.user.User> users = readList(manager, readFormContent, 0);
+
+				return ok(views.html.manage.user.index.render(readForm, Collections.unmodifiableList(users)));
+			} else {
+
+				return failureRead(readForm);
 			}
-
-			final List<models.user.User> users = readList(jpaApi.em(), readFormContent, 0);
-
-			return ok(views.html.manage.user.index.render(readForm, Collections.unmodifiableList(users)));
-		} else {
-
-			return failureRead(readForm);
-		}
+		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	@RequireCSRFCheck
 	public Result download() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest();
 

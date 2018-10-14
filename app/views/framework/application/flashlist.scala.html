@@ -33,10 +33,10 @@
 				</div>
 				<div class="col-md-9">
 
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->play.mvc.Controller.flash("success"), "closable"->"true", "flashKey"->"success"))
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-info-circle", "text"->play.mvc.Controller.flash("info"), "type"->"info", "closable"->"true", "flashKey"->"info"))
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->play.mvc.Controller.flash("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-ban", "text"->play.mvc.Controller.flash("danger"), "type"->"danger", "closable"->"true", "flashKey"->"danger"))
+					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->flash.get("success"), "closable"->"true", "flashKey"->"success"))
+					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-info-circle", "text"->flash.get("info"), "type"->"info", "closable"->"true", "flashKey"->"info"))
+					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
+					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-ban", "text"->flash.get("danger"), "type"->"danger", "closable"->"true", "flashKey"->"danger"))
 
 					@development.proptable("", map)
 				</div>

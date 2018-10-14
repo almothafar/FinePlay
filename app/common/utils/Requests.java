@@ -33,7 +33,7 @@ public class Requests {
 		synchronized (syncCache) {
 
 			final Optional<String> previousSubmitTokenOptional = syncCache.getOptional("previousSubmitToken");
-			previousSubmitToken = previousSubmitTokenOptional.get();
+			previousSubmitToken = previousSubmitTokenOptional.orElse(null);
 			submitToken = request.getQueryString("csrfToken");
 			syncCache.set("previousSubmitToken", submitToken);
 		}

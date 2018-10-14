@@ -14,12 +14,14 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
+import javax.persistence.EntityManager;
 import javax.security.auth.login.AccountException;
 
 import org.slf4j.Logger;
@@ -42,13 +44,13 @@ import play.Application;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http.Cookie;
+import play.mvc.Http.Session;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -101,7 +103,7 @@ public class User extends Controller {
 	}
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private MessagesApi messages;
@@ -114,7 +116,10 @@ public class User extends Controller {
 
 	public Result index() {
 
-		session(models.user.User_.THEME, Theme.DEFAULT.name());
+		request().session().putAll(Map.of(//
+				models.user.User_.THEME, Theme.DEFAULT.name()//
+		));
+//		session(models.user.User_.THEME, Theme.DEFAULT.name());
 
 		final SignInFormContent signInFormContent = new SignInFormContent();
 		if (request().cookie(models.user.User_.USER_ID) != null) {
@@ -152,87 +157,89 @@ public class User extends Controller {
 		return ok(index.render(signInForm, getFixedUsers()));
 	}
 
-	@Transactional()
 	@RequireCSRFCheck
 	public Result signIn() {
 
-		final Form<SignInFormContent> signInForm = formFactory.form(SignInFormContent.class).bindFromRequest();
-		if (!signInForm.hasErrors()) {
+		return jpa.withTransaction(manager -> {
 
-			final SignInFormContent signInFormContent = signInForm.get();
+			final Form<SignInFormContent> signInForm = formFactory.form(SignInFormContent.class).bindFromRequest();
+			if (!signInForm.hasErrors()) {
 
-			final String userId = signInFormContent.getUserId();
-			final String password = signInFormContent.getPassword();
+				final SignInFormContent signInFormContent = signInForm.get();
 
-			final models.user.User user;
-			try {
+				final String userId = signInFormContent.getUserId();
+				final String password = signInFormContent.getPassword();
 
-				user = userAuthenticator.signIn(lang(), userId, password);
-			} catch (final AccountException e) {
-
-				signInFormContent.setPassword(null);
-
-				final Form<SignInFormContent> failureSignInForm = formFactory.form(SignInFormContent.class)//
-						.fill(signInFormContent)//
-						// conceal a reject reason
-						.withGlobalError(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USER));
-				return failureSignIn(failureSignInForm);
-			}
-
-			session(models.user.User_.THEME, user.getTheme().name());
-
-			final Lang selectedLang = Locales.toLang(user.getLocale());
-			changeLang(selectedLang);
-
-			session(models.user.User_.ZONE_ID, user.getZoneId().getId());
-
-			session(models.user.User_.USER_ID, userId);
-			session(models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())));
-			session(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString());
-
-			String requestUrl = ctx().session().get(SessionKeys.REQUEST_URL);
-			if (requestUrl == null || requestUrl.equals("") || requestUrl.equals(controllers.user.routes.User.index().absoluteURL(request()))) {
-
-				requestUrl = controllers.home.routes.Home.index().url();
-			}
-
-			final Result result = redirect(requestUrl);
-			if (Boolean.valueOf(signInFormContent.getStoreAccount())) {
-				LOGGER.info("Store account");
-
-				final String encodedUserId;
-				final String encodedPassword;
+				final models.user.User user;
 				try {
 
-					encodedUserId = URLEncoder.encode(userId, StandardCharsets.UTF_8.name());
-					encodedPassword = URLEncoder.encode(password, StandardCharsets.UTF_8.name());
-				} catch (final UnsupportedEncodingException e) {
+					user = userAuthenticator.signIn(manager, lang(), userId, password);
+				} catch (final AccountException e) {
 
-					throw new RuntimeException(e);
+					signInFormContent.setPassword(null);
+
+					final Form<SignInFormContent> failureSignInForm = formFactory.form(SignInFormContent.class)//
+							.fill(signInFormContent)//
+							// conceal a reject reason
+							.withGlobalError(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USER));
+					return failureSignIn(failureSignInForm);
 				}
 
-				// TODO How to set cookie is unknown.
-//				result.withCookies(//
-//						Cookie.builder(models.user.User_.USER_ID, encodedUserId).withMaxAge(TWO_WEEKS).build(), //
-//						Cookie.builder(models.user.User.PASSWORD, encodedPassword).withMaxAge(TWO_WEEKS).build());
-				response().setCookie(Cookie.builder(models.user.User_.USER_ID, encodedUserId).withMaxAge(TWO_WEEKS).build());
-				response().setCookie(Cookie.builder(models.user.User.PASSWORD, encodedPassword).withMaxAge(TWO_WEEKS).build());
+				// TODO 2.7.0 (´・ω・`).
+				final Lang selectedLang = Locales.toLang(user.getLocale());
+//				changeLang(selectedLang);
+//				session(models.user.User_.USER_ID, userId);
+//				session(models.user.User_.THEME, user.getTheme().name());
+//				session(models.user.User_.ZONE_ID, user.getZoneId().getId());
+//				session(models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())));
+//				session(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString());
+
+				String requestUrl = request().session().get(SessionKeys.REQUEST_URL);
+				if (requestUrl == null || requestUrl.equals("") || requestUrl.equals(controllers.user.routes.User.index().absoluteURL(request()))) {
+
+					requestUrl = controllers.home.routes.Home.index().url();
+				}
+
+				Result result = redirect(requestUrl)//
+						.withLang(selectedLang, messages)//
+						.withSession(new Session(Map.of(//
+								models.user.User_.USER_ID, userId, //
+								models.user.User_.THEME, user.getTheme().name(), //
+								models.user.User_.ZONE_ID, user.getZoneId().getId(), //
+								models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())), //
+								SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString()//
+				)));
+				if (Boolean.valueOf(signInFormContent.getStoreAccount())) {
+					LOGGER.info("Store account");
+
+					final String encodedUserId;
+					final String encodedPassword;
+					try {
+
+						encodedUserId = URLEncoder.encode(userId, StandardCharsets.UTF_8.name());
+						encodedPassword = URLEncoder.encode(password, StandardCharsets.UTF_8.name());
+					} catch (final UnsupportedEncodingException e) {
+
+						throw new RuntimeException(e);
+					}
+
+					result = result.withCookies(// Fluent interface, but return different instance.
+							Cookie.builder(models.user.User_.USER_ID, encodedUserId).withMaxAge(TWO_WEEKS).build(), //
+							Cookie.builder(models.user.User.PASSWORD, encodedPassword).withMaxAge(TWO_WEEKS).build());
+				} else {
+					LOGGER.info("Not Store account");
+
+					result = result// Fluent interface, but return different instance.
+							.discardCookie(models.user.User_.USER_ID)//
+							.discardCookie(models.user.User.PASSWORD);
+				}
+
+				return result;
 			} else {
-				LOGGER.info("Not Store account");
 
-				// TODO How to set cookie is unknown.
-//				result//
-//						.discardCookie(models.user.User_.USER_ID)//
-//						.discardCookie(models.user.User.PASSWORD);
-				response().discardCookie(models.user.User_.USER_ID);
-				response().discardCookie(models.user.User.PASSWORD);
+				return failureSignIn(signInForm);
 			}
-
-			return result;
-		} else {
-
-			return failureSignIn(signInForm);
-		}
+		});
 	}
 
 	private Result failureSignIn(final Form<SignInFormContent> signInForm) {
@@ -242,26 +249,41 @@ public class User extends Controller {
 
 	@PermissionsAllowed(value = { Permission.READ })
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional()
 	public Result signOut() {
 
-		updateSignOutTime();
-		session().clear();
-		clearLang();
+		return jpa.withTransaction(manager -> {
 
-		// for Edge measures.
-		Lang acceptLang = request().acceptLanguages().stream().findFirst().orElse(Locales.toLang(Locale.US));
-		changeLang(acceptLang);
+			updateSignOutTime(manager);
+			request().session().clear();
+//			session().clear();
+//			clearLang();
 
-		return redirect(controllers.user.routes.User.index());
+			// for Edge measures.
+			Lang acceptLang = request().acceptLanguages().stream().findFirst().orElse(Locales.toLang(Locale.US));
+//			changeLang(acceptLang);
+
+			return redirect(controllers.user.routes.User.index())//
+					.clearingLang(messages)//
+					.withLang(acceptLang, messages);// for Edge measures.
+
+//			updateSignOutTime(manager);
+//			request().session().clear();
+////			session().clear();
+//			clearLang();
+//
+//			// for Edge measures.
+//			Lang acceptLang = request().acceptLanguages().stream().findFirst().orElse(Locales.toLang(Locale.US));
+//			changeLang(acceptLang);
+//
+//			return redirect(controllers.user.routes.User.index());
+		});
 	}
 
-	public void updateSignOutTime() {
+	public void updateSignOutTime(final EntityManager manager) {
 
-		final models.user.User user;
 		try {
 
-			user = userAuthenticator.signOut(lang(), session(models.user.User_.USER_ID));
+			userAuthenticator.signOut(manager, lang(), request().session().get(models.user.User_.USER_ID));
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -271,24 +293,22 @@ public class User extends Controller {
 	@PermissionsAllowed(value = { Permission.READ })
 	@Authenticated(common.core.Authenticator.class)
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional(readOnly = true)
 	@RequireCSRFCheck
 	public CompletionStage<Result> confirm() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<PasswordFormContent> passwordForm = formFactory.form(PasswordFormContent.class).bindFromRequest();
 			if (!passwordForm.hasErrors()) {
 
 				final PasswordFormContent passwordFormContent = passwordForm.get();
 
-				final String userId = session().get(models.user.User_.USER_ID);
+				final String userId = request().session().get(models.user.User_.USER_ID);
 				final String password = passwordFormContent.getPassword();
 
-				final models.user.User user;
 				try {
 
-					user = userAuthenticator.confirm(lang(), userId, password);
+					userAuthenticator.confirm(manager, lang(), userId, password);
 				} catch (final AccountException e) {
 
 					passwordFormContent.setPassword(null);
@@ -298,13 +318,15 @@ public class User extends Controller {
 					return failureConfirm(failurePasswordForm);
 				}
 
-				session(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString());
-
 				final ObjectMapper mapper = new ObjectMapper();
 				final ObjectNode response = mapper.createObjectNode();
 				response.put("status", "success");
 
-				return ok(response);
+				// TODO 2.7.0 (´・ω・`).
+				session(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString());
+				return ok(response).withSession(new Session(Map.of(//
+						SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString()//
+				)));
 			} else {
 
 				return failureConfirm(passwordForm);

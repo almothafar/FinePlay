@@ -1,19 +1,5 @@
 @charset "utf-8";
 
-/* Font */
-
-.font-family_HiraginoSans-W3{
-	font-family: HiraginoSans-W3;
-}
-
-.font-family_HiraMinProN-W3{
-	font-family: HiraMinProN-W3;
-}
-
-.font-family_IPAmjMincho{
-	font-family: IPAmjMincho;
-}
-
 /* Basic frame */
 
 html {

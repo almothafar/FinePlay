@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.typesafe.config.Config;
 
 import models.system.System.PermissionsAllowed;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
@@ -37,7 +36,6 @@ public class Transrator extends Controller {
 	@Inject
 	private WSClient ws;
 
-	@Transactional(readOnly = true)
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
 	public Result translate(@Nullable final String from, @Nonnull final String to, @Nonnull final String text) {

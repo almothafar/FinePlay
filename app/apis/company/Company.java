@@ -19,7 +19,6 @@ import models.base.EntityDao;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -27,17 +26,16 @@ import play.mvc.Security.Authenticated;
 public class Company extends Controller {
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	private final EntityDao<models.company.Company> companyDao = new EntityDao<models.company.Company>() {
 	};
 
-	@Transactional(readOnly = true)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Authenticated(common.core.Authenticator.class)
 	public Result companies(@Nonnull final String name, final int pageIndex, final int pageSize) {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final String companyName = name;
 

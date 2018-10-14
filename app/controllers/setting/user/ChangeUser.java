@@ -28,7 +28,6 @@ import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
@@ -52,7 +51,7 @@ public class ChangeUser extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private Config config;
@@ -61,7 +60,7 @@ public class ChangeUser extends Controller {
 	private FormFactory formFactory;
 
 	@Inject
-	private MailerClient mailerClient;
+	private MailerClient mailer;
 
 	@Inject
 	private UserService userService;
@@ -79,11 +78,10 @@ public class ChangeUser extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional
 	@RequireCSRFCheck
 	public Result apply() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<ChangeFormContent> changeForm = formFactory.form(ChangeFormContent.class).bindFromRequest();
 			if (!changeForm.hasErrors()) {
@@ -102,7 +100,7 @@ public class ChangeUser extends Controller {
 					}
 
 					changeUser = new models.setting.user.changeuser.ChangeUser();
-					changeUser.setUserId(session(models.user.User_.USER_ID));
+					changeUser.setUserId(request().session().get(models.user.User_.USER_ID));
 					changeUser.setNewUserId(newUserId);
 					changeUser.setCode();
 					changeUser.setExpireDateTime(LocalDateTime.now().plusDays(ONE_DAY));
@@ -153,7 +151,7 @@ public class ChangeUser extends Controller {
 				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
 				.setBodyHtml(createReserveHtmlMailBody(changeUser, decisionURL, lang()).body().trim());
 
-		mailerClient.send(email);
+		mailer.send(email);
 	}
 
 	private Html createReserveHtmlMailBody(final models.setting.user.changeuser.ChangeUser user, final String decisionURL, final Lang lang) {
@@ -179,10 +177,9 @@ public class ChangeUser extends Controller {
 	}
 
 	@PermissionsAllowed(value = { Permission.READ })
-	@Transactional()
 	public Result decision(final String code) {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			models.setting.user.changeuser.ChangeUser changeUser;
 			models.user.User user;
@@ -236,7 +233,7 @@ public class ChangeUser extends Controller {
 				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
 				.setBodyHtml(createDecisionHtmlMailBody(user, createSystemURL(), lang()).body().trim());
 
-		mailerClient.send(email);
+		mailer.send(email);
 	}
 
 	private Html createDecisionHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {

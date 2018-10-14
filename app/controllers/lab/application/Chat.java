@@ -50,7 +50,7 @@ public class Chat extends Controller {
 
 		return play.mvc.WebSocket.Text.acceptOrResult(request -> {
 
-			final String userId = session().get(models.user.User_.USER_ID);
+			final String userId = request().session().get(models.user.User_.USER_ID);
 			if (Objects.nonNull(userId)) {
 
 				final Function<ActorRef, Props> createProps = (memberRef) -> Props.create(Member.class, memberRef, userId);

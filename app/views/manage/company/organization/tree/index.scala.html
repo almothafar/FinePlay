@@ -70,7 +70,7 @@
 
 			<div class="mt-3 mb-3">
 
-				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->play.mvc.Controller.flash("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
+				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
 				@components.alert(Map("id"->"unsavedInfo", "icon"->"fas fa-info-circle", "text"->"", "type"->"info", "closable"->"true"))
 			</div>
 

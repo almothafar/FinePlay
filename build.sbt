@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M3-βc2-SNAPSHOT"
+version := "2.7.0-M4-α6-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M3-βc2-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M4-α6-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -33,8 +33,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "6.0.1",						// Apache 6.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.6.10",						// Apache 2.6.9
-  "com.typesafe.play" %% "play-ws" % "2.0.0-M2",						// Apache 2.0.0-M2
+  "com.typesafe.play" %% "play-json" % "2.7.0-M1",						// Apache 2.7.0-M1
+  "com.typesafe.play" %% "play-ws" % "2.0.0-M6",						// Apache 2.0.0-M6
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
@@ -43,20 +43,20 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-jpamodelgen" % "5.3.6.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
-  "javax.json" % "javax.json-api" % "1.1.2",
-  "org.glassfish" % "javax.json" % "1.1.2",
-  "org.apache.commons" % "commons-text" % "1.4",						// Apache 1.4
+  "javax.json" % "javax.json-api" % "1.1.3",
+  "org.glassfish" % "javax.json" % "1.1.3",
+  "org.apache.commons" % "commons-text" % "1.5",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.22.0",							// MIT 2.22.0
-  "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 3.16
+  "org.mockito" % "mockito-core" % "2.23.0",							// MIT 2.23.0
+  "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.0.0",									// Apache 4.0.0
   "org.apache.poi" % "poi-scratchpad" % "4.0.0",
   "org.apache.poi" % "poi-ooxml" % "4.0.0",
-  "org.apache.tika" % "tika-core" % "1.19",								// Apache 1.17
+  "org.apache.tika" % "tika-core" % "1.19.1",							// Apache 1.17
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.11",							// Apache 2.0.9
+  "org.apache.pdfbox" % "pdfbox" % "2.0.12",							// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0
@@ -70,7 +70,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
-  "org.webjars.npm" % "bootstrap-slider" % "10.2.0",					// MIT 10.2.0
+  "org.webjars.npm" % "bootstrap-slider" % "10.2.1",					// MIT 10.2.1
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
@@ -92,11 +92,11 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.bower" % "diff2html" % "2.4.0",							// MIT 2.4.0
-  "org.webjars.npm" % "marked" % "0.5.0",								// MIT 0.5.0
+  "org.webjars.npm" % "marked" % "0.5.1",								// MIT 0.5.1
   "org.webjars.npm" % "viz.js" % "2.0.0",								// MIT 2.0.0
-  "org.webjars.bower" % "plotly.js" % "1.39.3",							// MIT 1.39.4
+  "org.webjars.bower" % "plotly.js" % "1.41.3",							// MIT 1.41.3
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-//  "org.webjars.bower" % "tether-shepherd" % "1.8.1",					// MIT 2.0.0-beta.23
+//  "org.webjars.bower" % "tether-shepherd" % "2.0.0-beta.32",			// MIT 2.0.0-beta.32
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.8",								// Apache 1.4.8
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch

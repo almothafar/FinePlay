@@ -32,7 +32,7 @@ public class Batchlet extends AbstractBatchlet {
 	private MessagesApi messages;
 
 	@Inject
-	private MailerClient mailerClient;
+	private MailerClient mailer;
 
 	@Override
 	public String process() throws Exception {
@@ -46,7 +46,7 @@ public class Batchlet extends AbstractBatchlet {
 				.setFrom("Mister FROM <from@email.com>")//
 				.addTo("Miss TO <to@email.com>")//
 				.setBodyText(exception.getLocalizedMessage());
-		mailerClient.send(email);
+		mailer.send(email);
 
 		throw exception;
 	}

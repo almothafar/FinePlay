@@ -55,9 +55,10 @@ public class WebSocket extends Controller {
 
 		return play.mvc.WebSocket.Text.acceptOrResult(request -> {
 
-			if (Objects.nonNull(session().get(models.user.User_.USER_ID))) {
 
-				final ZoneId zoneId = ZoneId.of(session(models.user.User_.ZONE_ID));
+			if (Objects.nonNull(request().session().get(models.user.User_.USER_ID))) {
+
+				final ZoneId zoneId = ZoneId.of(request().session().get(models.user.User_.ZONE_ID));
 				final Function<ActorRef, Props> createProps = (ref) -> Props.create(Client.class, ref, zoneId);
 
 				return CompletableFuture.completedFuture(F.Either.Right(ActorFlow.actorRef(createProps, actorSystem, materializer)));

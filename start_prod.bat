@@ -1,5 +1,5 @@
 sbt dist
 cd target\universal
-powershell Expand-Archive fineplay-2.7.0-M3-βc2-SNAPSHOT.zip
-cd fineplay-2.7.0-M3-βc2-SNAPSHOT
+powershell Expand-Archive fineplay-2.7.0-M4-α6-SNAPSHOT.zip
+cd fineplay-2.7.0-M4-α6-SNAPSHOT
 bin\fineplay -Dconfig.resource=application_prod.conf -Dlogger.resource=logback_prod.xml

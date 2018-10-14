@@ -11,8 +11,8 @@ $(document).ready(function() {
 
 	$('#previewButton').on('click', function(){
 
-		var code = $('#summernote').summernote('code');
-		$('#codeArea').text(code);
+		var html = $('#summernote').summernote('code');
+		$('#codeArea').text(html);
 
 		var preview = $('#summernote + .note-editor > .note-editing-area > .note-editable').clone().children();
 		$('#previewArea').empty().append(preview);

@@ -53,7 +53,7 @@ Document
 
 ### Official Document ###
 
-[Play Framework](https://www.playframework.com/documentation/2.7.0-M2)
+[Play Framework](https://www.playframework.com/documentation/2.7.0-M4)
 
 [Bootstrap](http://getbootstrap.com/docs/4.1)
 
@@ -77,26 +77,30 @@ TODO
 + Update Play Framework 2.7.0 release
 
 #### Play Framework 2.7.0 ####
-+ Learn how to set cookies with the API of 2.7.0.
++ Learn how to set flash with the API of 2.7.0.
++ Follow Deprecate
 + Update application.conf
 + Update messages
 
 ### FinePlay 2.7.x ###
 + Update Bootstrap 4.2 release
-+ Update Bootbox 5.0 release
 + Update Shepherd 2.0.0 release
 
 #### Bootstrap 4.2 ####
-+ Rewrite notify implementation to Toast based.
-+ Rewrite custom-switch implementation to Switch based.
++ Rewrite notify implementation to Look of Toast based.
++ Learn Spinner.
+
+#### Bootstrap 4.x ####
 + Move include of Hammer.
 
 ### FinePlay x.x.x ###
 + Drop IE / Refactor system_menu.
++ Update Bootbox 5.0 release
 
 Release History
 ---------------
 
++ **2.7.0-M4-α6** - 2018-10-15 (Danger)
 + **2.7.0-M3-βc2** - 2018-09-30
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

@@ -26,7 +26,6 @@ import models.system.System.PermissionsAllowed;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -38,7 +37,7 @@ public class Read extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -48,46 +47,49 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	public Result index() {
 
-		final ReadFormContent readFormContent = new ReadFormContent();
-		readFormContent.setMaxResult(String.valueOf(1000));
+		return jpa.withTransaction(manager -> {
 
-		final List<Company> companies = readList(jpaApi.em(), readFormContent, 0);
+			final ReadFormContent readFormContent = new ReadFormContent();
+			readFormContent.setMaxResult(String.valueOf(1000));
 
-		final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+			final List<Company> companies = readList(manager, readFormContent, 0);
 
-		return ok(views.html.manage.company.index.render(readForm, companies));
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+
+			return ok(views.html.manage.company.index.render(readForm, companies));
+		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	@RequireCSRFCheck
 	public Result read() {
 
-		final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
-		if (!readForm.hasErrors()) {
+		return jpa.withTransaction(manager -> {
 
-			final ReadFormContent readFormContent = readForm.get();
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+			if (!readForm.hasErrors()) {
 
-			final List<Company> companies = readList(jpaApi.em(), readFormContent, 0);
+				final ReadFormContent readFormContent = readForm.get();
 
-			return ok(views.html.manage.company.index.render(readForm, Collections.unmodifiableList(companies)));
-		} else {
+				final List<Company> companies = readList(manager, readFormContent, 0);
 
-			return failureRead(readForm);
-		}
+				return ok(views.html.manage.company.index.render(readForm, Collections.unmodifiableList(companies)));
+			} else {
+
+				return failureRead(readForm);
+			}
+		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	@RequireCSRFCheck
 	public Result download() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest();
 

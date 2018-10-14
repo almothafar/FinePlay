@@ -32,7 +32,6 @@ import models.system.System.PermissionsAllowed;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -44,7 +43,7 @@ public class Read extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -54,44 +53,48 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	public Result index(final long companyId) {
 
-		final String companyName = readCompanyName(jpaApi.em(), companyId);
+		return jpa.withTransaction(manager -> {
 
-		final ReadFormContent readFormContent = new ReadFormContent();
-		readFormContent.setCompanyId(companyId);
-		readFormContent.setMaxResult(String.valueOf(1000));
+			final String companyName = readCompanyName(manager, companyId);
 
-		final List<OrganizationUnit> organizationUnits = readList(jpaApi.em(), readFormContent, 0);
+			final ReadFormContent readFormContent = new ReadFormContent();
+			readFormContent.setCompanyId(companyId);
+			readFormContent.setMaxResult(String.valueOf(1000));
 
-		final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+			final List<OrganizationUnit> organizationUnits = readList(manager, readFormContent, 0);
 
-		return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, organizationUnits));
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+
+			return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, organizationUnits));
+		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	@RequireCSRFCheck
 	public Result read() {
 
-		final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
-		final long companyId = readForm.value().get().getCompanyId();
+		return jpa.withTransaction(manager -> {
 
-		if (!readForm.hasErrors()) {
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+			final long companyId = readForm.value().get().getCompanyId();
 
-			final ReadFormContent readFormContent = readForm.get();
+			if (!readForm.hasErrors()) {
 
-			final String companyName = readCompanyName(jpaApi.em(), companyId);
+				final ReadFormContent readFormContent = readForm.get();
 
-			final List<OrganizationUnit> organizationUnits = readList(jpaApi.em(), readFormContent, 0);
+				final String companyName = readCompanyName(manager, companyId);
 
-			return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, Collections.unmodifiableList(organizationUnits)));
-		} else {
+				final List<OrganizationUnit> organizationUnits = readList(manager, readFormContent, 0);
 
-			return failureRead(readForm, companyId);
-		}
+				return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, Collections.unmodifiableList(organizationUnits)));
+			} else {
+
+				return failureRead(readForm, companyId);
+			}
+		});
 	}
 
 	private String readCompanyName(final EntityManager manager, final long companyId) {
@@ -104,11 +107,10 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	@RequireCSRFCheck
 	public Result download() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest();
 			final long companyId = downloadForm.value().get().getCompanyId();
@@ -177,9 +179,12 @@ public class Read extends Controller {
 
 	private Result failureRead(final Form<ReadFormContent> searchForm, final long companyId) {
 
-		final String companyName = readCompanyName(jpaApi.em(), companyId);
+		return jpa.withTransaction(manager -> {
 
-		final List<OrganizationUnit> organizationUnits = Collections.emptyList();
-		return badRequest(views.html.manage.company.organization.list.index.render(searchForm, companyName, organizationUnits));
+			final String companyName = readCompanyName(manager, companyId);
+
+			final List<OrganizationUnit> organizationUnits = Collections.emptyList();
+			return badRequest(views.html.manage.company.organization.list.index.render(searchForm, companyName, organizationUnits));
+		});
 	}
 }

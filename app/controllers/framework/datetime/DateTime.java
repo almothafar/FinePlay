@@ -3,6 +3,7 @@ package controllers.framework.datetime;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Map;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
@@ -20,11 +21,11 @@ import models.user.User_;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Http.Flash;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -34,7 +35,7 @@ public class DateTime extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -43,15 +44,17 @@ public class DateTime extends Controller {
 	private UserService userService;
 
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional()
 	public Result index() {
 
-		final models.framework.datetime.DateTime readedDateTime = readDateTime(jpaApi.em());
-		final DateTimeFormContent readedDateTimeFormContent = setDateTimeFormContentValue(readedDateTime);
+		return jpa.withTransaction(manager -> {
 
-		final Form<DateTimeFormContent> readedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(readedDateTimeFormContent);
+			final models.framework.datetime.DateTime readedDateTime = readDateTime(manager);
+			final DateTimeFormContent readedDateTimeFormContent = setDateTimeFormContentValue(readedDateTime);
 
-		return ok(views.html.framework.datetime.datetime.render(readedDateTimeForm));
+			final Form<DateTimeFormContent> readedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(readedDateTimeFormContent);
+
+			return ok(views.html.framework.datetime.datetime.render(readedDateTimeForm));
+		});
 	}
 
 	@Nonnull
@@ -60,7 +63,7 @@ public class DateTime extends Controller {
 		final User user;
 		try {
 
-			user = userService.read(manager, session(User_.USER_ID));
+			user = userService.read(manager, request().session().get(User_.USER_ID));
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -79,33 +82,37 @@ public class DateTime extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public Result update() {
 
-		final Form<DateTimeFormContent> datetimeForm = formFactory.form(DateTimeFormContent.class).bindFromRequest();
-		if (!datetimeForm.hasErrors()) {
+		return jpa.withTransaction(manager -> {
 
-			final DateTimeFormContent datetimeFormContent = datetimeForm.get();
+			final Form<DateTimeFormContent> datetimeForm = formFactory.form(DateTimeFormContent.class).bindFromRequest();
+			if (!datetimeForm.hasErrors()) {
 
-			final models.framework.datetime.DateTime updatedDateTime;
-			try {
+				final DateTimeFormContent datetimeFormContent = datetimeForm.get();
 
-				updatedDateTime = updateDateTime(jpaApi.em(), datetimeFormContent);
-			} catch (IllegalStateException e) {
+				final models.framework.datetime.DateTime updatedDateTime;
+				try {
 
-				flash("dateTimeWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage());
+					updatedDateTime = updateDateTime(manager, datetimeFormContent);
+				} catch (IllegalStateException e) {
+
+					final Flash flash = new Flash(Map.of("dateTimeWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage()));
+					// TODO 2.7.0 (´・ω・`).
+					flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
+					return failureRead(datetimeForm).withFlash(flash);
+				}
+				final DateTimeFormContent updatedDateTimeFormContent = setDateTimeFormContentValue(updatedDateTime);
+
+				final Form<DateTimeFormContent> updatedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(updatedDateTimeFormContent);
+
+				return ok(views.html.framework.datetime.datetime.render(updatedDateTimeForm));
+			} else {
+
 				return failureRead(datetimeForm);
 			}
-			final DateTimeFormContent updatedDateTimeFormContent = setDateTimeFormContentValue(updatedDateTime);
-
-			final Form<DateTimeFormContent> updatedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(updatedDateTimeFormContent);
-
-			return ok(views.html.framework.datetime.datetime.render(updatedDateTimeForm));
-		} else {
-
-			return failureRead(datetimeForm);
-		}
+		});
 	}
 
 	@Nonnull
@@ -143,7 +150,7 @@ public class DateTime extends Controller {
 		final User user;
 		try {
 
-			user = userService.read(manager, session(User_.USER_ID));
+			user = userService.read(manager, request().session().get(User_.USER_ID));
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);

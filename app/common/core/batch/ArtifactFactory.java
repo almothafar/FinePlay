@@ -79,8 +79,8 @@ public class ArtifactFactory extends AbstractArtifactFactory {
 							fieldVal = messages;
 						} else if (fieldType == MailerClient.class) {
 
-							final MailerClient mailerClient = common.system.System.getInjector().instanceOf(MailerClient.class);
-							fieldVal = mailerClient;
+							final MailerClient mailer = common.system.System.getInjector().instanceOf(MailerClient.class);
+							fieldVal = mailer;
 						} else if (fieldType == EntityManager.class) {
 
 							final Config config = ConfigFactory.load();

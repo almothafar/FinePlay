@@ -96,7 +96,7 @@ class MessagesCreator {
 				} else {
 
 					final String key;
-					switch (keyCell.getCellTypeEnum()) {
+					switch (keyCell.getCellType()) {
 					case BLANK:
 
 						key = "";
@@ -146,7 +146,7 @@ class MessagesCreator {
 			value = null;
 		} else {
 
-			switch (langCell.getCellTypeEnum()) {
+			switch (langCell.getCellType()) {
 			case BLANK:
 
 				value = "";
@@ -184,7 +184,7 @@ class MessagesCreator {
 
 	private static String toCellInfoString(final Cell cell) {
 
-		return "CellInfo [Row=" + cell.getRowIndex() + ", Column=" + cell.getColumnIndex() + ", Type=" + cell.getCellTypeEnum() + "]";
+		return "CellInfo [Row=" + cell.getRowIndex() + ", Column=" + cell.getColumnIndex() + ", Type=" + cell.getCellType() + "]";
 	}
 
 	private static final class MessagesInfo {

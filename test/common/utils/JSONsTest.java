@@ -100,7 +100,6 @@ public class JSONsTest {
 
 		final String json = "{\n  \"dateTime\" : \"1234-05-06T07:08:00\",\n  \"date\" : \"1234-05-06\",\n  \"time\" : \"07:08:00\"\n}";
 
-		@SuppressWarnings("unchecked")
 		final DateTime dateTime = JSONs.toBean(json, DateTime.class);
 
 		assertThat("", LocalDateTime.of(1234, Month.MAY, 6, 7, 8), is(dateTime.dateTime));
@@ -114,26 +113,32 @@ public class JSONsTest {
 		LocalDate date;
 		LocalTime time;
 
+		@SuppressWarnings("unused")
 		public LocalDateTime getDateTime() {
 			return dateTime;
 		}
 
+		@SuppressWarnings("unused")
 		public void setDateTime(LocalDateTime dateTime) {
 			this.dateTime = dateTime;
 		}
 
+		@SuppressWarnings("unused")
 		public LocalDate getDate() {
 			return date;
 		}
 
+		@SuppressWarnings("unused")
 		public void setDate(LocalDate date) {
 			this.date = date;
 		}
 
+		@SuppressWarnings("unused")
 		public LocalTime getTime() {
 			return time;
 		}
 
+		@SuppressWarnings("unused")
 		public void setTime(LocalTime time) {
 			this.time = time;
 		}

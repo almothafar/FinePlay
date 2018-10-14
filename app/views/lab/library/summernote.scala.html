@@ -18,7 +18,6 @@
 
 		@libraries.standard.head()
 		@libraries.summernote.head()
-		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/summernote.css")'>
 	}
 
 	@body("lab","library"){
@@ -46,10 +45,9 @@
 						@components.button(Map("id"->"previewButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-eye", "text"->Messages(MessageKeys.PREVIEW)))
 					</div>
 
-					<div id="codeArea" class="h-288p text-success bg-dark mb-3"></div>
+					<div id="previewArea" class="mb-3"></div>
 
-					<div id="previewArea" class="h-288p mb-3">
-					</div>
+					<pre class="text-success bg-dark mb-3"><code id="codeArea"></code></pre>
 				</div>
 			</div>
 		}

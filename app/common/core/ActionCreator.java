@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -21,16 +22,18 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import common.utils.Sessions;
+import models.base.EntityDao;
 import models.system.System;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
 import models.user.User.Role;
 import models.user.User_;
-import play.db.jpa.Transactional;
+import play.db.jpa.JPAApi;
 import play.http.DefaultActionCreator;
 import play.mvc.Action;
 import play.mvc.Http.Context;
+import play.mvc.Http.Flash;
 import play.mvc.Http.Headers;
 import play.mvc.Http.Request;
 import play.mvc.Http.Session;
@@ -41,86 +44,90 @@ public class ActionCreator extends DefaultActionCreator {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	@Transactional
+	@Inject
+	private JPAApi jpa;
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public Action createAction(Request request, Method actionMethod) {
 
-		LOGGER.info("========== method={} uri={} remote-address={} ==========", request.method(), request.uri(), request.remoteAddress());
-		LOGGER.info("{}#{}", actionMethod.getDeclaringClass().getName(), actionMethod.getName());
+		return jpa.withTransaction(manager -> {
 
-		final System.PermissionsAllowed permissionsAllowed = resolvePermissionsAllowed(actionMethod);
+			LOGGER.info("========== method={} uri={} remote-address={} ==========", request.method(), request.uri(), request.remoteAddress());
+			LOGGER.info("{}#{}", actionMethod.getDeclaringClass().getName(), actionMethod.getName());
 
-		return new Action.Simple() {
+			final System.PermissionsAllowed permissionsAllowed = resolvePermissionsAllowed(actionMethod);
 
-			@Override
-			public CompletionStage<Result> call(Context ctx) {
+			return new Action.Simple() {
 
-				MDC.put(User_.USER_ID, ctx.session().get(User_.USER_ID));
+				@Override
+				public CompletionStage<Result> call(Context ctx) {
 
-				LOGGER.info(createArgsMessage(ctx.args));
-				LOGGER.info(createRequestHeadersMessage(ctx.request().getHeaders()));
-				LOGGER.info(createSessionMessage(ctx.session()));
+					MDC.put(User_.USER_ID, ctx.request().session().get(User_.USER_ID));
 
-				final String rolesValue = ctx.session().get(User_.ROLES);
-				final boolean isSignIn = rolesValue != null && !rolesValue.isEmpty();
-				final CompletionStage<Result> stage;
-				if (!isSignIn) {
+					LOGGER.info(createArgsMessage(ctx.args));
+					LOGGER.info(createRequestHeadersMessage(ctx.request().getHeaders()));
+					LOGGER.info(createSessionMessage(ctx.request().session()));
 
-					stage = callNotSignIn(ctx, permissionsAllowed);
-				} else {
+					final String rolesValue = ctx.request().session().get(User_.ROLES);
+					final boolean isSignIn = rolesValue != null && !rolesValue.isEmpty();
+					final CompletionStage<Result> stage;
+					if (!isSignIn) {
 
-					final Set<Role> roles = Sessions.toRoles(rolesValue);
-					stage = callSignIn(ctx, permissionsAllowed, roles);
+						stage = callNotSignIn(ctx, permissionsAllowed);
+					} else {
+
+						final Set<Role> roles = Sessions.toRoles(rolesValue);
+						stage = callSignIn(ctx, permissionsAllowed, roles);
+					}
+
+					LOGGER.info("========================================================");
+					MDC.remove(User_.USER_ID);
+					return stage;
 				}
 
-				LOGGER.info("========================================================");
-				MDC.remove(User_.USER_ID);
-				return stage;
-			}
+				private CompletionStage<Result> callNotSignIn(@Nonnull final Context ctx, @Nullable final PermissionsAllowed permissionsAllowed) {
 
-			private CompletionStage<Result> callNotSignIn(@Nonnull final Context ctx, @Nullable final PermissionsAllowed permissionsAllowed) {
-
-				if (Objects.nonNull(permissionsAllowed)) {
-
-					return createUnauthorizedPromise();
-				}
-
-				return delegate.call(ctx);
-			}
-
-			@SuppressWarnings("null")
-			private CompletionStage<Result> callSignIn(@Nonnull final Context ctx, @Nullable final PermissionsAllowed permissionsAllowed, @Nonnull final Set<Role> roles) {
-
-				if (Objects.nonNull(permissionsAllowed)) {
-
-					final Set<Permission> workPermissions = getWorkPermissions(permissionsAllowed);
-					LOGGER.info("WorkPermissions: {}", workPermissions);
-
-					final Set<Permission> userPermissions = User.getPermissions(roles);
-					LOGGER.info("User roles :{}, User permissions :{}", roles, userPermissions);
-
-					if (!System.isPermissionAllowed(workPermissions, userPermissions)) {
+					if (Objects.nonNull(permissionsAllowed)) {
 
 						return createUnauthorizedPromise();
 					}
+
+					return delegate.call(ctx);
 				}
 
-//				setBadgeText(ctx);
+				private CompletionStage<Result> callSignIn(@Nonnull final Context ctx, @Nullable final PermissionsAllowed permissionsAllowed, @Nonnull final Set<Role> roles) {
 
-				return delegate.call(ctx);
-			}
+					if (Objects.nonNull(permissionsAllowed)) {
 
-			private void setBadgeText(final Context ctx) {
+						final Set<Permission> workPermissions = getWorkPermissions(permissionsAllowed);
+						LOGGER.info("WorkPermissions: {}", workPermissions);
 
-				ctx.flash().put("system_section-development", "New");
-				ctx.flash().put("system_section-work-http", "1");
-				ctx.flash().put("system_section-work-javascript", "2");
-				ctx.flash().put("system_section-work-design", "3");
-				ctx.flash().put("system_section-work-document", "4");
-				ctx.flash().put("system_section-work-help", "5");
-			}
-		};
+						final Set<Permission> userPermissions = User.getPermissions(roles);
+						LOGGER.info("User roles :{}, User permissions :{}", roles, userPermissions);
+
+						if (!System.isPermissionAllowed(workPermissions, userPermissions)) {
+
+							return createUnauthorizedPromise();
+						}
+					}
+
+//					setBadgeText(ctx);
+
+					return delegate.call(ctx);
+				}
+
+				private void setBadgeText(final Context ctx) {
+
+					ctx.flash().put("system_section-development", "New");
+					ctx.flash().put("system_section-work-http", "1");
+					ctx.flash().put("system_section-work-javascript", "2");
+					ctx.flash().put("system_section-work-design", "3");
+					ctx.flash().put("system_section-work-document", "4");
+					ctx.flash().put("system_section-work-help", "5");
+				}
+			};
+		});
 	}
 
 	private static System.PermissionsAllowed resolvePermissionsAllowed(@Nonnull final Method actionMethod) {

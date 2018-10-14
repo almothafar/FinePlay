@@ -72,7 +72,6 @@ import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import play.api.PlayException;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -88,7 +87,7 @@ public class Download extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	private final EntityDao<models.user.User> userDao = new EntityDao<models.user.User>() {
 	};
@@ -333,7 +332,6 @@ public class Download extends Controller {
 		byte[] toReport(@Nonnull final InputStream templateStream, @Nonnull final Map<String, Object> parameters, @Nonnull final JRDataSource dataSource);
 	}
 
-	@Transactional(readOnly = true)
 	@Authenticated(common.core.Authenticator.class)
 	public CompletionStage<Result> reportPdfStream() {
 
@@ -341,7 +339,6 @@ public class Download extends Controller {
 		return reportStream(reporter);
 	}
 
-	@Transactional(readOnly = true)
 	@Authenticated(common.core.Authenticator.class)
 	public CompletionStage<Result> reportWordStream() {
 
@@ -349,7 +346,6 @@ public class Download extends Controller {
 		return reportStream(reporter);
 	}
 
-	@Transactional(readOnly = true)
 	@Authenticated(common.core.Authenticator.class)
 	public CompletionStage<Result> reportExcelStream() {
 
@@ -357,7 +353,6 @@ public class Download extends Controller {
 		return reportStream(reporter);
 	}
 
-	@Transactional(readOnly = true)
 	@Authenticated(common.core.Authenticator.class)
 	public CompletionStage<Result> reportPowerpointStream() {
 
@@ -368,31 +363,33 @@ public class Download extends Controller {
 	@SuppressWarnings("null")
 	private CompletionStage<Result> reportStream(final Reporter reporter) {
 
-		final Map<String, Object> parameters = new HashMap<>();
-		parameters.put(MessageKeys.USER_USERID, messages.get(lang(), MessageKeys.USER_USERID));
-		parameters.put("bookland", "9784003101");
-		parameters.put("barcode", "4512223683107");
-		parameters.put("qrcode", "https://www.playframework.com");
-		parameters.put(MessageKeys.REPORT, messages.get(lang(), MessageKeys.REPORT));
-		parameters.put(MessageKeys.WELCOME, messages.get(lang(), MessageKeys.WELCOME));
+		return jpa.withTransaction(manager -> {
 
-		final List<models.user.User> users = userDao.readList(jpaApi.em(), models.user.User.class);
-		final JRDataSource dataSource = new JRBeanCollectionDataSource(users);
+			final Map<String, Object> parameters = new HashMap<>();
+			parameters.put(MessageKeys.USER_USERID, messages.get(lang(), MessageKeys.USER_USERID));
+			parameters.put("bookland", "9784003101");
+			parameters.put("barcode", "4512223683107");
+			parameters.put("qrcode", "https://www.playframework.com");
+			parameters.put(MessageKeys.REPORT, messages.get(lang(), MessageKeys.REPORT));
+			parameters.put(MessageKeys.WELCOME, messages.get(lang(), MessageKeys.WELCOME));
 
-		return CompletableFuture.supplyAsync(() -> {
+			final List<models.user.User> users = userDao.readList(manager, models.user.User.class);
+			final JRDataSource dataSource = new JRBeanCollectionDataSource(users);
 
-			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/report.jasper")) {
+			return CompletableFuture.supplyAsync(() -> {
 
-				final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
-				return ok(bytes).as(Http.MimeTypes.BINARY);
-			} catch (IOException e) {
+				try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/report.jasper")) {
 
-				throw new UncheckedIOException(e);
-			}
+					final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
+					return ok(bytes).as(Http.MimeTypes.BINARY);
+				} catch (IOException e) {
+
+					throw new UncheckedIOException(e);
+				}
+			});
 		});
 	}
 
-	@Transactional(readOnly = true)
 	@Authenticated(common.core.Authenticator.class)
 	public CompletionStage<Result> paperPdfStream() {
 

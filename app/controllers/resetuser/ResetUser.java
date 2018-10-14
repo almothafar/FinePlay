@@ -26,7 +26,6 @@ import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
@@ -46,7 +45,7 @@ public class ResetUser extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private Config config;
@@ -55,7 +54,7 @@ public class ResetUser extends Controller {
 	private FormFactory formFactory;
 
 	@Inject
-	private MailerClient mailerClient;
+	private MailerClient mailer;
 
 	@Inject
 	private UserService userService;
@@ -71,52 +70,54 @@ public class ResetUser extends Controller {
 		return ok(views.html.resetuser.reset.render(resetForm));
 	}
 
-	@Transactional()
 	@RequireCSRFCheck
 	public Result apply() {
 
-		final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Read.class).bindFromRequest();
-		if (!resetForm.hasErrors()) {
+		return jpa.withTransaction(manager -> {
 
-			final ResetFormContent resetFormContent = resetForm.get();
+			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Read.class).bindFromRequest();
+			if (!resetForm.hasErrors()) {
 
-			final String userId = resetFormContent.getUserId();
+				final ResetFormContent resetFormContent = resetForm.get();
 
-			final models.resetuser.ResetUser resetUser;
-			try {
+				final String userId = resetFormContent.getUserId();
 
-				if (!userService.isExist(jpaApi.em(), userId)) {
-
-					resetFormContent.setUserId(null);
-					throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_NOTEXIST));
-				}
-
-				resetUser = new models.resetuser.ResetUser();
-				resetUser.setUserId(userId);
-				resetUser.setCode();
-				resetUser.setExpireDateTime(LocalDateTime.now().plusDays(ONE_DAY));
-
+				final models.resetuser.ResetUser resetUser;
 				try {
 
-					resetUserDao.create(jpaApi.em(), resetUser);
-				} catch (final EntityExistsException e) {
+					if (!userService.isExist(manager, userId)) {
 
-					throw new RuntimeException(e);
+						resetFormContent.setUserId(null);
+						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_NOTEXIST));
+					}
+
+					resetUser = new models.resetuser.ResetUser();
+					resetUser.setUserId(userId);
+					resetUser.setCode();
+					resetUser.setExpireDateTime(LocalDateTime.now().plusDays(ONE_DAY));
+
+					try {
+
+						resetUserDao.create(manager, resetUser);
+					} catch (final EntityExistsException e) {
+
+						throw new RuntimeException(e);
+					}
+				} catch (final AccountException e) {
+
+					final Form<ResetFormContent> failureResetForm = formFactory.form(ResetFormContent.class)//
+							.fill(resetFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
+					return failureReset(failureResetForm);
 				}
-			} catch (final AccountException e) {
 
-				final Form<ResetFormContent> failureResetForm = formFactory.form(ResetFormContent.class)//
-						.fill(resetFormContent)//
-						.withGlobalError(e.getLocalizedMessage());
-				return failureReset(failureResetForm);
+				sendResetEmail(resetUser);
+				return ok(views.html.resetuser.request.complete.render(resetForm));
+			} else {
+
+				return failureReset(resetForm);
 			}
-
-			sendResetEmail(resetUser);
-			return ok(views.html.resetuser.request.complete.render(resetForm));
-		} else {
-
-			return failureReset(resetForm);
-		}
+		});
 	}
 
 	private Result failureReset(final Form<ResetFormContent> resetForm) {
@@ -140,7 +141,7 @@ public class ResetUser extends Controller {
 				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
 				.setBodyHtml(createRequestHtmlMailBody(resetUser, changeURL, lang()).body().trim());
 
-		mailerClient.send(email);
+		mailer.send(email);
 	}
 
 	private Html createRequestHtmlMailBody(final models.resetuser.ResetUser user, final String changeURL, final Lang lang) {
@@ -164,36 +165,37 @@ public class ResetUser extends Controller {
 		return ok(createRequestHtmlMailBody(dummyResetUser, createChangeURL(dummyResetUser.getCode()), Lang.forCode(langString)));
 	}
 
-	@Transactional()
 	public Result owner(final String code) {
 
-		models.resetuser.ResetUser resetUser;
-		try {
+		return jpa.withTransaction(manager -> {
 
-			resetUser = resetUserDao.read(jpaApi.em(), (builder, query) -> {
+			models.resetuser.ResetUser resetUser;
+			try {
 
-				final Root<models.resetuser.ResetUser> root = query.from(models.resetuser.ResetUser.class);
-				query.where(builder.and(builder.equal(root.get(ResetUser_.code), code), builder.greaterThanOrEqualTo(root.get(ResetUser_.expireDateTime), LocalDateTime.now())));
-			});
-		} catch (final NoResultException e) {
+				resetUser = resetUserDao.read(manager, (builder, query) -> {
 
-			throw new PlayException("", "", e);
-		} catch (final NonUniqueResultException e) {
+					final Root<models.resetuser.ResetUser> root = query.from(models.resetuser.ResetUser.class);
+					query.where(builder.and(builder.equal(root.get(ResetUser_.code), code), builder.greaterThanOrEqualTo(root.get(ResetUser_.expireDateTime), LocalDateTime.now())));
+				});
+			} catch (final NoResultException e) {
 
-			throw new RuntimeException(e);
-		}
+				throw new PlayException("", "", e);
+			} catch (final NonUniqueResultException e) {
 
-		final ResetFormContent resetFormContent = new ResetFormContent();
-		resetFormContent.setUserId(resetUser.getUserId());
-		final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class).fill(resetFormContent);
+				throw new RuntimeException(e);
+			}
 
-		return ok(views.html.resetuser.change.change.render(resetForm));
+			final ResetFormContent resetFormContent = new ResetFormContent();
+			resetFormContent.setUserId(resetUser.getUserId());
+			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class).fill(resetFormContent);
+
+			return ok(views.html.resetuser.change.change.render(resetForm));
+		});
 	}
 
-	@Transactional()
 	public Result change() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Update.class).bindFromRequest();
 			if (!resetForm.hasErrors()) {
@@ -217,7 +219,7 @@ public class ResetUser extends Controller {
 
 					try {
 
-						user = userService.read(jpaApi.em(), userId);
+						user = userService.read(manager, userId);
 					} catch (final AccountException e) {
 
 						throw e;
@@ -225,7 +227,7 @@ public class ResetUser extends Controller {
 
 					try {
 
-						resetUser = resetUserDao.read(jpaApi.em(), (builder, query) -> {
+						resetUser = resetUserDao.read(manager, (builder, query) -> {
 
 							final Root<models.resetuser.ResetUser> root = query.from(models.resetuser.ResetUser.class);
 							query.where(builder.and(builder.equal(root.get(ResetUser_.userId), userId)));
@@ -240,9 +242,9 @@ public class ResetUser extends Controller {
 
 					user.setPassword(password);
 
-					userService.update(jpaApi.em(), user);
+					userService.update(manager, user);
 
-					resetUserDao.delete(jpaApi.em(), resetUser);
+					resetUserDao.delete(manager, resetUser);
 				} catch (final AccountException e) {
 
 					final Form<ResetFormContent> failureResetForm = formFactory.form(ResetFormContent.class).fill(resetFormContent);
@@ -281,7 +283,7 @@ public class ResetUser extends Controller {
 				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
 				.setBodyHtml(createChangeHtmlMailBody(user, createSystemURL(), lang()).body().trim());
 
-		mailerClient.send(email);
+		mailer.send(email);
 	}
 
 	private Html createChangeHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {

@@ -4,6 +4,7 @@ import java.lang.invoke.MethodHandles;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -35,9 +36,9 @@ import models.system.System.PermissionsAllowed;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
+import play.mvc.Http.Flash;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -49,7 +50,7 @@ public class Read extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -62,19 +63,40 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	@Transactional()
 	public Result index(final long companyId) {
 
-		final String companyName = readCompanyName(jpaApi.em(), companyId);
+		return jpa.withTransaction(manager -> {
 
-		final ReadFormContent readFormContent = new ReadFormContent();
-		readFormContent.setCompanyId(companyId);
+			final String companyName = readCompanyName(manager, companyId);
 
-		final String unitTreeJSON = readTree(jpaApi.em(), readFormContent);
+			final ReadFormContent readFormContent = new ReadFormContent();
+			readFormContent.setCompanyId(companyId);
 
-		final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+			final ArrayNode unitTree = readTree(manager, readFormContent);
+			final Flash flash = new Flash(new HashMap<String, String>());
+			if (!(1 <= unitTree.size())) {
 
-		return ok(views.html.manage.company.organization.tree.index.render(readForm, companyName, unitTreeJSON));
+				flash.put("warning", //
+						"<strong>" + messages.get(lang(), MessageKeys.PROCESS) + " " + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + //
+				messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATIONUNIT)));
+				// TODO 2.7.0 (´・ω・`).
+				flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
+			}
+
+			final String unitTreeJSON;
+			try {
+
+				final ObjectMapper mapper = new ObjectMapper();
+				unitTreeJSON = mapper.writeValueAsString(unitTree);
+			} catch (final JsonProcessingException e) {
+
+				throw new RuntimeException(messages.get(lang(), MessageKeys.SYSTEM) + " " + messages.get(lang(), MessageKeys.ERROR), e);
+			}
+
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
+
+			return ok(views.html.manage.company.organization.tree.index.render(readForm, companyName, unitTreeJSON)).withFlash(flash);
+		});
 	}
 
 	private String readCompanyName(final EntityManager manager, final long companyId) {
@@ -85,7 +107,7 @@ public class Read extends Controller {
 		return companyName;
 	}
 
-	private String readTree(@Nonnull final EntityManager manager, @Nonnull final ReadFormContent readFormContent) {
+	private ArrayNode readTree(@Nonnull final EntityManager manager, @Nonnull final ReadFormContent readFormContent) {
 
 		final long companyId = readFormContent.getCompanyId();
 
@@ -107,20 +129,7 @@ public class Read extends Controller {
 		}
 
 		final ArrayNode arrayNode = toArrayNode(mapper, rootUnits);
-		if (!(1 <= arrayNode.size())) {
-
-			flash("warning", //
-					"<strong>" + messages.get(lang(), MessageKeys.PROCESS) + " " + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + //
-							messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATIONUNIT)));
-		}
-		try {
-
-			final String unitTreeJSON = mapper.writeValueAsString(arrayNode);
-			return unitTreeJSON;
-		} catch (final JsonProcessingException e) {
-
-			throw new RuntimeException(messages.get(lang(), MessageKeys.SYSTEM) + " " + messages.get(lang(), MessageKeys.ERROR), e);
-		}
+		return arrayNode;
 	}
 
 	private List<OrganizationUnit> readRootList(@Nonnull final EntityManager manager, @Nonnull final Organization organization) {

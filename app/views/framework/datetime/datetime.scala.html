@@ -31,7 +31,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-0")){
 
-			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->play.mvc.Controller.flash("dateTimeWarning"), "type"->"warning", "closable"->"true", "flashKey"->"dateTimeWarning"))
+			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("dateTimeWarning"), "type"->"warning", "closable"->"true", "flashKey"->"dateTimeWarning"))
 
 			@helper.form(helper.CSRF(controllers.framework.datetime.routes.DateTime.update()), 'name->"updateForm", 'id->"updateForm") {
 				<div class="row mb-3">

@@ -27,7 +27,6 @@ import play.api.PlayException;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
@@ -49,13 +48,13 @@ public class BulkMail extends Controller {
 	private Config config;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private WSClient ws;
 
 	@Inject
-	private MailerClient mailerClient;
+	private MailerClient mailer;
 
 	@Inject
 	private FormFactory formFactory;
@@ -67,7 +66,6 @@ public class BulkMail extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional()
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
 	public Result send() {
@@ -87,7 +85,7 @@ public class BulkMail extends Controller {
 		final String smtpapiJSON = data.get("smtpapiJSON");
 		final String templateText = data.get("templateText");
 
-		return jpaApi.withTransaction(manager -> {
+		return jpa.withTransaction(manager -> {
 			// read DB、File、etc...
 
 			try {
@@ -144,7 +142,7 @@ public class BulkMail extends Controller {
 				.addTo("to@example.com")// for Commons Email measures.
 				.setBodyHtml(template);
 
-		mailerClient.send(email);
+		mailer.send(email);
 	}
 
 	private JsonNode createResult() {

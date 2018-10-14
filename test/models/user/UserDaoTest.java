@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 import static play.test.Helpers.running;
 
 import java.time.LocalDateTime;
@@ -36,6 +38,7 @@ import models.base.EntityDao;
 import models.user.User.Role;
 import models.user.User.Theme;
 import play.db.jpa.JPAApi;
+import play.i18n.MessagesApi;
 import play.mvc.Http;
 import play.mvc.Http.Cookie;
 import play.mvc.Http.RequestBuilder;
@@ -44,7 +47,7 @@ import play.test.WithApplication;
 
 public class UserDaoTest extends WithApplication {
 
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	private UserDao userDao;
 
@@ -59,7 +62,7 @@ public class UserDaoTest extends WithApplication {
 	@Before
 	public void setUp() throws Exception {
 
-		jpaApi = instanceOf(JPAApi.class);
+		jpa = instanceOf(JPAApi.class);
 
 		userDao = new UserDao();
 	}
@@ -73,63 +76,60 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				long count;
+				try {
 
-			long count;
-			try {
+					count = new EntityDao<User>() {
+					}.count(manager, models.user.User.class);
 
-				count = new EntityDao<User>() {
-				}.count(manager, models.user.User.class);
+					assertThat("", 104L, is(count));
+				} catch (final Exception e1) {
 
-				assertThat("", 104L, is(count));
-			} catch (final Exception e1) {
+					fail("");
+				}
 
-				fail("");
-			}
+				try {
 
-			try {
+					count = new EntityDao<User>() {
+					}.count(manager, models.user.User.class, (builder, query) -> {
 
-				count = new EntityDao<User>() {
-				}.count(manager, models.user.User.class, (builder, query) -> {
+						final Root<User> root = query.from(User.class);
+						query.select(builder.count(root));
+						query.where(builder.equal(root.get(User_.locale), Locale.US));
+					});
 
-					final Root<User> root = query.from(User.class);
-					query.select(builder.count(root));
-					query.where(builder.equal(root.get(User_.locale), Locale.US));
-				});
+					assertThat("", 103L, is(count));
+				} catch (final Exception e1) {
 
-				assertThat("", 103L, is(count));
-			} catch (final Exception e1) {
+					fail("");
+				}
 
-				fail("");
-			}
+				try {
 
-			try {
+					count = new EntityDao<User>() {
+					}.count(manager, models.user.User.class, (builder, query) -> {
 
-				count = new EntityDao<User>() {
-				}.count(manager, models.user.User.class, (builder, query) -> {
+						final Root<User> root = query.from(User.class);
+						query.select(builder.count(root));
+						query.where(builder.equal(root.get(User_.locale), Locale.US));
+					}, parameters -> {
 
-					final Root<User> root = query.from(User.class);
-					query.select(builder.count(root));
-					query.where(builder.equal(root.get(User_.locale), Locale.US));
-				}, parameters -> {
+					});
 
-				});
+					assertThat("", 103L, is(count));
+				} catch (final Exception e1) {
 
-				assertThat("", 103L, is(count));
-			} catch (final Exception e1) {
+					fail("");
+				}
 
-				fail("");
-			}
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
+				Http.Context.current.remove();
+			});
 		});
 	}
 
@@ -138,96 +138,93 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				final User createUser = new User();
+				createUser.setUserId("test@example.com");
+				createUser.setPassword("test1!aA");
+				createUser.setRoles(EnumSet.of(Role.CUSTOMER));
+				createUser.setLocale(Locale.US);
+				createUser.setZoneId(ZoneId.of("UTC"));
+				createUser.setTheme(Theme.DEFAULT);
+				createUser.setExpireDateTime(LocalDateTime.MAX);
+				try {
 
-			final User createUser = new User();
-			createUser.setUserId("test@example.com");
-			createUser.setPassword("test1!aA");
-			createUser.setRoles(EnumSet.of(Role.CUSTOMER));
-			createUser.setLocale(Locale.US);
-			createUser.setZoneId(ZoneId.of("UTC"));
-			createUser.setTheme(Theme.DEFAULT);
-			createUser.setExpireDateTime(LocalDateTime.MAX);
-			try {
+					userDao.create(manager, createUser);
+				} catch (final Exception e) {
 
-				userDao.create(manager, createUser);
-			} catch (final Exception e) {
+					fail("");
+				}
 
-				fail("");
-			}
+				long count;
+				try {
 
-			long count;
-			try {
+					count = userDao.count(manager, (builder, query) -> {
 
-				count = userDao.count(manager, (builder, query) -> {
+						final Root<User> root = query.from(User.class);
+						query.select(builder.count(root));
+						query.where(builder.equal(root.get(User_.userId), createUser.getUserId()));
+					});
 
-					final Root<User> root = query.from(User.class);
-					query.select(builder.count(root));
-					query.where(builder.equal(root.get(User_.userId), createUser.getUserId()));
-				});
+					assertThat("", 1L, is(count));
+				} catch (final Exception e1) {
 
-				assertThat("", 1L, is(count));
-			} catch (final Exception e1) {
+					fail("");
+				}
 
-				fail("");
-			}
+				User readUser = null;
+				try {
 
-			User readUser = null;
-			try {
+					readUser = userDao.read(manager, (builder, query) -> {
 
-				readUser = userDao.read(manager, (builder, query) -> {
+						final Root<User> root = query.from(User.class);
+						query.where(builder.equal(root.get(User_.userId), createUser.getUserId()));
+					});
+				} catch (final Exception e) {
 
-					final Root<User> root = query.from(User.class);
-					query.where(builder.equal(root.get(User_.userId), createUser.getUserId()));
-				});
-			} catch (final Exception e) {
+					fail("");
+				}
 
-				fail("");
-			}
+				final User updateUser = readUser;
+				updateUser.setRoles(EnumSet.of(Role.ADMIN));
+				try {
 
-			final User updateUser = readUser;
-			updateUser.setRoles(EnumSet.of(Role.ADMIN));
-			try {
+					userDao.update(manager, updateUser);
+				} catch (final Exception e) {
 
-				userDao.update(manager, updateUser);
-			} catch (final Exception e) {
+					fail("");
+				}
 
-				fail("");
-			}
+				final User deleteUser = updateUser;
+				try {
 
-			final User deleteUser = updateUser;
-			try {
+					userDao.delete(manager, deleteUser);
+				} catch (final Exception e) {
 
-				userDao.delete(manager, deleteUser);
-			} catch (final Exception e) {
+					fail("");
+				}
 
-				fail("");
-			}
+				try {
 
-			try {
+					count = userDao.count(manager, (builder, query) -> {
 
-				count = userDao.count(manager, (builder, query) -> {
+						final Root<User> root = query.from(User.class);
+						query.select(builder.count(root));
+						query.where(builder.equal(root.get(User_.userId), deleteUser.getUserId()));
+					});
 
-					final Root<User> root = query.from(User.class);
-					query.select(builder.count(root));
-					query.where(builder.equal(root.get(User_.userId), deleteUser.getUserId()));
-				});
+					assertThat("", 0L, is(count));
+				} catch (final Exception e1) {
 
-				assertThat("", 0L, is(count));
-			} catch (final Exception e1) {
+					fail("");
+				}
 
-				fail("");
-			}
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
+				Http.Context.current.remove();
+			});
 		});
 	}
 
@@ -236,44 +233,41 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				final User readUser = new User();
+				readUser.setUserId("test@example.com");
+				readUser.setPassword("test1!aA");
+				readUser.setRoles(EnumSet.of(Role.CUSTOMER));
+				readUser.setLocale(Locale.US);
+				readUser.setZoneId(ZoneId.of("UTC"));
+				readUser.setTheme(Theme.DEFAULT);
+				readUser.setExpireDateTime(LocalDateTime.MAX);
+				try {
 
-			final User readUser = new User();
-			readUser.setUserId("test@example.com");
-			readUser.setPassword("test1!aA");
-			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
-			readUser.setLocale(Locale.US);
-			readUser.setZoneId(ZoneId.of("UTC"));
-			readUser.setTheme(Theme.DEFAULT);
-			readUser.setExpireDateTime(LocalDateTime.MAX);
-			try {
+					userDao.create(manager, readUser);
+				} catch (final Exception e) {
 
-				userDao.create(manager, readUser);
-			} catch (final Exception e) {
+					fail("");
+				}
 
-				fail("");
-			}
+				try {
 
-			try {
+					userDao.read(manager, User.class);
+					fail("");
+				} catch (final NonUniqueResultException e) {
 
-				final User user = userDao.read(manager, User.class);
-				fail("");
-			} catch (final NonUniqueResultException e) {
+					assertTrue(true);
+				}
 
-				assertTrue(true);
-			}
+				userDao.delete(manager, readUser);
 
-			userDao.delete(manager, readUser);
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
+				Http.Context.current.remove();
+			});
 		});
 	}
 
@@ -282,42 +276,39 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				final User readUser = new User();
+				readUser.setUserId("test@example.com");
+				readUser.setPassword("test1!aA");
+				readUser.setRoles(EnumSet.of(Role.CUSTOMER));
+				readUser.setLocale(Locale.US);
+				readUser.setZoneId(ZoneId.of("UTC"));
+				readUser.setTheme(Theme.DEFAULT);
+				readUser.setExpireDateTime(LocalDateTime.MAX);
 
-			final User readUser = new User();
-			readUser.setUserId("test@example.com");
-			readUser.setPassword("test1!aA");
-			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
-			readUser.setLocale(Locale.US);
-			readUser.setZoneId(ZoneId.of("UTC"));
-			readUser.setTheme(Theme.DEFAULT);
-			readUser.setExpireDateTime(LocalDateTime.MAX);
+				userDao.create(manager, readUser);
 
-			userDao.create(manager, readUser);
+				final User user = userDao.read(manager, User.class, (builder, query) -> {
 
-			final User user = userDao.read(manager, User.class, (builder, query) -> {
+					final Root<models.user.User> root = query.from(models.user.User.class);
 
-				final Root<models.user.User> root = query.from(models.user.User.class);
+					final List<Predicate> predicates = new ArrayList<>();
+					predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
-				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
+					query.where(predicates.toArray(new Predicate[0]));
+				});
 
-				query.where(predicates.toArray(new Predicate[0]));
+				assertThat("", "test@example.com", is(user.getUserId()));
+
+				userDao.delete(manager, readUser);
+
+				Http.Context.current.remove();
 			});
-
-			assertThat("", "test@example.com", is(user.getUserId()));
-
-			userDao.delete(manager, readUser);
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
 		});
 	}
 
@@ -326,45 +317,42 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				final User readUser = new User();
+				readUser.setUserId("test@example.com");
+				readUser.setPassword("test1!aA");
+				readUser.setRoles(EnumSet.of(Role.CUSTOMER));
+				readUser.setLocale(Locale.US);
+				readUser.setZoneId(ZoneId.of("UTC"));
+				readUser.setTheme(Theme.DEFAULT);
+				readUser.setExpireDateTime(LocalDateTime.MAX);
 
-			final User readUser = new User();
-			readUser.setUserId("test@example.com");
-			readUser.setPassword("test1!aA");
-			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
-			readUser.setLocale(Locale.US);
-			readUser.setZoneId(ZoneId.of("UTC"));
-			readUser.setTheme(Theme.DEFAULT);
-			readUser.setExpireDateTime(LocalDateTime.MAX);
+				userDao.create(manager, readUser);
 
-			userDao.create(manager, readUser);
+				final User user = userDao.read(manager, User.class, (builder, query) -> {
 
-			final User user = userDao.read(manager, User.class, (builder, query) -> {
+					final Root<models.user.User> root = query.from(models.user.User.class);
 
-				final Root<models.user.User> root = query.from(models.user.User.class);
+					final List<Predicate> predicates = new ArrayList<>();
+					predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
-				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
+					query.where(predicates.toArray(new Predicate[0]));
+				}, parameters -> {
 
-				query.where(predicates.toArray(new Predicate[0]));
-			}, parameters -> {
+					parameters.setFirstResult(0);
+				});
 
-				parameters.setFirstResult(0);
+				assertThat("", "test@example.com", is(user.getUserId()));
+
+				userDao.delete(manager, readUser);
+
+				Http.Context.current.remove();
 			});
-
-			assertThat("", "test@example.com", is(user.getUserId()));
-
-			userDao.delete(manager, readUser);
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
 		});
 	}
 
@@ -373,41 +361,38 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				final User readUser = new User();
+				readUser.setUserId("test@example.com");
+				readUser.setPassword("test1!aA");
+				readUser.setRoles(EnumSet.of(Role.CUSTOMER));
+				readUser.setLocale(Locale.US);
+				readUser.setZoneId(ZoneId.of("UTC"));
+				readUser.setTheme(Theme.DEFAULT);
+				readUser.setExpireDateTime(LocalDateTime.MAX);
+				try {
 
-			final User readUser = new User();
-			readUser.setUserId("test@example.com");
-			readUser.setPassword("test1!aA");
-			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
-			readUser.setLocale(Locale.US);
-			readUser.setZoneId(ZoneId.of("UTC"));
-			readUser.setTheme(Theme.DEFAULT);
-			readUser.setExpireDateTime(LocalDateTime.MAX);
-			try {
+					userDao.create(manager, readUser);
+				} catch (final Exception e) {
 
-				userDao.create(manager, readUser);
-			} catch (final Exception e) {
+					fail("");
+				}
 
-				fail("");
-			}
+				final List<User> users = userDao.readList(manager, User.class);
 
-			final List<User> users = userDao.readList(manager, User.class);
+				final List<User> filterUsers = users.stream().filter(user -> "test@example.com".equals(user.getUserId())).collect(Collectors.toList());
+				assertThat("", 1, is(filterUsers.size()));
+				assertThat("", "test@example.com", is(filterUsers.get(0).getUserId()));
 
-			final List<User> filterUsers = users.stream().filter(user -> "test@example.com".equals(user.getUserId())).collect(Collectors.toList());
-			assertThat("", 1, is(filterUsers.size()));
-			assertThat("", "test@example.com", is(filterUsers.get(0).getUserId()));
+				userDao.delete(manager, readUser);
 
-			userDao.delete(manager, readUser);
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
+				Http.Context.current.remove();
+			});
 		});
 	}
 
@@ -416,43 +401,40 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				final User readUser = new User();
+				readUser.setUserId("test@example.com");
+				readUser.setPassword("test1!aA");
+				readUser.setRoles(EnumSet.of(Role.CUSTOMER));
+				readUser.setLocale(Locale.US);
+				readUser.setZoneId(ZoneId.of("UTC"));
+				readUser.setTheme(Theme.DEFAULT);
+				readUser.setExpireDateTime(LocalDateTime.MAX);
 
-			final User readUser = new User();
-			readUser.setUserId("test@example.com");
-			readUser.setPassword("test1!aA");
-			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
-			readUser.setLocale(Locale.US);
-			readUser.setZoneId(ZoneId.of("UTC"));
-			readUser.setTheme(Theme.DEFAULT);
-			readUser.setExpireDateTime(LocalDateTime.MAX);
+				userDao.create(manager, readUser);
 
-			userDao.create(manager, readUser);
+				final List<User> users = userDao.readList(manager, User.class, (builder, query) -> {
 
-			final List<User> users = userDao.readList(manager, User.class, (builder, query) -> {
+					final Root<models.user.User> root = query.from(models.user.User.class);
 
-				final Root<models.user.User> root = query.from(models.user.User.class);
+					final List<Predicate> predicates = new ArrayList<>();
+					predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
-				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
+					query.where(predicates.toArray(new Predicate[0]));
+				});
 
-				query.where(predicates.toArray(new Predicate[0]));
+				assertThat("", 1, is(users.size()));
+				assertThat("", "test@example.com", is(users.get(0).getUserId()));
+
+				userDao.delete(manager, readUser);
+
+				Http.Context.current.remove();
 			});
-
-			assertThat("", 1, is(users.size()));
-			assertThat("", "test@example.com", is(users.get(0).getUserId()));
-
-			userDao.delete(manager, readUser);
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
 		});
 	}
 
@@ -461,46 +443,43 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			final Http.Context context = getMockContext(Locale.US);
+			jpa.withTransaction(manager -> {
 
-			Http.Context.current.set(context);
+				final Http.Context context = getMockContext(Locale.US);
 
-			final EntityManager manager = jpaApi.em();
+				Http.Context.current.set(context);
 
-			manager.getTransaction().begin();
+				final User readUser = new User();
+				readUser.setUserId("test@example.com");
+				readUser.setPassword("test1!aA");
+				readUser.setRoles(EnumSet.of(Role.CUSTOMER));
+				readUser.setLocale(Locale.US);
+				readUser.setZoneId(ZoneId.of("UTC"));
+				readUser.setTheme(Theme.DEFAULT);
+				readUser.setExpireDateTime(LocalDateTime.MAX);
 
-			final User readUser = new User();
-			readUser.setUserId("test@example.com");
-			readUser.setPassword("test1!aA");
-			readUser.setRoles(EnumSet.of(Role.CUSTOMER));
-			readUser.setLocale(Locale.US);
-			readUser.setZoneId(ZoneId.of("UTC"));
-			readUser.setTheme(Theme.DEFAULT);
-			readUser.setExpireDateTime(LocalDateTime.MAX);
+				userDao.create(manager, readUser);
 
-			userDao.create(manager, readUser);
+				final List<User> users = userDao.readList(manager, User.class, (builder, query) -> {
 
-			final List<User> users = userDao.readList(manager, User.class, (builder, query) -> {
+					final Root<models.user.User> root = query.from(models.user.User.class);
 
-				final Root<models.user.User> root = query.from(models.user.User.class);
+					final List<Predicate> predicates = new ArrayList<>();
+					predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
 
-				final List<Predicate> predicates = new ArrayList<>();
-				predicates.add(builder.equal(root.get(User_.userId), "test@example.com"));
+					query.where(predicates.toArray(new Predicate[0]));
+				}, parameters -> {
 
-				query.where(predicates.toArray(new Predicate[0]));
-			}, parameters -> {
+					parameters.setFirstResult(0);
+				});
 
-				parameters.setFirstResult(0);
+				assertThat("", 1, is(users.size()));
+				assertThat("", "test@example.com", is(users.get(0).getUserId()));
+
+				userDao.delete(manager, readUser);
+
+				Http.Context.current.remove();
 			});
-
-			assertThat("", 1, is(users.size()));
-			assertThat("", "test@example.com", is(users.get(0).getUserId()));
-
-			userDao.delete(manager, readUser);
-
-			manager.getTransaction().commit();
-
-			Http.Context.current.remove();
 		});
 	}
 
@@ -514,8 +493,8 @@ public class UserDaoTest extends WithApplication {
 		builder.session(User.ZONE_ID, ZoneId.of("UTC").getId());
 		builder.cookie(Cookie.builder(models.user.User.THEME, Theme.DEFAULT.name()).build());
 
-		final Http.Context mockContext = Helpers.httpContext(builder.build());
-		mockContext.changeLang(Locales.toLang(locale));
+		final Http.Context mockContext = spy(Helpers.httpContext(builder.build()));
+		when(mockContext.lang()).thenReturn(Locales.toLang(locale));
 
 		final EntityManagerFactory factory = Persistence.createEntityManagerFactory("defaultPersistenceUnit");
 		final EntityManager manager = factory.createEntityManager();

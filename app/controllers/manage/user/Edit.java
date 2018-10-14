@@ -29,7 +29,6 @@ import common.data.validation.groups.Create;
 import common.data.validation.groups.Delete;
 import common.data.validation.groups.Update;
 import common.system.MessageKeys;
-import common.utils.DateTimes;
 import controllers.user.UserService;
 import models.base.EntityDao;
 import models.manage.user.EditFormContent;
@@ -42,7 +41,6 @@ import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
@@ -58,7 +56,7 @@ public class Edit extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -72,11 +70,10 @@ public class Edit extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public CompletionStage<Result> create() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<EditFormContent> createForm = formFactory.form(EditFormContent.class, Create.class).bindFromRequest();
 
@@ -158,11 +155,10 @@ public class Edit extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public CompletionStage<Result> update() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<EditFormContent> updateForm = formFactory.form(EditFormContent.class, Update.class).bindFromRequest();
 
@@ -178,6 +174,7 @@ public class Edit extends Controller {
 				final String newUserId = updateFormContent.getNewUserId();
 				final Set<Role> roles = updateFormContent.getRoles().stream().filter(role -> role != null).collect(Collectors.toCollection(() -> EnumSet.noneOf(Role.class)));
 				final Long companyId = updateFormContent.getCompanyId();
+				@SuppressWarnings("unused")
 				final LocalDateTime updateDateTime = updateFormContent.getUpdateDateTime();
 
 				final models.user.User user;
@@ -192,8 +189,6 @@ public class Edit extends Controller {
 					try {
 
 						user = userDao.read(manager, models.user.User.class, (builder, query) -> {
-
-							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//
@@ -252,11 +247,10 @@ public class Edit extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public CompletionStage<Result> delete() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<EditFormContent> deleteForm = formFactory.form(EditFormContent.class, Delete.class).bindFromRequest();
 
@@ -265,6 +259,7 @@ public class Edit extends Controller {
 				final EditFormContent deleteFormContent = deleteForm.get();
 
 				final String userId = deleteFormContent.getUserId();
+				@SuppressWarnings("unused")
 				final LocalDateTime updateDateTime = deleteFormContent.getUpdateDateTime();
 
 				final models.user.User user;
@@ -273,8 +268,6 @@ public class Edit extends Controller {
 					try {
 
 						user = userDao.read(manager, models.user.User.class, (builder, query) -> {
-
-							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//

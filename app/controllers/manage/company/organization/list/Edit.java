@@ -39,7 +39,6 @@ import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
@@ -55,7 +54,7 @@ public class Edit extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -66,11 +65,10 @@ public class Edit extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public CompletionStage<Result> create() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<EditFormContent> createForm = formFactory.form(EditFormContent.class, Create.class).bindFromRequest();
 
@@ -166,11 +164,10 @@ public class Edit extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public CompletionStage<Result> update() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<EditFormContent> updateForm = formFactory.form(EditFormContent.class, Update.class).bindFromRequest();
 
@@ -210,6 +207,7 @@ public class Edit extends Controller {
 				final long id = updateFormContent.getId();
 				final String name = updateFormContent.getName();
 				final String localName = updateFormContent.getLocalName();
+				@SuppressWarnings("unused")
 				final LocalDateTime updateDateTime = updateFormContent.getUpdateDateTime();
 
 				final OrganizationUnit organizationUnit;
@@ -218,8 +216,6 @@ public class Edit extends Controller {
 					try {
 
 						organizationUnit = organizationUnitDao.read(manager, OrganizationUnit.class, (builder, query) -> {
-
-							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<OrganizationUnit> root = query.from(OrganizationUnit.class);
 							query.where(builder.and(//
@@ -289,11 +285,10 @@ public class Edit extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public CompletionStage<Result> delete() {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final Form<EditFormContent> deleteForm = formFactory.form(EditFormContent.class, Delete.class).bindFromRequest();
 
@@ -331,6 +326,7 @@ public class Edit extends Controller {
 				}
 
 				final long id = deleteFormContent.getId();
+				@SuppressWarnings("unused")
 				final LocalDateTime updateDateTime = deleteFormContent.getUpdateDateTime();
 
 				final OrganizationUnit organizationUnit;
@@ -339,8 +335,6 @@ public class Edit extends Controller {
 					try {
 
 						organizationUnit = organizationUnitDao.read(manager, OrganizationUnit.class, (builder, query) -> {
-
-							final LocalDateTime serverDateTime = DateTimes.toServerDateTime(updateDateTime);
 
 							final Root<OrganizationUnit> root = query.from(OrganizationUnit.class);
 							query.where(builder.and(//

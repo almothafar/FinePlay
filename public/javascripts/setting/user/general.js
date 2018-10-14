@@ -7,19 +7,19 @@ $(document).ready(function() {
 	$("#update" + "zoneId").select2({
 
 	});
-});
 
-$( "#update" + "locale").change(function(e) {
+	$( "#update" + "locale").change(function(e) {
 
-	$('#updateForm').submit();
-});
+		$('#updateForm').submit();
+	});
 
-$( "#update" + "zoneId").change(function(e) {
+	$( "#update" + "zoneId").change(function(e) {
 
-	$('#updateForm').submit();
-});
+		$('#updateForm').submit();
+	});
 
-$( "#update" + "theme").change(function(e) {
+	$( "#update" + "theme").change(function(e) {
 
-	$('#updateForm').submit();
+		$('#updateForm').submit();
+	});
 });

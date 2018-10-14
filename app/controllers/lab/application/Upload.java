@@ -29,6 +29,7 @@ import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
+import play.mvc.Http.Flash;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Result;
 
@@ -56,16 +57,19 @@ public class Upload extends Controller {
 			final String fileName = filePart.getFilename();
 			@SuppressWarnings("unused")
 			final String contentType = filePart.getContentType();
-			@SuppressWarnings("unused")
 			final Path path = filePart.getFile().toPath();
 			LOGGER.info("" + path);
 
-			flash("success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded");
-			return index();
+			final Flash flash = new Flash(Map.of("success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded"));
+			// TODO 2.7.0 (´・ω・`).
+			flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
+			return index().withFlash(flash);
 		} else {
 
-			flash("warning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> Missing " + messages.get(lang(), MessageKeys.FILE));
-			return index();
+			final Flash flash = new Flash(Map.of("warning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> Missing " + messages.get(lang(), MessageKeys.FILE)));
+			// TODO 2.7.0 (´・ω・`).
+			flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
+			return index().withFlash(flash);
 		}
 	}
 
@@ -76,10 +80,8 @@ public class Upload extends Controller {
 		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
 		if (filePart != null) {
 
-			@SuppressWarnings("unused")
 			final Path fileNamePath = Paths.get(filePart.getFilename());
 			final String fileName = fileNamePath.getFileName().toString();
-			@SuppressWarnings("unused")
 			final String contentType = filePart.getContentType();
 			final Path path = filePart.getFile().toPath();
 			LOGGER.info("Receive: Path={} File name={} Content type={}", path, fileName, contentType);
@@ -99,12 +101,16 @@ public class Upload extends Controller {
 				Files.move(path, uploadPath);
 				LOGGER.info("Upload : Path={} File name={} Content type={}", uploadPath, fileName, realContentType);
 
-				flash("imageSuccess", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded");
-				return index();
+				final Flash flash = new Flash(Map.of("imageSuccess", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded"));
+				// TODO 2.7.0 (´・ω・`).
+				flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
+				return index().withFlash(flash);
 			} catch (IOException | IllegalStateException e) {
 
-				flash("imageWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + messages.get(lang(), MessageKeys.SYSTEM_ERROR_X__DATA_ILLEGAL, filePart.getFilename()));
-				return index();
+				final Flash flash = new Flash(Map.of("imageWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + messages.get(lang(), MessageKeys.SYSTEM_ERROR_X__DATA_ILLEGAL, filePart.getFilename())));
+				// TODO 2.7.0 (´・ω・`).
+				flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
+				return index().withFlash(flash);
 			} finally {
 
 				try {
@@ -115,8 +121,10 @@ public class Upload extends Controller {
 			}
 		} else {
 
-			flash("imageWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> Missing " + messages.get(lang(), MessageKeys.FILE));
-			return index();
+			final Flash flash = new Flash(Map.of("imageWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> Missing " + messages.get(lang(), MessageKeys.FILE)));
+			// TODO 2.7.0 (´・ω・`).
+			flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
+			return index().withFlash(flash);
 		}
 	}
 
@@ -125,6 +133,7 @@ public class Upload extends Controller {
 	public Result direct() {
 
 		final MultipartFormData<File> body = request().body().asMultipartFormData();
+		@SuppressWarnings("unused")
 		final Map<String, String[]> form = body.asFormUrlEncoded();
 		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
 

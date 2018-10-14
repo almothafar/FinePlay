@@ -18,7 +18,6 @@ import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -34,7 +33,7 @@ public class Inquiry extends Controller {
 	private FormFactory formFactory;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	private final EntityDao<models.inquiry.Inquiry> inquiryDao = new EntityDao<models.inquiry.Inquiry>() {
 	};
@@ -48,53 +47,55 @@ public class Inquiry extends Controller {
 		return ok(views.html.inquiry.inquiry.render(inquiryForm));
 	}
 
-	@Transactional()
 	@RequireCSRFCheck
 	public Result send() {
 
-		final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class, Create.class).bindFromRequest();
+		return jpa.withTransaction(manager -> {
 
-		if (!Requests.isFirstSubmit(request(), syncCache)) {
+			final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class, Create.class).bindFromRequest();
 
-			LOGGER.info("Not first submit.");
-			return ok(views.html.inquiry.send.complete.render(inquiryForm));
-		}
+			if (!Requests.isFirstSubmit(request(), syncCache)) {
 
-		if (!inquiryForm.hasErrors()) {
-
-			final InquiryFormContent inquiryFormContent = inquiryForm.get();
-
-			final String userId = inquiryFormContent.getUserId();
-			final String name = inquiryFormContent.getName();
-
-			final Type type = Type.valueOf(inquiryFormContent.getType());
-			final String title = inquiryFormContent.getTitle();
-			final String content = inquiryFormContent.getContent();
-
-			final models.inquiry.Inquiry inquiry;
-
-			inquiry = new models.inquiry.Inquiry();
-			inquiry.setLocale(lang().toLocale());
-			inquiry.setUserId(userId);
-			inquiry.setName(name);
-			inquiry.setType(type);
-			inquiry.setTitle(title);
-			inquiry.setContent(content);
-			inquiry.setDateTime(LocalDateTime.now());
-
-			try {
-
-				inquiryDao.create(jpaApi.em(), inquiry);
-			} catch (final EntityExistsException e) {
-
-				throw new RuntimeException(e);
+				LOGGER.info("Not first submit.");
+				return ok(views.html.inquiry.send.complete.render(inquiryForm));
 			}
 
-			return ok(views.html.inquiry.send.complete.render(inquiryForm));
-		} else {
+			if (!inquiryForm.hasErrors()) {
 
-			return failureInquiry(inquiryForm);
-		}
+				final InquiryFormContent inquiryFormContent = inquiryForm.get();
+
+				final String userId = inquiryFormContent.getUserId();
+				final String name = inquiryFormContent.getName();
+
+				final Type type = Type.valueOf(inquiryFormContent.getType());
+				final String title = inquiryFormContent.getTitle();
+				final String content = inquiryFormContent.getContent();
+
+				final models.inquiry.Inquiry inquiry;
+
+				inquiry = new models.inquiry.Inquiry();
+				inquiry.setLocale(lang().toLocale());
+				inquiry.setUserId(userId);
+				inquiry.setName(name);
+				inquiry.setType(type);
+				inquiry.setTitle(title);
+				inquiry.setContent(content);
+				inquiry.setDateTime(LocalDateTime.now());
+
+				try {
+
+					inquiryDao.create(manager, inquiry);
+				} catch (final EntityExistsException e) {
+
+					throw new RuntimeException(e);
+				}
+
+				return ok(views.html.inquiry.send.complete.render(inquiryForm));
+			} else {
+
+				return failureInquiry(inquiryForm);
+			}
+		});
 	}
 
 	private Result failureInquiry(final Form<InquiryFormContent> inquiryForm) {

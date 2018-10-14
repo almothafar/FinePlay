@@ -21,7 +21,6 @@ import models.company.organization.OrganizationUnit_;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -29,17 +28,16 @@ import play.mvc.Security.Authenticated;
 public class Organization extends Controller {
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	private final EntityDao<models.company.organization.OrganizationUnit> organizationUnitDao = new EntityDao<models.company.organization.OrganizationUnit>() {
 	};
 
-	@Transactional(readOnly = true)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Authenticated(common.core.Authenticator.class)
 	public Result organizationUnits(final long companyId, @Nonnull final String name, final int pageIndex, final int pageSize) {
 
-		final Result result = jpaApi.withTransaction(manager -> {
+		final Result result = jpa.withTransaction(manager -> {
 
 			final String organizationUnitName = name;
 

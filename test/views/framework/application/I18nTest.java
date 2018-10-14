@@ -53,7 +53,7 @@ public class I18nTest extends WithApplication {
 		final RequestBuilder builder = new RequestBuilder();
 		builder.header("User-Agent", "mocked user-agent");
 		builder.session(User.USER_ID, "mockUser");
-		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[]{Role.ADMIN})));
+		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[] { Role.ADMIN })));
 		builder.session(models.user.User.ZONE_ID, "UTC");
 		builder.session(models.user.User.THEME, Theme.DEFAULT.name());
 		builder.cookie(Cookie.builder(Helpers.stubMessagesApi().langCookieName(), Locales.toLang(locale).code()).build());
@@ -85,7 +85,7 @@ public class I18nTest extends WithApplication {
 	public void render() {
 
 		@SuppressWarnings("serial")
-		final List<Condition> conditions = Arrays.asList(new Condition[]{ //
+		final List<Condition> conditions = Arrays.asList(new Condition[] { //
 				new Condition("", Locale.US, new HashMap<String, Object>() {
 					{
 						put("message.code", "Lang(en_US)");
@@ -106,6 +106,7 @@ public class I18nTest extends WithApplication {
 			final Content html = views.html.framework.application.i18n.render(new HashMap<>());
 
 			assertThat("text/html", is(html.contentType()));
+			@SuppressWarnings("unused")
 			final ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(LoggerNames.PLAY_MAILER);
 			LOGGER.info(contentAsString(html));
 			assertTrue(contentAsString(html).contains(condition.get("message.code")));

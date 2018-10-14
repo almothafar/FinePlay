@@ -7,6 +7,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.time.Clock;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.OffsetDateTime;
@@ -80,18 +81,21 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.data.validation.ValidationError;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.i18n.Lang;
 import play.i18n.Langs;
 import play.i18n.MessagesApi;
 import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import play.mvc.With;
+import play.mvc.Http.Cookie;
+import play.mvc.Http.Flash;
 import play.routing.HandlerDef;
 import play.routing.Router;
+import play.twirl.api.Appendable;
 import play.twirl.api.Html;
 import scala.Tuple2;
 
@@ -110,13 +114,13 @@ public class Application extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private SyncCacheApi syncCacheApi;
+	private SyncCacheApi syncCache;
 
 	@Inject
-	private AsyncCacheApi aSyncCacheApi;
+	private AsyncCacheApi aSyncCache;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private UserService userService;
@@ -129,7 +133,6 @@ public class Application extends Controller {
 
 	@With(LoggingAction.class)
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional(readOnly = true)
 	public Result index(String state) {
 
 		switch (state) {
@@ -203,44 +206,48 @@ public class Application extends Controller {
 
 		final Map<String, Object> map = StreamSupport.stream(request().cookies().spliterator(), false).collect(Collectors.toMap(cookie -> cookie.name(), v -> v.value()));
 
-		final Result result = ok(views.html.framework.application.cookie.render(new TreeMap<>(map)));
+		Result result = ok(views.html.framework.application.cookie.render(new TreeMap<>(map)));
 
 		result.cookies();
 		// set
-		// result.withCookies(Http.Cookie.builder("key","value").withMaxAge(Duration.ofDays(10)).build());
+		result = result.withCookies(Cookie.builder("key", "value").withMaxAge(Duration.ofDays(10)).build());
 		// delete
-		// TODO
-//		result.discardCookie("key");
+		result = result.discardCookie("key");
 
 		return result;
 	}
 
 	public static Result sessionlist() {
 
-		session();// Map
+		request().session();// Map
 
 		// set
-		// session("key", "value");
+		request().session().put("key", "value");
 
 		// get
-		session("key");
+		request().session().get("key");
 
-		final Map<String, Object> map = session().entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
+		final Map<String, Object> map = request().session().entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
 		return ok(views.html.framework.application.session.render(new TreeMap<>(map)));
 	}
 
 	public Result flashlist() {
 
-		flash();// Map
+		// get
+		request().flash();
 
 		// set
-		flash("success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE));
-		flash("info", "<strong>" + messages.get(lang(), MessageKeys.INFO) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE));
-		flash("warning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE));
-		flash("danger", "<strong>" + messages.get(lang(), MessageKeys.DANGER) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE));
+		final Flash flash = new Flash(Map.of(//
+				"success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
+				"info", "<strong>" + messages.get(lang(), MessageKeys.INFO) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
+				"warning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
+				"danger", "<strong>" + messages.get(lang(), MessageKeys.DANGER) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE)//
+		));
+		// TODO 2.7.0 (´・ω・`).
+		flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
 
-		final Map<String, Object> map = flash().entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
-		return ok(views.html.framework.application.flash.render(new TreeMap<>(map)));
+		final Map<String, Object> map = flash.entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
+		return ok(views.html.framework.application.flashlist.render(new TreeMap<>(map))).withFlash(flash);
 	}
 
 	public Result logger() {
@@ -525,7 +532,7 @@ public class Application extends Controller {
 		final OffsetDateTime serverOffsetTime = OffsetDateTime.of(serverTime, serverZoneId.getRules().getOffset(serverTime));
 		final ZonedDateTime serverZonedTime = ZonedDateTime.of(serverTime, serverZoneId);
 
-		final ZoneId clientZoneId = ZoneId.of(session(models.user.User_.ZONE_ID));
+		final ZoneId clientZoneId = ZoneId.of(request().session().get(models.user.User_.ZONE_ID));
 		final ZonedDateTime clientZonedTime = serverZonedTime.withZoneSameInstant(clientZoneId);
 		final LocalDateTime clientTime = clientZonedTime.toLocalDateTime();
 		final OffsetDateTime clientOffsetTime = OffsetDateTime.of(clientTime, clientZoneId.getRules().getOffset(clientTime));
@@ -620,69 +627,75 @@ public class Application extends Controller {
 
 	public Result entitymanager() {
 
-		final SessionImpl entityManager = (SessionImpl) jpaApi.em();
+		return jpa.withTransaction(manager -> {
 
-		final Map<String, Object> propertiesMap = entityManager.getProperties();
+			final SessionImpl entityManager = (SessionImpl) manager;
 
-		final Map<String, Object> platformMap = new LinkedHashMap<>();
-		try {
+			final Map<String, Object> propertiesMap = entityManager.getProperties();
 
-			final DatabaseMetaData metaData = entityManager.connection().getMetaData();
-			platformMap.put("DatabaseProductName", metaData.getDatabaseProductName());
-			platformMap.put("DatabaseProductVersion", metaData.getDatabaseProductVersion());
-			platformMap.put("DriverName", metaData.getDriverName());
-			platformMap.put("DriverVersion", metaData.getDriverVersion());
+			final Map<String, Object> platformMap = new LinkedHashMap<>();
+			try {
 
-			switch (metaData.getDatabaseProductName()) {
-			case "H2":
+				final DatabaseMetaData metaData = entityManager.connection().getMetaData();
+				platformMap.put("DatabaseProductName", metaData.getDatabaseProductName());
+				platformMap.put("DatabaseProductVersion", metaData.getDatabaseProductVersion());
+				platformMap.put("DriverName", metaData.getDriverName());
+				platformMap.put("DriverVersion", metaData.getDriverVersion());
 
-				// Database depend code is here.
-				break;
-			case "PostgreSQL":
+				switch (metaData.getDatabaseProductName()) {
+				case "H2":
 
-				// Database depend code is here.
-				break;
-			default:
-				break;
+					// Database depend code is here.
+					break;
+				case "PostgreSQL":
+
+					// Database depend code is here.
+					break;
+				default:
+					break;
+				}
+			} catch (HibernateException | SQLException e) {
+
+				throw new RuntimeException();
 			}
-		} catch (HibernateException | SQLException e) {
 
-			throw new RuntimeException();
-		}
-
-		return ok(views.html.framework.application.entitymanager.render(//
-				new TreeMap<>(propertiesMap), //
-				new TreeMap<>(platformMap)));
+			return ok(views.html.framework.application.entitymanager.render(//
+					new TreeMap<>(propertiesMap), //
+					new TreeMap<>(platformMap)));
+		});
 	}
 
 	@SuppressWarnings("null")
 	public Result user() {
 
-		final Map<String, Object> map = new LinkedHashMap<>();
+		return jpa.withTransaction(manager -> {
 
-		final User user;
-		try {
+			final Map<String, Object> map = new LinkedHashMap<>();
 
-			user = userService.read(jpaApi.em(), session(User_.USER_ID));
-		} catch (final AccountException e) {
+			final User user;
+			try {
 
-			throw new RuntimeException(e);
-		}
+				user = userService.read(manager, request().session().get(User_.USER_ID));
+			} catch (final AccountException e) {
 
-		map.put(User_.USER_ID, user.getUserId());
-		map.put(User_.ROLES, user.getRoles());
-		map.put("permissions", user.getPermissions());
-		map.put("expireTime(UTC)", user.getExpireDateTime().toString());
-		map.put("signInTime(UTC)", Objects.toString(user.getSignInDateTime(), ""));
-		map.put("signOutTime(UTC)", Objects.toString(user.getSignOutDateTime(), ""));
-		map.put("updateTime(UTC)", user.getUpdateDateTime().toString());
-		map.put("expireTime", DateTimes.toClientDateTime(user.getExpireDateTime()).toString());
-		final LocalDateTime signInTime = user.getSignInDateTime() != null ? DateTimes.toClientDateTime(user.getSignInDateTime()) : null;
-		map.put("signInTime", Objects.toString(signInTime, ""));
-		final LocalDateTime signOutTime = user.getSignOutDateTime() != null ? DateTimes.toClientDateTime(user.getSignOutDateTime()) : null;
-		map.put("signOutTime", Objects.toString(signOutTime, ""));
-		map.put("updateTime", DateTimes.toClientDateTime(user.getUpdateDateTime()).toString());
-		return ok(views.html.framework.application.user.render(map));
+				throw new RuntimeException(e);
+			}
+
+			map.put(User_.USER_ID, user.getUserId());
+			map.put(User_.ROLES, user.getRoles());
+			map.put("permissions", user.getPermissions());
+			map.put("expireTime(UTC)", user.getExpireDateTime().toString());
+			map.put("signInTime(UTC)", Objects.toString(user.getSignInDateTime(), ""));
+			map.put("signOutTime(UTC)", Objects.toString(user.getSignOutDateTime(), ""));
+			map.put("updateTime(UTC)", user.getUpdateDateTime().toString());
+			map.put("expireTime", DateTimes.toClientDateTime(user.getExpireDateTime()).toString());
+			final LocalDateTime signInTime = user.getSignInDateTime() != null ? DateTimes.toClientDateTime(user.getSignInDateTime()) : null;
+			map.put("signInTime", Objects.toString(signInTime, ""));
+			final LocalDateTime signOutTime = user.getSignOutDateTime() != null ? DateTimes.toClientDateTime(user.getSignOutDateTime()) : null;
+			map.put("signOutTime", Objects.toString(signOutTime, ""));
+			map.put("updateTime", DateTimes.toClientDateTime(user.getUpdateDateTime()).toString());
+			return ok(views.html.framework.application.user.render(map));
+		});
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
@@ -703,14 +716,14 @@ public class Application extends Controller {
 		if (value.isEmpty()) {
 			// get
 
-			final Optional<String> cachedValueOptional = syncCacheApi.getOptional(key);
+			final Optional<String> cachedValueOptional = syncCache.getOptional(key);
 			final String cachedValue = cachedValueOptional.orElseGet(() -> "");
 
 			result.put("value", cachedValue);
 		} else {
 			// set
 
-			syncCacheApi.set(key, value);
+			syncCache.set(key, value);
 
 			result.put("value", value);
 		}
@@ -738,7 +751,7 @@ public class Application extends Controller {
 			if (value.isEmpty()) {
 				// get
 
-				final CompletionStage<Optional<String>> stage = aSyncCacheApi.getOptional(key);
+				final CompletionStage<Optional<String>> stage = aSyncCache.getOptional(key);
 				try {
 
 					final Optional<String> cachedValueOptional = stage.toCompletableFuture().get(3, TimeUnit.SECONDS);
@@ -754,7 +767,7 @@ public class Application extends Controller {
 			} else {
 				// set
 
-				final CompletionStage<Done> stage = aSyncCacheApi.set(key, value, 60 * 60);
+				final CompletionStage<Done> stage = aSyncCache.set(key, value, 60 * 60);
 				try {
 
 					stage.toCompletableFuture().get(3, TimeUnit.SECONDS);

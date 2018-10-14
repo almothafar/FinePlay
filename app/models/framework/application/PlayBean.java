@@ -61,6 +61,7 @@ public class PlayBean {
 
 		final static public String message = MessageKeys.ERROR_INVALID;
 
+		@SuppressWarnings("unused")
 		public CustomValidator() {
 		}
 

@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import models.system.System.PermissionsAllowed;
-import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -17,7 +16,6 @@ public class ILike extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional(readOnly = true)
 	public Result index(String state, Boolean detail) {
 
 		switch (state) {

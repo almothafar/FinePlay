@@ -30,6 +30,8 @@ public class Offices {
 	@Nonnull
 	public static byte[] toPDF(@Nonnull final Path inputPath) {
 
+		// O LibreOffice 5.3.7
+		// X LibreOffice 6.0.0, 6.1.0, 6.1.1
 		return toFormat("pdf", inputPath);
 	}
 

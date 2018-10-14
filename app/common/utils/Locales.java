@@ -47,7 +47,6 @@ public class Locales {
 	}
 
 	@Deprecated
-	@SuppressWarnings("null")
 	@Nonnull
 	public static Direction toDirection(@Nonnull final Locale locale) {
 

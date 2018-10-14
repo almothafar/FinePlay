@@ -28,7 +28,6 @@ import models.user.User;
 import models.user.User_;
 import mylib.Greet;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
 import play.mvc.Controller;
@@ -42,13 +41,12 @@ public class Application extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private WSClient ws;
 
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional(readOnly = true)
 	public Result index(String state) {
 
 		switch (state) {
@@ -158,10 +156,13 @@ public class Application extends Controller {
 
 	private Result jpql() {
 
-		final TypedQuery<User> query = jpaApi.em().createNamedQuery("User.findByLocale", User.class);
-		query.setParameter(User_.locale.getName(), lang().toLocale());
+		return jpa.withTransaction(manager -> {
 
-		return ok(query.getResultList().toString());
+			final TypedQuery<User> query = manager.createNamedQuery("User.findByLocale", User.class);
+			query.setParameter(User_.locale.getName(), lang().toLocale());
+
+			return ok(query.getResultList().toString());
+		});
 	}
 
 	private static Result serialTask() {
@@ -246,6 +247,7 @@ public class Application extends Controller {
 			return "result2";
 		});
 
+		@SuppressWarnings("unused")
 		final CompletableFuture<Void> future = CompletableFuture.allOf(//
 				future0, //
 				future1, //

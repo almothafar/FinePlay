@@ -49,38 +49,38 @@ public class Defaultpage extends Controller {
 
 	public static Result notFoundPage() {
 
-		return notFound(views.html.defaultpages.notFound.render("arg0", "arg1", ctx()._requestHeader()));
+		return notFound(views.html.defaultpages.notFound.render("arg0", "arg1", request().asScala()));
 	}
 
 	public static Result badRequestPage() {
 
-		return badRequest(views.html.defaultpages.badRequest.render("arg0", "arg1", "arg2", ctx()._requestHeader()));
+		return badRequest(views.html.defaultpages.badRequest.render("arg0", "arg1", "arg2", request().asScala()));
 	}
 
 	public static Result unauthorizedPage() {
 
-		return unauthorized(views.html.defaultpages.unauthorized.render(ctx()._requestHeader()));
+		return unauthorized(views.html.defaultpages.unauthorized.render(request().asScala()));
 	}
 
 	public static Result devError() {
 
 		// Dev
-		return ok(views.html.defaultpages.devError.render(Option.apply(null), new PlayException("title", "description", new Exception("message")), ctx()._requestHeader()));
+		return ok(views.html.defaultpages.devError.render(Option.apply(null), new PlayException("title", "description", new Exception("message")), request().asScala()));
 	}
 
 	public static Result devNotFound() {
 
-		return ok(views.html.defaultpages.devNotFound.render("arg0", "arg1", Option.apply(null), ctx()._requestHeader()));
+		return ok(views.html.defaultpages.devNotFound.render("arg0", "arg1", Option.apply(null), request().asScala()));
 	}
 
 	public static Result error() {
 
 		// Prod
-		return ok(views.html.defaultpages.error.render(new PlayException("title", "description", new Exception("message")), ctx()._requestHeader()));
+		return ok(views.html.defaultpages.error.render(new PlayException("title", "description", new Exception("message")), request().asScala()));
 	}
 
 	public static Result todo() {
 
-		return ok(views.html.defaultpages.todo.render(ctx()._requestHeader()));
+		return ok(views.html.defaultpages.todo.render(request().asScala()));
 	}
 }

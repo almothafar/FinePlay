@@ -3,6 +3,7 @@ package controllers.setting.user;
 import java.lang.invoke.MethodHandles;
 import java.time.ZoneId;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.security.auth.login.AccountException;
@@ -19,11 +20,11 @@ import models.user.User.Theme;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
-import play.db.jpa.Transactional;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
+import play.mvc.Http.Session;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -36,7 +37,7 @@ public class User extends Controller {
 	private MessagesApi messages;
 
 	@Inject
-	private JPAApi jpaApi;
+	private JPAApi jpa;
 
 	@Inject
 	private FormFactory formFactory;
@@ -52,8 +53,8 @@ public class User extends Controller {
 		// final String locale = session(models.user.User.LOCALE);
 		// final String locale =
 		// request().cookie(messages.langCookieName()).value();
-		final String zoneId = session(models.user.User_.ZONE_ID);
-		final String theme = session(models.user.User_.THEME);
+		final String zoneId = request().session().get(models.user.User_.ZONE_ID);
+		final String theme = request().session().get(models.user.User_.THEME);
 
 		editFormContent.setLocale(locale);
 		editFormContent.setZoneId(zoneId);
@@ -65,73 +66,85 @@ public class User extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	@Transactional()
 	@RequireCSRFCheck
 	public Result update() {
 
-		final Form<EditFormContent> editForm = formFactory.form(EditFormContent.class).bindFromRequest();
-		if (!editForm.hasErrors()) {
+		return jpa.withTransaction(manager -> {
 
-			final Locale locale = Lang.forCode(lang().code()).toLocale();
-			final ZoneId zoneId = ZoneId.of(session(models.user.User_.ZONE_ID));
-			final Theme theme = Theme.valueOf(session(models.user.User_.THEME));
+			final Form<EditFormContent> editForm = formFactory.form(EditFormContent.class).bindFromRequest();
+			if (!editForm.hasErrors()) {
 
-			final EditFormContent editFormContent = editForm.get();
-			final Locale updatedLocale = Lang.forCode(editFormContent.getLocale()).toLocale();
-			final ZoneId updatedZoneId = ZoneId.of(editFormContent.getZoneId());
-			final Theme updatedTheme = Theme.valueOf(editFormContent.getTheme());
+				final Locale locale = Lang.forCode(lang().code()).toLocale();
+				final ZoneId zoneId = ZoneId.of(request().session().get(models.user.User_.ZONE_ID));
+				final Theme theme = Theme.valueOf(request().session().get(models.user.User_.THEME));
 
-			boolean isUpdated = false;
-			if (!locale.equals(updatedLocale)) {
+				final EditFormContent editFormContent = editForm.get();
+				final Locale updatedLocale = Lang.forCode(editFormContent.getLocale()).toLocale();
+				final ZoneId updatedZoneId = ZoneId.of(editFormContent.getZoneId());
+				final Theme updatedTheme = Theme.valueOf(editFormContent.getTheme());
 
-				final Lang updatedLang = Locales.toLang(updatedLocale);
-				changeLang(updatedLang);
+				boolean isUpdated = false;
+				if (!locale.equals(updatedLocale)) {
 
-				isUpdated = true;
-			}
-			if (!zoneId.equals(updatedZoneId)) {
+					// TODO 2.7.0 (´・ω・`).
+					final Lang updatedLang = Locales.toLang(updatedLocale);
+					changeLang(updatedLang);
 
-				session(models.user.User_.ZONE_ID, updatedZoneId.getId());
-				isUpdated = true;
-			}
-			if (!theme.equals(updatedTheme)) {
+					isUpdated = true;
+				}
+				if (!zoneId.equals(updatedZoneId)) {
 
-				session(models.user.User_.THEME, updatedTheme.name());
-				isUpdated = true;
-			}
+					// TODO 2.7.0 (´・ω・`).
+					session(models.user.User_.ZONE_ID, updatedZoneId.getId());
+					isUpdated = true;
+				}
+				if (!theme.equals(updatedTheme)) {
 
-			if (isUpdated) {
+					// TODO 2.7.0 (´・ω・`).
+					session(models.user.User_.THEME, updatedTheme.name());
+					isUpdated = true;
+				}
 
-				final models.user.User user;
-				try {
+				if (isUpdated) {
 
+					final models.user.User user;
 					try {
 
-						user = userService.read(jpaApi.em(), session(models.user.User_.USER_ID));
+						try {
+
+							user = userService.read(manager, request().session().get(models.user.User_.USER_ID));
+						} catch (final AccountException e) {
+
+							throw e;
+						}
+
+						user.setLocale(updatedLocale);
+						user.setZoneId(updatedZoneId);
+						user.setTheme(updatedTheme);
+
+						userService.update(manager, user);
 					} catch (final AccountException e) {
 
-						throw e;
+						final Form<EditFormContent> failureEditForm = formFactory.form(EditFormContent.class)//
+								.fill(editFormContent)//
+								.withGlobalError(e.getLocalizedMessage());
+						return failureEdit(failureEditForm);
 					}
-
-					user.setLocale(updatedLocale);
-					user.setZoneId(updatedZoneId);
-					user.setTheme(updatedTheme);
-
-					userService.update(jpaApi.em(), user);
-				} catch (final AccountException e) {
-
-					final Form<EditFormContent> failureEditForm = formFactory.form(EditFormContent.class)//
-							.fill(editFormContent)//
-							.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureEditForm);
 				}
+
+//				return ok(views.html.setting.user.general.render(editForm))//
+//						.withLang(Locales.toLang(updatedLocale), messages)//
+//						.withSession(new Session(Map.of(//
+//								models.user.User_.ZONE_ID, updatedZoneId.getId(),//
+//								models.user.User_.THEME, updatedTheme.name()//
+//								)));
+				// TODO 2.7.0 (´・ω・`).
+				return ok(views.html.setting.user.general.render(editForm));
+			} else {
+
+				return failureEdit(editForm);
 			}
-
-			return ok(views.html.setting.user.general.render(editForm));
-		} else {
-
-			return failureEdit(editForm);
-		}
+		});
 	}
 
 	private Result failureEdit(final Form<EditFormContent> editForm) {

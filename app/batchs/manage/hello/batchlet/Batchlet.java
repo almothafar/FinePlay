@@ -66,10 +66,12 @@ public class Batchlet extends AbstractBatchlet {
 	@BatchProperty(name = "list.date")
 	Date[] listDateArray;
 
+	@SuppressWarnings("rawtypes")
 	@Inject
 	@BatchProperty(name = "class")
 	Class cls;
 
+	@SuppressWarnings("rawtypes")
 	@Inject
 	@BatchProperty(name = "class")
 	Class[] clss;

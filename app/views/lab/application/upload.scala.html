@@ -38,8 +38,8 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Form</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->play.mvc.Controller.flash("success"), "closable"->"true", "flashKey"->"success"))
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->play.mvc.Controller.flash("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->flash.get("success"), "closable"->"true", "flashKey"->"success"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
 
 						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.form()), 'name->"normalForm", 'enctype -> "multipart/form-data") {
 
@@ -60,8 +60,8 @@
 
 					<div class="mb-3">
 						<h4 class="headline">@(Messages(MessageKeys.IMAGE)+" "+Messages(MessageKeys.PREVIEW))</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->play.mvc.Controller.flash("imageSuccess"), "closable"->"true", "flashKey"->"imageSuccess"))
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->play.mvc.Controller.flash("imageWarning"), "type"->"warning", "closable"->"true", "flashKey"->"imageWarning"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->flash.get("imageSuccess"), "closable"->"true", "flashKey"->"imageSuccess"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("imageWarning"), "type"->"warning", "closable"->"true", "flashKey"->"imageWarning"))
 
 						<div class="row">
 
