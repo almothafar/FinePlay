@@ -8,7 +8,8 @@ injectStyle('.shepherd-element.shepherd-has-title .shepherd-content header', {
 	'background': getTheme().primary.disabledBackgroundColor
 });
 
-injectStyle('.shepherd-element .shepherd-content header .shepherd-title', {
+injectStyle('.shepherd-element .shepherd-content header .shepherd-title, ' +
+			'.shepherd-element .shepherd-content header .shepherd-cancel-link', {
 	'color': getTheme().primary.color
 });
 

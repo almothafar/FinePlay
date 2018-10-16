@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
@@ -38,7 +39,6 @@ import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
-import play.mvc.Http.Flash;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -55,9 +55,6 @@ public class Read extends Controller {
 	@Inject
 	private FormFactory formFactory;
 
-	private final EntityDao<Company> companyDao = new EntityDao<Company>() {
-	};
-
 	private final EntityDao<OrganizationUnit> organizationUnitDao = new EntityDao<OrganizationUnit>() {
 	};
 
@@ -73,14 +70,12 @@ public class Read extends Controller {
 			readFormContent.setCompanyId(companyId);
 
 			final ArrayNode unitTree = readTree(manager, readFormContent);
-			final Flash flash = new Flash(new HashMap<String, String>());
+			final Map<String, String> alertInfo = new HashMap<>();
 			if (!(1 <= unitTree.size())) {
 
-				flash.put("warning", //
+				alertInfo.put("warning", //
 						"<strong>" + messages.get(lang(), MessageKeys.PROCESS) + " " + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + //
 				messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATIONUNIT)));
-				// TODO 2.7.0 (´・ω・`).
-				flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
 			}
 
 			final String unitTreeJSON;
@@ -95,7 +90,7 @@ public class Read extends Controller {
 
 			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
 
-			return ok(views.html.manage.company.organization.tree.index.render(readForm, companyName, unitTreeJSON)).withFlash(flash);
+			return ok(views.html.manage.company.organization.tree.index.render(alertInfo, readForm, companyName, unitTreeJSON));
 		});
 	}
 

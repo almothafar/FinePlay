@@ -1,8 +1,10 @@
+@import play.mvc._
+
 @import views.html._
 @import views.html.components
 @import views.html.development
 
-@(map: Map[String, Object])
+@(alertInfo: Map[String, String], map: Map[String, String])
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -24,6 +26,17 @@
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@components.alerts(Map("id"->"system_alerts")){
+
+				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.get("success"), "closable"->"true", "display"->alertInfo.containsKey("success").toString))
+				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-info-circle", "text"->alertInfo.get("info"), "type"->"info", "closable"->"true", "display"->alertInfo.containsKey("info").toString))
+				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.get("warning"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("warning").toString))
+				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-ban", "text"->alertInfo.get("danger"), "type"->"danger", "closable"->"true", "display"->alertInfo.containsKey("danger").toString))
+			}
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
 			<div class="row">
 				<div class="col-md-3">
 
@@ -32,11 +45,6 @@
 				<div class="mt-3 d-md-none">
 				</div>
 				<div class="col-md-9">
-
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->flash.get("success"), "closable"->"true", "flashKey"->"success"))
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-info-circle", "text"->flash.get("info"), "type"->"info", "closable"->"true", "flashKey"->"info"))
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
-					@components.adjust.alert(Map("id"->"", "icon"->"fas fa-ban", "text"->flash.get("danger"), "type"->"danger", "closable"->"true", "flashKey"->"danger"))
 
 					@development.proptable("", map)
 				</div>

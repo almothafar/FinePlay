@@ -77,7 +77,6 @@ TODO
 + Update Play Framework 2.7.0 release
 
 #### Play Framework 2.7.0 ####
-+ Learn how to set flash with the API of 2.7.0.
 + Follow Deprecate
 + Update application.conf
 + Update messages
@@ -100,8 +99,7 @@ TODO
 Release History
 ---------------
 
-+ **2.7.0-M4-α6** - 2018-10-15 (Danger)
-+ **2.7.0-M3-βc2** - 2018-09-30
++ **2.7.0-M4-βc1** - 2018-10-16
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

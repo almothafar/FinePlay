@@ -294,7 +294,8 @@ class PermissionListCreator {
 			separateColumns.add(StringUtils.rightPad("", 20, "-"));
 			separateColumns.add(StringUtils.rightPad("", 70, "-"));
 			separateColumns.add(StringUtils.rightPad("", 30, "-"));
-			for (@SuppressWarnings("unused") final Permission permission : System.Permission.values()) {
+			for (@SuppressWarnings("unused")
+			final Permission permission : System.Permission.values()) {
 
 				separateColumns.add(StringUtils.leftPad("", maxPermissionNameLength, "-"));
 			}

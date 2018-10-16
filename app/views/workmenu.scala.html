@@ -13,7 +13,7 @@
 					<i class="@group.getOrElse("icon", "")"></i>
 					&nbsp;<span class="d-inline-block text-truncate system_section-name-text text-left">@group.get("name")</span>
 				</button>
-				<small class="pt-1"><span id="" class="badge badge-pill badge-success">@flash.get("system_section-" + group.getOrElse("key", ""))</span></small>
+				<small class="pt-1"><span id="@("system_section-" + group.getOrElse("key", ""))" class="badge badge-pill badge-success"></span></small>
 			</h4>
 		</div>
 
@@ -27,7 +27,7 @@
 						<i class="@elements.get(j).getOrElse("icon", "") align-self-center"></i>
 						&nbsp;<span class="d-inline-block text-truncate system_work-name-text">@elements.get(j).get("name")</span>
 					</a>
-					<span class="pt-2"><span id="" class="badge badge-pill badge-success">@flash.get("system_section-work-" + elements.get(j).getOrElse("key", ""))</span></span>
+					<span class="pt-2"><span id="@("system_section-work-" + elements.get(j).getOrElse("key", ""))" class="badge badge-pill badge-success"></span></span>
 				</li>
 						}
 					}

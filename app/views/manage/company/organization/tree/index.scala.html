@@ -10,7 +10,7 @@
 @import models.company.organization._
 @import models.manage.company.organization.tree._
 
-@(form: play.data.Form[models.manage.company.organization.tree.ReadFormContent], companyName: String, unitTreeJSON: String)
+@(alertInfo: Map[String, String], form: play.data.Form[models.manage.company.organization.tree.ReadFormContent], companyName: String, unitTreeJSON: String)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -70,7 +70,7 @@
 
 			<div class="mt-3 mb-3">
 
-				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
+				@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.get("warning"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("warning").toString))
 				@components.alert(Map("id"->"unsavedInfo", "icon"->"fas fa-info-circle", "text"->"", "type"->"info", "closable"->"true"))
 			</div>
 

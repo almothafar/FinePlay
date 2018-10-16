@@ -9,7 +9,7 @@
 
 @(prop:scala.collection.immutable.Map[String, String])
 
-@if(flash.containsKey(prop.get("flashKey").get)) {
+@if(Boolean.valueOf(prop.get("display").getOrElse("false"))) {
 
 	@components.alert(prop)
 }

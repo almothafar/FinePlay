@@ -88,14 +88,13 @@ import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http;
+import play.mvc.Http.Cookie;
+import play.mvc.Http.Flash;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import play.mvc.With;
-import play.mvc.Http.Cookie;
-import play.mvc.Http.Flash;
 import play.routing.HandlerDef;
 import play.routing.Router;
-import play.twirl.api.Appendable;
 import play.twirl.api.Html;
 import scala.Tuple2;
 
@@ -145,6 +144,9 @@ public class Application extends Controller {
 		case "session":
 
 			return sessionlist();
+		case "beforeflash":
+
+			return beforeflashlist();
 		case "flash":
 
 			return flashlist();
@@ -231,23 +233,28 @@ public class Application extends Controller {
 		return ok(views.html.framework.application.session.render(new TreeMap<>(map)));
 	}
 
-	public Result flashlist() {
+	public Result beforeflashlist() {
 
-		// get
-		request().flash();
-
-		// set
 		final Flash flash = new Flash(Map.of(//
 				"success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
 				"info", "<strong>" + messages.get(lang(), MessageKeys.INFO) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
 				"warning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
 				"danger", "<strong>" + messages.get(lang(), MessageKeys.DANGER) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE)//
 		));
-		// TODO 2.7.0 (´・ω・`).
-		flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
 
-		final Map<String, Object> map = flash.entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
-		return ok(views.html.framework.application.flashlist.render(new TreeMap<>(map))).withFlash(flash);
+		return redirect(controllers.framework.application.routes.Application.index("flash"))//
+				// set
+				.withFlash(flash);
+	}
+
+	public Result flashlist() {
+
+		final Http.Request request = ctx().request();
+
+		// get
+		final Flash flash = request.flash();
+
+		return ok(views.html.framework.application.flashlist.render(flash, new TreeMap<>(flash)));
 	}
 
 	public Result logger() {

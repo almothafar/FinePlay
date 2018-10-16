@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M4-α6-SNAPSHOT"
+version := "2.7.0-M4-βc1-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M4-α6-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-M4-βc1-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -120,7 +120,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.3.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.2.0
+  "org.webjars" % "font-awesome" % "5.4.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.4.1
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.2.4",								// MIT 4.2.5
   "org.webjars.npm" % "twemoji" % "11.0.0"								// Code:MIT, Graphics:CC 11.0.0

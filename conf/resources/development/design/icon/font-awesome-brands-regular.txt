@@ -1,6 +1,7 @@
 500px
 accessible-icon
 accusoft
+acquisitions-incorporated
 adn
 adversal
 affiliatetheme
@@ -73,6 +74,8 @@ creative-commons-sa
 creative-commons-sampling
 creative-commons-sampling-plus
 creative-commons-share
+creative-commons-zero
+critical-role
 css3
 css3-alt
 cuttlefish
@@ -81,6 +84,7 @@ dashcube
 delicious
 deploydog
 deskpro
+dev
 deviantart
 digg
 digital-ocean
@@ -110,6 +114,7 @@ facebook
 facebook-f
 facebook-messenger
 facebook-square
+fantasy-flight-games
 firefox
 first-order
 first-order-alt
@@ -241,6 +246,7 @@ pagelines
 palfed
 patreon
 paypal
+penny-arcade
 periscope
 phabricator
 phoenix-framework
@@ -360,6 +366,7 @@ whmcs
 wikipedia-w
 windows
 wix
+wizards-of-the-coast
 wolf-pack-battalion
 wordpress
 wordpress-simple

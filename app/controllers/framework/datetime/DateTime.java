@@ -3,6 +3,7 @@ package controllers.framework.datetime;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -25,7 +26,6 @@ import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Http.Flash;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -53,7 +53,7 @@ public class DateTime extends Controller {
 
 			final Form<DateTimeFormContent> readedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(readedDateTimeFormContent);
 
-			return ok(views.html.framework.datetime.datetime.render(readedDateTimeForm));
+			return ok(views.html.framework.datetime.datetime.render(new HashMap<>(), readedDateTimeForm));
 		});
 	}
 
@@ -98,19 +98,18 @@ public class DateTime extends Controller {
 					updatedDateTime = updateDateTime(manager, datetimeFormContent);
 				} catch (IllegalStateException e) {
 
-					final Flash flash = new Flash(Map.of("dateTimeWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage()));
-					// TODO 2.7.0 (´・ω・`).
-					flash.entrySet().forEach(entry->flash(entry.getKey(), entry.getValue()));
-					return failureRead(datetimeForm).withFlash(flash);
+					final Map<String, String> alertInfo = Map.of("dateTimeWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage());
+
+					return failureRead(alertInfo, datetimeForm);
 				}
 				final DateTimeFormContent updatedDateTimeFormContent = setDateTimeFormContentValue(updatedDateTime);
 
 				final Form<DateTimeFormContent> updatedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(updatedDateTimeFormContent);
 
-				return ok(views.html.framework.datetime.datetime.render(updatedDateTimeForm));
+				return ok(views.html.framework.datetime.datetime.render(new HashMap<>(), updatedDateTimeForm));
 			} else {
 
-				return failureRead(datetimeForm);
+				return failureRead(new HashMap<>(), datetimeForm);
 			}
 		});
 	}
@@ -225,8 +224,8 @@ public class DateTime extends Controller {
 	}
 
 	@Nonnull
-	private Result failureRead(@Nonnull final Form<DateTimeFormContent> datetimeForm) {
+	private Result failureRead(@Nonnull final Map<String, String> alertInfo, @Nonnull final Form<DateTimeFormContent> datetimeForm) {
 
-		return badRequest(views.html.framework.datetime.datetime.render(datetimeForm));
+		return badRequest(views.html.framework.datetime.datetime.render(alertInfo, datetimeForm));
 	}
 }

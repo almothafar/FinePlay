@@ -55,7 +55,6 @@ public class WebSocket extends Controller {
 
 		return play.mvc.WebSocket.Text.acceptOrResult(request -> {
 
-
 			if (Objects.nonNull(request().session().get(models.user.User_.USER_ID))) {
 
 				final ZoneId zoneId = ZoneId.of(request().session().get(models.user.User_.ZONE_ID));

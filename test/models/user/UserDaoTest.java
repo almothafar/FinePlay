@@ -4,25 +4,17 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
 import static play.test.Helpers.running;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NonUniqueResultException;
-import javax.persistence.Persistence;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -32,16 +24,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import common.utils.Locales;
-import common.utils.Sessions;
 import models.base.EntityDao;
 import models.user.User.Role;
 import models.user.User.Theme;
 import play.db.jpa.JPAApi;
-import play.i18n.MessagesApi;
-import play.mvc.Http;
-import play.mvc.Http.Cookie;
-import play.mvc.Http.RequestBuilder;
 import play.test.Helpers;
 import play.test.WithApplication;
 
@@ -77,10 +63,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				long count;
 				try {
@@ -127,8 +109,6 @@ public class UserDaoTest extends WithApplication {
 
 					fail("");
 				}
-
-				Http.Context.current.remove();
 			});
 		});
 	}
@@ -139,10 +119,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				final User createUser = new User();
 				createUser.setUserId("test@example.com");
@@ -222,8 +198,6 @@ public class UserDaoTest extends WithApplication {
 
 					fail("");
 				}
-
-				Http.Context.current.remove();
 			});
 		});
 	}
@@ -234,10 +208,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -265,8 +235,6 @@ public class UserDaoTest extends WithApplication {
 				}
 
 				userDao.delete(manager, readUser);
-
-				Http.Context.current.remove();
 			});
 		});
 	}
@@ -277,10 +245,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -306,8 +270,6 @@ public class UserDaoTest extends WithApplication {
 				assertThat("", "test@example.com", is(user.getUserId()));
 
 				userDao.delete(manager, readUser);
-
-				Http.Context.current.remove();
 			});
 		});
 	}
@@ -318,10 +280,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -350,8 +308,6 @@ public class UserDaoTest extends WithApplication {
 				assertThat("", "test@example.com", is(user.getUserId()));
 
 				userDao.delete(manager, readUser);
-
-				Http.Context.current.remove();
 			});
 		});
 	}
@@ -362,10 +318,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -390,8 +342,6 @@ public class UserDaoTest extends WithApplication {
 				assertThat("", "test@example.com", is(filterUsers.get(0).getUserId()));
 
 				userDao.delete(manager, readUser);
-
-				Http.Context.current.remove();
 			});
 		});
 	}
@@ -402,10 +352,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -432,8 +378,6 @@ public class UserDaoTest extends WithApplication {
 				assertThat("", "test@example.com", is(users.get(0).getUserId()));
 
 				userDao.delete(manager, readUser);
-
-				Http.Context.current.remove();
 			});
 		});
 	}
@@ -444,10 +388,6 @@ public class UserDaoTest extends WithApplication {
 		running(Helpers.testServer(), () -> {
 
 			jpa.withTransaction(manager -> {
-
-				final Http.Context context = getMockContext(Locale.US);
-
-				Http.Context.current.set(context);
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -477,32 +417,7 @@ public class UserDaoTest extends WithApplication {
 				assertThat("", "test@example.com", is(users.get(0).getUserId()));
 
 				userDao.delete(manager, readUser);
-
-				Http.Context.current.remove();
 			});
 		});
-	}
-
-	private Http.Context getMockContext(final Locale locale) {
-
-		final RequestBuilder builder = new RequestBuilder();
-		builder.header("User-Agent", "mocked user-agent");
-		builder.session(User.USER_ID, "mockUser");
-		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[] { Role.ADMIN })));
-		builder.session(models.user.User.THEME, Theme.DEFAULT.name());
-		builder.session(User.ZONE_ID, ZoneId.of("UTC").getId());
-		builder.cookie(Cookie.builder(models.user.User.THEME, Theme.DEFAULT.name()).build());
-
-		final Http.Context mockContext = spy(Helpers.httpContext(builder.build()));
-		when(mockContext.lang()).thenReturn(Locales.toLang(locale));
-
-		final EntityManagerFactory factory = Persistence.createEntityManagerFactory("defaultPersistenceUnit");
-		final EntityManager manager = factory.createEntityManager();
-
-		final Deque<EntityManager> ems = new ArrayDeque<>();
-		ems.push(manager);
-		mockContext.args.put("entityManagerContext", ems);
-
-		return mockContext;
 	}
 }

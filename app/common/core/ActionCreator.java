@@ -22,7 +22,6 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import common.utils.Sessions;
-import models.base.EntityDao;
 import models.system.System;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
@@ -33,7 +32,6 @@ import play.db.jpa.JPAApi;
 import play.http.DefaultActionCreator;
 import play.mvc.Action;
 import play.mvc.Http.Context;
-import play.mvc.Http.Flash;
 import play.mvc.Http.Headers;
 import play.mvc.Http.Request;
 import play.mvc.Http.Session;
@@ -112,19 +110,7 @@ public class ActionCreator extends DefaultActionCreator {
 						}
 					}
 
-//					setBadgeText(ctx);
-
 					return delegate.call(ctx);
-				}
-
-				private void setBadgeText(final Context ctx) {
-
-					ctx.flash().put("system_section-development", "New");
-					ctx.flash().put("system_section-work-http", "1");
-					ctx.flash().put("system_section-work-javascript", "2");
-					ctx.flash().put("system_section-work-design", "3");
-					ctx.flash().put("system_section-work-document", "4");
-					ctx.flash().put("system_section-work-help", "5");
 				}
 			};
 		});

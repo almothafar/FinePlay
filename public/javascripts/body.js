@@ -10,6 +10,47 @@ var bodyMessages = function(messageKey){
 $(document).ready(function () {
 
 	console.log('DOM loaded.');
+
+	var setBadge = function(){
+
+		var timeout = 3000;
+		var wait = 0;
+		$.ajax({
+			method: "POST",
+			url: Routes.apis.development.http.Http.postData().url + "?" + getToken(),
+			data: JSON.stringify({
+				request: "demoRequest",
+				mock: {
+					wait: parseInt(wait),
+					response:{
+						'system_section-development': 'New',
+						'system_section-work-http': '' + parseInt(Math.random() * 30),
+						'system_section-work-javascript': '' + parseInt(Math.random() * 30),
+						'system_section-work-design': '' + parseInt(Math.random() * 30),
+						'system_section-work-document': '' + parseInt(Math.random() * 30),
+						'system_section-work-help': '' + parseInt(Math.random() * 30),
+					}
+				}
+			}),
+			contentType: 'application/json',
+			dataType: "json",
+			timeout: timeout
+		})
+		.then(
+			function (responseJson) {
+
+				$.each(responseJson, function(key, value){
+
+					$('#' + key).text(value);
+				});
+			},
+			function (jqXHR, textStatus, errorThrown) {
+
+				notifyAlert('warning', Messages(MessageKeys.STATUS)+'&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;'+Messages(MessageKeys.ERROR)+'&nbsp;<strong>'+errorThrown+'</strong>');
+			}
+		);
+	};
+//	setBadge();
 });
 
 $(window).on('load', function () {

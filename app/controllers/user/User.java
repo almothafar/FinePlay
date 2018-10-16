@@ -119,7 +119,6 @@ public class User extends Controller {
 		request().session().putAll(Map.of(//
 				models.user.User_.THEME, Theme.DEFAULT.name()//
 		));
-//		session(models.user.User_.THEME, Theme.DEFAULT.name());
 
 		final SignInFormContent signInFormContent = new SignInFormContent();
 		if (request().cookie(models.user.User_.USER_ID) != null) {
@@ -185,14 +184,7 @@ public class User extends Controller {
 					return failureSignIn(failureSignInForm);
 				}
 
-				// TODO 2.7.0 (´・ω・`).
 				final Lang selectedLang = Locales.toLang(user.getLocale());
-//				changeLang(selectedLang);
-//				session(models.user.User_.USER_ID, userId);
-//				session(models.user.User_.THEME, user.getTheme().name());
-//				session(models.user.User_.ZONE_ID, user.getZoneId().getId());
-//				session(models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())));
-//				session(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString());
 
 				String requestUrl = request().session().get(SessionKeys.REQUEST_URL);
 				if (requestUrl == null || requestUrl.equals("") || requestUrl.equals(controllers.user.routes.User.index().absoluteURL(request()))) {
@@ -254,28 +246,13 @@ public class User extends Controller {
 		return jpa.withTransaction(manager -> {
 
 			updateSignOutTime(manager);
-			request().session().clear();
-//			session().clear();
-//			clearLang();
 
-			// for Edge measures.
 			Lang acceptLang = request().acceptLanguages().stream().findFirst().orElse(Locales.toLang(Locale.US));
-//			changeLang(acceptLang);
 
 			return redirect(controllers.user.routes.User.index())//
 					.clearingLang(messages)//
-					.withLang(acceptLang, messages);// for Edge measures.
-
-//			updateSignOutTime(manager);
-//			request().session().clear();
-////			session().clear();
-//			clearLang();
-//
-//			// for Edge measures.
-//			Lang acceptLang = request().acceptLanguages().stream().findFirst().orElse(Locales.toLang(Locale.US));
-//			changeLang(acceptLang);
-//
-//			return redirect(controllers.user.routes.User.index());
+					.withLang(acceptLang, messages)// for Edge measures.
+					.withNewSession();
 		});
 	}
 
@@ -322,11 +299,9 @@ public class User extends Controller {
 				final ObjectNode response = mapper.createObjectNode();
 				response.put("status", "success");
 
-				// TODO 2.7.0 (´・ω・`).
-				session(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString());
-				return ok(response).withSession(new Session(Map.of(//
+				return ok(response).addingToSession(request(), Map.of(//
 						SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString()//
-				)));
+				));
 			} else {
 
 				return failureConfirm(passwordForm);

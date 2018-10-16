@@ -24,7 +24,6 @@ import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
-import play.mvc.Http.Session;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -50,9 +49,6 @@ public class User extends Controller {
 
 		final EditFormContent editFormContent = new EditFormContent();
 		final String locale = lang().code();
-		// final String locale = session(models.user.User.LOCALE);
-		// final String locale =
-		// request().cookie(messages.langCookieName()).value();
 		final String zoneId = request().session().get(models.user.User_.ZONE_ID);
 		final String theme = request().session().get(models.user.User_.THEME);
 
@@ -86,22 +82,14 @@ public class User extends Controller {
 				boolean isUpdated = false;
 				if (!locale.equals(updatedLocale)) {
 
-					// TODO 2.7.0 (´・ω・`).
-					final Lang updatedLang = Locales.toLang(updatedLocale);
-					changeLang(updatedLang);
-
 					isUpdated = true;
 				}
 				if (!zoneId.equals(updatedZoneId)) {
 
-					// TODO 2.7.0 (´・ω・`).
-					session(models.user.User_.ZONE_ID, updatedZoneId.getId());
 					isUpdated = true;
 				}
 				if (!theme.equals(updatedTheme)) {
 
-					// TODO 2.7.0 (´・ω・`).
-					session(models.user.User_.THEME, updatedTheme.name());
 					isUpdated = true;
 				}
 
@@ -132,14 +120,12 @@ public class User extends Controller {
 					}
 				}
 
-//				return ok(views.html.setting.user.general.render(editForm))//
-//						.withLang(Locales.toLang(updatedLocale), messages)//
-//						.withSession(new Session(Map.of(//
-//								models.user.User_.ZONE_ID, updatedZoneId.getId(),//
-//								models.user.User_.THEME, updatedTheme.name()//
-//								)));
-				// TODO 2.7.0 (´・ω・`).
-				return ok(views.html.setting.user.general.render(editForm));
+				return redirect(controllers.setting.user.routes.User.index())//
+						.withLang(Locales.toLang(updatedLocale), messages)//
+						.addingToSession(request(), Map.of(//
+								models.user.User_.ZONE_ID, updatedZoneId.getId(), //
+								models.user.User_.THEME, updatedTheme.name()//
+				));
 			} else {
 
 				return failureEdit(editForm);

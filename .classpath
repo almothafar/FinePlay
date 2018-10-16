@@ -129,19 +129,24 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/docs/jackson-datatype-jsr310-2.9.6-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/srcs/play-json_2.12-2.6.10-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/jars/play-json_2.12-2.6.10.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/srcs/play-json_2.12-2.7.0-M1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/jars/play-json_2.12-2.7.0-M1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/docs/play-json_2.12-2.6.10-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/docs/play-json_2.12-2.7.0-M1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/srcs/play-functional_2.12-2.6.10-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/jars/play-functional_2.12-2.6.10.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/srcs/play-functional_2.12-2.7.0-M1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/jars/play-functional_2.12-2.7.0-M1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/docs/play-functional_2.12-2.6.10-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/docs/play-functional_2.12-2.7.0-M1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.12.6-sources.jar" kind="lib" path="/Users/hiro/.sbt/boot/scala-2.12.6/lib/scala-reflect.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.12.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang.modules/scala-collection-compat_2.12/srcs/scala-collection-compat_2.12-0.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.scala-lang.modules/scala-collection-compat_2.12/bundles/scala-collection-compat_2.12-0.1.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang.modules/scala-collection-compat_2.12/docs/scala-collection-compat_2.12-0.1.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.typelevel/macro-compat_2.12/srcs/macro-compat_2.12-1.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.typelevel/macro-compat_2.12/jars/macro-compat_2.12-1.1.1.jar">
@@ -1068,9 +1073,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/docs/fetch-2.0.4-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.3.1.jar">
+  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.4.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.3.1-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.4.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/jars/material-design-icons-3.0.1.jar">

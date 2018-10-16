@@ -1,15 +1,18 @@
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@(alertInfo: Map[String, String])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
 
 @frame(){
 
@@ -38,8 +41,8 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Form</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->flash.get("success"), "closable"->"true", "flashKey"->"success"))
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("warning"), "type"->"warning", "closable"->"true", "flashKey"->"warning"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.getOrDefault("success", "-"), "closable"->"true", "display"->alertInfo.containsKey("success").toString))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrDefault("warning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("warning").toString))
 
 						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.form()), 'name->"normalForm", 'enctype -> "multipart/form-data") {
 
@@ -60,8 +63,8 @@
 
 					<div class="mb-3">
 						<h4 class="headline">@(Messages(MessageKeys.IMAGE)+" "+Messages(MessageKeys.PREVIEW))</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->flash.get("imageSuccess"), "closable"->"true", "flashKey"->"imageSuccess"))
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->flash.get("imageWarning"), "type"->"warning", "closable"->"true", "flashKey"->"imageWarning"))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.getOrDefault("imageSuccess", "-"), "closable"->"true", "display"->alertInfo.containsKey("imageSuccess").toString))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrDefault("imageWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("imageWarning").toString))
 
 						<div class="row">
 

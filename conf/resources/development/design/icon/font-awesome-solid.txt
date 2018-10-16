@@ -71,6 +71,7 @@ bicycle
 binoculars
 birthday-cake
 blender
+blender-phone
 blind
 bold
 bolt
@@ -78,6 +79,7 @@ bomb
 bone
 bong
 book
+book-dead
 book-open
 book-reader
 bookmark
@@ -109,6 +111,7 @@ calendar-plus
 calendar-times
 camera
 camera-retro
+campground
 cannabis
 capsules
 car
@@ -126,7 +129,9 @@ caret-square-up
 caret-up
 cart-arrow-down
 cart-plus
+cat
 certificate
+chair
 chalkboard
 chalkboard-teacher
 charging-station
@@ -167,6 +172,8 @@ clone
 closed-captioning
 cloud
 cloud-download-alt
+cloud-moon
+cloud-sun
 cloud-upload-alt
 cocktail
 code
@@ -208,6 +215,8 @@ desktop
 dharmachakra
 diagnoses
 dice
+dice-d20
+dice-d6
 dice-five
 dice-four
 dice-one
@@ -219,6 +228,7 @@ directions
 divide
 dizzy
 dna
+dog
 dollar-sign
 dolly
 dolly-flatbed
@@ -229,10 +239,13 @@ dot-circle
 dove
 download
 drafting-compass
+dragon
 draw-polygon
 drum
 drum-steelpan
+drumstick-bite
 dumbbell
+dungeon
 edit
 eject
 ellipsis-h
@@ -268,6 +281,7 @@ file-archive
 file-audio
 file-code
 file-contract
+file-csv
 file-download
 file-excel
 file-export
@@ -293,6 +307,7 @@ fire
 fire-extinguisher
 first-aid
 fish
+fist-raised
 flag
 flag-checkered
 flask
@@ -314,6 +329,7 @@ gas-pump
 gavel
 gem
 genderless
+ghost
 gift
 glass-martini
 glass-martini-alt
@@ -344,6 +360,7 @@ grin-wink
 grip-horizontal
 grip-vertical
 h-square
+hammer
 hamsa
 hand-holding
 hand-holding-heart
@@ -362,7 +379,9 @@ hand-spock
 hands
 hands-helping
 handshake
+hanukiah
 hashtag
+hat-wizard
 haykal
 hdd
 heading
@@ -373,9 +392,12 @@ heart
 heartbeat
 helicopter
 highlighter
+hiking
+hippo
 history
 hockey-puck
 home
+horse
 hospital
 hospital-alt
 hospital-symbol
@@ -385,6 +407,8 @@ hourglass
 hourglass-end
 hourglass-half
 hourglass-start
+house-damage
+hryvnia
 i-cursor
 id-badge
 id-card
@@ -458,6 +482,7 @@ mars-double
 mars-stroke
 mars-stroke-h
 mars-stroke-v
+mask
 medal
 medkit
 meh
@@ -488,8 +513,10 @@ moon
 mortar-pestle
 mosque
 motorcycle
+mountain
 mouse-pointer
 music
+network-wired
 neuter
 newspaper
 not-equal
@@ -498,6 +525,7 @@ object-group
 object-ungroup
 oil-can
 om
+otter
 outdent
 paint-brush
 paint-roller
@@ -575,6 +603,7 @@ reply
 reply-all
 retweet
 ribbon
+ring
 road
 robot
 rocket
@@ -586,12 +615,14 @@ ruler
 ruler-combined
 ruler-horizontal
 ruler-vertical
+running
 rupee-sign
 sad-cry
 sad-tear
 save
 school
 screwdriver
+scroll
 search
 search-dollar
 search-location
@@ -622,6 +653,8 @@ signal
 signature
 sitemap
 skull
+skull-crossbones
+slash
 sliders-h
 smile
 smile-beam
@@ -642,6 +675,7 @@ sort-numeric-up
 sort-up
 spa
 space-shuttle
+spider
 spinner
 splotch
 spray-can
@@ -719,10 +753,12 @@ tint-slash
 tired
 toggle-off
 toggle-on
+toilet-paper
 toolbox
 tooth
 torah
 torii-gate
+tractor
 trademark
 traffic-light
 train
@@ -762,6 +798,7 @@ user-cog
 user-edit
 user-friends
 user-graduate
+user-injured
 user-lock
 user-md
 user-minus
@@ -788,6 +825,7 @@ video-slash
 vihara
 volleyball-ball
 volume-down
+volume-mute
 volume-off
 volume-up
 walking
@@ -797,10 +835,12 @@ weight
 weight-hanging
 wheelchair
 wifi
+wind
 window-close
 window-maximize
 window-minimize
 window-restore
+wine-bottle
 wine-glass
 wine-glass-alt
 won-sign

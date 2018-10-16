@@ -12,10 +12,9 @@ $(document).ready(function () {
 	}
 
 	var tour = new Shepherd.Tour({
-		defaults: {
+		defaultStepOptions: {
 			classes: 'shepherd-theme-default',
 			showCancelLink: true,
-//			renderLocation: '#system_content',
 			scrollTo: 'system_content'
 		}
 	});
