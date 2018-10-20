@@ -25,6 +25,9 @@ public class ILike extends Controller {
 		case "arrange":
 
 			return arrange(detail);
+		case "component":
+
+			return component(detail);
 		case "autumnboard":
 
 			return autumnboard(detail);
@@ -42,6 +45,11 @@ public class ILike extends Controller {
 	public static Result arrange(Boolean detail) {
 
 		return ok(views.html.lab.ilike.arrange.render(detail));
+	}
+
+	public static Result component(Boolean detail) {
+
+		return ok(views.html.lab.ilike.component.render(detail));
 	}
 
 	private static Result autumnboard(Boolean detail) {

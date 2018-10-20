@@ -25,6 +25,6 @@ $("#disableAll").on('click', function(e) {
 	alert(e.target.id);
 });
 
-$("#system_content").on('click', function(e) {
+getContent().on('click', function(e) {
 	alert(e.target.id + ' > ' + e.currentTarget.id);
 });

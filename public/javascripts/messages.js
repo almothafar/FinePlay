@@ -451,6 +451,7 @@ var MessageKeys = {
 	WEB: "web",
 	WEEK: "week",
 	WELCOME: "welcome",
+	WIKIPEDIA_LANG: "wikipedia.lang",
 	WINDOW: "window",
 	WORK: "work",
 	WORLD: "world",

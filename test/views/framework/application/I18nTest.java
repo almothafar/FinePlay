@@ -56,7 +56,7 @@ public class I18nTest extends WithApplication {
 		builder.session(User.ROLES, Sessions.toValue(Arrays.asList(new Role[] { Role.ADMIN })));
 		builder.session(models.user.User.ZONE_ID, "UTC");
 		builder.session(models.user.User.THEME, Theme.DEFAULT.name());
-		builder.cookie(Cookie.builder(Helpers.stubMessagesApi().langCookieName(), Locales.toLang(locale).code()).build());
+		builder.cookie(Cookie.builder(Helpers.stubMessagesApi().langCookieName(), locale.toLanguageTag()).build());
 		builder.cookie(Cookie.builder(models.user.User.THEME, Theme.DEFAULT.name()).build());
 
 		final Http.Context mockContext = spy(Helpers.httpContext(builder.build()));

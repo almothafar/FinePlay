@@ -25,7 +25,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 
 import common.utils.JSONs;
-import common.utils.Locales;
 import models.user.User;
 import models.user.User.Role;
 import models.user.User.Theme;
@@ -170,13 +169,12 @@ class InitialUsersCreator {
 			final List<String> lines = new ArrayList<>();
 
 			user.setId(i + 1);
-			@SuppressWarnings("null")
 			final String userLine = String.format("INSERT INTO USERS (ID, USERID, SALT, HASHEDPASSWORD, LOCALE, ZONEID, THEME, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP)", //
 					user.getId(), //
 					"'" + user.getUserId() + "'", //
 					"'" + user.getSalt().replace("'", "''") + "'", //
 					"'" + user.getHashedPassword().replace("'", "''") + "'", //
-					"'" + Locales.toLang(user.getLocale()).code() + "'", //
+					"'" + user.getLocale().toLanguageTag() + "'", //
 					"'" + user.getZoneId().getId() + "'", //
 					"'" + user.getTheme().name() + "'", //
 					"'" + FORMATTER.format(user.getExpireDateTime()) + "'", //

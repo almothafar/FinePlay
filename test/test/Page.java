@@ -15,7 +15,6 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Window;
 
-import common.utils.Locales;
 import play.test.TestBrowser;
 
 public class Page extends FluentPage {
@@ -76,7 +75,7 @@ public class Page extends FluentPage {
 		window.setSize(getDimension());
 		window.setPosition(getPoint());
 
-		getBrowser().takeScreenshot(path.resolve(Locales.toLang(locale).code()).resolve(counter.increment() + " " + name + ".png").toString());
+		getBrowser().takeScreenshot(path.resolve(locale.toLanguageTag()).resolve(counter.increment() + " " + name + ".png").toString());
 	}
 
 	@SuppressWarnings("null")

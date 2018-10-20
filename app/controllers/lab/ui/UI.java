@@ -87,6 +87,9 @@ public class UI extends Controller {
 		case "securekeyboard":
 
 			return securekeyboard();
+		case "glance":
+
+			return glance();
 		case "reverse":
 
 			return reverse();
@@ -222,6 +225,11 @@ public class UI extends Controller {
 	private static Result securekeyboard() {
 
 		return ok(views.html.lab.ui.securekeyboard.render());
+	}
+
+	private static Result glance() {
+
+		return ok(views.html.lab.ui.glance.render());
 	}
 
 	private static Result reverse() {

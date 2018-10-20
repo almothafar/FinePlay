@@ -67,6 +67,7 @@ import akka.Done;
 import common.system.MessageKeys;
 import common.utils.DateTimes;
 import common.utils.JSONs;
+import common.utils.Locales;
 import controllers.user.UserService;
 import models.framework.application.FinePlayBean;
 import models.framework.application.Jsr380Bean;
@@ -81,7 +82,6 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.data.validation.ValidationError;
 import play.db.jpa.JPAApi;
-import play.i18n.Lang;
 import play.i18n.Langs;
 import play.i18n.MessagesApi;
 import play.libs.Json;
@@ -302,36 +302,36 @@ public class Application extends Controller {
 
 	public Result message() {
 
-		final Map<String, String> langIdToNameMap = common.utils.Locales.getLocaleIdToNameMap(lang().toLocale());
+		final Map<String, String> langIdToNameMap = Locales.getLocaleIdToNameMap(lang().toLocale());
 
-		final List<Lang> systemLangs = new ArrayList<>(langs.availables());
+		final List<Locale> systemLocales = new ArrayList<>(langs.availables().stream().map(lang -> lang.locale()).collect(Collectors.toList()));
 
-		final int enIndex = systemLangs.indexOf(common.utils.Locales.toLang(Locale.US));
-		systemLangs.add(0, systemLangs.remove(enIndex));
+		final int enIndex = systemLocales.indexOf(Locale.US);
+		systemLocales.add(0, systemLocales.remove(enIndex));
 
 		final List<String> headerColumns = new ArrayList<>();
 		headerColumns.add(messages.get(lang(), MessageKeys.KEY));
-		final List<String> displaySystemLangs = systemLangs.stream().map(systemLang -> {
+		final List<String> displaySystemLocales = systemLocales.stream().map(systemLocale -> {
 
 			final StringBuilder builder = new StringBuilder();
-			builder.append(messages.get(systemLang, MessageKeys.COUNTRY_FLAG));
+			builder.append(messages.get(Locales.toLang(systemLocale), MessageKeys.COUNTRY_FLAG));
 			builder.append(" ");
-			builder.append(langIdToNameMap.get(systemLang.code()));
+			builder.append(langIdToNameMap.get(systemLocale.toLanguageTag()));
 			return builder.toString();
 		}).collect(Collectors.toList());
-		headerColumns.addAll(displaySystemLangs);
+		headerColumns.addAll(displaySystemLocales);
 
 		final List<List<String>> lineColumnsList = getMessageKeySet().stream().map(messageKey -> {
 
 			final List<String> lineColumns = new ArrayList<>();
 			lineColumns.add(messageKey);
-			final List<String> displayMessageOfSystemLangs = systemLangs.stream().map(systemLang -> messages.get(systemLang, messageKey)).collect(Collectors.toList());
+			final List<String> displayMessageOfSystemLangs = systemLocales.stream().map(systemLocale -> messages.get(Locales.toLang(systemLocale), messageKey)).collect(Collectors.toList());
 			lineColumns.addAll(displayMessageOfSystemLangs);
 
 			return lineColumns;
 		}).collect(Collectors.toList());
 
-		return ok(views.html.framework.application.message.render(displaySystemLangs, headerColumns, lineColumnsList));
+		return ok(views.html.framework.application.message.render(displaySystemLocales, headerColumns, lineColumnsList));
 	}
 
 	private static SortedSet<String> getMessageKeySet() {

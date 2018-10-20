@@ -4,7 +4,7 @@
 
 	// pseudo Markdown editor.
 
-	markededit = {
+	window.markededit = {
 
 		init: function(selector, options){
 

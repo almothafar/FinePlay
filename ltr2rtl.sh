@@ -13,5 +13,5 @@ rtlcss ./public/stylesheets/fakestrap.css             ./public/stylesheets/fakes
 
 rtlcss ./public/lib/bootstrap/assets/css/docs.min.css ./public/lib/bootstrap/assets/css/docs-rtl.min.css
 
-rtlcss ./public/lib/shepherd-2.0.0-beta.32/dist/css/shepherd-theme-default.css   ./public/lib/shepherd-2.0.0-beta.32/dist/css/shepherd-theme-default-rtl.css
+rtlcss ./public/lib/shepherd-2.0.0-beta.33/dist/css/shepherd-theme-default.css   ./public/lib/shepherd-2.0.0-beta.33/dist/css/shepherd-theme-default-rtl.css
 rtlcss ./public/lib/custom/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css ./public/lib/custom/bootstrap-colorpicker/dist/css/bootstrap-colorpicker-rtl.min.css

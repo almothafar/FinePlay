@@ -26,6 +26,7 @@
 <div class="i_space">
 
 	@components.listgroup(Map("id"->"", "flush"->"true"), List(
+		Map("id"->"", "class"->"i_task", "type"->"", "iconType"->"info", "icon"->"far fa-window-maximize fa-fw", "text"->Messages(MessageKeys.COMPONENT), "link"->controllers.lab.ilike.routes.ILike.index("component", true).toString, "selected"->equalTask("component").toString),
 		Map("id"->"", "class"->"i_task", "type"->"", "iconType"->"primary", "icon"->"fas fa-home fa-fw", "text"->"Autumn board", "link"->controllers.lab.ilike.routes.ILike.index("autumnboard", true).toString, "selected"->equalTask("autumnboard").toString)
 	))
 </div>

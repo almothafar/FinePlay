@@ -907,6 +907,8 @@ public class MessageKeys {
 
   public static final String WELCOME = "welcome";
 
+  public static final String WIKIPEDIA_LANG = "wikipedia.lang";
+
   public static final String WINDOW = "window";
 
   public static final String WORK = "work";

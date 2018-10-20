@@ -1,0 +1,78 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@(detail:Boolean)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ilike/ilike.css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/ilike/component.css")'>
+	}
+
+	@body("lab","ilike"){
+
+		@components.container(Map("id"->"i_content", "fluid"->"true", "class"->("" + "detail".when(detail)))){
+
+			<div class="row">
+
+				<div id="i_master" class="col-md-3 px-0 bg-grey-100">
+
+					@tasks(Map("id"->"", "task"->"component"))
+				</div>
+				<div id="i_detail" class="col-md-9 bg-grey-100">
+
+					<nav id="i_detail-header" class="border navbar navbar-light bg-light justify-content-between">
+
+						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
+						<div class="h5 text-center">@Messages(MessageKeys.COMPONENT)</div>
+						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
+					</nav>
+					<div class="i_space">
+					</div>
+					<div class="mb-3">
+
+						@components.modal(Map("id"->"alert", "title"->"Alert", "closable"->"false", "center"->"true", "size"->"sm", "class"->"i-modal", "data-backdrop"->"static"), List(
+								Map("id"->"alertOk", "type"->"link", "text"->Messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true", "data-dismiss"->"modal")
+							)){
+							<span class="draft">Cras mattis consectetur purus sit amet fermentum. Cras vestibulum at eros.</span>
+						}
+
+						@components.modal(Map("id"->"confirm", "title"->"Confirm", "closable"->"false", "center"->"true", "size"->"sm", "class"->"i-modal", "data-backdrop"->"static"), List(
+								Map("id"->"confirmCancel", "type"->"link", "text"->Messages(MessageKeys.CANCEL), "class"->"py-0", "data-dismiss"->"modal"),
+								Map("id"->"confirmOk", "type"->"link", "text"->Messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true")
+							)){
+							<span class="draft">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac in, vestibulum at eros.</span>
+						}
+
+						@components.modal(Map("id"->"prompt", "title"->"Prompt", "closable"->"false", "center"->"true", "size"->"sm", "class"->"i-modal", "data-backdrop"->"static"), List(
+								Map("id"->"promptCancel", "type"->"link", "text"->Messages(MessageKeys.CANCEL), "class"->"py-0", "data-dismiss"->"modal"),
+								Map("id"->"promptOk", "type"->"link", "text"->Messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true")
+							)){
+							<div class="form-group mb-0">
+								<input type="text" class="form-control" id="">
+							</div>
+						}
+
+						@components.button(Map("id"->"", "text"->"Alert", "data-toggle"->"modal", "data-target"->"#alert"))
+						@components.button(Map("id"->"", "text"->"Confirm", "data-toggle"->"modal", "data-target"->"#confirm"))
+						@components.button(Map("id"->"", "text"->"Prompt", "data-toggle"->"modal", "data-target"->"#prompt"))
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ilike/ilike.js")'></script>
+	}
+}

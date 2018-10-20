@@ -1,5 +1,5 @@
-message.code = ar-SA
-country.flag = 🇸🇦
+message.code = ar-AE
+country.flag = 🇦🇪
 
 #
 # Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
@@ -159,8 +159,8 @@ country.flag = 🇸🇦
 
 bootbox.lang = ar
 datatables.lang = Arabic
-fullcalendar.lang = ar-sa
-frappegantt.lang = ar-sa
+fullcalendar.lang = ar
+frappegantt.lang = ar
 handsontable.lang = en-US
 parsley.lang = ar
 pdfjs.lang = ar
@@ -169,6 +169,7 @@ plotlyjs.lang = ar
 select2.lang = ar
 
 summernote.lang = ar-AR
+
 
 
 

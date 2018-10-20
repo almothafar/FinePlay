@@ -71,14 +71,17 @@ public class ArtifactFactory extends AbstractArtifactFactory {
 							fieldVal = config;
 						} else if (fieldType == Langs.class) {
 
+							@SuppressWarnings("deprecation")
 							final Langs langs = common.system.System.getInjector().instanceOf(Langs.class);
 							fieldVal = langs;
 						} else if (fieldType == MessagesApi.class) {
 
+							@SuppressWarnings("deprecation")
 							final MessagesApi messages = common.system.System.getInjector().instanceOf(MessagesApi.class);
 							fieldVal = messages;
 						} else if (fieldType == MailerClient.class) {
 
+							@SuppressWarnings("deprecation")
 							final MailerClient mailer = common.system.System.getInjector().instanceOf(MailerClient.class);
 							fieldVal = mailer;
 						} else if (fieldType == EntityManager.class) {

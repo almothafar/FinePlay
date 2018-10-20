@@ -77,7 +77,7 @@ Project library CSS
 
 ### Add Read theme code ###
 
-	github/fineplay/app/views/libraries/adjust/bootstrap/head.scala.html
+	github/fineplay/app/views/libraries/bootstrap/head.scala.html
 
 ### Modify library CSS ###
 ###### Optional.

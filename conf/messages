@@ -169,6 +169,7 @@ plotlyjs.lang =
 select2.lang = en
 speech.synthesis.lang = en-US
 summernote.lang = 
+wikipedia.lang = en
 naturalearthdata.lang = United States
 
 map.rotate.lambda = 0

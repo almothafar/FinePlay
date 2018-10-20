@@ -1,0 +1,49 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","ui"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Glance", "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"glance"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<p class="glanceable">By Q1 2018, over 383 million smartphones were sold with 85.9 percent running <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" title="Android (operating system)">Android</a> and 14.1 percent running <a href="https://en.wikipedia.org/wiki/IOS" title="IOS">iOS</a>. Android alone is more popular than the popular desktop operating system Windows, and in general smartphone use (even without tablets) outnumber desktop use.
+					</p>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.hammerjs.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ui/glance.js")'></script>
+	}
+}

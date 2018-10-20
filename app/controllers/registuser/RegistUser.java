@@ -152,7 +152,7 @@ public class RegistUser extends Controller {
 		Lang useLang = lang();
 		if (!useLang.country().isEmpty()) {
 
-			useLang = normalizeLang(useLang);
+			useLang = Locales.toLang(normalizeLocale(useLang));
 		}
 
 		if (!langs.availables().contains(useLang)) {
@@ -168,33 +168,33 @@ public class RegistUser extends Controller {
 		return useLang.toLocale();
 	}
 
-	private static Lang normalizeLang(final Lang useLang) {
+	private static Locale normalizeLocale(final Lang useLang) {
 
 		switch (useLang.language()) {
 		case "ja":
 
-			return Locales.toLang(Locale.JAPAN);
+			return Locale.JAPAN;
 		case "zh":
 
 			switch (useLang.country()) {
 			case "TW":
 
-				return Locales.toLang(Locale.US);
-			// return Locales.toLang(Locale.TRADITIONAL_CHINESE);
+				return Locale.US;
+			// return Locale.TRADITIONAL_CHINESE;
 			case "CN":
 			default:
 
-				return Locales.toLang(Locale.US);
-			// return Locales.toLang(Locale.SIMPLIFIED_CHINESE);
+				return Locale.US;
+			// return Locale.SIMPLIFIED_CHINESE;
 			}
 		case "ko":
 
-			return Locales.toLang(Locale.US);
-		// return Locales.toLang(Locale.KOREA);
+			return Locale.US;
+		// return Locale.KOREA;
 		case "en":
 		default:
 
-			return Locales.toLang(Locale.US);
+			return Locale.US;
 		}
 	}
 

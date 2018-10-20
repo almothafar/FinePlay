@@ -169,6 +169,7 @@ plotlyjs.lang = ja
 select2.lang = ja
 speech.synthesis.lang = ja-JP
 summernote.lang = ja-JP
+wikipedia.lang = ja
 naturalearthdata.lang = Japan
 
 map.rotate.lambda = 200

@@ -39,13 +39,13 @@ libraryDependencies ++= Seq(
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
   "net.logstash.logback" % "logstash-logback-encoder" % "5.2",			// Apache 5.2
-  "org.hibernate" % "hibernate-core" % "5.3.6.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.6.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.3.7.Final",					// LGPL 5.3.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.7.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.3",
   "org.glassfish" % "javax.json" % "1.1.3",
-  "org.apache.commons" % "commons-text" % "1.5",						// Apache 1.4
+  "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
   "org.mockito" % "mockito-core" % "2.23.0",							// MIT 2.23.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
@@ -65,14 +65,10 @@ libraryDependencies ++= Seq(
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.1.3",							// MIT 4.0.0
-//  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
-//  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
-//  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.2.1",					// MIT 10.2.1
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
-  "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2
@@ -96,7 +92,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "2.0.0",								// MIT 2.0.0
   "org.webjars.bower" % "plotly.js" % "1.41.3",							// MIT 1.41.3
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-//  "org.webjars.bower" % "tether-shepherd" % "2.0.0-beta.32",			// MIT 2.0.0-beta.32
+//  "org.webjars.bower" % "tether-shepherd" % "2.0.0-beta.33",			// MIT 2.0.0-beta.33
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.8",								// Apache 1.4.8
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
@@ -111,6 +107,14 @@ libraryDependencies ++= Seq(
 // geckodriver															// Mozilla Public License 0.18.0
 // LibreOffice															// Mozilla Public License 6.0.3
 // wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4
+
+// Use bootstrap
+libraryDependencies ++= Seq(
+//  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
+//  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
+//  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
+  "org.webjars.bower" % "hammerjs" % "2.0.8"							// MIT 2.0.8
+)
 
 // Polyfill
 libraryDependencies ++= Seq(

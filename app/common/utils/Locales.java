@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import javax.annotation.Nonnull;
 
+import org.hibernate.Incubating;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,7 @@ public class Locales {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private static Locale SAUDI_ARABIA = new Locale("ar", "SA");
+	private static final Locale UNITED_ARAB_EMIRATES = new Locale("ar", "AE");
 
 	private Locales() {
 	}
@@ -32,28 +33,27 @@ public class Locales {
 		return new Lang(play.api.i18n.Lang.apply(locale.getLanguage(), locale.getCountry(), "", ""));
 	}
 
-	@SuppressWarnings("null")
 	@Nonnull
 	public static Map<String, String> getLocaleIdToNameMap(@Nonnull final Locale locale) {
 
 		Objects.requireNonNull(locale);
 
 		final Map<String, String> localeIdToNameMap = new LinkedHashMap<>();
-		localeIdToNameMap.put(toLang(Locale.US).code(), Locale.US.getDisplayName(locale));
-		localeIdToNameMap.put(toLang(Locale.JAPAN).code(), Locale.JAPAN.getDisplayName(locale));
-//		localeIdToNameMap.put(toLang(SAUDI_ARABIA).code(), SAUDI_ARABIA.getDisplayName(locale));
+		localeIdToNameMap.put(Locale.US.toLanguageTag(), Locale.US.getDisplayName(locale));
+		localeIdToNameMap.put(Locale.JAPAN.toLanguageTag(), Locale.JAPAN.getDisplayName(locale));
+//		localeIdToNameMap.put(UNITED_ARAB_EMIRATES.toLanguageTag(), UNITED_ARAB_EMIRATES.getDisplayName(locale));
 
 		return localeIdToNameMap;
 	}
 
-	@Deprecated
+	@Incubating
 	@Nonnull
 	public static Direction toDirection(@Nonnull final Locale locale) {
 
 		Objects.requireNonNull(locale);
 
-		final String language = toLang(locale).language();
-		if (!("ar".equals(language) || "he".equals(language))) {
+		final String language = locale.getLanguage();
+		if (!("ar".equals(language) || "iw".equals(language))) {
 
 			return Direction.LTR;
 		} else {
