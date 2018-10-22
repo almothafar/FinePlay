@@ -20,6 +20,7 @@ if(window.speechRecognition){$("#SpeechRecognition").removeClass("badge-danger")
 if(window.DeviceOrientationEvent){$("#DeviceOrientationEvent").removeClass("badge-danger").addClass("badge-success")}
 if(window.DeviceMotionEvent){$("#DeviceMotionEvent").removeClass("badge-danger").addClass("badge-success")}
 if(window.openDatabase){$("#WebSQLDatabase").removeClass("badge-danger").addClass("badge-success")}
+if('GamepadEvent' in window){$("#GamepadEvent").removeClass("badge-danger").addClass("badge-success")}
 if('indexedDB' in window){$("#IndexedDatabase").removeClass("badge-danger").addClass("badge-success")}
 if(window.ActiveXObject){$("#ActiveX").removeClass("badge-danger").addClass("badge-success")}
 if(!(typeof(new XMLHttpRequest).withCredentials==='undefind')){$("#XMLHttpRequestLevel2").removeClass("badge-danger").addClass("badge-success")}

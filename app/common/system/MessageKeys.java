@@ -313,6 +313,8 @@ public class MessageKeys {
 
   public static final String FONT_HIRAGINOSANS__W3 = "font.hiraginosans_w3";
 
+  public static final String FONT_HIRAMINPRON__W3 = "font.hiraminpron_w3";
+
   public static final String FONT_IPAMJMINCHO = "font.ipamjmincho";
 
   public static final String FOOTER = "footer";
@@ -568,6 +570,8 @@ public class MessageKeys {
   public static final String PASTE = "paste";
 
   public static final String PAUSE = "pause";
+
+  public static final String PDF = "pdf";
 
   public static final String PDFJS_LANG = "pdfjs.lang";
 

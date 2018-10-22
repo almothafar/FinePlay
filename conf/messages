@@ -152,6 +152,7 @@ theme.natural = Natural
 
 font.ipamjmincho = IPAmjMincho
 font.hiraginosans_w3 = HiraginoSans-W3
+font.hiraminpron_w3 = HiraMinProN-W3
 
 #
 
@@ -420,6 +421,7 @@ parameter = Parameter
 part = Part
 paste = Paste
 pause = Pause
+pdf = PDF
 photo = Photo
 please_select = Please select.
 please_wait = Please wait.

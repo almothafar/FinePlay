@@ -10,6 +10,7 @@ GET		/routes.js									controllers.system.System.routes
 POST	/system/cspreport							apis.system.CSPReport.log()
 POST	/system/log									apis.system.Logger.log()
 POST	/system/pdf									apis.system.PDF.index()
+POST	/system/slide								apis.system.Slide.index()
 
 POST	/development/http/post						apis.development.http.Http.postData()
 

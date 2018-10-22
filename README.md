@@ -88,10 +88,8 @@ TODO
 
 #### Bootstrap 4.2 ####
 + Rewrite notify implementation to Look of Toast based.
-+ Learn Spinner.
-
-#### Bootstrap 4.x ####
 + Move include of Hammer.
++ Learn Spinner.
 
 ### FinePlay x.x.x ###
 + Drop IE / Refactor system_menu.

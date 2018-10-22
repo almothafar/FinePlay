@@ -8,28 +8,37 @@
 
 #btn-prev {
 	position: absolute;
-	top: 45px;
+	top: 16px;
 	left: 16px;
 	opacity: 0.5;
 }
 .dir-rtl #btn-prev {
 	position: absolute;
-	top: 45px;
+	top: 16px;
 	left: initial;
 	right: 16px;
 	opacity: 0.5;
 }
 
-#outerContainer.sidebarOpen ~ #btn-prev {
-	left: 216px
-}
-.dir-rtl #outerContainer.sidebarOpen ~ #btn-prev {
-	left: initial;
-	right: 216px
-}
-
 #btn-prev:hover {
 	opacity: 1
+}
+
+#gamepad {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	opacity: 0.5;
+	color: white;
+}
+
+.dir-rtl #gamepad {
+	position: absolute;
+	top: 16px;
+	right: initial;
+	left: 16px;
+	opacity: 0.5;
+	color: white;
 }
 
 .btn-primary:hover {

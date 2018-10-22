@@ -90,6 +90,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "diff2html" % "2.4.0",							// MIT 2.4.0
   "org.webjars.npm" % "marked" % "0.5.1",								// MIT 0.5.1
   "org.webjars.npm" % "viz.js" % "2.0.0",								// MIT 2.0.0
+  "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
   "org.webjars.bower" % "plotly.js" % "1.41.3",							// MIT 1.41.3
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.bower" % "tether-shepherd" % "2.0.0-beta.33",			// MIT 2.0.0-beta.33

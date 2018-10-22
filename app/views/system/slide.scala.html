@@ -1,0 +1,104 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@(slideInfo: Map[String, String])
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@dir() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if (isLTR){"ltr"} else {"rtl"}
+}
+
+@rtl() = @{
+
+	val isRTL = models.system.System.Direction.RTL == common.utils.Locales.toDirection(lang.locale);
+	isRTL
+}
+
+<!doctype html>
+<html lang="en" dir="ltr" class="dir-@dir()">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>@Messages(MessageKeys.X__X, Messages(MessageKeys.SLIDE), Messages(MessageKeys.VIEWER)) | @Messages(MessageKeys.SYSTEM_NAME)</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		@libraries.jquery.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/messages.js")'></script>
+		@libraries.fontawesome.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/system/slide.css")'>
+
+		<div id="slidejs_messages" class="d-none" data-messages='{
+			"publicPath":"@routes.Assets.versioned("")",
+			"defaultUrl":"@slideInfo.get(models.system.SlideInfoFormContent.URL)",
+			"rtl":@Boolean.valueOf(rtl())
+		}'></div>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/slide.js")'></script>
+
+		<link rel="stylesheet" href="@routes.Assets.versioned("lib/reveal.js/reveal.css")">
+		@session.get(models.user.User.THEME) match {
+			case "PRETTY" => {
+
+				<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/theme/sky.css")">
+			}
+			case "JAPAN" => {
+
+				<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/theme/serif.css")">
+			}
+			case "BUSINESS" => {
+
+				<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/theme/simple.css")">
+			}
+			case "NATURAL" => {
+
+				<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/theme/beige.css")">
+			}
+			case "DEFAULT" | _ => {
+
+				<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/theme/black.css")">
+			}
+		}
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="@routes.Assets.versioned("lib/reveal.js/css/zenburn.css")">
+
+		<!-- Printing and PDF exports -->
+		@script(args = 'type -> "text/javascript") {
+
+			'use strict';
+
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '@routes.Assets.versioned("lib/reveal.js/print/pdf.css")' : '@routes.Assets.versioned("lib/reveal.js/print/paper.css")';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
+	</head>
+
+	<body>
+
+		<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/reveal.js/js/head.min.js")"></script>
+		<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/reveal.js/reveal.js")"></script>
+
+		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.BACK), "link"->slideInfo.get(models.system.SlideInfoFormContent.RETURNURL), "class"->"d-print-none"))
+		@components.badge(Map("id"->"gamepad", "type"->"danger", "text"->""))
+	</body>
+</html>

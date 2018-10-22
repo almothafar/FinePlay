@@ -151,7 +151,8 @@ theme.natural = 自然
 #
 
 font.ipamjmincho = IPAmj明朝
-font.hiraginosans_w3 = ヒラギノ角ゴシックW3
+font.hiraginosans_w3 = ヒラギノ角ゴシック W3
+font.hiraminpron_w3 = ヒラギノ明朝 ProN W3
 
 #
 
@@ -420,6 +421,7 @@ parameter = パラメーター
 part = 部分
 paste = ペースト
 pause = 一時停止
+
 photo = 写真
 please_select = 選択してください。
 please_wait = お待ちください。

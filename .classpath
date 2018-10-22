@@ -1022,6 +1022,16 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/viz.js/docs/viz.js-2.0.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.hakimel/reveal.js/srcs/reveal.js-3.7.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.hakimel/reveal.js/jars/reveal.js-3.7.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.hakimel/reveal.js/docs/reveal.js-3.7.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.headjs/headjs/srcs/headjs-1.0.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.headjs/headjs/jars/headjs-1.0.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.headjs/headjs/docs/headjs-1.0.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/srcs/plotly.js-1.41.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/jars/plotly.js-1.41.3.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/docs/plotly.js-1.41.3-javadoc.jar!/"/>

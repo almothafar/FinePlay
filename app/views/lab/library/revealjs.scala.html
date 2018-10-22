@@ -1,0 +1,72 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"reveal.js", "icon"->"fas fa-file-contract", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"revealjs"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+
+						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = 'class -> "form-slide") {
+							<input id="@models.system.SlideInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.URL" value="@routes.Assets.versioned("slides/index.html")" required>
+							<input id="@models.system.SlideInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("revealjs").toString()" required>
+
+							@components.button(Map("id"->"slideButton0", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-contract", "text"->"Slide"))
+						}
+					</div>
+
+					<div class="mb-3">
+
+						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = 'class -> "form-slide") {
+							<input id="@models.system.SlideInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.URL" value="@routes.Assets.versioned("slides/demo.html")" required>
+							<input id="@models.system.SlideInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("revealjs").toString()" required>
+
+							@components.button(Map("id"->"slideButton1", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-contract", "text"->"Slide"))
+						}
+					</div>
+
+					<div class="mb-3 secret">
+
+						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = 'class -> "form-slide") {
+							<input id="@models.system.SlideInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.URL" value="https://revealjs.com" required>
+							<input id="@models.system.SlideInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("revealjs").toString()" required>
+
+							@components.button(Map("id"->"slideButtonO1", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-contract", "text"->"Slide"))
+						}
+					</div>
+				</div>
+			</div>
+		}
+		@libraries.standard.last()
+	}
+}

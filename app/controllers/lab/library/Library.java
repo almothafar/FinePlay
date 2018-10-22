@@ -110,6 +110,9 @@ public class Library extends Controller {
 		case "pdfjs":
 
 			return pdfjs();
+		case "revealjs":
+
+			return revealjs();
 		case "camera":
 
 			return camera();
@@ -305,6 +308,11 @@ public class Library extends Controller {
 	public static Result pdfjs() {
 
 		return ok(views.html.lab.library.pdfjs.render());
+	}
+
+	public static Result revealjs() {
+
+		return ok(views.html.lab.library.revealjs.render());
 	}
 
 	public static Result camera() {
