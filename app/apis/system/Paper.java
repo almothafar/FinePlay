@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
@@ -14,20 +15,19 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import models.system.PDFInfoFormContent;
 import models.system.PaperInfoFormContent;
 import models.system.System.PermissionsAllowed;
 import play.data.Form;
 import play.data.FormFactory;
 import play.filters.csrf.CSRF;
-import play.filters.csrf.RequireCSRFCheck;
 import play.filters.csrf.CSRF.Token;
+import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
-public class PDF extends Controller {
+public class Paper extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
@@ -38,22 +38,28 @@ public class PDF extends Controller {
 	@RequireCSRFCheck
 	public Result index() {
 
-		final Form<PDFInfoFormContent> pdfInfoForm = formFactory.form(PDFInfoFormContent.class).bindFromRequest();
-		if (!pdfInfoForm.hasErrors()) {
+		final Form<PaperInfoFormContent> paperInfoForm = formFactory.form(PaperInfoFormContent.class).bindFromRequest();
+		if (!paperInfoForm.hasErrors()) {
 
-			final PDFInfoFormContent pdfInfoFormContent = pdfInfoForm.get();
+			final PaperInfoFormContent paperInfoFormContent = paperInfoForm.get();
 
-			final String url = pdfInfoFormContent.getUrl();
-			final String returnUrl = pdfInfoFormContent.getReturnUrl();
+			final String url = paperInfoFormContent.getUrl();
+			final String returnUrl = paperInfoFormContent.getReturnUrl();
+			final String size = paperInfoFormContent.getSize();
+			final boolean isPageNo = paperInfoFormContent.isPageNo();
+			final boolean isPrint = paperInfoFormContent.isPrint();
 
-			final Map<String, String> pdfInfo = new HashMap<>();
-			pdfInfo.put(PDFInfoFormContent.URL, createURL(url, getParams(pdfInfoForm.rawData())));
-			pdfInfo.put(PDFInfoFormContent.RETURNURL, returnUrl);
+			final Map<String, String> paperInfo = new HashMap<>();
+			paperInfo.put(PaperInfoFormContent.URL, createURL(url, getParams(paperInfoForm.rawData())));
+			paperInfo.put(PaperInfoFormContent.RETURNURL, returnUrl);
+			paperInfo.put(PaperInfoFormContent.SIZE, size);
+			paperInfo.put(PaperInfoFormContent.PAGENO, Objects.toString(isPageNo));
+			paperInfo.put(PaperInfoFormContent.PRINT, Objects.toString(isPrint));
 
-			return ok(views.html.system.pdf.render(pdfInfo));
+			return ok(views.html.system.paper.render(paperInfo));
 		} else {
 
-			throw new RuntimeException(pdfInfoForm.errors().toString());
+			throw new RuntimeException(paperInfoForm.errors().toString());
 		}
 	}
 
@@ -62,6 +68,9 @@ public class PDF extends Controller {
 		final Map<String, String> params = new HashMap<>(rawData);
 		params.remove(PaperInfoFormContent.URL);
 		params.remove(PaperInfoFormContent.RETURNURL);
+		params.remove(PaperInfoFormContent.SIZE);
+		params.remove(PaperInfoFormContent.PAGENO);
+		params.remove(PaperInfoFormContent.PRINT);
 
 		return Collections.unmodifiableMap(params);
 	}

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ import common.utils.Barcodes;
 import common.utils.Templates;
 import models.components.PagingInfo;
 import models.system.System.PermissionsAllowed;
+import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
@@ -113,6 +115,9 @@ public class Library extends Controller {
 		case "revealjs":
 
 			return revealjs();
+		case "papercss":
+
+			return papercss();
 		case "camera":
 
 			return camera();
@@ -315,6 +320,11 @@ public class Library extends Controller {
 		return ok(views.html.lab.library.revealjs.render());
 	}
 
+	public static Result papercss() {
+
+		return ok(views.html.lab.library.papercss.render());
+	}
+
 	public static Result camera() {
 
 		return ok(views.html.lab.library.camera.render());
@@ -435,5 +445,72 @@ public class Library extends Controller {
 
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	@RequireCSRFCheck
+	public Result pdfjs(String pdf) {
+
+		switch (pdf) {
+		case "tracemonkey":
+
+			return tracemonkey();
+		default:
+
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+		}
+	}
+
+	public static Result tracemonkey() {
+
+		return ok(play.Environment.simple().resourceAsStream("resources/pdfs/tracemonkey.pdf"));
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	@RequireCSRFCheck
+	public Result revealjs(String slide) {
+
+		switch (slide) {
+		case "demo":
+
+			return demo();
+		default:
+
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+		}
+	}
+
+	public static Result demo() {
+
+		return ok(play.Environment.simple().resourceAsStream("resources/slides/demo.html"));
+	}
+
+	@Authenticated(common.core.Authenticator.class)
+	@RequireCSRFCheck
+	public Result papercss(String paper) {
+
+		final Map<String, String> params = getParams(request().queryString());
+		switch (paper) {
+		case "demo":
+
+			return ok(views.html.lab.library.papercss_demo.render(params));
+		case "receipt":
+
+			return ok(views.html.lab.library.papercss_receipt.render(params));
+		default:
+
+			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+		}
+	}
+
+	private Map<String, String> getParams(final Map<String, String[]> queryString) {
+
+		final Map<String, String> params = queryString.entrySet().stream()//
+				.map(e -> Map.entry(e.getKey(), e.getValue()[0]))//
+				.collect(Collectors.toMap(//
+						e -> e.getKey(), //
+						e -> e.getValue()));
+
+		return Collections.unmodifiableMap(params);
 	}
 }

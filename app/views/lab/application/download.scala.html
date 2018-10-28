@@ -195,6 +195,34 @@
 					</div>
 
 					<div class="mb-3 lab secret">
+						<h4 class="headline">@Messages(MessageKeys.X__X, "KIOSK", Messages(MessageKeys.PRINT))</h4>
+
+						@components.buttongroup(Map("id"->"", "size"->"sm", "class"->"mb-3"), List(
+							Map("id"->"", "type"->"dark", "icon"->"", "text"->"Chrome"),
+							Map("id"->"ua", "type"->"info", "icon"->"", "text"->"Only")
+						))
+
+<pre><code class="bash">MacBook:~ user$ /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk-printing</code></pre>
+
+						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = 'class -> "form-paper") {
+							<input id="@models.system.PaperInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.URL" value="@controllers.lab.library.routes.Library.papercss("receipt").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.RETURNURL" value="@controllers.lab.application.routes.Download.index().toString()" required>
+							<input id="@models.system.PaperInfoFormContent.SIZE" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.SIZE" value="A4" required>
+							<input id="@models.system.PaperInfoFormContent.PRINT" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.PRINT" value="true" required>
+							<input id="name" class="form-control" type="hidden" name="name" value="Other world Cafe" required>
+							<input id="no" class="form-control" type="hidden" name="no" value="64657767MH" required>
+							<input id="date" class="form-control" type="hidden" name="date" value="Mar 12, 2018" required>
+
+							@components.button(Map("id"->"paperButton", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->Messages(MessageKeys.DOWNLOAD)))
+						}
+					</div>
+
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
+					<div class="mb-3 lab secret">
 						<h4 class="headline">Local</h4>
 						@components.badge(Map("id"->"URL", "type"->"danger", "text"->"URL"))
 						<br>

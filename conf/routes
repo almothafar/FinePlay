@@ -11,6 +11,7 @@ POST	/system/cspreport							apis.system.CSPReport.log()
 POST	/system/log									apis.system.Logger.log()
 POST	/system/pdf									apis.system.PDF.index()
 POST	/system/slide								apis.system.Slide.index()
+POST	/system/paper								apis.system.Paper.index()
 
 POST	/development/http/post						apis.development.http.Http.postData()
 
@@ -22,7 +23,7 @@ GET		/translate									apis.transrator.Transrator.translate(from: String ?=null
 GET		/character									apis.character.Character.character(type: String ?="CHARACTER", text:String ?="")
 
 GET		/batch/start/:jobName/:userId				apis.batch.Batch.start(jobName: String, userId:String)
-GET		/batch/stop/:executionId/:userId				apis.batch.Batch.stop(executionId: Long, userId:String)
+GET		/batch/stop/:executionId/:userId			apis.batch.Batch.stop(executionId: Long, userId:String)
 GET		/batch/restart/:executionId/:userId			apis.batch.Batch.restart(executionId: Long, userId:String)
 GET		/batch/abandon/:executionId/:userId			apis.batch.Batch.abandon(executionId: Long, userId:String)
 GET		/batch/jobexecution/:executionId/:userId	apis.batch.Batch.jobExecution(executionId: Long, userId:String)
@@ -152,6 +153,9 @@ GET		/fontawesome/style/:style					controllers.fontawesome.style.Style.index(sty
 GET		/lab										controllers.lab.library.Library.index(lib:String ?="bootbox")
 GET		/lab/library								controllers.lab.library.Library.index(lib:String ?="bootbox")
 GET		/lab/library:lib							controllers.lab.library.Library.index(lib:String)
+GET		/lab/library/pdfjs/:pdf						controllers.lab.library.Library.pdfjs(pdf:String)
+GET		/lab/library/revealjs/:slide				controllers.lab.library.Library.revealjs(slide:String)
+GET		/lab/library/papercss/:paper				controllers.lab.library.Library.papercss(paper:String)
 GET		/lab/ui										controllers.lab.ui.UI.index(ui:String ?="drawer")
 GET		/lab/ui:ui									controllers.lab.ui.UI.index(ui:String)
 GET		/lab/ilike									controllers.lab.ilike.ILike.index(state:String ?="list", detail:Boolean ?=false)

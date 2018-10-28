@@ -561,6 +561,8 @@ public class MessageKeys {
 
   public static final String PAGE = "page";
 
+  public static final String PAPER = "paper";
+
   public static final String PARAMETER = "parameter";
 
   public static final String PARSLEY_LANG = "parsley.lang";
@@ -574,6 +576,8 @@ public class MessageKeys {
   public static final String PDF = "pdf";
 
   public static final String PDFJS_LANG = "pdfjs.lang";
+
+  public static final String PHONE = "phone";
 
   public static final String PHOTO = "photo";
 
@@ -589,9 +593,13 @@ public class MessageKeys {
 
   public static final String PREVIOUS = "previous";
 
+  public static final String PRICE = "price";
+
   public static final String PRINT = "print";
 
   public static final String PROCESS = "process";
+
+  public static final String PRODUCT = "product";
 
   public static final String PROGRESS = "progress";
 
@@ -606,6 +614,8 @@ public class MessageKeys {
   public static final String READ = "read";
 
   public static final String READ__ONLY = "read_only";
+
+  public static final String RECEIPT = "receipt";
 
   public static final String RECEIVE = "receive";
 
@@ -709,6 +719,8 @@ public class MessageKeys {
 
   public static final String SETTING = "setting";
 
+  public static final String SHEET = "sheet";
+
   public static final String SLIDE = "slide";
 
   public static final String SORT = "sort";
@@ -730,6 +742,8 @@ public class MessageKeys {
   public static final String STOPPING = "stopping";
 
   public static final String STYLE = "style";
+
+  public static final String SUBTOTAL = "subtotal";
 
   public static final String SUCCESS = "success";
 
@@ -803,6 +817,8 @@ public class MessageKeys {
 
   public static final String TASK = "task";
 
+  public static final String TAX = "tax";
+
   public static final String TEMPLATE = "template";
 
   public static final String TEXT = "text";
@@ -832,6 +848,8 @@ public class MessageKeys {
   public static final String TITLE = "title";
 
   public static final String TOP = "top";
+
+  public static final String TOTAL = "total";
 
   public static final String TRANSLATE = "translate";
 

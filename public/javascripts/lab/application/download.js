@@ -1,5 +1,7 @@
 'use strict';
 
+$('#ua').text(navigator.userAgent);
+
 if (window.URL) {
 
 	$("#URL").removeClass("badge-danger").addClass("badge-success")

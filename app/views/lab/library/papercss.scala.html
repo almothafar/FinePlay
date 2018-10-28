@@ -1,0 +1,103 @@
+@import models.components._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@()
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"paper-css", "icon"->"fas fa-file-invoice", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"papercss"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="mb-3">
+
+						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = 'class -> "form-paper") {
+							<input id="@models.system.PaperInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.URL" value="@routes.Assets.versioned("papers/a4.html")" required>
+							<input id="@models.system.PaperInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("papercss").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.SIZE" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.SIZE" value="A4" required>
+
+							@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->"Paper"))
+						}
+					</div>
+
+					<div class="mb-3">
+
+						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = 'class -> "form-paper") {
+							<input id="@models.system.PaperInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.URL" value="@routes.Assets.versioned("papers/a4-landscape.html")" required>
+							<input id="@models.system.PaperInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("papercss").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.SIZE" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.SIZE" value="A4 landscape" required>
+
+							@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->"Paper"))
+						}
+					</div>
+
+					<div class="mb-3">
+
+						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = 'class -> "form-paper") {
+							<input id="@models.system.PaperInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.URL" value="@routes.Assets.versioned("papers/multiple-sheets.html")" required>
+							<input id="@models.system.PaperInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("papercss").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.SIZE" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.SIZE" value="A4" required>
+
+							@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->"Paper"))
+						}
+					</div>
+
+					<div class="mb-3 secret">
+
+						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = 'class -> "form-paper") {
+							<input id="@models.system.PaperInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.URL" value="@controllers.lab.library.routes.Library.papercss("demo").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("papercss").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.SIZE" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.SIZE" value="A4 landscape" required>
+							<input id="@models.system.PaperInfoFormContent.PAGENO" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.PAGENO" value="true" required>
+							<input id="Adobe-Japan1" class="form-control" type="hidden" name="Adobe-Japan1" value="@("芦\uDB40\uDD00芦\uDB40\uDD01")" required>
+							<input id="Moji_Joho" class="form-control" type="hidden" name="Moji_Joho" value="@("芦\uDB40\uDD02芦\uDB40\uDD03芦\uDB40\uDD04芦\uDB40\uDD05芦\uDB40\uDD06芦\uDB40\uDD07芦\uDB40\uDD08芦\uDB40\uDD09")" required>
+
+							@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->"Paper"))
+						}
+					</div>
+
+					<div class="mb-3 secret">
+
+						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = 'class -> "form-paper") {
+							<input id="@models.system.PaperInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.URL" value="@controllers.lab.library.routes.Library.papercss("receipt").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("papercss").toString()" required>
+							<input id="@models.system.PaperInfoFormContent.SIZE" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.SIZE" value="A4" required>
+							<input id="name" class="form-control" type="hidden" name="name" value="Other world Cafe" required>
+							<input id="no" class="form-control" type="hidden" name="no" value="64657767MH" required>
+							<input id="date" class="form-control" type="hidden" name="date" value="Mar 12, 2018" required>
+
+							@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->"Paper"))
+						}
+					</div>
+				</div>
+			</div>
+		}
+		@libraries.standard.last()
+	}
+}

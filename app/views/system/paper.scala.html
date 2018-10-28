@@ -1,0 +1,103 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@(paperInfo: Map[String, String])
+
+@import scala.collection.immutable.Map
+
+@dir() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if (isLTR){"ltr"} else {"rtl"}
+}
+
+@displayPageNo() = @{
+
+	val isPageNo = Boolean.valueOf(paperInfo.get(models.system.PaperInfoFormContent.PAGENO));
+	if (isPageNo){"initial"} else {"none"}
+}
+
+<!DOCTYPE html>
+<html
+	lang="@lang.code"
+	dir="@dir()"
+	class="dir-@dir()"
+>
+
+	<head>
+		<meta charset="utf-8">
+		<title>@Messages(MessageKeys.X__X, Messages(MessageKeys.PAPER), Messages(MessageKeys.VIEWER)) | @Messages(MessageKeys.SYSTEM_NAME)</title>
+
+		@dirSuffix() = @{
+
+			val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+			if (isLTR){""} else {"-rtl"}
+		}
+
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/implement.js")'></script>
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/messages.js")'></script>
+
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/common"+dirSuffix()+".css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/common-plus.css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/experimental"+dirSuffix()+".css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/experimental-plus.css")'>
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/font.css")'>
+
+		@libraries.bootstrap.head()
+		@libraries.fontawesome.head()
+
+		<link rel="stylesheet" href="@routes.Assets.versioned("lib/paper-css/paper.min.css")">
+
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/system/paper.css")'>
+
+		<meta id="paperjs_messages" class="d-none" data-messages='{
+			"defaultUrl":"@paperInfo.get(models.system.PaperInfoFormContent.URL)",
+			"executePrint":@Boolean.valueOf(paperInfo.get(models.system.PaperInfoFormContent.PRINT))
+		}'></meta>
+
+		@style('type -> "text/css") {
+
+			@@media print {
+				@@page {
+					size: @paperInfo.get(models.system.PaperInfoFormContent.SIZE)
+				}
+				body {
+					min-width: initial !important
+				}
+			}
+			html {
+				height: initial;
+			}
+			body {
+				counter-reset: sheet;
+			}
+			.sheet::after {
+				display: @displayPageNo();
+				position: absolute;
+				bottom: 2mm;
+				right: 2mm;
+				counter-increment: sheet;
+				content: "@Messages(MessageKeys.PAGE) " counter(sheet);
+			}
+			.dir-rtl .sheet::after {
+				left: 2mm;
+				right: initial;
+				content: counter(sheet) " @Messages(MessageKeys.PAGE)";
+			}
+		}
+	</head>
+
+	<body class="@paperInfo.get(models.system.PaperInfoFormContent.SIZE)">
+
+		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.BACK), "link"->paperInfo.get(models.system.PaperInfoFormContent.RETURNURL), "class"->"d-print-none"))
+
+		@libraries.jquery.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/paper.js")'></script>
+	</body>
+
+</html>

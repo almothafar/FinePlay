@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+#btn-prev {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	opacity: 0.5;
+}
+.dir-rtl #btn-prev {
+	position: fixed;
+	top: 16px;
+	left: initial;
+	right: 16px;
+	opacity: 0.5;
+}
+
+#btn-prev:hover {
+	opacity: 1
+}
+
+/* Direction */
+
+.dir-rtl .dir-flip-horizontal,
+.dir-rtl .fa-dir-flip-horizontal {
+	-webkit-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+}

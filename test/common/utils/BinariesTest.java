@@ -82,7 +82,7 @@ public class BinariesTest {
 		System.out.println(metadata.toString());
 		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("application/x-font-ttf"));
 
-		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("public", "documents", "tracemonkey.pdf")));
+		metadata = Binaries.getMetadata(Files.readAllBytes(Paths.get("conf", "resources", "pdfs", "tracemonkey.pdf")));
 		System.out.println(metadata.toString());
 		assertThat("", metadata.get(HttpHeaders.CONTENT_TYPE), is("application/pdf"));
 

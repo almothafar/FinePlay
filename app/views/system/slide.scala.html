@@ -8,10 +8,7 @@
 
 @(slideInfo: Map[String, String])
 
-@import scala.collection.immutable._
 @import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
 
 @dir() = @{
 
@@ -26,7 +23,11 @@
 }
 
 <!doctype html>
-<html lang="en" dir="ltr" class="dir-@dir()">
+<html
+	lang="@lang.code"
+	dir="@dir()"
+	class="dir-@dir()"
+>
 
 	<head>
 		<meta charset="utf-8">
@@ -41,17 +42,14 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		@libraries.jquery.last()
-		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/messages.js")'></script>
 		@libraries.fontawesome.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/system/slide.css")'>
 
-		<div id="slidejs_messages" class="d-none" data-messages='{
+		<meta id="slidejs_messages" class="d-none" data-messages='{
 			"publicPath":"@routes.Assets.versioned("")",
 			"defaultUrl":"@slideInfo.get(models.system.SlideInfoFormContent.URL)",
 			"rtl":@Boolean.valueOf(rtl())
-		}'></div>
-		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/slide.js")'></script>
+		}'></meta>
 
 		<link rel="stylesheet" href="@routes.Assets.versioned("lib/reveal.js/reveal.css")">
 		@session.get(models.user.User.THEME) match {
@@ -95,10 +93,16 @@
 
 	<body>
 
+		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.BACK), "link"->slideInfo.get(models.system.SlideInfoFormContent.RETURNURL), "class"->"d-print-none"))
+		@components.badge(Map("id"->"gamepad", "type"->"danger", "text"->"", "class"->"d-print-none"))
+
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/messages.js")'></script>
+
+		@libraries.jquery.last()
+
 		<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/reveal.js/js/head.min.js")"></script>
 		<script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/reveal.js/reveal.js")"></script>
 
-		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.BACK), "link"->slideInfo.get(models.system.SlideInfoFormContent.RETURNURL), "class"->"d-print-none"))
-		@components.badge(Map("id"->"gamepad", "type"->"danger", "text"->""))
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/slide.js")'></script>
 	</body>
 </html>

@@ -54,3 +54,20 @@
 	"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
 }'></meta>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>
+
+
+
+<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/bootstrapfix.css")'>
+@rtlfix() = @{
+
+	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
+	if(isLTR){
+
+		Html("")
+	}else{
+
+		var path = "stylesheets/bootstrap-rtlfix.css"
+		Html("<link rel='stylesheet' href='"+routes.Assets.versioned(path)+"'>")
+	}
+}
+@rtlfix()

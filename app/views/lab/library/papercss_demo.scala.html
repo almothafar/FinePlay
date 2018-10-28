@@ -1,0 +1,78 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@(params: Map[String, String])
+
+<div class="sheets">
+
+	<section class="sheet padding-10mm">
+
+		<table class="table">
+			<thead class="">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">First</th>
+					<th scope="col">Last</th>
+					<th scope="col">Handle</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@@mdo</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@@fat</td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td>Larry</td>
+					<td>the Bird</td>
+					<td>@@twitter</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="lang-ltr">
+<pre><code class="java">public class Main {
+
+	public static void main(String[] args) {
+
+		final List&lt;String&gt; list = new ArrayList&lt;&gt;();
+		list.add("Hello world.");
+		System.out.println(list.get(0));
+	}
+}
+</code></pre>
+		</div>
+
+	</section>
+
+	<section class="sheet padding-10mm">
+
+		<table class="junk table">
+			<tr class="font-family_HiraMinProN-W3">
+				<td>Adobe-Japan1</td>
+				<td>芦&#xE0100芦&#xE0101</td>
+				<td>@params.get("Adobe-Japan1")</td>
+			</tr>
+			<tr class="font-family_IPAmjMincho">
+				<td>Moji_Joho</td>
+				<td>芦&#xE0102芦&#xE0103芦&#xE0104芦&#xE0105芦&#xE0106芦&#xE0107芦&#xE0108芦&#xE0109</td>
+				<td>@params.get("Moji_Joho")</td>
+			</tr>
+		</table>
+
+	</section>
+
+</div>

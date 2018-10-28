@@ -1,0 +1,111 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@(params: Map[String, String])
+
+<div class="sheets">
+
+	<section class="sheet padding-10mm">
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-6">
+					<address>
+						<strong>@params.get("name")</strong>
+						<br>
+						435-45 Akihabara
+						<br>
+						Tokyo, Japan 873-5523
+						<br>
+						<abbr title="Phone">@Messages(MessageKeys.PHONE):</abbr> (281) 972-9837
+					</address>
+				</div>
+				<div class="col-6 text-right">
+					<p>
+						<em>Date: @params.get("date")</em>
+					</p>
+					<p>
+						<em>Receipt #: @params.get("no")</em>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center">
+					<h1>@Messages(MessageKeys.RECEIPT)</h1>
+				</div>
+
+				<div class="col-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>@Messages(MessageKeys.PRODUCT)</th>
+								<th>#</th>
+								<th class="text-center">@Messages(MessageKeys.PRICE)</th>
+								<th class="text-center">@Messages(MessageKeys.TOTAL)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class=""><em>Tempura</em></td>
+								<td class="" style="text-align: center"> 1 </td>
+								<td class="text-center">$9</td>
+								<td class="text-center">$9</td>
+							</tr>
+							<tr>
+								<td class=""><em>Sushi</em></td>
+								<td class="" style="text-align: center"> 3 </td>
+								<td class="text-center">$13</td>
+								<td class="text-center">$39</td>
+							</tr>
+							<tr>
+								<td class=""><em>Okonomiyaki</em></td>
+								<td class="" style="text-align: center"> 1 </td>
+								<td class="text-center">$17</td>
+								<td class="text-center">$17</td>
+							</tr>
+							<tr>
+								<td class=""><em>Buckwheat noodles</em></td>
+								<td class="" style="text-align: center"> 2 </td>
+								<td class="text-center">$12</td>
+								<td class="text-center">$24</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td class="text-right">
+									<p>
+										<strong>@Messages(MessageKeys.SUBTOTAL):</strong>
+									</p>
+									<p>
+										<strong>@Messages(MessageKeys.TAX):</strong>
+									</p>
+								</td>
+								<td class="text-center">
+									<p>
+										<strong>$100.00</strong>
+									</p>
+									<p>
+										<strong>$10.00</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td class="text-right"><h4><strong>@Messages(MessageKeys.TOTAL):</strong></h4></td>
+								<td class="text-center text-danger"><h4><strong>$110.00</strong></h4></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</div>
