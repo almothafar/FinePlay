@@ -30,12 +30,12 @@ $(document).ready(function() {
 				}
 			}else{
 
-				$('body').prepend("<p>Illeagl Paper.</p><br>" + responseHtml);
+				$('body').prepend('<div class="sheets"><section class="sheet padding-10mm"><article><h1>Illeagl Paper.</h1><p>' + responseHtml + '</p></article></section></div>');
 			}
 		},
 		function (jqXHR, textStatus, errorThrown) {
 
-			$('body').prepend('Status'+'&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;'+'Error'+'&nbsp;<strong>'+errorThrown+'</strong>');
+			$('body').prepend('<div class="sheets"><section class="sheet padding-10mm"><article><h1>Error.</h1><p>' + 'Status'+'&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;'+'Error'+'&nbsp;<strong>'+errorThrown+'</strong>' + '</p></article></section></div>');
 		}
 	);
 });

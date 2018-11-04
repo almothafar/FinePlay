@@ -20,6 +20,10 @@
 |                    |                                                                      |log                           |      |      |      |
 |apis                |apis.system.PDF                                                       |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
+|apis                |apis.system.Paper                                                     |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
+|apis                |apis.system.Slide                                                     |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
 |apis                |apis.transrator.Transrator                                            |                              |     O|     O|     O|
 |                    |                                                                      |translate                     |      |      |      |
 |controllers         |controllers.bootstrap.component.Component                             |                              |     O|     O|     O|
@@ -114,6 +118,9 @@
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.lab.library.Library                                       |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
+|                    |                                                                      |papercss                      |      |      |      |
+|                    |                                                                      |pdfjs                         |      |      |      |
+|                    |                                                                      |revealjs                      |      |      |      |
 |controllers         |controllers.lab.maintenance.Maintenance                               |                              |     O|     O|     O|
 |                    |                                                                      |detail                        |      |      |      |
 |                    |                                                                      |master                        |      |      |      |

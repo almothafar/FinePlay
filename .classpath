@@ -1092,9 +1092,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/docs/material-design-icons-3.0.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/srcs/ionicons-4.2.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/jars/ionicons-4.2.4.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/srcs/ionicons-4.4.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/jars/ionicons-4.4.6.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.2.4-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.4.6-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/srcs/twemoji-11.0.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/jars/twemoji-11.0.0.jar">

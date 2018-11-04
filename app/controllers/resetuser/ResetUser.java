@@ -105,10 +105,8 @@ public class ResetUser extends Controller {
 					}
 				} catch (final AccountException e) {
 
-					final Form<ResetFormContent> failureResetForm = formFactory.form(ResetFormContent.class)//
-							.fill(resetFormContent)//
-							.withGlobalError(e.getLocalizedMessage());
-					return failureReset(failureResetForm);
+					// conceal a not exist user
+					return ok(views.html.resetuser.request.complete.render(resetForm));
 				}
 
 				sendResetEmail(resetUser);

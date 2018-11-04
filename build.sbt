@@ -128,7 +128,7 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.4.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.4.1
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
-  "org.webjars.npm" % "ionicons" % "4.2.4",								// MIT 4.2.5
+  "org.webjars.npm" % "ionicons" % "4.4.6",								// MIT 4.4.6
   "org.webjars.npm" % "twemoji" % "11.0.0"								// Code:MIT, Graphics:CC 11.0.0
 )
 // IcoFont																// MIT 1.3

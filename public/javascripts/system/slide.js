@@ -45,12 +45,12 @@ $(document).ready(function() {
 				});
 			}else{
 
-				$('body').prepend("<p>Illeagl Slide.</p><br>" + responseHtml);
+				$('body').prepend('<div class="reveal"><div class="slides"><div><h1>Illeagl Slide.</h1><p>' + responseHtml + '</p></div></div></div>');
 			}
 		},
 		function (jqXHR, textStatus, errorThrown) {
 
-			$('body').prepend('Status'+'&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;'+'Error'+'&nbsp;<strong>'+errorThrown+'</strong>');
+			$('body').prepend('<div class="reveal"><div class="slides"><div><h1>Error.</h1><p>' + 'Status'+'&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;'+'Error'+'&nbsp;<strong>'+errorThrown+'</strong>' + '</p></div></div></div>');
 		}
 	);
 

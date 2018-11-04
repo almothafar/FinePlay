@@ -63,6 +63,39 @@
 		@style('type -> "text/css") {
 
 			@@media print {
+				body.A3 .sheet {
+					height: 403mm
+				}
+				body.A3.landscape .sheet {
+					height: 280mm
+				}
+				body.A4 .sheet {
+					height: 280mm
+				}
+				body.A4.landscape .sheet {
+					height: 193mm
+				}
+				body.A5 .sheet {
+					height: 193mm
+				}
+				body.A5.landscape .sheet {
+					height: 131mm
+				}
+				body.letter .sheet {
+					height: 263mm
+				}
+				body.letter.landscape .sheet {
+					height: 199mm
+				}
+				body.legal .sheet {
+					height: 340mm
+				}
+				body.legal.landscape .sheet {
+					height: 199mm
+				}
+			}
+
+			@@media print {
 				@@page {
 					size: @paperInfo.get(models.system.PaperInfoFormContent.SIZE)
 				}

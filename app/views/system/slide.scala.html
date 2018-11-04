@@ -51,7 +51,7 @@
 			"rtl":@Boolean.valueOf(rtl())
 		}'></meta>
 
-		<link rel="stylesheet" href="@routes.Assets.versioned("lib/reveal.js/reveal.css")">
+		<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/reveal.css")">
 		@session.get(models.user.User.THEME) match {
 			case "PRETTY" => {
 
