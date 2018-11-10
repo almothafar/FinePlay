@@ -1082,9 +1082,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/docs/fetch-2.0.4-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.4.1.jar">
+  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.5.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.4.1-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.5.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/jars/material-design-icons-3.0.1.jar">

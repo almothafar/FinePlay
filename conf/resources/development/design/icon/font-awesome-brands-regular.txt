@@ -80,6 +80,7 @@ css3
 css3-alt
 cuttlefish
 d-and-d
+d-and-d-beyond
 dashcube
 delicious
 deploydog
@@ -269,13 +270,13 @@ quora
 r-project
 ravelry
 react
+reacteurope
 readme
 rebel
 red-river
 reddit
 reddit-alien
 reddit-square
-rendact
 renren
 replyd
 researchgate
@@ -330,6 +331,7 @@ tencent-weibo
 the-red-yeti
 themeco
 themeisle
+think-peaks
 trade-federation
 trello
 tripadvisor
@@ -373,6 +375,7 @@ wordpress-simple
 wpbeginner
 wpexplorer
 wpforms
+wpressr
 xbox
 xing
 xing-square

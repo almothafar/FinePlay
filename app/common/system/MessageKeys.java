@@ -573,6 +573,8 @@ public class MessageKeys {
 
   public static final String PAUSE = "pause";
 
+  public static final String PAY = "pay";
+
   public static final String PDF = "pdf";
 
   public static final String PDFJS_LANG = "pdfjs.lang";

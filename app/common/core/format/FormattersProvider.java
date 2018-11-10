@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -73,6 +74,21 @@ public class FormattersProvider implements Provider<Formatters> {
 			public String print(LocalTime localTime, Locale locale) {
 
 				return localTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
+			}
+		});
+
+		formatters.register(ZoneOffset.class, new SimpleFormatter<ZoneOffset>() {
+
+			@Override
+			public ZoneOffset parse(String offsetId, Locale locale) throws ParseException {
+
+				return ZoneOffset.of(offsetId);
+			}
+
+			@Override
+			public String print(ZoneOffset zoneOffset, Locale locale) {
+
+				return zoneOffset.getId();
 			}
 		});
 

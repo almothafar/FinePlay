@@ -68,6 +68,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.2.1",					// MIT 10.2.1
+  "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
@@ -114,8 +115,7 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
 //  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
 //  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
-//  "org.webjars.npm" % "popper.js" % "1.13.0",							// MIT 1.13.0
-  "org.webjars.bower" % "hammerjs" % "2.0.8"							// MIT 2.0.8
+//  "org.webjars.npm" % "popper.js" % "1.13.0"							// MIT 1.13.0
 )
 
 // Polyfill
@@ -126,7 +126,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.4.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.4.1
+  "org.webjars" % "font-awesome" % "5.5.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.5.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.4.6",								// MIT 4.4.6
   "org.webjars.npm" % "twemoji" % "11.0.0"								// Code:MIT, Graphics:CC 11.0.0

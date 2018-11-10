@@ -284,6 +284,7 @@ var MessageKeys = {
 	PART: "part",
 	PASTE: "paste",
 	PAUSE: "pause",
+	PAY: "pay",
 	PDF: "pdf",
 	PDFJS_LANG: "pdfjs.lang",
 	PHONE: "phone",

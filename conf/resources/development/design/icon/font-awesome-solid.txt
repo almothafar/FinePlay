@@ -172,8 +172,13 @@ clone
 closed-captioning
 cloud
 cloud-download-alt
+cloud-meatball
 cloud-moon
+cloud-moon-rain
+cloud-rain
+cloud-showers-heavy
 cloud-sun
+cloud-sun-rain
 cloud-upload-alt
 cocktail
 code
@@ -211,6 +216,7 @@ cubes
 cut
 database
 deaf
+democrat
 desktop
 dharmachakra
 diagnoses
@@ -310,6 +316,7 @@ fish
 fist-raised
 flag
 flag-checkered
+flag-usa
 flask
 flushed
 folder
@@ -491,6 +498,7 @@ meh-rolling-eyes
 memory
 menorah
 mercury
+meteor
 microchip
 microphone
 microphone-alt
@@ -553,6 +561,7 @@ pencil-ruler
 people-carry
 percent
 percentage
+person-booth
 phone
 phone-slash
 phone-square
@@ -573,6 +582,7 @@ podcast
 poll
 poll-h
 poo
+poo-storm
 poop
 portrait
 pound-sign
@@ -593,6 +603,7 @@ quidditch
 quote-left
 quote-right
 quran
+rainbow
 random
 receipt
 recycle
@@ -601,6 +612,7 @@ redo-alt
 registered
 reply
 reply-all
+republican
 retweet
 ribbon
 ring
@@ -659,6 +671,7 @@ sliders-h
 smile
 smile-beam
 smile-wink
+smog
 smoking
 smoking-ban
 snowflake
@@ -729,6 +742,8 @@ tasks
 taxi
 teeth
 teeth-open
+temperature-high
+temperature-low
 terminal
 text-height
 text-width
@@ -828,9 +843,12 @@ volume-down
 volume-mute
 volume-off
 volume-up
+vote-yea
+vr-cardboard
 walking
 wallet
 warehouse
+water
 weight
 weight-hanging
 wheelchair

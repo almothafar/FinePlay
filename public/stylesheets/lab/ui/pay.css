@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+.payd {
+	opacity: 0;
+	animation: payd 800ms 0ms ease-out forwards;
+}
+
+@keyframes payd{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+.payd:before {
+	content: "";
+	position: absolute;
+	bottom: 36px;
+	left: 11px;
+	border-right: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	transform: rotate(45deg);
+	transform-origin: 0% 100%;
+	animation: payd-check 600ms 0ms ease-in forwards;
+}
+
+@keyframes payd-check{
+	0%{
+		bottom: 36px;
+		width: 0;
+		height: 0;
+		border-color: white;
+		transform: translate3d(0,0,0) rotate(45deg);
+	}
+	33%{
+		bottom: 32px;
+		width: 32px;
+		height: 0;
+		transform: translate3d(0,0,0) rotate(45deg);
+	}
+	100%{
+		bottom: 28px;
+		width: 32px;
+		height: 40px;
+		border-color: white;
+		transform: translate3d(0,-.5em,0) rotate(45deg);
+	}
+}

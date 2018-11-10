@@ -84,6 +84,9 @@ public class UI extends Controller {
 		case "block":
 
 			return block();
+		case "pay":
+
+			return pay();
 		case "securekeyboard":
 
 			return securekeyboard();
@@ -220,6 +223,11 @@ public class UI extends Controller {
 	private static Result block() {
 
 		return ok(views.html.lab.ui.block.render());
+	}
+
+	private static Result pay() {
+
+		return ok(views.html.lab.ui.pay.render());
 	}
 
 	private static Result securekeyboard() {
