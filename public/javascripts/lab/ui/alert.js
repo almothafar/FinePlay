@@ -2,32 +2,32 @@
 
 $('#alertButton').on('click', function(e){
 
-	tell(Messages(MessageKeys.ALERT));
+	tell(messages(MessageKeys.ALERT));
 });
 $('#stopAlertButton').on('click', function(e){
 
-	tell(Messages(MessageKeys.ALERT), -1);
+	tell(messages(MessageKeys.ALERT), -1);
 });
 $('#optionalAlertButton').on('click', function(e){
 
-	tell(Messages(MessageKeys.ALERT), 10000);
+	tell(messages(MessageKeys.ALERT), 10000);
 });
 
 $('#successAlertButton').on('click', function(e){
 
-	tellAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS));
+	tellAlert('success', '<strong>' + messages(MessageKeys.SUCCESS) + '</strong> ' + messages(MessageKeys.SUCCESS));
 });
 $('#infoAlertButton').on('click', function(e){
 
-	tellAlert('info', '<strong>' + Messages(MessageKeys.INFO) + '</strong> ' + Messages(MessageKeys.INFO));
+	tellAlert('info', '<strong>' + messages(MessageKeys.INFO) + '</strong> ' + messages(MessageKeys.INFO));
 });
 $('#warningAlertButton').on('click', function(e){
 
-	tellAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + Messages(MessageKeys.WARNING));
+	tellAlert('warning', '<strong>' + messages(MessageKeys.WARNING) + '</strong> ' + messages(MessageKeys.WARNING));
 });
 $('#dangerAlertButton').on('click', function(e){
 
-	tellAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER));
+	tellAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + messages(MessageKeys.DANGER));
 });
 
 $('#htmlAlertButton').on('click', function(e){

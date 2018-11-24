@@ -1,13 +1,16 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
 
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -32,7 +35,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.TASK)+" 3"), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->(messages(MessageKeys.TASK)+" 3"), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){

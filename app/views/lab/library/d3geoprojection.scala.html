@@ -4,13 +4,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -39,7 +43,7 @@
 
 					<div id="graphContainer" class="mb-3">
 
-						<h4 class="headline">@(Messages(MessageKeys.WORLD) + ' ' + Messages(MessageKeys.MAP))</h4>
+						<h4 class="headline">@(messages(MessageKeys.WORLD) + ' ' + messages(MessageKeys.MAP))</h4>
 						<svg id="geoGraph" class="bg-light-blue-50"></svg>
 					</div>
 				</div>
@@ -47,11 +51,11 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.NATURALEARTHDATA_LANG":"@Messages(MessageKeys.NATURALEARTHDATA_LANG)",
+			"@MessageKeys.NATURALEARTHDATA_LANG":"@messages(MessageKeys.NATURALEARTHDATA_LANG)",
 			"map":"@routes.Assets.versioned("javascripts/lab/library/ne_50m_admin_0_countries.json")",
-			"lambda":@Integer.valueOf(Messages(MessageKeys.MAP_ROTATE_LAMBDA)),
-			"phi":@Integer.valueOf(Messages(MessageKeys.MAP_ROTATE_PHI)),
-			"gamma":@Integer.valueOf(Messages(MessageKeys.MAP_ROTATE_GAMMA))
+			"lambda":@Integer.valueOf(messages(MessageKeys.MAP_ROTATE_LAMBDA)),
+			"phi":@Integer.valueOf(messages(MessageKeys.MAP_ROTATE_PHI)),
+			"gamma":@Integer.valueOf(messages(MessageKeys.MAP_ROTATE_GAMMA))
 		}'></div>
 
 		@libraries.standard.last()

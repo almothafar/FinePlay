@@ -15,7 +15,7 @@ if(window.SpeechSynthesisUtterance){
 }
 $('#speakButton').click(function() {
 
-	var synthes = new SpeechSynthesisUtterance(Messages(MessageKeys.WELCOME));
-	synthes.lang = Messages(MessageKeys.SPEECH_SYNTHESIS_LANG);
+	var synthes = new SpeechSynthesisUtterance(messages(MessageKeys.WELCOME));
+	synthes.lang = messages(MessageKeys.SPEECH_SYNTHESIS_LANG);
 	speechSynthesis.speak(synthes);
 });

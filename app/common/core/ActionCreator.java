@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -30,8 +29,10 @@ import models.user.User.Role;
 import models.user.User_;
 import play.db.jpa.JPAApi;
 import play.http.DefaultActionCreator;
+import play.i18n.Lang;
+import play.i18n.Messages;
+import play.i18n.MessagesApi;
 import play.mvc.Action;
-import play.mvc.Http.Context;
 import play.mvc.Http.Headers;
 import play.mvc.Http.Request;
 import play.mvc.Http.Session;
@@ -41,6 +42,9 @@ import play.mvc.Results;
 public class ActionCreator extends DefaultActionCreator {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	@Inject
+	private MessagesApi messagesApi;
 
 	@Inject
 	private JPAApi jpa;
@@ -59,24 +63,23 @@ public class ActionCreator extends DefaultActionCreator {
 			return new Action.Simple() {
 
 				@Override
-				public CompletionStage<Result> call(Context ctx) {
+				public CompletionStage<Result> call(Request req) {
 
-					MDC.put(User_.USER_ID, ctx.request().session().get(User_.USER_ID));
+					MDC.put(User_.USER_ID, req.session().getOptional(User_.USER_ID).orElse(null));
 
-					LOGGER.info(createArgsMessage(ctx.args));
-					LOGGER.info(createRequestHeadersMessage(ctx.request().getHeaders()));
-					LOGGER.info(createSessionMessage(ctx.request().session()));
+					LOGGER.info(createRequestHeadersMessage(req.getHeaders()));
+					LOGGER.info(createSessionMessage(req.session()));
 
-					final String rolesValue = ctx.request().session().get(User_.ROLES);
+					final String rolesValue = req.session().getOptional(User_.ROLES).orElse(null);
 					final boolean isSignIn = rolesValue != null && !rolesValue.isEmpty();
 					final CompletionStage<Result> stage;
 					if (!isSignIn) {
 
-						stage = callNotSignIn(ctx, permissionsAllowed);
+						stage = callNotSignIn(req, permissionsAllowed);
 					} else {
 
 						final Set<Role> roles = Sessions.toRoles(rolesValue);
-						stage = callSignIn(ctx, permissionsAllowed, roles);
+						stage = callSignIn(req, permissionsAllowed, roles);
 					}
 
 					LOGGER.info("========================================================");
@@ -84,17 +87,17 @@ public class ActionCreator extends DefaultActionCreator {
 					return stage;
 				}
 
-				private CompletionStage<Result> callNotSignIn(@Nonnull final Context ctx, @Nullable final PermissionsAllowed permissionsAllowed) {
+				private CompletionStage<Result> callNotSignIn(@Nonnull final Request req, @Nullable final PermissionsAllowed permissionsAllowed) {
 
 					if (Objects.nonNull(permissionsAllowed)) {
 
-						return createUnauthorizedPromise();
+						return createUnauthorizedPromise(req);
 					}
 
-					return delegate.call(ctx);
+					return delegate.call(req);
 				}
 
-				private CompletionStage<Result> callSignIn(@Nonnull final Context ctx, @Nullable final PermissionsAllowed permissionsAllowed, @Nonnull final Set<Role> roles) {
+				private CompletionStage<Result> callSignIn(@Nonnull final Request req, @Nullable final PermissionsAllowed permissionsAllowed, @Nonnull final Set<Role> roles) {
 
 					if (Objects.nonNull(permissionsAllowed)) {
 
@@ -106,11 +109,11 @@ public class ActionCreator extends DefaultActionCreator {
 
 						if (!System.isPermissionAllowed(workPermissions, userPermissions)) {
 
-							return createUnauthorizedPromise();
+							return createUnauthorizedPromise(req);
 						}
 					}
 
-					return delegate.call(ctx);
+					return delegate.call(req);
 				}
 			};
 		});
@@ -141,24 +144,6 @@ public class ActionCreator extends DefaultActionCreator {
 		return permissionsAllowed;
 	}
 
-	private static String createArgsMessage(final Map<String, Object> args) {
-
-		final StringBuilder builder = new StringBuilder();
-
-		builder.append("---------- Args").append("\n");
-
-		final String argsContents = args.entrySet().stream().map(entry -> {
-
-			final String key = StringUtils.leftPad(entry.getKey(), 25, ' ');
-			final String value = entry.getValue().toString();
-
-			return key + ": " + value;
-		}).collect(Collectors.joining("\n"));
-		builder.append(argsContents);
-
-		return builder.toString();
-	}
-
 	private static String createRequestHeadersMessage(final Headers headers) {
 
 		final StringBuilder builder = new StringBuilder();
@@ -183,7 +168,7 @@ public class ActionCreator extends DefaultActionCreator {
 
 		builder.append("---------- Session").append("\n");
 
-		final String sessionContents = session.entrySet().stream().map(entry -> {
+		final String sessionContents = session.data().entrySet().stream().map(entry -> {
 
 			final String key = StringUtils.leftPad(entry.getKey(), 25, ' ');
 			final String value = entry.getValue().toString();
@@ -195,9 +180,12 @@ public class ActionCreator extends DefaultActionCreator {
 		return builder.toString();
 	}
 
-	private CompletionStage<Result> createUnauthorizedPromise() {
+	private CompletionStage<Result> createUnauthorizedPromise(final Request request) {
 
-		final Result unauthorized = Results.unauthorized(views.html.system.pages.unauthorized.render());
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final Result unauthorized = Results.unauthorized(views.html.system.pages.unauthorized.render(request, lang, messages));
 		return CompletableFuture.completedFuture(unauthorized);
 	}
 

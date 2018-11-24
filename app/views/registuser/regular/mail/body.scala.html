@@ -3,7 +3,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 
@@ -11,7 +12,7 @@
 
 @import common.system._
 
-@(user: models.user.User, signInURL: String, inquiryURL: String)
+@(user: models.user.User, signInURL: String, inquiryURL: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 	<head>
@@ -190,40 +191,40 @@
 						<tr>
 							<td>
 
-								<p class="preheader">@Messages(MessageKeys.SYSTEM_NAME)</p> 
-								<br /> 
-								<img class="logo" src="cid:@RegistUser.CID_LOGO" alt="@Messages(MessageKeys.SYSTEM_NAME)" height="46">
+								<p class="preheader">@messages(MessageKeys.SYSTEM_NAME)</p>
+								<br />
+								<img class="logo" src="cid:@RegistUser.CID_LOGO" alt="@messages(MessageKeys.SYSTEM_NAME)" height="46">
 
 							</td>
 						</tr>
 					</table>
-					<br /> 
+					<br />
 					<!-- Contents -->
 					<table cellpadding="0" cellspacing="0" class="content">
 						<tr>
 							<td>
 
 								<h2 class="heading">@user.getUserId() 様</h2>
-								<p class="lead">この度は、@Messages(MessageKeys.SYSTEM_NAME)にユーザー登録をいただき、誠にありがとうございます。</p>
+								<p class="lead">この度は、@messages(MessageKeys.SYSTEM_NAME)にユーザー登録をいただき、誠にありがとうございます。</p>
 								<p>本登録を完了いたしました。</p>
 
 							</td>
 						</tr>
 						<tr>
 							<td class="spacing">
-								<a class="button" href="@signInURL">@Messages(MessageKeys.USER_SIGNIN)</a>
+								<a class="button" href="@signInURL">@messages(MessageKeys.USER_SIGNIN)</a>
 							</td>
 						</tr>
 					</table>
-					<br /> 
+					<br />
 					<!-- Footer -->
 					<table cellpadding="0" cellspacing="0" class="content">
 						<tr>
 							<td class="spacing">
 
 								<ul class="footer-list">
-									<li>このメールは、@Messages(MessageKeys.SYSTEM_NAME)にご登録いただいた方にお送りしています。</li>
-									<li>もし、このメールにお心当たりがない方は、お手数をおかけいたしますが、@Messages(MessageKeys.SYSTEM_NAME)サポートまでお問い合わせください。</li>
+									<li>このメールは、@messages(MessageKeys.SYSTEM_NAME)にご登録いただいた方にお送りしています。</li>
+									<li>もし、このメールにお心当たりがない方は、お手数をおかけいたしますが、@messages(MessageKeys.SYSTEM_NAME)サポートまでお問い合わせください。</li>
 									<li><a href="@inquiryURL">お問い合わせはこちらから</a></li>
 								</ul>
 

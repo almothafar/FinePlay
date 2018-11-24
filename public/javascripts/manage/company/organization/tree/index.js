@@ -21,7 +21,7 @@ $(document).ready(function() {
 		'tree.move',
 		function(e) {
 
-			$("#unsavedInfo>span").html("<strong>" + Messages(MessageKeys.SAVE) + " " + Messages(MessageKeys.INFO) + "</strong> " + Messages(MessageKeys.SYSTEM_ERROR_DATA_UNSAVE));
+			$("#unsavedInfo>span").html("<strong>" + messages(MessageKeys.SAVE) + " " + messages(MessageKeys.INFO) + "</strong> " + messages(MessageKeys.SYSTEM_ERROR_DATA_UNSAVE));
 			$("#unsavedInfo").show();
 		}
 	);
@@ -76,7 +76,7 @@ $(document).ready(function() {
 
 	var operation = function(crud){
 
-		$('#'+crud+'Message').text(Messages(MessageKeys.PLEASE__WAIT));
+		$('#'+crud+'Message').text(messages(MessageKeys.PLEASE__WAIT));
 		$('#'+crud+'Progress').val(100);
 		$('#'+crud+'Cancel').prop('disabled', true);
 		$('#'+crud+'Ok').prop('disabled', true);
@@ -94,7 +94,7 @@ $(document).ready(function() {
 		.then(
 			function (responseJson) {
 
-				window.location.href = Routes.controllers.manage.company.organization.tree.Read.index(Messages("companyId")).url;
+				window.location.href = Routes.controllers.manage.company.organization.tree.Read.index(messages("companyId")).url;
 			},
 			function (jqXHR, textStatus, errorThrown) {
 
@@ -109,8 +109,8 @@ $(document).ready(function() {
 					});
 				}
 
-				$('#'+crud+'Message').text(Messages(MessageKeys.FAILURE));
-				$('#'+crud+'Description').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
+				$('#'+crud+'Message').text(messages(MessageKeys.FAILURE));
+				$('#'+crud+'Description').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
 				$('#'+crud+'Progress>.progress-bar').addClass('bg-danger');
 				$('#'+crud+'Cancel').prop('disabled', false);
 				$('#'+crud+'Ok').prop('disabled', false);
@@ -173,9 +173,9 @@ $('#tasklist>label').on('click', function (e) {
 	var taskIndex = tasks.index($(e.currentTarget));
 	if(0 == taskIndex){
 
-		window.location.href = Routes.controllers.manage.company.organization.list.Read.index(Messages("companyId")).url;
+		window.location.href = Routes.controllers.manage.company.organization.list.Read.index(messages("companyId")).url;
 	}else if(1 == taskIndex){
 
-		window.location.href = Routes.controllers.manage.company.organization.tree.Read.index(Messages("companyId")).url;
+		window.location.href = Routes.controllers.manage.company.organization.tree.Read.index(messages("companyId")).url;
 	}
 });

@@ -31,12 +31,16 @@ import play.filters.csrf.RequireCSRFCheck;
 import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
 import play.libs.ws.WSClient;
-import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
+import play.libs.ws.ahc.AhcCurlRequestLogger;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -48,7 +52,10 @@ public class BulkMail extends Controller {
 	private Config config;
 
 	@Inject
-	private JPAApi jpa;
+	private MessagesApi messagesApi;
+
+	@Inject
+	private JPAApi jpaApi;
 
 	@Inject
 	private WSClient ws;
@@ -60,17 +67,23 @@ public class BulkMail extends Controller {
 	private FormFactory formFactory;
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return ok(views.html.lab.application.bulkmail.render());
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return ok(views.html.lab.application.bulkmail.render(request, lang, messages));
 	}
 
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result send() {
+	public Result send(@Nonnull final Request request) {
 
-		final DynamicForm targetForm = formFactory.form().bindFromRequest();
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final DynamicForm targetForm = formFactory.form().bindFromRequest(request);
 		final Map<String, String> data = targetForm.rawData();
 
 		if (!data.containsKey("smtpapiJSON")) {
@@ -85,7 +98,7 @@ public class BulkMail extends Controller {
 		final String smtpapiJSON = data.get("smtpapiJSON");
 		final String templateText = data.get("templateText");
 
-		return jpa.withTransaction(manager -> {
+		return jpaApi.withTransaction(manager -> {
 			// read DB、File、etc...
 
 			try {
@@ -168,10 +181,11 @@ public class BulkMail extends Controller {
 		final Duration timeout = Duration.ofSeconds(10);
 
 		final String apiKey = getApiKey();
-		final WSRequest wsRequest = ws.url("https://api.sendgrid.com/v3/mail/batch");
-		wsRequest.addHeader("Content-Type", "application/json");
-		wsRequest.addHeader("Authorization", "Bearer " + apiKey);
-		final CompletionStage<WSResponse> responsePromise = wsRequest.setRequestTimeout(timeout).post("");
+		final CompletionStage<WSResponse> responsePromise = ws.url("https://api.sendgrid.com/v3/mail/batch")//
+				.setRequestFilter(new AhcCurlRequestLogger(LOGGER))//
+				.addHeader("Content-Type", "application/json")//
+				.addHeader("Authorization", "Bearer " + apiKey)//
+				.setRequestTimeout(timeout).post("");
 
 		final CompletionStage<String> recoverPromise = responsePromise.handle((response, throwable) -> {
 

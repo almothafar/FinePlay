@@ -20,7 +20,6 @@ import javax.security.auth.login.AccountException;
 import com.typesafe.config.Config;
 
 import common.system.MessageKeys;
-import common.utils.Locales;
 import controllers.user.UserService;
 import models.registuser.RegistFormContent;
 import models.registuser.RegistUserDao;
@@ -41,6 +40,8 @@ import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.twirl.api.Html;
 
 public class RegistUser extends Controller {
@@ -53,10 +54,10 @@ public class RegistUser extends Controller {
 	private Langs langs;
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private Config config;
@@ -73,20 +74,26 @@ public class RegistUser extends Controller {
 	@Inject
 	private RegistUserDao registUserDao;
 
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final RegistFormContent registFormContent = new RegistFormContent();
 		final Form<RegistFormContent> registForm = formFactory.form(RegistFormContent.class).fill(registFormContent);
 
-		return ok(views.html.registuser.regist.render(registForm));
+		return ok(views.html.registuser.regist.render(registForm, request, lang, messages));
 	}
 
 	@RequireCSRFCheck
-	public Result apply() {
+	public Result apply(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<RegistFormContent> registForm = formFactory.form(RegistFormContent.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
+
+			final Form<RegistFormContent> registForm = formFactory.form(RegistFormContent.class).bindFromRequest(request);
 			if (!registForm.hasErrors()) {
 
 				final RegistFormContent registFormContent = registForm.get();
@@ -94,7 +101,7 @@ public class RegistUser extends Controller {
 				final String userId = registFormContent.getUserId();
 				final String password = registFormContent.getPassword();
 				final String rePassword = registFormContent.getRePassword();
-				final Locale locale = getInferencedLocale();
+				final Locale locale = getInferencedLocale(lang);
 				final ZoneId zoneId = getInferencedZoneId(registFormContent);
 
 				final models.registuser.RegistUser registUser;
@@ -104,13 +111,13 @@ public class RegistUser extends Controller {
 
 						registFormContent.setPassword(null);
 						registFormContent.setRePassword(null);
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
 					}
 
-					if (userService.isExist(manager, userId)) {
+					if (userService.isExist(manager, messages, userId)) {
 
 						registFormContent.setUserId(null);
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_EXIST));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_EXIST));
 					}
 
 					registUser = new models.registuser.RegistUser();
@@ -133,26 +140,25 @@ public class RegistUser extends Controller {
 					final Form<RegistFormContent> failureRegistForm = formFactory.form(RegistFormContent.class)//
 							.fill(registFormContent)//
 							.withGlobalError(e.getLocalizedMessage());
-					return failureApply(failureRegistForm);
+					return failureApply(failureRegistForm, request, lang, messages);
 				}
 
-				sendProvisionalEmail(registUser);
-				return ok(views.html.registuser.provisional.complete.render(registForm))//
-						.withLang(Locales.toLang(locale), messages);
+				sendProvisionalEmail(registUser, request, lang, messages);
+				return ok(views.html.registuser.provisional.complete.render(registForm, request, lang, messages))//
+						.withLang(new Lang(locale), messagesApi);
 			} else {
 
-				return failureApply(registForm);
+				return failureApply(registForm, request, lang, messages);
 			}
 		});
 	}
 
 	@Nonnull
-	private Locale getInferencedLocale() {
+	private Locale getInferencedLocale(Lang useLang) {
 
-		Lang useLang = lang();
 		if (!useLang.country().isEmpty()) {
 
-			useLang = Locales.toLang(normalizeLocale(useLang));
+			useLang = new Lang(normalizeLocale(useLang));
 		}
 
 		if (!langs.availables().contains(useLang)) {
@@ -161,7 +167,7 @@ public class RegistUser extends Controller {
 			final Optional<Lang> langOptional = langs.availables().stream().filter(lang -> lang.language().equals(useLangLanguage)).findFirst();
 			if (!langOptional.isPresent()) {
 
-				useLang = Locales.toLang(Locale.US);
+				useLang = new Lang(Locale.US);
 			}
 		}
 
@@ -218,9 +224,9 @@ public class RegistUser extends Controller {
 		return zoneId;
 	}
 
-	private Result failureApply(final Form<RegistFormContent> applyForm) {
+	private Result failureApply(final Form<RegistFormContent> applyForm, final Request request, final Lang lang, final Messages messages) {
 
-		return badRequest(views.html.registuser.regist.render(applyForm));
+		return badRequest(views.html.registuser.regist.render(applyForm, request, lang, messages));
 	}
 
 	private String createRegularURL(final String code) {
@@ -228,44 +234,49 @@ public class RegistUser extends Controller {
 		return createSystemURL() + controllers.registuser.routes.RegistUser.regular(code).url();
 	}
 
-	private void sendProvisionalEmail(final models.registuser.RegistUser registUser) {
+	private void sendProvisionalEmail(final models.registuser.RegistUser registUser, final Request request, final Lang lang, final Messages messages) {
 
 		final String regularURL = createRegularURL(registUser.getCode());
 
 		final Email email = new Email()//
-				.setSubject("[" + messages.get(lang(), MessageKeys.SYSTEM_NAME) + "] " + messages.get(lang(), MessageKeys.REGISTUSER_PROVISIONAL_MAIL_SUBJECT))//
+				.setSubject("[" + messages.at(MessageKeys.SYSTEM_NAME) + "] " + messages.at(MessageKeys.REGISTUSER_PROVISIONAL_MAIL_SUBJECT))//
 				.setFrom("Mister FROM <from@email.com>")//
 				.addTo("Miss TO <" + registUser.getUserId() + ">")//
-				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
-				.setBodyHtml(createProvisionalHtmlMailBody(registUser, regularURL, lang()).body().trim());
+				.addAttachment("image.jpg", Paths.get("public", "images", lang.code(), "logo.png").toFile(), CID_LOGO)//
+				.setBodyHtml(createProvisionalHtmlMailBody(registUser, regularURL, request, lang, messages).body().trim());
 
 		mailer.send(email);
 	}
 
-	private Html createProvisionalHtmlMailBody(final models.registuser.RegistUser user, final String regularURL, final Lang lang) {
+	private Html createProvisionalHtmlMailBody(final models.registuser.RegistUser user, final String regularURL, final Request request, final Lang lang, final Messages messages) {
 
 		switch (lang.code()) {
 		case "ja-JP":
 
-			return views.html.registuser.provisional.mail.body_ja_JP.render(user, regularURL, createInquiryURL());
+			return views.html.registuser.provisional.mail.body_ja_JP.render(user, regularURL, createInquiryURL(), request, lang, messages);
 		default:
 
-			return views.html.registuser.provisional.mail.body_en_US.render(user, regularURL, createInquiryURL());
+			return views.html.registuser.provisional.mail.body_en_US.render(user, regularURL, createInquiryURL(), request, lang, messages);
 		}
 	}
 
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result provisionalHtmlMail(final String langString) {
+	public Result provisionalHtmlMail(@Nonnull final Request request, final String langString) {
+
+		final Messages messages = messagesApi.preferred(request);
 
 		final models.registuser.RegistUser dummyRegistUser = new models.registuser.RegistUser();
 		dummyRegistUser.setUserId("client@company.com");
 		dummyRegistUser.setCode();
-		return ok(createProvisionalHtmlMailBody(dummyRegistUser, createRegularURL(dummyRegistUser.getCode()), Lang.forCode(langString)));
+		return ok(createProvisionalHtmlMailBody(dummyRegistUser, createRegularURL(dummyRegistUser.getCode()), request, Lang.forCode(langString), messages));
 	}
 
-	public Result regular(final String code) {
+	public Result regular(@Nonnull final Request request, final String code) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return jpaApi.withTransaction(manager -> {
 
 			models.registuser.RegistUser registUser;
 			try {
@@ -295,7 +306,7 @@ public class RegistUser extends Controller {
 
 			try {
 
-				userService.create(manager, user);
+				userService.create(manager, messages, user);
 			} catch (final AccountException e) {
 
 				throw new PlayException("", "", e);
@@ -303,8 +314,8 @@ public class RegistUser extends Controller {
 
 			registUserDao.delete(manager, registUser);
 
-			sendRegularEmail(user);
-			return ok(views.html.registuser.regular.complete.render(user));
+			sendRegularEmail(user, request, lang, messages);
+			return ok(views.html.registuser.regular.complete.render(user, request, lang, messages));
 		});
 	}
 
@@ -314,36 +325,38 @@ public class RegistUser extends Controller {
 		return host;
 	}
 
-	private void sendRegularEmail(final models.user.User user) {
+	private void sendRegularEmail(final models.user.User user, final Request request, final Lang lang, final Messages messages) {
 
 		final Email email = new Email()//
-				.setSubject("[" + messages.get(lang(), MessageKeys.SYSTEM_NAME) + "] " + messages.get(lang(), MessageKeys.REGISTUSER_REGULAR_MAIL_SUBJECT))//
+				.setSubject("[" + messages.at(MessageKeys.SYSTEM_NAME) + "] " + messages.at(MessageKeys.REGISTUSER_REGULAR_MAIL_SUBJECT))//
 				.setFrom("Mister FROM <from@email.com>")//
 				.addTo("Miss TO <" + user.getUserId() + ">")//
-				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
-				.setBodyHtml(createRegularHtmlMailBody(user, createSystemURL(), lang()).body().trim());
+				.addAttachment("image.jpg", Paths.get("public", "images", lang.code(), "logo.png").toFile(), CID_LOGO)//
+				.setBodyHtml(createRegularHtmlMailBody(user, createSystemURL(), request, lang, messages).body().trim());
 
 		mailer.send(email);
 	}
 
-	private Html createRegularHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {
+	private Html createRegularHtmlMailBody(final models.user.User user, final String systemURL, final Request request, final Lang lang, final Messages messages) {
 
 		switch (lang.code()) {
 		case "ja-JP":
 
-			return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL(), request, lang, messages);
 		default:
 
-			return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.registuser.regular.mail.body.render(user, systemURL, createInquiryURL(), request, lang, messages);
 		}
 	}
 
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result regularHtmlMail(final String langString) {
+	public Result regularHtmlMail(@Nonnull final Request request, final String langString) {
+
+		final Messages messages = messagesApi.preferred(request);
 
 		final models.user.User dummyUser = new models.user.User();
 		dummyUser.setUserId("client@company.com");
-		return ok(createRegularHtmlMailBody(dummyUser, createSystemURL(), Lang.forCode(langString)));
+		return ok(createRegularHtmlMailBody(dummyUser, createSystemURL(), request, Lang.forCode(langString), messages));
 	}
 
 	private String createInquiryURL() {

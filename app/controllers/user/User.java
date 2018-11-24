@@ -33,7 +33,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import common.system.MessageKeys;
 import common.system.SessionKeys;
-import common.utils.Locales;
 import common.utils.Sessions;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
@@ -52,6 +51,9 @@ import play.mvc.Controller;
 import play.mvc.Http.Cookie;
 import play.mvc.Http.Session;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class User extends Controller {
@@ -103,10 +105,10 @@ public class User extends Controller {
 	}
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -114,16 +116,19 @@ public class User extends Controller {
 	@Inject
 	private UserAuthenticator userAuthenticator;
 
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		request().session().putAll(Map.of(//
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		request.session().adding(Map.of(//
 				models.user.User_.THEME, Theme.DEFAULT.name()//
 		));
 
 		final SignInFormContent signInFormContent = new SignInFormContent();
-		if (request().cookie(models.user.User_.USER_ID) != null) {
+		if (request.cookie(models.user.User_.USER_ID) != null) {
 
-			final String userId = request().cookie(models.user.User_.USER_ID).value();
+			final String userId = request.cookie(models.user.User_.USER_ID).value();
 			final String decodedUserId;
 			try {
 
@@ -136,9 +141,9 @@ public class User extends Controller {
 			signInFormContent.setUserId(decodedUserId);
 			signInFormContent.setStoreAccount(Boolean.TRUE.toString());
 		}
-		if (request().cookie(models.user.User.PASSWORD) != null) {
+		if (request.cookie(models.user.User.PASSWORD) != null) {
 
-			final String password = request().cookie(models.user.User.PASSWORD).value();
+			final String password = request.cookie(models.user.User.PASSWORD).value();
 			final String decodedPassword;
 			try {
 
@@ -153,15 +158,18 @@ public class User extends Controller {
 
 		final Form<SignInFormContent> signInForm = formFactory.form(SignInFormContent.class).fill(signInFormContent);
 
-		return ok(index.render(signInForm, getFixedUsers()));
+		return ok(index.render(signInForm, getFixedUsers(), request, lang, messages));
 	}
 
 	@RequireCSRFCheck
-	public Result signIn() {
+	public Result signIn(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<SignInFormContent> signInForm = formFactory.form(SignInFormContent.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
+
+			final Form<SignInFormContent> signInForm = formFactory.form(SignInFormContent.class).bindFromRequest(request);
 			if (!signInForm.hasErrors()) {
 
 				final SignInFormContent signInFormContent = signInForm.get();
@@ -172,7 +180,7 @@ public class User extends Controller {
 				final models.user.User user;
 				try {
 
-					user = userAuthenticator.signIn(manager, lang(), userId, password);
+					user = userAuthenticator.signIn(manager, messages, userId, password);
 				} catch (final AccountException e) {
 
 					signInFormContent.setPassword(null);
@@ -180,20 +188,20 @@ public class User extends Controller {
 					final Form<SignInFormContent> failureSignInForm = formFactory.form(SignInFormContent.class)//
 							.fill(signInFormContent)//
 							// conceal a reject reason
-							.withGlobalError(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USER));
-					return failureSignIn(failureSignInForm);
+							.withGlobalError(messages.at(MessageKeys.SYSTEM_ERROR_USER));
+					return failureSignIn(failureSignInForm, request, lang, messages);
 				}
 
-				final Lang selectedLang = Locales.toLang(user.getLocale());
+				final Lang selectedLang = new Lang(user.getLocale());
 
-				String requestUrl = request().session().get(SessionKeys.REQUEST_URL);
-				if (requestUrl == null || requestUrl.equals("") || requestUrl.equals(controllers.user.routes.User.index().absoluteURL(request()))) {
+				String requestUrl = request.session().getOptional(SessionKeys.REQUEST_URL).orElse(null);
+				if (requestUrl == null || requestUrl.equals("") || requestUrl.equals(controllers.user.routes.User.index().absoluteURL(request))) {
 
 					requestUrl = controllers.home.routes.Home.index().url();
 				}
 
 				Result result = redirect(requestUrl)//
-						.withLang(selectedLang, messages)//
+						.withLang(selectedLang, messagesApi)//
 						.withSession(new Session(Map.of(//
 								models.user.User_.USER_ID, userId, //
 								models.user.User_.THEME, user.getTheme().name(), //
@@ -229,38 +237,41 @@ public class User extends Controller {
 				return result;
 			} else {
 
-				return failureSignIn(signInForm);
+				return failureSignIn(signInForm, request, lang, messages);
 			}
 		});
 	}
 
-	private Result failureSignIn(final Form<SignInFormContent> signInForm) {
+	private Result failureSignIn(final Form<SignInFormContent> signInForm, final Request request, final Lang lang, final Messages messages) {
 
-		return badRequest(index.render(signInForm, getFixedUsers()));
+		return badRequest(index.render(signInForm, getFixedUsers(), request, lang, messages));
 	}
 
 	@PermissionsAllowed(value = { Permission.READ })
 	@Authenticated(common.core.Authenticator.class)
-	public Result signOut() {
+	public Result signOut(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
-			updateSignOutTime(manager);
+		return jpaApi.withTransaction(manager -> {
 
-			Lang acceptLang = request().acceptLanguages().stream().findFirst().orElse(Locales.toLang(Locale.US));
+			updateSignOutTime(manager, request, messages);
+
+			Lang acceptLang = request.acceptLanguages().stream().findFirst().orElse(new Lang(Locale.US));
 
 			return redirect(controllers.user.routes.User.index())//
-					.clearingLang(messages)//
-					.withLang(acceptLang, messages)// for Edge measures.
+					.clearingLang(messagesApi)//
+					.withLang(acceptLang, messagesApi)// for Edge measures.
 					.withNewSession();
 		});
 	}
 
-	public void updateSignOutTime(final EntityManager manager) {
+	public void updateSignOutTime(final EntityManager manager, @Nonnull final Request request, final Messages messages) {
 
 		try {
 
-			userAuthenticator.signOut(manager, lang(), request().session().get(models.user.User_.USER_ID));
+			userAuthenticator.signOut(manager, messages, request.session().getOptional(models.user.User_.USER_ID).get());
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -271,40 +282,43 @@ public class User extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@RequireCSRFCheck
-	public CompletionStage<Result> confirm() {
+	public CompletionStage<Result> confirm(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<PasswordFormContent> passwordForm = formFactory.form(PasswordFormContent.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<PasswordFormContent> passwordForm = formFactory.form(PasswordFormContent.class).bindFromRequest(request);
 			if (!passwordForm.hasErrors()) {
 
 				final PasswordFormContent passwordFormContent = passwordForm.get();
 
-				final String userId = request().session().get(models.user.User_.USER_ID);
+				final String userId = request.session().getOptional(models.user.User_.USER_ID).get();
 				final String password = passwordFormContent.getPassword();
 
 				try {
 
-					userAuthenticator.confirm(manager, lang(), userId, password);
+					userAuthenticator.confirm(manager, messages, userId, password);
 				} catch (final AccountException e) {
 
 					passwordFormContent.setPassword(null);
 
 					final Form<PasswordFormContent> failurePasswordForm = formFactory.form(PasswordFormContent.class).fill(passwordFormContent);
 					failurePasswordForm.withGlobalError(e.getLocalizedMessage());
-					return failureConfirm(failurePasswordForm);
+					return failureConfirm(failurePasswordForm, request, lang, messages);
 				}
 
 				final ObjectMapper mapper = new ObjectMapper();
 				final ObjectNode response = mapper.createObjectNode();
 				response.put("status", "success");
 
-				return ok(response).addingToSession(request(), Map.of(//
+				return ok(response).addingToSession(request, Map.of(//
 						SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString()//
 				));
 			} else {
 
-				return failureConfirm(passwordForm);
+				return failureConfirm(passwordForm, request, lang, messages);
 			}
 		});
 
@@ -314,7 +328,7 @@ public class User extends Controller {
 		});
 	}
 
-	private Result failureConfirm(final Form<PasswordFormContent> passwordForm) {
+	private Result failureConfirm(final Form<PasswordFormContent> passwordForm, final Request request, final Lang lang, final Messages messages) {
 
 		final ObjectMapper mapper = new ObjectMapper();
 		final ObjectNode result = mapper.createObjectNode();
@@ -330,7 +344,7 @@ public class User extends Controller {
 			final String property = error.key();
 
 			final ArrayNode propertyErrorNode = mapper.createArrayNode();
-			error.messages().forEach(message -> propertyErrorNode.add(messages.get(lang(), message)));
+			error.messages().forEach(message -> propertyErrorNode.add(messages.at(message)));
 
 			errorsNode.set(property, propertyErrorNode);
 		});

@@ -8,6 +8,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
@@ -15,7 +19,7 @@
 @import common.utils._
 @import models.user._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -29,7 +33,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.VERTICAL), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.VERTICAL), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -42,7 +46,7 @@
 				</div>
 				<div class="col-md-9">
 					<div id="verticalContents" class="w-100">
-						<h4 class="">@Messages(MessageKeys.VERTICAL)</h4>
+						<h4 class="">@messages(MessageKeys.VERTICAL)</h4>
 						いろはにほへと
 					</div>
 				</div>

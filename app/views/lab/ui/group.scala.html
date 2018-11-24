@@ -3,13 +3,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -22,7 +26,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.GROUP), "icon"->"fas fa-arrow-right", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.GROUP), "icon"->"fas fa-arrow-right", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -36,9 +40,9 @@
 
 				<div class="col-md-9">
 
-					@components.modal(Map("id"->"selectDialog", "icon"->"fas fa-list", "title"->Messages(MessageKeys.SELECT), "data-backdrop"->"static", "size"->"lg"), List(
-							Map("id"->"cancelBotton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
-							Map("id"->"okButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
+					@components.modal(Map("id"->"selectDialog", "icon"->"fas fa-list", "title"->messages(MessageKeys.SELECT), "data-backdrop"->"static", "size"->"lg"), List(
+							Map("id"->"cancelBotton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+							Map("id"->"okButton", "type"->"primary", "text"->messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
 						)){
 						<div id="select" class="form-group">
 							<select multiple class="form-control" size="10">
@@ -56,7 +60,7 @@
 						<div class="row">
 							<div class="col-sm-6 col-md-4">
 								<div id="group-left" class="form-group group">
-									<h4 class="headline">@Messages(MessageKeys.LEFT)</h4>
+									<h4 class="headline">@messages(MessageKeys.LEFT)</h4>
 									<select multiple class="form-control" name="leftSelect" size="10">
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -65,14 +69,14 @@
 										<option value="5">5</option>
 									</select>
 									<div class="text-right">
-										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fas fa-minus", "text"->Messages(MessageKeys.REMOVE)))
-										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fas fa-plus", "text"->Messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"left"))
+										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fas fa-minus", "text"->messages(MessageKeys.REMOVE)))
+										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fas fa-plus", "text"->messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"left"))
 									</div>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-4">
 								<div id="group-center" class="form-group group">
-									<h4 class="headline">@Messages(MessageKeys.CENTER)</h4>
+									<h4 class="headline">@messages(MessageKeys.CENTER)</h4>
 									<select multiple class="form-control" name="centerSelect" size="10">
 										<option value="6">6</option>
 										<option value="7">7</option>
@@ -81,14 +85,14 @@
 										<option value="10">10</option>
 									</select>
 									<div class="text-right">
-										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fas fa-minus", "text"->Messages(MessageKeys.REMOVE)))
-										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fas fa-plus", "text"->Messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"center"))
+										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fas fa-minus", "text"->messages(MessageKeys.REMOVE)))
+										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fas fa-plus", "text"->messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"center"))
 									</div>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-4">
 								<div id="group-right" class="form-group group">
-									<h4 class="headline">@Messages(MessageKeys.RIGHT)</h4>
+									<h4 class="headline">@messages(MessageKeys.RIGHT)</h4>
 									<select multiple class="form-control" name="rightSelect" size="10">
 										<option value="11">11</option>
 										<option value="12">12</option>
@@ -97,8 +101,8 @@
 										<option value="15">15</option>
 									</select>
 									<div class="text-right">
-										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fas fa-minus", "text"->Messages(MessageKeys.REMOVE)))
-										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fas fa-plus", "text"->Messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"right"))
+										@components.button(Map("id"->"", "class"->"remove", "type"->"primary", "outline"->"true", "icon"->"fas fa-minus", "text"->messages(MessageKeys.REMOVE)))
+										@components.button(Map("id"->"", "class"->"add", "type"->"primary", "icon"->"fas fa-plus", "text"->messages(MessageKeys.ADD), "data-toggle"->"modal", "data-target"->"#selectDialog", "data-group"->"right"))
 									</div>
 								</div>
 							</div>

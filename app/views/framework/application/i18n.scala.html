@@ -1,16 +1,20 @@
 @import java.time._
 @import java.time.format._
 
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 @import views.html.development
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 @import common.utils._
 
-@(map: Map[String, Object])
+@(map: Map[String, Object])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -19,7 +23,7 @@
 
 @datetime_now() = @{
 
-	common.utils.DateTimes.toClientDateTime(LocalDateTime.now())
+	common.utils.DateTimes.toClientDateTime(request, LocalDateTime.now())
 }
 
 @append(mutableMap: scala.collection.mutable.Map[String,AnyRef]) = @{
@@ -28,8 +32,8 @@
 	mutableMap += "lang.code"->lang.code;
 	mutableMap += "lang.language"->lang.language;
 	mutableMap += "lang.country"->lang.country;
-	mutableMap += ("Messages(\"message.code\") " + components.badge(Map("type"->"success", "text"->Messages(MessageKeys.CLIENT))))->Messages(MessageKeys.MESSAGE_CODE);
-	mutableMap += "Messages(\"constraint.min\",\"0\")"->Messages(MessageKeys.CONSTRAINT_MIN,"0");
+	mutableMap += ("messages(\"message.code\") " + components.badge(Map("type"->"success", "text"->messages(MessageKeys.CLIENT))))->messages(MessageKeys.MESSAGE_CODE);
+	mutableMap += "messages(\"constraint.min\",\"0\")"->messages(MessageKeys.CONSTRAINT_MIN,"0");
 	mutableMap += "Date(Medium)"->DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(datetime_now());
 	mutableMap += "Time(Medium)"->DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(datetime_now());
 	mutableMap += "DateTime(Medium)"->DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(datetime_now());
@@ -66,8 +70,8 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.WELCOME":"@Messages(MessageKeys.WELCOME)",
-			"@MessageKeys.SPEECH_SYNTHESIS_LANG":"@Messages(MessageKeys.SPEECH_SYNTHESIS_LANG)"
+			"@MessageKeys.WELCOME":"@messages(MessageKeys.WELCOME)",
+			"@MessageKeys.SPEECH_SYNTHESIS_LANG":"@messages(MessageKeys.SPEECH_SYNTHESIS_LANG)"
 		}'></div>
 
 		@libraries.standard.last()

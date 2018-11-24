@@ -1,12 +1,16 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(slideInfo: Map[String, String])
+@(slideInfo: Map[String, String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable.Map
 
@@ -32,7 +36,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>@Messages(MessageKeys.X__X, Messages(MessageKeys.SLIDE), Messages(MessageKeys.VIEWER)) | @Messages(MessageKeys.SYSTEM_NAME)</title>
+		<title>@messages(MessageKeys.X__X, messages(MessageKeys.SLIDE), messages(MessageKeys.VIEWER)) | @messages(MessageKeys.SYSTEM_NAME)</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -52,7 +56,7 @@
 		}'></meta>
 
 		<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/reveal.css")">
-		@session.get(models.user.User.THEME) match {
+		@request.session().getOptional(models.user.User.THEME).orElse(null) match {
 			case "PRETTY" => {
 
 				<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/theme/sky.css")">
@@ -93,7 +97,7 @@
 
 	<body>
 
-		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.BACK), "link"->slideInfo.get(models.system.SlideInfoFormContent.RETURNURL), "class"->"d-print-none"))
+		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->messages(MessageKeys.BACK), "link"->slideInfo.get(models.system.SlideInfoFormContent.RETURNURL), "class"->"d-print-none"))
 		@components.badge(Map("id"->"gamepad", "type"->"danger", "text"->"", "class"->"d-print-none"))
 
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/messages.js")'></script>

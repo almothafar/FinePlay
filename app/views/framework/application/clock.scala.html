@@ -3,11 +3,12 @@
 @import views.html._
 @import views.html.components
 @import views.html.development
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@(serverDateTime: LocalDateTime)
+@(serverDateTime: LocalDateTime)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -16,7 +17,7 @@
 
 @datetime(dateTime: LocalDateTime) = @{
 
-	common.utils.DateTimes.toClientDateTime(dateTime)
+	common.utils.DateTimes.toClientDateTime(request, dateTime)
 }
 
 @datetimeFormat(dateTime: LocalDateTime) = @{
@@ -35,7 +36,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.CLOCK), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.CLOCK), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -52,10 +53,10 @@
 
 					<dl class="row">
 
-						<dt class="col-sm-3">@Messages(MessageKeys.SERVER)</dt>
+						<dt class="col-sm-3">@messages(MessageKeys.SERVER)</dt>
 						<dd class="col-sm-9" id="serverDateTime">@datetimeFormat(serverDateTime)</dd>
 
-						<dt class="col-sm-3">@Messages(MessageKeys.CLIENT)</dt>
+						<dt class="col-sm-3">@messages(MessageKeys.CLIENT)</dt>
 						<dd class="col-sm-9" id="clientDateTime">@datetimeFormat(datetime(serverDateTime))</dd>
 					</dl>
 				</div>

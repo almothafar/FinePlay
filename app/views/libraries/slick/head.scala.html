@@ -1,4 +1,7 @@
-@()
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <link href='@routes.Assets.versioned("lib/slick-carousel/slick/slick.css")' rel="stylesheet" type="text/css">
 <link href='@routes.Assets.versioned("lib/slick-carousel/slick/slick-theme.css")' rel="stylesheet" type="text/css">

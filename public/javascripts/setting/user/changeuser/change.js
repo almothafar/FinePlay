@@ -29,7 +29,7 @@ var initOperation = function(){
 
 var operation = function(){
 
-	$('#confirmMessage').text(Messages(MessageKeys.PLEASE__WAIT));
+	$('#confirmMessage').text(messages(MessageKeys.PLEASE__WAIT));
 	$('#confirmProgress').val(100);
 	$('#confirmCancel').prop('disabled', true);
 	$('#confirmOk').prop('disabled', true);
@@ -75,8 +75,8 @@ var operation = function(){
 
 			}
 
-			$('#confirmMessage').text(Messages(MessageKeys.FAILURE));
-			$('#confirmDescription').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
+			$('#confirmMessage').text(messages(MessageKeys.FAILURE));
+			$('#confirmDescription').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
 			$('#confirmProgress>.progress-bar').addClass('bg-danger');
 			$('#confirmCancel').prop('disabled', false);
 			$('#confirmOk').prop('disabled', false);
@@ -107,7 +107,7 @@ $(window).on('keydown', function(e){
 	}
 })
 
-if(Messages("hasErrors")) {
+if(messages("hasErrors")) {
 
 	shake('#changePanel');
 }

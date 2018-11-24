@@ -1,6 +1,6 @@
 'use strict';
 
-if(Messages("isPlayException")){
+if(messages("isPlayException")){
 }else{
 
 	$('#errorModal .modal-content').addClass('bg-dark').addClass('text-white');

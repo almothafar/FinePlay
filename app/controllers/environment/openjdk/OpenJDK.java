@@ -11,29 +11,41 @@ import java.util.stream.Collectors;
 import models.system.System.PermissionsAllowed;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 
 @PermissionsAllowed
 public class OpenJDK extends Controller {
 
-	public Result index(String item) {
+	@Inject
+	private MessagesApi messagesApi;
+
+	public Result index(@Nonnull final Request request, String item) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		switch (item) {
 		case "systemproperties":
 
-			return systemproperties();
+			return systemproperties(request, lang, messages);
 		case "systemenv":
 
-			return systemenv();
+			return systemenv(request, lang, messages);
 		case "runtime":
 
-			return runtime();
+			return runtime(request, lang, messages);
 		default:
 
-			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return redirect(controllers.setting.user.routes.User.index());
 		}
 	}
 
-	public static Result systemproperties() {
+	public static Result systemproperties(final Request request, final Lang lang, final Messages messages) {
 
 		final Map<String, String> systemPropertiesMap = new HashMap<>();
 		System.getProperties().forEach((key, value) -> {
@@ -67,15 +79,15 @@ public class OpenJDK extends Controller {
 			}
 		});
 
-		return ok(views.html.environment.openjdk.systemproperties.render(new TreeMap<>(systemPropertiesMap)));
+		return ok(views.html.environment.openjdk.systemproperties.render(new TreeMap<>(systemPropertiesMap), request, lang, messages));
 	}
 
-	public static Result systemenv() {
+	public static Result systemenv(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.environment.openjdk.systemenv.render(new TreeMap<>(System.getenv())));
+		return ok(views.html.environment.openjdk.systemenv.render(new TreeMap<>(System.getenv()), request, lang, messages));
 	}
 
-	public static Result runtime() {
+	public static Result runtime(final Request request, final Lang lang, final Messages messages) {
 
 		final Map<String, String> runtimeMap = new HashMap<>();
 		final Runtime runtime = Runtime.getRuntime();
@@ -84,6 +96,6 @@ public class OpenJDK extends Controller {
 		runtimeMap.put("Total Memory", String.valueOf(runtime.totalMemory()));
 		runtimeMap.put("Free Memory", String.valueOf(runtime.freeMemory()));
 
-		return ok(views.html.environment.openjdk.runtime.render(new TreeMap<>(runtimeMap)));
+		return ok(views.html.environment.openjdk.runtime.render(new TreeMap<>(runtimeMap), request, lang, messages));
 	}
 }

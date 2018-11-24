@@ -33,6 +33,9 @@ import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.twirl.api.Html;
 
 public class ResetUser extends Controller {
@@ -42,10 +45,10 @@ public class ResetUser extends Controller {
 	public static final String CID_LOGO = "logo";
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private Config config;
@@ -62,20 +65,26 @@ public class ResetUser extends Controller {
 	@Inject
 	private ResetUserDao resetUserDao;
 
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final ResetFormContent resetFormContent = new ResetFormContent();
 		final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Read.class).fill(resetFormContent);
 
-		return ok(views.html.resetuser.reset.render(resetForm));
+		return ok(views.html.resetuser.reset.render(resetForm, request, lang, messages));
 	}
 
 	@RequireCSRFCheck
-	public Result apply() {
+	public Result apply(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Read.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
+
+			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Read.class).bindFromRequest(request);
 			if (!resetForm.hasErrors()) {
 
 				final ResetFormContent resetFormContent = resetForm.get();
@@ -85,10 +94,10 @@ public class ResetUser extends Controller {
 				final models.resetuser.ResetUser resetUser;
 				try {
 
-					if (!userService.isExist(manager, userId)) {
+					if (!userService.isExist(manager, messages, userId)) {
 
 						resetFormContent.setUserId(null);
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_NOTEXIST));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_NOTEXIST));
 					}
 
 					resetUser = new models.resetuser.ResetUser();
@@ -106,21 +115,21 @@ public class ResetUser extends Controller {
 				} catch (final AccountException e) {
 
 					// conceal a not exist user
-					return ok(views.html.resetuser.request.complete.render(resetForm));
+					return ok(views.html.resetuser.request.complete.render(resetForm, request, lang, messages));
 				}
 
-				sendResetEmail(resetUser);
-				return ok(views.html.resetuser.request.complete.render(resetForm));
+				sendResetEmail(resetUser, request, lang, messages);
+				return ok(views.html.resetuser.request.complete.render(resetForm, request, lang, messages));
 			} else {
 
-				return failureReset(resetForm);
+				return failureReset(resetForm, request, lang, messages);
 			}
 		});
 	}
 
-	private Result failureReset(final Form<ResetFormContent> resetForm) {
+	private Result failureReset(final Form<ResetFormContent> resetForm, final Request request, final Lang lang, final Messages messages) {
 
-		return badRequest(views.html.resetuser.reset.render(resetForm));
+		return badRequest(views.html.resetuser.reset.render(resetForm, request, lang, messages));
 	}
 
 	private String createChangeURL(final String code) {
@@ -128,44 +137,49 @@ public class ResetUser extends Controller {
 		return createSystemURL() + controllers.resetuser.routes.ResetUser.owner(code).url();
 	}
 
-	private void sendResetEmail(final models.resetuser.ResetUser resetUser) {
+	private void sendResetEmail(final models.resetuser.ResetUser resetUser, final Request request, final Lang lang, final Messages messages) {
 
 		final String changeURL = createChangeURL(resetUser.getCode());
 
 		final Email email = new Email()//
-				.setSubject("[" + messages.get(lang(), MessageKeys.SYSTEM_NAME) + "] " + messages.get(lang(), MessageKeys.RESETUSER_REQUEST_MAIL_SUBJECT))//
+				.setSubject("[" + messages.at(MessageKeys.SYSTEM_NAME) + "] " + messages.at(MessageKeys.RESETUSER_REQUEST_MAIL_SUBJECT))//
 				.setFrom("Mister FROM <from@email.com>")//
 				.addTo("Miss TO <" + resetUser.getUserId() + ">")//
-				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
-				.setBodyHtml(createRequestHtmlMailBody(resetUser, changeURL, lang()).body().trim());
+				.addAttachment("image.jpg", Paths.get("public", "images", lang.code(), "logo.png").toFile(), CID_LOGO)//
+				.setBodyHtml(createRequestHtmlMailBody(resetUser, changeURL, request, lang, messages).body().trim());
 
 		mailer.send(email);
 	}
 
-	private Html createRequestHtmlMailBody(final models.resetuser.ResetUser user, final String changeURL, final Lang lang) {
+	private Html createRequestHtmlMailBody(final models.resetuser.ResetUser user, final String changeURL, final Request request, final Lang lang, final Messages messages) {
 
 		switch (lang.code()) {
 		case "ja-JP":
 
-			return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL());
+			return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL(), request, lang, messages);
 		default:
 
-			return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL());
+			return views.html.resetuser.request.mail.body.render(user, changeURL, createInquiryURL(), request, lang, messages);
 		}
 	}
 
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result requestHtmlMail(final String langString) {
+	public Result requestHtmlMail(@Nonnull final Request request, final String langString) {
+
+		final Messages messages = messagesApi.preferred(request);
 
 		final models.resetuser.ResetUser dummyResetUser = new models.resetuser.ResetUser();
 		dummyResetUser.setUserId("client@company.com");
 		dummyResetUser.setCode();
-		return ok(createRequestHtmlMailBody(dummyResetUser, createChangeURL(dummyResetUser.getCode()), Lang.forCode(langString)));
+		return ok(createRequestHtmlMailBody(dummyResetUser, createChangeURL(dummyResetUser.getCode()), request, Lang.forCode(langString), messages));
 	}
 
-	public Result owner(final String code) {
+	public Result owner(@Nonnull final Request request, final String code) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return jpaApi.withTransaction(manager -> {
 
 			models.resetuser.ResetUser resetUser;
 			try {
@@ -187,15 +201,18 @@ public class ResetUser extends Controller {
 			resetFormContent.setUserId(resetUser.getUserId());
 			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class).fill(resetFormContent);
 
-			return ok(views.html.resetuser.change.change.render(resetForm));
+			return ok(views.html.resetuser.change.change.render(resetForm, request, lang, messages));
 		});
 	}
 
-	public Result change() {
+	public Result change(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Update.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<ResetFormContent> resetForm = formFactory.form(ResetFormContent.class, Update.class).bindFromRequest(request);
 			if (!resetForm.hasErrors()) {
 
 				final ResetFormContent resetFormContent = resetForm.get();
@@ -212,12 +229,12 @@ public class ResetUser extends Controller {
 
 						resetFormContent.setPassword(null);
 						resetFormContent.setRePassword(null);
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
 					}
 
 					try {
 
-						user = userService.read(manager, userId);
+						user = userService.read(manager, messages, userId);
 					} catch (final AccountException e) {
 
 						throw e;
@@ -240,30 +257,30 @@ public class ResetUser extends Controller {
 
 					user.setPassword(password);
 
-					userService.update(manager, user);
+					userService.update(manager, messages, user);
 
 					resetUserDao.delete(manager, resetUser);
 				} catch (final AccountException e) {
 
 					final Form<ResetFormContent> failureResetForm = formFactory.form(ResetFormContent.class).fill(resetFormContent);
 					failureResetForm.withGlobalError(e.getLocalizedMessage());
-					return failureChange(failureResetForm);
+					return failureChange(failureResetForm, request, lang, messages);
 				}
 
-				sendChangeEmail(user);
-				return ok(views.html.resetuser.change.complete.render(user));
+				sendChangeEmail(user, request, lang, messages);
+				return ok(views.html.resetuser.change.complete.render(user, request, lang, messages));
 			} else {
 
-				return failureChange(resetForm);
+				return failureChange(resetForm, request, lang, messages);
 			}
 		});
 
 		return result;
 	}
 
-	private Result failureChange(final Form<ResetFormContent> resetForm) {
+	private Result failureChange(final Form<ResetFormContent> resetForm, final Request request, final Lang lang, final Messages messages) {
 
-		return badRequest(views.html.resetuser.change.change.render(resetForm));
+		return badRequest(views.html.resetuser.change.change.render(resetForm, request, lang, messages));
 	}
 
 	private String createSystemURL() {
@@ -272,36 +289,38 @@ public class ResetUser extends Controller {
 		return host;
 	}
 
-	private void sendChangeEmail(final models.user.User user) {
+	private void sendChangeEmail(final models.user.User user, final Request request, final Lang lang, final Messages messages) {
 
 		final Email email = new Email()//
-				.setSubject("[" + messages.get(lang(), MessageKeys.SYSTEM_NAME) + "] " + messages.get(lang(), MessageKeys.RESETUSER_CHANGE_MAIL_SUBJECT))//
+				.setSubject("[" + messages.at(MessageKeys.SYSTEM_NAME) + "] " + messages.at(MessageKeys.RESETUSER_CHANGE_MAIL_SUBJECT))//
 				.setFrom("Mister FROM <from@email.com>")//
 				.addTo("Miss TO <" + user.getUserId() + ">")//
-				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
-				.setBodyHtml(createChangeHtmlMailBody(user, createSystemURL(), lang()).body().trim());
+				.addAttachment("image.jpg", Paths.get("public", "images", lang.code(), "logo.png").toFile(), CID_LOGO)//
+				.setBodyHtml(createChangeHtmlMailBody(user, createSystemURL(), request, lang, messages).body().trim());
 
 		mailer.send(email);
 	}
 
-	private Html createChangeHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {
+	private Html createChangeHtmlMailBody(final models.user.User user, final String systemURL, final Request request, final Lang lang, final Messages messages) {
 
 		switch (lang.code()) {
 		case "ja-JP":
 
-			return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL(), request, lang, messages);
 		default:
 
-			return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.resetuser.change.mail.body.render(user, systemURL, createInquiryURL(), request, lang, messages);
 		}
 	}
 
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result changeHtmlMail(final String langString) {
+	public Result changeHtmlMail(@Nonnull final Request request, final String langString) {
+
+		final Messages messages = messagesApi.preferred(request);
 
 		final models.user.User dummyUser = new models.user.User();
 		dummyUser.setUserId("client@company.com");
-		return ok(createChangeHtmlMailBody(dummyUser, createSystemURL(), Lang.forCode(langString)));
+		return ok(createChangeHtmlMailBody(dummyUser, createSystemURL(), request, Lang.forCode(langString), messages));
 	}
 
 	private String createInquiryURL() {

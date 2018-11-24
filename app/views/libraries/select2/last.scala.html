@@ -1,15 +1,21 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/select2/head.css.js")'></script>
 
 @translation() = @{
 
-	var lang = Messages(MessageKeys.SELECT2_LANG)
+	var lang = messages(MessageKeys.SELECT2_LANG)
 
 	var path = "lib/select2/dist/js/i18n/"+lang+".js"
 	Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")

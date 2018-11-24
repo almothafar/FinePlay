@@ -4,7 +4,7 @@ $('#translateButton').on('click', function(e){
 
 	$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
 	$('#ajaxCancel').prop('disabled', true);
-	$('#ajaxMessage').text(Messages(MessageKeys.PLEASE__WAIT));
+	$('#ajaxMessage').text(messages(MessageKeys.PLEASE__WAIT));
 	$('#ajaxDescription').text('-');
 
 	var timeout = "10000";
@@ -12,7 +12,7 @@ $('#translateButton').on('click', function(e){
 		method:"GET",
 		url: Routes.apis.transrator.Transrator.translate().url + "?" + getToken(),
 		data: $.param({
-				to: Messages("langCode"),
+				to: messages("langCode"),
 				text: $('#translateTabContent div:eq(0) textarea').val()
 		}),
 		contentType: 'text/plain',
@@ -31,10 +31,10 @@ $('#translateButton').on('click', function(e){
 
 			$('#ajaxProgress>.progress-bar').addClass('bg-danger');
 			$('#ajaxCancel').prop('disabled', false);
-			$('#ajaxMessage').text(Messages(MessageKeys.FAILURE));
+			$('#ajaxMessage').text(messages(MessageKeys.FAILURE));
 			var errorMessage = errorThrown;
 			if(jqXHR.responseJSON){errorMessage = jqXHR.responseJSON['error'];}
-			$('#ajaxDescription').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorMessage+'</strong>');
+			$('#ajaxDescription').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorMessage+'</strong>');
 		}
 	);
 })

@@ -1,16 +1,19 @@
-@import play.api.i18n._
 @import com.typesafe.config._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/plotly.js/dist/plotly.min.js")'></script>
 
 @translation() = @{
 
-	var lang = Messages(MessageKeys.PLOTLYJS_LANG)
+	var lang = messages(MessageKeys.PLOTLYJS_LANG)
 	if(lang.isEmpty){
 
 		Html("")
@@ -23,6 +26,6 @@
 @translation()
 
 <div id="plotlyjs_messages" class="d-none" data-messages='{
-	"@MessageKeys.PLOTLYJS_LANG":"@Messages(MessageKeys.PLOTLYJS_LANG)"
+	"@MessageKeys.PLOTLYJS_LANG":"@messages(MessageKeys.PLOTLYJS_LANG)"
 }'></div>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/plotly.js/last.js")'></script>

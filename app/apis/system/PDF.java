@@ -22,8 +22,12 @@ import play.data.FormFactory;
 import play.filters.csrf.CSRF;
 import play.filters.csrf.RequireCSRFCheck;
 import play.filters.csrf.CSRF.Token;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -32,13 +36,19 @@ public class PDF extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
+	private MessagesApi messagesApi;
+
+	@Inject
 	private FormFactory formFactory;
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		final Form<PDFInfoFormContent> pdfInfoForm = formFactory.form(PDFInfoFormContent.class).bindFromRequest();
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final Form<PDFInfoFormContent> pdfInfoForm = formFactory.form(PDFInfoFormContent.class).bindFromRequest(request);
 		if (!pdfInfoForm.hasErrors()) {
 
 			final PDFInfoFormContent pdfInfoFormContent = pdfInfoForm.get();
@@ -47,10 +57,10 @@ public class PDF extends Controller {
 			final String returnUrl = pdfInfoFormContent.getReturnUrl();
 
 			final Map<String, String> pdfInfo = new HashMap<>();
-			pdfInfo.put(PDFInfoFormContent.URL, createURL(url, getParams(pdfInfoForm.rawData())));
+			pdfInfo.put(PDFInfoFormContent.URL, createURL(url, getParams(pdfInfoForm.rawData()), request));
 			pdfInfo.put(PDFInfoFormContent.RETURNURL, returnUrl);
 
-			return ok(views.html.system.pdf.render(pdfInfo));
+			return ok(views.html.system.pdf.render(pdfInfo, request, lang, messages));
 		} else {
 
 			throw new RuntimeException(pdfInfoForm.errors().toString());
@@ -66,22 +76,22 @@ public class PDF extends Controller {
 		return Collections.unmodifiableMap(params);
 	}
 
-	private String createURL(@Nonnull final String url, final Map<String, String> params) {
+	private String createURL(@Nonnull final String url, final Map<String, String> params, final Request request) {
 
 		final StringBuilder builder = new StringBuilder(url);
 		builder.append("?").append(getQuery(params));
-		if (isSelf(url)) {
+		if (isSelf(url, request)) {
 
-			builder.append("&").append(getToken(CSRF.getToken(request()).get()));
+			builder.append("&").append(getToken(CSRF.getToken(request).get()));
 		}
 
 		return builder.toString();
 	}
 
-	private boolean isSelf(@Nonnull final String url) {
+	private boolean isSelf(@Nonnull final String url, final Request request) {
 
 		final boolean isContainSchema = url.startsWith("http://") || url.startsWith("https://");
-		final boolean isContainHost = url.contains(request().host());
+		final boolean isContainHost = url.contains(request.host());
 
 		final boolean isOuter = isContainSchema && !isContainHost;
 		return !isOuter;

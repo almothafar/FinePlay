@@ -1,9 +1,11 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/datatables/last.css.js")'></script>
 
@@ -12,7 +14,7 @@
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/datatables.net-select/js/dataTables.select.min.js")'></script>
 
 <div id="datatables_messages" class="d-none" data-messages='{
-	"@MessageKeys.FILTER":"@Messages(MessageKeys.FILTER)",
-	"langUrl":"@routes.Assets.versioned("lib/custom/datatables.net-plugins/i18n/"+Messages(MessageKeys.DATATABLES_LANG)+".lang")"
+	"@MessageKeys.FILTER":"@messages(MessageKeys.FILTER)",
+	"langUrl":"@routes.Assets.versioned("lib/custom/datatables.net-plugins/i18n/"+messages(MessageKeys.DATATABLES_LANG)+".lang")"
 }'></div>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/datatables/last.js")'></script>

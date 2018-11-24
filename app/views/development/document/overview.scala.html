@@ -4,6 +4,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -13,11 +17,11 @@
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
-	@head(Messages(MessageKeys.DEVELOPMENT)){
+	@head(messages(MessageKeys.DEVELOPMENT)){
 
 		@libraries.standard.head()
 		@libraries.markdeep.head()
@@ -27,7 +31,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.OVERVIEW), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.OVERVIEW), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -40,7 +44,7 @@
 				</div>
 				<div class="col-md-9">
 
-					<h2 class="headline">@Messages(MessageKeys.OVERVIEW)</h2>
+					<h2 class="headline">@messages(MessageKeys.OVERVIEW)</h2>
 
 					<h4>Purpose</h4>
 					<div class="mb-3">

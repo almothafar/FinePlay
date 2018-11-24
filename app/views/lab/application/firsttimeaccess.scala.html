@@ -1,7 +1,10 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import models.components._
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -25,7 +28,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.X__X, Messages(MessageKeys.FIRST__TIME), Messages(MessageKeys.ACCESS)), "icon"->"far fa-handshake", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.X__X, messages(MessageKeys.FIRST__TIME), messages(MessageKeys.ACCESS)), "icon"->"far fa-handshake", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -42,11 +45,11 @@
 
 					<div class="mb-3">
 
-						@components.button(Map("id"->"resetButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.RESET), "enabled"->"false"))
+						@components.button(Map("id"->"resetButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.RESET), "enabled"->"false"))
 					</div>
 
 					@components.modal(Map("id"->"firstDialog", "title"->"", "closable"->"true", "size"->"lg"), List(
-							Map("id"->"start", "type"->"primary", "text"->Messages(MessageKeys.START), "data-dismiss"->"modal", "default"->"true")
+							Map("id"->"start", "type"->"primary", "text"->messages(MessageKeys.START), "data-dismiss"->"modal", "default"->"true")
 						)){
 
 						<div class="slick-container">

@@ -1,4 +1,7 @@
-@()
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -24,7 +27,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR)), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->(messages(MessageKeys.REPORT)+" "+messages(MessageKeys.ERROR)), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -37,8 +40,8 @@
 				</div>
 				<div class="col-md-9">
 
-					@components.button(Map("id"->"callReportErrorButton", "type"->"warning", "icon"->"fas fa-exclamation-triangle", "text"->(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR))))
-					@components.button(Map("id"->"throwErrorButton", "type"->"danger", "icon"->"fas fa-ban", "text"->(Messages(MessageKeys.CLIENT)+" "+Messages(MessageKeys.ERROR))))
+					@components.button(Map("id"->"callReportErrorButton", "type"->"warning", "icon"->"fas fa-exclamation-triangle", "text"->(messages(MessageKeys.REPORT)+" "+messages(MessageKeys.ERROR))))
+					@components.button(Map("id"->"throwErrorButton", "type"->"danger", "icon"->"fas fa-ban", "text"->(messages(MessageKeys.CLIENT)+" "+messages(MessageKeys.ERROR))))
 				</div>
 			</div>
 		}

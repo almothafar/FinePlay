@@ -7,7 +7,8 @@
 @import scala.collection.JavaConverters._
 @import scala.collection.JavaConversions._
 
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import play.api.inject._
 @import play.filters.csrf._
 
@@ -24,7 +25,7 @@
 @import common.system._
 @import common.utils._
 
-@(currentSection:String, currentWork:String)(content: Html)
+@(currentSection:String, currentWork:String)(content: Html)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @isDev() = @{
 
@@ -34,7 +35,7 @@
 @isShow(permissions:Permission*) = @{
 
 	LoggerFactory.getLogger(MethodHandles.lookup().lookupClass()).info("Menu");
-	val roleValues = session().getOrDefault(User.ROLES, /* Direct access of not signin */"");
+	val roleValues = request.session().getOptional(User.ROLES).orElse(/* Direct access of not signin */"");
 	models.system.System.isPermissionAllowed(EnumSet.copyOf(permissions.asJava), User.getPermissions(Sessions.toRoles(roleValues)))
 }
 
@@ -69,59 +70,59 @@
 		<div id="system_work-menu" class="shadow-sm-inset">
 
 			@workmenu(Map("id"->"system_sections"), List(
-				(Map("name"->Messages(MessageKeys.HOME), "icon"->"fas fa-home", "selected"->equalSection("home")),List(
-					Map("name"->Messages(MessageKeys.INTRO), "icon"->"far fa-file-alt", "link"->controllers.home.routes.Home.index().toString(), "selected"->equalWork("home","intro")),
-					Map("name"->Messages(MessageKeys.VIDEO), "icon"->"fas fa-film", "link"->controllers.home.routes.Home.video().toString(), "selected"->equalWork("home","video"))
+				(Map("name"->messages(MessageKeys.HOME), "icon"->"fas fa-home", "selected"->equalSection("home")),List(
+					Map("name"->messages(MessageKeys.INTRO), "icon"->"far fa-file-alt", "link"->controllers.home.routes.Home.index().toString(), "selected"->equalWork("home","intro")),
+					Map("name"->messages(MessageKeys.VIDEO), "icon"->"fas fa-film", "link"->controllers.home.routes.Home.video().toString(), "selected"->equalWork("home","video"))
 				)),
-				(Map("name"->Messages(MessageKeys.SETTING), "icon"->"fas fa-cog", "selected"->equalSection("setting")),List(
-					Map("name"->Messages(MessageKeys.SYSTEM), "icon"->"fas fa-desktop", "link"->controllers.setting.system.routes.System.index().toString(), "selected"->equalWork("setting","system")),
-					Map("name"->Messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.setting.user.routes.User.index().toString(), "selected"->equalWork("setting","user"))
+				(Map("name"->messages(MessageKeys.SETTING), "icon"->"fas fa-cog", "selected"->equalSection("setting")),List(
+					Map("name"->messages(MessageKeys.SYSTEM), "icon"->"fas fa-desktop", "link"->controllers.setting.system.routes.System.index("general").toString(), "selected"->equalWork("setting","system")),
+					Map("name"->messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.setting.user.routes.User.index().toString(), "selected"->equalWork("setting","user"))
 				)),
-				(Map("name"->Messages(MessageKeys.INFORMATION), "icon"->"fas fa-info-circle", "selected"->equalSection("information")),List(
-					Map("name"->Messages(MessageKeys.CREATOR), "icon"->"fas fa-address-card", "link"->controllers.information.routes.Information.creator().toString(), "selected"->equalWork("information","creator")),
-					Map("name"->Messages(MessageKeys.LICENSE), "icon"->"ii ii-fineplay", "link"->controllers.information.routes.Information.license().toString(), "selected"->equalWork("information","license"))
+				(Map("name"->messages(MessageKeys.INFORMATION), "icon"->"fas fa-info-circle", "selected"->equalSection("information")),List(
+					Map("name"->messages(MessageKeys.CREATOR), "icon"->"fas fa-address-card", "link"->controllers.information.routes.Information.creator().toString(), "selected"->equalWork("information","creator")),
+					Map("name"->messages(MessageKeys.LICENSE), "icon"->"ii ii-fineplay", "link"->controllers.information.routes.Information.license().toString(), "selected"->equalWork("information","license"))
 				)),
-				(Map("show"->isShow(Permission.MANAGE).toString(), "name"->Messages(MessageKeys.MANAGE), "icon"->"fas fa-wrench", "selected"->equalSection("manage")),List(
-					Map("name"->Messages(MessageKeys.COMPANY), "icon"->"far fa-building", "link"->controllers.manage.company.routes.Read.index().toString(), "selected"->equalWork("manage","company")),
-					Map("name"->Messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user")),
-					Map("class"->"secret", "name"->Messages(MessageKeys.BATCH), "icon"->"fas fa-tasks", "link"->controllers.manage.batch.routes.Batch.index().toString(), "selected"->equalWork("manage","batch"))
+				(Map("show"->isShow(Permission.MANAGE).toString(), "name"->messages(MessageKeys.MANAGE), "icon"->"fas fa-wrench", "selected"->equalSection("manage")),List(
+					Map("name"->messages(MessageKeys.COMPANY), "icon"->"far fa-building", "link"->controllers.manage.company.routes.Read.index().toString(), "selected"->equalWork("manage","company")),
+					Map("name"->messages(MessageKeys.USER), "icon"->"fas fa-user", "link"->controllers.manage.user.routes.Read.index().toString(), "selected"->equalWork("manage","user")),
+					Map("class"->"secret", "name"->messages(MessageKeys.BATCH), "icon"->"fas fa-tasks", "link"->controllers.manage.batch.routes.Batch.index().toString(), "selected"->equalWork("manage","batch"))
 				)),
-				(Map("show"->isDev().toString(), "key"->"development", "name"->Messages(MessageKeys.DEVELOPMENT), "icon"->"fas fa-play fa-dir-flip-horizontal", "selected"->equalSection("development"), "class"->"disclosure-90"),List(
-					Map("key"->"http", "name"->Messages(MessageKeys.HTTP), "icon"->"far fa-file-alt", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
-					Map("key"->"javascript", "name"->Messages(MessageKeys.JAVASCRIPT), "icon"->"fab fa-js", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
-					Map("key"->"design", "name"->Messages(MessageKeys.DESIGN), "icon"->"fas fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),
-					Map("key"->"document", "name"->Messages(MessageKeys.DOCUMENT), "icon"->"far fa-file-alt", "link"->controllers.development.document.routes.Document.index("overview").toString(), "selected"->equalWork("development","document")),
-					Map("key"->"help", "name"->Messages(MessageKeys.HELP), "icon"->"far fa-question-circle", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
+				(Map("show"->isDev().toString(), "key"->"development", "name"->messages(MessageKeys.DEVELOPMENT), "icon"->"fas fa-play fa-dir-flip-horizontal", "selected"->equalSection("development"), "class"->"disclosure-90"),List(
+					Map("key"->"http", "name"->messages(MessageKeys.HTTP), "icon"->"far fa-file-alt", "link"->controllers.development.http.routes.Http.index("ajax").toString(), "selected"->equalWork("development","http")),
+					Map("key"->"javascript", "name"->messages(MessageKeys.JAVASCRIPT), "icon"->"fab fa-js", "link"->controllers.development.javascript.routes.JavaScript.index("test").toString(), "selected"->equalWork("development","javascript")),
+					Map("key"->"design", "name"->messages(MessageKeys.DESIGN), "icon"->"fas fa-object-group", "link"->controllers.development.design.routes.Design.index("theme").toString(), "selected"->equalWork("development","design")),
+					Map("key"->"document", "name"->messages(MessageKeys.DOCUMENT), "icon"->"far fa-file-alt", "link"->controllers.development.document.routes.Document.index("overview").toString(), "selected"->equalWork("development","document")),
+					Map("key"->"help", "name"->messages(MessageKeys.HELP), "icon"->"far fa-question-circle", "link"->controllers.development.help.routes.Help.typography().toString(), "selected"->equalWork("development","help"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.ENVIRONMENT), "icon"->"fas fa-thermometer-half", "selected"->equalSection("environment")),List(
-					Map("name"->Messages(MessageKeys.OPENJDK), "icon"->"fas fa-coffee", "link"->controllers.environment.openjdk.routes.OpenJDK.index().toString(), "selected"->equalWork("environment","openjdk")),
-					Map("name"->Messages(MessageKeys.BROWSER), "icon"->"fab fa-safari", "link"->controllers.environment.browser.routes.Browser.index().toString(), "selected"->equalWork("environment","browser"))
+				(Map("show"->isDev().toString(), "name"->messages(MessageKeys.ENVIRONMENT), "icon"->"fas fa-thermometer-half", "selected"->equalSection("environment")),List(
+					Map("name"->messages(MessageKeys.OPENJDK), "icon"->"fas fa-coffee", "link"->controllers.environment.openjdk.routes.OpenJDK.index("systemproperties").toString(), "selected"->equalWork("environment","openjdk")),
+					Map("name"->messages(MessageKeys.BROWSER), "icon"->"fab fa-safari", "link"->controllers.environment.browser.routes.Browser.index("navigator").toString(), "selected"->equalWork("environment","browser"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FRAMEWORK), "icon"->"ii ii-play if-monochrome", "selected"->equalSection("framework")),List(
-					Map("name"->Messages(MessageKeys.WELCOME), "icon"->"ii ii-play", "link"->controllers.framework.welcome.routes.Welcome.index().toString(), "selected"->equalWork("framework","welcome")),
-					Map("name"->(Messages(MessageKeys.DEFAULT)+" "+Messages(MessageKeys.PAGE)), "icon"->"ef ef-note", "link"->controllers.framework.defaultpage.routes.Defaultpage.index().toString(), "selected"->equalWork("framework","defaultpage")),
-					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"ef ef-musical_note if-monochrome if-inverse", "link"->controllers.framework.application.routes.Application.index("config").toString(), "selected"->equalWork("framework","application")),
-					Map("name"->Messages(MessageKeys.DATETIME), "icon"->"ef ef-calendar if-monochrome", "link"->controllers.framework.datetime.routes.DateTime.index().toString(), "selected"->equalWork("framework","datetime"))
+				(Map("show"->isDev().toString(), "name"->messages(MessageKeys.FRAMEWORK), "icon"->"ii ii-play if-monochrome", "selected"->equalSection("framework")),List(
+					Map("name"->messages(MessageKeys.WELCOME), "icon"->"ii ii-play", "link"->controllers.framework.welcome.routes.Welcome.index().toString(), "selected"->equalWork("framework","welcome")),
+					Map("name"->(messages(MessageKeys.DEFAULT)+" "+messages(MessageKeys.PAGE)), "icon"->"ef ef-note", "link"->controllers.framework.defaultpage.routes.Defaultpage.index().toString(), "selected"->equalWork("framework","defaultpage")),
+					Map("name"->messages(MessageKeys.APPLICATION), "icon"->"ef ef-musical_note if-monochrome if-inverse", "link"->controllers.framework.application.routes.Application.index("config").toString(), "selected"->equalWork("framework","application")),
+					Map("name"->messages(MessageKeys.DATETIME), "icon"->"ef ef-calendar if-monochrome", "link"->controllers.framework.datetime.routes.DateTime.index().toString(), "selected"->equalWork("framework","datetime"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.BOOTSTRAP), "icon"->"ii ii-bootstrap if-monochrome if-inverse", "selected"->equalSection("bootstrap")),List(
-					Map("name"->Messages(MessageKeys.COMPONENT), "icon"->"far fa-file-alt", "link"->controllers.bootstrap.component.routes.Component.index("button").toString(), "selected"->equalWork("bootstrap","component")),
-					Map("name"->Messages(MessageKeys.LAYOUT), "icon"->"far fa-file-alt", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString(), "selected"->equalWork("bootstrap","layout"))
+				(Map("show"->isDev().toString(), "name"->messages(MessageKeys.BOOTSTRAP), "icon"->"ii ii-bootstrap if-monochrome if-inverse", "selected"->equalSection("bootstrap")),List(
+					Map("name"->messages(MessageKeys.COMPONENT), "icon"->"far fa-file-alt", "link"->controllers.bootstrap.component.routes.Component.index("button").toString(), "selected"->equalWork("bootstrap","component")),
+					Map("name"->messages(MessageKeys.LAYOUT), "icon"->"far fa-file-alt", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString(), "selected"->equalWork("bootstrap","layout"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.FONTAWESOME), "icon"->"fab fa-font-awesome", "selected"->equalSection("fontawesome")),List(
-					Map("name"->Messages(MessageKeys.STYLE), "icon"->"far fa-file-alt", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString(), "selected"->equalWork("fontawesome","style"))
+				(Map("show"->isDev().toString(), "name"->messages(MessageKeys.FONTAWESOME), "icon"->"fab fa-font-awesome", "selected"->equalSection("fontawesome")),List(
+					Map("name"->messages(MessageKeys.STYLE), "icon"->"far fa-file-alt", "link"->controllers.fontawesome.style.routes.Style.index("squareicon").toString(), "selected"->equalWork("fontawesome","style"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.LAB), "icon"->"fas fa-flask", "selected"->equalSection("lab")),List(
-					Map("name"->Messages(MessageKeys.LIBRARY), "icon"->"far fa-file-alt", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
-					Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"far fa-file-alt", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
-					Map("name"->Messages(MessageKeys.UI), "icon"->"far fa-file-alt", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
+				(Map("show"->isDev().toString(), "name"->messages(MessageKeys.LAB), "icon"->"fas fa-flask", "selected"->equalSection("lab")),List(
+					Map("name"->messages(MessageKeys.LIBRARY), "icon"->"far fa-file-alt", "link"->controllers.lab.library.routes.Library.index("bootbox").toString(), "selected"->equalWork("lab","library")),
+					Map("name"->messages(MessageKeys.APPLICATION), "icon"->"far fa-file-alt", "link"->controllers.lab.application.routes.Download.index().toString(), "selected"->equalWork("lab","application")),
+					Map("name"->messages(MessageKeys.UI), "icon"->"far fa-file-alt", "link"->controllers.lab.ui.routes.UI.index("drawer").toString(), "selected"->equalWork("lab","ui")),
 					Map("name"->"I Like", "icon"->"fab fa-apple fa-flip-horizontal", "link"->controllers.lab.ilike.routes.ILike.index("list", false).toString(), "selected"->equalWork("lab","ilike")),
-					Map("name"->Messages(MessageKeys.PAGE), "icon"->"far fa-file-alt", "link"->controllers.lab.page.routes.Page.index("landing").toString(), "selected"->equalWork("lab","page")),
-					Map("name"->Messages(MessageKeys.MAINTENANCE), "icon"->"far fa-file-alt", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance"))
+					Map("name"->messages(MessageKeys.PAGE), "icon"->"far fa-file-alt", "link"->controllers.lab.page.routes.Page.index("landing").toString(), "selected"->equalWork("lab","page")),
+					Map("name"->messages(MessageKeys.MAINTENANCE), "icon"->"far fa-file-alt", "link"->controllers.lab.maintenance.routes.Maintenance.master().toString(), "selected"->equalWork("lab","maintenance"))
 				)),
-				(Map("show"->isDev().toString(), "name"->Messages(MessageKeys.SECTION), "icon"->"far fa-folder", "selected"->equalSection("section"), "class"->"disclosure-show"),List(
-					Map("name"->Messages(MessageKeys.WORK), "icon"->"far fa-file-alt", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalWork("section","work")),
-					Map("name"->(Messages(MessageKeys.WORK)+" 2"), "icon"->"far fa-file-alt", "link"->"", "selected"->equalWork("section","work2")),
-					Map("name"->(Messages(MessageKeys.WORK)+" 3"), "icon"->"far fa-file-alt", "link"->"", "selected"->equalWork("section","work3"), "enabled"->"false")
+				(Map("show"->isDev().toString(), "name"->messages(MessageKeys.SECTION), "icon"->"far fa-folder", "selected"->equalSection("section"), "class"->"disclosure-show"),List(
+					Map("name"->messages(MessageKeys.WORK), "icon"->"far fa-file-alt", "link"->controllers.section.work.routes.Work.task().toString, "selected"->equalWork("section","work")),
+					Map("name"->(messages(MessageKeys.WORK)+" 2"), "icon"->"far fa-file-alt", "link"->"", "selected"->equalWork("section","work2")),
+					Map("name"->(messages(MessageKeys.WORK)+" 3"), "icon"->"far fa-file-alt", "link"->"", "selected"->equalWork("section","work3"), "enabled"->"false")
 				))
 			))
 		</div>
@@ -148,11 +149,11 @@
 						@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fas fa-angle-double-up", "text"->"", "class"->"ml-1"))
 						<div class="btn-group">
 							<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @session().get(User.USER_ID)</span>
+								<i class="fas fa-user"></i><span class="d-none d-sm-inline"> @request.session().getOptional(User.USER_ID).get()</span>
 							</button>
 							<div class="dropdown-menu dropdown-menu-right text-left">
-								<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @Messages(MessageKeys.SETTING)...</a>
-								<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fas fa-sign-out-alt"></i> @Messages(MessageKeys.USER_SIGNOUT)</a>
+								<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @messages(MessageKeys.SETTING)...</a>
+								<a id="signOutLink" class="dropdown-item" href="@controllers.user.routes.User.signOut()"><i class="fas fa-sign-out-alt"></i> @messages(MessageKeys.USER_SIGNOUT)</a>
 							</div>
 						</div>
 						@components.button(Map("id"->"helpButton", "type"->"info", "icon"->"fas fa-question", "text"->"", "class"->"ml-1 d-none"))
@@ -174,9 +175,9 @@
 		<div id="system_notifications">
 		</div>
 
-		@components.modal(Map("id"->"reportErrorDialog", "icon"->"fas fa-bug", "title"->(Messages(MessageKeys.REPORT)+" "+Messages(MessageKeys.ERROR)), "data-backdrop"->"static", "size"->"lg"), List(
-				Map("id"->"reportErrorCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
-				Map("id"->"reportErrorButton", "type"->"primary", "text"->Messages(MessageKeys.REPORT), "default"->"true")
+		@components.modal(Map("id"->"reportErrorDialog", "icon"->"fas fa-bug", "title"->(messages(MessageKeys.REPORT)+" "+messages(MessageKeys.ERROR)), "data-backdrop"->"static", "size"->"lg"), List(
+				Map("id"->"reportErrorCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+				Map("id"->"reportErrorButton", "type"->"primary", "text"->messages(MessageKeys.REPORT), "default"->"true")
 			)){
 			<textarea id="reportErrorContent" class="form-control" placeholder="Content" rows="16" required maxlength="1000"></textarea>
 			<div class="wordwrap">
@@ -186,7 +187,7 @@
 			@components.progress(Map("id"->"reportErrorProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
 			@if(isDev()){
 			<div class="mt-3">
-				<input type="text" class="form-control" id="searchErrorMessage" placeholder="@Messages(MessageKeys.ERROR)">
+				<input type="text" class="form-control" id="searchErrorMessage" placeholder="@messages(MessageKeys.ERROR)">
 				@components.button(Map("id"->"searchStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"Stack Overflow"))
 				@components.button(Map("id"->"searchStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"スタック・オーバーフロー"))
 				@components.button(Map("id"->"searchQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
@@ -202,7 +203,7 @@
 				<nav id="system_help-menu" class="navbar bg-primary d-flex justify-content-center">
 					<div class="row align-items-center">
 						@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
-						<div class="h4 mb-0">@Messages(MessageKeys.HELP)</div>
+						<div class="h4 mb-0">@messages(MessageKeys.HELP)</div>
 						@components.button(Map("type"->"link", "icon"->"navbar-toggler-icon", "text"->"", "class"->"navbar-toggler", "tabindex"->"-1"))
 					</div>
 				</nav>
@@ -294,14 +295,14 @@
 	</div>
 
 	<div id="body_messages" class="d-none" data-messages='{
-		"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
-		"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
-		"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
-		"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)",
+		"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+		"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+		"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+		"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)",
 		"currentSection":"@currentSection",
 		"currentWork":"@currentWork",
-		"userId":"@session.get(models.user.User.USER_ID)",
-		"getHelpError":"@Messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, Messages(MessageKeys.HELP))"
+		"userId":"@request.session().getOptional(models.user.User.USER_ID).get()",
+		"getHelpError":"@messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages(MessageKeys.HELP))"
 	}'></div>
 
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/body.js")'></script>

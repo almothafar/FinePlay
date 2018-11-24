@@ -119,15 +119,15 @@ $('#ajaxSubmit').on('click', function(e){
 
 				$('#ajaxProgress>.progress-bar').addClass('bg-danger');
 				$('#ajaxCancel').prop('disabled', false);
-				$('#ajaxMessage').text(Messages(MessageKeys.FAILURE));
-				$('#ajaxDescription').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
+				$('#ajaxMessage').text(messages(MessageKeys.FAILURE));
+				$('#ajaxDescription').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
 			}
 		);
 	})
 
 	$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
 	$('#ajaxCancel').prop('disabled', true);
-	$('#ajaxMessage').text(Messages(MessageKeys.PLEASE__WAIT));
+	$('#ajaxMessage').text(messages(MessageKeys.PLEASE__WAIT));
 	$('#ajaxDescription').text('-');
 
 	$('#ajaxDialog').modal('show');

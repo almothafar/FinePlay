@@ -3,12 +3,16 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -34,11 +38,11 @@
 				</div>
 				<div class="col-md-9">
 
-					<h4 class="headline">@Messages(MessageKeys.FAQ)</h4>
+					<h4 class="headline">@messages(MessageKeys.FAQ)</h4>
 					<div class="row mb-3">
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer0", "aria-expanded"->"true"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer0", "aria-expanded"->"true"))
 							@components.collapse(Map("id"->"answer0", "show"->"true")){
 								@components.card(Map("id"->"")){
 									<div class="card-body">
@@ -49,7 +53,7 @@
 						</div>
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->Messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer1", "aria-expanded"->"false"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->messages(MessageKeys.QUESTION), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#answer1", "aria-expanded"->"false"))
 							@components.collapse(Map("id"->"answer1")){
 								@components.card(Map("id"->"")){
 									<div class="card-body">
@@ -64,19 +68,19 @@
 					<div class="row mb-3">
 						<div class="col-md-6 mb-3 mb-md-0">
 
-							@components.button(Map("id"->"", "type"->"info", "block"->"true", "icon"->"fas fa-chevron-up", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-180 pl-0", "data-toggle"->"collapse", "data-target"->"#answerb0", "aria-expanded"->"true"))
+							@components.button(Map("id"->"", "type"->"info", "block"->"true", "icon"->"fas fa-chevron-up", "text"->messages(MessageKeys.DETAIL), "class"->"disclosure-180 pl-0", "data-toggle"->"collapse", "data-target"->"#answerb0", "aria-expanded"->"true"))
 							@components.collapse(Map("id"->"answerb0", "show"->"true")){
 								@components.card(Map("id"->"")){
 									<div class="card-body">
 
 										<div class="form-group row">
-											<label for="userid" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
+											<label for="userid" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
 											<div class="col-sm-9">
 												<input id="userid" type="text" name="userid" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-userid="">
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="password" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
+											<label for="password" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
 											<div class="col-sm-9">
 												<input id="password" type="text" name="password" class="form-control" placeholder="" value="" required autofocus maxlength="16" data-parsley-trigger="change focusout" data-parsley-password="">
 											</div>
@@ -87,19 +91,19 @@
 						</div>
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"info", "block"->"true", "icon"->"fas fa-chevron-up", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-180 pl-0", "data-toggle"->"collapse", "data-target"->"#answerb1", "aria-expanded"->"false"))
+							@components.button(Map("id"->"", "type"->"info", "block"->"true", "icon"->"fas fa-chevron-up", "text"->messages(MessageKeys.DETAIL), "class"->"disclosure-180 pl-0", "data-toggle"->"collapse", "data-target"->"#answerb1", "aria-expanded"->"false"))
 							@components.collapse(Map("id"->"answerb1")){
 								@components.card(Map("id"->"")){
 									<div class="card-body">
 
 										<div class="form-group row">
-											<label for="userid" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
+											<label for="userid" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
 											<div class="col-sm-9">
 												<input id="userid" type="text" name="userid" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-userid="">
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="password" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
+											<label for="password" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
 											<div class="col-sm-9">
 												<input id="password" type="text" name="password" class="form-control" placeholder="" value="" required autofocus maxlength="16" data-parsley-trigger="change focusout" data-parsley-password="">
 											</div>
@@ -114,12 +118,12 @@
 					<div class="row mb-3">
 						<div class="col-md-6 mb-3 mb-md-0">
 
-							@components.modal(Map("id"->"dialog0", "title"->Messages(MessageKeys.FAILED), "closable"->"true", "data-backdrop"->"static"), List(
-									Map("id"->"dialogOk", "text"->Messages(MessageKeys.OK), "default"->"true")
+							@components.modal(Map("id"->"dialog0", "title"->messages(MessageKeys.FAILED), "closable"->"true", "data-backdrop"->"static"), List(
+									Map("id"->"dialogOk", "text"->messages(MessageKeys.OK), "default"->"true")
 								)){
 								@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger", "striped"->"true", "animated"->"true"))
 								<br>
-								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#collapseMordal0", "aria-expanded"->"true"))
+								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->messages(MessageKeys.DETAIL), "class"->"disclosure-90 text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#collapseMordal0", "aria-expanded"->"true"))
 								@components.collapse(Map("id"->"collapseMordal0", "show"->"true")){
 									@components.card(Map("id"->"")){
 										<div class="card-body">
@@ -140,12 +144,12 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 						</div>
 						<div class="col-md-6">
 
-							@components.modal(Map("id"->"dialog1", "title"->Messages(MessageKeys.FAILED), "closable"->"true", "data-backdrop"->"static"), List(
-									Map("id"->"centerDialogOk", "text"->Messages(MessageKeys.OK), "default"->"true")
+							@components.modal(Map("id"->"dialog1", "title"->messages(MessageKeys.FAILED), "closable"->"true", "data-backdrop"->"static"), List(
+									Map("id"->"centerDialogOk", "text"->messages(MessageKeys.OK), "default"->"true")
 								)){
 								@components.progress(Map("id"->"", "value"->"100", "max"->"100", "type"->"danger", "striped"->"true", "animated"->"true"))
 								<br>
-								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->Messages(MessageKeys.DETAIL), "class"->"disclosure-90 text-dark pl-0 text-left", "show"->"ture", "data-toggle"->"collapse", "data-target"->"#collapseMordal1", "aria-expanded"->"false"))
+								@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->messages(MessageKeys.DETAIL), "class"->"disclosure-90 text-dark pl-0 text-left", "show"->"ture", "data-toggle"->"collapse", "data-target"->"#collapseMordal1", "aria-expanded"->"false"))
 								@components.collapse(Map("id"->"collapseMordal1")){
 									@components.card(Map("id"->"")){
 										<div class="card-body">
@@ -170,7 +174,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 					<div class="row mb-3">
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container0", "aria-expanded"->"true"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"fas fa-folder", "iconType"->"primary", "text"->messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container0", "aria-expanded"->"true"))
 							@components.collapse(Map("id"->"container0", "show"->"true")){
 								@components.card(Map("id"->"")){
 									<div class="card-body shadow-sm-inset">
@@ -195,7 +199,7 @@ java.lang.NoClassDefFoundError: Could not initialize class ch.qos.logback.classi
 						</div>
 						<div class="col-md-6">
 
-							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"far fa-folder", "iconType"->"primary", "text"->Messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container1", "aria-expanded"->"false"))
+							@components.button(Map("id"->"", "type"->"link", "block"->"true", "icon"->"far fa-folder", "iconType"->"primary", "text"->messages(MessageKeys.FILE), "size"->"lg", "class"->"disclosure-show text-dark pl-0 text-left", "data-toggle"->"collapse", "data-target"->"#container1", "aria-expanded"->"false"))
 							@components.collapse(Map("id"->"container1")){
 								@components.card(Map("id"->"")){
 									<div class="card-body shadow-sm-inset">

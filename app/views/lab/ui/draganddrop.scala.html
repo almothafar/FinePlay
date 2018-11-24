@@ -6,14 +6,19 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -27,7 +32,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.DRAG)+" & "+Messages(MessageKeys.DROP)), "icon"->"fas fa-mouse-pointer", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->(messages(MessageKeys.DRAG)+" & "+messages(MessageKeys.DROP)), "icon"->"fas fa-mouse-pointer", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){

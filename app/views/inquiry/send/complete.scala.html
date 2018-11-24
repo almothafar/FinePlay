@@ -3,7 +3,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -12,11 +13,11 @@
 
 @import common.system._
 
-@(form: play.data.Form[models.inquiry.InquiryFormContent])
+@(form: play.data.Form[models.inquiry.InquiryFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
-	@top.head(Messages(MessageKeys.INQUIRY)){
+	@top.head(messages(MessageKeys.INQUIRY)){
 
 		@libraries.standard.head()
 	}
@@ -33,21 +34,21 @@
 				<div class="col-md-10 col-lg-8 col-xl-6 p-0">
 					@components.card(Map("id"->"completePanel", "class"->"shadow-sm m-3")){
 						<div class="card-header">
-							@Messages(MessageKeys.INQUIRY)
+							@messages(MessageKeys.INQUIRY)
 						</div>
 						<div class="card-body">
 
-							<h4 class="card-title">@Messages(MessageKeys.INQUIRY_SEND_COMPLETE)</h4>
-							<p class="card-text">@Messages(MessageKeys.INQUIRY_SEND_COMPLETE_DESCRIPTION)</p>
+							<h4 class="card-title">@messages(MessageKeys.INQUIRY_SEND_COMPLETE)</h4>
+							<p class="card-text">@messages(MessageKeys.INQUIRY_SEND_COMPLETE_DESCRIPTION)</p>
 							<div class="form-group row">
-								<label for="@Inquiry.USERID" class="col-sm-3 col-form-label">@Messages(MessageKeys.EMAIL)</label>
+								<label for="@Inquiry.USERID" class="col-sm-3 col-form-label">@messages(MessageKeys.EMAIL)</label>
 								<div class="col-sm-9">
 									<input id="@Inquiry.USERID" type="email" name="@Inquiry.USERID" class="form-control" placeholder="Email" value="@form(Inquiry.USERID).value.orElse("")" required disabled>
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-12 text-right">
-									@components.linkbutton(Map("id"->"topButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "link"->controllers.user.routes.User.index().toString, "default"->"true", "class"->"float-right"))
+									@components.linkbutton(Map("id"->"topButton", "type"->"primary", "text"->messages(MessageKeys.OK), "link"->controllers.user.routes.User.index().toString, "default"->"true", "class"->"float-right"))
 								</div>
 							</div>
 

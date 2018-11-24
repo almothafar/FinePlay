@@ -23,19 +23,22 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
 public class DateTime extends Controller {
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -44,26 +47,29 @@ public class DateTime extends Controller {
 	private UserService userService;
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final models.framework.datetime.DateTime readedDateTime = readDateTime(manager);
-			final DateTimeFormContent readedDateTimeFormContent = setDateTimeFormContentValue(readedDateTime);
+		return jpaApi.withTransaction(manager -> {
+
+			final models.framework.datetime.DateTime readedDateTime = readDateTime(manager, request, messages);
+			final DateTimeFormContent readedDateTimeFormContent = setDateTimeFormContentValue(request, readedDateTime);
 
 			final Form<DateTimeFormContent> readedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(readedDateTimeFormContent);
 
-			return ok(views.html.framework.datetime.datetime.render(new HashMap<>(), readedDateTimeForm));
+			return ok(views.html.framework.datetime.datetime.render(new HashMap<>(), readedDateTimeForm, request, lang, messages));
 		});
 	}
 
 	@Nonnull
-	private models.framework.datetime.DateTime readDateTime(@Nonnull final EntityManager manager) {
+	private models.framework.datetime.DateTime readDateTime(@Nonnull final EntityManager manager, @Nonnull final Request request, @Nonnull Messages messages) {
 
 		final User user;
 		try {
 
-			user = userService.read(manager, request().session().get(User_.USER_ID));
+			user = userService.read(manager, messages, request.session().getOptional(User_.USER_ID).get());
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -83,11 +89,14 @@ public class DateTime extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result update() {
+	public Result update(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<DateTimeFormContent> datetimeForm = formFactory.form(DateTimeFormContent.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
+
+			final Form<DateTimeFormContent> datetimeForm = formFactory.form(DateTimeFormContent.class).bindFromRequest(request);
 			if (!datetimeForm.hasErrors()) {
 
 				final DateTimeFormContent datetimeFormContent = datetimeForm.get();
@@ -95,39 +104,39 @@ public class DateTime extends Controller {
 				final models.framework.datetime.DateTime updatedDateTime;
 				try {
 
-					updatedDateTime = updateDateTime(manager, datetimeFormContent);
+					updatedDateTime = updateDateTime(manager, datetimeFormContent, request, messages);
 				} catch (IllegalStateException e) {
 
-					final Map<String, String> alertInfo = Map.of("dateTimeWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage());
+					final Map<String, String> alertInfo = Map.of("dateTimeWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage());
 
-					return failureRead(alertInfo, datetimeForm);
+					return failureRead(alertInfo, datetimeForm, request, lang, messages);
 				}
-				final DateTimeFormContent updatedDateTimeFormContent = setDateTimeFormContentValue(updatedDateTime);
+				final DateTimeFormContent updatedDateTimeFormContent = setDateTimeFormContentValue(request, updatedDateTime);
 
 				final Form<DateTimeFormContent> updatedDateTimeForm = formFactory.form(DateTimeFormContent.class).fill(updatedDateTimeFormContent);
 
-				return ok(views.html.framework.datetime.datetime.render(new HashMap<>(), updatedDateTimeForm));
+				return ok(views.html.framework.datetime.datetime.render(new HashMap<>(), updatedDateTimeForm, request, lang, messages));
 			} else {
 
-				return failureRead(new HashMap<>(), datetimeForm);
+				return failureRead(new HashMap<>(), datetimeForm, request, lang, messages);
 			}
 		});
 	}
 
 	@Nonnull
-	private models.framework.datetime.DateTime updateDateTime(@Nonnull final EntityManager manager, @Nonnull final DateTimeFormContent datetimeFormContent) {
+	private models.framework.datetime.DateTime updateDateTime(@Nonnull final EntityManager manager, @Nonnull final DateTimeFormContent datetimeFormContent, @Nonnull final Request request, @Nonnull final Messages messages) {
 
 		final LocalDate dateTime_Date = datetimeFormContent.getDateTime_Date();
 		final LocalTime dateTime_Time = datetimeFormContent.getDateTime_Time();
 		LocalDateTime serverDateTime_DateTime = null;
 		if (Objects.nonNull(dateTime_Date) && Objects.nonNull(dateTime_Time)) {
 
-			if (!DateTimes.isServerDateTimeConvertible(LocalDateTime.of(dateTime_Date, dateTime_Time))) {
+			if (!DateTimes.isServerDateTimeConvertible(request, LocalDateTime.of(dateTime_Date, dateTime_Time))) {
 
-				throw new IllegalStateException(getIllegalDateTimeMessage());
+				throw new IllegalStateException(getIllegalDateTimeMessage(messages));
 			}
 
-			serverDateTime_DateTime = DateTimes.toServerDateTime(LocalDateTime.of(dateTime_Date, dateTime_Time));
+			serverDateTime_DateTime = DateTimes.toServerDateTime(request, LocalDateTime.of(dateTime_Date, dateTime_Time));
 		}
 
 		final LocalDate date_Date = datetimeFormContent.getDate_Date();
@@ -137,19 +146,19 @@ public class DateTime extends Controller {
 		LocalTime serverTime = null;
 		if (Objects.nonNull(time_Time)) {
 
-			if (!DateTimes.isServerDateTimeConvertible(LocalDateTime.of(time_Date, time_Time))) {
+			if (!DateTimes.isServerDateTimeConvertible(request, LocalDateTime.of(time_Date, time_Time))) {
 
-				throw new IllegalStateException(getIllegalDateTimeMessage());
+				throw new IllegalStateException(getIllegalDateTimeMessage(messages));
 			}
 
-			final LocalDateTime serverTime_DateTime = DateTimes.toServerDateTime(LocalDateTime.of(time_Date, time_Time));
+			final LocalDateTime serverTime_DateTime = DateTimes.toServerDateTime(request, LocalDateTime.of(time_Date, time_Time));
 			serverTime = serverTime_DateTime.toLocalTime();
 		}
 
 		final User user;
 		try {
 
-			user = userService.read(manager, request().session().get(User_.USER_ID));
+			user = userService.read(manager, messages, request.session().getOptional(User_.USER_ID).get());
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -178,23 +187,23 @@ public class DateTime extends Controller {
 		return datetime;
 	}
 
-	private String getIllegalDateTimeMessage() {
+	private String getIllegalDateTimeMessage(@Nonnull final Messages messages) {
 
-		final String message = messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_ILLEGAL, messages.get(lang(), MessageKeys.DATETIME)) + //
+		final String message = messages.at(MessageKeys.SYSTEM_ERROR_X_ILLEGAL, messages.at(MessageKeys.DATETIME)) + //
 				"(" + //
-				messages.get(lang(), MessageKeys.X__IS__X, //
-						messages.get(lang(), MessageKeys.DATETIME), //
-						messages.get(lang(), MessageKeys.X__OF__X, //
-								messages.get(lang(), MessageKeys.X__OR__X, //
-										messages.get(lang(), MessageKeys.START), //
-										messages.get(lang(), MessageKeys.END)), //
-								messages.get(lang(), MessageKeys.DAYLIGHT__SAVING__TIME)))
+				messages.at(MessageKeys.X__IS__X, //
+						messages.at(MessageKeys.DATETIME), //
+						messages.at(MessageKeys.X__OF__X, //
+								messages.at(MessageKeys.X__OR__X, //
+										messages.at(MessageKeys.START), //
+										messages.at(MessageKeys.END)), //
+								messages.at(MessageKeys.DAYLIGHT__SAVING__TIME)))
 				+ ")";
 		return message;
 	}
 
 	@Nonnull
-	private DateTimeFormContent setDateTimeFormContentValue(@Nonnull final models.framework.datetime.DateTime datetime) {
+	private DateTimeFormContent setDateTimeFormContentValue(@Nonnull final Request request, @Nonnull final models.framework.datetime.DateTime datetime) {
 
 		Objects.requireNonNull(datetime);
 
@@ -202,7 +211,7 @@ public class DateTime extends Controller {
 
 		if (Objects.nonNull(datetime.getDateTime())) {
 
-			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(datetime.getDateTime());
+			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(request, datetime.getDateTime());
 			datetimeFormContent.setDateTime_Date_submit(clientDateTime.toLocalDate());
 			datetimeFormContent.setDateTime_Time_submit(clientDateTime.toLocalTime());
 		}
@@ -211,12 +220,12 @@ public class DateTime extends Controller {
 
 		if (Objects.nonNull(datetime.getTime())) {
 
-			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(LocalDateTime.of(LocalDate.now(), datetime.getTime()));
+			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(request, LocalDateTime.of(LocalDate.now(), datetime.getTime()));
 			datetimeFormContent.setTime_Date(clientDateTime.toLocalDate());
 			datetimeFormContent.setTime_Time_submit(clientDateTime.toLocalTime());
 		} else {
 
-			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(LocalDateTime.now());
+			final LocalDateTime clientDateTime = DateTimes.toClientDateTime(request, LocalDateTime.now());
 			datetimeFormContent.setTime_Date(clientDateTime.toLocalDate());
 		}
 
@@ -224,8 +233,8 @@ public class DateTime extends Controller {
 	}
 
 	@Nonnull
-	private Result failureRead(@Nonnull final Map<String, String> alertInfo, @Nonnull final Form<DateTimeFormContent> datetimeForm) {
+	private Result failureRead(@Nonnull final Map<String, String> alertInfo, @Nonnull final Form<DateTimeFormContent> datetimeForm, final Request request, final Lang lang, final Messages messages) {
 
-		return badRequest(views.html.framework.datetime.datetime.render(alertInfo, datetimeForm));
+		return badRequest(views.html.framework.datetime.datetime.render(alertInfo, datetimeForm, request, lang, messages));
 	}
 }

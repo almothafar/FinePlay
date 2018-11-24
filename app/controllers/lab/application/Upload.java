@@ -27,11 +27,15 @@ import common.system.MessageKeys;
 import common.utils.Binaries;
 import models.system.System.PermissionsAllowed;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 
 @PermissionsAllowed
 public class Upload extends Controller {
@@ -39,17 +43,23 @@ public class Upload extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return ok(views.html.lab.application.upload.render(new HashMap<>()));
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return ok(views.html.lab.application.upload.render(new HashMap<>(), request, lang, messages));
 	}
 
 	@RequireCSRFCheck
-	public Result form() {
+	public Result form(@Nonnull final Request request) {
 
-		final MultipartFormData<File> body = request().body().asMultipartFormData();
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final MultipartFormData<File> body = request.body().asMultipartFormData();
 		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
 		if (filePart != null) {
 
@@ -60,21 +70,24 @@ public class Upload extends Controller {
 			final Path path = filePart.getFile().toPath();
 			LOGGER.info("" + path);
 
-			final Map<String, String> alertInfo = Map.of("success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded");
+			final Map<String, String> alertInfo = Map.of("success", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
 
-			return ok(views.html.lab.application.upload.render(alertInfo));
+			return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 		} else {
 
-			final Map<String, String> alertInfo = Map.of("warning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> Missing " + messages.get(lang(), MessageKeys.FILE));
+			final Map<String, String> alertInfo = Map.of("warning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> Missing " + messages.at(MessageKeys.FILE));
 
-			return ok(views.html.lab.application.upload.render(alertInfo));
+			return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 		}
 	}
 
 	@RequireCSRFCheck
-	public Result image() {
+	public Result image(@Nonnull final Request request) {
 
-		final MultipartFormData<File> body = request().body().asMultipartFormData();
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final MultipartFormData<File> body = request.body().asMultipartFormData();
 		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
 		if (filePart != null) {
 
@@ -99,14 +112,14 @@ public class Upload extends Controller {
 				Files.move(path, uploadPath);
 				LOGGER.info("Upload : Path={} File name={} Content type={}", uploadPath, fileName, realContentType);
 
-				final Map<String, String> alertInfo = Map.of("imageSuccess", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded");
+				final Map<String, String> alertInfo = Map.of("imageSuccess", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
 
-				return ok(views.html.lab.application.upload.render(alertInfo));
+				return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 			} catch (IOException | IllegalStateException e) {
 
-				final Map<String, String> alertInfo = Map.of("imageWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + messages.get(lang(), MessageKeys.SYSTEM_ERROR_X__DATA_ILLEGAL, filePart.getFilename()));
+				final Map<String, String> alertInfo = Map.of("imageWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + messages.at(MessageKeys.SYSTEM_ERROR_X__DATA_ILLEGAL, filePart.getFilename()));
 
-				return ok(views.html.lab.application.upload.render(alertInfo));
+				return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 			} finally {
 
 				try {
@@ -117,17 +130,20 @@ public class Upload extends Controller {
 			}
 		} else {
 
-			final Map<String, String> alertInfo = Map.of("imageWarning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> Missing " + messages.get(lang(), MessageKeys.FILE));
+			final Map<String, String> alertInfo = Map.of("imageWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> Missing " + messages.at(MessageKeys.FILE));
 
-			return ok(views.html.lab.application.upload.render(alertInfo));
+			return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 		}
 	}
 
 	@BodyParser.Of(value = BodyParser.MultipartFormData.class)
 	@RequireCSRFCheck
-	public Result direct() {
+	public Result direct(@Nonnull final Request request) {
 
-		final MultipartFormData<File> body = request().body().asMultipartFormData();
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final MultipartFormData<File> body = request.body().asMultipartFormData();
 		@SuppressWarnings("unused")
 		final Map<String, String[]> form = body.asFormUrlEncoded();
 		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
@@ -138,7 +154,7 @@ public class Upload extends Controller {
 		final ObjectMapper mapper = new ObjectMapper();
 		final ObjectNode result = mapper.createObjectNode();
 		result.put("status", "success");
-		result.put("message", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.FILE) + " uploaded");
+		result.put("message", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
 
 		return ok(result);
 	}

@@ -11,23 +11,20 @@ import javax.persistence.criteria.Root;
 import javax.security.auth.login.AccountException;
 import javax.security.auth.login.AccountNotFoundException;
 
+import common.system.MessageKeys;
 import models.user.User;
 import models.user.UserDao;
 import models.user.User_;
-import play.i18n.MessagesApi;
-import play.mvc.Controller;
+import play.i18n.Messages;
 
 @Singleton
 public class DefaultUserService implements UserService {
 
 	@Inject
-	private MessagesApi messages;
-
-	@Inject
 	private UserDao userDao;
 
 	@Override
-	public boolean isExist(EntityManager manager, String userId) {
+	public boolean isExist(EntityManager manager, Messages messages, String userId) {
 
 		Objects.requireNonNull(userId);
 
@@ -47,7 +44,7 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public void create(EntityManager manager, User user) throws AccountException {
+	public void create(EntityManager manager, Messages messages, User user) throws AccountException {
 
 		try {
 
@@ -59,7 +56,7 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public User read(EntityManager manager, String userId) throws AccountException {
+	public User read(EntityManager manager, Messages messages, String userId) throws AccountException {
 
 		Objects.requireNonNull(userId);
 
@@ -73,20 +70,20 @@ public class DefaultUserService implements UserService {
 			});
 		} catch (final NoResultException e) {
 
-			throw new AccountNotFoundException(messages.get(Controller.ctx().lang(), "system.error.userid"));
+			throw new AccountNotFoundException(messages.at(MessageKeys.SYSTEM_ERROR_USERID));
 		}
 
 		return user;
 	}
 
 	@Override
-	public User update(EntityManager manager, User user) throws AccountException {
+	public User update(EntityManager manager, Messages messages, User user) throws AccountException {
 
 		return userDao.update(manager, user);
 	}
 
 	@Override
-	public void delete(EntityManager manager, User user) throws AccountException {
+	public void delete(EntityManager manager, Messages messages, User user) throws AccountException {
 
 		userDao.delete(manager, user);
 	}

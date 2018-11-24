@@ -3,12 +3,16 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -21,7 +25,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.PROCESS), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.PROCESS), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -35,7 +39,7 @@
 				<div class="col-md-9">
 
 					<div class="mb-3">
-						<h4 class="headline">@Messages(MessageKeys.PROCESS)</h4>
+						<h4 class="headline">@messages(MessageKeys.PROCESS)</h4>
 						<div>
 							@components.process(Map("id"->""), List(
 								Map("name"->"", "icon"->"", "link"->"#", "selected"->"true"),
@@ -66,7 +70,7 @@
 								Map("name"->"Contract", "icon"->"far fa-handshake", "link"->"#")
 							))
 						</div>
-						<h4 class="headline">@Messages(MessageKeys.PROCESS)</h4>
+						<h4 class="headline">@messages(MessageKeys.PROCESS)</h4>
 						<div>
 							@components.adjust.process(Map("id"->"","foldSize"->"xl"), List(
 								Map("name"->"Start", "icon"->"fas fa-flag", "link"->"#", "selected"->"true"),
@@ -104,7 +108,7 @@
 								Map("name"->"Contract", "icon"->"far fa-handshake", "link"->"#", "selected"->"true")
 							))
 						</div>
-						<h4 class="headline">@Messages(MessageKeys.PROCESS)</h4>
+						<h4 class="headline">@messages(MessageKeys.PROCESS)</h4>
 						<div>
 							@components.adjust.process(Map("id"->"","foldSize"->"xl","fixedSelect"->"true"), List(
 								Map("name"->"Start", "icon"->"fas fa-flag", "link"->"#", "selected"->"true"),

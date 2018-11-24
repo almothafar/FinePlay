@@ -3,13 +3,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -40,8 +44,8 @@
 					<h4 class="headline">All</h4>
 					<fieldset class="form-group">
 
-						@components.button(Map("id"->"storeButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.SAVE)))
-						@components.button(Map("id"->"restoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.LOAD)))
+						@components.button(Map("id"->"storeButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.SAVE)))
+						@components.button(Map("id"->"restoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.LOAD)))
 					</fieldset>
 
 					<h4 class="headline">Form controls</h4>
@@ -127,8 +131,8 @@
 
 						<fieldset class="form-group">
 
-							@components.button(Map("id"->"form0StoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.SAVE)))
-							@components.button(Map("id"->"form0RestoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.LOAD)))
+							@components.button(Map("id"->"form0StoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.SAVE)))
+							@components.button(Map("id"->"form0RestoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.LOAD)))
 						</fieldset>
 					</form>
 
@@ -215,8 +219,8 @@
 
 						<fieldset class="form-group">
 
-							@components.button(Map("id"->"form1StoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.SAVE)))
-							@components.button(Map("id"->"form1RestoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.LOAD)))
+							@components.button(Map("id"->"form1StoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.SAVE)))
+							@components.button(Map("id"->"form1RestoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.LOAD)))
 						</fieldset>
 					</form>
 
@@ -237,8 +241,8 @@
 
 						<fieldset class="form-group">
 
-							@components.button(Map("id"->"form2StoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.SAVE)))
-							@components.button(Map("id"->"form2RestoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.LOAD)))
+							@components.button(Map("id"->"form2StoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.SAVE)))
+							@components.button(Map("id"->"form2RestoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.LOAD)))
 						</fieldset>
 					</form>
 
@@ -264,8 +268,8 @@
 
 						<fieldset class="form-group">
 
-							@components.button(Map("id"->"form3StoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.SAVE)))
-							@components.button(Map("id"->"form3RestoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.LOAD)))
+							@components.button(Map("id"->"form3StoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.SAVE)))
+							@components.button(Map("id"->"form3RestoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.LOAD)))
 						</fieldset>
 					</form>
 
@@ -275,8 +279,8 @@
 
 						<fieldset class="form-group">
 
-							@components.button(Map("id"->"form4StoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.SAVE)))
-							@components.button(Map("id"->"form4RestoreButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.LOAD)))
+							@components.button(Map("id"->"form4StoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.SAVE)))
+							@components.button(Map("id"->"form4RestoreButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.LOAD)))
 						</fieldset>
 					</form>
 

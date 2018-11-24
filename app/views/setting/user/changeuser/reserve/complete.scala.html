@@ -3,7 +3,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -14,11 +15,11 @@
 @import common.system._
 @import views.html.setting.user._
 
-@(form: play.data.Form[models.setting.user.changeuser.ChangeFormContent])
+@(form: play.data.Form[models.setting.user.changeuser.ChangeFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
-	@head(Messages(MessageKeys.SETTING)){
+	@head(messages(MessageKeys.SETTING)){
 
 		@libraries.standard.head()
 	}
@@ -27,7 +28,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.USER_CHANGE__USERID), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.USER_CHANGE__USERID), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -43,14 +44,14 @@
 				<div class="col-md-10 col-lg-8 col-xl-6">
 					@components.card(Map("id"->"completePanel", "class"->"shadow-sm")){
 						<div class="card-header">
-							@Messages(MessageKeys.CHANGEUSER)
+							@messages(MessageKeys.CHANGEUSER)
 						</div>
 						<div class="card-body">
 
-							<h4 class="card-title">@Messages(MessageKeys.CHANGEUSER_RESERVE_COMPLETE)</h4>
-							<p class="card-text">@Messages(MessageKeys.CHANGEUSER_RESERVE_COMPLETE_DESCRIPTION)</p>
+							<h4 class="card-title">@messages(MessageKeys.CHANGEUSER_RESERVE_COMPLETE)</h4>
+							<p class="card-text">@messages(MessageKeys.CHANGEUSER_RESERVE_COMPLETE_DESCRIPTION)</p>
 							<div class="form-group row">
-								<label for="@User.NEWUSERID" class="col-sm-4 col-form-label">@Messages(MessageKeys.USER_NEWUSERID)</label>
+								<label for="@User.NEWUSERID" class="col-sm-4 col-form-label">@messages(MessageKeys.USER_NEWUSERID)</label>
 								<div class="col-sm-8">
 									<input id="@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="Email" value="@form(User.NEWUSERID).value.orElse("")" required disabled>
 								</div>

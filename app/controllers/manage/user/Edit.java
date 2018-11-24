@@ -42,10 +42,14 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Edit extends Controller {
@@ -53,10 +57,10 @@ public class Edit extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -71,11 +75,14 @@ public class Edit extends Controller {
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@RequireCSRFCheck
-	public CompletionStage<Result> create() {
+	public CompletionStage<Result> create(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<EditFormContent> createForm = formFactory.form(EditFormContent.class, Create.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<EditFormContent> createForm = formFactory.form(EditFormContent.class, Create.class).bindFromRequest(request);
 
 			if (!createForm.hasErrors()) {
 
@@ -99,12 +106,12 @@ public class Edit extends Controller {
 
 					if (!password.equals(rePassword)) {
 
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_PASSWORD_NOTEQUAL));
 					}
 
-					if (userService.isExist(manager, userId)) {
+					if (userService.isExist(manager, messages, userId)) {
 
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_EXIST));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_EXIST));
 					}
 
 					user = new models.user.User();
@@ -122,17 +129,17 @@ public class Edit extends Controller {
 					}
 					user.setExpireDateTime(LocalDateTime.now().plusYears(1000));
 
-					userService.create(manager, user);
+					userService.create(manager, messages, user);
 				} catch (final AccountException e) {
 
 					final Form<EditFormContent> failureCreateForm = formFactory.form(EditFormContent.class).fill(createFormContent);
 					failureCreateForm.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureCreateForm);
+					return failureEdit(failureCreateForm, request, lang, messages);
 				} catch (final Exception e) {
 
 					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(createFormContent);
 					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureUpdateForm);
+					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
 				final ObjectMapper mapper = new ObjectMapper();
@@ -142,7 +149,7 @@ public class Edit extends Controller {
 				return ok(response);
 			} else {
 
-				return failureEdit(createForm);
+				return failureEdit(createForm, request, lang, messages);
 			}
 		});
 
@@ -156,11 +163,14 @@ public class Edit extends Controller {
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@RequireCSRFCheck
-	public CompletionStage<Result> update() {
+	public CompletionStage<Result> update(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<EditFormContent> updateForm = formFactory.form(EditFormContent.class, Update.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<EditFormContent> updateForm = formFactory.form(EditFormContent.class, Update.class).bindFromRequest(request);
 
 			if (!updateForm.hasErrors()) {
 
@@ -181,9 +191,9 @@ public class Edit extends Controller {
 				try {
 
 					final boolean isUpdateUserId = !userId.equals(newUserId);
-					if (isUpdateUserId && userService.isExist(manager, newUserId)) {
+					if (isUpdateUserId && userService.isExist(manager, messages, newUserId)) {
 
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_EXIST));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_EXIST));
 					}
 
 					try {
@@ -197,8 +207,8 @@ public class Edit extends Controller {
 					} catch (final NoResultException e) {
 
 						throw new PlayException(//
-								messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR), //
-								messages.get(lang(), MessageKeys.SYSTEM_ERROR_STATE_NOTCONSISTENT), //
+								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
+								messages.at(MessageKeys.SYSTEM_ERROR_STATE_NOTCONSISTENT), //
 								e);
 					}
 
@@ -214,17 +224,17 @@ public class Edit extends Controller {
 					}
 					user.setExpireDateTime(LocalDateTime.now().plusYears(1000));
 
-					userService.update(manager, user);
+					userService.update(manager, messages, user);
 				} catch (final AccountException e) {
 
 					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
 					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureUpdateForm);
+					return failureEdit(failureUpdateForm, request, lang, messages);
 				} catch (final Exception e) {
 
 					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
 					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureUpdateForm);
+					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
 				final ObjectMapper mapper = new ObjectMapper();
@@ -234,7 +244,7 @@ public class Edit extends Controller {
 				return ok(response);
 			} else {
 
-				return failureEdit(updateForm);
+				return failureEdit(updateForm, request, lang, messages);
 			}
 		});
 
@@ -248,11 +258,14 @@ public class Edit extends Controller {
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@RequireCSRFCheck
-	public CompletionStage<Result> delete() {
+	public CompletionStage<Result> delete(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<EditFormContent> deleteForm = formFactory.form(EditFormContent.class, Delete.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<EditFormContent> deleteForm = formFactory.form(EditFormContent.class, Delete.class).bindFromRequest(request);
 
 			if (!deleteForm.hasErrors()) {
 
@@ -276,22 +289,22 @@ public class Edit extends Controller {
 					} catch (final NoResultException e) {
 
 						throw new PlayException(//
-								messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR), //
-								messages.get(lang(), MessageKeys.SYSTEM_ERROR_STATE_NOTCONSISTENT), //
+								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
+								messages.at(MessageKeys.SYSTEM_ERROR_STATE_NOTCONSISTENT), //
 								e);
 					}
 
-					userService.delete(manager, user);
+					userService.delete(manager, messages, user);
 				} catch (final AccountException e) {
 
 					final Form<EditFormContent> failureDeleteForm = formFactory.form(EditFormContent.class).fill(deleteFormContent);
 					failureDeleteForm.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureDeleteForm);
+					return failureEdit(failureDeleteForm, request, lang, messages);
 				} catch (final Exception e) {
 
 					final Form<EditFormContent> failureDeleteForm = formFactory.form(EditFormContent.class).fill(deleteFormContent);
 					failureDeleteForm.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureDeleteForm);
+					return failureEdit(failureDeleteForm, request, lang, messages);
 				}
 
 				final ObjectMapper mapper = new ObjectMapper();
@@ -301,7 +314,7 @@ public class Edit extends Controller {
 				return ok(response);
 			} else {
 
-				return failureEdit(deleteForm);
+				return failureEdit(deleteForm, request, lang, messages);
 			}
 		});
 
@@ -311,7 +324,7 @@ public class Edit extends Controller {
 		});
 	}
 
-	private Result failureEdit(final Form<EditFormContent> editForm) {
+	private Result failureEdit(final Form<EditFormContent> editForm, final Request request, final Lang lang, final Messages messages) {
 
 		final ObjectMapper mapper = new ObjectMapper();
 		final ObjectNode result = mapper.createObjectNode();
@@ -320,7 +333,7 @@ public class Edit extends Controller {
 		final ArrayNode globalErrorsNode = mapper.createArrayNode();
 		editForm.globalErrors().forEach(validationError -> {
 
-			globalErrorsNode.add(messages.get(lang(), validationError.message()));
+			globalErrorsNode.add(messages.at(validationError.message()));
 		});
 		result.set("globalErrors", globalErrorsNode);
 
@@ -330,7 +343,7 @@ public class Edit extends Controller {
 			final String property = error.key();
 
 			final ArrayNode propertyErrorNode = mapper.createArrayNode();
-			error.messages().forEach(message -> propertyErrorNode.add(messages.get(lang(), message)));
+			error.messages().forEach(message -> propertyErrorNode.add(messages.at(message)));
 
 			errorsNode.set(property, propertyErrorNode);
 		});

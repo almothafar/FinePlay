@@ -3,13 +3,17 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 

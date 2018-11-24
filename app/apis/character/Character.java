@@ -27,6 +27,8 @@ import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -35,7 +37,7 @@ public class Character extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	private static class LazyHolder {
 
@@ -120,7 +122,10 @@ public class Character extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result character(@Nonnull final String typeString, @Nonnull final String searchText) {
+	public Result character(@Nonnull final Request request, @Nonnull final String typeString, @Nonnull final String searchText) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final Type type = Type.valueOf(typeString);
 		switch (type) {
@@ -135,7 +140,7 @@ public class Character extends Controller {
 				codePoint = Integer.valueOf(searchText);
 			} catch (NumberFormatException e) {
 
-				return badRequest(createErrorResult(messages.get(lang(), MessageKeys.ERROR_NUMBER) + " :" + searchText));
+				return badRequest(createErrorResult(messages.at(MessageKeys.ERROR_NUMBER) + " :" + searchText));
 			}
 
 			return codePoint(codePoint);

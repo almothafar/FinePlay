@@ -2,11 +2,11 @@
 @import views.html._
 @import play.mvc._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @gentoken() = @{
 
-	val takenOpt = CSRF.getToken(request());
+	val takenOpt = CSRF.getToken(request);
 	if(takenOpt.isPresent()){
 		takenOpt.get().name + "=" + takenOpt.get().value;
 	}else{

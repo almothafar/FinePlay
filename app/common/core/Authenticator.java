@@ -1,13 +1,14 @@
 package common.core;
 
 import java.util.Map;
+import java.util.Optional;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import common.system.SessionKeys;
 import models.user.User_;
-import play.mvc.Http.Context;
+import play.mvc.Http.Request;
 import play.mvc.Http.Session;
 import play.mvc.Result;
 import play.mvc.Security;
@@ -16,19 +17,19 @@ public class Authenticator extends Security.Authenticator {
 
 	@Nullable
 	@Override
-	public String getUsername(@Nonnull final Context ctx) {
+	public Optional<String> getUsername(Request req) {
 
-		final String userId = ctx.request().session().get(User_.USER_ID);
+		final Optional<String> userIdOpt = req.session().getOptional(User_.USER_ID);
 
-		return userId;
+		return userIdOpt;
 	}
 
 	@SuppressWarnings("null")
 	@Nonnull
 	@Override
-	public Result onUnauthorized(@Nonnull final Context ctx) {
+	public Result onUnauthorized(Request req) {
 
-		String requestUrl = ctx.request().uri();
+		String requestUrl = req.uri();
 		if (requestUrl == null) {
 
 			requestUrl = "/";

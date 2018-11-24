@@ -35,10 +35,13 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Edit extends Controller {
@@ -46,10 +49,10 @@ public class Edit extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -61,11 +64,14 @@ public class Edit extends Controller {
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(BodyParser.FormUrlEncoded.class)
 	@RequireCSRFCheck
-	public CompletionStage<Result> update() {
+	public CompletionStage<Result> update(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<EditFormContent> updateForm = formFactory.form(EditFormContent.class, Update.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<EditFormContent> updateForm = formFactory.form(EditFormContent.class, Update.class).bindFromRequest(request);
 
 			if (!updateForm.hasErrors()) {
 
@@ -82,22 +88,22 @@ public class Edit extends Controller {
 					if (Objects.isNull(organization)) {
 
 						throw new PlayException(//
-								messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR), //
-								messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATION)));
+								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
+								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(updateFormContent.getOrganizationUpdateDateTime());
+					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(request, updateFormContent.getOrganizationUpdateDateTime());
 					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
 
 						throw new PlayException(//
-								messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR), //
-								messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR));
+								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
+								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR));
 					}
 				} else {
 
 					throw new PlayException(//
-							messages.get(lang(), MessageKeys.CONSISTENT) + " " + messages.get(lang(), MessageKeys.ERROR), //
-							messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATION)));
+							messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
+							messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 				}
 
 				final String unitTreeJSON = updateFormContent.getUnitTreeJSON();
@@ -119,7 +125,7 @@ public class Edit extends Controller {
 
 					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
 					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
-					return failureEdit(failureUpdateForm);
+					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
 				final ObjectMapper mapper = new ObjectMapper();
@@ -129,7 +135,7 @@ public class Edit extends Controller {
 				return ok(response);
 			} else {
 
-				return failureEdit(updateForm);
+				return failureEdit(updateForm, request, lang, messages);
 			}
 		});
 
@@ -160,7 +166,7 @@ public class Edit extends Controller {
 		}
 	}
 
-	private Result failureEdit(@Nonnull final Form<EditFormContent> editForm) {
+	private Result failureEdit(@Nonnull final Form<EditFormContent> editForm, final Request request, final Lang lang, final Messages messages) {
 
 		final ObjectMapper mapper = new ObjectMapper();
 		final ObjectNode result = mapper.createObjectNode();
@@ -169,7 +175,7 @@ public class Edit extends Controller {
 		final ArrayNode globalErrorsNode = mapper.createArrayNode();
 		editForm.globalErrors().forEach(validationError -> {
 
-			globalErrorsNode.add(messages.get(lang(), validationError.message()));
+			globalErrorsNode.add(messages.at(validationError.message()));
 		});
 		result.set("globalErrors", globalErrorsNode);
 

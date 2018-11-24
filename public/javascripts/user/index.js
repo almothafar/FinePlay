@@ -2,12 +2,12 @@
 
 //
 
-if(Messages("formError")) {
+if(messages("formError")) {
 
 	shake('#signInPanel');
 }
 
-var signInImageLink = "url(" + Messages("signInImage") + ")";
+var signInImageLink = "url(" + messages("signInImage") + ")";
 $('#system_base').css({
 	"background-image": signInImageLink,
 	"background-size": "cover",

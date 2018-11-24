@@ -6,14 +6,19 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -41,11 +46,11 @@
 				</div>
 				<div class="col-md-9">
 
-					@components.alert(Map("id"->"cameraNotEnable", "icon"->"fas fa-exclamation-triangle", "text"->Messages(MessageKeys.SYSTEM_ERROR_X_NOTENABLE, Messages(MessageKeys.CAMERA)), "type"->"warning"))
+					@components.alert(Map("id"->"cameraNotEnable", "icon"->"fas fa-exclamation-triangle", "text"->messages(MessageKeys.SYSTEM_ERROR_X_NOTENABLE, messages(MessageKeys.CAMERA)), "type"->"warning"))
 					<h3 class="headline">Barcdode reader</h3>
 					<div class="controls">
 						<div class="input-group">
-							@components.button(Map("id"->"", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.STOP), "class"->"stop"))
+							@components.button(Map("id"->"", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.STOP), "class"->"stop"))
 						</div>
 						<div class="reader-config-group">
 							<div class="row form-group">

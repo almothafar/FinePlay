@@ -4,13 +4,16 @@
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
 
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import javax.json._
 @import java.io._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 

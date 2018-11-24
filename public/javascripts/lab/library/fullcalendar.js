@@ -1,6 +1,6 @@
 'use strict';
 
-var currentTimezone = Messages("clientZoneId");
+var currentTimezone = messages("clientZoneId");
 
 var todayDate = moment().startOf('day');
 var YM = todayDate.format('YYYY-MM');
@@ -11,14 +11,14 @@ var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
 $(document).ready(function() {
 
 	$('#calendar').fullCalendar({
-		lang: Messages(MessageKeys.FULLCALENDAR_LANG),
+		lang: messages(MessageKeys.FULLCALENDAR_LANG),
 		header: {
 			left: 'prev,next today',
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay,listWeek'
 		},
-		now : Messages("clientDateTime"),
-		defaultDate: Messages("clientDate"),
+		now : messages("clientDateTime"),
+		defaultDate: messages("clientDate"),
 		timezone: currentTimezone,
 		editable: true,
 		selectable: true,

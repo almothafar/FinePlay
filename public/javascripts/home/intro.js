@@ -19,62 +19,62 @@ $(document).ready(function () {
 		}
 	});
 	tour.addStep('welcome', {
-		title: Messages(MessageKeys.TIMEZONE) + ' ' + Messages(MessageKeys.INFO),
+		title: messages(MessageKeys.TIMEZONE) + ' ' + messages(MessageKeys.INFO),
 		text: ['<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>', '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>'],
 		attachTo: '#timezoneInfo bottom',
 		buttons: [
 			{
-				text: Messages(MessageKeys.CANCEL),
+				text: messages(MessageKeys.CANCEL),
 				classes: 'shepherd-button-secondary',
 				action: tour.cancel
 			}, {
-				text: Messages(MessageKeys.NEXT),
+				text: messages(MessageKeys.NEXT),
 				action: tour.next,
 				classes: 'shepherd-button-example-primary'
 			}
 		]
 	});
 	tour.addStep('including', {
-		title: Messages(MessageKeys.LANGUAGE) + ' ' + Messages(MessageKeys.INFO),
+		title: messages(MessageKeys.LANGUAGE) + ' ' + messages(MessageKeys.INFO),
 		text: '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>',
 		attachTo: '#languageInfo bottom',
 		buttons: [
 			{
-				text: Messages(MessageKeys.PREVIOUS),
+				text: messages(MessageKeys.PREVIOUS),
 				classes: 'shepherd-button-secondary',
 				action: tour.back
 			}, {
-				text: Messages(MessageKeys.NEXT),
+				text: messages(MessageKeys.NEXT),
 				action: tour.next
 			}
 		]
 	});
 	tour.addStep('followup', {
-		title: Messages(MessageKeys.MENU) + ' ' + Messages(MessageKeys.BUTTON),
+		title: messages(MessageKeys.MENU) + ' ' + messages(MessageKeys.BUTTON),
 		text: '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>',
 		attachTo: '#system_work-menu-button bottom',
 		buttons: [
 			{
-				text: Messages(MessageKeys.PREVIOUS),
+				text: messages(MessageKeys.PREVIOUS),
 				classes: 'shepherd-button-secondary',
 				action: tour.back
 			}, {
-				text: Messages(MessageKeys.NEXT),
+				text: messages(MessageKeys.NEXT),
 				action: tour.next
 			}
 		]
 	});
 	tour.addStep('followup', {
-		title: Messages(MessageKeys.HELP) + ' ' + Messages(MessageKeys.BUTTON),
+		title: messages(MessageKeys.HELP) + ' ' + messages(MessageKeys.BUTTON),
 		text: '<span class="draft"><span class="draft-text">Star Shepherd on Github so you remember it for your next project</span></span>',
 		attachTo: '#helpButton bottom',
 		buttons: [
 			{
-				text: Messages(MessageKeys.PREVIOUS),
+				text: messages(MessageKeys.PREVIOUS),
 				classes: 'shepherd-button-secondary',
 				action: tour.back
 			}, {
-				text: Messages(MessageKeys.END),
+				text: messages(MessageKeys.END),
 				action: tour.next
 			}
 		]

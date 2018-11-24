@@ -5,13 +5,13 @@ $(document).ready(function() {
 	var lineChartCtx = document.getElementById("lineChart");
 	var barData = {
 		labels: [
-			Messages('m1'),
-			Messages('m2'),
-			Messages('m3'),
-			Messages('m4'),
-			Messages('m5'),
-			Messages('m6'),
-			Messages('m7')
+			messages('m1'),
+			messages('m2'),
+			messages('m3'),
+			messages('m4'),
+			messages('m5'),
+			messages('m6'),
+			messages('m7')
 		],
 		datasets: [
 			{
@@ -54,13 +54,13 @@ $(document).ready(function() {
 	var barChartCtx = document.getElementById("barChart");
 	var barData = {
 		labels: [
-			Messages('m1'),
-			Messages('m2'),
-			Messages('m3'),
-			Messages('m4'),
-			Messages('m5'),
-			Messages('m6'),
-			Messages('m7')
+			messages('m1'),
+			messages('m2'),
+			messages('m3'),
+			messages('m4'),
+			messages('m5'),
+			messages('m6'),
+			messages('m7')
 		],
 		datasets: [
 			{

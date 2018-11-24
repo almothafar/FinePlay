@@ -198,7 +198,7 @@ var getToken = function(){
 	return $("#system_token").data('token');
 }
 
-var Messages = function(messageKey){
+var messages = function(messageKey){
 
 	return $("#system_messages").data('messages')[messageKey];
 }

@@ -1,6 +1,9 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/viz.js/viz.js")"></script>
 <script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/viz.js/full.render.js")"></script>

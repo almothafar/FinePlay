@@ -1,6 +1,9 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import models.user.User._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <link rel='stylesheet'
 	href='@routes.Assets.versioned("lib/fullcalendar/dist/fullcalendar.min.css")'>

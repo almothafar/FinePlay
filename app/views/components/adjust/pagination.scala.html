@@ -4,11 +4,12 @@
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
 
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 
-@(prop:scala.collection.immutable.Map[String, String])
+@(prop:scala.collection.immutable.Map[String, String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @hidePageSize(prop:scala.collection.immutable.Map[String, String]) = @{
 

@@ -1,13 +1,19 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <!-- moment loaded. -->
 <div id="frappegantt_messages" class="d-none" data-messages='{
-	"@MessageKeys.FRAPPEGANTT_LANG":"@Messages(MessageKeys.FRAPPEGANTT_LANG)"
+	"@MessageKeys.FRAPPEGANTT_LANG":"@messages(MessageKeys.FRAPPEGANTT_LANG)"
 }'></div>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/frappegantt/last_before.js")'></script>
 

@@ -159,7 +159,7 @@ $(document).ready(function() {
 
 //
 
-	Plotly.d3.csv(Messages("choroplethMapCSV"),
+	Plotly.d3.csv(messages("choroplethMapCSV"),
 		function(err, rows) {
 			function unpack(rows, key) {
 				return rows.map(function(row) {

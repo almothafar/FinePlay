@@ -1,3 +1,6 @@
-@()
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <link href='@routes.Assets.versioned("lib/custom/markdeep/default.css")' rel="stylesheet" type="text/css">

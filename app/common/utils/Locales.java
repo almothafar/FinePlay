@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import models.system.System.Direction;
-import play.i18n.Lang;
 
 public class Locales {
 
@@ -22,15 +21,6 @@ public class Locales {
 	private static final Locale UNITED_ARAB_EMIRATES = new Locale("ar", "AE");
 
 	private Locales() {
-	}
-
-	@Deprecated(since = "Play framework 3.0", forRemoval = true)
-	@Nonnull
-	public static Lang toLang(@Nonnull final Locale locale) {
-
-		Objects.requireNonNull(locale);
-
-		return new Lang(play.api.i18n.Lang.apply(locale.getLanguage(), locale.getCountry(), "", ""));
 	}
 
 	@Nonnull

@@ -18,7 +18,7 @@ $('.input-group .input-group-text').on('click', function(e){
 	e.stopPropagation();
 });
 
-var jsdate =  moment(Messages("clientDateTime")).toDate();
+var jsdate =  moment(messages("clientDateTime")).toDate();
 
 var datepicker = $('#datepicker').pickadate( 'picker' );
 datepicker.set('select', jsdate);

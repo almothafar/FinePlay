@@ -1,5 +1,8 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/chart.js/dist/Chart.bundle.min.js")'></script>

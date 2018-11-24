@@ -1,14 +1,17 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import common.system._
 
-@(title: String)
+@(title: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-@import play.api.i18n._
+
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="@Messages(MessageKeys.SYSTEM_DESCRIPTION)">
+<meta name="description" content="@messages(MessageKeys.SYSTEM_DESCRIPTION)">
 <meta name="author" content="hiro20v">
 
 <link rel="apple-touch-icon" sizes="180x180" href="@routes.Assets.versioned("images/favicons/apple-touch-icon.png")">
@@ -20,4 +23,4 @@
 <meta name="msapplication-square150x150logo" content="@routes.Assets.versioned("images/favicons/mstile-150x150.png")"/>
 <meta name="theme-color" content="#ffffff">
 
-<title>@Messages(title) | @Messages(MessageKeys.SYSTEM_NAME)</title>
+<title>@messages(title) | @messages(MessageKeys.SYSTEM_NAME)</title>

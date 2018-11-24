@@ -1,14 +1,17 @@
 package controllers.system;
 
+import javax.annotation.Nonnull;
+
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Http.Request;
 import play.routing.JavaScriptReverseRouter;
 
 public class System extends Controller {
 
-	public Result routes() {
+	public Result routes(@Nonnull final Request request) {
 
-		return ok(JavaScriptReverseRouter.create("Routes", //
+		return ok(JavaScriptReverseRouter.create("Routes", "jQuery.ajax", request.host(), //
 				apis.system.routes.javascript.Logger.log(), //
 				apis.character.routes.javascript.Character.character(), //
 				apis.company.routes.javascript.Company.companies(), //

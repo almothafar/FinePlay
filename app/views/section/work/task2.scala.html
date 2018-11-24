@@ -1,12 +1,15 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
 
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@(name: String)
+@(name: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -24,7 +27,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->(Messages(MessageKeys.TASK)+" 2"), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->(messages(MessageKeys.TASK)+" 2"), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -37,16 +40,16 @@
 			<div class=" mt-3">
 
 				@helper.form(helper.CSRF(controllers.section.work.routes.Work.task2Request())) {
-					<label for="name" class="col-form-label">@Messages(MessageKeys.FULL__NAME)</label>
+					<label for="name" class="col-form-label">@messages(MessageKeys.FULL__NAME)</label>
 					<input id="name" type="text" name="name" class="form-control" value="" autofocus>
-					@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "text"->Messages(MessageKeys.SEND)))
+					@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "text"->messages(MessageKeys.SEND)))
 				}
 			</div>
 
 			@if(!name.isEmpty){
 			<div class=" mt-3">
 
-				@Messages(MessageKeys.WELCOME)&nbsp;@name
+				@messages(MessageKeys.WELCOME)&nbsp;@name
 			</div>
 			}
 		}

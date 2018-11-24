@@ -1,15 +1,20 @@
 @import java.time._
 @import java.time.format._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 @import views.html.development
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 @import common.utils._
 
-@(startDayInfo: List[List[String]], endDayInfo: List[List[String]], dateTimeList: List[List[LocalDateTime]])
+@(startDayInfo: List[List[String]], endDayInfo: List[List[String]], dateTimeList: List[List[LocalDateTime]])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -32,7 +37,7 @@
 		columnsList += Map("text"->datetimeFormat(dateTimesOfDay.get(0).toLocalDate));
 		for(dateTimeOfDay <- dateTimesOfDay) {
 
-			columnsList += Map("type"->(if(DateTimes.isServerDateTimeConvertible(dateTimeOfDay)){""}else{"danger"}));
+			columnsList += Map("type"->(if(DateTimes.isServerDateTimeConvertible(request, dateTimeOfDay)){""}else{"danger"}));
 		}
 
 		tbodyRowToColumnsList += Tuple2(tbodyRow, columnsList.toList);
@@ -52,7 +57,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DAYLIGHT__SAVING__TIME), "icon"->"fas fa-sun", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.DAYLIGHT__SAVING__TIME), "icon"->"fas fa-sun", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -65,19 +70,19 @@
 				</div>
 				<div class="col-md-9">
 
-					<h4 class="headline">@(Messages(MessageKeys.START) + " " + Messages(MessageKeys.DAY))</h4>
+					<h4 class="headline">@(messages(MessageKeys.START) + " " + messages(MessageKeys.DAY))</h4>
 					<div class="table-responsive">
 						<table class="table table-sm">
 							<thead>
 								<tr>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+									<th scope="col">@messages(MessageKeys.SERVER) (UTC)</th>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col">@messages(MessageKeys.CLIENT) (US/Pacific)</th>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col">@messages(MessageKeys.CLIENT) (US/Pacific)</th>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+									<th scope="col">@messages(MessageKeys.SERVER) (UTC)</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -142,19 +147,19 @@
 						</table>
 					</div>
 
-					<h4 class="headline">@(Messages(MessageKeys.END) + " " + Messages(MessageKeys.DAY))</h4>
+					<h4 class="headline">@(messages(MessageKeys.END) + " " + messages(MessageKeys.DAY))</h4>
 					<div class="table-responsive">
 						<table class="table table-sm">
 							<thead>
 								<tr>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+									<th scope="col">@messages(MessageKeys.SERVER) (UTC)</th>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col">@messages(MessageKeys.CLIENT) (US/Pacific)</th>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.CLIENT) (US/Pacific)</th>
+									<th scope="col">@messages(MessageKeys.CLIENT) (US/Pacific)</th>
 									<th scope="col"></th>
-									<th scope="col">@Messages(MessageKeys.SERVER) (UTC)</th>
+									<th scope="col">@messages(MessageKeys.SERVER) (UTC)</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -239,7 +244,7 @@
 
 					<hr class="separator">
 
-					<h4 class="headline">@Messages(MessageKeys.LIST)</h4>
+					<h4 class="headline">@messages(MessageKeys.LIST)</h4>
 					<div class="mb-3 table-responsive">
 						@components.table(Map("id"->"", "class"->"", "bordered"->"true", "size"->"sm"),
 							Map("id"->""),Tuple2(Map("id"->""),List(

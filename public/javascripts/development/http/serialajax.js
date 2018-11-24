@@ -4,7 +4,7 @@ $('#requestButton').click(function() {
 
 	$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
 	$('#ajaxCancel').prop('disabled', true);
-	$('#ajaxMessage').text(Messages(MessageKeys.PLEASE__WAIT));
+	$('#ajaxMessage').text(messages(MessageKeys.PLEASE__WAIT));
 	$('#ajaxDescription').text('-');
 
 	var timeout0 = $('#timeoutField0').val();
@@ -29,7 +29,7 @@ $('#requestButton').click(function() {
 					mock: {
 						wait: parseInt(wait0),
 						response:{
-							"response": Messages(MessageKeys.RESPONSE) + " 0"
+							"response": messages(MessageKeys.RESPONSE) + " 0"
 						}
 					}
 				}),
@@ -55,7 +55,7 @@ $('#requestButton').click(function() {
 					mock: {
 						wait: parseInt(wait1),
 						response:{
-							"response": Messages(MessageKeys.RESPONSE)+ " 1"
+							"response": messages(MessageKeys.RESPONSE)+ " 1"
 						}
 					}
 				}),
@@ -81,7 +81,7 @@ $('#requestButton').click(function() {
 					mock: {
 						wait: parseInt(wait2),
 						response:{
-							"response": Messages(MessageKeys.RESPONSE) + " 2"
+							"response": messages(MessageKeys.RESPONSE) + " 2"
 						}
 					}
 				}),
@@ -105,8 +105,8 @@ $('#requestButton').click(function() {
 
 			$('#ajaxProgress>.progress-bar').addClass('bg-danger');
 			$('#ajaxCancel').prop('disabled', false);
-			$('#ajaxMessage').text(Messages(MessageKeys.FAILURE));
-			$('#ajaxDescription').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
+			$('#ajaxMessage').text(messages(MessageKeys.FAILURE));
+			$('#ajaxDescription').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
 		}
 	);
 });

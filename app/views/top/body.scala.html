@@ -4,7 +4,9 @@
 @import scala.collection.immutable.List
 @import scala.collection.JavaConverters._
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import models.system._
 @import models.system.System._
@@ -17,7 +19,7 @@
 @import common.system._
 @import common.utils._
 
-@(currentSection:String, currentWork:String)(content: Html)
+@(currentSection:String, currentWork:String)(content: Html)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @equalSection(section:String) = @{
 
@@ -48,9 +50,9 @@
 	<div id="system_base">
 
 		@top.workmenu(Map("id"->"system_menu"), List(
-			(Map("name"->Messages(MessageKeys.INQUIRY), "icon"->"", "link"->controllers.inquiry.routes.Inquiry.index().toString, "selected"->equalWork("top", "inquiry")),List(
+			(Map("name"->messages(MessageKeys.INQUIRY), "icon"->"", "link"->controllers.inquiry.routes.Inquiry.index().toString, "selected"->equalWork("top", "inquiry")),List(
 			)),
-			(Map("name"->Messages(MessageKeys.REGISTUSER), "icon"->"", "link"->controllers.registuser.routes.RegistUser.index().toString, "selected"->equalWork("top", "registuser")),List(
+			(Map("name"->messages(MessageKeys.REGISTUSER), "icon"->"", "link"->controllers.registuser.routes.RegistUser.index().toString, "selected"->equalWork("top", "registuser")),List(
 			))
 		))
 

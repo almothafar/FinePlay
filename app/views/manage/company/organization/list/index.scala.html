@@ -1,5 +1,6 @@
 @import java.time._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -10,7 +11,7 @@
 @import models.manage.company.organization.list._
 @import models.company.organization._
 
-@(form: play.data.Form[ReadFormContent], companyName: String, organizationUnits: List[OrganizationUnit])
+@(form: play.data.Form[ReadFormContent], companyName: String, organizationUnits: List[OrganizationUnit])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -19,7 +20,7 @@
 
 @datetime(dateTime: LocalDateTime) = @{
 
-	common.utils.DateTimes.toClientDateTime(dateTime)
+	common.utils.DateTimes.toClientDateTime(request, dateTime)
 }
 
 @datetime_now() = @{
@@ -37,7 +38,7 @@
 		val columnsList = List[scala.collection.immutable.Map[String, String]](
 			Map("text"->String.valueOf(organizationUnit.getId())),
 			Map("text"->organizationUnit.getNames().get(Locale.US).getName()),
-			Map("text"->(if(organizationUnit.getNames().containsKey(lang.toLocale())){organizationUnit.getNames().get(lang.toLocale()).getName()}else{""})),
+			Map("text"->(if(organizationUnit.getNames().containsKey(lang.toLocale)){organizationUnit.getNames().get(lang.toLocale).getName()}else{""})),
 			Map("text"->datetime(organizationUnit.getUpdateDateTime()).toString)
 		);
 
@@ -61,7 +62,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@manage.company.breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.EDIT), "icon"->"fas fa-edit", "selected"->"true"))
+			@manage.company.breadcrumb(Map("id"->"", "name"->messages(MessageKeys.EDIT), "icon"->"fas fa-edit", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -76,7 +77,7 @@
 				<h2>@companyName</h2>
 				<div class="d-flex justify-content-start bd-highlight mb-3">
 					<div class="bd-highlight">
-						@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.PREVIOUS), "class"->"mr-3 float-left"))
+						@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->messages(MessageKeys.PREVIOUS), "class"->"mr-3 float-left"))
 					</div>
 					<div class="bd-highlight w-100">
 						@manage.company.detailtasks(Map("id"->"", "task"->"organization", "target"->form(OrganizationUnit.COMPANYID).value.orElse("")))
@@ -91,12 +92,12 @@
 
 			<div class="mt-3 mb-3">
 
-				@components.button(Map("id"->"searchButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-search", "text"->(Messages(MessageKeys.SEARCH)+"&nbsp;<i class=\"fas fa-caret-down\"></i>"), "data-toggle"->"collapse", "data-target"->"#readCollapse", "aria-controls"->"readCollapse"))
-				@components.linkbutton(Map("id"->"downloadButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->("CSV "+Messages(MessageKeys.DOWNLOAD)), "link"->helper.CSRF(controllers.manage.company.organization.list.routes.Read.download()).toString()))
-				@components.button(Map("id"->"uploadButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-upload", "text"->("CSV "+Messages(MessageKeys.UPLOAD)), "data-toggle"->"modal", "data-target"->"#uploadDialog"))
-				@components.button(Map("id"->"deleteButton", "type"->"danger", "outline"->"true", "icon"->"fas fa-trash-alt", "text"->Messages(MessageKeys.DELETE), "data-toggle"->"modal", "data-target"->"#deleteDialog"))
-				@components.button(Map("id"->"updateButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-pencil-alt", "text"->Messages(MessageKeys.EDIT), "data-toggle"->"modal", "data-target"->"#updateDialog"))
-				@components.button(Map("id"->"createButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-plus", "text"->Messages(MessageKeys.CREATE), "data-toggle"->"modal", "data-target"->"#createDialog"))
+				@components.button(Map("id"->"searchButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-search", "text"->(messages(MessageKeys.SEARCH)+"&nbsp;<i class=\"fas fa-caret-down\"></i>"), "data-toggle"->"collapse", "data-target"->"#readCollapse", "aria-controls"->"readCollapse"))
+				@components.linkbutton(Map("id"->"downloadButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->("CSV "+messages(MessageKeys.DOWNLOAD)), "link"->helper.CSRF(controllers.manage.company.organization.list.routes.Read.download()).toString()))
+				@components.button(Map("id"->"uploadButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-upload", "text"->("CSV "+messages(MessageKeys.UPLOAD)), "data-toggle"->"modal", "data-target"->"#uploadDialog"))
+				@components.button(Map("id"->"deleteButton", "type"->"danger", "outline"->"true", "icon"->"fas fa-trash-alt", "text"->messages(MessageKeys.DELETE), "data-toggle"->"modal", "data-target"->"#deleteDialog"))
+				@components.button(Map("id"->"updateButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-pencil-alt", "text"->messages(MessageKeys.EDIT), "data-toggle"->"modal", "data-target"->"#updateDialog"))
+				@components.button(Map("id"->"createButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-plus", "text"->messages(MessageKeys.CREATE), "data-toggle"->"modal", "data-target"->"#createDialog"))
 				@components.button(Map("id"->"settingButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-sliders-h", "text"->"&nbsp;<i class=\"fas fa-caret-down\"></i>", "data-toggle"->"collapse", "data-target"->"#settingCollapse", "aria-controls"->"settingCollapse"))
 			</div>
 
@@ -110,28 +111,28 @@
 			<div class="mb-3 dataTable-responsive">
 				@components.table(Map("id"->"organizationUnitlist", "class"->"", "bordered"->"true"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ID)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ORGANIZATIONUNIT_NAME)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.LOCAL_NAME)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.ID)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.ORGANIZATIONUNIT_NAME)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.LOCAL_NAME)),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME))))),
 					Map("id"->""),
 					tbodyRowToColumnsList(organizationUnits),
 					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ID)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ORGANIZATIONUNIT_NAME)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.LOCAL_NAME)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME)))))
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.ID)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.ORGANIZATIONUNIT_NAME)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.LOCAL_NAME)),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME)))))
 				)
 			</div>
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
 			"companyId":@Long.valueOf(form(OrganizationUnit.COMPANYID).value.orElse("")),
-			"@MessageKeys.X__CASE__SELECTED":"@Messages(MessageKeys.X__CASE__SELECTED)",
-			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
-			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
-			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
-			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)"
+			"@MessageKeys.X__CASE__SELECTED":"@messages(MessageKeys.X__CASE__SELECTED)",
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)"
 		}'></div>
 
 		@libraries.standard.last()

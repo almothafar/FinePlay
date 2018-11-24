@@ -46,7 +46,7 @@ $(document).ready(function () {
 			},
 			function (jqXHR, textStatus, errorThrown) {
 
-				notifyAlert('warning', Messages(MessageKeys.STATUS)+'&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;'+Messages(MessageKeys.ERROR)+'&nbsp;<strong>'+errorThrown+'</strong>');
+				notifyAlert('warning', messages(MessageKeys.STATUS)+'&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;'+messages(MessageKeys.ERROR)+'&nbsp;<strong>'+errorThrown+'</strong>');
 			}
 		);
 	};

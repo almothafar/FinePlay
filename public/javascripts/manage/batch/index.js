@@ -8,7 +8,7 @@ $(document).ready(function() {
 		"language": {
 			select: {
 				rows: {
-					_: " " + Messages(MessageKeys.X__CASE__SELECTED).replace("{0}","%d")
+					_: " " + messages(MessageKeys.X__CASE__SELECTED).replace("{0}","%d")
 				}
 			}
 		},
@@ -80,7 +80,7 @@ $(document).ready(function() {
 		var timeout = "10000";
 		$.ajax({
 			method:"GET",
-			url: Routes.apis.batch.Batch.start(jobName, Messages("encodedUserId")).url + "?" + getToken(),
+			url: Routes.apis.batch.Batch.start(jobName, messages("encodedUserId")).url + "?" + getToken(),
 			data: $.param({
 			}),
 			contentType: 'text/plain',
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 				if(responseJson["error"]){
 
-					notifyAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
+					notifyAlert('warning', '<strong>' + messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
 				}else{
 
 					window.location.href = Routes.controllers.manage.batch.Batch.index().url;
@@ -100,7 +100,7 @@ $(document).ready(function() {
 			},
 			function (jqXHR, textStatus, errorThrown) {
 
-				notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
+				notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
 			}
 		);
 	});
@@ -114,7 +114,7 @@ $(document).ready(function() {
 		var timeout = "10000";
 		$.ajax({
 			method:"GET",
-			url: Routes.apis.batch.Batch.restart(executionId, Messages("encodedUserId")).url + "?" + getToken(),
+			url: Routes.apis.batch.Batch.restart(executionId, messages("encodedUserId")).url + "?" + getToken(),
 			data: $.param({
 			}),
 			contentType: 'text/plain',
@@ -126,7 +126,7 @@ $(document).ready(function() {
 
 				if(responseJson["error"]){
 
-					notifyAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
+					notifyAlert('warning', '<strong>' + messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
 				}else{
 
 					window.location.href = Routes.controllers.manage.batch.Batch.index().url;
@@ -134,7 +134,7 @@ $(document).ready(function() {
 			},
 			function (jqXHR, textStatus, errorThrown) {
 
-				notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
+				notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
 			}
 		);
 	});
@@ -148,7 +148,7 @@ $(document).ready(function() {
 		var timeout = "10000";
 		$.ajax({
 			method:"GET",
-			url: Routes.apis.batch.Batch.stop(executionId, Messages("encodedUserId")).url + "?" + getToken(),
+			url: Routes.apis.batch.Batch.stop(executionId, messages("encodedUserId")).url + "?" + getToken(),
 			data: $.param({
 			}),
 			contentType: 'text/plain',
@@ -160,7 +160,7 @@ $(document).ready(function() {
 
 				if(responseJson["error"]){
 
-					notifyAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
+					notifyAlert('warning', '<strong>' + messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
 				}else{
 
 					window.location.href = Routes.controllers.manage.batch.Batch.index().url;
@@ -168,7 +168,7 @@ $(document).ready(function() {
 			},
 			function (jqXHR, textStatus, errorThrown) {
 
-				notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
+				notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
 			}
 		);
 	});
@@ -182,7 +182,7 @@ $(document).ready(function() {
 		var timeout = "10000";
 		$.ajax({
 			method:"GET",
-			url: Routes.apis.batch.Batch.abandon(executionId, Messages("encodedUserId")).url + "?" + getToken(),
+			url: Routes.apis.batch.Batch.abandon(executionId, messages("encodedUserId")).url + "?" + getToken(),
 			data: $.param({
 			}),
 			contentType: 'text/plain',
@@ -194,7 +194,7 @@ $(document).ready(function() {
 
 				if(responseJson["error"]){
 
-					notifyAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
+					notifyAlert('warning', '<strong>' + messages(MessageKeys.WARNING) + '</strong> ' + responseJson["error"], 10000);
 				}else{
 
 					window.location.href = Routes.controllers.manage.batch.Batch.index().url;
@@ -202,7 +202,7 @@ $(document).ready(function() {
 			},
 			function (jqXHR, textStatus, errorThrown) {
 
-				notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
+				notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + errorThrown, 10000);
 			}
 		);
 	});

@@ -3,13 +3,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(detail:Boolean)
+@(detail:Boolean)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -34,30 +38,30 @@
 
 					<nav id="i_detail-header" class="border navbar navbar-light bg-light justify-content-between">
 
-						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
-						<div class="h5 text-center">@Messages(MessageKeys.COMPONENT)</div>
-						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
+						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
+						<div class="h5 text-center">@messages(MessageKeys.COMPONENT)</div>
+						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
 					</nav>
 					<div class="i_space">
 					</div>
 					<div class="mb-3">
 
 						@components.modal(Map("id"->"alert", "title"->"Alert", "closable"->"false", "center"->"true", "size"->"sm", "class"->"i-modal", "data-backdrop"->"static"), List(
-								Map("id"->"alertOk", "type"->"link", "text"->Messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true", "data-dismiss"->"modal")
+								Map("id"->"alertOk", "type"->"link", "text"->messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true", "data-dismiss"->"modal")
 							)){
 							<span class="draft">Cras mattis consectetur purus sit amet fermentum. Cras vestibulum at eros.</span>
 						}
 
 						@components.modal(Map("id"->"confirm", "title"->"Confirm", "closable"->"false", "center"->"true", "size"->"sm", "class"->"i-modal", "data-backdrop"->"static"), List(
-								Map("id"->"confirmCancel", "type"->"link", "text"->Messages(MessageKeys.CANCEL), "class"->"py-0", "data-dismiss"->"modal"),
-								Map("id"->"confirmOk", "type"->"link", "text"->Messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true")
+								Map("id"->"confirmCancel", "type"->"link", "text"->messages(MessageKeys.CANCEL), "class"->"py-0", "data-dismiss"->"modal"),
+								Map("id"->"confirmOk", "type"->"link", "text"->messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true")
 							)){
 							<span class="draft">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac in, vestibulum at eros.</span>
 						}
 
 						@components.modal(Map("id"->"prompt", "title"->"Prompt", "closable"->"false", "center"->"true", "size"->"sm", "class"->"i-modal", "data-backdrop"->"static"), List(
-								Map("id"->"promptCancel", "type"->"link", "text"->Messages(MessageKeys.CANCEL), "class"->"py-0", "data-dismiss"->"modal"),
-								Map("id"->"promptOk", "type"->"link", "text"->Messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true")
+								Map("id"->"promptCancel", "type"->"link", "text"->messages(MessageKeys.CANCEL), "class"->"py-0", "data-dismiss"->"modal"),
+								Map("id"->"promptOk", "type"->"link", "text"->messages(MessageKeys.OK), "class"->"py-0 font-weight-bold", "default"->"true")
 							)){
 							<div class="form-group mb-0">
 								<input type="text" class="form-control" id="">

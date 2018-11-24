@@ -1,9 +1,11 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @dirSuffix() = @{
 
@@ -40,7 +42,7 @@
 
 @theme() = @{
 
-	session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name());
+	request.session().getOptional(models.user.User.THEME).orElse(models.user.User.Theme.DEFAULT.name());
 }
 
 <link rel='stylesheet'
@@ -49,9 +51,9 @@
 	crossorigin="anonymous">
 
 <meta id="bootstrap_messages" class="d-none" data-messages='{
-	"@MessageKeys.REQUIRED":"@Messages(MessageKeys.REQUIRED)",
-	"@MessageKeys.SELECT__FILE":"@Messages(MessageKeys.SELECT__FILE)",
-	"@MessageKeys.BROWSE":"@Messages(MessageKeys.BROWSE)"
+	"@MessageKeys.REQUIRED":"@messages(MessageKeys.REQUIRED)",
+	"@MessageKeys.SELECT__FILE":"@messages(MessageKeys.SELECT__FILE)",
+	"@MessageKeys.BROWSE":"@messages(MessageKeys.BROWSE)"
 }'></meta>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/bootstrap/head.css.js")'></script>
 

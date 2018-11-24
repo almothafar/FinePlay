@@ -1,3 +1,6 @@
-@()
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <link rel='stylesheet' href='@routes.Assets.versioned("lib/twemoji-awesome/twemojiawesome.css")'>

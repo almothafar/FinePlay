@@ -1,6 +1,9 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import common.system._
 
-@(prop:scala.collection.immutable.Map[String, String])
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
 
 @equalTask(task:String) = @{
 
@@ -8,6 +11,6 @@
 }
 
 <div id="@prop.getOrElse("id", "")" class="list-group mb-3">
-	<a href="@controllers.fontawesome.style.routes.Style.index("squareicon").toString()" class="list-group-item @("active".when(equalTask("squareicon")))">@("Square "+Messages(MessageKeys.ICON))</a>
-	<a href="@controllers.fontawesome.style.routes.Style.index("largericon").toString()" class="list-group-item @("active".when(equalTask("largericon")))">@("Larger "+Messages(MessageKeys.ICON))</a>
+	<a href="@controllers.fontawesome.style.routes.Style.index("squareicon").toString()" class="list-group-item @("active".when(equalTask("squareicon")))">@("Square "+messages(MessageKeys.ICON))</a>
+	<a href="@controllers.fontawesome.style.routes.Style.index("largericon").toString()" class="list-group-item @("active".when(equalTask("largericon")))">@("Larger "+messages(MessageKeys.ICON))</a>
 </div>

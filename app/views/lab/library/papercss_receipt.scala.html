@@ -1,12 +1,16 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(params: Map[String, String])
+@(params: Map[String, String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <div class="sheets">
 
@@ -22,7 +26,7 @@
 						<br>
 						Tokyo, Japan 873-5523
 						<br>
-						<abbr title="Phone">@Messages(MessageKeys.PHONE):</abbr> (281) 972-9837
+						<abbr title="Phone">@messages(MessageKeys.PHONE):</abbr> (281) 972-9837
 					</address>
 				</div>
 				<div class="col-6 text-right">
@@ -36,17 +40,17 @@
 			</div>
 			<div class="row">
 				<div class="col-12 text-center">
-					<h1>@Messages(MessageKeys.RECEIPT)</h1>
+					<h1>@messages(MessageKeys.RECEIPT)</h1>
 				</div>
 
 				<div class="col-12">
 					<table class="table">
 						<thead>
 							<tr>
-								<th>@Messages(MessageKeys.PRODUCT)</th>
+								<th>@messages(MessageKeys.PRODUCT)</th>
 								<th>#</th>
-								<th class="text-center">@Messages(MessageKeys.PRICE)</th>
-								<th class="text-center">@Messages(MessageKeys.TOTAL)</th>
+								<th class="text-center">@messages(MessageKeys.PRICE)</th>
+								<th class="text-center">@messages(MessageKeys.TOTAL)</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -79,10 +83,10 @@
 								<td></td>
 								<td class="text-right">
 									<p>
-										<strong>@Messages(MessageKeys.SUBTOTAL):</strong>
+										<strong>@messages(MessageKeys.SUBTOTAL):</strong>
 									</p>
 									<p>
-										<strong>@Messages(MessageKeys.TAX):</strong>
+										<strong>@messages(MessageKeys.TAX):</strong>
 									</p>
 								</td>
 								<td class="text-center">
@@ -97,7 +101,7 @@
 							<tr>
 								<td></td>
 								<td></td>
-								<td class="text-right"><h4><strong>@Messages(MessageKeys.TOTAL):</strong></h4></td>
+								<td class="text-right"><h4><strong>@messages(MessageKeys.TOTAL):</strong></h4></td>
 								<td class="text-center text-danger"><h4><strong>$110.00</strong></h4></td>
 							</tr>
 						</tbody>

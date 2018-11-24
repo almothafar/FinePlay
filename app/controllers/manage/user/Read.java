@@ -31,9 +31,14 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Read extends Controller {
@@ -41,7 +46,10 @@ public class Read extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpa;
+	private MessagesApi messagesApi;
+
+	@Inject
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -51,30 +59,36 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return jpaApi.withTransaction(manager -> {
 
 			final ReadFormContent readFormContent = new ReadFormContent();
 			readFormContent.setRoles(Arrays.asList(Role.values()));
 			readFormContent.setMaxResult(String.valueOf(1000));
 
-			final List<models.user.User> users = readList(manager, readFormContent, 0);
+			final List<models.user.User> users = readList(request, manager, readFormContent, 0);
 
 			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
 
-			return ok(views.html.manage.user.index.render(readForm, users));
+			return ok(views.html.manage.user.index.render(readForm, users, request, lang, messages));
 		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@RequireCSRFCheck
-	public Result read() {
+	public Result read(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
+
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest(request);
 			if (!readForm.hasErrors()) {
 
 				final ReadFormContent readFormContent = readForm.get();
@@ -83,12 +97,12 @@ public class Read extends Controller {
 					readFormContent.setRoles(Collections.emptyList());
 				}
 
-				final List<models.user.User> users = readList(manager, readFormContent, 0);
+				final List<models.user.User> users = readList(request, manager, readFormContent, 0);
 
-				return ok(views.html.manage.user.index.render(readForm, Collections.unmodifiableList(users)));
+				return ok(views.html.manage.user.index.render(readForm, Collections.unmodifiableList(users), request, lang, messages));
 			} else {
 
-				return failureRead(readForm);
+				return failureRead(readForm, request, lang, messages);
 			}
 		});
 	}
@@ -96,11 +110,14 @@ public class Read extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@RequireCSRFCheck
-	public Result download() {
+	public Result download(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest(request);
 
 			if (!downloadForm.hasErrors()) {
 
@@ -110,8 +127,8 @@ public class Read extends Controller {
 					downloadFormContent.setRoles(Collections.emptyList());
 				}
 
-				final List<models.user.User> downloadUsers = readList(manager, downloadFormContent, 0);
-				downloadUsers.stream().forEach(user -> user.beforeWrite());
+				final List<models.user.User> downloadUsers = readList(request, manager, downloadFormContent, 0);
+				downloadUsers.stream().forEach(user -> user.beforeWrite(messages));
 				final String csv = CSVs.toCSV(models.user.User.getHeaders(), models.user.User.getWriteCellProcessors(), downloadUsers);
 
 				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8)))//
@@ -119,23 +136,23 @@ public class Read extends Controller {
 						.withHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=users.csv");
 			} else {
 
-				return failureRead(downloadForm);
+				return failureRead(downloadForm, request, lang, messages);
 			}
 		});
 
 		return result;
 	}
 
-	private List<models.user.User> readList(final EntityManager manager, final ReadFormContent readFormContent, int startPosition) {
+	private List<models.user.User> readList(@Nonnull final Request request, final EntityManager manager, final ReadFormContent readFormContent, int startPosition) {
 
 		final String userId = readFormContent.getUserId();
 		final List<Role> roles = readFormContent.getRoles();
 		final LocalDateTime expireFrom = readFormContent.getExpireFrom() == null //
 				? null//
-				: DateTimes.toServerDateTime(LocalDateTime.of(readFormContent.getExpireFrom(), LocalTime.MIN));
+				: DateTimes.toServerDateTime(request, LocalDateTime.of(readFormContent.getExpireFrom(), LocalTime.MIN));
 		final LocalDateTime expireTo = readFormContent.getExpireTo() == null //
 				? null//
-				: DateTimes.toServerDateTime(LocalDateTime.of(readFormContent.getExpireTo(), LocalTime.MAX));
+				: DateTimes.toServerDateTime(request, LocalDateTime.of(readFormContent.getExpireTo(), LocalTime.MAX));
 		final int maxResult = Integer.parseInt(readFormContent.getMaxResult());
 
 		return userDao.readList(manager, models.user.User.class, (builder, query) -> {
@@ -168,9 +185,9 @@ public class Read extends Controller {
 		});
 	}
 
-	private Result failureRead(final Form<ReadFormContent> searchForm) {
+	private Result failureRead(final Form<ReadFormContent> searchForm, final Request request, final Lang lang, final Messages messages) {
 
 		final List<models.user.User> users = Collections.emptyList();
-		return badRequest(views.html.manage.user.index.render(searchForm, users));
+		return badRequest(views.html.manage.user.index.render(searchForm, users, request, lang, messages));
 	}
 }

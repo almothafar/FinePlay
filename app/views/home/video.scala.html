@@ -4,7 +4,8 @@
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
 
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import views.html._
 @import views.html.components
@@ -15,7 +16,7 @@
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -28,7 +29,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.VIDEO), "icon"->"fas fa-film", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.VIDEO), "icon"->"fas fa-film", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -47,7 +48,7 @@
 
 						<div>
 
-							@components.button(Map("id"->"fullScreenButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-expand", "text"->Messages(MessageKeys.FULL__SCREEN), "class"->"float-right"))
+							@components.button(Map("id"->"fullScreenButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-expand", "text"->messages(MessageKeys.FULL__SCREEN), "class"->"float-right"))
 						</div>
 					</div>
 				}

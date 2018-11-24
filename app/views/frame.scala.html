@@ -1,4 +1,7 @@
-@()(content: Html)
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@()(content: Html)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @mode() = @{
 
@@ -7,7 +10,7 @@
 
 @theme() = @{
 
-	session.getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase
+	request.session().getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase
 }
 
 @dir() = @{

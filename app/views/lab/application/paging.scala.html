@@ -1,7 +1,10 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import common.system._
 @import models.components._
 
-@(pagingInfo:PagingInfo, dummyPageValues:List[String])
+@(pagingInfo:PagingInfo, dummyPageValues:List[String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @equalPageSize(pageSize:Int) = @{
 
@@ -28,7 +31,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.PAGE), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.PAGE), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -53,13 +56,13 @@
 
 					@dummyPageValues.toString()
 
-					@components.adjust.pagination(Map("id"->"", "link"->ctx().request().path(), "query"->("size="+pagingInfo.getPageSize()), "pageIndex"->pagingInfo.getPageIndex().toString(), "pageCount"->pagingInfo.getPageCount().toString(), "visibleCount"->Math.min(10, pagingInfo.getPageCount()).toString, "foldSize"->"xs"))
+					@components.adjust.pagination(Map("id"->"", "link"->request.path(), "query"->("size="+pagingInfo.getPageSize()), "pageIndex"->pagingInfo.getPageIndex().toString(), "pageCount"->pagingInfo.getPageCount().toString(), "visibleCount"->Math.min(10, pagingInfo.getPageCount()).toString, "foldSize"->"xs"))
 				</div>
 			</div>
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"path":"@ctx().request().path()"
+			"path":"@request.path()"
 		}'></div>
 
 		@libraries.standard.last()

@@ -13,13 +13,13 @@ $(document).ready(function() {
 	var earth = d3.geoNaturalEarth1()
 		.translate([svgWidth / 2, svgHeight / 2])
 		.scale(svgWidth / 640 * 100)
-		.rotate([Messages("lambda"), Messages("phi"), Messages("gamma")])
+		.rotate([messages("lambda"), messages("phi"), messages("gamma")])
 
 	var path = d3.geoPath()
 		.projection(earth)
 
 	var earthPath
-	d3.json(Messages("map")).then(function(world) {
+	d3.json(messages("map")).then(function(world) {
 		earthPath = d3.select("#geoGraph")
 			.selectAll("path")
 			.data(world.features)
@@ -30,7 +30,7 @@ $(document).ready(function() {
 				if (d.properties.name == "Antarctica") {
 					return "#fff";
 				}
-				if (d.properties.name == Messages(MessageKeys.NATURALEARTHDATA_LANG)) {
+				if (d.properties.name == messages(MessageKeys.NATURALEARTHDATA_LANG)) {
 					return "red";
 				}
 				return "#eee";

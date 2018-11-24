@@ -6,17 +6,21 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @datetime() = @{
 
-	common.utils.DateTimes.toClientDateTime(LocalDateTime.now())
+	common.utils.DateTimes.toClientDateTime(request, LocalDateTime.now())
 }
 
 @frame(){
@@ -56,7 +60,7 @@
 								</div>
 							</div>
 						</div>
-						@components.button(Map("id"->"date", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.DATE)))
+						@components.button(Map("id"->"date", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.DATE)))
 					</div>
 
 					<div class="mb-3">
@@ -70,7 +74,7 @@
 								</div>
 							</div>
 						</div>
-						@components.button(Map("id"->"time", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.TIME)))
+						@components.button(Map("id"->"time", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.TIME)))
 					</div>
 				</div>
 			</div>

@@ -4,13 +4,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -39,7 +43,7 @@
 
 					<div id="graphContainer" class="mb-3 table-responsive">
 
-						<h4 class="headline">@Messages(MessageKeys.NETWORK)</h4>
+						<h4 class="headline">@messages(MessageKeys.NETWORK)</h4>
 						<svg id="networkGraph" class="bg-teal-50" width="640" height="480"></svg>
 					</div>
 				</div>

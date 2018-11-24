@@ -42,12 +42,16 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Upload extends Controller {
@@ -55,10 +59,10 @@ public class Upload extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -70,12 +74,15 @@ public class Upload extends Controller {
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@BodyParser.Of(value = BodyParser.MultipartFormData.class)
 	@RequireCSRFCheck
-	public CompletionStage<Result> upload() {
+	public CompletionStage<Result> upload(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final MultipartFormData<File> multipartFormData = request().body().asMultipartFormData();
-			final Form<UploadFormContent> uploadForm = formFactory.form(UploadFormContent.class).bindFromRequest(multipartFormData.asFormUrlEncoded());
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final MultipartFormData<File> multipartFormData = request.body().asMultipartFormData();
+			final Form<UploadFormContent> uploadForm = formFactory.form(UploadFormContent.class).bindFromRequestData(lang, request.attrs(), multipartFormData.asFormUrlEncoded());
 
 			if (!uploadForm.hasErrors()) {
 
@@ -88,31 +95,31 @@ public class Upload extends Controller {
 					final FilePart<File> uploadFilePart = multipartFormData.getFile(User.UPLOADFILE);
 					if (uploadFilePart.getFilename().isEmpty()) {
 
-						throw new IllegalStateException(messages.get(lang(), MessageKeys.ERROR_PATH_EMPTY));
+						throw new IllegalStateException(messages.at(MessageKeys.ERROR_PATH_EMPTY));
 					}
 					final Path uploadPath = uploadFilePart.getFile().toPath();
 
 					final String csv = Files.readAllLines(uploadPath, StandardCharsets.UTF_8).stream().collect(Collectors.joining(CsvPreference.STANDARD_PREFERENCE.getEndOfLineSymbols()));
 					final List<models.user.User> uploadUsers = CSVs.toBeans(models.user.User.getHeaders(), models.user.User.getReadCellProcessors(), csv, models.user.User.class);
-					uploadUsers.stream().forEach(user -> user.afterRead());
+					uploadUsers.stream().forEach(user -> user.afterRead(messages));
 
 					final UploadProcess process = createUploadProcess(operation);
-					process.validate(uploadUsers);
-					process.execute(manager, uploadUsers);
+					process.validate(uploadUsers, messages);
+					process.execute(manager, uploadUsers, messages);
 				} catch (final ExceptionSource e) {
 
 					manager.getTransaction().setRollbackOnly();
 
 					final Form<UploadFormContent> failureUploadForm = formFactory.form(UploadFormContent.class).fill(uploadFormContent);
-					failureUploadForm.withGlobalError(messages.get(lang(), MessageKeys.SYSTEM_ERROR_X__CASE__DATA_ILLEGAL, e.line()) + ": " + e.getLocalizedMessage());
-					return failureUpload(failureUploadForm);
+					failureUploadForm.withGlobalError(messages.at(MessageKeys.SYSTEM_ERROR_X__CASE__DATA_ILLEGAL, e.line()) + ": " + e.getLocalizedMessage());
+					return failureUpload(failureUploadForm, request, lang, messages);
 				} catch (final Exception e) {
 
 					manager.getTransaction().setRollbackOnly();
 
 					final Form<UploadFormContent> failureUploadForm = formFactory.form(UploadFormContent.class).fill(uploadFormContent);
 					failureUploadForm.withGlobalError(e.getLocalizedMessage());
-					return failureUpload(failureUploadForm);
+					return failureUpload(failureUploadForm, request, lang, messages);
 				}
 
 				final ObjectMapper mapper = new ObjectMapper();
@@ -122,7 +129,7 @@ public class Upload extends Controller {
 				return ok(response);
 			} else {
 
-				return failureUpload(uploadForm);
+				return failureUpload(uploadForm, request, lang, messages);
 			}
 		});
 
@@ -133,7 +140,7 @@ public class Upload extends Controller {
 
 	}
 
-	private Result failureUpload(final Form<UploadFormContent> uploadForm) {
+	private Result failureUpload(final Form<UploadFormContent> uploadForm, final Request request, final Lang lang, final Messages messages) {
 
 		final ObjectMapper mapper = new ObjectMapper();
 		final ObjectNode result = mapper.createObjectNode();
@@ -142,7 +149,7 @@ public class Upload extends Controller {
 		final ArrayNode globalErrorsNode = mapper.createArrayNode();
 		uploadForm.globalErrors().forEach(validationError -> {
 
-			globalErrorsNode.add(messages.get(lang(), validationError.message()));
+			globalErrorsNode.add(messages.at(validationError.message()));
 		});
 		result.set("globalErrors", globalErrorsNode);
 
@@ -152,7 +159,7 @@ public class Upload extends Controller {
 			final String property = error.key();
 
 			final ArrayNode propertyErrorNode = mapper.createArrayNode();
-			error.messages().forEach(message -> propertyErrorNode.add(messages.get(lang(), message)));
+			error.messages().forEach(message -> propertyErrorNode.add(messages.at(message)));
 
 			errorsNode.set(property, propertyErrorNode);
 		});
@@ -178,11 +185,9 @@ public class Upload extends Controller {
 
 	interface UploadProcess {
 
-		MessagesApi getMessages();
-
 		Class<?>[] getGroups();
 
-		default void validate(final List<models.user.User> uploadUsers) {
+		default void validate(final List<models.user.User> uploadUsers, final Messages messages) {
 
 			uploadUsers.stream().forEach(user -> {
 
@@ -193,25 +198,19 @@ public class Upload extends Controller {
 					builder.append(user.getUserId()).append(" - ");
 					violations.stream().forEach(violation -> {
 
-						builder.append(violation.getPropertyPath().toString()).append("<br>").append(getMessages().get(lang(), violation.getMessage()));
+						builder.append(violation.getPropertyPath().toString()).append("<br>").append(messages.at(violation.getMessage()));
 					});
 					throw new IllegalStateException(builder.toString());
 				}
 			});
 		}
 
-		void execute(final EntityManager manager, final List<models.user.User> uploadUsers) throws AccountException;
+		void execute(final EntityManager manager, final List<models.user.User> uploadUsers, final Messages messages) throws AccountException;
 	}
 
 	private class CreateUploadProcess implements UploadProcess {
 
 		private final Class<?>[] groups = new Class<?>[] { Create.class };
-
-		@Override
-		public MessagesApi getMessages() {
-
-			return messages;
-		}
 
 		@Override
 		public Class<?>[] getGroups() {
@@ -220,21 +219,21 @@ public class Upload extends Controller {
 		}
 
 		@Override
-		public void execute(final EntityManager manager, final List<models.user.User> uploadUsers) throws AccountException {
+		public void execute(final EntityManager manager, final List<models.user.User> uploadUsers, final Messages messages) throws AccountException {
 
 			for (int i = 0; i < uploadUsers.size(); i++) {
 
 				final models.user.User uploadUser = uploadUsers.get(i);
 
 				uploadUser.setPassword(Strings.randomAlphanumeric(8) + "1!aA");
-				if (userService.isExist(manager, uploadUser.getUserId())) {
+				if (userService.isExist(manager, messages, uploadUser.getUserId())) {
 
-					throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_EXIST) + ": " + uploadUser.getUserId());
+					throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_EXIST) + ": " + uploadUser.getUserId());
 				}
 
 				try {
 
-					userService.create(manager, uploadUser);
+					userService.create(manager, messages, uploadUser);
 				} catch (final EntityExistsException e) {
 
 					throw e;
@@ -248,33 +247,27 @@ public class Upload extends Controller {
 		private final Class<?>[] groups = new Class<?>[] { Update.class };
 
 		@Override
-		public MessagesApi getMessages() {
-
-			return messages;
-		}
-
-		@Override
 		public Class<?>[] getGroups() {
 
 			return groups;
 		}
 
 		@Override
-		public void execute(final EntityManager manager, final List<models.user.User> uploadUsers) throws AccountException {
+		public void execute(final EntityManager manager, final List<models.user.User> uploadUsers, final Messages messages) throws AccountException {
 
 			for (int i = 0; i < uploadUsers.size(); i++) {
 
 				final models.user.User uploadUser = uploadUsers.get(i);
 
 				final models.user.User storedUser;
-				if (!userService.isExist(manager, uploadUser.getUserId())) {
+				if (!userService.isExist(manager, messages, uploadUser.getUserId())) {
 
-					throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_NOTEXIST) + ": " + uploadUser.getUserId());
+					throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_NOTEXIST) + ": " + uploadUser.getUserId());
 				}
 
 				try {
 
-					storedUser = userService.read(manager, uploadUser.getUserId());
+					storedUser = userService.read(manager, messages, uploadUser.getUserId());
 				} catch (final AccountException e) {
 
 					throw e;
@@ -287,7 +280,7 @@ public class Upload extends Controller {
 
 				try {
 
-					userService.update(manager, storedUser);
+					userService.update(manager, messages, storedUser);
 				} catch (final IllegalArgumentException e) {
 
 					throw e;

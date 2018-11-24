@@ -1,13 +1,16 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
 
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(alertInfo: Map[String, String])
+@(alertInfo: Map[String, String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -26,7 +29,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.UPLOAD), "icon"->"fas fa-upload", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.UPLOAD), "icon"->"fas fa-upload", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -56,13 +59,13 @@
 								</div>
 							</div>
 							<p>
-								@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
+								@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->messages(MessageKeys.UPLOAD)))
 							</p>
 						}
 					</div>
 
 					<div class="mb-3">
-						<h4 class="headline">@(Messages(MessageKeys.IMAGE)+" "+Messages(MessageKeys.PREVIEW))</h4>
+						<h4 class="headline">@(messages(MessageKeys.IMAGE)+" "+messages(MessageKeys.PREVIEW))</h4>
 						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.getOrDefault("imageSuccess", "-"), "closable"->"true", "display"->alertInfo.containsKey("imageSuccess").toString))
 						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrDefault("imageWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("imageWarning").toString))
 
@@ -82,7 +85,7 @@
 										</div>
 									</div>
 									<p>
-										@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
+										@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->messages(MessageKeys.UPLOAD)))
 									</p>
 								}
 							</div>
@@ -108,11 +111,11 @@
 										<input id="ajaxFile" type="file" name="inputName" class="custom-file-input">
 										<label class="custom-file-label" for="ajaxFile"></label>
 									</div>
-									@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
-											Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal")
+									@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+											Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal")
 										)){
 										<div class="wordwrap">
-											<div id="ajaxMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+											<div id="ajaxMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
 											<div id="ajaxDescription">-</div>
 										</div>
 										@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
@@ -120,7 +123,7 @@
 								</div>
 							</div>
 							<p>
-								@components.button(Map("id"->"ajaxSubmit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->Messages(MessageKeys.UPLOAD)))
+								@components.button(Map("id"->"ajaxSubmit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->messages(MessageKeys.UPLOAD)))
 							</p>
 						}
 					</div>
@@ -129,10 +132,10 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
-			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
-			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)",
-			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)"
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)",
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)"
 		}'></div>
 
 		@libraries.standard.last()

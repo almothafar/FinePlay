@@ -21,6 +21,8 @@ import play.i18n.MessagesApi;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -29,16 +31,19 @@ public class Logger extends Controller {
 	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Authenticated(common.core.Authenticator.class)
 	@BodyParser.Of(BodyParser.Json.class)
-	public CompletionStage<Result> log() {
+	public CompletionStage<Result> log(@Nonnull final Request request) {
 
-		final JsonNode errorReportContent = request().body().asJson();
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final JsonNode errorReportContent = request.body().asJson();
 		final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
-		final String message = messages.get(lang(), MessageKeys.THANK__YOU__VERY__MUCH);
+		final String message = messages.at(MessageKeys.THANK__YOU__VERY__MUCH);
 		return CompletableFuture.supplyAsync(() -> {
 
 			try {

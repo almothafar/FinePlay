@@ -29,7 +29,7 @@ public class Batchlet extends AbstractBatchlet {
 	private Langs langs;
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
 	private MailerClient mailer;
@@ -37,7 +37,7 @@ public class Batchlet extends AbstractBatchlet {
 	@Override
 	public String process() throws Exception {
 
-		final Exception exception = new IllegalStateException(messages.get(langs.availables().get(0), MessageKeys.FAILURE));
+		final Exception exception = new IllegalStateException(messagesApi.get(langs.availables().get(0), MessageKeys.FAILURE));
 
 		LOGGER.info(exception.getLocalizedMessage());
 

@@ -54,7 +54,7 @@ Document
 
 ### Official Document ###
 
-[Play Framework](https://www.playframework.com/documentation/2.7.0-M4)
+[Play Framework](https://www.playframework.com/documentation/2.7.0-RC3)
 
 [Bootstrap](http://getbootstrap.com/docs/4.1)
 
@@ -98,7 +98,7 @@ TODO
 Release History
 ---------------
 
-+ **2.7.0-M4-βc1** - 2018-10-16
++ **2.7.0-RC3-βc4** - 2018-11-24
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

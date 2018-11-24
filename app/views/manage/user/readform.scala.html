@@ -3,7 +3,8 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -12,18 +13,18 @@
 @import models.manage.user._
 @import models.user._
 
-@(form: play.data.Form[models.manage.user.ReadFormContent])
+@(form: play.data.Form[models.manage.user.ReadFormContent])()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <div class="collapse" id="readCollapse">
 	<div id="readPanel" class="card text-xs-center">
 		<div class="card-body text-xs-left">
 		@helper.form(helper.CSRF(controllers.manage.user.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
-			<h5 class="form-read-heading">@Messages(MessageKeys.CONDITION)</h5>
+			<h5 class="form-read-heading">@messages(MessageKeys.CONDITION)</h5>
 			@if(form.hasGlobalErrors) {
 				<p class="text-danger">@form.globalError.get.message</p>
 			}
 			<div class="row form-group">
-				<label for="@User.USER_ID" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_USERID)</label>
+				<label for="@User.USER_ID" class="col-sm-3 col-form-label">@messages(MessageKeys.USER_USERID)</label>
 				<div class="col-sm-9">
 					<div class="input-group">
 						<div class="input-group-prepend">
@@ -33,30 +34,30 @@
 						</div>
 						<input id="@User.USER_ID" type="text" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).value.orElse("")" autofocus>
 						@for(error <- form(User.USER_ID).errors) {
-							<div class="text-danger">@Messages(error.message)</div>
+							<div class="text-danger">@messages(error.message)</div>
 						}
 					</div>
 				</div>
 			</div>
 			<div class="row form-group">
-				<label for="inputRole" class="col-sm-3 form-control-label">@Messages(MessageKeys.USER_ROLE)</label>
+				<label for="inputRole" class="col-sm-3 form-control-label">@messages(MessageKeys.USER_ROLE)</label>
 				<div class="col-sm-9">
 					<div class="custom-control custom-checkbox custom-control-inline">
 						<input id="readRoles@User.Role.GUEST.toString()" class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[0]")" value="@User.Role.GUEST.toString()" @("checked".when(form.get().getRoles().contains(User.Role.GUEST)))>
-						<label class="custom-control-label" for="readRoles@User.Role.GUEST.toString()">@Messages(MessageKeys.USER_ROLE_GUEST)</label>
+						<label class="custom-control-label" for="readRoles@User.Role.GUEST.toString()">@messages(MessageKeys.USER_ROLE_GUEST)</label>
 					</div>
 					<div class="custom-control custom-checkbox custom-control-inline">
 						<input id="readRoles@User.Role.CUSTOMER.toString()" class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[1]")" value="@User.Role.CUSTOMER.toString()" @("checked".when(form.get().getRoles().contains(User.Role.CUSTOMER)))>
-						<label class="custom-control-label" for="readRoles@User.Role.CUSTOMER.toString()">@Messages(MessageKeys.USER_ROLE_CUSTOMER)</label>
+						<label class="custom-control-label" for="readRoles@User.Role.CUSTOMER.toString()">@messages(MessageKeys.USER_ROLE_CUSTOMER)</label>
 					</div>
 					<div class="custom-control custom-checkbox custom-control-inline">
 						<input id="readRoles@User.Role.ADMIN.toString()" class="custom-control-input read@User.ROLES" type="checkbox" name="@(User.ROLES+"[2]")" value="@User.Role.ADMIN.toString()" @("checked".when(form.get().getRoles().contains(User.Role.ADMIN)))>
-						<label class="custom-control-label" for="readRoles@User.Role.ADMIN.toString()">@Messages(MessageKeys.USER_ROLE_ADMIN)</label>
+						<label class="custom-control-label" for="readRoles@User.Role.ADMIN.toString()">@messages(MessageKeys.USER_ROLE_ADMIN)</label>
 					</div>
 				</div>
 			</div>
 			<div class="row form-group">
-				<label for="@User.EXPIREFROM" class="col-12 col-sm-3 col-form-label">@Messages(MessageKeys.USER_EXPIRE)</label>
+				<label for="@User.EXPIREFROM" class="col-12 col-sm-3 col-form-label">@messages(MessageKeys.USER_EXPIRE)</label>
 				<div class="col-10 col-sm-4">
 					<div class="input-group">
 						<input id='@User.EXPIREFROM' type='text' name="@User.EXPIREFROM" class="form-control" value="@form(User.EXPIREFROM).value.orElse("")"/>
@@ -82,7 +83,7 @@
 				</div>
 			</div>
 			<div class="row form-group">
-				<label for="@User.MAXRESULT" class="col-sm-3 col-form-label">@Messages(MessageKeys.MAX__CASE)</label>
+				<label for="@User.MAXRESULT" class="col-sm-3 col-form-label">@messages(MessageKeys.MAX__CASE)</label>
 				<div class="col-sm-9">
 					<select id="@User.MAXRESULT" name="@User.MAXRESULT" class="form-control custom-select" required>
 						<option value="100" @("selected".when("100".equals(form(User.MAXRESULT).value.orElse(""))))>100</option>
@@ -93,7 +94,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					@components.button(Map("id"->"readButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sync", "text"->Messages(MessageKeys.UPDATE), "class"->"float-right"))
+					@components.button(Map("id"->"readButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sync", "text"->messages(MessageKeys.UPDATE), "class"->"float-right"))
 				</div>
 			</div>
 		}

@@ -1,11 +1,15 @@
 @import models.components._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import java.time._
 @import java.time.format._
 
-@(map: Map[String, String])
+@(map: Map[String, String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map

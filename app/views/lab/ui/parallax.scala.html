@@ -3,6 +3,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -10,7 +14,7 @@
 @import common.system._
 @import common.utils._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -37,11 +41,11 @@
 				</div>
 				<div class="col-md-9 px-0">
 
-					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@Messages(MessageKeys.CONTENT) 1</span></div>
-					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@Messages(MessageKeys.CONTENT) 2</span></div>
-					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@Messages(MessageKeys.CONTENT) 3</span></div>
-					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@Messages(MessageKeys.CONTENT) 4</span></div>
-					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@Messages(MessageKeys.CONTENT) 5</span></div>
+					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@messages(MessageKeys.CONTENT) 1</span></div>
+					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@messages(MessageKeys.CONTENT) 2</span></div>
+					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@messages(MessageKeys.CONTENT) 3</span></div>
+					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@messages(MessageKeys.CONTENT) 4</span></div>
+					<div class="contentFrame"><div class="imageContent"></div><span class="textContent">@messages(MessageKeys.CONTENT) 5</span></div>
 				</div>
 			</div>
 		}

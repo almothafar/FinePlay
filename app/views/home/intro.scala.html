@@ -5,7 +5,8 @@
 @import scala.collection.JavaConversions._
 
 @import play.inject.Injector
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import views.html._
 @import views.html.components
@@ -16,22 +17,16 @@
 
 @import common.system._
 
-@this(injector: Injector)
-@()
-
-@messages() = @{
-
-	injector.instanceOf(classOf[play.i18n.MessagesApi])
-}
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @currentTimeZone() = @{
 
-	common.utils.ZoneIds.getZoneIdToNameMap(lang.toLocale).get(session.get(models.user.User.ZONE_ID))
+	common.utils.ZoneIds.getZoneIdToNameMap(lang.toLocale).get(request.session().getOptional(models.user.User.ZONE_ID).get())
 }
 
 @currentLang() = @{
 
-	common.utils.Locales.getLocaleIdToNameMap(lang.toLocale).get(ctx().lang().code())
+	common.utils.Locales.getLocaleIdToNameMap(lang.toLocale).get(lang.code())
 }
 
 @frame(){
@@ -46,19 +41,19 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.INTRO), "icon"->"far fa-file-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.INTRO), "icon"->"far fa-file-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
-			@components.alert(Map("id"->"timezoneInfo", "icon"->"far fa-clock", "text"->Messages(MessageKeys.YOUR__X__IS__X, "<strong>"+Messages(MessageKeys.TIMEZONE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentTimeZone+"</a>"), "type"->"info", "closable"->"true"))
-			@components.alert(Map("id"->"languageInfo", "icon"->"fas fa-globe", "text"->Messages(MessageKeys.YOUR__X__IS__X, "<strong>"+Messages(MessageKeys.LANGUAGE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentLang+"</a>"), "type"->"info", "closable"->"true"))
+			@components.alert(Map("id"->"timezoneInfo", "icon"->"far fa-clock", "text"->messages(MessageKeys.YOUR__X__IS__X, "<strong>"+messages(MessageKeys.TIMEZONE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentTimeZone+"</a>"), "type"->"info", "closable"->"true"))
+			@components.alert(Map("id"->"languageInfo", "icon"->"fas fa-globe", "text"->messages(MessageKeys.YOUR__X__IS__X, "<strong>"+messages(MessageKeys.LANGUAGE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentLang+"</a>"), "type"->"info", "closable"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
 			<div class="jumbotron">
-				<h1 class="display-4">@Messages(MessageKeys.WELCOME)</h1>
+				<h1 class="display-4">@messages(MessageKeys.WELCOME)</h1>
 				<p class="lead draft">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
 				<hr class="m-y-2">
 				<p class="draft">It uses utility classes for typography and spacing to space content out within the larger container.</p>
@@ -71,28 +66,28 @@
 					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-graduation-cap", "text"->"Learn more", "link"->"#"))
 				</p>
 				<p class="lead mt-3">
-					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-film", "text"->Messages(MessageKeys.VIDEO), "link"->controllers.home.routes.Home.video().toString()))
+					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-film", "text"->messages(MessageKeys.VIDEO), "link"->controllers.home.routes.Home.video().toString()))
 				</p>
 			</div>
 
 			@components.container(Map("id"->"", "fluid"->"true", "class"->"mb-3 text-center")){
 
-				@components.linkbutton(Map("id"->"", "link"->Messages(MessageKeys.ADOBE_READER_LINK), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "iconType"->"danger", "text"->"Adobe Reader"))
+				@components.linkbutton(Map("id"->"", "link"->messages(MessageKeys.ADOBE_READER_LINK), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "iconType"->"danger", "text"->"Adobe Reader"))
 			}
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
 			"referrer":"@controllers.user.routes.User.index().toString()",
-			"@MessageKeys.INFO":"@Messages(MessageKeys.INFO)",
-			"@MessageKeys.CANCEL":"@Messages(MessageKeys.CANCEL)",
-			"@MessageKeys.PREVIOUS":"@Messages(MessageKeys.PREVIOUS)",
-			"@MessageKeys.NEXT":"@Messages(MessageKeys.NEXT)",
-			"@MessageKeys.END":"@Messages(MessageKeys.END)",
-			"@MessageKeys.TIMEZONE":"@Messages(MessageKeys.TIMEZONE)",
-			"@MessageKeys.LANGUAGE":"@Messages(MessageKeys.LANGUAGE)",
-			"@MessageKeys.MENU":"@Messages(MessageKeys.MENU)",
-			"@MessageKeys.HELP":"@Messages(MessageKeys.HELP)",
-			"@MessageKeys.BUTTON":"@Messages(MessageKeys.BUTTON)"
+			"@MessageKeys.INFO":"@messages(MessageKeys.INFO)",
+			"@MessageKeys.CANCEL":"@messages(MessageKeys.CANCEL)",
+			"@MessageKeys.PREVIOUS":"@messages(MessageKeys.PREVIOUS)",
+			"@MessageKeys.NEXT":"@messages(MessageKeys.NEXT)",
+			"@MessageKeys.END":"@messages(MessageKeys.END)",
+			"@MessageKeys.TIMEZONE":"@messages(MessageKeys.TIMEZONE)",
+			"@MessageKeys.LANGUAGE":"@messages(MessageKeys.LANGUAGE)",
+			"@MessageKeys.MENU":"@messages(MessageKeys.MENU)",
+			"@MessageKeys.HELP":"@messages(MessageKeys.HELP)",
+			"@MessageKeys.BUTTON":"@messages(MessageKeys.BUTTON)"
 		}'></div>
 
 		@libraries.standard.last()

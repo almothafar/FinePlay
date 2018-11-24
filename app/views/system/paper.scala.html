@@ -1,12 +1,16 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(paperInfo: Map[String, String])
+@(paperInfo: Map[String, String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable.Map
 
@@ -31,7 +35,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>@Messages(MessageKeys.X__X, Messages(MessageKeys.PAPER), Messages(MessageKeys.VIEWER)) | @Messages(MessageKeys.SYSTEM_NAME)</title>
+		<title>@messages(MessageKeys.X__X, messages(MessageKeys.PAPER), messages(MessageKeys.VIEWER)) | @messages(MessageKeys.SYSTEM_NAME)</title>
 
 		@dirSuffix() = @{
 
@@ -115,19 +119,19 @@
 				bottom: 2mm;
 				right: 2mm;
 				counter-increment: sheet;
-				content: "@Messages(MessageKeys.PAGE) " counter(sheet);
+				content: "@messages(MessageKeys.PAGE) " counter(sheet);
 			}
 			.dir-rtl .sheet::after {
 				left: 2mm;
 				right: initial;
-				content: counter(sheet) " @Messages(MessageKeys.PAGE)";
+				content: counter(sheet) " @messages(MessageKeys.PAGE)";
 			}
 		}
 	</head>
 
 	<body class="@paperInfo.get(models.system.PaperInfoFormContent.SIZE)">
 
-		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.BACK), "link"->paperInfo.get(models.system.PaperInfoFormContent.RETURNURL), "class"->"d-print-none"))
+		@components.linkbutton(Map("id"->"btn-prev", "type"->"primary", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->messages(MessageKeys.BACK), "link"->paperInfo.get(models.system.PaperInfoFormContent.RETURNURL), "class"->"d-print-none"))
 
 		@libraries.jquery.last()
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/paper.js")'></script>

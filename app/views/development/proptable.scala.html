@@ -4,13 +4,14 @@
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
 @import play.mvc._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@(id:String, map:scala.collection.Map[String, AnyRef])
+@(id:String, map:scala.collection.Map[String, AnyRef])(implicit messages: Messages)
 
 @tbodyRowToColumnsList(map:scala.collection.Map[String, AnyRef]) = @{
 
@@ -31,11 +32,10 @@
 
 	@components.table(Map("id"->id, "type"->"", "bordered"->"true", "striped"->"true"),
 		Map("id"->""),Tuple2(Map("id"->"", "type"->"light"),List(
-			Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.KEY)),
-			Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VALUE)))),
+			Map("id"->"", "head"->"true", "text"->messages(MessageKeys.KEY)),
+			Map("id"->"", "head"->"true", "text"->messages(MessageKeys.VALUE)))),
 		Map("id"->"", "type"->"light"), tbodyRowToColumnsList(map),
 		Map("id"->""),Tuple2(Map("id"->"", "type"->"light"),List(
 		))
 	)
 </div>
-

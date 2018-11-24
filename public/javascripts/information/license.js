@@ -2,5 +2,5 @@
 
 $(document).ready(function () {
 
-	$('#projectImage').css('background', 'url(' + Messages("projectImage") + ') no-repeat center');
+	$('#projectImage').css('background', 'url(' + messages("projectImage") + ') no-repeat center');
 });

@@ -3,12 +3,16 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -37,7 +41,7 @@
 					<div class="mb-3">
 						@components.card(Map("id"->"checkboxPanel", "class"->"shadow-sm")){
 							<div class="card-header">
-								@Messages(MessageKeys.CHECKBOX)
+								@messages(MessageKeys.CHECKBOX)
 							</div>
 							<div class="card-body">
 
@@ -94,7 +98,7 @@
 					<div class="mb-3">
 						@components.card(Map("id"->"radioPanel", "class"->"shadow-sm")){
 							<div class="card-header">
-								@Messages(MessageKeys.RADIO)
+								@messages(MessageKeys.RADIO)
 							</div>
 							<div class="card-body">
 

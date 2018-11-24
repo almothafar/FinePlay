@@ -12,22 +12,36 @@ import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.inject.Inject;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed(value = { Permission.READ })
 public class Information extends Controller {
 
+	@Inject
+	private MessagesApi messagesApi;
+
 	@Authenticated(common.core.Authenticator.class)
-	public Result creator() {
+	public Result creator(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final String myImageUrl = "https://www.gravatar.com/avatar/" + toHashedEMail("hiro20v++@icloud.com") + "?s=200";
-		return ok(views.html.information.creator.render(myImageUrl));
+		return ok(views.html.information.creator.render(myImageUrl, request, lang, messages));
 	}
 
-	public Result license() {
+	public Result license(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final String myImageUrl = "https://www.gravatar.com/avatar/" + toHashedEMail("hiro20v++@icloud.com") + "?s=200";
-		return ok(views.html.information.license.render(myImageUrl));
+		return ok(views.html.information.license.render(myImageUrl, request, lang, messages));
 	}
 
 	@Nonnull

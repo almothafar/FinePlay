@@ -1,11 +1,15 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@(displaySystemLangs: java.util.List[String], headerColumns: java.util.List[String], lineColumnsList: java.util.List[java.util.List[String]])
+@(displaySystemLangs: java.util.List[String], headerColumns: java.util.List[String], lineColumnsList: java.util.List[java.util.List[String]])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -56,7 +60,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.MESSAGE), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.MESSAGE), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -92,7 +96,7 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.ALL":"@Messages(MessageKeys.ALL)"
+			"@MessageKeys.ALL":"@messages(MessageKeys.ALL)"
 		}'></div>
 
 		@libraries.standard.last()

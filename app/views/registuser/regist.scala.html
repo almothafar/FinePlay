@@ -2,7 +2,8 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -12,11 +13,11 @@
 
 @import common.system._
 
-@(form: play.data.Form[models.registuser.RegistFormContent])
+@(form: play.data.Form[models.registuser.RegistFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
-	@top.head(Messages(MessageKeys.REGISTUSER)){
+	@top.head(messages(MessageKeys.REGISTUSER)){
 
 		@libraries.standard.head()
 	}
@@ -33,43 +34,43 @@
 				<div class="col-md-10 col-lg-8 col-xl-6 p-0">
 					@components.card(Map("id"->"registPanel", "class"->"shadow-sm m-3")){
 						<div class="card-header">
-							@Messages(MessageKeys.REGISTUSER)
+							@messages(MessageKeys.REGISTUSER)
 						</div>
 						<div class="card-body">
 
 							@helper.form(helper.CSRF(controllers.registuser.routes.RegistUser.apply()), args = 'class -> "form-regist") {
-								<h4 class="card-title">@Messages(MessageKeys.REGISTUSER_PLEASE__REGIST)</h4>
-								<p class="card-text">@Messages(MessageKeys.REGISTUSER_PLEASE__REGIST_DESCRIPTION)</p>
+								<h4 class="card-title">@messages(MessageKeys.REGISTUSER_PLEASE__REGIST)</h4>
+								<p class="card-text">@messages(MessageKeys.REGISTUSER_PLEASE__REGIST_DESCRIPTION)</p>
 								@if(form.hasGlobalErrors) {
 									<p class="text-danger">@form.globalError.get.message</p>
 								}
 								<div class="form-group row">
-									<label for="@User.USER_ID" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_USERID)</label>
+									<label for="@User.USER_ID" class="col-sm-3 col-form-label required">@messages(MessageKeys.USER_USERID)</label>
 									<div class="col-sm-9">
 										<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).value.orElse("")" required autofocus>
-										<small class="text-muted">@Messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
+										<small class="text-muted">@messages(MessageKeys.USER_USERID_DESCRIPTION)</small>
 										@for(error <- form(User.USER_ID).errors) {
-											<div class="text-danger">@Messages(error.message)</div>
+											<div class="text-danger">@messages(error.message)</div>
 										}
 									</div>
 								</div>
 								<div class="form-group row">
-									<label for="@User.PASSWORD" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_PASSWORD)</label>
+									<label for="@User.PASSWORD" class="col-sm-3 col-form-label required">@messages(MessageKeys.USER_PASSWORD)</label>
 									<div class="col-sm-9">
 										<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).value.orElse("")" required>
-										<small class="text-muted">@Messages(MessageKeys.USER_PASSWORD_DESCRIPTION)</small>
+										<small class="text-muted">@messages(MessageKeys.USER_PASSWORD_DESCRIPTION)</small>
 										@for(error <- form(User.PASSWORD).errors) {
-											<div class="text-danger">@Messages(error.message)</div>
+											<div class="text-danger">@messages(error.message)</div>
 										}
 									</div>
 								</div>
 								<div class="form-group row">
-									<label for="@User.REPASSWORD" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_REPASSWORD)</label>
+									<label for="@User.REPASSWORD" class="col-sm-3 col-form-label required">@messages(MessageKeys.USER_REPASSWORD)</label>
 									<div class="col-sm-9">
 										<input id="@User.REPASSWORD" type="password" name="@User.REPASSWORD" class="form-control" placeholder="RePassword" value="@form(User.REPASSWORD).value.orElse("")" required>
-										<small class="text-muted">@Messages(MessageKeys.USER_REPASSWORD_DESCRIPTION)</small>
+										<small class="text-muted">@messages(MessageKeys.USER_REPASSWORD_DESCRIPTION)</small>
 										@for(error <- form(User.REPASSWORD).errors) {
-											<div class="text-danger">@Messages(error.message)</div>
+											<div class="text-danger">@messages(error.message)</div>
 										}
 									</div>
 								</div>
@@ -77,7 +78,7 @@
 								<input id="@User.SHORTZONEID" type="hidden" name="@User.SHORTZONEID" class="form-control">
 								<div class="form-group row">
 									<div class="col-12 text-right">
-										@components.button(Map("id"->"applyButton", "action"->"submit", "type"->"primary", "icon"->"", "text"->Messages(MessageKeys.REGIST), "default"->"true", "class"->"float-right"))
+										@components.button(Map("id"->"applyButton", "action"->"submit", "type"->"primary", "icon"->"", "text"->messages(MessageKeys.REGIST), "default"->"true", "class"->"float-right"))
 									</div>
 								</div>
 							}

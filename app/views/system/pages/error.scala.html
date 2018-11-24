@@ -3,6 +3,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -11,7 +15,12 @@
 @import common.system._
 
 @this(injector: Injector)
-@(error: play.api.UsefulException)
+@(error: play.api.UsefulException)(implicit requestHeader:Http.RequestHeader, lang: Lang, messages: Messages)
+
+@request() = @{
+
+	requestHeader.withBody(null);
+}
 
 @isDev() = @{
 
@@ -30,7 +39,7 @@
 		error.title
 	}else{
 
-		Messages(MessageKeys.SYSTEM_ERROR_EXECUTION_EXCEPTION)
+		messages(MessageKeys.SYSTEM_ERROR_EXECUTION_EXCEPTION)
 	}
 }
 
@@ -51,8 +60,8 @@
 
 	@head(error.title){
 
-		@libraries.standard.head()
-	}
+		@libraries.standard.head()(request(), lang, messages)
+	}(request(), lang, messages)
 
 	@body("error","error"){
 
@@ -77,7 +86,7 @@
 
 			@if(isDev()){
 			<div class="mt-3">
-				<input type="text" class="form-control" id="searchServerErrorMessage" placeholder="@Messages(MessageKeys.ERROR)" value="@error.getLocalizedMessage()">
+				<input type="text" class="form-control" id="searchServerErrorMessage" placeholder="@messages(MessageKeys.ERROR)" value="@error.getLocalizedMessage()">
 				@components.button(Map("id"->"searchServerStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"Stack Overflow"))
 				@components.button(Map("id"->"searchServerStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"スタック・オーバーフロー"))
 				@components.button(Map("id"->"searchServerQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
@@ -90,7 +99,7 @@
 			"isPlayException":@isPlayException(error)
 		}'></div>
 
-		@libraries.standard.last()
-		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/pages/error.js")'></script>
-	}
-}
+		@libraries.standard.last()(request(), lang, messages)
+		<script @{CSPNonce.attr(requestHeader.asScala)} src='@routes.Assets.versioned("javascripts/system/pages/error.js")'></script>
+	}(request(), lang, messages)
+}(request(), lang, messages)

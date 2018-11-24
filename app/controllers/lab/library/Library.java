@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import javax.inject.Inject;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -26,166 +28,177 @@ import common.utils.Templates;
 import models.components.PagingInfo;
 import models.system.System.PermissionsAllowed;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
 public class Library extends Controller {
 
+	@Inject
+	private MessagesApi messagesApi;
+
 	@Authenticated(common.core.Authenticator.class)
-	public Result index(String lib) {
+	public Result index(@Nonnull final Request request, String lib) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		switch (lib) {
 		case "bootbox":
 
-			return bootbox();
+			return bootbox(request, lang, messages);
 		case "select2":
 
-			return select2();
+			return select2(request, lang, messages);
 		case "pickadate":
 
-			return pickadate();
+			return pickadate(request, lang, messages);
 		case "chartjs":
 
-			return chartjs();
+			return chartjs(request, lang, messages);
 		case "fullcalendar":
 
-			return fullcalendar();
+			return fullcalendar(request, lang, messages);
 		case "bootstrapslider":
 
-			return bootstrapslider();
+			return bootstrapslider(request, lang, messages);
 		case "openlayers":
 
-			return openlayers();
+			return openlayers(request, lang, messages);
 		case "jqvmap":
 
-			return jqvmap();
+			return jqvmap(request, lang, messages);
 		case "handsontable":
 
-			return handsontable();
+			return handsontable(request, lang, messages);
 		case "highlight":
 
-			return highlight();
+			return highlight(request, lang, messages);
 		case "d3":
 
-			return d3();
+			return d3(request, lang, messages);
 		case "d3geoprojection":
 
-			return d3geoprojection();
+			return d3geoprojection(request, lang, messages);
 		case "cropperjs":
 
-			return cropperjs();
+			return cropperjs(request, lang, messages);
 		case "twentytwenty":
 
-			return twentytwenty();
+			return twentytwenty(request, lang, messages);
 		case "diff2html":
 
-			return diff2html();
+			return diff2html(request, lang, messages);
 		case "summernote":
 
-			return summernote();
+			return summernote(request, lang, messages);
 		case "marked":
 
-			return marked();
+			return marked(request, lang, messages);
 		case "markdeep":
 
-			return markdeep();
+			return markdeep(request, lang, messages);
 		case "plotlyjs":
 
-			return plotlyjs();
+			return plotlyjs(request, lang, messages);
 		case "parsley":
 
-			return parsley();
+			return parsley(request, lang, messages);
 		case "hammerjs":
 
-			return hammerjs();
+			return hammerjs(request, lang, messages);
 		case "bootstrapcolorpicker":
 
-			return bootstrapcolorpicker();
+			return bootstrapcolorpicker(request, lang, messages);
 		case "frappegantt":
 
-			return frappegantt();
+			return frappegantt(request, lang, messages);
 		case "vizjs":
 
-			return vizjs();
+			return vizjs(request, lang, messages);
 		case "pdfjs":
 
-			return pdfjs();
+			return pdfjs(request, lang, messages);
 		case "revealjs":
 
-			return revealjs();
+			return revealjs(request, lang, messages);
 		case "papercss":
 
-			return papercss();
+			return papercss(request, lang, messages);
 		case "camera":
 
-			return camera();
+			return camera(request, lang, messages);
 		case "mustache":
 
-			return mustache();
+			return mustache(request, lang, messages);
 		case "zxing":
 
-			return zxing();
+			return zxing(request, lang, messages);
 		case "quaggajs":
 
-			return quaggajs();
+			return quaggajs(request, lang, messages);
 		case "jsqr":
 
-			return jsqr();
+			return jsqr(request, lang, messages);
 		case "icon":
 
-			return icon();
+			return icon(request, lang, messages);
 		case "3dmol":
 
-			return tdmol();
+			return tdmol(request, lang, messages);
 		default:
 
-			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return redirect(controllers.setting.user.routes.User.index());
 		}
 	}
 
-	public static Result bootbox() {
+	public static Result bootbox(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.bootbox.render());
+		return ok(views.html.lab.library.bootbox.render(request, lang, messages));
 	}
 
-	public static Result select2() {
+	public static Result select2(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.select2.render());
+		return ok(views.html.lab.library.select2.render(request, lang, messages));
 	}
 
-	public static Result pickadate() {
+	public static Result pickadate(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.pickadate.render());
+		return ok(views.html.lab.library.pickadate.render(request, lang, messages));
 	}
 
-	public static Result chartjs() {
+	public static Result chartjs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.chartjs.render());
+		return ok(views.html.lab.library.chartjs.render(request, lang, messages));
 	}
 
-	public static Result fullcalendar() {
+	public static Result fullcalendar(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.fullcalendar.render());
+		return ok(views.html.lab.library.fullcalendar.render(request, lang, messages));
 	}
 
-	public static Result bootstrapslider() {
+	public static Result bootstrapslider(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.bootstrapslider.render());
+		return ok(views.html.lab.library.bootstrapslider.render(request, lang, messages));
 	}
 
-	public static Result openlayers() {
+	public static Result openlayers(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.openlayers.render());
+		return ok(views.html.lab.library.openlayers.render(request, lang, messages));
 	}
 
-	public static Result jqvmap() {
+	public static Result jqvmap(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.jqvmap.render());
+		return ok(views.html.lab.library.jqvmap.render(request, lang, messages));
 	}
 
-	public static Result handsontable() {
+	public static Result handsontable(final Request request, final Lang lang, final Messages messages) {
 
 		final List<List<String>> rows = IntStream.rangeClosed(1, 500).mapToObj(rowIndex -> {
 			final List<String> columns = IntStream.rangeClosed(1, 10).mapToObj(columnIndex -> "R" + rowIndex + "C" + columnIndex).collect(Collectors.toList());
@@ -223,114 +236,114 @@ public class Library extends Controller {
 		pagingInfo.setPageSize(pageSize);
 		pagingInfo.setPageCount(pageCount);
 
-		return ok(views.html.lab.library.handsontable.render(pagingInfo, rowsJson));
+		return ok(views.html.lab.library.handsontable.render(pagingInfo, rowsJson, request, lang, messages));
 	}
 
-	public static Result highlight() {
+	public static Result highlight(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.highlight.render());
+		return ok(views.html.lab.library.highlight.render(request, lang, messages));
 	}
 
-	public static Result d3() {
+	public static Result d3(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.d3.render());
+		return ok(views.html.lab.library.d3.render(request, lang, messages));
 	}
 
-	public static Result d3geoprojection() {
+	public static Result d3geoprojection(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.d3geoprojection.render());
+		return ok(views.html.lab.library.d3geoprojection.render(request, lang, messages));
 	}
 
-	public static Result cropperjs() {
+	public static Result cropperjs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.cropperjs.render());
+		return ok(views.html.lab.library.cropperjs.render(request, lang, messages));
 	}
 
-	public static Result twentytwenty() {
+	public static Result twentytwenty(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.twentytwenty.render());
+		return ok(views.html.lab.library.twentytwenty.render(request, lang, messages));
 	}
 
-	public static Result diff2html() {
+	public static Result diff2html(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.diff2html.render());
+		return ok(views.html.lab.library.diff2html.render(request, lang, messages));
 	}
 
-	public static Result summernote() {
+	public static Result summernote(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.summernote.render());
+		return ok(views.html.lab.library.summernote.render(request, lang, messages));
 	}
 
-	public static Result marked() {
+	public static Result marked(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.marked.render());
+		return ok(views.html.lab.library.marked.render(request, lang, messages));
 	}
 
-	public static Result plotlyjs() {
+	public static Result plotlyjs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.plotlyjs.render());
+		return ok(views.html.lab.library.plotlyjs.render(request, lang, messages));
 	}
 
-	public static Result parsley() {
+	public static Result parsley(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.parsley.render());
+		return ok(views.html.lab.library.parsley.render(request, lang, messages));
 	}
 
-	public static Result hammerjs() {
+	public static Result hammerjs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.hammerjs.render());
+		return ok(views.html.lab.library.hammerjs.render(request, lang, messages));
 	}
 
-	public static Result bootstrapcolorpicker() {
+	public static Result bootstrapcolorpicker(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.bootstrapcolorpicker.render());
+		return ok(views.html.lab.library.bootstrapcolorpicker.render(request, lang, messages));
 	}
 
-	public static Result frappegantt() {
+	public static Result frappegantt(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.frappegantt.render());
+		return ok(views.html.lab.library.frappegantt.render(request, lang, messages));
 	}
 
-	public static Result vizjs() {
+	public static Result vizjs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.vizjs.render());
+		return ok(views.html.lab.library.vizjs.render(request, lang, messages));
 	}
 
-	public static Result markdeep() {
+	public static Result markdeep(final Request request, final Lang lang, final Messages messages) {
 
 		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/lab/library/markdeep/features.md"); //
 				final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
 
 			final String markdeep = reader.lines().collect(Collectors.joining("\n"));
 
-			return ok(views.html.lab.library.markdeep.render(markdeep));
+			return ok(views.html.lab.library.markdeep.render(markdeep, request, lang, messages));
 		} catch (IOException e) {
 
 			throw new RuntimeException(e);
 		}
 	}
 
-	public static Result pdfjs() {
+	public static Result pdfjs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.pdfjs.render());
+		return ok(views.html.lab.library.pdfjs.render(request, lang, messages));
 	}
 
-	public static Result revealjs() {
+	public static Result revealjs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.revealjs.render());
+		return ok(views.html.lab.library.revealjs.render(request, lang, messages));
 	}
 
-	public static Result papercss() {
+	public static Result papercss(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.papercss.render());
+		return ok(views.html.lab.library.papercss.render(request, lang, messages));
 	}
 
-	public static Result camera() {
+	public static Result camera(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.camera.render());
+		return ok(views.html.lab.library.camera.render(request, lang, messages));
 	}
 
-	public static Result mustache() {
+	public static Result mustache(final Request request, final Lang lang, final Messages messages) {
 
 		// fixed.
 
@@ -352,7 +365,7 @@ public class Library extends Controller {
 				"\n" + //
 				"From: {{from}}"), eventNotify);
 
-		return ok(views.html.lab.library.mustache.render(fromTemplate, fromTemplateText));
+		return ok(views.html.lab.library.mustache.render(fromTemplate, fromTemplateText, request, lang, messages));
 	}
 
 	private static class Event {
@@ -403,7 +416,7 @@ public class Library extends Controller {
 		}
 	}
 
-	public static Result zxing() {
+	public static Result zxing(final Request request, final Lang lang, final Messages messages) {
 
 		final Map<String, String> map = new HashMap<>();
 
@@ -415,32 +428,32 @@ public class Library extends Controller {
 		final String qrCodeBase64 = Base64.getEncoder().encodeToString(qrCode);
 		map.put("QR Code", qrCodeBase64);
 
-		return ok(views.html.lab.library.zxing.render(map));
+		return ok(views.html.lab.library.zxing.render(map, request, lang, messages));
 	}
 
-	public static Result quaggajs() {
+	public static Result quaggajs(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.quaggajs.render());
+		return ok(views.html.lab.library.quaggajs.render(request, lang, messages));
 	}
 
-	public static Result jsqr() {
+	public static Result jsqr(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.jsqr.render());
+		return ok(views.html.lab.library.jsqr.render(request, lang, messages));
 	}
 
-	public static Result icon() {
+	public static Result icon(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.icon.render());
+		return ok(views.html.lab.library.icon.render(request, lang, messages));
 	}
 
-	public static Result tdmol() {
+	public static Result tdmol(final Request request, final Lang lang, final Messages messages) {
 
 		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/lab/library/tdmol/2por.pdb"); //
 				final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
 
 			final String pdb = reader.lines().collect(Collectors.joining("\n"));
 
-			return ok(views.html.lab.library.tdmol.render(pdb));
+			return ok(views.html.lab.library.tdmol.render(pdb, request, lang, messages));
 		} catch (IOException e) {
 
 			throw new RuntimeException(e);
@@ -449,57 +462,66 @@ public class Library extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result pdfjs(String pdf) {
+	public Result pdfjs(@Nonnull final Request request, String pdf) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		switch (pdf) {
 		case "tracemonkey":
 
-			return tracemonkey();
+			return tracemonkey(request, lang, messages);
 		default:
 
-			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return redirect(controllers.setting.user.routes.User.index());
 		}
 	}
 
-	public static Result tracemonkey() {
+	public static Result tracemonkey(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(play.Environment.simple().resourceAsStream("resources/pdfs/tracemonkey.pdf"));
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result revealjs(String slide) {
+	public Result revealjs(@Nonnull final Request request, String slide) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		switch (slide) {
 		case "demo":
 
-			return demo();
+			return demo(request, lang, messages);
 		default:
 
-			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return redirect(controllers.setting.user.routes.User.index());
 		}
 	}
 
-	public static Result demo() {
+	public static Result demo(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(play.Environment.simple().resourceAsStream("resources/slides/demo.html"));
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result papercss(String paper) {
+	public Result papercss(@Nonnull final Request request, String paper) {
 
-		final Map<String, String> params = getParams(request().queryString());
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final Map<String, String> params = getParams(request.queryString());
 		switch (paper) {
 		case "demo":
 
-			return ok(views.html.lab.library.papercss_demo.render(params));
+			return ok(views.html.lab.library.papercss_demo.render(params, request, lang, messages));
 		case "receipt":
 
-			return ok(views.html.lab.library.papercss_receipt.render(params));
+			return ok(views.html.lab.library.papercss_receipt.render(params, request, lang, messages));
 		default:
 
-			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return redirect(controllers.setting.user.routes.User.index());
 		}
 	}
 

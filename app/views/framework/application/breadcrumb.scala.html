@@ -4,19 +4,22 @@
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
 
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@(prop:scala.collection.immutable.Map[String, String])
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
 
 @elements() = @{
 
 	val lastElement = prop - "id"
 	val elements = scala.collection.mutable.ListBuffer[Map[String, String]](
-		Map("name"->Messages(MessageKeys.FRAMEWORK), "icon"->"far fa-folder", "link"->controllers.framework.application.routes.Application.index("config").toString()),
-		Map("name"->Messages(MessageKeys.APPLICATION), "icon"->"far fa-file-alt", "link"->controllers.framework.application.routes.Application.index("config").toString())
+		Map("name"->messages(MessageKeys.FRAMEWORK), "icon"->"far fa-folder", "link"->controllers.framework.application.routes.Application.index("config").toString()),
+		Map("name"->messages(MessageKeys.APPLICATION), "icon"->"far fa-file-alt", "link"->controllers.framework.application.routes.Application.index("config").toString())
 	)
 	elements += lastElement
 

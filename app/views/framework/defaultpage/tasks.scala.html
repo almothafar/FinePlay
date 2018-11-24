@@ -1,4 +1,7 @@
-@(prop:scala.collection.immutable.Map[String, String])
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
 
 @equalTask(task:String) = @{
 

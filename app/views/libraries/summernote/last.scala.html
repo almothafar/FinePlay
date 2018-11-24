@@ -1,16 +1,18 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/summernote/head.css.js")'></script>
 
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/summernote/dist/summernote-bs4.min.js")'></script>
 @translation() = @{
 
-	var lang = Messages(MessageKeys.SUMMERNOTE_LANG)
+	var lang = messages(MessageKeys.SUMMERNOTE_LANG)
 	if(lang.isEmpty){
 
 		Html("")
@@ -23,6 +25,6 @@
 @translation()
 
 <div id="summernote_messages" class="d-none" data-messages='{
-	"@MessageKeys.SUMMERNOTE_LANG":"@Messages(MessageKeys.SUMMERNOTE_LANG)"
+	"@MessageKeys.SUMMERNOTE_LANG":"@messages(MessageKeys.SUMMERNOTE_LANG)"
 }'></div>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/summernote/last.js")'></script>

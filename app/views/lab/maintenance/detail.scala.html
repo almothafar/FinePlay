@@ -3,13 +3,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(target:String, task:String)
+@(target:String, task:String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -22,7 +26,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DETAIL), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.DETAIL), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"detailContent", "fluid"->"true", "class"->"d-none")){
@@ -31,7 +35,7 @@
 				</div>
 				<div class="col-md-12">
 
-					@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.PREVIOUS)))
+					@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->messages(MessageKeys.PREVIOUS)))
 
 					<div class="jumbotron mt-3">
 						<h1 class="display-4">Detail of @target</h1>

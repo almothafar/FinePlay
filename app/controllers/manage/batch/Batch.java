@@ -14,25 +14,36 @@ import javax.annotation.Nonnull;
 import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.JobExecution;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Batch extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+	@Inject
+	private MessagesApi messagesApi;
+
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
 		LOGGER.warn("");
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
 
@@ -57,7 +68,7 @@ public class Batch extends Controller {
 
 		final List<JobExecution> jobExecutions = toJobExecutions(jobOperator, jobOperator.getJobNames());
 
-		return ok(views.html.manage.batch.index.render(jobNames, jobExecutions));
+		return ok(views.html.manage.batch.index.render(jobNames, jobExecutions, request, lang, messages));
 	}
 
 	private static List<JobExecution> toJobExecutions(@Nonnull final JobOperator jobOperator, @Nonnull final Set<String> jobNames) {

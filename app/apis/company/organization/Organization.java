@@ -23,21 +23,30 @@ import models.system.System.PermissionsAllowed;
 import play.db.jpa.JPAApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Organization extends Controller {
 
 	@Inject
-	private JPAApi jpa;
+	private MessagesApi messagesApi;
+
+	@Inject
+	private JPAApi jpaApi;
 
 	private final EntityDao<models.company.organization.OrganizationUnit> organizationUnitDao = new EntityDao<models.company.organization.OrganizationUnit>() {
 	};
 
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@Authenticated(common.core.Authenticator.class)
-	public Result organizationUnits(final long companyId, @Nonnull final String name, final int pageIndex, final int pageSize) {
+	public Result organizationUnits(@Nonnull final Request request, final long companyId, @Nonnull final String name, final int pageIndex, final int pageSize) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final Result result = jpaApi.withTransaction(manager -> {
 
 			final String organizationUnitName = name;
 

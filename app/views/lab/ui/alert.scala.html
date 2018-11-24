@@ -3,6 +3,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -10,7 +14,7 @@
 @import common.system._
 @import common.utils._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -25,7 +29,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.ALERT), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.ALERT), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -50,24 +54,24 @@
 
 					<div class="mb-3">
 						<h2 class="headline">Plain</h2>
-						@components.button(Map("id"->"alertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.DEFAULT)))
-						@components.button(Map("id"->"stopAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.ETERNAL)))
-						@components.button(Map("id"->"optionalAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.OPTIONAL)))
+						@components.button(Map("id"->"alertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.DEFAULT)))
+						@components.button(Map("id"->"stopAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.ETERNAL)))
+						@components.button(Map("id"->"optionalAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.OPTIONAL)))
 					</div>
 
 					<div class="mb-3">
 						<h2 class="headline">Bootstrap</h2>
-						@components.button(Map("id"->"successAlertButton", "type"->"success", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
-						@components.button(Map("id"->"infoAlertButton", "type"->"info", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
-						@components.button(Map("id"->"warningAlertButton", "type"->"warning", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
-						@components.button(Map("id"->"dangerAlertButton", "type"->"danger", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"successAlertButton", "type"->"success", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"infoAlertButton", "type"->"info", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"warningAlertButton", "type"->"warning", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"dangerAlertButton", "type"->"danger", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.NOTIFICATION)))
 					</div>
 
 					<div class="mb-3">
 						<h2 class="headline">HTML</h2>
 						<textarea class="form-control" id="htmlText" rows="10">
 <div class="alert alert-rich alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">
-	<div class="p-2"><img id="richAlertImg" src="@routes.Assets.versioned("themes/" + session.get(models.user.User.THEME).toLowerCase + "/image.png")" class="rounded"></div>
+	<div class="p-2"><img id="richAlertImg" src="@routes.Assets.versioned("themes/" + request.session().getOptional(models.user.User.THEME).get().toLowerCase + "/image.png")" class="rounded"></div>
 	<div class="p-2 align-self-stretch w-100">
 		<strong>Rich notification!</strong><br> <a href="@controllers.home.routes.Home.index()" class="alert-link">Link</a> The quick brown fox jumps over the lazy dog.
 	</div>
@@ -82,23 +86,23 @@
 
 							<input id="waitSlider" data-slider-id='waitSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
 						</div>
-						@components.button(Map("id"->"htmlAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
+						@components.button(Map("id"->"htmlAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.NOTIFICATION)))
 					</div>
 
 					<div class="mb-3 secret">
-						<h2 class="headline">@Messages(MessageKeys.PROGRESS)</h2>
-						@components.button(Map("id"->"progressAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->Messages(MessageKeys.NOTIFICATION)))
+						<h2 class="headline">@messages(MessageKeys.PROGRESS)</h2>
+						@components.button(Map("id"->"progressAlertButton", "type"->"primary", "outline"->"true", "icon"->"far fa-comment", "text"->messages(MessageKeys.NOTIFICATION)))
 					</div>
 				</div>
 			</div>
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.ALERT":"@Messages(MessageKeys.ALERT)",
-			"@MessageKeys.SUCCESS":"@Messages(MessageKeys.SUCCESS)",
-			"@MessageKeys.INFO":"@Messages(MessageKeys.INFO)",
-			"@MessageKeys.WARNING":"@Messages(MessageKeys.WARNING)",
-			"@MessageKeys.DANGER":"@Messages(MessageKeys.DANGER)"
+			"@MessageKeys.ALERT":"@messages(MessageKeys.ALERT)",
+			"@MessageKeys.SUCCESS":"@messages(MessageKeys.SUCCESS)",
+			"@MessageKeys.INFO":"@messages(MessageKeys.INFO)",
+			"@MessageKeys.WARNING":"@messages(MessageKeys.WARNING)",
+			"@MessageKeys.DANGER":"@messages(MessageKeys.DANGER)"
 		}'></div>
 
 		@libraries.standard.last()

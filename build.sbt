@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-M4-βc1-SNAPSHOT"
+version := "2.7.0-RC3-βc4-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-M4-βc1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC3-βc4-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -33,8 +33,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "6.0.1",						// Apache 6.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.7.0-M1",						// Apache 2.7.0-M1
-  "com.typesafe.play" %% "play-ws" % "2.0.0-M6",						// Apache 2.0.0-M6
+  "com.typesafe.play" %% "play-json" % "2.7.0-RC1",						// Apache 2.7.0-M1
+  "com.typesafe.play" %% "play-ws" % "2.0.0-RC1",						// Apache 2.0.0-M6
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
@@ -47,7 +47,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.3",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.23.0",							// MIT 2.23.0
+  "org.mockito" % "mockito-core" % "2.23.4",							// MIT 2.23.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.0.0",									// Apache 4.0.0
@@ -72,7 +72,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
-  "org.webjars.npm" % "chart.js" % "2.7.2",								// MIT 2.7.2
+  "org.webjars.npm" % "chart.js" % "2.7.3",								// MIT 2.7.3
   "org.webjars.bower" % "moment" % "2.22.2",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
@@ -108,8 +108,6 @@ libraryDependencies ++= Seq(
 // Frappé Gantt															// MIT build version 0.0.7 master
 // 3Dmol.js																// BSD-3-Clause license 1.3.6
 // geckodriver															// Mozilla Public License 0.18.0
-// LibreOffice															// Mozilla Public License 6.0.3
-// wkhtmltopdf															// GNU Lesser General Public License v3.0 0.12.4
 
 // Use bootstrap
 libraryDependencies ++= Seq(

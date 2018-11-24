@@ -3,13 +3,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -50,45 +54,45 @@
 				<div class="col-md-9">
 
 					<div id="group_0" class="mb-3">
-						<h4 class="headline">@("1 " + Messages(MessageKeys.CONTENT))</h4>
+						<h4 class="headline">@("1 " + messages(MessageKeys.CONTENT))</h4>
 						<div class="jumbotron jumbotron-fluid">
 							<div class="container">
 								<h1 class="display-4 draft">Fluid jumbotron</h1>
 								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("1 " + Messages(MessageKeys.CONTENT))))
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("1 " + messages(MessageKeys.CONTENT))))
 							</div>
 						</div>
 					</div>
 
 					<div id="group_1" class="mb-3">
-						<h4 class="headline">@("2 " + Messages(MessageKeys.CONTENT))</h4>
+						<h4 class="headline">@("2 " + messages(MessageKeys.CONTENT))</h4>
 						<div class="jumbotron jumbotron-fluid">
 							<div class="container">
 								<h1 class="display-4 draft">Fluid jumbotron</h1>
 								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("2 " + Messages(MessageKeys.CONTENT))))
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("2 " + messages(MessageKeys.CONTENT))))
 							</div>
 						</div>
 					</div>
 
 					<div id="group_2" class="mb-3">
-						<h4 class="headline">@("3 " + Messages(MessageKeys.CONTENT))</h4>
+						<h4 class="headline">@("3 " + messages(MessageKeys.CONTENT))</h4>
 						<div class="jumbotron jumbotron-fluid">
 							<div class="container">
 								<h1 class="display-4 draft">Fluid jumbotron</h1>
 								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("3 " + Messages(MessageKeys.CONTENT))))
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("3 " + messages(MessageKeys.CONTENT))))
 							</div>
 						</div>
 					</div>
 
 					<div id="group_3" class="mb-3">
-						<h4 class="headline">@("4 " + Messages(MessageKeys.CONTENT))</h4>
+						<h4 class="headline">@("4 " + messages(MessageKeys.CONTENT))</h4>
 						<div class="jumbotron jumbotron-fluid">
 							<div class="container">
 								<h1 class="display-4 draft">Fluid jumbotron</h1>
 								<p class="lead draft">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("4 " + Messages(MessageKeys.CONTENT))))
+								@components.image(Map("id"->"", "source"->"holder.js/100px800?random=yes", "fluid"->"true", "alternate"->("4 " + messages(MessageKeys.CONTENT))))
 							</div>
 						</div>
 					</div>

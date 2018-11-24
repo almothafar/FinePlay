@@ -14,6 +14,10 @@ import play.Application;
 import play.db.jpa.JPAApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class System extends Controller {
@@ -24,13 +28,19 @@ public class System extends Controller {
 	private Provider<Application> applicationProvider;
 
 	@Inject
-	private JPAApi jpa;
+	private MessagesApi messagesApi;
+
+	@Inject
+	private JPAApi jpaApi;
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result shutdown() {
+	public Result shutdown(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		return jpaApi.withTransaction(manager -> {
 
 			final play.api.Application application = applicationProvider.get().asScala();
 

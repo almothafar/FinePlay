@@ -9,7 +9,7 @@ $(document).ready(function() {
 		return function () {
 
 			var page = parseInt(window.location.hash.replace('#', ''), 10) || 0,
-				limit = Messages("pageSize"),
+				limit = messages("pageSize"),
 				row	 = page * limit,
 				count = (page + 1) * limit,
 				part = [];
@@ -30,7 +30,7 @@ $(document).ready(function() {
 		colHeaders: true,
 		dropdownMenu: true,
 		contextMenu: true,
-		language: Messages(MessageKeys.HANDSONTABLE_LANG)
+		language: messages(MessageKeys.HANDSONTABLE_LANG)
 	});
 
 	var redraw = function(){
@@ -72,7 +72,7 @@ $(document).ready(function() {
 			if (visibleIndexs.length < visibleCount) {
 
 				var last = visibleIndexs[visibleIndexs.length - 1];
-				if (last < Messages("pageCount") - 1) {
+				if (last < messages("pageCount") - 1) {
 
 					var next = last + 1;
 					visibleIndexs.push(next);
@@ -92,8 +92,8 @@ $(document).ready(function() {
 
 		var isEnabledFirst = 0 < targetPage;
 		var isEnabledPrevious =  0 < targetPage;
-		var isEnabledNext = targetPage < Messages("pageCount") - 1;
-		var isEnabledLast = targetPage < Messages("pageCount") - 1;
+		var isEnabledNext = targetPage < messages("pageCount") - 1;
+		var isEnabledLast = targetPage < messages("pageCount") - 1;
 
 		var pageItems = $('#hot_pagination>.pagination>.page-item');
 		isEnabledFirst ? pageItems.eq(0).removeClass('disabled') : pageItems.eq(0).addClass('disabled');

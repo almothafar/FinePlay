@@ -1,6 +1,9 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @dirSuffix() = @{
 
@@ -24,4 +27,4 @@
 @libraries.fontawesome.head()
 
 <link rel='stylesheet' href='@routes.Assets.versioned("themes/base.css")'>
-<link rel='stylesheet' href='@routes.Assets.versioned("themes/" + session.getOrDefault(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase + "/theme.css")'>
+<link rel='stylesheet' href='@routes.Assets.versioned("themes/" + request.session().getOptional(models.user.User.THEME).orElse(models.user.User.Theme.DEFAULT.name()).toLowerCase + "/theme.css")'>

@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Nonnull;
 
-import play.mvc.Controller;
+import play.mvc.Http.Request;
 
 public class DateTimes {
 
@@ -18,21 +18,21 @@ public class DateTimes {
 
 	@SuppressWarnings("null")
 	@Nonnull
-	public static LocalDateTime toClientDateTime(@Nonnull final LocalDateTime serverDateTime) {
+	public static LocalDateTime toClientDateTime(@Nonnull final Request request, @Nonnull final LocalDateTime serverDateTime) {
 
 		Objects.requireNonNull(serverDateTime);
 
-		return ZonedDateTime.of(serverDateTime, ZoneOffset.UTC).withZoneSameInstant(getClientZoneId()).toLocalDateTime();
+		return ZonedDateTime.of(serverDateTime, ZoneOffset.UTC).withZoneSameInstant(getClientZoneId(request)).toLocalDateTime();
 	}
 
 	private static final int[] DST_DIFF_MINUTES = { 30, 60 };
 
-	public static boolean isServerDateTimeConvertible(@Nonnull final LocalDateTime clientDateTime) {
+	public static boolean isServerDateTimeConvertible(@Nonnull final Request request, @Nonnull final LocalDateTime clientDateTime) {
 
 		Objects.requireNonNull(clientDateTime);
 
-		final LocalDateTime serverDateTime = toServerDateTime(clientDateTime);
-		final LocalDateTime reConvClientDateTime = toClientDateTime(serverDateTime);
+		final LocalDateTime serverDateTime = toServerDateTime(request, clientDateTime);
+		final LocalDateTime reConvClientDateTime = toClientDateTime(request, serverDateTime);
 
 		final boolean isConvertible = clientDateTime.equals(reConvClientDateTime);
 
@@ -46,7 +46,7 @@ public class DateTimes {
 
 			final int dstDiff = DST_DIFF_MINUTES[i];
 
-			final LocalDateTime afterServerDateTime = toServerDateTime(clientDateTime.plusMinutes(dstDiff));
+			final LocalDateTime afterServerDateTime = toServerDateTime(request, clientDateTime.plusMinutes(dstDiff));
 
 			final long minutes = Duration.between(serverDateTime, afterServerDateTime).toMinutes();
 			final boolean isNormal = dstDiff == minutes;
@@ -69,17 +69,17 @@ public class DateTimes {
 
 	@SuppressWarnings("null")
 	@Nonnull
-	public static LocalDateTime toServerDateTime(@Nonnull final LocalDateTime clientDateTime) {
+	public static LocalDateTime toServerDateTime(@Nonnull final Request request, @Nonnull final LocalDateTime clientDateTime) {
 
 		Objects.requireNonNull(clientDateTime);
 
-		return ZonedDateTime.of(clientDateTime, getClientZoneId()).withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
+		return ZonedDateTime.of(clientDateTime, getClientZoneId(request)).withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
 	}
 
 	@SuppressWarnings("null")
 	@Nonnull
-	private static ZoneId getClientZoneId() {
+	private static ZoneId getClientZoneId(@Nonnull final Request request) {
 
-		return ZoneId.of(Controller.ctx().request().session().get(models.user.User_.ZONE_ID));
+		return ZoneId.of(request.session().getOptional(models.user.User_.ZONE_ID).get());
 	}
 }

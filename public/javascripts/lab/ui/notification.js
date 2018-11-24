@@ -2,32 +2,32 @@
 
 $('#alertButton').on('click', function(e){
 
-	notify(Messages(MessageKeys.NOTIFICATION));
+	notify(messages(MessageKeys.NOTIFICATION));
 });
 $('#stopAlertButton').on('click', function(e){
 
-	notify(Messages(MessageKeys.NOTIFICATION), -1);
+	notify(messages(MessageKeys.NOTIFICATION), -1);
 });
 $('#optionalAlertButton').on('click', function(e){
 
-	notify(Messages(MessageKeys.NOTIFICATION), 10000);
+	notify(messages(MessageKeys.NOTIFICATION), 10000);
 });
 
 $('#successAlertButton').on('click', function(e){
 
-	notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS));
+	notifyAlert('success', '<strong>' + messages(MessageKeys.SUCCESS) + '</strong> ' + messages(MessageKeys.SUCCESS));
 });
 $('#infoAlertButton').on('click', function(e){
 
-	notifyAlert('info', '<strong>' + Messages(MessageKeys.INFO) + '</strong> ' + Messages(MessageKeys.INFO));
+	notifyAlert('info', '<strong>' + messages(MessageKeys.INFO) + '</strong> ' + messages(MessageKeys.INFO));
 });
 $('#warningAlertButton').on('click', function(e){
 
-	notifyAlert('warning', '<strong>' + Messages(MessageKeys.WARNING) + '</strong> ' + Messages(MessageKeys.WARNING));
+	notifyAlert('warning', '<strong>' + messages(MessageKeys.WARNING) + '</strong> ' + messages(MessageKeys.WARNING));
 });
 $('#dangerAlertButton').on('click', function(e){
 
-	notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER));
+	notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + messages(MessageKeys.DANGER));
 });
 
 $('#htmlAlertButton').on('click', function(e){

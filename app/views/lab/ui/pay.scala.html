@@ -6,14 +6,19 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -27,7 +32,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.PAY), "icon"->"far fa-credit-card", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.PAY), "icon"->"far fa-credit-card", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -42,15 +47,15 @@
 
 					<div class="mb-3">
 
-						@components.button(Map("id"->"windowButton", "type"->"dark", "outline"->"false", "icon"->"far fa-credit-card", "text"->Messages(MessageKeys.PAY), "data-toggle"->"modal","data-target"->"#window"))
+						@components.button(Map("id"->"windowButton", "type"->"dark", "outline"->"false", "icon"->"far fa-credit-card", "text"->messages(MessageKeys.PAY), "data-toggle"->"modal","data-target"->"#window"))
 					</div>
 
-					@components.modal(Map("id"->"window", "icon"->"far fa-credit-card", "title"->Messages(MessageKeys.PAY), "closable"->"true", "center"->"true", "data-backdrop"->"false"), List(
-							Map("id"->"start", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
+					@components.modal(Map("id"->"window", "icon"->"far fa-credit-card", "title"->messages(MessageKeys.PAY), "closable"->"true", "center"->"true", "data-backdrop"->"false"), List(
+							Map("id"->"start", "type"->"primary", "text"->messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
 						)){
 
 						<div class="payd bg-success rounded-circle mx-auto position-relative w-72p h-72p mb-3"></div>
-						<div class="text-center"><h5>@Messages(MessageKeys.THANK__YOU__VERY__MUCH)</h5></div>
+						<div class="text-center"><h5>@messages(MessageKeys.THANK__YOU__VERY__MUCH)</h5></div>
 					}
 				</div>
 			</div>

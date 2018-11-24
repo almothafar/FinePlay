@@ -10,7 +10,7 @@ if(shortZoneId){
 	$('#shortZoneId').attr('value', shortZoneId);
 }
 
-if(Messages("hasErrors")) {
+if(messages("hasErrors")) {
 
 	shake('#registPanel');
 }

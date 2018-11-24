@@ -3,7 +3,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import play.inject.Injector
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import play.api.inject._
 @import views.html._
 @import views.html.components
@@ -14,7 +15,7 @@
 @import common.system._
 
 @this(injector: Injector)
-@(form: play.data.Form[models.user.SignInFormContent], fixedUsersData: String)
+@(form: play.data.Form[models.user.SignInFormContent], fixedUsersData: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @isDev() = @{
 
@@ -23,7 +24,7 @@
 
 @frame(){
 
-	@top.head(Messages(MessageKeys.USER_SIGNIN)){
+	@top.head(messages(MessageKeys.USER_SIGNIN)){
 
 		@libraries.standard.head()
 
@@ -49,12 +50,12 @@
 					<div class="card-header">
 						@components.image(Map("id"->"", "source"->routes.Assets.versioned("images/" + lang.code + "/logo.png").toString, "align"->"center", "alternate"->"logo"))
 						@if(isDev()){
-							@components.button(Map("id"->"stamp", "type"->"danger", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.DEVELOPMENT)))
+							@components.button(Map("id"->"stamp", "type"->"danger", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.DEVELOPMENT)))
 						}
 					</div>
 					<div class="card-body text-xs-left pb-0">
 					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin", 'name->"signInForm", 'id->"signInForm") {
-						<h5 class="form-signin-heading">@Messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
+						<h5 class="form-signin-heading">@messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
 						<div id="selectUserContainer" class="d-none">
 							<div class="row justify-content-center">
 								<div class="my-3">
@@ -68,28 +69,28 @@
 						<label for="@User.USER_ID" class="sr-only">User ID</label>
 						<input id="@User.USER_ID" type="email" name="@User.USER_ID" class="form-control" placeholder="Email" value="@form(User.USER_ID).value.orElse("")" required autofocus maxlength="256" data-parsley-trigger="change" data-parsley-userid="">
 						@for(error <- form(User.USER_ID).errors) {
-							<div class="text-danger">@Messages(error.message)</div>
+							<div class="text-danger">@messages(error.message)</div>
 						}
 						<label for="@User.PASSWORD" class="sr-only">Password</label>
 						<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="@form(User.PASSWORD).value.orElse("")" required maxlength="16" data-parsley-trigger="change" data-parsley-password="">
 						@for(error <- form(User.PASSWORD).errors) {
-							<div class="text-danger">@Messages(error.message)</div>
+							<div class="text-danger">@messages(error.message)</div>
 						}
 						<input id="@User.OFFSETSECOND" type="hidden" name="@User.OFFSETSECOND" class="form-control" required>
 						<input id="@User.SHORTZONEID" type="hidden" name="@User.SHORTZONEID" class="form-control">
 
 						<div class="w-100">
-							@components.button(Map("id"->"signInButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sign-in-alt", "text"->Messages(MessageKeys.USER_SIGNIN), "default"->"true", "block"->"true"))
+							@components.button(Map("id"->"signInButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sign-in-alt", "text"->messages(MessageKeys.USER_SIGNIN), "default"->"true", "block"->"true"))
 						</div>
 						<div class="w-100">
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" name="@User.STOREACCOUNT" id="@User.STOREACCOUNT" value="@Boolean.TRUE.toString()" @("checked".when(Boolean.valueOf(form(User.STOREACCOUNT).value.orElse(""))))>
-								<label class="custom-control-label" for="@User.STOREACCOUNT">@Messages(MessageKeys.USER_STORE__ACCOUNT)</label>
+								<label class="custom-control-label" for="@User.STOREACCOUNT">@messages(MessageKeys.USER_STORE__ACCOUNT)</label>
 							</div>
 						</div>
 
 						<div class="mt-3">
-							@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fas fa-", "text"->Messages(MessageKeys.RESETUSER_FORGET__PASSWORD), "link"->controllers.resetuser.routes.ResetUser.index().toString, "class"->"forget-password"))
+							@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fas fa-", "text"->messages(MessageKeys.RESETUSER_FORGET__PASSWORD), "link"->controllers.resetuser.routes.ResetUser.index().toString, "class"->"forget-password"))
 						</div>
 
 						<div id="snsLinks" class="mt-3">
@@ -107,8 +108,8 @@
 		</div>
 		}
 
-		@components.modal(Map("id"->"usersDialog", "title"->Messages(MessageKeys.USER), "closable"->"true", "size"->"lg"), List(
-				Map("id"->"usersOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
+		@components.modal(Map("id"->"usersDialog", "title"->messages(MessageKeys.USER), "closable"->"true", "size"->"lg"), List(
+				Map("id"->"usersOk", "type"->"primary", "text"->messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
 			)){
 
 			@components.container(Map("id"->"", "fluid"->"true")){
@@ -118,8 +119,8 @@
 			}
 		}
 
-		@components.modal(Map("id"->"licenseDialog", "title"->Messages(MessageKeys.LIBRARY), "closable"->"true", "size"->"lg"), List(
-				Map("id"->"licenseOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
+		@components.modal(Map("id"->"licenseDialog", "title"->messages(MessageKeys.LIBRARY), "closable"->"true", "size"->"lg"), List(
+				Map("id"->"licenseOk", "type"->"primary", "text"->messages(MessageKeys.OK), "data-dismiss"->"modal", "default"->"true")
 			)){
 
 			@components.container(Map("id"->"", "fluid"->"true")){
@@ -237,8 +238,6 @@
 							Map("name"->"geckodriver", "icon"->"fab fa-firefox", "link"->" https://github.com/mozilla/geckodriver", "info"->""),
 							Map("name"->"sbt-dependency-graph", "icon"->"fas fa-project-diagram", "link"->"https://github.com/jrudolph/sbt-dependency-graph", "info"->""),
 							Map("name"->"RTLCSS", "icon"->"fab fa-css3-alt", "link"->"https://rtlcss.com", "info"->""),
-							Map("name"->"LibreOffice", "icon"->"far fa-file-alt", "link"->"https://www.libreoffice.org", "info"->""),
-							Map("name"->"wkhtmltopdf", "icon"->"far fa-file-pdf", "link"->"https://wkhtmltopdf.org", "info"->""),
 							Map("name"->"Natural Earth", "icon"->"fas fa-globe", "link"->"http://www.naturalearthdata.com", "info"->"")
 						))
 					</div>
@@ -248,7 +247,7 @@
 
 		<div class="container text-center">
 
-			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->Messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-grey-400"))
+			@components.button(Map("id"->"licenseButton", "type"->"link", "text"->messages(MessageKeys.LICENSE), "data-toggle"->"modal","data-target"->"#licenseDialog", "class"->"text-grey-400"))
 		</div>
 
 		<div id="system_messages" class="d-none" data-messages='{

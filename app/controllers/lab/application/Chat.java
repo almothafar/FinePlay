@@ -1,7 +1,7 @@
 package controllers.lab.application;
 
 import java.lang.invoke.MethodHandles;
-import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
@@ -23,12 +23,20 @@ import play.libs.F;
 import play.libs.streams.ActorFlow;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
 public class Chat extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	@Inject
+	private MessagesApi messagesApi;
 
 	private final ActorSystem actorSystem;
 	private final Materializer materializer;
@@ -41,19 +49,22 @@ public class Chat extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return ok(views.html.lab.application.chat.render());
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return ok(views.html.lab.application.chat.render(request, lang, messages));
 	}
 
 	public play.mvc.WebSocket enter() {
 
 		return play.mvc.WebSocket.Text.acceptOrResult(request -> {
 
-			final String userId = request().session().get(models.user.User_.USER_ID);
-			if (Objects.nonNull(userId)) {
+			final Optional<String> userIdOpt = request.session().getOptional(models.user.User_.USER_ID);
+			if (userIdOpt.isPresent()) {
 
-				final Function<ActorRef, Props> createProps = (memberRef) -> Props.create(Member.class, memberRef, userId);
+				final Function<ActorRef, Props> createProps = (memberRef) -> Props.create(Member.class, memberRef, userIdOpt.get());
 				return CompletableFuture.completedFuture(F.Either.Right(ActorFlow.actorRef(createProps, actorSystem, materializer)));
 			} else {
 				// Reject

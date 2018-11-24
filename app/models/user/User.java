@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.annotation.Nonnull;
-import javax.inject.Inject;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -51,15 +50,15 @@ import common.utils.Sessions;
 import models.base.LocaleConverter;
 import models.base.ZoneIdConverter;
 import models.company.Company;
-import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
-import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
+import org.supercsv.cellprocessor.time.FmtLocalDateTime;
+import org.supercsv.cellprocessor.time.ParseLocalDateTime;
 import models.system.System.Permission;
 import play.data.validation.Constraints;
 import play.data.validation.Constraints.Validatable;
 import play.data.validation.Constraints.Validate;
 import play.data.validation.ValidationError;
-import play.i18n.MessagesApi;
-import play.mvc.Controller;
+import play.i18n.Messages;
+import play.mvc.Http.Request;;
 
 @Validate
 @Entity
@@ -103,10 +102,6 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 			}
 		}
 	}
-
-	@Inject
-	@Transient
-	private MessagesApi messages;
 
 	@Id
 	@GeneratedValue
@@ -220,10 +215,10 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 
 	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[] { //
 			null, //
-			new ParseServerLocalDateTime(), //
-			new ConvertNullTo(null, new ParseServerLocalDateTime()), //
-			new ConvertNullTo(null, new ParseServerLocalDateTime()), //
-			new ParseServerLocalDateTime(), //
+			new ParseLocalDateTime(), //
+			new ConvertNullTo(null, new ParseLocalDateTime()), //
+			new ConvertNullTo(null, new ParseLocalDateTime()), //
+			new ParseLocalDateTime(), //
 			new ConvertNullTo(null, new ParseEnum(Role.class)), //
 			new ConvertNullTo(null, new ParseEnum(Role.class)), //
 			new ConvertNullTo(null, new ParseEnum(Role.class)), //
@@ -233,10 +228,10 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 
 	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[] { //
 			null, //
-			new FmtClientLocalDateTime(), //
-			new ConvertNullTo("", new FmtClientLocalDateTime()), //
-			new ConvertNullTo("", new FmtClientLocalDateTime()), //
-			new FmtClientLocalDateTime(), //
+			new FmtLocalDateTime(), //
+			new ConvertNullTo("", new FmtLocalDateTime()), //
+			new ConvertNullTo("", new FmtLocalDateTime()), //
+			new FmtLocalDateTime(), //
 			null, //
 			null, //
 			null, //
@@ -244,10 +239,10 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 			null //
 	};
 
-	public static boolean hasAnyRole(@Nonnull final Role... roles) {
+	public static boolean hasAnyRole(@Nonnull final Request request, @Nonnull final Role... roles) {
 
 		final Set<Role> requestRoles = EnumSet.copyOf(Arrays.asList(roles));
-		final String roleValues = Controller.ctx().request().session().get(User_.ROLES);
+		final String roleValues = request.session().getOptional(User_.ROLES).get();
 		final Set<Role> userRoles = Sessions.toRoles(roleValues);
 		return userRoles.stream().anyMatch(role -> requestRoles.contains(role));
 	}
@@ -301,7 +296,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 		return Collections.unmodifiableSet(permissions);
 	}
 
-	public void beforeWrite() {
+	public void beforeWrite(final Messages messages) {
 
 		int i = 0;
 		for (final Role role : getRoles()) {
@@ -324,14 +319,14 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 				break;
 			default:
 
-				throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + i);
+				throw new IllegalStateException(messages.at(MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + i);
 			}
 
 			i++;
 		}
 	}
 
-	public void afterRead() {
+	public void afterRead(final Messages messages) {
 
 		final List<Role> roleList = new ArrayList<>();
 		roleList.add(getRole0());
@@ -344,7 +339,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 
 		if (!(1 <= roles.size())) {
 
-			throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + roles.size());
+			throw new IllegalStateException(messages.at(MessageKeys.JAVA_ERROR_SIZE, 0, ROLE_COUNT_MAX) + " :" + roles.size());
 		}
 
 		setRoles(roles);

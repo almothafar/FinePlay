@@ -4,7 +4,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 
@@ -13,11 +14,11 @@
 @import models.manage.company._
 @import models.company._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-@components.modal(Map("id"->"uploadDialog", "icon"->"fas fa-upload", "title"->("CSV "+Messages(MessageKeys.UPLOAD)), "closable"->"false", "data-backdrop"->"static"), List(
-		Map("id"->"uploadCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
-		Map("id"->"uploadOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+@components.modal(Map("id"->"uploadDialog", "icon"->"fas fa-upload", "title"->("CSV "+messages(MessageKeys.UPLOAD)), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"uploadCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"uploadOk", "type"->"primary", "text"->messages(MessageKeys.OK), "default"->"true")
 	)){
 
 	@helper.form(helper.CSRF(controllers.manage.company.routes.Upload.upload()), 'name->"uploadForm", 'id->"uploadForm", 'enctype -> "multipart/form-data") {
@@ -25,33 +26,33 @@
 			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
-			<label for="@Company.UPLOADFILE" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.FILE)</label>
+			<label for="@Company.UPLOADFILE" class="file col-sm-12 col-form-label required">@messages(MessageKeys.FILE)</label>
 			<div class="col-sm-12">
 				<div class="custom-file">
 					<input id="@Company.UPLOADFILE" type="file" name="@Company.UPLOADFILE" class="custom-file-input" value="" required autofocus>
 					<label class="custom-file-label" for="@Company.UPLOADFILE"></label>
 				</div>
-				<small class="text-muted">@Messages(MessageKeys.ABOUT__X, Messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fas fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
+				<small class="text-muted">@messages(MessageKeys.ABOUT__X, messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fas fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
 				<div>
 					<p class="text-danger"></p>
 				</div>
 			</div>
-			<label for="operation" class="file col-sm-12 col-form-label required">@Messages(MessageKeys.OPERATION)</label>
+			<label for="operation" class="file col-sm-12 col-form-label required">@messages(MessageKeys.OPERATION)</label>
 			<div class="col-sm-12">
 				<div class="custom-control custom-radio custom-control-inline">
 					<input id="createRadio" class="custom-control-input" name="@Company.OPERATION" type="radio" value="@Operation.CREATE.toString()">
-					<label class="custom-control-label" for="createRadio">@Messages(MessageKeys.CREATE)</label>
+					<label class="custom-control-label" for="createRadio">@messages(MessageKeys.CREATE)</label>
 				</div>
 				<div class="custom-control custom-radio custom-control-inline">
 					<input id="updateRadio" class="custom-control-input" name="@Company.OPERATION" type="radio" value="@Operation.UPDATE.toString()" checked>
-					<label class="custom-control-label" for="updateRadio">@Messages(MessageKeys.UPDATE)</label>
+					<label class="custom-control-label" for="updateRadio">@messages(MessageKeys.UPDATE)</label>
 				</div>
 			</div>
 		</div>
 	}
 
 	<div class="wordwrap">
-		<div id="uploadMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="uploadMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
 		<div id="uploadDescription">-</div>
 	</div>
 	@components.progress(Map("id"->"uploadProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))

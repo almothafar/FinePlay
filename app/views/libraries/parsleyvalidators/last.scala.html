@@ -1,10 +1,12 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 @import common.utils._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @messages() = @{
 
@@ -17,13 +19,13 @@
 }
 
 <div id="parsleyvalidators_messages" class="d-none" data-messages='{
-	"en_@MessageKeys.SYSTEM_ERROR_USERID":"@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_USERID)",
-	"ja_@MessageKeys.SYSTEM_ERROR_USERID":"@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_USERID)",
-	"en_@MessageKeys.SYSTEM_ERROR_PASSWORD":"@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_PASSWORD)",
-	"ja_@MessageKeys.SYSTEM_ERROR_PASSWORD":"@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_PASSWORD)",
-	"en_@MessageKeys.SYSTEM_ERROR_HIRAGANA":"@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_HIRAGANA)",
-	"ja_@MessageKeys.SYSTEM_ERROR_HIRAGANA":"@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_HIRAGANA)",
-	"en_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(Locales.toLang(Locale.US), MessageKeys.SYSTEM_ERROR_KATAKANA)",
-	"ja_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(Locales.toLang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_KATAKANA)"
+	"en_@MessageKeys.SYSTEM_ERROR_USERID":"@errorMessage(new Lang(Locale.US), MessageKeys.SYSTEM_ERROR_USERID)",
+	"ja_@MessageKeys.SYSTEM_ERROR_USERID":"@errorMessage(new Lang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_USERID)",
+	"en_@MessageKeys.SYSTEM_ERROR_PASSWORD":"@errorMessage(new Lang(Locale.US), MessageKeys.SYSTEM_ERROR_PASSWORD)",
+	"ja_@MessageKeys.SYSTEM_ERROR_PASSWORD":"@errorMessage(new Lang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_PASSWORD)",
+	"en_@MessageKeys.SYSTEM_ERROR_HIRAGANA":"@errorMessage(new Lang(Locale.US), MessageKeys.SYSTEM_ERROR_HIRAGANA)",
+	"ja_@MessageKeys.SYSTEM_ERROR_HIRAGANA":"@errorMessage(new Lang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_HIRAGANA)",
+	"en_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(new Lang(Locale.US), MessageKeys.SYSTEM_ERROR_KATAKANA)",
+	"ja_@MessageKeys.SYSTEM_ERROR_KATAKANA":"@errorMessage(new Lang(Locale.JAPAN), MessageKeys.SYSTEM_ERROR_KATAKANA)"
 }'></div>
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/parsleyvalidators/last.js")'></script>

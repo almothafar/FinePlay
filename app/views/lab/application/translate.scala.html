@@ -1,13 +1,18 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -39,7 +44,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.TRANSLATE), "icon"->"fas fa-exchange-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.TRANSLATE), "icon"->"fas fa-exchange-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -61,8 +66,8 @@
 				<div class="col-md-9">
 
 					@components.nav(Map("id"->"translateTab","tabs"->"true"), List(
-						Map("name"->Messages(MessageKeys.TEXT), "icon"->"", "link"->"#text", "selected"->"true", "data-toggle"->"tab"),
-						Map("name"->Messages(MessageKeys.RESULT), "icon"->"", "link"->"#result", "data-toggle"->"tab")
+						Map("name"->messages(MessageKeys.TEXT), "icon"->"", "link"->"#text", "selected"->"true", "data-toggle"->"tab"),
+						Map("name"->messages(MessageKeys.RESULT), "icon"->"", "link"->"#result", "data-toggle"->"tab")
 					))
 
 					<div id="translateTabContent" class="tab-content mt-3">
@@ -76,18 +81,18 @@
 						</div>
 					</div>
 
-					@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->Messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
-							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
+					@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
 						)){
 						<div class="wordwrap">
-							<div id="ajaxMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+							<div id="ajaxMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
 							<div id="ajaxDescription">-</div>
 						</div>
 						@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
 					}
 					<div class="mt-3 mb-3 text-right">
 
-						@components.button(Map("id"->"translateButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-exchange-alt", "text"->Messages(MessageKeys.TRANSLATE), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+						@components.button(Map("id"->"translateButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-exchange-alt", "text"->messages(MessageKeys.TRANSLATE), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
 					</div>
 				</div>
 			</div>
@@ -95,10 +100,10 @@
 
 		<div id="system_messages" class="d-none" data-messages='{
 			"langCode":"@lang.language",
-			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
-			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
-			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
-			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)"
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)"
 		}'></div>
 
 		@libraries.standard.last()

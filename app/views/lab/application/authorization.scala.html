@@ -3,6 +3,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
@@ -10,7 +14,7 @@
 @import common.utils._
 @import models.user._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -23,7 +27,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.AUTHORIZATION), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.AUTHORIZATION), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -39,8 +43,8 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>@Messages(MessageKeys.USER_ROLE)</th>
-								<th>@Messages(MessageKeys.OPERATION)</th>
+								<th>@messages(MessageKeys.USER_ROLE)</th>
+								<th>@messages(MessageKeys.OPERATION)</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -48,50 +52,50 @@
 							<tr>
 								<th scope="row">@role.name()</th>
 								<td>
-									@if(User.hasAnyRole(role)){
-										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->Messages(MessageKeys.USER_ROLE)))
+									@if(User.hasAnyRole(request, role)){
+										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->messages(MessageKeys.USER_ROLE)))
 									}else{
-										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->Messages(MessageKeys.USER_ROLE)))
+										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->messages(MessageKeys.USER_ROLE)))
 									}
 								</td>
 							</tr>
 							}
 							<th scope="row">@User.Role.GUEST.name() / @User.Role.CUSTOMER.name()</th>
 								<td>
-									@if(User.hasAnyRole(User.Role.GUEST, User.Role.CUSTOMER)){
-										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->Messages(MessageKeys.USER_ROLE)))
+									@if(User.hasAnyRole(request, User.Role.GUEST, User.Role.CUSTOMER)){
+										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->messages(MessageKeys.USER_ROLE)))
 									}else{
-										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->Messages(MessageKeys.USER_ROLE)))
+										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->messages(MessageKeys.USER_ROLE)))
 									}
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">@User.Role.CUSTOMER.name() / @User.Role.ADMIN.name()</th>
 								<td>
-									@if(User.hasAnyRole(User.Role.CUSTOMER, User.Role.ADMIN)){
-										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->Messages(MessageKeys.USER_ROLE)))
+									@if(User.hasAnyRole(request, User.Role.CUSTOMER, User.Role.ADMIN)){
+										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->messages(MessageKeys.USER_ROLE)))
 									}else{
-										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->Messages(MessageKeys.USER_ROLE)))
+										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->messages(MessageKeys.USER_ROLE)))
 									}
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">@User.Role.GUEST.name() / @User.Role.ADMIN.name()</th>
 								<td>
-									@if(User.hasAnyRole(User.Role.GUEST, User.Role.ADMIN)){
-										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->Messages(MessageKeys.USER_ROLE)))
+									@if(User.hasAnyRole(request, User.Role.GUEST, User.Role.ADMIN)){
+										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->messages(MessageKeys.USER_ROLE)))
 									}else{
-										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->Messages(MessageKeys.USER_ROLE)))
+										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->messages(MessageKeys.USER_ROLE)))
 									}
 								</td>
 							</tr>
 							</tr>
 								<th scope="row">@User.Role.GUEST.name() / @User.Role.CUSTOMER.name() / @User.Role.ADMIN.name()</th>
 								<td>
-									@if(User.hasAnyRole(User.Role.GUEST, User.Role.CUSTOMER, User.Role.ADMIN)){
-										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->Messages(MessageKeys.USER_ROLE)))
+									@if(User.hasAnyRole(request, User.Role.GUEST, User.Role.CUSTOMER, User.Role.ADMIN)){
+										@components.badge(Map("id"->"", "type"->"success", "icon"->"fas fa-check", "text"->messages(MessageKeys.USER_ROLE)))
 									}else{
-										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->Messages(MessageKeys.USER_ROLE)))
+										@components.badge(Map("id"->"", "type"->"danger", "icon"->"fas fa-ban", "text"->messages(MessageKeys.USER_ROLE)))
 									}
 								</td>
 							</tr>

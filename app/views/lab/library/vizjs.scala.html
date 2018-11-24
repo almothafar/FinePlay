@@ -4,6 +4,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -11,7 +15,7 @@
 @import common.system._
 @import common.utils._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -84,7 +88,7 @@ digraph G {
 							</div>
 							<div class="col-6 text-right">
 
-								@components.button(Map("id"->"previewButton", "type"->"primary", "outline"->"true", "icon"->"far fa-eye", "text"->Messages(MessageKeys.PREVIEW)))
+								@components.button(Map("id"->"previewButton", "type"->"primary", "outline"->"true", "icon"->"far fa-eye", "text"->messages(MessageKeys.PREVIEW)))
 							</div>
 						</div>
 					</div>

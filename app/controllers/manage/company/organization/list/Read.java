@@ -33,9 +33,14 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Read extends Controller {
@@ -43,7 +48,10 @@ public class Read extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpa;
+	private MessagesApi messagesApi;
+
+	@Inject
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -53,54 +61,60 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result index(final long companyId) {
+	public Result index(@Nonnull final Request request, final long companyId) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final String companyName = readCompanyName(manager, companyId);
+		return jpaApi.withTransaction(manager -> {
+
+			final String companyName = readCompanyName(manager, companyId, lang.toLocale());
 
 			final ReadFormContent readFormContent = new ReadFormContent();
 			readFormContent.setCompanyId(companyId);
 			readFormContent.setMaxResult(String.valueOf(1000));
 
-			final List<OrganizationUnit> organizationUnits = readList(manager, readFormContent, 0);
+			final List<OrganizationUnit> organizationUnits = readList(request, manager, readFormContent, 0);
 
 			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
 
-			return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, organizationUnits));
+			return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, organizationUnits, request, lang, messages));
 		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@RequireCSRFCheck
-	public Result read() {
+	public Result read(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
+
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest(request);
 			final long companyId = readForm.value().get().getCompanyId();
 
 			if (!readForm.hasErrors()) {
 
 				final ReadFormContent readFormContent = readForm.get();
 
-				final String companyName = readCompanyName(manager, companyId);
+				final String companyName = readCompanyName(manager, companyId, lang.toLocale());
 
-				final List<OrganizationUnit> organizationUnits = readList(manager, readFormContent, 0);
+				final List<OrganizationUnit> organizationUnits = readList(request, manager, readFormContent, 0);
 
-				return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, Collections.unmodifiableList(organizationUnits)));
+				return ok(views.html.manage.company.organization.list.index.render(readForm, companyName, Collections.unmodifiableList(organizationUnits), request, lang, messages));
 			} else {
 
-				return failureRead(readForm, companyId);
+				return failureRead(readForm, companyId, request, lang, messages);
 			}
 		});
 	}
 
-	private String readCompanyName(final EntityManager manager, final long companyId) {
+	private String readCompanyName(final EntityManager manager, final long companyId, final Locale locale) {
 
 		final Company company = manager.find(Company.class, companyId);
-		final String companyName = company.getNames().getOrDefault(lang().toLocale(), company.getNames().get(Locale.US)).getName();
+		final String companyName = company.getNames().getOrDefault(locale, company.getNames().get(Locale.US)).getName();
 
 		return companyName;
 	}
@@ -108,18 +122,21 @@ public class Read extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@RequireCSRFCheck
-	public Result download() {
+	public Result download(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest(request);
 			final long companyId = downloadForm.value().get().getCompanyId();
 
 			if (!downloadForm.hasErrors()) {
 
 				final ReadFormContent downloadFormContent = downloadForm.get();
-				final List<OrganizationUnit> downloadCompanies = readList(manager, downloadFormContent, 0);
-				downloadCompanies.stream().forEach(organizationUnit -> organizationUnit.beforeWrite());
+				final List<OrganizationUnit> downloadCompanies = readList(request, manager, downloadFormContent, 0);
+				downloadCompanies.stream().forEach(organizationUnit -> organizationUnit.beforeWrite(messages));
 				final String csv = CSVs.toCSV(OrganizationUnit.getHeaders(), OrganizationUnit.getWriteCellProcessors(), downloadCompanies);
 
 				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8)))//
@@ -127,14 +144,14 @@ public class Read extends Controller {
 						.withHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=organizationUnits.csv");
 			} else {
 
-				return failureRead(downloadForm, companyId);
+				return failureRead(downloadForm, companyId, request, lang, messages);
 			}
 		});
 
 		return result;
 	}
 
-	private List<OrganizationUnit> readList(final EntityManager manager, final ReadFormContent readFormContent, int startPosition) {
+	private List<OrganizationUnit> readList(@Nonnull final Request request, final EntityManager manager, final ReadFormContent readFormContent, int startPosition) {
 
 		final long companyId = readFormContent.getCompanyId();
 
@@ -147,7 +164,7 @@ public class Read extends Controller {
 		}
 
 		readFormContent.setOrganizationId(organization.getId());
-		final LocalDateTime organizationUpdateDateTime = organization.getUpdateDateTime() != null ? DateTimes.toClientDateTime(organization.getUpdateDateTime()) : null;
+		final LocalDateTime organizationUpdateDateTime = organization.getUpdateDateTime() != null ? DateTimes.toClientDateTime(request, organization.getUpdateDateTime()) : null;
 		readFormContent.setOrganizationUpdateDateTime(organizationUpdateDateTime);
 
 		final String name = readFormContent.getName();
@@ -177,14 +194,14 @@ public class Read extends Controller {
 		}).collect(Collectors.toList());
 	}
 
-	private Result failureRead(final Form<ReadFormContent> searchForm, final long companyId) {
+	private Result failureRead(final Form<ReadFormContent> searchForm, final long companyId, final Request request, final Lang lang, final Messages messages) {
 
-		return jpa.withTransaction(manager -> {
+		return jpaApi.withTransaction(manager -> {
 
-			final String companyName = readCompanyName(manager, companyId);
+			final String companyName = readCompanyName(manager, companyId, lang.toLocale());
 
 			final List<OrganizationUnit> organizationUnits = Collections.emptyList();
-			return badRequest(views.html.manage.company.organization.list.index.render(searchForm, companyName, organizationUnits));
+			return badRequest(views.html.manage.company.organization.list.index.render(searchForm, companyName, organizationUnits, request, lang, messages));
 		});
 	}
 }

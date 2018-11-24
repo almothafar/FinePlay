@@ -1,6 +1,9 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import common.system._
 
-@(prop:scala.collection.immutable.Map[String, String])
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
 
 @equalTask(task:String) = @{
 
@@ -25,7 +28,7 @@
 	<a href="@controllers.lab.library.routes.Library.index("diff2html").toString()" class="list-group-item @("active".when(equalTask("diff2html")))">diff2html</a>
 	<a href="@controllers.lab.library.routes.Library.index("mustache").toString()" class="list-group-item @("active".when(equalTask("mustache")))">Mustache</a>
 	<a href="@controllers.lab.library.routes.Library.index("zxing").toString()" class="list-group-item @("active".when(equalTask("zxing")))">ZXing</a>
-	<a href="@controllers.lab.library.routes.Library.index("icon").toString()" class="list-group-item @("active".when(equalTask("icon")))">@Messages(MessageKeys.ICON)</a>
+	<a href="@controllers.lab.library.routes.Library.index("icon").toString()" class="list-group-item @("active".when(equalTask("icon")))">@messages(MessageKeys.ICON)</a>
 
 	<a href="@controllers.lab.library.routes.Library.index("marked").toString()" class="list-group-item @("active".when(equalTask("marked"))) secret">marked</a>
 	<a href="@controllers.lab.library.routes.Library.index("markdeep").toString()" class="list-group-item @("active".when(equalTask("markdeep"))) secret">Markdeep</a>
@@ -39,7 +42,7 @@
 	<a href="@controllers.lab.library.routes.Library.index("papercss").toString()" class="list-group-item @("active".when(equalTask("papercss"))) secret">paper-css</a>
 	<a href="@controllers.lab.library.routes.Library.index("quaggajs").toString()" class="list-group-item @("active".when(equalTask("quaggajs"))) secret">quaggaJS</a>
 	<a href="@controllers.lab.library.routes.Library.index("jsqr").toString()" class="list-group-item @("active".when(equalTask("jsqr"))) secret">jsQR</a>
-	<a href="@controllers.lab.library.routes.Library.index("camera").toString()" class="list-group-item @("active".when(equalTask("camera"))) secret">@Messages(MessageKeys.CAMERA)</a>
+	<a href="@controllers.lab.library.routes.Library.index("camera").toString()" class="list-group-item @("active".when(equalTask("camera"))) secret">@messages(MessageKeys.CAMERA)</a>
 	<a href="@controllers.lab.library.routes.Library.index("3dmol").toString()" class="list-group-item @("active".when(equalTask("3dmol"))) secret">3Dmol.js</a>
 	<a href="@controllers.lab.library.routes.Library.index("d3").toString()" class="list-group-item @("active".when(equalTask("d3"))) secret">d3</a>
 

@@ -9,11 +9,12 @@
 @import views.html._
 @import views.html.components
 @import views.html.helper._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@(detail:Boolean)
+@(detail:Boolean)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -37,21 +38,21 @@
 
 					<nav id="i_detail-header" class="border navbar navbar-light bg-light justify-content-between">
 
-						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
-						<div class="h5 text-center">@Messages(MessageKeys.ARRANGE)</div>
-						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
+						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
+						<div class="h5 text-center">@messages(MessageKeys.ARRANGE)</div>
+						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
 					</nav>
 
 					<div class="mt-3 mb-3 text-right">
 
-						@components.button(Map("id"->"editButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.EDIT), "data-toggle"->"button", "aria-pressed"->"false"))
+						@components.button(Map("id"->"editButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.EDIT), "data-toggle"->"button", "aria-pressed"->"false"))
 					</div>
 
 					@components.table(Map("id"->"", "striped"->"true"),
 						Map("id"->""),Tuple2(Map("id"->""),List(
 							Map("id"->"", "head"->"true", "text"->"", "class"->"removeButtonColumn"),
-							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.FULL__NAME)),
-							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ORDER)),
+							Map("id"->"", "head"->"true", "text"->messages(MessageKeys.FULL__NAME)),
+							Map("id"->"", "head"->"true", "text"->messages(MessageKeys.ORDER)),
 							Map("id"->"", "head"->"true", "text"->"", "class"->"sortHandleColumn"))),
 						Map("id"->"sortable"),List(
 							Tuple2(Map("id"->""),List(
@@ -81,8 +82,8 @@
 								Map("id"->"", "icon"->"fas fa-bars", "class"->"sortHandleColumn")))),
 						Map("id"->""),Tuple2(Map("id"->""),List(
 							Map("id"->"", "head"->"true", "text"->"", "class"->"removeButtonColumn"),
-							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.FULL__NAME)),
-							Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.ORDER)),
+							Map("id"->"", "head"->"true", "text"->messages(MessageKeys.FULL__NAME)),
+							Map("id"->"", "head"->"true", "text"->messages(MessageKeys.ORDER)),
 							Map("id"->"", "head"->"true", "text"->"", "class"->"sortHandleColumn")))
 					)
 				</div>
@@ -90,8 +91,8 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.COMPLETE":"@Messages(MessageKeys.COMPLETE)",
-			"@MessageKeys.EDIT":"@Messages(MessageKeys.EDIT)"
+			"@MessageKeys.COMPLETE":"@messages(MessageKeys.COMPLETE)",
+			"@MessageKeys.EDIT":"@messages(MessageKeys.EDIT)"
 		}'></div>
 
 		@libraries.standard.last()

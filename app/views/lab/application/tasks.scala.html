@@ -1,6 +1,9 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import common.system._
 
-@(prop:scala.collection.immutable.Map[String, String])
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
 
 @equalTask(task:String) = @{
 
@@ -8,29 +11,29 @@
 }
 
 <div id="@prop.getOrElse("id", "")" class="list-group mb-3">
-	<a href="@controllers.lab.application.routes.Download.index().toString()" class="list-group-item @("active".when(equalTask("download")))">@Messages(MessageKeys.DOWNLOAD)</a>
-	<a href="@controllers.lab.application.routes.Upload.index().toString()" class="list-group-item @("active".when(equalTask("upload")))">@Messages(MessageKeys.UPLOAD)</a>
-	<a href="@controllers.lab.application.routes.Application.paging(0, 100).toString()" class="list-group-item @("active".when(equalTask("paging")))">@Messages(MessageKeys.PAGE)</a>
-	<a href="@controllers.lab.application.routes.Application.index("color").toString()" class="list-group-item @("active".when(equalTask("color")))">@Messages(MessageKeys.COLOR)</a>
-	<a href="@controllers.lab.application.routes.Application.index("autosave").toString()" class="list-group-item @("active".when(equalTask("autosave")))">@Messages(MessageKeys.X__X, Messages(MessageKeys.AUTO), Messages(MessageKeys.SAVE))</a>
+	<a href="@controllers.lab.application.routes.Download.index().toString()" class="list-group-item @("active".when(equalTask("download")))">@messages(MessageKeys.DOWNLOAD)</a>
+	<a href="@controllers.lab.application.routes.Upload.index().toString()" class="list-group-item @("active".when(equalTask("upload")))">@messages(MessageKeys.UPLOAD)</a>
+	<a href="@controllers.lab.application.routes.Application.paging(0, 100).toString()" class="list-group-item @("active".when(equalTask("paging")))">@messages(MessageKeys.PAGE)</a>
+	<a href="@controllers.lab.application.routes.Application.index("color").toString()" class="list-group-item @("active".when(equalTask("color")))">@messages(MessageKeys.COLOR)</a>
+	<a href="@controllers.lab.application.routes.Application.index("autosave").toString()" class="list-group-item @("active".when(equalTask("autosave")))">@messages(MessageKeys.X__X, messages(MessageKeys.AUTO), messages(MessageKeys.SAVE))</a>
 	<a href="@controllers.lab.application.routes.Application.index("storeform").toString()" class="list-group-item @("active".when(equalTask("storeform")))">Store Form</a>
-	<a href="@controllers.lab.application.routes.Application.index("firsttimeaccess").toString()" class="list-group-item @("active".when(equalTask("firsttimeaccess")))">@Messages(MessageKeys.X__X, Messages(MessageKeys.FIRST__TIME), Messages(MessageKeys.ACCESS))</a>
-	<a href="@controllers.lab.application.routes.Application.index("imageviewer").toString()" class="list-group-item @("active".when(equalTask("imageviewer")))">@Messages(MessageKeys.X__X, Messages(MessageKeys.IMAGE), Messages(MessageKeys.VIEWER))</a>
-	<a href="@controllers.lab.application.routes.Application.index("partprint").toString()" class="list-group-item @("active".when(equalTask("partprint")))">@Messages(MessageKeys.X__X, Messages(MessageKeys.PART), Messages(MessageKeys.PRINT))</a>
+	<a href="@controllers.lab.application.routes.Application.index("firsttimeaccess").toString()" class="list-group-item @("active".when(equalTask("firsttimeaccess")))">@messages(MessageKeys.X__X, messages(MessageKeys.FIRST__TIME), messages(MessageKeys.ACCESS))</a>
+	<a href="@controllers.lab.application.routes.Application.index("imageviewer").toString()" class="list-group-item @("active".when(equalTask("imageviewer")))">@messages(MessageKeys.X__X, messages(MessageKeys.IMAGE), messages(MessageKeys.VIEWER))</a>
+	<a href="@controllers.lab.application.routes.Application.index("partprint").toString()" class="list-group-item @("active".when(equalTask("partprint")))">@messages(MessageKeys.X__X, messages(MessageKeys.PART), messages(MessageKeys.PRINT))</a>
 	<a href="@controllers.lab.application.routes.Application.index("ivd").toString()" class="list-group-item @("active".when(equalTask("ivd")))">IVD</a>
 
 	<a href="@controllers.lab.application.routes.Application.index("jar").toString()" class="list-group-item @("active".when(equalTask("jar"))) secret">JAR</a>
 	<a href="@controllers.lab.application.routes.Application.index("jpql").toString()" class="list-group-item @("active".when(equalTask("jpql"))) secret">JPQL</a>
 	<a href="@controllers.lab.application.routes.WebSocket.index().toString()" class="list-group-item @("active".when(equalTask("websocket"))) secret">WebSocket</a>
-	<a href="@controllers.lab.application.routes.Chat.index().toString()" class="list-group-item @("active".when(equalTask("chat"))) secret">@Messages(MessageKeys.CHAT)</a>
+	<a href="@controllers.lab.application.routes.Chat.index().toString()" class="list-group-item @("active".when(equalTask("chat"))) secret">@messages(MessageKeys.CHAT)</a>
 	<a href="@controllers.lab.application.routes.Application.index("serialtask").toString()" class="list-group-item @("active".when(equalTask("serialtask"))) secret">Serial Task</a>
 	<a href="@controllers.lab.application.routes.Application.index("paralleltask").toString()" class="list-group-item @("active".when(equalTask("paralleltask"))) secret">Parallel Task</a>
 	<a href="@controllers.lab.application.routes.Application.index("webservice").toString()" class="list-group-item @("active".when(equalTask("webservice"))) secret">Web Service</a>
-	<a href="@controllers.lab.application.routes.Application.index("webfont").toString()" class="list-group-item @("active".when(equalTask("webfont"))) secret">@Messages(MessageKeys.X__X, Messages(MessageKeys.WEB), Messages(MessageKeys.FONT))</a>
-	<a href="@controllers.lab.application.routes.BulkMail.index().toString()" class="list-group-item @("active".when(equalTask("bulkmail"))) secret">️@Messages(MessageKeys.X__X, Messages(MessageKeys.BULK), Messages(MessageKeys.MAIL))️</a>
-	<a href="@controllers.lab.application.routes.Application.index("translate").toString()" class="list-group-item @("active".when(equalTask("translate"))) secret">@Messages(MessageKeys.TRANSLATE)</a>
-	<a href="@controllers.lab.application.routes.Application.index("direction").toString()" class="list-group-item @("active".when(equalTask("direction"))) secret">@Messages(MessageKeys.DIRECTION)</a>
+	<a href="@controllers.lab.application.routes.Application.index("webfont").toString()" class="list-group-item @("active".when(equalTask("webfont"))) secret">@messages(MessageKeys.X__X, messages(MessageKeys.WEB), messages(MessageKeys.FONT))</a>
+	<a href="@controllers.lab.application.routes.BulkMail.index().toString()" class="list-group-item @("active".when(equalTask("bulkmail"))) secret">️@messages(MessageKeys.X__X, messages(MessageKeys.BULK), messages(MessageKeys.MAIL))️</a>
+	<a href="@controllers.lab.application.routes.Application.index("translate").toString()" class="list-group-item @("active".when(equalTask("translate"))) secret">@messages(MessageKeys.TRANSLATE)</a>
+	<a href="@controllers.lab.application.routes.Application.index("direction").toString()" class="list-group-item @("active".when(equalTask("direction"))) secret">@messages(MessageKeys.DIRECTION)</a>
 	<a href="@controllers.lab.application.routes.Application.index("vertical").toString()" class="list-group-item @("active".when(equalTask("vertical"))) secret">Vertical</a>
 
-	<a href="@controllers.lab.application.routes.Application.index("authorization").toString()" class="list-group-item @("active".when(equalTask("authorization")))">@Messages(MessageKeys.AUTHORIZATION)</a>
+	<a href="@controllers.lab.application.routes.Application.index("authorization").toString()" class="list-group-item @("active".when(equalTask("authorization")))">@messages(MessageKeys.AUTHORIZATION)</a>
 </div>

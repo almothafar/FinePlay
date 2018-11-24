@@ -3,13 +3,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(detail:Boolean)
+@(detail:Boolean)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -34,15 +38,15 @@
 
 					<nav id="i_detail-header" class="border navbar navbar-light bg-light justify-content-between">
 
-						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
+						<div class="">@components.button(Map("id"->"backButton", "type"->"link", "icon"->"fas fa-chevron-left", "text"->messages(MessageKeys.BACK), "class"->"d-md-none"))</div>
 						<div class="h5 text-center">Autumn board</div>
-						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->Messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
+						<div class="">@components.button(Map("id"->"", "type"->"link", "icon"->"fas fa-chevron-left", "text"->messages(MessageKeys.BACK), "class"->"d-md-none text-transparent"))</div>
 					</nav>
 
 					<div id="lockView" class="h-432p bg-cyan-300 rounded my-3">
 
 						<div class="h-216p"></div>
-						@components.unlock(Map("id"->"unlockView", "class"->"mx-auto w-216p", "text"->Messages(MessageKeys.SLIDE)))
+						@components.unlock(Map("id"->"unlockView", "class"->"mx-auto w-216p", "text"->messages(MessageKeys.SLIDE)))
 
 					</div>
 

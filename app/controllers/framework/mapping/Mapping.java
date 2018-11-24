@@ -16,14 +16,24 @@ import models.framework.mapping.BeanMapper.CustomConvertorMethod;
 import models.system.System.PermissionsAllowed;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 
 @PermissionsAllowed
 public class Mapping extends Controller {
 
 	@Inject
+	private MessagesApi messagesApi;
+
+	@Inject
 	private BeanMapper mapper;
 
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		mapping();
 		return ok("mapped.");

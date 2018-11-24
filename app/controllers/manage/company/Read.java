@@ -27,9 +27,14 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Read extends Controller {
@@ -37,7 +42,10 @@ public class Read extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpa;
+	private MessagesApi messagesApi;
+
+	@Inject
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -47,9 +55,12 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return jpaApi.withTransaction(manager -> {
 
 			final ReadFormContent readFormContent = new ReadFormContent();
 			readFormContent.setMaxResult(String.valueOf(1000));
@@ -58,28 +69,31 @@ public class Read extends Controller {
 
 			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
 
-			return ok(views.html.manage.company.index.render(readForm, companies));
+			return ok(views.html.manage.company.index.render(readForm, companies, request, lang, messages));
 		});
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@RequireCSRFCheck
-	public Result read() {
+	public Result read(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
+
+			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).bindFromRequest(request);
 			if (!readForm.hasErrors()) {
 
 				final ReadFormContent readFormContent = readForm.get();
 
 				final List<Company> companies = readList(manager, readFormContent, 0);
 
-				return ok(views.html.manage.company.index.render(readForm, Collections.unmodifiableList(companies)));
+				return ok(views.html.manage.company.index.render(readForm, Collections.unmodifiableList(companies), request, lang, messages));
 			} else {
 
-				return failureRead(readForm);
+				return failureRead(readForm, request, lang, messages);
 			}
 		});
 	}
@@ -87,17 +101,20 @@ public class Read extends Controller {
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
 	@RequireCSRFCheck
-	public Result download() {
+	public Result download(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<ReadFormContent> downloadForm = formFactory.form(ReadFormContent.class).bindFromRequest(request);
 
 			if (!downloadForm.hasErrors()) {
 
 				final ReadFormContent downloadFormContent = downloadForm.get();
 				final List<Company> downloadCompanies = readList(manager, downloadFormContent, 0);
-				downloadCompanies.stream().forEach(company -> company.beforeWrite());
+				downloadCompanies.stream().forEach(company -> company.beforeWrite(messages));
 				final String csv = CSVs.toCSV(Company.getHeaders(), Company.getWriteCellProcessors(), downloadCompanies);
 
 				return ok(Binaries.concat(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, csv.getBytes(StandardCharsets.UTF_8)))//
@@ -105,7 +122,7 @@ public class Read extends Controller {
 						.withHeader(Http.HeaderNames.CONTENT_DISPOSITION, "attachment;filename=companies.csv");
 			} else {
 
-				return failureRead(downloadForm);
+				return failureRead(downloadForm, request, lang, messages);
 			}
 		});
 
@@ -136,9 +153,9 @@ public class Read extends Controller {
 		});
 	}
 
-	private Result failureRead(final Form<ReadFormContent> searchForm) {
+	private Result failureRead(final Form<ReadFormContent> searchForm, final Request request, final Lang lang, final Messages messages) {
 
 		final List<Company> companies = Collections.emptyList();
-		return badRequest(views.html.manage.company.index.render(searchForm, companies));
+		return badRequest(views.html.manage.company.index.render(searchForm, companies, request, lang, messages));
 	}
 }

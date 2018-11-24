@@ -4,6 +4,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -13,11 +17,11 @@
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @datetime() = @{
 
-	common.utils.DateTimes.toClientDateTime(LocalDateTime.now())
+	common.utils.DateTimes.toClientDateTime(request, LocalDateTime.now())
 }
 
 @frame(){
@@ -49,11 +53,11 @@
 					<div class="mb-3">
 
 						@components.buttongroup(Map("id"->"ganttViewSelect", "class"->"mt-1 mx-auto mb-3"), List(
-							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.QUARTER__DAY), "data-duration"->"Quarter Day"),
-							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.HALF__DAY), "data-duration"->"Half Day"),
-							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.DAY), "data-duration"->"Day"),
-							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.WEEK), "selected"->"true", "data-duration"->"Week", "selected"->"true"),
-							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->Messages(MessageKeys.MONTH), "data-duration"->"Month")
+							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.QUARTER__DAY), "data-duration"->"Quarter Day"),
+							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.HALF__DAY), "data-duration"->"Half Day"),
+							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.DAY), "data-duration"->"Day"),
+							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.WEEK), "selected"->"true", "data-duration"->"Week", "selected"->"true"),
+							Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"", "text"->messages(MessageKeys.MONTH), "data-duration"->"Month")
 						))
 
 						<div class="gantt-container">

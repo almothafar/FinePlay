@@ -4,7 +4,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 
@@ -12,11 +13,11 @@
 @import models.manage.company._
 @import models.company._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-@components.modal(Map("id"->"deleteDialog", "icon"->"fas fa-trash-alt", "title"->Messages(MessageKeys.DELETE), "closable"->"false", "data-backdrop"->"static"), List(
-		Map("id"->"deleteCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
-		Map("id"->"deleteOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+@components.modal(Map("id"->"deleteDialog", "icon"->"fas fa-trash-alt", "title"->messages(MessageKeys.DELETE), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"deleteCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"deleteOk", "type"->"primary", "text"->messages(MessageKeys.OK), "default"->"true")
 	)){
 
 	@helper.form(helper.CSRF(controllers.manage.company.routes.Edit.delete()), 'name->"deleteForm", 'id->"deleteForm") {
@@ -24,7 +25,7 @@
 			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
-			<label for="inputName" class="col-sm-3 col-form-label">@Messages(MessageKeys.COMPANY_NAME)</label>
+			<label for="inputName" class="col-sm-3 col-form-label">@messages(MessageKeys.COMPANY_NAME)</label>
 			<div class="col-sm-9">
 				<input id="" type="text" name="" class="form-control" placeholder="Name" value="" required disabled>
 			</div>
@@ -42,7 +43,7 @@
 	}
 
 	<div class="wordwrap">
-		<div id="deleteMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="deleteMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
 		<div id="deleteDescription">-</div>
 	</div>
 	@components.progress(Map("id"->"deleteProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))

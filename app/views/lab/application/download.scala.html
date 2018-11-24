@@ -6,17 +6,21 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @encodedUserId() = @{
 
-	var userId = session().get(models.user.User.USER_ID);
+	var userId = request.session().getOptional(models.user.User.USER_ID).get();
 
 	try {
 
@@ -31,7 +35,7 @@
 
 	try {
 
-		"URL_" + Messages(MessageKeys.FILE_NAME).replaceAll("\\s", "_") + ".txt";
+		"URL_" + messages(MessageKeys.FILE_NAME).replaceAll("\\s", "_") + ".txt";
 	} catch {
 
 		case e: UnsupportedEncodingException => throw new RuntimeException(e)
@@ -49,7 +53,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.DOWNLOAD), "icon"->"fas fa-download", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.DOWNLOAD), "icon"->"fas fa-download", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -63,18 +67,18 @@
 				<div class="col-md-9">
 
 					<div class="mb-3">
-						<h4 class="headline">@Messages(MessageKeys.FILE)</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.file().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+						<h4 class="headline">@messages(MessageKeys.FILE)</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.file().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3">
 						<h4 class="headline">Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.stream().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.stream().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3">
 						<h4 class="headline">Chunk</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.chunks().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.chunks().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">
@@ -84,17 +88,17 @@
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Excel Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.excelStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-excel", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.excelStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-excel", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Word Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.wordStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-word", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.wordStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-word", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">PowerPoint Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.powerPointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-powerpoint", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.powerPointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-powerpoint", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">
@@ -104,7 +108,7 @@
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">PDF Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.pdfboxStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.pdfboxStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">
@@ -114,22 +118,22 @@
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">PDF Report Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Word Report Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportWordStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-word", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportWordStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-word", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Excel Report Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportExcelStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-excel", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportExcelStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-excel", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">PowerPoint Report Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportPowerpointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-powerpoint", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.reportPowerpointStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-powerpoint", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">
@@ -139,7 +143,7 @@
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Paper unless Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.paperPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.paperPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">
@@ -149,12 +153,12 @@
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">ZIP Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.zipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-archive", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.zipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-archive", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">Encrypt ZIP Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.encryptZipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-archive", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.encryptZipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-archive", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">
@@ -164,12 +168,12 @@
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">File name</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.fileName().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.fileName().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">URL File name</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.urlFileName(encodedFileName).toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD)))
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.urlFileName(encodedFileName).toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>
 
 					<div class="mb-3 secret">
@@ -178,24 +182,7 @@
 					</div>
 
 					<div class="mb-3 lab secret">
-						<h4 class="headline">Report Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.wkhtmltopdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.DOWNLOAD)))
-					</div>
-
-					<div class="mb-3 lab secret">
-						<h4 class="headline">IVD Stream</h4>
-						@components.button(Map("id"->"createIVDButton", "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.CREATE)))
-						@components.icon(Map("id"->"createIVDIcon", "icon"->("fas fa-spinner fa-pulse"), "class"->"d-none"))
-						@components.linkbutton(Map("id"->"downloadIVDButton", "link"->controllers.lab.application.routes.Download.ivdPdfStream(-1).toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->Messages(MessageKeys.DOWNLOAD), "class"->"d-none"))
-					</div>
-
-					<div class="mb-3 secret">
-
-						<hr class="separator">
-					</div>
-
-					<div class="mb-3 lab secret">
-						<h4 class="headline">@Messages(MessageKeys.X__X, "KIOSK", Messages(MessageKeys.PRINT))</h4>
+						<h4 class="headline">@messages(MessageKeys.X__X, "KIOSK", messages(MessageKeys.PRINT))</h4>
 
 						@components.buttongroup(Map("id"->"", "size"->"sm", "class"->"mb-3"), List(
 							Map("id"->"", "type"->"dark", "icon"->"", "text"->"Chrome"),
@@ -213,7 +200,7 @@
 							<input id="no" class="form-control" type="hidden" name="no" value="64657767MH" required>
 							<input id="date" class="form-control" type="hidden" name="date" value="Mar 12, 2018" required>
 
-							@components.button(Map("id"->"paperButton", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->Messages(MessageKeys.DOWNLOAD)))
+							@components.button(Map("id"->"paperButton", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-file-invoice", "text"->messages(MessageKeys.DOWNLOAD)))
 						}
 					</div>
 
@@ -226,14 +213,14 @@
 						<h4 class="headline">Local</h4>
 						@components.badge(Map("id"->"URL", "type"->"danger", "text"->"URL"))
 						<br>
-						@components.linkbutton(Map("id"->"local", "link"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD), "download"->"url.txt"))
+						@components.linkbutton(Map("id"->"local", "link"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD), "download"->"url.txt"))
 					</div>
 
 					<div class="mb-3 lab secret">
 						<h4 class="headline">HTML5</h4>
 						@components.badge(Map("id"->"DownloadAttribute", "type"->"danger", "text"->"Download attribute"))
 						<br>
-						@components.linkbutton(Map("id"->"html5", "link"->"https://www.playframework.com/assets/images/logos/play_full_color.svg", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->Messages(MessageKeys.DOWNLOAD), "download"->""))
+						@components.linkbutton(Map("id"->"html5", "link"->"https://www.playframework.com/assets/images/logos/play_full_color.svg", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD), "download"->""))
 					</div>
 				</div>
 			</div>

@@ -6,7 +6,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -28,12 +28,20 @@ import play.libs.F;
 import play.libs.streams.ActorFlow;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
 public class WebSocket extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	@Inject
+	private MessagesApi messagesApi;
 
 	private final ActorSystem actorSystem;
 	private final Materializer materializer;
@@ -46,18 +54,23 @@ public class WebSocket extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return ok(views.html.lab.application.websocket.render());
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return ok(views.html.lab.application.websocket.render(request, lang, messages));
 	}
 
 	public play.mvc.WebSocket connect() {
 
 		return play.mvc.WebSocket.Text.acceptOrResult(request -> {
 
-			if (Objects.nonNull(request().session().get(models.user.User_.USER_ID))) {
+			final Optional<String> userIdOpt = request.session().getOptional(models.user.User_.USER_ID);
 
-				final ZoneId zoneId = ZoneId.of(request().session().get(models.user.User_.ZONE_ID));
+			if (userIdOpt.isPresent()) {
+
+				final ZoneId zoneId = ZoneId.of(request.session().getOptional(models.user.User_.ZONE_ID).get());
 				final Function<ActorRef, Props> createProps = (ref) -> Props.create(Client.class, ref, zoneId);
 
 				return CompletableFuture.completedFuture(F.Either.Right(ActorFlow.actorRef(createProps, actorSystem, materializer)));

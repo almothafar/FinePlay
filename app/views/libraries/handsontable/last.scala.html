@@ -1,14 +1,17 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <!-- npm -->
 <script @{CSPNonce.attr} src="@routes.Assets.versioned("lib/handsontable/dist/handsontable.full.min.js")"></script>
 @translation() = @{
 
-	var lang = Messages(MessageKeys.HANDSONTABLE_LANG)
+	var lang = messages(MessageKeys.HANDSONTABLE_LANG)
 	if(lang.isEmpty){
 
 		Html("")

@@ -16,14 +16,14 @@ $('#setSyncButton').click(function() {
 	.then(
 		function (responseJson) {
 
-			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + Messages(MessageKeys.SUCCESS), 1000);
+			notifyAlert('success', '<strong>' + messages(MessageKeys.SUCCESS) + '</strong> ' + messages(MessageKeys.SUCCESS), 1000);
 
 			$('#setSyncKeyField').val(responseJson.key);
 			$('#setSyncValueField').val(responseJson.value);
 		},
 		function () {
 
-			notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER), 1000);
+			notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + messages(MessageKeys.DANGER), 1000);
 		}
 	);
 });
@@ -43,14 +43,14 @@ $('#getSyncButton').click(function() {
 	.then(
 		function (responseJson) {
 
-			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
+			notifyAlert('success', '<strong>' + messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
 
 			$('#setSyncKeyField').val(responseJson.key);
 			$('#setSyncValueField').val(responseJson.value);
 		},
 		function () {
 
-			notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER), 1000);
+			notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + messages(MessageKeys.DANGER), 1000);
 		}
 	);
 });
@@ -69,14 +69,14 @@ $('#setASyncButton').click(function() {
 	.then(
 		function (responseJson) {
 
-			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
+			notifyAlert('success', '<strong>' + messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
 
 			$('#setASyncKeyField').val(responseJson.key);
 			$('#setASyncValueField').val(responseJson.value);
 		},
 		function () {
 
-			notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER), 1000);
+			notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + messages(MessageKeys.DANGER), 1000);
 		}
 	);
 });
@@ -94,14 +94,14 @@ $('#getASyncButton').click(function() {
 	.then(
 		function (responseJson) {
 
-			notifyAlert('success', '<strong>' + Messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
+			notifyAlert('success', '<strong>' + messages(MessageKeys.SUCCESS) + '</strong> ' + responseJson.key + ":" + responseJson.value, 1000);
 
 			$('#setASyncKeyField').val(responseJson.key);
 			$('#setASyncValueField').val(responseJson.value);
 		},
 		function () {
 
-			notifyAlert('danger', '<strong>' + Messages(MessageKeys.DANGER) + '</strong> ' + Messages(MessageKeys.DANGER), 1000);
+			notifyAlert('danger', '<strong>' + messages(MessageKeys.DANGER) + '</strong> ' + messages(MessageKeys.DANGER), 1000);
 		}
 	);
 });

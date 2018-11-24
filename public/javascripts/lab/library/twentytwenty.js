@@ -4,7 +4,7 @@ $(window).on('load', function () {
 
 	$("#twentytwentyContainer").twentytwenty({
 		default_offset_pct: 0.95,
-		before_label: Messages(MessageKeys.BEFORE),
-		after_label: Messages(MessageKeys.AFTER)
+		before_label: messages(MessageKeys.BEFORE),
+		after_label: messages(MessageKeys.AFTER)
 	});
 });

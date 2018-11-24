@@ -1,4 +1,7 @@
-@(title: String)(content: Html)
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@(title: String)(content: Html)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <head>
 

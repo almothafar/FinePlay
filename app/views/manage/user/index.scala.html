@@ -1,6 +1,7 @@
 @import java.time._
 @import java.time.format._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -11,7 +12,7 @@
 @import models.user._
 @import models.user.User._
 
-@(form: play.data.Form[models.manage.user.ReadFormContent], users: List[User])
+@(form: play.data.Form[models.manage.user.ReadFormContent], users: List[User])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -20,7 +21,7 @@
 
 @datetime(dateTime: LocalDateTime) = @{
 
-	common.utils.DateTimes.toClientDateTime(dateTime)
+	common.utils.DateTimes.toClientDateTime(request, dateTime)
 }
 
 @datetimeFormat(dateTime: LocalDateTime) = @{
@@ -37,7 +38,7 @@
 
 		val columnsList = List[scala.collection.immutable.Map[String, String]](
 			Map("text"->user.getUserId),
-			Map("text"->user.getRoles().map(role=>Messages("user.role."+role.name().toLowerCase())).mkString(" / ")),
+			Map("text"->user.getRoles().map(role=>messages(MessageKeys.USER_ROLE+"."+role.name().toLowerCase())).mkString(" / ")),
 			Map("text"->JSONs.toJSON(user.getRoles())),
 			Map("text"->(if(user.getCompany != null){user.getCompany.getId.toString}else{""})),
 			Map("text"->(if(user.getCompany != null){user.getCompany.getNames.getOrElse(lang.locale, user.getCompany.getNames.get(Locale.US)).getName}else{""})),
@@ -86,7 +87,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.EDIT), "icon"->"fas fa-edit", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.EDIT), "icon"->"fas fa-edit", "selected"->"true"))
 		}
 
 		<div class="container-fluid">
@@ -97,12 +98,12 @@
 		<div class="container-fluid">
 
 			<div class="mt-3 mb-3">
-				@components.button(Map("id"->"searchButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-search", "text"->(Messages(MessageKeys.SEARCH)+"&nbsp;<i class=\"fas fa-caret-down\"></i>"), "data-toggle"->"collapse", "data-target"->"#readCollapse", "aria-controls"->"readCollapse"))
-				@components.linkbutton(Map("id"->"downloadButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->("CSV "+Messages(MessageKeys.DOWNLOAD)), "link"->helper.CSRF(controllers.manage.user.routes.Read.download()).toString()))
-				@components.button(Map("id"->"uploadButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-upload", "text"->("CSV "+Messages(MessageKeys.UPLOAD)), "data-toggle"->"modal", "data-target"->"#uploadDialog"))
-				@components.button(Map("id"->"deleteButton", "type"->"danger", "outline"->"true", "icon"->"fas fa-trash-alt", "text"->Messages(MessageKeys.DELETE), "data-toggle"->"modal", "data-target"->"#deleteDialog"))
-				@components.button(Map("id"->"updateButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-pencil-alt", "text"->Messages(MessageKeys.EDIT), "data-toggle"->"modal", "data-target"->"#updateDialog"))
-				@components.button(Map("id"->"createButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-plus", "text"->Messages(MessageKeys.CREATE), "data-toggle"->"modal", "data-target"->"#createDialog"))
+				@components.button(Map("id"->"searchButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-search", "text"->(messages(MessageKeys.SEARCH)+"&nbsp;<i class=\"fas fa-caret-down\"></i>"), "data-toggle"->"collapse", "data-target"->"#readCollapse", "aria-controls"->"readCollapse"))
+				@components.linkbutton(Map("id"->"downloadButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->("CSV "+messages(MessageKeys.DOWNLOAD)), "link"->helper.CSRF(controllers.manage.user.routes.Read.download()).toString()))
+				@components.button(Map("id"->"uploadButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-upload", "text"->("CSV "+messages(MessageKeys.UPLOAD)), "data-toggle"->"modal", "data-target"->"#uploadDialog"))
+				@components.button(Map("id"->"deleteButton", "type"->"danger", "outline"->"true", "icon"->"fas fa-trash-alt", "text"->messages(MessageKeys.DELETE), "data-toggle"->"modal", "data-target"->"#deleteDialog"))
+				@components.button(Map("id"->"updateButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-pencil-alt", "text"->messages(MessageKeys.EDIT), "data-toggle"->"modal", "data-target"->"#updateDialog"))
+				@components.button(Map("id"->"createButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-plus", "text"->messages(MessageKeys.CREATE), "data-toggle"->"modal", "data-target"->"#createDialog"))
 				@components.button(Map("id"->"settingButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-sliders-h", "text"->"&nbsp;<i class=\"fas fa-caret-down\"></i>", "data-toggle"->"collapse", "data-target"->"#settingCollapse", "aria-controls"->"settingCollapse"))
 			</div>
 
@@ -116,39 +117,39 @@
 			<div class="mb-3 dataTable-responsive">
 				@components.table(Map("id"->"userlist", "class"->"", "bordered"->"true"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_USERID)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_ROLE)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_USERID)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_ROLE)),
 						Map("id"->"", "head"->"true", "text"->(User.ROLES+"_source")),
 						Map("id"->"", "head"->"true", "text"->User.COMPANYID),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.COMPANY_NAME)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_EXPIRE)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNIN)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNOUT)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VERSION)))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.COMPANY_NAME)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_EXPIRE)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_SIGNIN)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_SIGNOUT)),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.VERSION)))),
 					Map("id"->""),
 					tbodyRowToColumnsList(users),
 					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_USERID)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_ROLE)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_USERID)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_ROLE)),
 						Map("id"->"", "head"->"true", "text"->(User.ROLES+"_source")),
 						Map("id"->"", "head"->"true", "text"->User.COMPANYID),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.COMPANY_NAME)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_EXPIRE)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNIN)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.USER_SIGNOUT)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.VERSION)))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.COMPANY_NAME)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_EXPIRE)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_SIGNIN)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.USER_SIGNOUT)),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.VERSION)))),
 				)
 			</div>
 		</div>
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
-			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
-			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
-			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)",
-			"@MessageKeys.X__CASE__SELECTED":"@Messages(MessageKeys.X__CASE__SELECTED)",
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)",
+			"@MessageKeys.X__CASE__SELECTED":"@messages(MessageKeys.X__CASE__SELECTED)",
 			"langCode":"@lang.code",
 			"clientDateTime":"@datetime(LocalDateTime.now()).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)"
 		}'></div>

@@ -1,9 +1,11 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} type='text/javascript'
 	src='@routes.Assets.versioned("lib/custom/pickadate/head.css.js")'></script>
@@ -13,7 +15,7 @@
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.time.js")'></script>
 @translation() = @{
 
-	var lang = Messages(MessageKeys.PICKADATE_LANG)
+	var lang = messages(MessageKeys.PICKADATE_LANG)
 	if(lang.isEmpty){
 
 		Html("")
@@ -26,6 +28,6 @@
 @translation()
 
 <div id="pickadate_messages" class="d-none" data-messages='{
-	"@MessageKeys.CLOSE":"@Messages(MessageKeys.CLOSE)"
+	"@MessageKeys.CLOSE":"@messages(MessageKeys.CLOSE)"
 }'></div>
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/pickadate/last.js")'></script>

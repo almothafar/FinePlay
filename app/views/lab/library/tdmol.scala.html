@@ -1,6 +1,10 @@
 @import models.components._
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -8,7 +12,7 @@
 @import java.time._
 @import java.time.format._
 
-@(pdb: String)
+@(pdb: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map

@@ -33,7 +33,7 @@ import play.test.WithApplication;
 
 public class UserDaoTest extends WithApplication {
 
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	private UserDao userDao;
 
@@ -48,7 +48,7 @@ public class UserDaoTest extends WithApplication {
 	@Before
 	public void setUp() throws Exception {
 
-		jpa = instanceOf(JPAApi.class);
+		jpaApi = instanceOf(JPAApi.class);
 
 		userDao = new UserDao();
 	}
@@ -62,7 +62,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				long count;
 				try {
@@ -118,7 +118,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				final User createUser = new User();
 				createUser.setUserId("test@example.com");
@@ -207,7 +207,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -244,7 +244,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -279,7 +279,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -317,7 +317,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -351,7 +351,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");
@@ -387,7 +387,7 @@ public class UserDaoTest extends WithApplication {
 
 		running(Helpers.testServer(), () -> {
 
-			jpa.withTransaction(manager -> {
+			jpaApi.withTransaction(manager -> {
 
 				final User readUser = new User();
 				readUser.setUserId("test@example.com");

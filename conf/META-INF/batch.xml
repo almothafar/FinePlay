@@ -15,6 +15,4 @@
 	<ref id="dbRollbackBatchlet" class="batchs.manage.dbrollback.Batchlet"/>
 
 	<ref id="failBatchlet" class="batchs.manage.fail.Batchlet"/>
-
-	<ref id="createIVDBatchlet" class="batchs.lab.download.createivd.Batchlet"/>
 </batch-artifacts>

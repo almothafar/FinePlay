@@ -3,12 +3,16 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -36,7 +40,7 @@
 				<div class="col-md-9">
 
 					<div>
-						<h4 class="headline">@Messages(MessageKeys.SUPPORT)</h4>
+						<h4 class="headline">@messages(MessageKeys.SUPPORT)</h4>
 						<div class="row mb-3">
 							<div class="col-auto">
 								@components.icon(Map("id"->"", "icon"->("ta ta-woman-pouting fa-4x"), "class"->""))
@@ -76,7 +80,7 @@
 					</div>
 
 					<div>
-						<h4 class="headline">@Messages(MessageKeys.SCIENCE)</h4>
+						<h4 class="headline">@messages(MessageKeys.SCIENCE)</h4>
 						<div class="row mb-3">
 							<div class="col-auto">
 								@components.icon(Map("id"->"", "icon"->("ta ta-girl fa-4x"), "class"->""))
@@ -116,7 +120,7 @@
 					</div>
 
 					<div class="secret">
-						<h4 class="headline">@Messages(MessageKeys.CONSULT)</h4>
+						<h4 class="headline">@messages(MessageKeys.CONSULT)</h4>
 						<div class="bg-deep-purple-100 p-3">
 							<div class="row mb-3">
 								<div class="col-auto">

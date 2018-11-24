@@ -1,3 +1,6 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import models.components._
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -8,7 +11,7 @@
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @components.container(Map("id"->"", "class"->"py-5")){
 

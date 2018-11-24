@@ -37,9 +37,12 @@ import models.system.System.PermissionsAllowed;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
+import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Messages;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 public class Read extends Controller {
@@ -47,10 +50,10 @@ public class Read extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private FormFactory formFactory;
@@ -60,22 +63,25 @@ public class Read extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result index(final long companyId) {
+	public Result index(@Nonnull final Request request, final long companyId) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final String companyName = readCompanyName(manager, companyId);
+		return jpaApi.withTransaction(manager -> {
+
+			final String companyName = readCompanyName(request, manager, companyId, lang.toLocale());
 
 			final ReadFormContent readFormContent = new ReadFormContent();
 			readFormContent.setCompanyId(companyId);
 
-			final ArrayNode unitTree = readTree(manager, readFormContent);
+			final ArrayNode unitTree = readTree(request, manager, readFormContent, lang.toLocale());
 			final Map<String, String> alertInfo = new HashMap<>();
 			if (!(1 <= unitTree.size())) {
 
 				alertInfo.put("warning", //
-						"<strong>" + messages.get(lang(), MessageKeys.PROCESS) + " " + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + //
-				messages.get(lang(), MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.get(lang(), MessageKeys.ORGANIZATIONUNIT)));
+						"<strong>" + messages.at(MessageKeys.PROCESS) + " " + messages.at(MessageKeys.WARNING) + "</strong> " + //
+				messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATIONUNIT)));
 			}
 
 			final String unitTreeJSON;
@@ -85,24 +91,24 @@ public class Read extends Controller {
 				unitTreeJSON = mapper.writeValueAsString(unitTree);
 			} catch (final JsonProcessingException e) {
 
-				throw new RuntimeException(messages.get(lang(), MessageKeys.SYSTEM) + " " + messages.get(lang(), MessageKeys.ERROR), e);
+				throw new RuntimeException(messages.at(MessageKeys.SYSTEM) + " " + messages.at(MessageKeys.ERROR), e);
 			}
 
 			final Form<ReadFormContent> readForm = formFactory.form(ReadFormContent.class).fill(readFormContent);
 
-			return ok(views.html.manage.company.organization.tree.index.render(alertInfo, readForm, companyName, unitTreeJSON));
+			return ok(views.html.manage.company.organization.tree.index.render(alertInfo, readForm, companyName, unitTreeJSON, request, lang, messages));
 		});
 	}
 
-	private String readCompanyName(final EntityManager manager, final long companyId) {
+	private String readCompanyName(@Nonnull final Request request, final EntityManager manager, final long companyId, final Locale locale) {
 
 		final Company company = manager.find(Company.class, companyId);
-		final String companyName = company.getNames().getOrDefault(lang().toLocale(), company.getNames().get(Locale.US)).getName();
+		final String companyName = company.getNames().getOrDefault(locale, company.getNames().get(Locale.US)).getName();
 
 		return companyName;
 	}
 
-	private ArrayNode readTree(@Nonnull final EntityManager manager, @Nonnull final ReadFormContent readFormContent) {
+	private ArrayNode readTree(@Nonnull final Request request, @Nonnull final EntityManager manager, @Nonnull final ReadFormContent readFormContent, final Locale locale) {
 
 		final long companyId = readFormContent.getCompanyId();
 
@@ -117,13 +123,13 @@ public class Read extends Controller {
 		} else {
 
 			readFormContent.setOrganizationId(organization.getId());
-			final LocalDateTime organizationUpdateDateTime = organization.getUpdateDateTime() != null ? DateTimes.toClientDateTime(organization.getUpdateDateTime()) : null;
+			final LocalDateTime organizationUpdateDateTime = organization.getUpdateDateTime() != null ? DateTimes.toClientDateTime(request, organization.getUpdateDateTime()) : null;
 			readFormContent.setOrganizationUpdateDateTime(organizationUpdateDateTime);
 
 			rootUnits = readRootList(manager, organization);
 		}
 
-		final ArrayNode arrayNode = toArrayNode(mapper, rootUnits);
+		final ArrayNode arrayNode = toArrayNode(mapper, rootUnits, locale);
 		return arrayNode;
 	}
 
@@ -148,21 +154,21 @@ public class Read extends Controller {
 		return rootUnits;
 	}
 
-	private static ArrayNode toArrayNode(@Nonnull final ObjectMapper mapper, @Nonnull final List<OrganizationUnit> units) {
+	private static ArrayNode toArrayNode(@Nonnull final ObjectMapper mapper, @Nonnull final List<OrganizationUnit> units, final Locale locale) {
 
 		final ArrayNode arrayNode = mapper.createArrayNode();
 		units.stream().forEach(unit -> {
 
 			final ObjectNode objectNode = mapper.createObjectNode();
 			objectNode.put("id", unit.getId());
-			objectNode.put("name", unit.getNames().getOrDefault(lang().toLocale(), unit.getNames().get(Locale.US)).getName());
+			objectNode.put("name", unit.getNames().getOrDefault(locale, unit.getNames().get(Locale.US)).getName());
 			arrayNode.add(objectNode);
 
 			final List<OrganizationUnit> children = unit.getChildren();
 			children.size();
 			if (!children.isEmpty()) {
 
-				final ArrayNode childArrayNodes = toArrayNode(mapper, unit.getChildren());
+				final ArrayNode childArrayNodes = toArrayNode(mapper, unit.getChildren(), locale);
 				objectNode.withArray("children").addAll(childArrayNodes);
 			}
 		});

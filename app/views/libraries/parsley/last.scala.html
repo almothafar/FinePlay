@@ -1,9 +1,11 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/parsleyjs/dist/parsley.min.js")'></script>
-<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/parsleyjs/dist/i18n/"+Messages(MessageKeys.PARSLEY_LANG)+".js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/parsleyjs/dist/i18n/"+messages(MessageKeys.PARSLEY_LANG)+".js")'></script>

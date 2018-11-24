@@ -4,6 +4,10 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -11,7 +15,7 @@
 @import java.time._
 @import java.time.format._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -57,13 +61,13 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"m1":"@Month.JANUARY.getDisplayName(TextStyle.FULL, lang.toLocale())",
-			"m2":"@Month.FEBRUARY.getDisplayName(TextStyle.FULL, lang.toLocale())",
-			"m3":"@Month.MARCH.getDisplayName(TextStyle.FULL, lang.toLocale())",
-			"m4":"@Month.APRIL.getDisplayName(TextStyle.FULL, lang.toLocale())",
-			"m5":"@Month.MAY.getDisplayName(TextStyle.FULL, lang.toLocale())",
-			"m6":"@Month.JUNE.getDisplayName(TextStyle.FULL, lang.toLocale())",
-			"m7":"@Month.JULY.getDisplayName(TextStyle.FULL, lang.toLocale())"
+			"m1":"@Month.JANUARY.getDisplayName(TextStyle.FULL, lang.toLocale)",
+			"m2":"@Month.FEBRUARY.getDisplayName(TextStyle.FULL, lang.toLocale)",
+			"m3":"@Month.MARCH.getDisplayName(TextStyle.FULL, lang.toLocale)",
+			"m4":"@Month.APRIL.getDisplayName(TextStyle.FULL, lang.toLocale)",
+			"m5":"@Month.MAY.getDisplayName(TextStyle.FULL, lang.toLocale)",
+			"m6":"@Month.JUNE.getDisplayName(TextStyle.FULL, lang.toLocale)",
+			"m7":"@Month.JULY.getDisplayName(TextStyle.FULL, lang.toLocale)"
 		}'></div>
 
 		@libraries.standard.last()

@@ -47,6 +47,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.security.auth.login.AccountException;
 import javax.validation.ConstraintViolation;
@@ -83,13 +84,15 @@ import play.data.FormFactory;
 import play.data.validation.ValidationError;
 import play.db.jpa.JPAApi;
 import play.i18n.Langs;
+import play.i18n.Messages;
+import play.i18n.Lang;
 import play.i18n.MessagesApi;
 import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
-import play.mvc.Http;
 import play.mvc.Http.Cookie;
 import play.mvc.Http.Flash;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import play.mvc.With;
@@ -110,7 +113,7 @@ public class Application extends Controller {
 	private Langs langs;
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
 	private SyncCacheApi syncCache;
@@ -119,7 +122,7 @@ public class Application extends Controller {
 	private AsyncCacheApi aSyncCache;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private UserService userService;
@@ -132,83 +135,86 @@ public class Application extends Controller {
 
 	@With(LoggingAction.class)
 	@Authenticated(common.core.Authenticator.class)
-	public Result index(String state) {
+	public Result index(@Nonnull final Request request, String state) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		switch (state) {
 		case "config":
 
-			return config();
+			return config(request, lang, messages);
 		case "cookie":
 
-			return cookie();
+			return cookie(request, lang, messages);
 		case "session":
 
-			return sessionlist();
+			return sessionlist(request, lang, messages);
 		case "beforeflash":
 
-			return beforeflashlist();
+			return beforeflashlist(request, lang, messages);
 		case "flash":
 
-			return flashlist();
+			return flashlist(request, lang, messages);
 		case "logger":
 
-			return logger();
+			return logger(request, lang, messages);
 		case "cache":
 
-			return cache();
+			return cache(request, lang, messages);
 		case "i18n":
 
-			return i18n();
+			return i18n(request, lang, messages);
 		case "message":
 
-			return message();
+			return message(request, lang, messages);
 		case "validation":
 
-			return validation();
+			return validation(request, lang, messages);
 		case "request":
 
-			return requestlist();
+			return requestlist(request, lang, messages);
 		case "exception":
 
-			return exception();
+			return exception(request, lang, messages);
 		case "reporterror":
 
-			return reporterror();
+			return reporterror(request, lang, messages);
 		case "clock":
 
-			return clock();
+			return clock(request, lang, messages);
 		case "datetime":
 
-			return datetime();
+			return datetime(request, lang, messages);
 		case "daylightsavingtime":
 
-			return daylightsavingtime();
+			return daylightsavingtime(request, lang, messages);
 		case "entitymanager":
 
-			return entitymanager();
+			return entitymanager(request, lang, messages);
 		case "user":
 
-			return user();
+			return user(request, lang, messages);
 		default:
 
-			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return redirect(controllers.setting.user.routes.User.index());
 		}
 	}
 
-	public Result config() {
+	public Result config(final Request request, final Lang lang, final Messages messages) {
 
 		final Map<String, Object> map = config.entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
-		return ok(views.html.framework.application.config.render(new TreeMap<>(map)));
+		return ok(views.html.framework.application.config.render(new TreeMap<>(map), request, lang, messages));
 	}
 
-	public static Result cookie() {
+	public static Result cookie(final Request request, final Lang lang, final Messages messages) {
 
 		// get
-		request().cookie("key");
+		request.cookie("key");
 
-		final Map<String, Object> map = StreamSupport.stream(request().cookies().spliterator(), false).collect(Collectors.toMap(cookie -> cookie.name(), v -> v.value()));
+		final Map<String, Object> map = StreamSupport.stream(request.cookies().spliterator(), false).collect(Collectors.toMap(cookie -> cookie.name(), v -> v.value()));
 
-		Result result = ok(views.html.framework.application.cookie.render(new TreeMap<>(map)));
+		Result result = ok(views.html.framework.application.cookie.render(new TreeMap<>(map), request, lang, messages));
 
 		result.cookies();
 		// set
@@ -219,27 +225,27 @@ public class Application extends Controller {
 		return result;
 	}
 
-	public static Result sessionlist() {
+	public static Result sessionlist(final Request request, final Lang lang, final Messages messages) {
 
-		request().session();// Map
+		request.session();// Map
 
 		// set
-		request().session().put("key", "value");
+		request.session().adding("key", "value");
 
 		// get
-		request().session().get("key");
+		request.session().getOptional("key");
 
-		final Map<String, Object> map = request().session().entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
-		return ok(views.html.framework.application.session.render(new TreeMap<>(map)));
+		final Map<String, Object> map = request.session().data().entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
+		return ok(views.html.framework.application.session.render(new TreeMap<>(map), request, lang, messages));
 	}
 
-	public Result beforeflashlist() {
+	public Result beforeflashlist(final Request request, final Lang lang, final Messages messages) {
 
 		final Flash flash = new Flash(Map.of(//
-				"success", "<strong>" + messages.get(lang(), MessageKeys.SUCCESS) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
-				"info", "<strong>" + messages.get(lang(), MessageKeys.INFO) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
-				"warning", "<strong>" + messages.get(lang(), MessageKeys.WARNING) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE), //
-				"danger", "<strong>" + messages.get(lang(), MessageKeys.DANGER) + "</strong> " + messages.get(lang(), MessageKeys.MESSAGE)//
+				"success", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.MESSAGE), //
+				"info", "<strong>" + messages.at(MessageKeys.INFO) + "</strong> " + messages.at(MessageKeys.MESSAGE), //
+				"warning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + messages.at(MessageKeys.MESSAGE), //
+				"danger", "<strong>" + messages.at(MessageKeys.DANGER) + "</strong> " + messages.at(MessageKeys.MESSAGE)//
 		));
 
 		return redirect(controllers.framework.application.routes.Application.index("flash"))//
@@ -247,17 +253,15 @@ public class Application extends Controller {
 				.withFlash(flash);
 	}
 
-	public Result flashlist() {
-
-		final Http.Request request = ctx().request();
+	public Result flashlist(final Request request, final Lang lang, final Messages messages) {
 
 		// get
 		final Flash flash = request.flash();
 
-		return ok(views.html.framework.application.flashlist.render(flash, new TreeMap<>(flash)));
+		return ok(views.html.framework.application.flashlist.render(flash, new TreeMap<>(flash), request, lang, messages));
 	}
 
-	public Result logger() {
+	public Result logger(final Request request, final Lang lang, final Messages messages) {
 
 		LOGGER.trace("TRACE Log.");
 		LOGGER.debug("DEBUG Log.");
@@ -270,51 +274,51 @@ public class Application extends Controller {
 		return ok("See " + element.getClassName() + "#" + element.getMethodName() + " Line:" + element.getLineNumber());
 	}
 
-	public Result cache() {
+	public Result cache(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.framework.application.cache.render());
+		return ok(views.html.framework.application.cache.render(request, lang, messages));
 	}
 
-	public Result i18n() {
+	public Result i18n(final Request request, final Lang lang, final Messages messages) {
 
 		final Map<String, Object> map = new LinkedHashMap<>();
-		map.put("Locale name", lang().toLocale().getDisplayName(lang().toLocale()));
-		map.put("Current lang", lang());
-		map.put("Browser Languages", request().acceptLanguages());
+		map.put("Locale name", messages.lang().toLocale().getDisplayName(messages.lang().toLocale()));
+		map.put("Current lang", messages.lang());
+		map.put("Browser Languages", request.acceptLanguages());
 		map.put("HTTP Context Language", play.api.i18n.Lang.defaultLang());
 		map.put("application.conf Languages", langs.availables());
-		map.put("Current Locale " + createBadge(messages.get(lang(), MessageKeys.SERVER)), messages.get(lang(), MessageKeys.ERROR_REAL_PRECISION, 10, 2));
-		map.put("US Locale", messages.get(common.utils.Locales.toLang(Locale.US), MessageKeys.ERROR_REAL_PRECISION, 10, 1));
-		map.put("Japan Locale", messages.get(common.utils.Locales.toLang(Locale.JAPAN), MessageKeys.ERROR_REAL_PRECISION, 10, 0));
+		map.put("Current Locale " + createBadge(messages.at(MessageKeys.SERVER)), messages.at(MessageKeys.ERROR_REAL_PRECISION, 10, 2));
+		map.put("US Locale", messagesApi.get(new Lang(Locale.US), MessageKeys.ERROR_REAL_PRECISION, 10, 1));
+		map.put("Japan Locale", messagesApi.get(new Lang(Locale.JAPAN), MessageKeys.ERROR_REAL_PRECISION, 10, 0));
 
-		final Currency currency = Currency.getInstance(lang().locale());
+		final Currency currency = Currency.getInstance(messages.lang().locale());
 		map.put("Currency Code", currency.getCurrencyCode());
-		map.put("Currency Symbol", currency.getSymbol(lang().locale()));
-		map.put("Currency Name", currency.getDisplayName(lang().locale()));
+		map.put("Currency Symbol", currency.getSymbol(messages.lang().locale()));
+		map.put("Currency Name", currency.getDisplayName(messages.lang().locale()));
 
-		map.put("Format Number", NumberFormat.getNumberInstance(lang().locale()).format(new BigDecimal("123456.789")));
-		map.put("Format Integer", NumberFormat.getIntegerInstance(lang().locale()).format(new BigDecimal("123456.789")));
-		map.put("Format Percent", NumberFormat.getPercentInstance(lang().locale()).format(new BigDecimal("123456.789")));
-		map.put("Format Currency", NumberFormat.getCurrencyInstance(lang().locale()).format(new BigDecimal("123456.789")));
+		map.put("Format Number", NumberFormat.getNumberInstance(messages.lang().locale()).format(new BigDecimal("123456.789")));
+		map.put("Format Integer", NumberFormat.getIntegerInstance(messages.lang().locale()).format(new BigDecimal("123456.789")));
+		map.put("Format Percent", NumberFormat.getPercentInstance(messages.lang().locale()).format(new BigDecimal("123456.789")));
+		map.put("Format Currency", NumberFormat.getCurrencyInstance(messages.lang().locale()).format(new BigDecimal("123456.789")));
 
-		return ok(views.html.framework.application.i18n.render(map));
+		return ok(views.html.framework.application.i18n.render(map, request, lang, messages));
 	}
 
-	public Result message() {
+	public Result message(final Request request, final Lang lang, final Messages messages) {
 
-		final Map<String, String> langIdToNameMap = Locales.getLocaleIdToNameMap(lang().toLocale());
+		final Map<String, String> langIdToNameMap = Locales.getLocaleIdToNameMap(messages.lang().toLocale());
 
-		final List<Locale> systemLocales = new ArrayList<>(langs.availables().stream().map(lang -> lang.locale()).collect(Collectors.toList()));
+		final List<Locale> systemLocales = new ArrayList<>(langs.availables().stream().map(availableLang -> availableLang.locale()).collect(Collectors.toList()));
 
 		final int enIndex = systemLocales.indexOf(Locale.US);
 		systemLocales.add(0, systemLocales.remove(enIndex));
 
 		final List<String> headerColumns = new ArrayList<>();
-		headerColumns.add(messages.get(lang(), MessageKeys.KEY));
+		headerColumns.add(messages.at(MessageKeys.KEY));
 		final List<String> displaySystemLocales = systemLocales.stream().map(systemLocale -> {
 
 			final StringBuilder builder = new StringBuilder();
-			builder.append(messages.get(Locales.toLang(systemLocale), MessageKeys.COUNTRY_FLAG));
+			builder.append(messagesApi.get(new Lang(systemLocale), MessageKeys.COUNTRY_FLAG));
 			builder.append(" ");
 			builder.append(langIdToNameMap.get(systemLocale.toLanguageTag()));
 			return builder.toString();
@@ -325,13 +329,13 @@ public class Application extends Controller {
 
 			final List<String> lineColumns = new ArrayList<>();
 			lineColumns.add(messageKey);
-			final List<String> displayMessageOfSystemLangs = systemLocales.stream().map(systemLocale -> messages.get(Locales.toLang(systemLocale), messageKey)).collect(Collectors.toList());
+			final List<String> displayMessageOfSystemLangs = systemLocales.stream().map(systemLocale -> messagesApi.get(new Lang(systemLocale), messageKey)).collect(Collectors.toList());
 			lineColumns.addAll(displayMessageOfSystemLangs);
 
 			return lineColumns;
 		}).collect(Collectors.toList());
 
-		return ok(views.html.framework.application.message.render(displaySystemLocales, headerColumns, lineColumnsList));
+		return ok(views.html.framework.application.message.render(displaySystemLocales, headerColumns, lineColumnsList, request, lang, messages));
 	}
 
 	private static SortedSet<String> getMessageKeySet() {
@@ -356,7 +360,7 @@ public class Application extends Controller {
 		return Collections.unmodifiableSortedSet(set);
 	}
 
-	public Result validation() {
+	public Result validation(final Request request, final Lang lang, final Messages messages) {
 
 		final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
@@ -364,21 +368,21 @@ public class Application extends Controller {
 		final Set<ConstraintViolation<PlayBean>> playViolations = validator.validate(playBean);
 		playViolations.stream().forEach(violation -> {
 			violation.getPropertyPath().toString();
-			messages.get(lang(), violation.getMessage());
+			messages.at(violation.getMessage());
 		});
 
 		final Jsr380Bean jsr380Bean = new Jsr380Bean();
 		final Set<ConstraintViolation<Jsr380Bean>> jsr380Violations = validator.validate(jsr380Bean);
 		jsr380Violations.stream().forEach(violation -> {
 			violation.getPropertyPath().toString();
-			messages.get(lang(), violation.getMessage());
+			messages.at(violation.getMessage());
 		});
 
 		final FinePlayBean fineplayBean = new FinePlayBean();
 		final Set<ConstraintViolation<FinePlayBean>> fineplayViolations = validator.validate(fineplayBean);
 		fineplayViolations.stream().forEach(violation -> {
 			violation.getPropertyPath().toString();
-			messages.get(lang(), violation.getMessage());
+			messages.at(violation.getMessage());
 		});
 
 		final Function<ValidationError, Entry<String, Object>> createErrorDisplayEntry = error -> {
@@ -443,17 +447,17 @@ public class Application extends Controller {
 			}).collect(Collectors.toList()).toArray(new Object[0]);
 
 			final String constraintKey = messageKey;
-			final String constraint = messages.get(lang(), constraintKey, arguments);
+			final String constraint = messages.at(constraintKey, arguments);
 
 			final String errorKey = error.message();
-			final String errorMessage = messages.get(lang(), errorKey, arguments);
+			final String errorMessage = messages.at(errorKey, arguments);
 
 			final String messageDescription = messageKey + messageType;
 
 			return new SimpleImmutableEntry<String, Object>(messageDescription, constraint + "<br>" + errorMessage);
 		};
 
-		final Form<PlayBean> playForm = formFactory.form(PlayBean.class).bindFromRequest();
+		final Form<PlayBean> playForm = formFactory.form(PlayBean.class).bindFromRequest(request);
 		final Map<String, Object> playMap = playForm.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
 				entry -> entry.getKey(), //
 				entry -> entry.getValue(), //
@@ -462,7 +466,7 @@ public class Application extends Controller {
 				}, //
 				LinkedHashMap::new));
 
-		final Form<Jsr380Bean> jsr380Form = formFactory.form(Jsr380Bean.class).bindFromRequest();
+		final Form<Jsr380Bean> jsr380Form = formFactory.form(Jsr380Bean.class).bindFromRequest(request);
 		final Map<String, Object> jsr380Map = jsr380Form.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
 				entry -> entry.getKey(), //
 				entry -> entry.getValue(), //
@@ -471,7 +475,7 @@ public class Application extends Controller {
 				}, //
 				LinkedHashMap::new));
 
-		final Form<FinePlayBean> fineplayForm = formFactory.form(FinePlayBean.class).bindFromRequest();
+		final Form<FinePlayBean> fineplayForm = formFactory.form(FinePlayBean.class).bindFromRequest(request);
 		final Map<String, Object> fineplayMap = fineplayForm.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
 				entry -> entry.getKey(), //
 				entry -> entry.getValue(), //
@@ -483,49 +487,50 @@ public class Application extends Controller {
 		return ok(views.html.framework.application.validation.render(//
 				new TreeMap<>(playMap), //
 				new TreeMap<>(jsr380Map), //
-				new TreeMap<>(fineplayMap)));
+				new TreeMap<>(fineplayMap), //
+				request, lang, messages));
 	}
 
-	public static Result requestlist() {
+	public static Result requestlist(final Request request, final Lang lang, final Messages messages) {
 
 		final Map<String, Object> map = new LinkedHashMap<>();
-		map.put("Remote Address", ctx().request().remoteAddress());
-		map.put("Method", ctx().request().method());
-		map.put("Host", ctx().request().host());
-		map.put("Path", ctx().request().path());
-		map.put("URI", ctx().request().uri());
-		map.put("Headers", ctx().request().getHeaders().toMap().entrySet().stream().map(entry -> {
+		map.put("Remote Address", request.remoteAddress());
+		map.put("Method", request.method());
+		map.put("Host", request.host());
+		map.put("Path", request.path());
+		map.put("URI", request.uri());
+		map.put("Headers", request.getHeaders().toMap().entrySet().stream().map(entry -> {
 
 			final String key = entry.getKey();
 			final String value = entry.getValue().stream().collect(Collectors.joining("<br>"));
 			return "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
 		}).collect(Collectors.joining("", "<table><thead><tr><td>KEY</td><td>VALUE</td></tr></thead><tbody>", "</tbody></table>")));
 
-		final HandlerDef handlerDef = ctx().request().attrs().get(Router.Attrs.HANDLER_DEF);
+		final HandlerDef handlerDef = request.attrs().get(Router.Attrs.HANDLER_DEF);
 		final List<String> modifiers = handlerDef.getModifiers();
 		;
 		map.put("HandlerDef", modifiers);
 
-		return ok(views.html.framework.application.request.render(map));
+		return ok(views.html.framework.application.request.render(map, request, lang, messages));
 	}
 
-	public static Result exception() {
+	public static Result exception(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.framework.application.exception.render());
+		return ok(views.html.framework.application.exception.render(request, lang, messages));
 	}
 
-	public static Result reporterror() {
+	public static Result reporterror(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.framework.application.reporterror.render());
+		return ok(views.html.framework.application.reporterror.render(request, lang, messages));
 	}
 
-	public Result clock() {
+	public Result clock(final Request request, final Lang lang, final Messages messages) {
 
 		final LocalDateTime serverDateTime = LocalDateTime.now(clock);
-		return ok(views.html.framework.application.clock.render(serverDateTime));
+		return ok(views.html.framework.application.clock.render(serverDateTime, request, lang, messages));
 	}
 
-	public Result datetime() {
+	public Result datetime(final Request request, final Lang lang, final Messages messages) {
 
 		final Map<String, Object> map = new LinkedHashMap<>();
 
@@ -539,7 +544,7 @@ public class Application extends Controller {
 		final OffsetDateTime serverOffsetTime = OffsetDateTime.of(serverTime, serverZoneId.getRules().getOffset(serverTime));
 		final ZonedDateTime serverZonedTime = ZonedDateTime.of(serverTime, serverZoneId);
 
-		final ZoneId clientZoneId = ZoneId.of(request().session().get(models.user.User_.ZONE_ID));
+		final ZoneId clientZoneId = ZoneId.of(request.session().getOptional(models.user.User_.ZONE_ID).get());
 		final ZonedDateTime clientZonedTime = serverZonedTime.withZoneSameInstant(clientZoneId);
 		final LocalDateTime clientTime = clientZonedTime.toLocalDateTime();
 		final OffsetDateTime clientOffsetTime = OffsetDateTime.of(clientTime, clientZoneId.getRules().getOffset(clientTime));
@@ -549,43 +554,43 @@ public class Application extends Controller {
 		map.put("Machine OffsetTime", machineOffsetTime);
 		map.put("Machine ZonedTime", machineZonedTime);
 		map.put("Server ZoneId", serverZoneId);
-		map.put("Server Time " + createBadge(messages.get(lang(), MessageKeys.SERVER)), serverTime);
+		map.put("Server Time " + createBadge(messages.at(MessageKeys.SERVER)), serverTime);
 		map.put("Server OffsetTime", serverOffsetTime);
 		map.put("Server ZonedTime", serverZonedTime);
 		map.put("Client ZoneId", clientZoneId);
-		map.put("Client Time " + createBadge(messages.get(lang(), MessageKeys.CLIENT)), clientTime);
+		map.put("Client Time " + createBadge(messages.at(MessageKeys.CLIENT)), clientTime);
 		map.put("Client OffsetTime", clientOffsetTime);
 		map.put("Client ZonedTime", clientZonedTime);
-		map.put("Client Formated Full DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Long DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Medium DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Short DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Full Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Long Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Medium Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Short Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Full Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.FULL).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Long Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Medium Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withLocale(lang().toLocale()).format(clientZonedTime));
-		map.put("Client Formated Short Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Full DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Long DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Medium DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Short DateTime", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Full Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Long Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Medium Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Short Date", DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Full Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.FULL).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Long Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Medium Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withLocale(messages.lang().toLocale()).format(clientZonedTime));
+		map.put("Client Formated Short Time", DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(messages.lang().toLocale()).format(clientZonedTime));
 		map.put("Server = Client", serverZonedTime.isEqual(clientZonedTime));
 
 		final JapaneseDate japaneseDate = JapaneseDate.from(clientTime);
-		map.put("Client(Japan) Year of Era", japaneseDate.format(DateTimeFormatter.ofPattern("G y").withLocale(lang().toLocale())));
+		map.put("Client(Japan) Year of Era", japaneseDate.format(DateTimeFormatter.ofPattern("G y").withLocale(messages.lang().toLocale())));
 
 		final HijrahDate hijrahDate = HijrahDate.from(clientTime);
-		map.put("Client(Hijrah) Year of Era", hijrahDate.format(DateTimeFormatter.ofPattern("G y").withLocale(lang().toLocale())));
+		map.put("Client(Hijrah) Year of Era", hijrahDate.format(DateTimeFormatter.ofPattern("G y").withLocale(messages.lang().toLocale())));
 
 		final MinguoDate minguoDate = MinguoDate.from(clientTime);
-		map.put("Client(Minguo) Year of Era", minguoDate.format(DateTimeFormatter.ofPattern("G y").withLocale(lang().toLocale())));
+		map.put("Client(Minguo) Year of Era", minguoDate.format(DateTimeFormatter.ofPattern("G y").withLocale(messages.lang().toLocale())));
 
 		final ThaiBuddhistDate thaiBuddhistDate = ThaiBuddhistDate.from(clientTime);
-		map.put("Client(ThaiBuddhist) Year of Era", thaiBuddhistDate.format(DateTimeFormatter.ofPattern("G y").withLocale(lang().toLocale())));
+		map.put("Client(ThaiBuddhist) Year of Era", thaiBuddhistDate.format(DateTimeFormatter.ofPattern("G y").withLocale(messages.lang().toLocale())));
 
-		return ok(views.html.framework.application.datetime.render(map));
+		return ok(views.html.framework.application.datetime.render(map, request, lang, messages));
 	}
 
-	public Result daylightsavingtime() {
+	public Result daylightsavingtime(final Request request, final Lang lang, final Messages messages) {
 
 		final List<List<String>> startDayInfo = new ArrayList<>();
 		startDayInfo.add(Arrays.asList("2017-03-12T09:00Z", ZonedDateTime.parse("2017-03-12T09:00Z").withZoneSameInstant(ZoneId.of("US/Pacific")).toString(), "2017-03-12T01:00:00-08:00[US/Pacific]", ZonedDateTime.parse("2017-03-12T01:00:00-08:00[US/Pacific]").withZoneSameInstant(ZoneOffset.UTC).toString()));
@@ -607,7 +612,7 @@ public class Application extends Controller {
 
 		final List<List<LocalDateTime>> dateTimeList = createDateTimeList();
 
-		return ok(views.html.framework.application.daylightsavingtime.render(startDayInfo, endDayInfo, dateTimeList));
+		return ok(views.html.framework.application.daylightsavingtime.render(startDayInfo, endDayInfo, dateTimeList, request, lang, messages));
 	}
 
 	private static List<List<LocalDateTime>> createDateTimeList() {
@@ -632,9 +637,9 @@ public class Application extends Controller {
 		return Collections.unmodifiableList(dateTimes);
 	}
 
-	public Result entitymanager() {
+	public Result entitymanager(final Request request, final Lang lang, final Messages messages) {
 
-		return jpa.withTransaction(manager -> {
+		return jpaApi.withTransaction(manager -> {
 
 			final SessionImpl entityManager = (SessionImpl) manager;
 
@@ -668,21 +673,22 @@ public class Application extends Controller {
 
 			return ok(views.html.framework.application.entitymanager.render(//
 					new TreeMap<>(propertiesMap), //
-					new TreeMap<>(platformMap)));
+					new TreeMap<>(platformMap), //
+					request, lang, messages));
 		});
 	}
 
 	@SuppressWarnings("null")
-	public Result user() {
+	public Result user(final Request request, final Lang lang, final Messages messages) {
 
-		return jpa.withTransaction(manager -> {
+		return jpaApi.withTransaction(manager -> {
 
 			final Map<String, Object> map = new LinkedHashMap<>();
 
 			final User user;
 			try {
 
-				user = userService.read(manager, request().session().get(User_.USER_ID));
+				user = userService.read(manager, messages, request.session().getOptional(User_.USER_ID).get());
 			} catch (final AccountException e) {
 
 				throw new RuntimeException(e);
@@ -695,20 +701,23 @@ public class Application extends Controller {
 			map.put("signInTime(UTC)", Objects.toString(user.getSignInDateTime(), ""));
 			map.put("signOutTime(UTC)", Objects.toString(user.getSignOutDateTime(), ""));
 			map.put("updateTime(UTC)", user.getUpdateDateTime().toString());
-			map.put("expireTime", DateTimes.toClientDateTime(user.getExpireDateTime()).toString());
-			final LocalDateTime signInTime = user.getSignInDateTime() != null ? DateTimes.toClientDateTime(user.getSignInDateTime()) : null;
+			map.put("expireTime", DateTimes.toClientDateTime(request, user.getExpireDateTime()).toString());
+			final LocalDateTime signInTime = user.getSignInDateTime() != null ? DateTimes.toClientDateTime(request, user.getSignInDateTime()) : null;
 			map.put("signInTime", Objects.toString(signInTime, ""));
-			final LocalDateTime signOutTime = user.getSignOutDateTime() != null ? DateTimes.toClientDateTime(user.getSignOutDateTime()) : null;
+			final LocalDateTime signOutTime = user.getSignOutDateTime() != null ? DateTimes.toClientDateTime(request, user.getSignOutDateTime()) : null;
 			map.put("signOutTime", Objects.toString(signOutTime, ""));
-			map.put("updateTime", DateTimes.toClientDateTime(user.getUpdateDateTime()).toString());
-			return ok(views.html.framework.application.user.render(map));
+			map.put("updateTime", DateTimes.toClientDateTime(request, user.getUpdateDateTime()).toString());
+			return ok(views.html.framework.application.user.render(map, request, lang, messages));
 		});
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
-	public Result synccache() {
+	public Result synccache(Request request) {
 
-		final JsonNode jsonNode = request().body().asJson();
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final JsonNode jsonNode = request.body().asJson();
 		LOGGER.debug(JSONs.toJSON(jsonNode));
 		final String key = jsonNode.get("key") != null ? jsonNode.get("key").textValue() : "";
 		final String value = jsonNode.get("value") != null ? jsonNode.get("value").textValue() : "";
@@ -739,9 +748,12 @@ public class Application extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
-	public CompletionStage<Result> asynccache() {
+	public CompletionStage<Result> asynccache(Request request) {
 
-		final JsonNode jsonNode = request().body().asJson();
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final JsonNode jsonNode = request.body().asJson();
 		LOGGER.debug(JSONs.toJSON(jsonNode));
 		final String key = jsonNode.get("key") != null ? jsonNode.get("key").textValue() : "";
 		final String value = jsonNode.get("value") != null ? jsonNode.get("value").textValue() : "";
@@ -792,15 +804,21 @@ public class Application extends Controller {
 		});
 	}
 
-	public Result playException() {
+	public Result playException(Request request) {
 
-		throw new PlayException(messages.get(lang(), MessageKeys.TITLE), messages.get(lang(), MessageKeys.DESCRIPTION) + //
-				"&nbsp;<a href=\"" + controllers.framework.application.routes.Application.index("exception").url() + "\">" + messages.get(lang(), MessageKeys.RECOVERY) + "</a>");
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		throw new PlayException(messages.at(MessageKeys.TITLE), messages.at(MessageKeys.DESCRIPTION) + //
+				" <a href=\"" + controllers.framework.application.routes.Application.index("exception").url() + "\">" + messages.at(MessageKeys.RECOVERY) + "</a>");
 	}
 
-	public Result runtimeException() {
+	public Result runtimeException(Request request) {
 
-		throw new RuntimeException(messages.get(lang(), MessageKeys.MESSAGE));
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		throw new RuntimeException(messages.at(MessageKeys.MESSAGE));
 	}
 
 	private static Html createBadge(final String text) {

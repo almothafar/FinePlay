@@ -29,7 +29,6 @@ public class GlobalModule extends AbstractModule {
 
 		requestStaticInjection(common.system.System.class);
 		requestStaticInjection(common.utils.Themes.class);
-		requestStaticInjection(common.utils.PDFs.class);
 
 		bindClock();
 	}

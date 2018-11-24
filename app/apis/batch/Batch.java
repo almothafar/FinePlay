@@ -24,6 +24,10 @@ import models.system.System.PermissionsAllowed;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.inject.Inject;
+import play.i18n.Messages;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -31,11 +35,17 @@ public class Batch extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+	@Inject
+	private MessagesApi messagesApi;
+
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result start(@Nonnull final String jobName, @Nonnull final String userId) {
+	public Result start(@Nonnull final Request request, @Nonnull final String jobName, @Nonnull final String userId) {
 
 		LOGGER.warn("The author is short of knowledge of Batch.");
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final String decodedUserId = decodeUserId(userId);
 		LOGGER.info("Batch#start jobName={} userId={}", jobName, decodedUserId);
@@ -46,7 +56,7 @@ public class Batch extends Controller {
 		}
 
 		final Properties jobParameters = new Properties();
-		jobParameters.putAll(ctx().request().queryString());
+		jobParameters.putAll(request.queryString());
 		jobParameters.remove("csrfToken");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -73,9 +83,12 @@ public class Batch extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result stop(final long executionId, @Nonnull final String userId) {
+	public Result stop(@Nonnull final Request request, final long executionId, @Nonnull final String userId) {
 
 		LOGGER.warn("The author is short of knowledge of Batch.");
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final String decodedUserId = decodeUserId(userId);
 		LOGGER.info("Batch#stop executionId={} userId={}", executionId, decodedUserId);
@@ -108,9 +121,12 @@ public class Batch extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result restart(final long executionId, @Nonnull final String userId) {
+	public Result restart(@Nonnull final Request request, final long executionId, @Nonnull final String userId) {
 
 		LOGGER.warn("The author is short of knowledge of Batch.");
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final String decodedUserId = decodeUserId(userId);
 		LOGGER.info("Batch#restart executionId={} userId={}", executionId, decodedUserId);
@@ -121,7 +137,7 @@ public class Batch extends Controller {
 		}
 
 		final Properties jobParameters = new Properties();
-		jobParameters.putAll(ctx().request().queryString());
+		jobParameters.putAll(request.queryString());
 		jobParameters.remove("csrfToken");
 
 		final JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -148,9 +164,12 @@ public class Batch extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result abandon(final long executionId, @Nonnull final String userId) {
+	public Result abandon(@Nonnull final Request request, final long executionId, @Nonnull final String userId) {
 
 		LOGGER.warn("The author is short of knowledge of Batch.");
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final String decodedUserId = decodeUserId(userId);
 		LOGGER.info("Batch#abandon executionId={} userId={}", executionId, decodedUserId);
@@ -183,9 +202,12 @@ public class Batch extends Controller {
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result jobExecution(final long executionId, @Nonnull final String userId) {
+	public Result jobExecution(@Nonnull final Request request, final long executionId, @Nonnull final String userId) {
 
 		LOGGER.warn("The author is short of knowledge of Batch.");
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final String decodedUserId = decodeUserId(userId);
 		LOGGER.info("Batch#jobexecution executionId={} userId={}", executionId, decodedUserId);

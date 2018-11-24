@@ -6,7 +6,8 @@
 @import javax.batch.runtime.BatchStatus
 @import javax.batch.runtime.BatchStatus._
 @import javax.batch.runtime.JobExecution
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -14,7 +15,7 @@
 @import common.system._
 @import common.utils._
 
-@(jobNames: List[String], jobExecutions: List[JobExecution])
+@(jobNames: List[String], jobExecutions: List[JobExecution])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -23,7 +24,7 @@
 
 @datetime(dateTime: LocalDateTime) = @{
 
-	common.utils.DateTimes.toClientDateTime(dateTime)
+	common.utils.DateTimes.toClientDateTime(request, dateTime)
 }
 
 @datetimeFormat(dateTime: LocalDateTime) = @{
@@ -33,7 +34,7 @@
 
 @encodedUserId() = @{
 
-	var userId = session().get(models.user.User.USER_ID);
+	var userId = request.session().getOptional(models.user.User.USER_ID).get();
 
 	try {
 
@@ -55,7 +56,7 @@
 			Map("text"->jobExecution.getJobName()),
 			Map("text"->jobExecution.getJobParameters().toString()),
 			Map("text"->String.valueOf(jobExecution.getExecutionId())),
-			Map("text"->Messages(jobExecution.getBatchStatus().name().toLowerCase)),
+			Map("text"->messages(jobExecution.getBatchStatus().name().toLowerCase)),
 			Map("text"->jobExecution.getExitStatus()),
 			Map("text"->(if(jobExecution.getCreateTime() != null){datetimeFormat(datetime(LocalDateTime.ofInstant(jobExecution.getCreateTime().toInstant(), ZoneOffset.UTC)))}else{""})),
 			Map("text"->(if(jobExecution.getStartTime() != null){datetimeFormat(datetime(LocalDateTime.ofInstant(jobExecution.getStartTime().toInstant(), ZoneOffset.UTC)))}else{""})),
@@ -111,7 +112,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.OPERATION), "icon"->"far fa-hand-pointer", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.OPERATION), "icon"->"far fa-hand-pointer", "selected"->"true"))
 		}
 
 		<div class="container-fluid">
@@ -137,48 +138,48 @@
 					</div>
 					<div class="col-6">
 
-						@components.button(Map("id"->"startButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->Messages(MessageKeys.START)))
+						@components.button(Map("id"->"startButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->messages(MessageKeys.START)))
 					</div>
 				</div>
 			</div>
 
 			<div class="mt-3 mb-3">
-				@components.button(Map("id"->"restartButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->Messages(MessageKeys.RESTART)))
-				@components.button(Map("id"->"stopButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-stop", "text"->Messages(MessageKeys.STOP)))
-				@components.button(Map("id"->"cancelButton", "type"->"danger", "outline"->"true", "icon"->"fas fa-times-circle", "text"->Messages(MessageKeys.CANCEL)))
-				@components.button(Map("id"->"reloadButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-redo", "text"->Messages(MessageKeys.RELOAD)))
+				@components.button(Map("id"->"restartButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-play fa-dir-flip-horizontal", "text"->messages(MessageKeys.RESTART)))
+				@components.button(Map("id"->"stopButton", "type"->"warning", "outline"->"true", "icon"->"fas fa-stop", "text"->messages(MessageKeys.STOP)))
+				@components.button(Map("id"->"cancelButton", "type"->"danger", "outline"->"true", "icon"->"fas fa-times-circle", "text"->messages(MessageKeys.CANCEL)))
+				@components.button(Map("id"->"reloadButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-redo", "text"->messages(MessageKeys.RELOAD)))
 			</div>
 
 			<div class="mb-3 dataTable-responsive">
 				@components.table(Map("id"->"jobExecutionlist", "class"->"w-100", "bordered"->"true"),
 					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.NAME)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.PARAMETER)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.ID))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.BATCH) + " " + Messages(MessageKeys.STATUS))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.STATUS))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.CREATE) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.NAME)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.PARAMETER)),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.START) + " " + messages(MessageKeys.ID))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.BATCH) + " " + messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.END) + " " + messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.CREATE) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.START) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.END) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME))))),
 					Map("id"->""),
 					tbodyRowToColumnsList(jobExecutions),
 					Map("id"->""),Tuple2(Map("id"->""),List(
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.NAME)),
-						Map("id"->"", "head"->"true", "text"->Messages(MessageKeys.PARAMETER)),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.ID))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.BATCH) + " " + Messages(MessageKeys.STATUS))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.STATUS))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.CREATE) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.START) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.END) + " " + Messages(MessageKeys.DATETIME))),
-						Map("id"->"", "head"->"true", "text"->(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME))))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.NAME)),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.PARAMETER)),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.START) + " " + messages(MessageKeys.ID))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.BATCH) + " " + messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.END) + " " + messages(MessageKeys.STATUS))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.CREATE) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.START) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.END) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME))))),
 				)
 			</div>
 		</div>
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.X__CASE__SELECTED":"@Messages(MessageKeys.X__CASE__SELECTED)",
+			"@MessageKeys.X__CASE__SELECTED":"@messages(MessageKeys.X__CASE__SELECTED)",
 			"encodedUserId":"@encodedUserId"
 		}'></div>
 

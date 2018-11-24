@@ -4,18 +4,19 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 
 @import common.system._
 @import models.user._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-@components.modal(Map("id"->"confirmDialog", "icon"->"fas fa-lock", "title"->Messages(MessageKeys.AUTHENTICATION), "closable"->"false", "data-backdrop"->"static"), List(
-		Map("id"->"confirmCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
-		Map("id"->"confirmOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+@components.modal(Map("id"->"confirmDialog", "icon"->"fas fa-lock", "title"->messages(MessageKeys.AUTHENTICATION), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"confirmCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"confirmOk", "type"->"primary", "text"->messages(MessageKeys.OK), "default"->"true")
 	)){
 
 	@helper.form(helper.CSRF(controllers.user.routes.User.confirm()), 'name->"confirmForm", 'id->"confirmForm") {
@@ -23,10 +24,10 @@
 			<p class="text-danger"></p>
 		</div>
 		<div class="row form-group">
-			<label for="confirm@PasswordFormContent.PASSWORD" class="col-sm-3 col-form-label required">@Messages(MessageKeys.USER_PASSWORD)</label>
+			<label for="confirm@PasswordFormContent.PASSWORD" class="col-sm-3 col-form-label required">@messages(MessageKeys.USER_PASSWORD)</label>
 			<div class="col-sm-9">
 				<input id="confirm@PasswordFormContent.PASSWORD" type="password" name="@PasswordFormContent.PASSWORD" class="form-control" placeholder="Password" value="" required>
-				<small class="text-muted">@Messages(MessageKeys.USER_PASSWORD_DESCRIPTION)</small>
+				<small class="text-muted">@messages(MessageKeys.USER_PASSWORD_DESCRIPTION)</small>
 				<div>
 					<p class="text-danger"></p>
 				</div>
@@ -35,7 +36,7 @@
 	}
 
 	<div class="wordwrap">
-		<div id="confirmMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="confirmMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
 		<div id="confirmDescription">-</div>
 	</div>
 	@components.progress(Map("id"->"confirmProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))

@@ -2,7 +2,8 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -14,11 +15,11 @@
 @import common.system._
 @import views.html.setting.user._
 
-@(form: play.data.Form[models.setting.user.changeuser.ChangeFormContent])
+@(form: play.data.Form[models.setting.user.changeuser.ChangeFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
-	@head(Messages(MessageKeys.SETTING)){
+	@head(messages(MessageKeys.SETTING)){
 
 		@libraries.standard.head()
 	}
@@ -27,7 +28,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->Messages(MessageKeys.USER_CHANGE__USERID), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.USER_CHANGE__USERID), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){
@@ -35,12 +36,12 @@
 			@tasks(Map("id"->"", "task"->"changeuser"))
 		}
 
-		@if(!LocalDateTime.now().isBefore(LocalDateTime.parse(session().get(SessionKeys.OPERATION_TIMEOUT)))){
+		@if(!LocalDateTime.now().isBefore(LocalDateTime.parse(request.session().getOptional(SessionKeys.OPERATION_TIMEOUT).get()))){
 
 			@confirmdialog()
 			@components.container(Map("id"->"contents", "fluid"->"true", "class"->"mt-5 mb-5 text-center")){
 
-				@components.button(Map("id"->"confirmButton", "type"->"primary", "icon"->"fas fa-lock", "text"->Messages(MessageKeys.AUTHENTICATION), "data-toggle"->"modal", "data-target"->"#confirmDialog"))
+				@components.button(Map("id"->"confirmButton", "type"->"primary", "icon"->"fas fa-lock", "text"->messages(MessageKeys.AUTHENTICATION), "data-toggle"->"modal", "data-target"->"#confirmDialog"))
 			}
 		}else{
 
@@ -53,29 +54,29 @@
 
 						@components.card(Map("id"->"changePanel", "class"->"shadow-sm")){
 							<div class="card-header">
-								@Messages(MessageKeys.CHANGEUSER)
+								@messages(MessageKeys.CHANGEUSER)
 							</div>
 							<div class="card-body">
 
 								@helper.form(helper.CSRF(controllers.setting.user.routes.ChangeUser.apply()), args = 'class -> "form-change") {
-									<h4 class="card-title">@Messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE)</h4>
-									<p class="card-text">@Messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE_DESCRIPTION)</p>
+									<h4 class="card-title">@messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE)</h4>
+									<p class="card-text">@messages(MessageKeys.CHANGEUSER_PLEASE__CHANGE_DESCRIPTION)</p>
 									@if(form.hasGlobalErrors) {
 										<p class="text-danger">@form.globalError.get.message</p>
 									}
 									<div class="form-group row">
-										<label for="@User.NEWUSERID" class="col-sm-4 col-form-label required">@Messages(MessageKeys.USER_NEWUSERID)</label>
+										<label for="@User.NEWUSERID" class="col-sm-4 col-form-label required">@messages(MessageKeys.USER_NEWUSERID)</label>
 										<div class="col-sm-8">
 											<input id="@User.NEWUSERID" type="email" name="@User.NEWUSERID" class="form-control" placeholder="Email" value="@form(User.NEWUSERID).value.orElse("")" required autofocus>
-											<small class="text-muted">@Messages(MessageKeys.USER_NEWUSERID_DESCRIPTION)</small>
+											<small class="text-muted">@messages(MessageKeys.USER_NEWUSERID_DESCRIPTION)</small>
 											@for(error <- form(User.NEWUSERID).errors) {
-												<div class="text-danger">@Messages(error.message)</div>
+												<div class="text-danger">@messages(error.message)</div>
 											}
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 text-right">
-											@components.button(Map("id"->"applyButton", "action"->"submit", "type"->"primary", "icon"->"", "text"->Messages(MessageKeys.CHANGE), "default"->"true", "class"->"float-right"))
+											@components.button(Map("id"->"applyButton", "action"->"submit", "type"->"primary", "icon"->"", "text"->messages(MessageKeys.CHANGE), "default"->"true", "class"->"float-right"))
 										</div>
 									</div>
 								}
@@ -93,10 +94,10 @@
 
 		<div id="system_messages" class="d-none" data-messages='{
 			"hasErrors":@(form.hasGlobalErrors || form.hasErrors),
-			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
-			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
-			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
-			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)"
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)"
 		}'></div>
 
 		@libraries.standard.last()

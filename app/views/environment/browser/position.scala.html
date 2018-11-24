@@ -1,6 +1,9 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
 
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -8,7 +11,7 @@
 
 @import common.system._
 
-@(map: Map[String, Object])
+@(map: Map[String, Object])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -17,7 +20,7 @@
 
 @frame(){
 
-	@head(Messages(MessageKeys.ENVIRONMENT)){
+	@head(messages(MessageKeys.ENVIRONMENT)){
 
 		@libraries.standard.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/environment/browser/position.css")'>

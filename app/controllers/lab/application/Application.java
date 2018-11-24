@@ -30,9 +30,15 @@ import mylib.Greet;
 import play.db.jpa.JPAApi;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
+import play.libs.ws.ahc.AhcCurlRequestLogger;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -41,131 +47,137 @@ public class Application extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private JPAApi jpa;
+	private MessagesApi messagesApi;
+
+	@Inject
+	private JPAApi jpaApi;
 
 	@Inject
 	private WSClient ws;
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result index(String state) {
+	public Result index(@Nonnull final Request request, String state) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		switch (state) {
 		case "autosave":
 
-			return autoSave();
+			return autoSave(request, lang, messages);
 		case "storeform":
 
-			return storeform();
+			return storeform(request, lang, messages);
 		case "firsttimeaccess":
 
-			return firstTimeAccess();
+			return firstTimeAccess(request, lang, messages);
 		case "imageviewer":
 
-			return imageviewer();
+			return imageviewer(request, lang, messages);
 		case "partprint":
 
-			return partPrint();
+			return partPrint(request, lang, messages);
 		case "color":
 
-			return color();
+			return color(request, lang, messages);
 		case "ivd":
 
-			return ivd();
+			return ivd(request, lang, messages);
 		case "authorization":
 
-			return authorization();
+			return authorization(request, lang, messages);
 		case "jar":
 
-			return jar();
+			return jar(request, lang, messages);
 		case "jpql":
 
-			return jpql();
+			return jpql(request, lang, messages);
 		case "serialtask":
 
-			return serialTask();
+			return serialTask(request, lang, messages);
 		case "paralleltask":
 
-			return parallelTask();
+			return parallelTask(request, lang, messages);
 		case "webservice":
 
-			return webService();
+			return webService(request, lang, messages);
 		case "webfont":
 
-			return webfont();
+			return webfont(request, lang, messages);
 		case "translate":
 
-			return translate();
+			return translate(request, lang, messages);
 		case "direction":
 
-			return direction();
+			return direction(request, lang, messages);
 		case "vertical":
 
-			return vertical();
+			return vertical(request, lang, messages);
 		default:
 
-			return notFound(views.html.system.pages.notfound.render(request().method(), request().uri()));
+			return redirect(controllers.setting.user.routes.User.index());
 		}
 	}
 
-	private static Result autoSave() {
+	private static Result autoSave(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.autosave.render());
+		return ok(views.html.lab.application.autosave.render(request, lang, messages));
 	}
 
-	private static Result storeform() {
+	private static Result storeform(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.storeform.render());
+		return ok(views.html.lab.application.storeform.render(request, lang, messages));
 	}
 
-	private static Result firstTimeAccess() {
+	private static Result firstTimeAccess(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.firsttimeaccess.render());
+		return ok(views.html.lab.application.firsttimeaccess.render(request, lang, messages));
 	}
 
-	private static Result imageviewer() {
+	private static Result imageviewer(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.imageviewer.render());
+		return ok(views.html.lab.application.imageviewer.render(request, lang, messages));
 	}
 
-	private static Result partPrint() {
+	private static Result partPrint(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.partprint.render());
+		return ok(views.html.lab.application.partprint.render(request, lang, messages));
 	}
 
-	private static Result color() {
+	private static Result color(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.color.render());
+		return ok(views.html.lab.application.color.render(request, lang, messages));
 	}
 
-	private static Result ivd() {
+	private static Result ivd(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.ivd.render());
+		return ok(views.html.lab.application.ivd.render(request, lang, messages));
 	}
 
-	private static Result authorization() {
+	private static Result authorization(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.authorization.render());
+		return ok(views.html.lab.application.authorization.render(request, lang, messages));
 	}
 
-	private Result jar() {
+	private Result jar(final Request request, final Lang lang, final Messages messages) {
 
 		final Greet greet = new Greet();
 
 		return ok(greet.getHello("User"));
 	}
 
-	private Result jpql() {
+	private Result jpql(final Request request, final Lang lang, final Messages messages) {
 
-		return jpa.withTransaction(manager -> {
+		return jpaApi.withTransaction(manager -> {
 
 			final TypedQuery<User> query = manager.createNamedQuery("User.findByLocale", User.class);
-			query.setParameter(User_.locale.getName(), lang().toLocale());
+			query.setParameter(User_.locale.getName(), lang.toLocale());
 
 			return ok(query.getResultList().toString());
 		});
 	}
 
-	private static Result serialTask() {
+	private static Result serialTask(final Request request, final Lang lang, final Messages messages) {
 
 		final CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
 
@@ -208,10 +220,10 @@ public class Application extends Controller {
 			e.printStackTrace();
 		}
 
-		return TODO();
+		return TODO(request);
 	}
 
-	private static Result parallelTask() {
+	private static Result parallelTask(final Request request, final Lang lang, final Messages messages) {
 
 		final CompletableFuture<String> future0 = CompletableFuture.supplyAsync(() -> {//
 
@@ -266,11 +278,14 @@ public class Application extends Controller {
 			e.printStackTrace();
 		}
 
-		return TODO();
+		return TODO(request);
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result paging(Integer pageIndex, Integer pageSize) {
+	public Result paging(@Nonnull final Request request, Integer pageIndex, Integer pageSize) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final List<String> dummyValues = IntStream.range(0, 130).mapToObj(i -> String.valueOf(i)).collect(Collectors.toList());
 
@@ -294,13 +309,16 @@ public class Application extends Controller {
 		pagingInfo.setPageSize(pageSize);
 		pagingInfo.setPageCount(pageCount);
 
-		return ok(views.html.lab.application.paging.render(pagingInfo, dummyPageValues));
+		return ok(views.html.lab.application.paging.render(pagingInfo, dummyPageValues, request, lang, messages));
 	}
 
-	private Result webService() {
+	private Result webService(final Request request, final Lang lang, final Messages messages) {
 
 		final Duration timeout = Duration.ofSeconds(3);
-		final CompletionStage<WSResponse> responsePromise = ws.url("https://ntp-a1.nict.go.jp/cgi-bin/json").setRequestTimeout(timeout).get();
+		final CompletionStage<WSResponse> responsePromise = ws.url("https://ntp-a1.nict.go.jp/cgi-bin/json")//
+				.setRequestFilter(new AhcCurlRequestLogger(LOGGER))//
+				.setRequestTimeout(timeout)//
+				.get();
 		final CompletionStage<Map<String, Object>> recoverPromise = responsePromise.handle((response, throwable) -> {
 
 			final Map<String, Object> map = new LinkedHashMap<>();
@@ -333,7 +351,7 @@ public class Application extends Controller {
 		try {
 
 			final Map<String, Object> map = recoverPromise.toCompletableFuture().get();
-			result = ok(views.html.lab.application.webservice.render(map));
+			result = ok(views.html.lab.application.webservice.render(map, request, lang, messages));
 		} catch (InterruptedException | ExecutionException e) {
 
 			throw new RuntimeException(e);
@@ -342,23 +360,23 @@ public class Application extends Controller {
 		return result;
 	}
 
-	private Result webfont() {
+	private Result webfont(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.webfont.render());
+		return ok(views.html.lab.application.webfont.render(request, lang, messages));
 	}
 
-	private Result translate() {
+	private Result translate(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.translate.render());
+		return ok(views.html.lab.application.translate.render(request, lang, messages));
 	}
 
-	private Result direction() {
+	private Result direction(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.direction.render());
+		return ok(views.html.lab.application.direction.render(request, lang, messages));
 	}
 
-	private Result vertical() {
+	private Result vertical(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.application.vertical.render());
+		return ok(views.html.lab.application.vertical.render(request, lang, messages));
 	}
 }

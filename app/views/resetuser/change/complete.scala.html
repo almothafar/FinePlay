@@ -3,7 +3,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -12,11 +13,11 @@
 
 @import common.system._
 
-@(user: models.user.User)
+@(user: models.user.User)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
-	@top.head(Messages(MessageKeys.RESETUSER)){
+	@top.head(messages(MessageKeys.RESETUSER)){
 
 		@libraries.standard.head()
 	}
@@ -33,26 +34,26 @@
 				<div class="col-md-10 col-lg-8 col-xl-6 p-0">
 					@components.card(Map("id"->"completePanel", "class"->"shadow-sm m-3")){
 						<div class="card-header">
-							@Messages(MessageKeys.RESETUSER)
+							@messages(MessageKeys.RESETUSER)
 						</div>
 						<div class="card-body">
 
-							<h4 class="card-title">@Messages(MessageKeys.RESETUSER_CHANGE_COMPLETE)</h4>
-							<p class="card-text">@Messages(MessageKeys.RESETUSER_CHANGE_COMPLETE_DESCRIPTION)</p>
+							<h4 class="card-title">@messages(MessageKeys.RESETUSER_CHANGE_COMPLETE)</h4>
+							<p class="card-text">@messages(MessageKeys.RESETUSER_CHANGE_COMPLETE_DESCRIPTION)</p>
 							<div class="form-group row">
 								<div class="col-sm-9">
 									<input id="@User.USER_ID" type="hidden" name="@User.USER_ID" class="form-control" placeholder="Email" value="@user.getUserId" required disabled>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="@User.PASSWORD" class="col-sm-3 col-form-label">@Messages(MessageKeys.USER_PASSWORD)</label>
+								<label for="@User.PASSWORD" class="col-sm-3 col-form-label">@messages(MessageKeys.USER_PASSWORD)</label>
 								<div class="col-sm-9">
 									<input id="@User.PASSWORD" type="password" name="@User.PASSWORD" class="form-control" placeholder="Password" value="********" required disabled>
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-12 text-right">
-									@components.linkbutton(Map("id"->"topButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "link"->controllers.user.routes.User.index().toString, "default"->"true", "class"->"float-right"))
+									@components.linkbutton(Map("id"->"topButton", "type"->"primary", "text"->messages(MessageKeys.OK), "link"->controllers.user.routes.User.index().toString, "default"->"true", "class"->"float-right"))
 								</div>
 							</div>
 

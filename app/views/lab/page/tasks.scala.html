@@ -3,19 +3,22 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import views.html._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.components
 
 @import common.system._
 
-@(prop:scala.collection.immutable.Map[String, String])
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
 
 @equalTask(task:String) = @{
 
 	task.equals(prop.getOrElse("task", ""))
 }
 
-@components.modal(Map("id"->"tasksDialog", "title"->Messages(MessageKeys.TASK), "closable"->"true", "center"->"true", "data-backdrop"->"static"), List(
+@components.modal(Map("id"->"tasksDialog", "title"->messages(MessageKeys.TASK), "closable"->"true", "center"->"true", "data-backdrop"->"static"), List(
 	)){
 
 	<div id="@prop.getOrElse("id", "")" class="list-group mb-3">

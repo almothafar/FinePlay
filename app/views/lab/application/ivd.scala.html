@@ -1,7 +1,10 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import models.components._
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -39,11 +42,11 @@
 
 					<div class="mb-3">
 
-						@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fas fa-link", "text"->Messages(MessageKeys.SETTING), "link"->controllers.setting.system.routes.System.index("font").toString))
+						@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fas fa-link", "text"->messages(MessageKeys.SETTING), "link"->controllers.setting.system.routes.System.index("font").toString))
 					</div>
 
 					<div class="mb-3">
-						<h4 class="headline">@Messages(MessageKeys.FONT_HIRAGINOSANS__W3)</h4>
+						<h4 class="headline">@messages(MessageKeys.FONT_HIRAGINOSANS__W3)</h4>
 						<div class="row form-group">
 							<div class="col-12">
 								<input id="adobe-japan1Text" class="form-control h-72p inputText adobe-japan1" type="text" placeholder="" value="">
@@ -52,7 +55,7 @@
 					</div>
 
 					<div class="mb-3">
-						<h4 class="headline">@Messages(MessageKeys.FONT_IPAMJMINCHO)</h4>
+						<h4 class="headline">@messages(MessageKeys.FONT_IPAMJMINCHO)</h4>
 						<div class="row form-group">
 							<div class="col-12">
 								<input id="moji_johoText" class="form-control h-72p inputText moji_joho" type="text" placeholder="" value="">
@@ -62,26 +65,26 @@
 
 					<div class="mb-3">
 
-						@components.modal(Map("id"->"pickerWindow", "icon"->"fas fa-font", "title"->Messages(MessageKeys.SELECT), "data-backdrop"->"static", "size"->"lg"), List(
-								Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
-								Map("id"->"okButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-toggle"->"modal", "data-target"->"#pickerWindow", "data-whatever"->"okButton", "default"->"true")
+						@components.modal(Map("id"->"pickerWindow", "icon"->"fas fa-font", "title"->messages(MessageKeys.SELECT), "data-backdrop"->"static", "size"->"lg"), List(
+								Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+								Map("id"->"okButton", "type"->"primary", "text"->messages(MessageKeys.OK), "data-toggle"->"modal", "data-target"->"#pickerWindow", "data-whatever"->"okButton", "default"->"true")
 							)){
 							<div>
 								<p class="text-danger"></p>
 							</div>
 							<div class="row form-group mb-0">
-								<label for="inputType" class="col-sm-3 col-form-label">@Messages(MessageKeys.TYPE)</label>
+								<label for="inputType" class="col-sm-3 col-form-label">@messages(MessageKeys.TYPE)</label>
 								<div class="col-sm-9">
 									@for(character_type <- apis.character.Character.Type.values()) {
 									<div class="custom-control custom-radio custom-control-inline">
 										<input id="characterTypes@character_type" class="custom-control-input type" type="radio" name="searchType" value="@character_type.toString()" @("checked".when(apis.character.Character.Type.CHARACTER == character_type))>
-										<label class="custom-control-label" for="characterTypes@character_type">@Messages(character_type.getMessageKey())</label>
+										<label class="custom-control-label" for="characterTypes@character_type">@messages(character_type.getMessageKey())</label>
 									</div>
 									}
 								</div>
 							</div>
 							<div class="row form-group mb-0">
-								<label for="searchText" class="col-sm-3 col-form-label required">@(Messages(MessageKeys.SEARCH)+" "+Messages(MessageKeys.VALUE))</label>
+								<label for="searchText" class="col-sm-3 col-form-label required">@(messages(MessageKeys.SEARCH)+" "+messages(MessageKeys.VALUE))</label>
 								<div class="col-sm-9">
 									<input id="searchText" type="text" name="searchText" class="form-control" placeholder="" value="" required autofocus>
 									<small class="text-muted">Description of search value.</small>
@@ -97,7 +100,7 @@
 										<small class="text-muted">Base character info.</small>
 									</h3>
 								</div>
-								<div class="row">@Messages(MessageKeys.VARIATION)</div>
+								<div class="row">@messages(MessageKeys.VARIATION)</div>
 								<div id="variations" class="row mb-3">
 								</div>
 							}
@@ -108,7 +111,7 @@
 							@components.progress(Map("id"->"ajaxProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))
 						}
 
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.SELECT), "data-toggle"->"modal", "data-target"->"#pickerWindow"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.SELECT), "data-toggle"->"modal", "data-target"->"#pickerWindow"))
 					</div>
 
 					<div class="mt-3"></div>
@@ -117,13 +120,13 @@
 		}
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"variationEmpty":"@Messages(MessageKeys.X__IS__X, Messages(MessageKeys.VARIATION), Messages(MessageKeys.EMPTY))",
-			"@MessageKeys.PLEASE__WAIT":"@Messages(MessageKeys.PLEASE__WAIT)",
-			"@MessageKeys.FAILURE":"@Messages(MessageKeys.FAILURE)",
-			"@MessageKeys.STATUS":"@Messages(MessageKeys.STATUS)",
-			"@MessageKeys.ERROR":"@Messages(MessageKeys.ERROR)",
-			"@MessageKeys.CODEPOINT":"@Messages(MessageKeys.CODEPOINT)",
-			"@MessageKeys.HEX":"@Messages(MessageKeys.HEX)"
+			"variationEmpty":"@messages(MessageKeys.X__IS__X, messages(MessageKeys.VARIATION), messages(MessageKeys.EMPTY))",
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)",
+			"@MessageKeys.CODEPOINT":"@messages(MessageKeys.CODEPOINT)",
+			"@MessageKeys.HEX":"@messages(MessageKeys.HEX)"
 		}'></div>
 
 		@libraries.standard.last()

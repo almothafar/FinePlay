@@ -8,13 +8,11 @@ import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.invoke.MethodHandles;
-import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -61,8 +59,6 @@ import akka.stream.OverflowStrategy;
 import akka.stream.javadsl.Source;
 import akka.util.ByteString;
 import common.system.MessageKeys;
-import common.utils.Locales;
-import common.utils.PDFs;
 import common.utils.Reports;
 import common.utils.ZIPs;
 import models.base.EntityDao;
@@ -72,9 +68,12 @@ import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import play.api.PlayException;
 import play.db.jpa.JPAApi;
+import play.i18n.Lang;
+import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
@@ -84,35 +83,47 @@ public class Download extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	private final EntityDao<models.user.User> userDao = new EntityDao<models.user.User>() {
 	};
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		return ok(views.html.lab.application.download.render());
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		return ok(views.html.lab.application.download.render(request, lang, messages));
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result file() {
+	public Result file(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		return ok(Paths.get("file.txt").toFile()).as(Http.MimeTypes.BINARY);
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result stream() {
+	public Result stream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final InputStream stream = new ByteArrayInputStream("(｀・ω・´)\r\n(*´ω｀*)\r\n(´･ω･`)\r\n".getBytes(StandardCharsets.UTF_8));
 		return ok(stream).as(Http.MimeTypes.BINARY);
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result chunks() {
+	public Result chunks(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final Source<ByteString, ?> source = Source.<ByteString>actorRef(256, OverflowStrategy.dropNew()).mapMaterializedValue(sourceActor -> {
 			sourceActor.tell(ByteString.fromString("(｀・ω・´)\r\n"), null);
@@ -126,7 +137,10 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result excelStream() {
+	public Result excelStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		try (final Workbook workbook = new XSSFWorkbook(); //
 				final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
@@ -151,7 +165,10 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result wordStream() {
+	public Result wordStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		try (final XWPFDocument document = new XWPFDocument(); //
 				final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
@@ -159,7 +176,7 @@ public class Download extends Controller {
 			final XWPFParagraph header = document.createParagraph();
 			header.setAlignment(ParagraphAlignment.CENTER);
 			final XWPFRun run = header.createRun();
-			run.setText(messages.get(lang(), MessageKeys.WELCOME));
+			run.setText(messages.at(MessageKeys.WELCOME));
 
 			final XWPFParagraph paragraph0 = document.createParagraph();
 			final XWPFRun run0 = paragraph0.createRun();
@@ -199,7 +216,10 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result powerPointStream() {
+	public Result powerPointStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		try (XMLSlideShow slideShow = new XMLSlideShow(); //
 				final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
@@ -212,15 +232,15 @@ public class Download extends Controller {
 			final XSLFSlide slide1 = slideShow.createSlide(layout1);
 			final XSLFTextShape[] ph1 = slide1.getPlaceholders();
 			final XSLFTextShape titlePlaceholder1 = ph1[0];
-			titlePlaceholder1.setText(messages.get(lang(), MessageKeys.WELCOME));
+			titlePlaceholder1.setText(messages.at(MessageKeys.WELCOME));
 			final XSLFTextShape subtitlePlaceholder1 = ph1[1];
-			subtitlePlaceholder1.setText(messages.get(lang(), MessageKeys.SYSTEM_NAME));
+			subtitlePlaceholder1.setText(messages.at(MessageKeys.SYSTEM_NAME));
 
 			final XSLFSlideLayout layout2 = master.getLayout(SlideLayout.TITLE_AND_CONTENT);
 			final XSLFSlide slide2 = slideShow.createSlide(layout2);
 			final XSLFTextShape[] ph2 = slide2.getPlaceholders();
 			final XSLFTextShape titlePlaceholder2 = ph2[0];
-			titlePlaceholder2.setText(messages.get(lang(), MessageKeys.WELCOME));
+			titlePlaceholder2.setText(messages.at(MessageKeys.WELCOME));
 			final XSLFTextShape bodyPlaceholder = ph2[1];
 
 			bodyPlaceholder.clearText();
@@ -243,7 +263,10 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result pdfboxStream() {
+	public Result pdfboxStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		try (final PDDocument document = new PDDocument(); final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
 
@@ -252,7 +275,7 @@ public class Download extends Controller {
 
 			try (final PDPageContentStream stream = new PDPageContentStream(document, page)) {
 
-				final Path imagePath = Paths.get(".", "public", "images", lang().code(), "logo.png");
+				final Path imagePath = Paths.get(".", "public", "images", lang.code(), "logo.png");
 				final BufferedImage bufferedImage = ImageIO.read(imagePath.toFile());
 				final int imageHeight = 38;
 				final float reduceRate = (float) imageHeight / bufferedImage.getHeight();
@@ -270,10 +293,10 @@ public class Download extends Controller {
 
 				y = y - fontSize;
 				stream.newLineAtOffset(0, y);
-				stream.showText(messages.get(lang(), MessageKeys.WELCOME));
+				stream.showText(messages.at(MessageKeys.WELCOME));
 
 				stream.newLineAtOffset(0, -fontSize);
-				stream.showText(messages.get(lang(), lang().toLocale().getDisplayName(lang().toLocale())));
+				stream.showText(messages.at(lang.toLocale().getDisplayName(lang.toLocale())));
 
 				stream.endText();
 			}
@@ -305,27 +328,6 @@ public class Download extends Controller {
 		}
 	}
 
-	@SuppressWarnings("null")
-	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> wkhtmltopdfStream() {
-
-		final URI reportPage = URI.create("http://getbootstrap.com");
-		final List<String> arguments = Arrays.asList("--zoom", "2");
-
-		return CompletableFuture.supplyAsync(() -> {
-
-			byte[] bytes;
-			try {
-
-				bytes = PDFs.toPDF(reportPage, arguments);
-				return ok(bytes).as(Http.MimeTypes.BINARY);
-			} catch (Exception e) {
-
-				throw e;
-			}
-		});
-	}
-
 	@FunctionalInterface
 	private static interface Reporter {
 
@@ -333,45 +335,57 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> reportPdfStream() {
+	public CompletionStage<Result> reportPdfStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toPDF(templateStream, parameters, dataSource);
-		return reportStream(reporter);
+		return reportStream(reporter, request, lang, messages);
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> reportWordStream() {
+	public CompletionStage<Result> reportWordStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toDocx(templateStream, parameters, dataSource);
-		return reportStream(reporter);
+		return reportStream(reporter, request, lang, messages);
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> reportExcelStream() {
+	public CompletionStage<Result> reportExcelStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toXlsx(templateStream, parameters, dataSource);
-		return reportStream(reporter);
+		return reportStream(reporter, request, lang, messages);
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> reportPowerpointStream() {
+	public CompletionStage<Result> reportPowerpointStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toPptx(templateStream, parameters, dataSource);
-		return reportStream(reporter);
+		return reportStream(reporter, request, lang, messages);
 	}
 
 	@SuppressWarnings("null")
-	private CompletionStage<Result> reportStream(final Reporter reporter) {
+	private CompletionStage<Result> reportStream(final Reporter reporter, final Request request, final Lang lang, final Messages messages) {
 
-		return jpa.withTransaction(manager -> {
+		return jpaApi.withTransaction(manager -> {
 
 			final Map<String, Object> parameters = new HashMap<>();
-			parameters.put(MessageKeys.USER_USERID, messages.get(lang(), MessageKeys.USER_USERID));
+			parameters.put(MessageKeys.USER_USERID, messages.at(MessageKeys.USER_USERID));
 			parameters.put("bookland", "9784003101");
 			parameters.put("barcode", "4512223683107");
 			parameters.put("qrcode", "https://www.playframework.com");
-			parameters.put(MessageKeys.REPORT, messages.get(lang(), MessageKeys.REPORT));
-			parameters.put(MessageKeys.WELCOME, messages.get(lang(), MessageKeys.WELCOME));
+			parameters.put(MessageKeys.REPORT, messages.at(MessageKeys.REPORT));
+			parameters.put(MessageKeys.WELCOME, messages.at(MessageKeys.WELCOME));
 
 			final List<models.user.User> users = userDao.readList(manager, models.user.User.class);
 			final JRDataSource dataSource = new JRBeanCollectionDataSource(users);
@@ -391,17 +405,20 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> paperPdfStream() {
+	public CompletionStage<Result> paperPdfStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toPDF(templateStream, parameters, dataSource);
-		return paperStream(reporter);
+		return paperStream(reporter, messages);
 	}
 
 	@SuppressWarnings("null")
-	private CompletionStage<Result> paperStream(final Reporter reporter) {
+	private CompletionStage<Result> paperStream(final Reporter reporter, final Messages messages) {
 
 		final Map<String, Object> parameters = new HashMap<>();
-		parameters.put(MessageKeys.USER_USERID, messages.get(lang(), MessageKeys.USER_USERID));
+		parameters.put(MessageKeys.USER_USERID, messages.at(MessageKeys.USER_USERID));
 
 		final JRDataSource dataSource = new JREmptyDataSource();
 
@@ -419,7 +436,10 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> zipStream() {
+	public CompletionStage<Result> zipStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final Path path = createExampleArchivePath();
 
@@ -435,7 +455,10 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> encryptZipStream() {
+	public CompletionStage<Result> encryptZipStream(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		final Path path = createExampleArchivePath();
 
@@ -483,13 +506,16 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result fileName() {
+	public Result fileName(@Nonnull final Request request) {
 
-		final String fileName = messages.get(Locales.toLang(Locale.US), MessageKeys.FILE_NAME) + ".txt";
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final String fileName = messagesApi.get(new Lang(Locale.US), MessageKeys.FILE_NAME) + ".txt";
 		final String userFileName;
 		try {
 
-			userFileName = URLEncoder.encode(messages.get(lang(), MessageKeys.FILE_NAME).replaceAll("\\s", "_"), StandardCharsets.UTF_8.name()) + ".txt";
+			userFileName = URLEncoder.encode(messages.at(MessageKeys.FILE_NAME).replaceAll("\\s", "_"), StandardCharsets.UTF_8.name()) + ".txt";
 		} catch (UnsupportedEncodingException e) {
 
 			throw new UncheckedIOException(e);
@@ -505,13 +531,19 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result urlFileName(final String urlFileName) {
+	public Result urlFileName(@Nonnull final Request request, final String urlFileName) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		return ok("(｀・ω・´)\r\n(*´ω｀*)\r\n(´･ω･`)\r\n".getBytes(StandardCharsets.UTF_8)).as(Http.MimeTypes.BINARY);
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> ivdPdfStream(final long executionId) {
+	public CompletionStage<Result> ivdPdfStream(@Nonnull final Request request, final long executionId) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
 
 		return CompletableFuture.supplyAsync(() -> {
 

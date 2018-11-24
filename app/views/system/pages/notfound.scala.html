@@ -3,24 +3,33 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@(method: String, uri: String)
+@(method: String, uri: String)(implicit requestHeader:Http.RequestHeader, lang: Lang, messages: Messages)
+
+@request() = @{
+
+	requestHeader.withBody(null);
+}
 
 @frame(){
 
 	@head("Page not found"){
 
-		@libraries.standard.head()
-	}
+		@libraries.standard.head()(request(), lang, messages)
+	}(request(), lang, messages)
 
 	@body("error","notfound"){
 
-		@components.modal(Map("id"->"notfoundModal", "title"->("404 " + Messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, Messages(MessageKeys.PAGE)))), List(
+		@components.modal(Map("id"->"notfoundModal", "title"->("404 " + messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages(MessageKeys.PAGE)))), List(
 				Map("id"->"notfoundModalOk", "type"->"primary", "text"->"OK", "default"->"true")
 			)){
 
@@ -29,7 +38,7 @@
 			<p>@uri</p>
 		}
 
-		@libraries.standard.last()
-		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/system/pages/notfound.js")'></script>
-	}
-}
+		@libraries.standard.last()(request(), lang, messages)
+		<script @{CSPNonce.attr(requestHeader.asScala)} src='@routes.Assets.versioned("javascripts/system/pages/notfound.js")'></script>
+	}(request(), lang, messages)
+}(request(), lang, messages)

@@ -6,17 +6,18 @@ import javax.security.auth.login.AccountException;
 import com.google.inject.ImplementedBy;
 
 import models.user.User;
+import play.i18n.Messages;
 
 @ImplementedBy(DefaultUserService.class)
 public interface UserService {
 
-	boolean isExist(EntityManager manager, String userId);
+	boolean isExist(EntityManager manager, Messages messages, String userId);
 
-	void create(EntityManager manager, User user) throws AccountException;
+	void create(EntityManager manager, Messages messages, User user) throws AccountException;
 
-	User read(EntityManager manager, String userId) throws AccountException;
+	User read(EntityManager manager, Messages messages, String userId) throws AccountException;
 
-	User update(EntityManager manager, User user) throws AccountException;
+	User update(EntityManager manager, Messages messages, User user) throws AccountException;
 
-	void delete(EntityManager manager, User user) throws AccountException;
+	void delete(EntityManager manager, Messages messages, User user) throws AccountException;
 }

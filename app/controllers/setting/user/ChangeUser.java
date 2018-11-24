@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.persistence.EntityExistsException;
 import javax.persistence.NoResultException;
@@ -30,10 +31,12 @@ import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
+import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.libs.mailer.Email;
 import play.libs.mailer.MailerClient;
 import play.mvc.Controller;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import play.twirl.api.Html;
@@ -48,10 +51,10 @@ public class ChangeUser extends Controller {
 	public static final String CID_LOGO = "logo";
 
 	@Inject
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@Inject
 	private Config config;
@@ -69,21 +72,27 @@ public class ChangeUser extends Controller {
 	private ChangeUserDao changeUserDao;
 
 	@Authenticated(common.core.Authenticator.class)
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final ChangeFormContent changeFormContent = new ChangeFormContent();
 		final Form<ChangeFormContent> changeForm = formFactory.form(ChangeFormContent.class).fill(changeFormContent);
 
-		return ok(views.html.setting.user.changeuser.change.render(changeForm));
+		return ok(views.html.setting.user.changeuser.change.render(changeForm, request, lang, messages));
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result apply() {
+	public Result apply(@Nonnull final Request request) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<ChangeFormContent> changeForm = formFactory.form(ChangeFormContent.class).bindFromRequest();
+		final Result result = jpaApi.withTransaction(manager -> {
+
+			final Form<ChangeFormContent> changeForm = formFactory.form(ChangeFormContent.class).bindFromRequest(request);
 			if (!changeForm.hasErrors()) {
 
 				final ChangeFormContent changeFormContent = changeForm.get();
@@ -93,14 +102,14 @@ public class ChangeUser extends Controller {
 				final models.setting.user.changeuser.ChangeUser changeUser;
 				try {
 
-					if (userService.isExist(manager, newUserId)) {
+					if (userService.isExist(manager, messages, newUserId)) {
 
 						changeFormContent.setNewUserId(null);
-						throw new AccountException(messages.get(lang(), MessageKeys.SYSTEM_ERROR_USERID_EXIST));
+						throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_EXIST));
 					}
 
 					changeUser = new models.setting.user.changeuser.ChangeUser();
-					changeUser.setUserId(request().session().get(models.user.User_.USER_ID));
+					changeUser.setUserId(request.session().getOptional(models.user.User_.USER_ID).get());
 					changeUser.setNewUserId(newUserId);
 					changeUser.setCode();
 					changeUser.setExpireDateTime(LocalDateTime.now().plusDays(ONE_DAY));
@@ -116,23 +125,23 @@ public class ChangeUser extends Controller {
 
 					final Form<ChangeFormContent> failureChangeForm = formFactory.form(ChangeFormContent.class).fill(changeFormContent);
 					failureChangeForm.withGlobalError(e.getLocalizedMessage());
-					return failureApply(failureChangeForm);
+					return failureApply(failureChangeForm, request, lang, messages);
 				}
 
-				sendReserveEmail(changeUser);
-				return ok(views.html.setting.user.changeuser.reserve.complete.render(changeForm));
+				sendReserveEmail(changeUser, request, lang, messages);
+				return ok(views.html.setting.user.changeuser.reserve.complete.render(changeForm, request, lang, messages));
 			} else {
 
-				return failureApply(changeForm);
+				return failureApply(changeForm, request, lang, messages);
 			}
 		});
 
 		return result;
 	}
 
-	private Result failureApply(final Form<ChangeFormContent> applyForm) {
+	private Result failureApply(final Form<ChangeFormContent> applyForm, final Request request, final Lang lang, final Messages messages) {
 
-		return badRequest(views.html.setting.user.changeuser.change.render(applyForm));
+		return badRequest(views.html.setting.user.changeuser.change.render(applyForm, request, lang, messages));
 	}
 
 	private String createDecisionURL(final String code) {
@@ -140,46 +149,51 @@ public class ChangeUser extends Controller {
 		return createSystemURL() + controllers.setting.user.routes.ChangeUser.decision(code).url();
 	}
 
-	private void sendReserveEmail(final models.setting.user.changeuser.ChangeUser changeUser) {
+	private void sendReserveEmail(final models.setting.user.changeuser.ChangeUser changeUser, final Request request, final Lang lang, final Messages messages) {
 
 		final String decisionURL = createDecisionURL(changeUser.getCode());
 
 		final Email email = new Email()//
-				.setSubject("[" + messages.get(lang(), MessageKeys.SYSTEM_NAME) + "] " + messages.get(lang(), MessageKeys.CHANGEUSER_RESERVE_MAIL_SUBJECT))//
+				.setSubject("[" + messages.at(MessageKeys.SYSTEM_NAME) + "] " + messages.at(MessageKeys.CHANGEUSER_RESERVE_MAIL_SUBJECT))//
 				.setFrom("Mister FROM <from@email.com>")//
 				.addTo("Miss TO <" + changeUser.getUserId() + ">")//
-				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
-				.setBodyHtml(createReserveHtmlMailBody(changeUser, decisionURL, lang()).body().trim());
+				.addAttachment("image.jpg", Paths.get("public", "images", lang.code(), "logo.png").toFile(), CID_LOGO)//
+				.setBodyHtml(createReserveHtmlMailBody(changeUser, decisionURL, request, lang, messages).body().trim());
 
 		mailer.send(email);
 	}
 
-	private Html createReserveHtmlMailBody(final models.setting.user.changeuser.ChangeUser user, final String decisionURL, final Lang lang) {
+	private Html createReserveHtmlMailBody(final models.setting.user.changeuser.ChangeUser user, final String decisionURL, final Request request, final Lang lang, final Messages messages) {
 
 		switch (lang.code()) {
 		case "ja-JP":
 
-			return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL());
+			return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL(), request, lang, messages);
 		default:
 
-			return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL());
+			return views.html.setting.user.changeuser.reserve.mail.body.render(user, decisionURL, createInquiryURL(), request, lang, messages);
 		}
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result reserveHtmlMail(final String langString) {
+	public Result reserveHtmlMail(@Nonnull final Request request, final String langString) {
+
+		final Messages messages = messagesApi.preferred(request);
 
 		final models.setting.user.changeuser.ChangeUser dummyChangeUser = new models.setting.user.changeuser.ChangeUser();
 		dummyChangeUser.setUserId("client@company.com");
 		dummyChangeUser.setCode();
-		return ok(createReserveHtmlMailBody(dummyChangeUser, createDecisionURL(dummyChangeUser.getCode()), Lang.forCode(langString)));
+		return ok(createReserveHtmlMailBody(dummyChangeUser, createDecisionURL(dummyChangeUser.getCode()), request, Lang.forCode(langString), messages));
 	}
 
 	@PermissionsAllowed(value = { Permission.READ })
-	public Result decision(final String code) {
+	public Result decision(@Nonnull final Request request, final String code) {
 
-		final Result result = jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final Result result = jpaApi.withTransaction(manager -> {
 
 			models.setting.user.changeuser.ChangeUser changeUser;
 			models.user.User user;
@@ -200,10 +214,10 @@ public class ChangeUser extends Controller {
 					throw new RuntimeException(e);
 				}
 
-				user = userService.read(manager, changeUser.getUserId());
+				user = userService.read(manager, messages, changeUser.getUserId());
 				user.setUserId(changeUser.getNewUserId());
 
-				userService.update(manager, user);
+				userService.update(manager, messages, user);
 
 				changeUserDao.delete(manager, changeUser);
 			} catch (final AccountException e) {
@@ -211,8 +225,8 @@ public class ChangeUser extends Controller {
 				throw new PlayException("", "", e);
 			}
 
-			sendDecisionEmail(user);
-			return ok(views.html.setting.user.changeuser.decision.complete.render(user));
+			sendDecisionEmail(user, request, lang, messages);
+			return ok(views.html.setting.user.changeuser.decision.complete.render(user, request, lang, messages));
 		});
 
 		return result;
@@ -224,37 +238,39 @@ public class ChangeUser extends Controller {
 		return host;
 	}
 
-	private void sendDecisionEmail(final models.user.User user) {
+	private void sendDecisionEmail(final models.user.User user, final Request request, final Lang lang, final Messages messages) {
 
 		final Email email = new Email()//
-				.setSubject("[" + messages.get(lang(), MessageKeys.SYSTEM_NAME) + "] " + messages.get(lang(), MessageKeys.CHANGEUSER_DECISION_MAIL_SUBJECT))//
+				.setSubject("[" + messages.at(MessageKeys.SYSTEM_NAME) + "] " + messages.at(MessageKeys.CHANGEUSER_DECISION_MAIL_SUBJECT))//
 				.setFrom("Mister FROM <from@email.com>")//
 				.addTo("Miss TO <" + user.getUserId() + ">")//
-				.addAttachment("image.jpg", Paths.get("public", "images", lang().code(), "logo.png").toFile(), CID_LOGO)//
-				.setBodyHtml(createDecisionHtmlMailBody(user, createSystemURL(), lang()).body().trim());
+				.addAttachment("image.jpg", Paths.get("public", "images", lang.code(), "logo.png").toFile(), CID_LOGO)//
+				.setBodyHtml(createDecisionHtmlMailBody(user, createSystemURL(), request, lang, messages).body().trim());
 
 		mailer.send(email);
 	}
 
-	private Html createDecisionHtmlMailBody(final models.user.User user, final String systemURL, final Lang lang) {
+	private Html createDecisionHtmlMailBody(final models.user.User user, final String systemURL, final Request request, final Lang lang, final Messages messages) {
 
 		switch (lang.code()) {
 		case "ja-JP":
 
-			return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL(), request, lang, messages);
 		default:
 
-			return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL());
+			return views.html.setting.user.changeuser.decision.mail.body.render(user, systemURL, createInquiryURL(), request, lang, messages);
 		}
 	}
 
 	@Authenticated(common.core.Authenticator.class)
 	@PermissionsAllowed(value = { Permission.MANAGE })
-	public Result decisionHtmlMail(final String langString) {
+	public Result decisionHtmlMail(@Nonnull final Request request, final String langString) {
+
+		final Messages messages = messagesApi.preferred(request);
 
 		final models.user.User dummyUser = new models.user.User();
 		dummyUser.setUserId("client@company.com");
-		return ok(createDecisionHtmlMailBody(dummyUser, createSystemURL(), Lang.forCode(langString)));
+		return ok(createDecisionHtmlMailBody(dummyUser, createSystemURL(), request, Lang.forCode(langString), messages));
 	}
 
 	private String createInquiryURL() {

@@ -1,3 +1,6 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -5,7 +8,7 @@
 @import common.system._
 @import models.components._
 
-@(pagingInfo:PagingInfo, rowsJson:String)
+@(pagingInfo:PagingInfo, rowsJson:String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import models.components._
 @import scala.collection.immutable._
@@ -45,13 +48,13 @@
 
 						@components.container(Map("id"->"hot_pagination", "fluid"->"true", "class"->"mt-3")){
 							<ul class="pagination pagination- justify-content-center">
-								<li class="page-item"><a class="page-link" href="#0" aria-label="First"><span aria-hidden="true">@Messages(MessageKeys.FIRST)</span></a></li>
-								<li class="page-item"><a class="page-link" href="#p" aria-label="Previous"><span aria-hidden="true">@Messages(MessageKeys.PREVIOUS)</span></a></li>
+								<li class="page-item"><a class="page-link" href="#0" aria-label="First"><span aria-hidden="true">@messages(MessageKeys.FIRST)</span></a></li>
+								<li class="page-item"><a class="page-link" href="#p" aria-label="Previous"><span aria-hidden="true">@messages(MessageKeys.PREVIOUS)</span></a></li>
 								@for(i <- 0 to pagingInfo.getPageCount() - 1){
 									<li class="page-item"><a class="page-link" href="#@i">@(i+1)</a></li>
 								}
-								<li class="page-item "><a class="page-link" href="#n" aria-label="Next"><span aria-hidden="true">@Messages(MessageKeys.NEXT)</span></a></li>
-								<li class="page-item "><a class="page-link" href="#@(pagingInfo.getPageCount() - 1)" aria-label="Last"><span aria-hidden="true">@Messages(MessageKeys.LAST)</span></a></li>
+								<li class="page-item "><a class="page-link" href="#n" aria-label="Next"><span aria-hidden="true">@messages(MessageKeys.NEXT)</span></a></li>
+								<li class="page-item "><a class="page-link" href="#@(pagingInfo.getPageCount() - 1)" aria-label="Last"><span aria-hidden="true">@messages(MessageKeys.LAST)</span></a></li>
 							</ul>
 						}
 					</div>
@@ -64,7 +67,7 @@
 		</pre>
 
 		<div id="system_messages" class="d-none" data-messages='{
-			"@MessageKeys.HANDSONTABLE_LANG":"@Messages(MessageKeys.HANDSONTABLE_LANG)",
+			"@MessageKeys.HANDSONTABLE_LANG":"@messages(MessageKeys.HANDSONTABLE_LANG)",
 			"pageSize":@pagingInfo.getPageSize(),
 			"pageCount":@pagingInfo.getPageCount()
 		}'></div>

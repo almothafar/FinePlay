@@ -20,7 +20,7 @@ var initResult = function(){
 
 var emptyVariations = function(){
 
-	$('#variations').append('<div class="mx-auto font-weight-bold text-muted">' + Messages("variationEmpty") + '</div>');
+	$('#variations').append('<div class="mx-auto font-weight-bold text-muted">' + messages("variationEmpty") + '</div>');
 };
 
 var adobeJapan1Position;
@@ -49,7 +49,7 @@ var search = function(){
 
 	initResult();
 	$('#ajaxCancel').prop('disabled', true);
-	$('#ajaxMessage').text(Messages(MessageKeys.PLEASE__WAIT));
+	$('#ajaxMessage').text(messages(MessageKeys.PLEASE__WAIT));
 	$('#ajaxProgress>.progress-bar').addClass('bg-primary').css('width', '100%')
 
 	var timeout = "10000";
@@ -74,7 +74,7 @@ var search = function(){
 			var character = responseJson["character"];
 			var variations = responseJson["variations"];
 
-			$('#character').html(character + '<small class="text-muted">' + '&nbsp;&nbsp;' + Messages(MessageKeys.CODEPOINT) + ':' + codePoint + '&nbsp;&nbsp;' + Messages(MessageKeys.HEX) + ':' + hex + '</small>');
+			$('#character').html(character + '<small class="text-muted">' + '&nbsp;&nbsp;' + messages(MessageKeys.CODEPOINT) + ':' + codePoint + '&nbsp;&nbsp;' + messages(MessageKeys.HEX) + ':' + hex + '</small>');
 
 			if(0 == variations.length){
 
@@ -124,11 +124,11 @@ var search = function(){
 		},
 		function (jqXHR, textStatus, errorThrown) {
 
-			$('#ajaxMessage').text(Messages(MessageKeys.FAILURE));
+			$('#ajaxMessage').text(messages(MessageKeys.FAILURE));
 			$('#ajaxCancel').prop('disabled', false);
 			var errorMessage = errorThrown;
 			if(jqXHR.responseJSON){errorMessage = jqXHR.responseJSON['error'];}
-			$('#ajaxDescription').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorMessage+'</strong>');
+			$('#ajaxDescription').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorMessage+'</strong>');
 			$('#ajaxProgress>.progress-bar').removeClass('bg-primary').addClass('bg-danger');
 		}
 	);

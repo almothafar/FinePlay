@@ -3,7 +3,7 @@
 $(document).ready(function() {
 
 	var dataTable=$('#messagelist').DataTable({
-		"lengthMenu": [ [10, 50, 100, 500, -1], [10, 50, 100, 500, Messages(MessageKeys.ALL)] ]
+		"lengthMenu": [ [10, 50, 100, 500, -1], [10, 50, 100, 500, messages(MessageKeys.ALL)] ]
 	});
 
 	$('#langSelect').on('change', function(e){

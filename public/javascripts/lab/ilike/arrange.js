@@ -32,11 +32,11 @@ $("#editButton").on('click', function(e) {
 	if(isStartEdit){
 
 		$( "#sortable" ).sortable( "enable" );
-		$("#editButton").text(Messages(MessageKeys.COMPLETE));
+		$("#editButton").text(messages(MessageKeys.COMPLETE));
 	}else{
 
 		$( "#sortable" ).sortable( "disable" );
-		$("#editButton").text(Messages(MessageKeys.EDIT));
+		$("#editButton").text(messages(MessageKeys.EDIT));
 
 		$("#sortable>tr").find("td:eq(2)").each(function(i){
 

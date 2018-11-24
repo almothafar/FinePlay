@@ -14,7 +14,7 @@ $(document).ready(function() {
 		"language": {
 			select: {
 				rows: {
-					_: " " + Messages(MessageKeys.X__CASE__SELECTED).replace("{0}","%d")
+					_: " " + messages(MessageKeys.X__CASE__SELECTED).replace("{0}","%d")
 //					_: "You have selected %d rows",
 //					0: "Click a row to select it",
 //					1: "Only 1 row selected"
@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 	// ////////// Read //////////
 
-	var jsdate =  moment(Messages("clientDateTime")).toDate();
+	var jsdate =  moment(messages("clientDateTime")).toDate();
 
 	$('#expireFrom').pickadate({
 		format: 'yyyy-mm-dd',
@@ -199,7 +199,7 @@ $(document).ready(function() {
 		var companyName;
 		if(company.names){
 
-			companyName = company.names[Messages("langCode")] || company.names["en-US"];
+			companyName = company.names[messages("langCode")] || company.names["en-US"];
 		}else {
 
 			companyName = company.text;
@@ -342,7 +342,7 @@ $(document).ready(function() {
 
 	var operation = function(crud){
 
-		$('#'+crud+'Message').text(Messages(MessageKeys.PLEASE__WAIT));
+		$('#'+crud+'Message').text(messages(MessageKeys.PLEASE__WAIT));
 		$('#'+crud+'Progress').val(100);
 		$('#'+crud+'Cancel').prop('disabled', true);
 		$('#'+crud+'Ok').prop('disabled', true);
@@ -388,8 +388,8 @@ $(document).ready(function() {
 
 				}
 
-				$('#'+crud+'Message').text(Messages(MessageKeys.FAILURE));
-				$('#'+crud+'Description').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
+				$('#'+crud+'Message').text(messages(MessageKeys.FAILURE));
+				$('#'+crud+'Description').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
 				$('#'+crud+'Progress>.progress-bar').addClass('bg-danger');
 				$('#'+crud+'Cancel').prop('disabled', false);
 				$('#'+crud+'Ok').prop('disabled', false);
@@ -479,7 +479,7 @@ $(document).ready(function() {
 
 	var uploadOperation = function(crud){
 
-		$('#'+crud+'Message').text(Messages(MessageKeys.PLEASE__WAIT));
+		$('#'+crud+'Message').text(messages(MessageKeys.PLEASE__WAIT));
 		$('#'+crud+'Progress').val(100);
 		$('#'+crud+'Cancel').prop('disabled', true);
 		$('#'+crud+'Ok').prop('disabled', true);
@@ -527,8 +527,8 @@ $(document).ready(function() {
 
 				}
 
-				$('#'+crud+'Message').text(Messages(MessageKeys.FAILURE));
-				$('#'+crud+'Description').html(Messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + Messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
+				$('#'+crud+'Message').text(messages(MessageKeys.FAILURE));
+				$('#'+crud+'Description').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
 				$('#'+crud+'Progress>.progress-bar').addClass('bg-danger');
 				$('#'+crud+'Cancel').prop('disabled', false);
 				$('#'+crud+'Ok').prop('disabled', false);

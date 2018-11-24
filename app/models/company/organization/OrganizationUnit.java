@@ -37,10 +37,10 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import common.system.MessageKeys;
-import models.supercsv.cellprocessor.time.FmtClientLocalDateTime;
-import models.supercsv.cellprocessor.time.ParseServerLocalDateTime;
+import org.supercsv.cellprocessor.time.FmtLocalDateTime;
+import org.supercsv.cellprocessor.time.ParseLocalDateTime;
+import play.i18n.Messages;
 import play.i18n.MessagesApi;
-import play.mvc.Controller;
 
 @Entity
 @Table(name = "ORGANIZATION_UNITS", //
@@ -54,7 +54,7 @@ public class OrganizationUnit {
 
 	@Inject
 	@Transient
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Id
 	@GeneratedValue
@@ -123,7 +123,7 @@ public class OrganizationUnit {
 	private static final CellProcessor[] READ_CELL_PROCESSORS = new CellProcessor[] { //
 			new ConvertNullTo(null, new ParseLong()), //
 			new ConvertNullTo(null, new ParseLong()), //
-			new ParseServerLocalDateTime(), //
+			new ParseLocalDateTime(), //
 			null, //
 			null //
 	};
@@ -131,7 +131,7 @@ public class OrganizationUnit {
 	private static final CellProcessor[] WRITE_CELL_PROCESSORS = new CellProcessor[] { //
 			null, //
 			null, //
-			new FmtClientLocalDateTime(), //
+			new FmtLocalDateTime(), //
 			null, //
 			null //
 	};
@@ -152,7 +152,7 @@ public class OrganizationUnit {
 		return WRITE_CELL_PROCESSORS;
 	}
 
-	public void beforeWrite() {
+	public void beforeWrite(Messages messages) {
 
 		setOrganizationId(getOrganization().getId());
 
@@ -169,14 +169,14 @@ public class OrganizationUnit {
 				setNameJaJp(name);
 			} else {
 
-				throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, NAME_COUNT_MAX) + " :" + i);
+				throw new IllegalStateException(messages.at(MessageKeys.JAVA_ERROR_SIZE, 0, NAME_COUNT_MAX) + " :" + i);
 			}
 
 			i++;
 		}
 	}
 
-	public void afterRead() {
+	public void afterRead(Messages messages) {
 
 		final Map<Locale, OrganizationUnitName> names = new HashMap<>();
 		names.put(Locale.US, new OrganizationUnitName(this.getId(), Locale.US, getName()));
@@ -187,7 +187,7 @@ public class OrganizationUnit {
 
 		if (!(1 <= names.size())) {
 
-			throw new IllegalStateException(messages.get(Controller.ctx().lang(), MessageKeys.JAVA_ERROR_SIZE, 0, NAME_COUNT_MAX) + " :" + names.size());
+			throw new IllegalStateException(messages.at(MessageKeys.JAVA_ERROR_SIZE, 0, NAME_COUNT_MAX) + " :" + names.size());
 		}
 
 		setNames(names);

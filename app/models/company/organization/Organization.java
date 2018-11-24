@@ -42,7 +42,7 @@ public class Organization {
 
 	@Inject
 	@Transient
-	private MessagesApi messages;
+	private MessagesApi messagesApi;
 
 	@Id
 	@GeneratedValue

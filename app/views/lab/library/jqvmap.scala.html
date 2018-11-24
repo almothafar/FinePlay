@@ -4,14 +4,19 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -44,8 +49,8 @@
 						<div id="worldmap" class="jqvmap-container w-100"></div>
 
 						@components.buttongroup(Map("id"->""), List(
-							Map("id"->"zoomOutButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-compress", "text"->Messages(MessageKeys.ZOOMOUT)),
-							Map("id"->"zoomInButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-expand", "text"->Messages(MessageKeys.ZOOMIN))
+							Map("id"->"zoomOutButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-compress", "text"->messages(MessageKeys.ZOOMOUT)),
+							Map("id"->"zoomInButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-expand", "text"->messages(MessageKeys.ZOOMIN))
 						))
 					</div>
 

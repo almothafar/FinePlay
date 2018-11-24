@@ -2,11 +2,11 @@
 
 $(document).ready(function () {
 
-	$('.contentFrame:nth-child(1)>.imageContent').css('background-image', 'url(' + Messages("img1") + ')');
-	$('.contentFrame:nth-child(2)>.imageContent').css('background-image', 'url(' + Messages("img2") + ')');
-	$('.contentFrame:nth-child(3)>.imageContent').css('background-image', 'url(' + Messages("img3") + ')');
-	$('.contentFrame:nth-child(4)>.imageContent').css('background-image', 'url(' + Messages("img4") + ')');
-	$('.contentFrame:nth-child(5)>.imageContent').css('background-image', 'url(' + Messages("img5") + ')');
+	$('.contentFrame:nth-child(1)>.imageContent').css('background-image', 'url(' + messages("img1") + ')');
+	$('.contentFrame:nth-child(2)>.imageContent').css('background-image', 'url(' + messages("img2") + ')');
+	$('.contentFrame:nth-child(3)>.imageContent').css('background-image', 'url(' + messages("img3") + ')');
+	$('.contentFrame:nth-child(4)>.imageContent').css('background-image', 'url(' + messages("img4") + ')');
+	$('.contentFrame:nth-child(5)>.imageContent').css('background-image', 'url(' + messages("img5") + ')');
 
 	var breadcrumbHeight = 15 + $('.breadcrumb').outerHeight(true); //79
 

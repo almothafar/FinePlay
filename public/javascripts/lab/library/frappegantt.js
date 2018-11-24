@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 
-	var jsdate = moment(Messages("clientDateTime")).toDate();
+	var jsdate = moment(messages("clientDateTime")).toDate();
 
 	var names = [
 			["Redesign website", [0, 7]],

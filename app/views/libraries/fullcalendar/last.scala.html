@@ -1,16 +1,22 @@
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/custom/fullcalendar/head.css.js")'></script>
 
 <script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/fullcalendar/dist/fullcalendar.min.js")'></script>
 @translation() = @{
 
-	var lang = Messages(MessageKeys.FULLCALENDAR_LANG)
+	var lang = messages(MessageKeys.FULLCALENDAR_LANG)
 	if(lang.isEmpty){
 
 		Html("")

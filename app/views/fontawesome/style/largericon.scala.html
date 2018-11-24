@@ -1,11 +1,15 @@
 @import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
@@ -14,7 +18,7 @@
 
 @frame(){
 
-	@head(Messages(MessageKeys.FONTAWESOME)){
+	@head(messages(MessageKeys.FONTAWESOME)){
 
 		@libraries.standard.head()
 	}
@@ -23,7 +27,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
 
-			@breadcrumb(Map("id"->"", "name"->("Larger "+Messages(MessageKeys.ICON)), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+			@breadcrumb(Map("id"->"", "name"->("Larger "+messages(MessageKeys.ICON)), "icon"->"fas fa-pencil-alt", "selected"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){

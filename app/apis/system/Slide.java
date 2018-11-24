@@ -21,9 +21,13 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.filters.csrf.CSRF;
 import play.filters.csrf.CSRF.Token;
+import play.i18n.Messages;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
@@ -32,13 +36,19 @@ public class Slide extends Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Inject
+	private MessagesApi messagesApi;
+
+	@Inject
 	private FormFactory formFactory;
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
 
-		final Form<SlideInfoFormContent> slideInfoForm = formFactory.form(SlideInfoFormContent.class).bindFromRequest();
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final Form<SlideInfoFormContent> slideInfoForm = formFactory.form(SlideInfoFormContent.class).bindFromRequest(request);
 		if (!slideInfoForm.hasErrors()) {
 
 			final SlideInfoFormContent slideInfoFormContent = slideInfoForm.get();
@@ -47,10 +57,10 @@ public class Slide extends Controller {
 			final String returnUrl = slideInfoFormContent.getReturnUrl();
 
 			final Map<String, String> slideInfo = new HashMap<>();
-			slideInfo.put(SlideInfoFormContent.URL, createURL(url, getParams(slideInfoForm.rawData())));
+			slideInfo.put(SlideInfoFormContent.URL, createURL(url, getParams(slideInfoForm.rawData()), request));
 			slideInfo.put(SlideInfoFormContent.RETURNURL, returnUrl);
 
-			return ok(views.html.system.slide.render(slideInfo));
+			return ok(views.html.system.slide.render(slideInfo, request, lang, messages));
 		} else {
 
 			throw new RuntimeException(slideInfoForm.errors().toString());
@@ -66,22 +76,22 @@ public class Slide extends Controller {
 		return Collections.unmodifiableMap(params);
 	}
 
-	private String createURL(@Nonnull final String url, final Map<String, String> params) {
+	private String createURL(@Nonnull final String url, final Map<String, String> params, final Request request) {
 
 		final StringBuilder builder = new StringBuilder(url);
 		builder.append("?").append(getQuery(params));
-		if (isSelf(url)) {
+		if (isSelf(url, request)) {
 
-			builder.append("&").append(getToken(CSRF.getToken(request()).get()));
+			builder.append("&").append(getToken(CSRF.getToken(request).get()));
 		}
 
 		return builder.toString();
 	}
 
-	private boolean isSelf(@Nonnull final String url) {
+	private boolean isSelf(@Nonnull final String url, final Request request) {
 
 		final boolean isContainSchema = url.startsWith("http://") || url.startsWith("https://");
-		final boolean isContainHost = url.contains(request().host());
+		final boolean isContainHost = url.contains(request.host());
 
 		final boolean isOuter = isContainSchema && !isContainHost;
 		return !isOuter;

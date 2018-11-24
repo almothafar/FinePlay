@@ -1,3 +1,6 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import scala.collection.immutable._
@@ -7,7 +10,7 @@
 
 @import common.system._
 
-@(prop:scala.collection.immutable.Map[String, String])
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
 
 @equalTask(task:String) = @{
 
@@ -17,5 +20,5 @@
 @components.adjust.nav(Map("id"->prop.getOrElse("id", ""), "tabs"->"true"), Seq(
 	Map("name"->"Responsive", "icon"->"fas fa-pencil-alt", "link"->controllers.bootstrap.layout.routes.Layout.index("responsive").toString, "selected"->equalTask("responsive").toString),
 	Map("name"->"Grid", "icon"->"fas fa-th-list", "link"->controllers.bootstrap.layout.routes.Layout.index("grid").toString, "selected"->equalTask("grid").toString),
-	Map("name"->Messages(MessageKeys.TABLE), "icon"->"fas fa-table", "link"->controllers.bootstrap.layout.routes.Layout.index("table").toString, "selected"->equalTask("table").toString)
+	Map("name"->messages(MessageKeys.TABLE), "icon"->"fas fa-table", "link"->controllers.bootstrap.layout.routes.Layout.index("table").toString, "selected"->equalTask("table").toString)
 ))

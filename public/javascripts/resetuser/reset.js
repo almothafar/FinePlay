@@ -1,6 +1,6 @@
 'use strict';
 
-if(Messages("hasErrors")) {
+if(messages("hasErrors")) {
 
 	shake('#resetPanel');
 }

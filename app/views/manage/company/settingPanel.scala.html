@@ -4,13 +4,14 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @customCheckbox(columnName: String, isChecked: Boolean, isShow: Boolean) = {
 
@@ -23,15 +24,15 @@
 <div class="collapse" id="settingCollapse">
 	<div id="settingPanel" class="card text-xs-center">
 		<div class="card-body text-xs-left">
-			<h5 class="form-setting-heading">@Messages(MessageKeys.SETTING)</h5>
+			<h5 class="form-setting-heading">@messages(MessageKeys.SETTING)</h5>
 			<div class="row form-group">
-				<label for="" class="col-sm-3 col-form-label">@(Messages(MessageKeys.DISPLAY)+" "+Messages(MessageKeys.COLUMN))</label>
+				<label for="" class="col-sm-3 col-form-label">@(messages(MessageKeys.DISPLAY)+" "+messages(MessageKeys.COLUMN))</label>
 				<div class="col-sm-9">
-					@customCheckbox(Messages(MessageKeys.ID), false, true)
-					@customCheckbox(Messages(MessageKeys.COMPANY_NAME), true, true)
-					@customCheckbox(Messages(MessageKeys.LOCAL_NAME), true, true)
-					@customCheckbox(Messages(MessageKeys.UPDATE) + " " + Messages(MessageKeys.DATETIME), true, true)
-					@customCheckbox(Messages(MessageKeys.DETAIL), true, true)
+					@customCheckbox(messages(MessageKeys.ID), false, true)
+					@customCheckbox(messages(MessageKeys.COMPANY_NAME), true, true)
+					@customCheckbox(messages(MessageKeys.LOCAL_NAME), true, true)
+					@customCheckbox(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME), true, true)
+					@customCheckbox(messages(MessageKeys.DETAIL), true, true)
 				</div>
 			</div>
 		</div>

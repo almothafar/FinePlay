@@ -21,10 +21,18 @@ import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 
 public class Inquiry extends Controller {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	@Inject
+	private MessagesApi messagesApi;
 
 	@Inject
 	private SyncCacheApi syncCache;
@@ -33,31 +41,37 @@ public class Inquiry extends Controller {
 	private FormFactory formFactory;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	private final EntityDao<models.inquiry.Inquiry> inquiryDao = new EntityDao<models.inquiry.Inquiry>() {
 	};
 
-	public Result index() {
+	public Result index(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		final InquiryFormContent inquiryFormContent = new InquiryFormContent();
 		// inquiryFormContent.setType(Type.OTHER.name());
 		final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class).fill(inquiryFormContent);
 
-		return ok(views.html.inquiry.inquiry.render(inquiryForm));
+		return ok(views.html.inquiry.inquiry.render(inquiryForm, request, lang, messages));
 	}
 
 	@RequireCSRFCheck
-	public Result send() {
+	public Result send(@Nonnull final Request request) {
 
-		return jpa.withTransaction(manager -> {
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
-			final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class, Create.class).bindFromRequest();
+		return jpaApi.withTransaction(manager -> {
 
-			if (!Requests.isFirstSubmit(request(), syncCache)) {
+			final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class, Create.class).bindFromRequest(request);
+
+			if (!Requests.isFirstSubmit(request, syncCache)) {
 
 				LOGGER.info("Not first submit.");
-				return ok(views.html.inquiry.send.complete.render(inquiryForm));
+				return ok(views.html.inquiry.send.complete.render(inquiryForm, request, lang, messages));
 			}
 
 			if (!inquiryForm.hasErrors()) {
@@ -74,7 +88,7 @@ public class Inquiry extends Controller {
 				final models.inquiry.Inquiry inquiry;
 
 				inquiry = new models.inquiry.Inquiry();
-				inquiry.setLocale(lang().toLocale());
+				inquiry.setLocale(lang.toLocale());
 				inquiry.setUserId(userId);
 				inquiry.setName(name);
 				inquiry.setType(type);
@@ -90,16 +104,16 @@ public class Inquiry extends Controller {
 					throw new RuntimeException(e);
 				}
 
-				return ok(views.html.inquiry.send.complete.render(inquiryForm));
+				return ok(views.html.inquiry.send.complete.render(inquiryForm, request, lang, messages));
 			} else {
 
-				return failureInquiry(inquiryForm);
+				return failureInquiry(inquiryForm, request, lang, messages);
 			}
 		});
 	}
 
-	private Result failureInquiry(final Form<InquiryFormContent> inquiryForm) {
+	private Result failureInquiry(final Form<InquiryFormContent> inquiryForm, final Request request, final Lang lang, final Messages messages) {
 
-		return badRequest(views.html.inquiry.inquiry.render(inquiryForm));
+		return badRequest(views.html.inquiry.inquiry.render(inquiryForm, request, lang, messages));
 	}
 }

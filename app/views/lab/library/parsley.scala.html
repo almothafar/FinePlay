@@ -6,13 +6,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -52,32 +56,32 @@
 								@helper.form(helper.CSRF(controllers.lab.library.routes.Library.index("parsley")), 'name->"parsleyForm", 'id->"parsleyForm") {
 
 									<div class="form-group row">
-										<label for="userid" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
+										<label for="userid" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_USERID)</label>
 										<div class="col-sm-9">
 											<input id="userid" type="text" name="userid" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-userid="">
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="password" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
+										<label for="password" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_PASSWORD)</label>
 										<div class="col-sm-9">
 											<input id="password" type="text" name="password" class="form-control" placeholder="" value="" required autofocus maxlength="16" data-parsley-trigger="change focusout" data-parsley-password="">
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="hiragana" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_HIRAGANA)</label>
+										<label for="hiragana" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_HIRAGANA)</label>
 										<div class="col-sm-9">
 											<input id="hiragana" type="text" name="hiragana" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-hiragana="">
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="katakana" class="col-sm-3 col-form-label required">@Messages(MessageKeys.SYSTEM_CONSTRAINT_KATAKANA)</label>
+										<label for="katakana" class="col-sm-3 col-form-label required">@messages(MessageKeys.SYSTEM_CONSTRAINT_KATAKANA)</label>
 										<div class="col-sm-9">
 											<input id="hiragana" type="text" name="katakana" class="form-control" placeholder="" value="" required autofocus maxlength="256" data-parsley-trigger="change focusout" data-parsley-katakana="">
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 text-right">
-											@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-paper-plane", "text"->Messages(MessageKeys.SEND), "default"->"true", "class"->"float-right"))
+											@components.button(Map("id"->"sendButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-paper-plane", "text"->messages(MessageKeys.SEND), "default"->"true", "class"->"float-right"))
 										</div>
 									</div>
 								}

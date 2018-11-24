@@ -22,7 +22,7 @@ var zeroMoment = moment({
 	M : 0,
 	d : 0
 });
-var requestMoment = moment(Messages("clientDateTime"));
+var requestMoment = moment(messages("clientDateTime"));
 
 var requestDate = new Date();
 setTimeout(function() {

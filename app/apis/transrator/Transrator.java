@@ -1,5 +1,6 @@
 package apis.transrator;
 
+import java.lang.invoke.MethodHandles;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -12,6 +13,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -22,23 +26,40 @@ import play.filters.csrf.RequireCSRFCheck;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
+import play.libs.ws.ahc.AhcCurlRequestLogger;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import play.i18n.Langs;
+import play.i18n.Messages;
+import play.i18n.Lang;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 import play.mvc.Security.Authenticated;
 
 @PermissionsAllowed
 public class Transrator extends Controller {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
 	@Inject
 	private Config config;
+
+	@Inject
+	private Langs langs;
+
+	@Inject
+	private MessagesApi messagesApi;
 
 	@Inject
 	private WSClient ws;
 
 	@Authenticated(common.core.Authenticator.class)
 	@RequireCSRFCheck
-	public Result translate(@Nullable final String from, @Nonnull final String to, @Nonnull final String text) {
+	public Result translate(@Nonnull final Request request, @Nullable final String from, @Nonnull final String to, @Nonnull final String text) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
 
 		try {
 
@@ -104,9 +125,10 @@ public class Transrator extends Controller {
 		final Duration timeout = Duration.ofSeconds(10);
 
 		final String subscriptionKey = getSubscriptionKey();
-		final WSRequest wsRequest = ws.url("https://api.cognitive.microsoft.com/sts/v1.0/issueToken");
-		wsRequest.addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-		final CompletionStage<WSResponse> responsePromise = wsRequest.setRequestTimeout(timeout).post("");
+		final CompletionStage<WSResponse> responsePromise = ws.url("https://api.cognitive.microsoft.com/sts/v1.0/issueToken")//
+				.setRequestFilter(new AhcCurlRequestLogger(LOGGER))//
+				.addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)//
+				.setRequestTimeout(timeout).post("");
 
 		final CompletionStage<Map<String, String>> recoverPromise = responsePromise.handle((response, throwable) -> {
 
@@ -163,6 +185,7 @@ public class Transrator extends Controller {
 		final Duration timeout = Duration.ofSeconds(10);
 
 		final WSRequest wsRequest = ws.url("https://api.microsofttranslator.com/v2/http.svc/Translate");
+		wsRequest.setRequestFilter(new AhcCurlRequestLogger(LOGGER));
 		wsRequest.addQueryParameter("appid", "Bearer " + accessToken);
 		if (Objects.nonNull(from)) {
 

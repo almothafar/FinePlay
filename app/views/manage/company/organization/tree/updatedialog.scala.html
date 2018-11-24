@@ -4,7 +4,8 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -13,11 +14,11 @@
 @import models.manage.company.organization.tree._
 @import models.company.organization._
 
-@(form: play.data.Form[models.manage.company.organization.tree.ReadFormContent])
+@(form: play.data.Form[models.manage.company.organization.tree.ReadFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-@components.modal(Map("id"->"updateDialog", "icon"->"far fa-hdd", "title"->Messages(MessageKeys.SAVE), "closable"->"false", "data-backdrop"->"static"), List(
-		Map("id"->"updateCancel", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
-		Map("id"->"updateOk", "type"->"primary", "text"->Messages(MessageKeys.OK), "default"->"true")
+@components.modal(Map("id"->"updateDialog", "icon"->"far fa-hdd", "title"->messages(MessageKeys.SAVE), "closable"->"false", "data-backdrop"->"static"), List(
+		Map("id"->"updateCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
+		Map("id"->"updateOk", "type"->"primary", "text"->messages(MessageKeys.OK), "default"->"true")
 	)){
 
 	@helper.form(helper.CSRF(controllers.manage.company.organization.tree.routes.Edit.update()), 'name->"updateForm", 'id->"updateForm") {
@@ -47,7 +48,7 @@
 	}
 
 	<div class="wordwrap">
-		<div id="updateMessage" class="lead">@Messages(MessageKeys.PLEASE__WAIT)</div>
+		<div id="updateMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
 		<div id="updateDescription">-</div>
 	</div>
 	@components.progress(Map("id"->"updateProgress", "value"->"0", "max"->"100", "striped"->"true", "animated"->"true"))

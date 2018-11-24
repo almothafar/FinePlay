@@ -9,14 +9,25 @@ import models.system.System.PermissionsAllowed;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+import play.i18n.Messages;
+import play.i18n.MessagesApi;
+import play.mvc.Http.Request;
 
 @PermissionsAllowed
 public class Http extends Controller {
 
-	@BodyParser.Of(BodyParser.Json.class)
-	public CompletionStage<Result> postData() {
+	@Inject
+	private MessagesApi messagesApi;
 
-		final JsonNode jsonNode = request().body().asJson();
+	@BodyParser.Of(BodyParser.Json.class)
+	public CompletionStage<Result> postData(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		messages.lang();
+
+		final JsonNode jsonNode = request.body().asJson();
 
 		return CompletableFuture.supplyAsync(() -> {
 

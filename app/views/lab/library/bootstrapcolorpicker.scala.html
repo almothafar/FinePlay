@@ -4,13 +4,17 @@
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -39,7 +43,7 @@
 				<div class="col-md-9">
 
 					<div class="mb-3">
-						@components.button(Map("id"->"getButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.GET), "data-toggle"->"modal", "data-target"->"#pickerWindow"))
+						@components.button(Map("id"->"getButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.GET), "data-toggle"->"modal", "data-target"->"#pickerWindow"))
 						<div class="modal fade" id="pickerWindow" role="dialog" aria-hidden="true">
 							<div class="modal-dialog modal-sm">
 								<div class="modal-content">
@@ -49,8 +53,8 @@
 										<div id="picker" class="mx-auto"></div>
 									</div>
 									<div class="modal-footer">
-										@components.button(Map("id"->"cancelButton", "type"->"primary", "outline"->"true", "text"->Messages(MessageKeys.CANCEL), "data-dismiss"->"modal"))
-										@components.button(Map("id"->"okButton", "type"->"primary", "text"->Messages(MessageKeys.OK), "data-toggle"->"modal", "data-target"->"#pickerWindow", "data-whatever"->"okButton", "class"->"default"))
+										@components.button(Map("id"->"cancelButton", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"))
+										@components.button(Map("id"->"okButton", "type"->"primary", "text"->messages(MessageKeys.OK), "data-toggle"->"modal", "data-target"->"#pickerWindow", "data-whatever"->"okButton", "class"->"default"))
 									</div>
 								</div>
 							</div>

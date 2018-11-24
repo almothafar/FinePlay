@@ -4,7 +4,8 @@
 @import scala.collection.immutable.List
 @import scala.collection.JavaConversions._
 
-@import play.api.i18n._
+@import play.i18n.Lang
+@import play.i18n.Messages
 
 @import views.html._
 @import views.html.components
@@ -15,7 +16,7 @@
 
 @import common.system._
 
-@()
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -38,7 +39,7 @@
 						@components.alert(Map("id"->"", "icon"->"fas fa-info-circle", "text"->"Test page uses eval.", "type"->"info"))
 					</div>
 
-					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->Messages(MessageKeys.PREVIOUS), "link"->controllers.development.javascript.routes.JavaScript.index("test").toString()))
+					@components.linkbutton(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->messages(MessageKeys.PREVIOUS), "link"->controllers.development.javascript.routes.JavaScript.index("test").toString()))
 				</div>
 			</div>
 		}
