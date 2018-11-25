@@ -67,7 +67,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "bootstrap" % "4.1.3",							// MIT 4.0.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
-  "org.webjars.npm" % "bootstrap-slider" % "10.2.1",					// MIT 10.2.1
+  "org.webjars.npm" % "bootstrap-slider" % "10.3.1",					// MIT 10.3.1
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
@@ -80,33 +80,33 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.18",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
-  "org.webjars.bower" % "summernote" % "0.8.10",						// MIT 0.8.10
-  "org.webjars.npm" % "handsontable" % "5.0.0",							// MIT/Pro 5.0.0
+  "org.webjars.bower" % "summernote" % "0.8.11",						// MIT 0.8.11
+  "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
-  "org.webjars.npm" % "cropperjs" % "1.4.1",							// MIT 1.4.1
+  "org.webjars.npm" % "cropperjs" % "1.4.3",							// MIT 1.4.3
   "org.webjars.npm" % "d3" % "5.7.0",									// BSD-3-Clause license 5.5.0
-  "org.webjars.npm" % "d3-geo-projection" % "2.4.0",					// MIT 2.4.0
+  "org.webjars.npm" % "d3-geo-projection" % "2.5.0",					// MIT 2.5.0
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
-  "org.webjars.bower" % "diff2html" % "2.4.0",							// MIT 2.4.0
-  "org.webjars.npm" % "marked" % "0.5.1",								// MIT 0.5.1
-  "org.webjars.npm" % "viz.js" % "2.0.0",								// MIT 2.0.0
+  "org.webjars.npm" % "diff2html" % "2.5.0",							// MIT 2.5.0
+  "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
+  "org.webjars.npm" % "viz.js" % "2.1.1",								// MIT 2.1.1
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.bower" % "plotly.js" % "1.41.3",							// MIT 1.41.3
+  "org.webjars.bower" % "plotly.js" % "1.42.5",							// MIT 1.42.5
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.bower" % "tether-shepherd" % "2.0.0-beta.34",			// MIT 2.0.0-beta.34
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
-  "org.webjars.npm" % "jqtree" % "1.4.8",								// Apache 1.4.8
+  "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
   "org.webjars.npm" % "jsqr" % "1.1.1",									// Apache 2018/06/24 master
+  "org.webjars.npm" % "3dmol" % "1.3.7",								// BSD-3-Clause license 1.3.7
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
 // TwentyTwenty															// ISC? MIT? Aug 7, 2018 master
 // markdeep																// BSD archive master(Sep 10, 2018)
 // Frappé Gantt															// MIT build version 0.0.7 master
-// 3Dmol.js																// BSD-3-Clause license 1.3.6
 // geckodriver															// Mozilla Public License 0.18.0
 
 // Use bootstrap
@@ -126,8 +126,8 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.5.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.5.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
-  "org.webjars.npm" % "ionicons" % "4.4.6",								// MIT 4.4.6
-  "org.webjars.npm" % "twemoji" % "11.0.0"								// Code:MIT, Graphics:CC 11.0.0
+  "org.webjars.npm" % "ionicons" % "4.4.7",								// MIT 4.4.7
+  "org.webjars.npm" % "twemoji" % "11.2.0"								// Code:MIT, Graphics:CC 11.2.0
 )
 // IcoFont																// MIT 1.3
 

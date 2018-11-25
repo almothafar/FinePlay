@@ -28,6 +28,7 @@ import net.jodah.failsafe.RetryPolicy;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
+import play.libs.ws.ahc.AhcCurlRequestLogger;
 import play.mvc.Http;
 import play.test.WSTestClient;
 
@@ -138,10 +139,11 @@ class LibraryUpdateChecker {
 
 		final Duration timeout = Duration.ofSeconds(10);
 
-		final WSRequest wsRequest = ws.url("http://search.maven.org/solrsearch/select");
-		wsRequest.addQueryParameter("q", "g:\"" + artifact.getGroupId() + "\" AND a:\"" + artifact.getArtifactId() + "\"");
-		wsRequest.addQueryParameter("rows", "20");
-		wsRequest.addQueryParameter("wt", "json");
+		final WSRequest wsRequest = ws.url("http://search.maven.org/solrsearch/select")//
+				.setRequestFilter(new AhcCurlRequestLogger(LOGGER))//
+				.addQueryParameter("q", "g:\"" + artifact.getGroupId() + "\" AND a:\"" + artifact.getArtifactId() + "\"")//
+				.addQueryParameter("rows", "20")//
+				.addQueryParameter("wt", "json");
 
 		@SuppressWarnings("unchecked")
 		final RetryPolicy retryPolicy = new RetryPolicy()//
