@@ -64,7 +64,6 @@ import common.utils.ZIPs;
 import models.base.EntityDao;
 import models.system.System.PermissionsAllowed;
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import play.api.PlayException;
 import play.db.jpa.JPAApi;
@@ -401,37 +400,6 @@ public class Download extends Controller {
 					throw new UncheckedIOException(e);
 				}
 			});
-		});
-	}
-
-	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> paperPdfStream(@Nonnull final Request request) {
-
-		final Messages messages = messagesApi.preferred(request);
-		messages.lang();
-
-		final Reporter reporter = (templateStream, parameters, dataSource) -> Reports.toPDF(templateStream, parameters, dataSource);
-		return paperStream(reporter, messages);
-	}
-
-	@SuppressWarnings("null")
-	private CompletionStage<Result> paperStream(final Reporter reporter, final Messages messages) {
-
-		final Map<String, Object> parameters = new HashMap<>();
-		parameters.put(MessageKeys.USER_USERID, messages.at(MessageKeys.USER_USERID));
-
-		final JRDataSource dataSource = new JREmptyDataSource();
-
-		return CompletableFuture.supplyAsync(() -> {
-
-			try (final InputStream templateStream = play.Environment.simple().resourceAsStream("resources/lab/application/paper.jasper")) {
-
-				final byte[] bytes = reporter.toReport(templateStream, parameters, dataSource);
-				return ok(bytes).as(Http.MimeTypes.BINARY);
-			} catch (IOException e) {
-
-				throw new UncheckedIOException(e);
-			}
 		});
 	}
 

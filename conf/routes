@@ -179,7 +179,6 @@ GET		/lab/application/download/report.pdf		controllers.lab.application.Download.
 GET		/lab/application/download/report.docx		controllers.lab.application.Download.reportWordStream(request: Request)
 GET		/lab/application/download/report.xlsx		controllers.lab.application.Download.reportExcelStream(request: Request)
 GET		/lab/application/download/report.pptx		controllers.lab.application.Download.reportPowerpointStream(request: Request)
-GET		/lab/application/download/paper.pdf			controllers.lab.application.Download.paperPdfStream(request: Request)
 GET		/lab/application/download/files.zip			controllers.lab.application.Download.zipStream(request: Request)
 GET		/lab/application/download/encryptfiles.zip	controllers.lab.application.Download.encryptZipStream(request: Request)
 GET		/lab/application/download/filename			controllers.lab.application.Download.fileName(request: Request)

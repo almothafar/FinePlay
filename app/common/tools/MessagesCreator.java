@@ -218,7 +218,7 @@ class MessagesCreator {
 
 			Objects.requireNonNull(value);
 
-			lines.add(key + " = " + value);
+			lines.add(key + "=" + value);
 		}
 
 		void createFile() {

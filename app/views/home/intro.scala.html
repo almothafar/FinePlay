@@ -46,8 +46,8 @@
 
 		@components.container(Map("id"->"", "fluid"->"true")){
 
-			@components.alert(Map("id"->"timezoneInfo", "icon"->"far fa-clock", "text"->messages(MessageKeys.YOUR__X__IS__X, "<strong>"+messages(MessageKeys.TIMEZONE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentTimeZone+"</a>"), "type"->"info", "closable"->"true"))
-			@components.alert(Map("id"->"languageInfo", "icon"->"fas fa-globe", "text"->messages(MessageKeys.YOUR__X__IS__X, "<strong>"+messages(MessageKeys.LANGUAGE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+currentLang+"</a>"), "type"->"info", "closable"->"true"))
+			@components.alert(Map("id"->"timezoneInfo", "icon"->"far fa-clock", "text"->messages(MessageKeys.YOUR__X__IS__X, "<strong>"+messages(MessageKeys.TIMEZONE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+messages(MessageKeys.X__X, currentTimeZone, messages(MessageKeys.SETTING))+"</a>"), "type"->"info", "closable"->"true"))
+			@components.alert(Map("id"->"languageInfo", "icon"->"fas fa-globe", "text"->messages(MessageKeys.YOUR__X__IS__X, "<strong>"+messages(MessageKeys.LANGUAGE)+"</strong>", "<a href=\""+controllers.setting.user.routes.User.index().toString()+"\" class=\"alert-link\">"+messages(MessageKeys.X__X, currentLang, messages(MessageKeys.SETTING))+"</a>"), "type"->"info", "closable"->"true"))
 		}
 
 		@components.container(Map("id"->"", "fluid"->"true")){

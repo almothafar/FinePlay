@@ -142,16 +142,6 @@
 					</div>
 
 					<div class="mb-3 lab secret">
-						<h4 class="headline">Paper unless Stream</h4>
-						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.paperPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->messages(MessageKeys.DOWNLOAD)))
-					</div>
-
-					<div class="mb-3 secret">
-
-						<hr class="separator">
-					</div>
-
-					<div class="mb-3 lab secret">
 						<h4 class="headline">ZIP Stream</h4>
 						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.zipStream().toString(), "type"->"primary", "outline"->"true", "icon"->"far fa-file-archive", "text"->messages(MessageKeys.DOWNLOAD)))
 					</div>

@@ -1,5 +1,5 @@
-message.code = ar-AE
-country.flag = 🇦🇪
+message.code=ar-AE
+country.flag=🇦🇪
 
 #
 # Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
@@ -158,18 +158,18 @@ country.flag = 🇦🇪
 
 
 
-bootbox.lang = ar
-datatables.lang = Arabic
-fullcalendar.lang = ar
-frappegantt.lang = ar
-handsontable.lang = en-US
-parsley.lang = ar
-pdfjs.lang = ar
-pickadate.lang = ar
-plotlyjs.lang = ar
-select2.lang = ar
+bootbox.lang=ar
+datatables.lang=Arabic
+fullcalendar.lang=ar
+frappegantt.lang=ar
+handsontable.lang=en-US
+parsley.lang=ar
+pdfjs.lang=ar
+pickadate.lang=ar
+plotlyjs.lang=ar
+select2.lang=ar
 
-summernote.lang = ar-AR
+summernote.lang=ar-AR
 
 
 

@@ -47,13 +47,13 @@ public class ActionCreator extends DefaultActionCreator {
 	private MessagesApi messagesApi;
 
 	@Inject
-	private JPAApi jpa;
+	private JPAApi jpaApi;
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	public Action createAction(Request request, Method actionMethod) {
 
-		return jpa.withTransaction(manager -> {
+		return jpaApi.withTransaction(manager -> {
 
 			LOGGER.info("========== method={} uri={} remote-address={} ==========", request.method(), request.uri(), request.remoteAddress());
 			LOGGER.info("{}#{}", actionMethod.getDeclaringClass().getName(), actionMethod.getName());

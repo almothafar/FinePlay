@@ -93,8 +93,6 @@
 |                    |                                                                      |file                          |      |      |      |
 |                    |                                                                      |fileName                      |      |      |      |
 |                    |                                                                      |index                         |      |      |      |
-|                    |                                                                      |ivdPdfStream                  |      |      |      |
-|                    |                                                                      |paperPdfStream                |      |      |      |
 |                    |                                                                      |pdfboxStream                  |      |      |      |
 |                    |                                                                      |powerPointStream              |      |      |      |
 |                    |                                                                      |reportExcelStream             |      |      |      |
@@ -103,7 +101,6 @@
 |                    |                                                                      |reportWordStream              |      |      |      |
 |                    |                                                                      |stream                        |      |      |      |
 |                    |                                                                      |urlFileName                   |      |      |      |
-|                    |                                                                      |wkhtmltopdfStream             |      |      |      |
 |                    |                                                                      |wordStream                    |      |      |      |
 |                    |                                                                      |zipStream                     |      |      |      |
 |controllers         |controllers.lab.application.Upload                                    |                              |     O|     O|     O|

@@ -39,6 +39,7 @@ import models.system.System;
 import models.system.System.Permission;
 import play.api.mvc.Call;
 import play.mvc.Controller;
+import play.mvc.Http;
 
 class PermissionListCreator {
 
@@ -221,7 +222,8 @@ class PermissionListCreator {
 
 	private static boolean equalParameterTypes(final Class<?>[] reverseParameterTypes, final Class<?>[] controllerParameterTypes) {
 
-		if (reverseParameterTypes.length != controllerParameterTypes.length)
+		final Class<?>[] filteredControllerParameterTypes = Arrays.stream(controllerParameterTypes).filter(type -> !Http.Request.class.equals(type)).collect(Collectors.toList()).toArray(new Class<?>[0]);
+		if (reverseParameterTypes.length != filteredControllerParameterTypes.length)
 			return false;
 
 		return IntStream.range(0, reverseParameterTypes.length).allMatch(i -> {
@@ -229,7 +231,7 @@ class PermissionListCreator {
 			final Class<?> reverseParameterType = reverseParameterTypes[i];
 			final String reverseParameterTypeName = reverseParameterType.getSimpleName();
 
-			final Class<?> controllerParameterType = controllerParameterTypes[i];
+			final Class<?> controllerParameterType = filteredControllerParameterTypes[i];
 			final String controllerParameterTypeName = controllerParameterType.getSimpleName();
 
 			return reverseParameterTypeName.toLowerCase().substring(0, 3).equals(controllerParameterTypeName.toLowerCase().substring(0, 3));

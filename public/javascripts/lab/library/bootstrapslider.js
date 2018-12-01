@@ -39,3 +39,9 @@ $("#leftTooltip").bootstrapSlider({
 	tooltip: 'always',
 	tooltip_position: 'left'
 });
+
+// Touch scroll off
+
+$(".slider").on('touchmove.noScroll', function(e) {
+	e.preventDefault();
+});

@@ -54,7 +54,7 @@ Document
 
 ### Official Document ###
 
-[Play Framework](https://www.playframework.com/documentation/2.7.0-RC3)
+[Play Framework](https://www.playframework.com/documentation/2.7.x)
 
 [Bootstrap](http://getbootstrap.com/docs/4.1)
 
@@ -78,9 +78,7 @@ TODO
 + Update Play Framework 2.7.0 release
 
 #### Play Framework 2.7.0 ####
-+ Follow Deprecate
 + Update application.conf
-+ Update messages
 
 ### FinePlay 2.7.x ###
 + Update Bootstrap 4.2 release
@@ -98,7 +96,7 @@ TODO
 Release History
 ---------------
 
-+ **2.7.0-RC3-βc4** - 2018-11-24
++ **2.7.0-RC8-βc9** - 2018-12-01
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

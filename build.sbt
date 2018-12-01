@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-RC3-βc4-SNAPSHOT"
+version := "2.7.0-RC8-βc9-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC3-βc4-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC8-βc9-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -33,8 +33,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "6.0.1",						// Apache 6.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.7.0-RC1",						// Apache 2.7.0-M1
-  "com.typesafe.play" %% "play-ws" % "2.0.0-RC1",						// Apache 2.0.0-M6
+  "com.typesafe.play" %% "play-json" % "2.7.0-RC2",						// Apache 2.7.0-M1
+  "com.typesafe.play" %% "play-ws" % "2.0.0-RC2",						// Apache 2.0.0-M6
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
@@ -50,13 +50,13 @@ libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "2.23.4",							// MIT 2.23.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
-  "org.apache.poi" % "poi" % "4.0.0",									// Apache 4.0.0
-  "org.apache.poi" % "poi-scratchpad" % "4.0.0",
-  "org.apache.poi" % "poi-ooxml" % "4.0.0",
+  "org.apache.poi" % "poi" % "4.0.1",									// Apache 4.0.0
+  "org.apache.poi" % "poi-scratchpad" % "4.0.1",
+  "org.apache.poi" % "poi-ooxml" % "4.0.1",
   "org.apache.tika" % "tika-core" % "1.19.1",							// Apache 1.17
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.12",							// Apache 2.0.9
+  "org.apache.pdfbox" % "pdfbox" % "2.0.13",							// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0

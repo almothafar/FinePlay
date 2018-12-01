@@ -1,5 +1,5 @@
-message.code = en-US
-country.flag = 🇺🇸
+message.code=en-US
+country.flag=🇺🇸
 
 #
 # Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
@@ -162,20 +162,20 @@ country.flag = 🇺🇸
 
 
 
-handsontable.lang = en-US
+handsontable.lang=en-US
 
-pdfjs.lang = en-US
-
-
+pdfjs.lang=en-US
 
 
 
 
 
 
-map.rotate.lambda = 77
-map.rotate.phi = 0
-map.rotate.gamma = 0
+
+
+map.rotate.lambda=77
+map.rotate.phi=0
+map.rotate.gamma=0
 
 #
 
