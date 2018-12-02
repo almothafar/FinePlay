@@ -420,6 +420,7 @@ $('#debugButton').on('shown.bs.popover', function () {
 
 	$("#applyBorderButton").on("click", function(){$("*").css("border", "solid 1px lavender");});
 	$("#showResponsiveButton").on("click", function(){$("#system_responsive-bar").removeClass("d-none");});
+	$("#consoleButton").on("click", function(){var vConsole = new VConsole();});
 	$("#secretButton").on("click", function(){$('.secret').removeClass('secret');});
 	$("#Memory").text($("#debugButton").data("memory"));
 	$("#JDK_ver").text($("#debugButton").data("jdkver"));

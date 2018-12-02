@@ -1,3 +1,5 @@
+English | [日本語](./README_ja.md)
+
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
 Play(Java) 2.7 & Bootstrap 4.1  

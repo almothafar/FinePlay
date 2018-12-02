@@ -101,6 +101,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
   "org.webjars.npm" % "jsqr" % "1.1.1",									// Apache 2018/06/24 master
   "org.webjars.npm" % "3dmol" % "1.3.7",								// BSD-3-Clause license 1.3.7
+  "org.webjars.npm" % "github-com-Tencent-vConsole" % "3.2.0",			// MIT 3.2.0
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
