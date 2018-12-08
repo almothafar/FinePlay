@@ -80,6 +80,9 @@ public class Library extends Controller {
 		case "highlight":
 
 			return highlight(request, lang, messages);
+		case "prettier":
+
+			return prettier(request, lang, messages);
 		case "d3":
 
 			return d3(request, lang, messages);
@@ -242,6 +245,11 @@ public class Library extends Controller {
 	public static Result highlight(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.library.highlight.render(request, lang, messages));
+	}
+
+	public static Result prettier(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.prettier.render(request, lang, messages));
 	}
 
 	public static Result d3(final Request request, final Lang lang, final Messages messages) {

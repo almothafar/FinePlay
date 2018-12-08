@@ -87,6 +87,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "d3" % "5.7.0",									// BSD-3-Clause license 5.5.0
   "org.webjars.npm" % "d3-geo-projection" % "2.5.0",					// MIT 2.5.0
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
+  "org.webjars.npm" % "prettier" % "1.15.3",							// MIT 1.15.3
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.npm" % "diff2html" % "2.5.0",							// MIT 2.5.0
   "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2

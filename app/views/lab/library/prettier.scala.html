@@ -1,0 +1,140 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import common.system._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@htmlExampleText() = @{
+
+	"""<!DOCTYPE html><HTML CLASS="no-js mY-ClAsS">  <HEAD>    <META CHARSET="utf-8">    <TITLE>My tITlE</TITLE>    <META NAME="description" content="My CoNtEnT">  </HEAD>  <body>    <P>Hello world!<BR> This is HTML5 Boilerplate.</P>    <SCRIPT>      window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;      ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')    </script>    <SCRIPT src="https://www.google-analytics.com/analytics.js" ASYNC DEFER></script>  </body></HTML>"""
+}
+
+@cssExampleText() = @{
+
+	"""@media (max-width: 480px) {  .bd-examples {margin-right: -.75rem;margin-left: -.75rem  }   .bd-examples>[class^="col-"]  {    padding-right: .75rem;    padding-left: .75rem;    }}"""
+}
+
+@jsonExampleText() = @{
+
+	"""{"allOn": "Single", "Line": "example","noSpace":true,  "quote": {    'singleQuote': 'example',                  "indented": true,  },  "phoneNumbers": [    {"type": "home",      "number": "212 555-1234"},    {"type": "office",      "trailing": "commas by accident"},  ],}"""
+}
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Prettier", "icon"->"fas fa-code", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"prettier"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div>
+
+						@components.nav(Map("id"->"htmlTab","tabs"->"true"), List(
+							Map("name"->messages(MessageKeys.TEXT), "icon"->"", "link"->"#html", "selected"->"true", "data-toggle"->"tab"),
+							Map("name"->messages(MessageKeys.RESULT), "icon"->"", "link"->"#resultHtml", "data-toggle"->"tab")
+						))
+
+						<div id="htmlTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="html" role="tabpanel">
+
+								<textarea id="text" class="form-control" placeholder="Content" rows="8" required maxlength="1000">@htmlExampleText()</textarea>
+							</div>
+							<div class="tab-pane" id="resultHtml" role="tabpanel">
+
+								<textarea id="resultText" class="form-control" placeholder="Result" rows="8" required maxlength="1000"></textarea>
+							</div>
+						</div>
+
+						<div class="mt-3 mb-3 text-right">
+
+							@components.button(Map("id"->"htmlFormatButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-exchange-alt", "text"->messages(MessageKeys.FORMAT), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+						</div>
+					</div>
+
+					<div class="secret">
+
+						@components.nav(Map("id"->"cssTab","tabs"->"true"), List(
+							Map("name"->messages(MessageKeys.TEXT), "icon"->"", "link"->"#css", "selected"->"true", "data-toggle"->"tab"),
+							Map("name"->messages(MessageKeys.RESULT), "icon"->"", "link"->"#resultCss", "data-toggle"->"tab")
+						))
+
+						<div id="cssTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="css" role="tabpanel">
+
+								<textarea id="text" class="form-control" placeholder="Content" rows="8" required maxlength="1000">@cssExampleText()</textarea>
+							</div>
+							<div class="tab-pane" id="resultCss" role="tabpanel">
+
+								<textarea id="resultText" class="form-control" placeholder="Result" rows="8" required maxlength="1000"></textarea>
+							</div>
+						</div>
+
+						<div class="mt-3 mb-3 text-right">
+
+							@components.button(Map("id"->"cssFormatButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-exchange-alt", "text"->messages(MessageKeys.FORMAT), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+						</div>
+					</div>
+
+					<div class="secret">
+
+						@components.nav(Map("id"->"jsonTab","tabs"->"true"), List(
+							Map("name"->messages(MessageKeys.TEXT), "icon"->"", "link"->"#json", "selected"->"true", "data-toggle"->"tab"),
+							Map("name"->messages(MessageKeys.RESULT), "icon"->"", "link"->"#resultJson", "data-toggle"->"tab")
+						))
+
+						<div id="jsonTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="json" role="tabpanel">
+
+								<textarea id="text" class="form-control" placeholder="Content" rows="8" required maxlength="1000">@jsonExampleText()</textarea>
+							</div>
+							<div class="tab-pane" id="resultJson" role="tabpanel">
+
+								<textarea id="resultText" class="form-control" placeholder="Result" rows="8" required maxlength="1000"></textarea>
+							</div>
+						</div>
+
+						<div class="mt-3 mb-3 text-right">
+
+							@components.button(Map("id"->"jsonFormatButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-exchange-alt", "text"->messages(MessageKeys.FORMAT), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.prettier.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/prettier.js")'></script>
+	}
+}

@@ -1,0 +1,15 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html.helper._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/prettier/standalone.js")'></script>
+
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/prettier/parser-html.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/prettier/parser-postcss.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/prettier/parser-typescript.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/prettier/parser-babylon.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/prettier/parser-yaml.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/prettier/parser-markdown.js")'></script>
