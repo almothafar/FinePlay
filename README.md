@@ -14,10 +14,10 @@ How to play
 
 ##### Environment #####
 
-	macOS Mojave version 10.14.1（18B75）
+	macOS Mojave version 10.14.2（18C54）
 	Time zone UTC
 	openjdk version "11.0.1" 2018-10-16 / OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
-	Safari version 12.0.1 (14606.2.104.1.1)
+	Safari version 12.0.2 (14606.3.4)
 
 ##### OpenJDK #####
 
@@ -63,6 +63,22 @@ Document
 [Font Awesome](https://fontawesome.com/how-to-use)
 
 This **template** is unofficial.
+
+Support / Additional contents
+---------------
+
+##### JDK #####
++ It seems that a [paid version](https://support.oracle.com/epmos/faces/MosIndex.jspx) is being offered by Oracle.
+
+##### Play Framework #####
++ [Commercial support](https://www.lightbend.com/subscription) seems to be provided at Lightbend.
+
+##### Bootstrap #####
++ When you browse the [document](https://getbootstrap.com), I think that it will become advertisement revenue.
++ It seems to be selling the [theme](https://themes.getbootstrap.com).
+
+##### Font Awesome #####
++ When purchasing [Pro version](https://fontawesome.com/pro), it seems that many icons can be used.
 
 Notice
 ---------------

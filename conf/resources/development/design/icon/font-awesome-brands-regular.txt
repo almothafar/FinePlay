@@ -3,6 +3,7 @@ accessible-icon
 accusoft
 acquisitions-incorporated
 adn
+adobe
 adversal
 affiliatetheme
 algolia
@@ -19,7 +20,9 @@ app-store-ios
 apper
 apple
 apple-pay
+artstation
 asymmetrik
+atlassian
 audible
 autoprefixer
 avianex
@@ -41,6 +44,7 @@ bluetooth-b
 btc
 buromobelexperte
 buysellads
+canadian-maple-leaf
 cc-amazon-pay
 cc-amex
 cc-apple-pay
@@ -52,12 +56,14 @@ cc-paypal
 cc-stripe
 cc-visa
 centercode
+centos
 chrome
 cloudscale
 cloudsmith
 cloudversify
 codepen
 codiepie
+confluence
 connectdevelop
 contao
 cpanel
@@ -87,6 +93,8 @@ deploydog
 deskpro
 dev
 deviantart
+dhl
+diaspora
 digg
 digital-ocean
 discord
@@ -116,6 +124,9 @@ facebook-f
 facebook-messenger
 facebook-square
 fantasy-flight-games
+fedex
+fedora
+figma
 firefox
 first-order
 first-order-alt
@@ -178,13 +189,16 @@ html5
 hubspot
 imdb
 instagram
+intercom
 internet-explorer
+invision
 ioxhost
 itunes
 itunes-note
 java
 jedi-order
 jenkins
+jira
 joget
 joomla
 js
@@ -219,6 +233,7 @@ medium-m
 medrt
 meetup
 megaport
+mendeley
 microsoft
 mix
 mixcloud
@@ -268,6 +283,7 @@ qq
 quinscape
 quora
 r-project
+raspberry-pi
 ravelry
 react
 reacteurope
@@ -277,6 +293,7 @@ red-river
 reddit
 reddit-alien
 reddit-square
+redhat
 renren
 replyd
 researchgate
@@ -297,6 +314,7 @@ shopware
 simplybuilt
 sistrix
 sith
+sketch
 skyatlas
 skype
 slack
@@ -306,6 +324,7 @@ snapchat
 snapchat-ghost
 snapchat-square
 soundcloud
+sourcetree
 speakap
 spotify
 squarespace
@@ -324,6 +343,7 @@ stumbleupon
 stumbleupon-circle
 superpowers
 supple
+suse
 teamspeak
 telegram
 telegram-plane
@@ -342,10 +362,13 @@ twitter
 twitter-square
 typo3
 uber
+ubuntu
 uikit
 uniregistry
 untappd
+ups
 usb
+usps
 ussunnah
 vaadin
 viacoin
@@ -383,6 +406,7 @@ y-combinator
 yahoo
 yandex
 yandex-international
+yarn
 yelp
 yoast
 youtube

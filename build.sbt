@@ -39,8 +39,8 @@ libraryDependencies ++= Seq(
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
   "net.logstash.logback" % "logstash-logback-encoder" % "5.2",			// Apache 5.2
-  "org.hibernate" % "hibernate-core" % "5.3.7.Final",					// LGPL 5.3.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.3.7.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.4.0.Final",					// LGPL 5.4.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.4.0.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.3",
@@ -78,7 +78,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
   "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
-  "org.webjars.bower" % "datatables.net-plugins" % "1.10.18",			//
+  "org.webjars.bower" % "datatables.net-plugins" % "1.10.19",			//
   "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
   "org.webjars.bower" % "summernote" % "0.8.11",						// MIT 0.8.11
   "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
@@ -126,7 +126,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.5.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.5.0
+  "org.webjars" % "font-awesome" % "5.6.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.6.1
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.4.7",								// MIT 4.4.7
   "org.webjars.npm" % "twemoji" % "11.2.0"								// Code:MIT, Graphics:CC 11.2.0

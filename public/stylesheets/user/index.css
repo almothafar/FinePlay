@@ -62,7 +62,12 @@ body {
 }
 
 #signInPanel>.card-header>img {
-	height:54px;
+	height:44px;
+}
+@media (min-width:375px) {
+	#signInPanel>.card-header>img {
+		height:54px;
+	}
 }
 
 #stamp{

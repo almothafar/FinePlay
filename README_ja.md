@@ -14,10 +14,10 @@ Play(Java) 2.7 & Bootstrap 4.1
 
 ##### 環境 #####
 
-	macOS Mojave バージョン 10.14.1（18B75）
+	macOS Mojave バージョン 10.14.2（18C54）
 	時間帯 UTC
 	openjdk バージョン "11.0.1" 2018-10-16 / OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
-	Safari バージョン 12.0.1 (14606.2.104.1.1)
+	Safari バージョン 12.0.2 (14606.3.4)
 
 ##### OpenJDK #####
 
@@ -63,6 +63,22 @@ URL を開く
 [Font Awesome](https://fontawesome.com/how-to-use)
 
 この **ひな形** は、非公式です。
+
+サポート / 追加コンテンツ
+---------------
+
+##### JDK #####
++ オラクル社で、[有償版](https://support.oracle.com/epmos/faces/MosIndex.jspx)が提供されているようです。
+
+##### Play Framework #####
++ ライトベンド社で、[商用サポート](https://www.lightbend.com/subscription)が提供されているようです。
+
+##### Bootstrap #####
++ [ドキュメント](https://getbootstrap.com)を閲覧すると、広告収入になると思います。
++ [テーマ](https://themes.getbootstrap.com)を販売しているようです。
+
+##### Font Awesome #####
++ [Pro版](https://fontawesome.com/pro)を購入すると、より多くのアイコンが使用できるようです。
 
 注意
 ---------------

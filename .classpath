@@ -475,9 +475,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/docs/logstash-logback-encoder-5.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.3.7.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.3.7.Final.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.4.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.4.0.Final.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/docs/hibernate-core-5.3.7.Final-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/docs/hibernate-core-5.4.0.Final-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.persistence/javax.persistence-api/srcs/javax.persistence-api-2.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.persistence/javax.persistence-api/jars/javax.persistence-api-2.2.jar">
@@ -485,9 +485,14 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/javax.persistence/javax.persistence-api/docs/javax.persistence-api-2.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.javassist/javassist/srcs/javassist-3.23.1-GA-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.23.1-GA.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.javassist/javassist/srcs/javassist-3.24.0-GA-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.24.0-GA.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.javassist/javassist/docs/javassist-3.23.1-GA-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.javassist/javassist/docs/javassist-3.24.0-GA-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/srcs/byte-buddy-1.9.5-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/jars/byte-buddy-1.9.5.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/docs/byte-buddy-1.9.5-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/antlr/antlr/jars/antlr-2.7.7.jar"/>
@@ -502,10 +507,35 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.dom4j/dom4j/docs/dom4j-2.1.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/srcs/hibernate-commons-annotations-5.0.4.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/jars/hibernate-commons-annotations-5.0.4.Final.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.3.7.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.3.7.Final.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/srcs/hibernate-commons-annotations-5.1.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate.common/hibernate-commons-annotations/jars/hibernate-commons-annotations-5.1.0.Final.jar"/>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish.jaxb/jaxb-runtime/srcs/jaxb-runtime-2.3.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish.jaxb/jaxb-runtime/jars/jaxb-runtime-2.3.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/docs/hibernate-jpamodelgen-5.3.7.Final-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.glassfish.jaxb/jaxb-runtime/docs/jaxb-runtime-2.3.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish.jaxb/txw2/srcs/txw2-2.3.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish.jaxb/txw2/jars/txw2-2.3.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.glassfish.jaxb/txw2/docs/txw2-2.3.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.sun.istack/istack-commons-runtime/srcs/istack-commons-runtime-3.0.7-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.sun.istack/istack-commons-runtime/jars/istack-commons-runtime-3.0.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.sun.istack/istack-commons-runtime/docs/istack-commons-runtime-3.0.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.jvnet.staxex/stax-ex/srcs/stax-ex-1.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.jvnet.staxex/stax-ex/jars/stax-ex-1.8.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.jvnet.staxex/stax-ex/docs/stax-ex-1.8-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/srcs/FastInfoset-1.2.15-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/jars/FastInfoset-1.2.15.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/docs/FastInfoset-1.2.15-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.4.0.Final-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.4.0.Final.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/docs/hibernate-jpamodelgen-5.4.0.Final-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/srcs/javax.el-3.0.1-b09-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/jars/javax.el-3.0.1-b09.jar">
@@ -541,11 +571,6 @@
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.23.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.23.4.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.23.4-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/srcs/byte-buddy-1.9.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/jars/byte-buddy-1.9.3.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/docs/byte-buddy-1.9.3-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/srcs/byte-buddy-agent-1.9.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.9.3.jar">
@@ -786,9 +811,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables/docs/datatables-1.10.19-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/srcs/datatables.net-plugins-1.10.18-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/jars/datatables.net-plugins-1.10.18.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/srcs/datatables.net-plugins-1.10.19-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/jars/datatables.net-plugins-1.10.19.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/docs/datatables.net-plugins-1.10.18-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/docs/datatables.net-plugins-1.10.19-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/srcs/datatables.net-select-1.2.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/jars/datatables.net-select-1.2.3.jar">
@@ -1151,9 +1176,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/docs/fetch-2.0.4-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.5.0.jar">
+  <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.6.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.5.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.6.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/jars/material-design-icons-3.0.1.jar">
