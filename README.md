@@ -2,7 +2,7 @@ English | [日本語](./README_ja.md)
 
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.7 & Bootstrap 4.1  
+Play(Java) 2.7 & Bootstrap 4.2  
 multilingual responsive project template.
 
 | Phone | Tablet    |
@@ -58,7 +58,7 @@ Document
 
 [Play Framework](https://www.playframework.com/documentation/2.7.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.1)
+[Bootstrap](http://getbootstrap.com/docs/4.2)
 
 [Font Awesome](https://fontawesome.com/how-to-use)
 
@@ -94,22 +94,15 @@ TODO
 
 ### FinePlay 2.7.0 ###
 + Update Play Framework 2.7.0 release
++ [Follow This problem](https://github.com/twbs/bootstrap/issues/27903)
 
 #### Play Framework 2.7.0 ####
 + Update application.conf
 
-### FinePlay 2.7.x ###
-+ Update Bootstrap 4.2 release
-+ Update Shepherd 2.0.0 release
-
-#### Bootstrap 4.2 ####
-+ Rewrite notify implementation to Look of Toast based.
-+ Move include of Hammer.
-+ Learn Spinner.
-
 ### FinePlay x.x.x ###
 + Drop IE / Refactor system_menu.
 + Update Bootbox 5.0 release
++ Update Shepherd 2.0.0 release
 
 Release History
 ---------------

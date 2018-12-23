@@ -44,10 +44,6 @@ body {
 	border-bottom-left-radius: .32rem;
 }
 
-.form-signin input[name="storeAccount"] + label::before {
-	border: 1px solid #007bff !important;
-}
-
 .form-signin .forget-password {
 	padding: 0rem;
 	font-size: 0.8rem;

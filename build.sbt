@@ -53,7 +53,7 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.0.1",									// Apache 4.0.0
   "org.apache.poi" % "poi-scratchpad" % "4.0.1",
   "org.apache.poi" % "poi-ooxml" % "4.0.1",
-  "org.apache.tika" % "tika-core" % "1.19.1",							// Apache 1.17
+  "org.apache.tika" % "tika-core" % "1.20",								// Apache 1.17
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.13",							// Apache 2.0.9
@@ -64,7 +64,7 @@ libraryDependencies ++= Seq(
   "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
-  "org.webjars.npm" % "bootstrap" % "4.1.3",							// MIT 4.0.0
+  "org.webjars.npm" % "bootstrap" % "4.2.1",							// MIT 4.0.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.3.1",					// MIT 10.3.1
@@ -101,6 +101,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
   "org.webjars.npm" % "jsqr" % "1.1.1",									// Apache 2018/06/24 master
+  "org.webjars.npm" % "holderjs" % "2.9.4",								// MIT 2.9.4
   "org.webjars.npm" % "3dmol" % "1.3.7",								// BSD-3-Clause license 1.3.7
   "org.webjars.npm" % "github-com-Tencent-vConsole" % "3.2.0",			// MIT 3.2.0
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
@@ -114,8 +115,7 @@ libraryDependencies ++= Seq(
 // Use bootstrap
 libraryDependencies ++= Seq(
 //  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
-//  "org.webjars.bower" % "holderjs" % "2.8.2",							// MIT 2.9.4
-//  "org.webjars.npm" % "popper.js" % "1.13.0"							// MIT 1.13.0
+  "org.webjars.npm" % "popper.js" % "1.14.6"							// MIT 1.14.6
 )
 
 // Polyfill

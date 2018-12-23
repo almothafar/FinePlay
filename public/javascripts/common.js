@@ -287,31 +287,38 @@ var tell = function(text, wait){
 var notifyAlert = function(type, text, wait){
 
 	var icon ='';
+	var notifyInfo = {'icon': 'comment-alt', 'bg': ''};
 	switch (type) {
 	case 'success':
 
-		icon = 'check';
+		notifyInfo = {'icon': 'check', 'bg': 'green-100'};
 		break;
 	case 'info':
 
-		icon = 'info-circle';
+		notifyInfo = {'icon': 'info-circle', 'bg': 'cyan-100'};
 		break;
 	case 'warning':
 
-		icon = 'exclamation-triangle';
+		notifyInfo = {'icon': 'exclamation-triangle', 'bg': 'yellow-100'};
 		break;
 	case 'danger':
 
-		icon = 'ban';
+		notifyInfo = {'icon': 'ban', 'bg': 'red-100'};
 		break;
 	default:
 
 		break;
 	}
-	var html = '<div class="alert alert-' + type + ' border-' + type + ' alert-dismissible fade show" role="alert">' +
-					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
-					'<i class="fas fa-' + icon +'"></i>' +
-					'\t' + text +
+	var html = '<div class="alert p-0 toast show mw-100" role="alert" aria-live="assertive" aria-atomic="true">' +
+					'<div class="toast-header bg-' + notifyInfo.bg + '">' +
+						'<i class="fas fa-' + notifyInfo.icon + '"></i>' +
+						'<strong class="mr-auto"></strong>' +
+						'<small></small>' +
+						'<button type="button" class="ml-2 mb-1 close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+					'</div>' +
+					'<div class="toast-body">' +
+						text +
+					'</div>' +
 				'</div>';
 
 	notify(html, wait);
@@ -326,10 +333,17 @@ var notify = function(text, wait){
 		html = text;
 	}else{
 
-		html = '<div class="alert alert-secondary border-secondary alert-dismissible fade show" role="alert">' +
-					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
-					'<i class="far fa-comment-alt"></i>' +
-					'\t' + text +
+		var notifyInfo = {'icon': 'comment-alt', 'bg': ''};
+		html = '<div class="alert p-0 toast show mw-100" role="alert" aria-live="assertive" aria-atomic="true">' +
+					'<div class="toast-header bg-' + notifyInfo.bg + '">' +
+						'<i class="fas fa-' + notifyInfo.icon + '"></i>' +
+						'<strong class="mr-auto"></strong>' +
+						'<small></small>' +
+						'<button type="button" class="ml-2 mb-1 close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+					'</div>' +
+					'<div class="toast-body">' +
+						text +
+					'</div>' +
 				'</div>';
 	}
 

@@ -2,7 +2,7 @@
 
 <img src="./public/images/ja-JP/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.7 & Bootstrap 4.1  
+Play(Java) 2.7 & Bootstrap 4.2  
 多言語、レスポンシブな、プロジェクトのひな形(何かのたたき台に)。
 
 | 携帯 | タブレット |
@@ -58,7 +58,7 @@ URL を開く
 
 [Play Framework](https://www.playframework.com/documentation/2.7.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.1)
+[Bootstrap](http://getbootstrap.com/docs/4.2)
 
 [Font Awesome](https://fontawesome.com/how-to-use)
 
@@ -94,22 +94,15 @@ URL を開く
 
 ### FinePlay 2.7.0 ###
 + Framework 2.7.0 リリース版に更新
++ [この問題に対応](https://github.com/twbs/bootstrap/issues/27903)
 
 #### Play Framework 2.7.0 ####
 + application.conf の更新
 
-### FinePlay 2.7.x ###
-+ Bootstrap 4.2 リリース版に更新
-+ Shepherd 2.0.0 リリース版に更新
-
-#### Bootstrap 4.2 ####
-+ notify 実装の外観を、Toast ベースに書換(マッチングが、悪い場合はやらない)
-+ Hammer の include を移動(include しなくても動くっぽい？ので、その場合はやらないかも)
-+ Spinner の学習
-
 ### FinePlay x.x.x ###
 + IE の削除 / system_menuのリファクタリング
 + Bootbox 5.0 リリース版(作者居ないっぽい？)か、フォーク版に更新
++ Shepherd 2.0.0 リリース版に更新
 
 リリース履歴
 ---------------

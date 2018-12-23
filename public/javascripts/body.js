@@ -208,7 +208,8 @@ var refreshHelp = function(){
 
 	var activeNavItems = $('#system_content .nav>.nav-item>.nav-link.active');
 	var activeDropdownItems = $('#system_content .dropdown>.dropdown-menu>.dropdown-item.active');
-	$('#system_help-main').scrollspy('refresh');
+	// https://github.com/twbs/bootstrap/issues/27903
+//	$('#system_help-main').scrollspy('refresh');
 	activeNavItems.addClass('active');
 	activeDropdownItems.addClass('active');
 	$('#system_help-main').find('#help-wrapper>#help-top>.anchorjs-link').hide();

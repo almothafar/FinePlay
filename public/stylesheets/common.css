@@ -22,8 +22,6 @@ body {
 #system_menu {
 	border-bottom: 1px LightGray solid;
 	opacity:0.9;
-	left: 0px;
-	right: 0px;
 	z-index: 1030;
 	transition-property: left,right;
 	transition-duration: 0.2s;

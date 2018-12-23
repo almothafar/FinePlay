@@ -7,27 +7,27 @@ import java.lang.String;
  * @see <a href="https://github.com/square/javapoet">https://github.com/square/javapoet</a>
  */
 public class IntegrityValues {
-  public static final String BOOTSTRAP_SCRIPT = "ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy";
+  public static final String BOOTSTRAP_SCRIPT = "B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k";
 
-  public static final String BOOTSTRAP_STYLE = "MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO";
+  public static final String BOOTSTRAP_STYLE = "GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS";
 
-  public static final String BOOTSTRAP_STYLE_BUSINESS = "InVFedneFRZXegP7GWgdS47Y3FYy2DMMCuWEu/Bn5rWMqL4k+G/F3zX6m3xJaSIg";
+  public static final String BOOTSTRAP_STYLE_BUSINESS = "Ye4I4BHjCXkP+KEz5ABiVRG/9rMwUhaG0YdDTTDl0FQUY/ywOwPu6FbLSzHvxCXA";
 
-  public static final String BOOTSTRAP_STYLE_BUSINESS_RTL = "g3aj4e+5VOQweyY/4geiLnoflj4r04LUL+5+zKEq/ZiRabZC4HnRYtRmK8+ustod";
+  public static final String BOOTSTRAP_STYLE_BUSINESS_RTL = "QRz9MAYCbFaqIRg4a1hHFfpahu3iJ4ghYODBlV6zH/CaP91iFFT+K0/218Lefk0P";
 
-  public static final String BOOTSTRAP_STYLE_JAPAN = "P85gWlQm+TVH3JNct1hFzu/jIgqit1W/RdzaiTVZVhjByXSWhwa3Wmh6aQh+SIPq";
+  public static final String BOOTSTRAP_STYLE_JAPAN = "WRrh+0V77R8yjMmg3ZbLS8fm7eax4haDJncctC/noUeG/l2FQISkdRGpjeUStzcG";
 
-  public static final String BOOTSTRAP_STYLE_JAPAN_RTL = "zGo8exZzmj0WGMYFYgQGmod8NqtKTaV4uPNAZdo/hjqjPFqwfa/bUVV6aV0OgS2T";
+  public static final String BOOTSTRAP_STYLE_JAPAN_RTL = "DEfn45JqOyZRqGJg1znq3bHXtPm2OQe4F/j++yRnRy9rcRmfsCeOOA/w0/i88oMS";
 
-  public static final String BOOTSTRAP_STYLE_NATURAL = "nY67vqrTslg4Z/kgIcVgXnAAVGi/M9SLpdf95BRibi1KcRSPmIm+A9mnS0HwH4Ue";
+  public static final String BOOTSTRAP_STYLE_NATURAL = "zcWo0Re3ih3LpG4GuYiOQRZ0zsiflfaTnmgf8L5GQjGcyGMO2b0BQyQqIv3UONTN";
 
-  public static final String BOOTSTRAP_STYLE_NATURAL_RTL = "fFkxEzz9nwPBXuC8jCMnRNorkXTfXddS5u1PbvkOikzbsGH/hDnC75z0bXxc9Kdr";
+  public static final String BOOTSTRAP_STYLE_NATURAL_RTL = "rg8OPZ8Wxs0MUoqgQWtae+ekuy9iy3nu9J7nZxVz9FN75Eg2MbvHTuf+zO52Fk/s";
 
-  public static final String BOOTSTRAP_STYLE_PRETTY = "3cg7OpuECkpgR7KPOSp9Hru+1KdFpk6weNA4vM7vmQ1RkhkyhNWLhYNpUcCR9sJ5";
+  public static final String BOOTSTRAP_STYLE_PRETTY = "1L+wjTdU+w0ZXrA/j6BD0nDDc9G3mbKMzRg3VT9pMmp4VWkrNLrNBDDP7Rqhy/XR";
 
-  public static final String BOOTSTRAP_STYLE_PRETTY_RTL = "TpbsWNU3UuZsi5WdGKhLSAjn+cPhg1yVqpE1LeQBZ2TIgMUxI9khNn3rw6KdnYMx";
+  public static final String BOOTSTRAP_STYLE_PRETTY_RTL = "Pm4bir0Yrpf8z7QhByibz8l09c6uMDmxzeRyCypDrWQ15Jr6RS1Snkc/98mgp3dc";
 
-  public static final String BOOTSTRAP_STYLE_RTL = "bVYuvOaoT8wOJ3OkXjakZfbP2tmBtmNi2SXY6ygsTljO60UGNXb+OoiXfOvSAxRg";
+  public static final String BOOTSTRAP_STYLE_RTL = "RJvscjZ96HqhpTeybvfBUut2hzQizwEvhv37n/bH6FT05/2MWyl9EGReBScH/uDv";
 
   public static final String JQUERY_SCRIPT = "tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT";
 

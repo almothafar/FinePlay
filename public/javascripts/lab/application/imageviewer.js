@@ -19,7 +19,8 @@ $(document).ready(function() {
 			if(!$('.slick-container').hasClass('slick-initialized')){
 
 				$('.slick-container').slick({
-					dots: true
+					dots: true,
+					rtl: $('html').hasClass('dir-rtl')
 				});
 			}
 		})

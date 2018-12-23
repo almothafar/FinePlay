@@ -63,9 +63,6 @@ public class UI extends Controller {
 		case "process":
 
 			return process(request, lang, messages);
-		case "switch":
-
-			return formswitch(request, lang, messages);
 		case "arrow":
 
 			return arrow(request, lang, messages);
@@ -180,11 +177,6 @@ public class UI extends Controller {
 	private static Result process(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.ui.process.render(request, lang, messages));
-	}
-
-	private static Result formswitch(final Request request, final Lang lang, final Messages messages) {
-
-		return ok(views.html.lab.ui.formswitch.render(request, lang, messages));
 	}
 
 	private static Result arrow(final Request request, final Lang lang, final Messages messages) {
