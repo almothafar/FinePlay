@@ -9,6 +9,7 @@ import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.URI;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -65,12 +66,9 @@ public class Batchlet extends AbstractBatchlet {
 	// https://github.com/jberet/jsr352/blob/master/jberet-core/src/main/java/org/jberet/creation/ValueConverter.java
 	// Java 11(Java 9〜?)
 	// en_US SHORT -> 12/31/12, 12:00 AM
-	// en_US MEDIUM -> Dec 31, 2012, 12:00:00 AM
-	// ja_JP SHORT -> 2012/12/31 0:00:00
-	// ja_JP MEDIUM -> 2012/12/31 0:00:00
-//	@Inject
-//	@BatchProperty(name = "list.date")
-//	Date[] listDateArray;
+	// @Inject
+	// @BatchProperty(name = "list.date")
+	// Date[] listDateArray;
 
 	@SuppressWarnings("rawtypes")
 	@Inject

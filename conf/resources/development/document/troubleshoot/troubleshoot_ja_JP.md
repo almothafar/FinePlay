@@ -4,18 +4,9 @@
 ### DataTables の、 Language file が、適用されない
 Japanese.lang 内のコメントを削除する。
 
-### WebDriver が利用出来ない
-	"org.webjars" % "jquery" % "2.1.1",
-を削除
-
 ### Eclipse で補完出来ない
 	eclipse with-source=true
 を実行
-
-### org.h2.jdbc.JdbcSQLException のメッセージ文字化け
-	/Users/[user]/.ivy2/cache/com.h2database/h2/jars/h2-1.4.191.jar/org/h2/util/org/h2/res/_messages_ja.prop
-が、謎エンコーディング
-H2 のバージョンアップ
 
 ### 起動しない
 ```

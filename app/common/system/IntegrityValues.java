@@ -7,7 +7,7 @@ import java.lang.String;
  * @see <a href="https://github.com/square/javapoet">https://github.com/square/javapoet</a>
  */
 public class IntegrityValues {
-  public static final String BOOTSTRAP_SCRIPT = "B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k";
+  public static final String BOOTSTRAP_SCRIPT = "tB/vURkSzbCBiRZGYckPIXsKg498CRB64NTnJxycThLiGelP090ELX7MwCOgjECl";
 
   public static final String BOOTSTRAP_STYLE = "GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS";
 

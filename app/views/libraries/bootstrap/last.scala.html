@@ -14,8 +14,10 @@
 
 		ConfigFactory.defaultApplication().getString("bootstrap.cdn.script")
 	}else{
+		// https://github.com/twbs/bootstrap/issues/27903
+		routes.Assets.versioned("lib/bootstrap/dist/js/bootstrap-27912.min.js")
 		// npm
-		routes.Assets.versioned("lib/bootstrap/dist/js/bootstrap.min.js")
+		//routes.Assets.versioned("lib/bootstrap/dist/js/bootstrap.min.js")
 	}
 }
 

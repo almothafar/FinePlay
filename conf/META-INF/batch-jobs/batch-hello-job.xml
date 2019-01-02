@@ -24,7 +24,7 @@
 				<property name="uri" value="http://jboss.org" />
 
 				<property name="list" value=" 1, 2, 3" />
-				<!-- <property name="list.date" value="2012-12-31, 2013-01-01" /> -->
+				<!--<property name="list.date" value="12/31/2012, 01/01/2013" />-->
 
 				<property name="map" value="b=2, a = 1" />
 				<property name="set" value="2.0, 1.0, 2.0, 1.0, 1.0" />

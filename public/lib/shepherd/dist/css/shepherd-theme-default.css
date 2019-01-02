@@ -1,3 +1,33 @@
+/* stylelint-disable selector-max-id */
+#shepherdModalOverlayContainer {
+  -ms-filter: "progid:dximagetransform.microsoft.gradient.alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  transition: all 0.3s ease-out;
+  width: 100%;
+  z-index: 9997; }
+
+.shepherd-modal.shepherd-enabled {
+  position: relative;
+  z-index: 9998; }
+
+/**
+ * Block clicks except for those that would occur
+ * on Shepherd elements or on the target element.
+*/
+.shepherd-active.shepherd-modal-is-visible :not(.shepherd-target) {
+  pointer-events: none; }
+
+.shepherd-active.shepherd-modal-is-visible .shepherd-target,
+.shepherd-active.shepherd-modal-is-visible .shepherd-cancel-link,
+.shepherd-active.shepherd-modal-is-visible .shepherd-button {
+  pointer-events: auto; }
+
+/* stylelint-enable */
 /**
  * Styles to support usage of Tippy.js tooltips (https://atomiks.github.io/tippyjs)
  */
@@ -27,25 +57,25 @@
     .tippy-popper[x-placement^='top'] .tippy-arrow {
       border-bottom: 0;
       border-top-color: #f6f6f6;
-      right: calc(50% - 16px); }
+      left: calc(50% - 16px); }
   .tippy-popper[x-placement^='bottom'] {
     margin-top: 16px; }
     .tippy-popper[x-placement^='bottom'] .tippy-arrow {
       border-bottom-color: #e6e6e6;
       border-top: 0;
-      right: calc(50% - 16px); }
+      left: calc(50% - 16px); }
   .tippy-popper[x-placement^='left'] {
-    margin-left: 16px; }
+    margin-right: 16px; }
     .tippy-popper[x-placement^='left'] .tippy-arrow {
-      border-right-color: #f6f6f6;
-      border-left: 0;
+      border-left-color: #f6f6f6;
+      border-right: 0;
       margin-top: -16px;
       top: calc(50% - 16px); }
   .tippy-popper[x-placement^='right'] {
-    margin-right: 16px; }
+    margin-left: 16px; }
     .tippy-popper[x-placement^='right'] .tippy-arrow {
-      border-right: 0;
-      border-left-color: #f6f6f6;
+      border-left: 0;
+      border-right-color: #f6f6f6;
       top: calc(50% - 16px); }
   .tippy-popper .tippy-tooltip {
     background-color: rgba(0, 0, 0, 0);
@@ -73,8 +103,8 @@
       *zoom: 1;
       -ms-flex-align: center;
           align-items: center;
-      border-top-right-radius: 5px;
       border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
       display: -ms-flexbox;
       display: flex;
       -ms-flex-pack: center;
@@ -102,11 +132,11 @@
       .shepherd-element .shepherd-content header .shepherd-cancel-link {
         color: rgba(179, 179, 179, 0.75);
         font-size: 2em;
-        margin-right: auto;
+        margin-left: auto;
         text-decoration: none;
         transition: color 0.5s ease; }
         .shepherd-element .shepherd-content header .shepherd-cancel-link:before {
-          content: '\D7'; }
+          content: '\00d7'; }
         .shepherd-element .shepherd-content header .shepherd-cancel-link:hover {
           color: rgba(0, 0, 0, 0.75); }
     .shepherd-element .shepherd-content .shepherd-text {
@@ -129,19 +159,19 @@
         .shepherd-element .shepherd-content .shepherd-text p:last-child {
           margin-bottom: 0; }
     .shepherd-element .shepherd-content footer {
-      border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
       padding: 0 0.75em 0.75em; }
       .shepherd-element .shepherd-content footer .shepherd-buttons {
         list-style: none;
         margin: 0;
         padding: 0;
-        text-align: left; }
+        text-align: right; }
         .shepherd-element .shepherd-content footer .shepherd-buttons li {
           display: inline;
-          margin: 0 0 0 0.5em; }
+          margin: 0 0.5em 0 0; }
           .shepherd-element .shepherd-content footer .shepherd-buttons li:last-child {
-            margin-left: 0; }
+            margin-right: 0; }
           .shepherd-element .shepherd-content footer .shepherd-buttons li .shepherd-button {
             display: inline-block;
             *display: inline;

@@ -26,6 +26,9 @@ $(document).ready(function() {
 			.enter()
 			.append("path")
 			.attr("d", path)
+			.attr("data-name", function(d, i) {
+				return d.properties.name;
+			})
 			.style("fill", function(d, i) {
 				if (d.properties.name == "Antarctica") {
 					return "#fff";
@@ -35,6 +38,11 @@ $(document).ready(function() {
 				}
 				return "#eee";
 			})
+
+			$('path').on('click', function(e){
+
+				notifyAlert('info', $(this).data('name'), 2000);
+			});
 	})
 	.catch(function(error) {
 

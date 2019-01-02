@@ -309,12 +309,12 @@ var notifyAlert = function(type, text, wait){
 
 		break;
 	}
-	var html = '<div class="alert p-0 toast show mw-100" role="alert" aria-live="assertive" aria-atomic="true">' +
+	var html = '<div class="toast show mw-100" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">' +
 					'<div class="toast-header bg-' + notifyInfo.bg + '">' +
 						'<i class="fas fa-' + notifyInfo.icon + '"></i>' +
 						'<strong class="mr-auto"></strong>' +
 						'<small></small>' +
-						'<button type="button" class="ml-2 mb-1 close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+						'<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 					'</div>' +
 					'<div class="toast-body">' +
 						text +
@@ -334,12 +334,12 @@ var notify = function(text, wait){
 	}else{
 
 		var notifyInfo = {'icon': 'comment-alt', 'bg': ''};
-		html = '<div class="alert p-0 toast show mw-100" role="alert" aria-live="assertive" aria-atomic="true">' +
+		html = '<div class="toast show mw-100" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">' +
 					'<div class="toast-header bg-' + notifyInfo.bg + '">' +
 						'<i class="fas fa-' + notifyInfo.icon + '"></i>' +
 						'<strong class="mr-auto"></strong>' +
 						'<small></small>' +
-						'<button type="button" class="ml-2 mb-1 close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+						'<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 					'</div>' +
 					'<div class="toast-body">' +
 						text +
@@ -349,6 +349,11 @@ var notify = function(text, wait){
 
 	var element = $('<div class="m-3">' + html + '</div>');
 	element.children().addClass('shadow');
+	var toast = element.find('.toast');
+	if(1 <= toast.length){
+
+		toast.find('button[data-dismiss="toast"]').on('click', function(){toast.remove()});
+	}
 	var elementId = new Date().getTime() + Math.floor( Math.random()*1000 );
 	element.attr('id', elementId);
 

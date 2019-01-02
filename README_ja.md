@@ -93,21 +93,21 @@ URL を開く
 ###### このプロジェクトが、将来更新されるかどうかは、未定です。 ######
 
 ### FinePlay 2.7.0 ###
-+ Framework 2.7.0 リリース版に更新
-+ [この問題に対応](https://github.com/twbs/bootstrap/issues/27903)
++ Framework 2.7.0 リリース版に更新  
+application.conf の更新
 
-#### Play Framework 2.7.0 ####
-+ application.conf の更新
+### FinePlay 2.7.x ###
++ Bootstrap 5.3 リリース版に更新  
+[この問題](https://github.com/twbs/bootstrap/issues/27903)の一時対応を元に戻す。
 
 ### FinePlay x.x.x ###
 + IE の削除 / system_menuのリファクタリング
 + Bootbox 5.0 リリース版(作者居ないっぽい？)か、フォーク版に更新
-+ Shepherd 2.0.0 リリース版に更新
 
 リリース履歴
 ---------------
 
-+ **2.7.0-RC8-βc9** - 2018-12-01
++ **2.7.0-RC8-βc10** - 2019-01-02
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + 最初のコミット
@@ -116,7 +116,7 @@ URL を開く
 
 ライセンス
 -------
-著作権 &copy; 2017-2018 [hiro20v](https://github.com/hiro20v)  
+著作権 &copy; 2017-2019 [hiro20v](https://github.com/hiro20v)  
 [MIT License][mit] の下で配布されます。
 
 [MIT]: http://opensource.org/licenses/MIT

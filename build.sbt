@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-RC8-βc9-SNAPSHOT"
+version := "2.7.0-RC8-βc10-SNAPSHOT"
 
 scalaVersion := "2.12.6"
 //scalaVersion := "2.13.0-M3"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC8-βc9-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC8-βc10-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -73,7 +73,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.3",								// MIT 2.7.3
-  "org.webjars.bower" % "moment" % "2.22.2",							// MIT 2.22.0
+  "org.webjars.bower" % "moment" % "2.23.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
   "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
@@ -96,7 +96,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
   "org.webjars.bower" % "plotly.js" % "1.42.5",							// MIT 1.42.5
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-//  "org.webjars.bower" % "tether-shepherd" % "2.0.0-beta.34",			// MIT 2.0.0-beta.34
+//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.0.1
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch

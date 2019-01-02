@@ -47,7 +47,9 @@ class IntegrityValuesCreator {
 		constMap.put("BOOTSTRAP_STYLE_JAPAN_RTL", createValue(Paths.get(".", "public", "themes", "japan", "bootstrap-rtl.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_BUSINESS_RTL", createValue(Paths.get(".", "public", "themes", "business", "bootstrap-rtl.min.css")));
 		constMap.put("BOOTSTRAP_STYLE_NATURAL_RTL", createValue(Paths.get(".", "public", "themes", "natural", "bootstrap-rtl.min.css")));
-		constMap.put("BOOTSTRAP_SCRIPT", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "bootstrap", "dist", "js", "bootstrap.min.js")));
+		// https://github.com/twbs/bootstrap/issues/27903
+		constMap.put("BOOTSTRAP_SCRIPT", createValue(Paths.get(".", "public", "lib", "bootstrap", "dist", "js", "bootstrap-27912.min.js")));
+//		constMap.put("BOOTSTRAP_SCRIPT", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "bootstrap", "dist", "js", "bootstrap.min.js")));
 
 		constMap.put("JQUERY_SCRIPT", createValue(Paths.get(".", "target", "web", "public", "main", "lib", "jquery", "dist", "jquery.min.js")));
 

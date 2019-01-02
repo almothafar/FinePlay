@@ -781,9 +781,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/moment/docs/moment-2.22.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/srcs/moment-2.22.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/jars/moment-2.22.2.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/srcs/moment-2.23.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/moment/jars/moment-2.23.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/moment/docs/moment-2.22.2-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/moment/docs/moment-2.23.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/srcs/Snap.svg-0.5.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/Snap.svg/jars/Snap.svg-0.5.1.jar">

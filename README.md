@@ -93,21 +93,21 @@ TODO
 ###### Whether this project will be updated in the future is undecided. ######
 
 ### FinePlay 2.7.0 ###
-+ Update Play Framework 2.7.0 release
-+ [Follow This problem](https://github.com/twbs/bootstrap/issues/27903)
++ Update Play Framework 2.7.0 release  
+Update application.conf
 
-#### Play Framework 2.7.0 ####
-+ Update application.conf
+### FinePlay 2.7.x ###
++ Update Bootstrap 5.3 release  
+Restore temporary correspondence of [This problem](https://github.com/twbs/bootstrap/issues/27903).
 
 ### FinePlay x.x.x ###
 + Drop IE / Refactor system_menu.
 + Update Bootbox 5.0 release
-+ Update Shepherd 2.0.0 release
 
 Release History
 ---------------
 
-+ **2.7.0-RC8-βc9** - 2018-12-01
++ **2.7.0-RC8-βc10** - 2019-01-02
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit
@@ -116,7 +116,7 @@ Release History
 
 License
 -------
-Copyright &copy; 2017-2018 [hiro20v](https://github.com/hiro20v)  
+Copyright &copy; 2017-2019 [hiro20v](https://github.com/hiro20v)  
 Distributed under the [MIT License][mit].
 
 [MIT]: http://opensource.org/licenses/MIT
