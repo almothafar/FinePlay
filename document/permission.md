@@ -103,6 +103,9 @@
 |                    |                                                                      |urlFileName                   |      |      |      |
 |                    |                                                                      |wordStream                    |      |      |      |
 |                    |                                                                      |zipStream                     |      |      |      |
+|controllers         |controllers.lab.application.SMS                                       |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
+|                    |                                                                      |send                          |      |      |      |
 |controllers         |controllers.lab.application.Upload                                    |                              |     O|     O|     O|
 |                    |                                                                      |direct                        |      |      |      |
 |                    |                                                                      |form                          |      |      |      |

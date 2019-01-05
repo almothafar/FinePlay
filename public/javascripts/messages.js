@@ -360,6 +360,7 @@ var MessageKeys = {
 	SETTING: "setting",
 	SHEET: "sheet",
 	SLIDE: "slide",
+	SMS: "sms",
 	SORT: "sort",
 	SPEECH_SYNTHESIS_LANG: "speech.synthesis.lang",
 	START: "start",

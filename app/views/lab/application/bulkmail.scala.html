@@ -163,7 +163,7 @@
 
 					@helper.form(helper.CSRF(controllers.lab.application.routes.BulkMail.send()), 'name->"bulkMailForm", 'id->"bulkMailForm") {
 
-						@components.nav(Map("id"->"translateTab","tabs"->"true"), List(
+						@components.nav(Map("id"->"bulkMailTab","tabs"->"true"), List(
 							Map("name"->"X-SMTPAPI", "icon"->"", "link"->"#smtpapi", "selected"->"true", "data-toggle"->"tab"),
 							Map("name"->messages(MessageKeys.TEMPLATE), "icon"->"", "link"->"#template", "data-toggle"->"tab")
 						))

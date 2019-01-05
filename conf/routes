@@ -189,6 +189,8 @@ POST	/lab/application/upload/image				controllers.lab.application.Upload.image(r
 POST	/lab/application/upload/direct				controllers.lab.application.Upload.direct(request: Request)
 GET		/lab/application/bulkmail					controllers.lab.application.BulkMail.index(request: Request)
 POST	/lab/application/bulkmail/send				controllers.lab.application.BulkMail.send(request: Request)
+GET		/lab/application/sms						controllers.lab.application.SMS.index(request: Request)
+POST	/lab/application/sms/send					controllers.lab.application.SMS.send(request: Request)
 GET		/lab/application/websocket					controllers.lab.application.WebSocket.index(request: Request)
 GET		/lab/application/websocket/connection		controllers.lab.application.WebSocket.connect()
 GET		/lab/application/chat						controllers.lab.application.Chat.index(request: Request)

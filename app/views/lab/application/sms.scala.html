@@ -1,0 +1,113 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import common.system._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@exampleText() = @{
+
+	lang.code match {
+		case "en-US" => {
+
+			"Hello.";
+		}
+		case _ => {
+
+			"Hello.";
+		}
+	}
+}
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.SMS), "icon"->"fas fa-sms", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@components.alerts(Map("id"->"system_alerts")){
+
+				@components.alert(Map("id"->"", "icon"->"far fa-comment", "text"->"This feature is using Twilio's services. It is not free.", "type"->"danger"))
+			}
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"sms"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					@helper.form(helper.CSRF(controllers.lab.application.routes.SMS.send()), 'name->"smsForm", 'id->"smsForm") {
+
+						<input id="to" type="text" name="to" class="form-control" placeholder="+819000000000" value="+819000000000" required autofocus maxlength="13">
+
+						@components.nav(Map("id"->"smsTab","tabs"->"true"), List(
+							Map("name"->messages(MessageKeys.MESSAGE), "icon"->"", "link"->"#text", "selected"->"true", "data-toggle"->"tab"),
+							Map("name"->messages(MessageKeys.RESULT), "icon"->"", "link"->"#result", "data-toggle"->"tab")
+						))
+
+						<div id="smsTabContent" class="tab-content mt-3">
+							<div class="tab-pane active" id="text" role="tabpanel">
+
+								<textarea id="message" name="message" class="form-control" placeholder="Message" rows="8" required maxlength="70">@exampleText()</textarea>
+							</div>
+							<div class="tab-pane" id="result" role="tabpanel">
+
+								<textarea id="resultText" class="form-control" placeholder="Result" rows="8" required maxlength="1000"></textarea>
+							</div>
+						</div>
+					}
+
+					@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+							Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
+						)){
+						<div class="wordwrap">
+							<div id="ajaxMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
+							<div id="ajaxDescription">-</div>
+						</div>
+						@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
+					}
+					<div class="mt-3 mb-3 text-right">
+
+						@components.button(Map("id"->"sendButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-paper-plane", "text"->messages(MessageKeys.SEND), "data-toggle"->"modal","data-target"->"#ajaxDialog"))
+					</div>
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"langCode":"@lang.language",
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)"
+		}'></div>
+
+		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/sms.js")'></script>
+	}
+}
