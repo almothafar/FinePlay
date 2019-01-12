@@ -56,6 +56,8 @@ Document
 
 ### Official Document ###
 
+[JDK](https://docs.oracle.com/en/java/javase/11/docs/api/)
+
 [Play Framework](https://www.playframework.com/documentation/2.7.x)
 
 [Bootstrap](http://getbootstrap.com/docs/4.2)

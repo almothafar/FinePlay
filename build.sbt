@@ -94,9 +94,9 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "2.1.1",								// MIT 2.1.1
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.bower" % "plotly.js" % "1.42.5",							// MIT 1.42.5
+  "org.webjars.bower" % "plotly.js" % "1.43.2",							// MIT 1.43.2
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.0.1
+//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.1.1
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
@@ -126,7 +126,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.6.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.6.1
+  "org.webjars" % "font-awesome" % "5.6.3",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.6.3
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.4.7",								// MIT 4.4.7
   "org.webjars.npm" % "twemoji" % "11.2.0"								// Code:MIT, Graphics:CC 11.2.0

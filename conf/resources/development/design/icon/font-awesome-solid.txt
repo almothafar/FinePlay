@@ -323,6 +323,7 @@ film
 filter
 fingerprint
 fire
+fire-alt
 fire-extinguisher
 first-aid
 fish
