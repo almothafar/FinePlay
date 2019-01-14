@@ -220,7 +220,7 @@ public class Application extends Controller {
 		// set
 		result = result.withCookies(Cookie.builder("key", "value").withMaxAge(Duration.ofDays(10)).build());
 		// delete
-		result = result.discardCookie("key");
+		result = result.discardingCookie("key");
 
 		return result;
 	}

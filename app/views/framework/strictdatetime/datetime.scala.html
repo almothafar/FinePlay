@@ -1,0 +1,115 @@
+@import scala.collection.JavaConversions._
+@import scala.collection.JavaConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+@import models.framework.strictdatetime._
+
+@(alertInfo: Map[String, String], form: play.data.Form[models.framework.strictdatetime.DateTimeFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.pickadate.head()
+	}
+
+	@body("framework","strictdatetime"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->(messages(MessageKeys.DATETIME)+"("+messages(MessageKeys.STRICT)+")"), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-0")){
+
+			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrDefault("dateTimeWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("dateTimeWarning").toString))
+
+			@helper.form(helper.CSRF(controllers.framework.strictdatetime.routes.DateTime.update()), 'name->"updateForm", 'id->"updateForm") {
+				<div class="row mb-3">
+					<div class="col-12">
+						@if(form.hasGlobalErrors) {
+							<p class="text-danger">@form.globalError.get.message</p>
+						}
+						<div class="row form-group">
+							<label for="@DateTimeFormContent.DATETIME_DATE" class="col-12 col-sm-12 col-form-label">@messages(MessageKeys.DATETIME)</label>
+							<div class="col-12 col-sm-6">
+								<div class="input-group">
+									<input id='@DateTimeFormContent.DATETIME_DATE' type='text' name="@DateTimeFormContent.DATETIME_DATE" class="form-control datePicker" value="@form(DateTimeFormContent.DATETIME_DATE+"_receive").value.orElse("")"/>
+									<div class="input-group-append">
+										<span class="input-group-text">
+											<i class="fas fa-calendar-alt"></i>
+										</span>
+									</div>
+									@for(error <- form(DateTimeFormContent.DATETIME_DATE).errors.asScala) {
+										<div class="text-danger">@messages(error.message)</div>
+									}
+								</div>
+							</div>
+							<div class="col-12 col-sm-6">
+								<div class="input-group">
+									<input id='@DateTimeFormContent.DATETIME_DATETIME' type='text' name="@DateTimeFormContent.DATETIME_DATETIME" class="form-control timePicker picker__input" value="" readonly/>
+									<input id="@(DateTimeFormContent.DATETIME_DATETIME)_submit" type="hidden" name="@(DateTimeFormContent.DATETIME_DATETIME)_submit" value="@form(DateTimeFormContent.DATETIME_DATETIME+"_receive").value.orElse("")">
+									<div class="input-group-append" id="timePickerDialogButton">
+										<span class="input-group-text">
+											<i class="far fa-clock"></i>
+										</span>
+									</div>
+									@for(error <- form(DateTimeFormContent.DATETIME_DATETIME).errors.asScala) {
+										<div class="text-danger">@messages(error.message)</div>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						@components.button(Map("id"->"updateButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sync", "text"->messages(MessageKeys.UPDATE), "class"->"float-right"))
+					</div>
+				</div>
+			}
+		}
+
+		@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
+				Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "enabled"->"false", "data-dismiss"->"modal")
+			)){
+			<div class="wordwrap">
+				<div id="ajaxMessage" class="lead">@messages(MessageKeys.PLEASE__WAIT)</div>
+				<div id="ajaxDescription">-</div>
+			</div>
+			@components.progress(Map("id"->"ajaxProgress", "value"->"100", "max"->"100", "striped"->"true", "animated"->"true"))
+		}
+
+		@components.modal(Map("id"->"timePickerDialog", "center"->"true", "size"->"sm"), List(
+				Map("id"->"timePickerClear", "type"->"danger", "icon"->"fas fa-minus", "outline"->"true", "text"->messages(MessageKeys.CLEAR))
+			)){
+			<div id="times" class="list-group list-group-flush m-n3">
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.PLEASE__WAIT":"@messages(MessageKeys.PLEASE__WAIT)",
+			"@MessageKeys.FAILURE":"@messages(MessageKeys.FAILURE)",
+			"@MessageKeys.STATUS":"@messages(MessageKeys.STATUS)",
+			"@MessageKeys.ERROR":"@messages(MessageKeys.ERROR)"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.pickadate.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/framework/strictdatetime/datetime.js")'></script>
+	}
+}

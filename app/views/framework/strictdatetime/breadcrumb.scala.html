@@ -1,0 +1,28 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.collection.JavaConversions._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+
+@(prop:scala.collection.immutable.Map[String, String])(implicit messages: Messages)
+
+@elements() = @{
+
+	val lastElement = prop - "id"
+	val elements = scala.collection.mutable.ListBuffer[Map[String, String]](
+		Map("name"->messages(MessageKeys.FRAMEWORK), "icon"->"far fa-folder", "link"->controllers.framework.strictdatetime.routes.DateTime.index().toString())
+	)
+	elements += lastElement
+
+	elements.toList
+}
+
+@components.adjust.breadcrumb(Map("id"->prop.getOrElse("id", "")), elements())

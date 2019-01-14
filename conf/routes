@@ -137,6 +137,9 @@ POST	/framework/application/synccache			controllers.framework.application.Applic
 POST	/framework/application/asynccache			controllers.framework.application.Application.asynccache(request: Request)
 GET		/framework/datetime							controllers.framework.datetime.DateTime.index(request: Request)
 POST	/framework/datetime/update					controllers.framework.datetime.DateTime.update(request: Request)
+GET		/framework/strictdatetime					controllers.framework.strictdatetime.DateTime.index(request: Request)
+POST	/framework/strictdatetime/update			controllers.framework.strictdatetime.DateTime.update(request: Request)
+POST	/framework/strictdatetime/times				controllers.framework.strictdatetime.DateTime.times(request: Request)
 GET		/framework/mapping							controllers.framework.mapping.Mapping.index(request: Request)
 
 GET		/environment								controllers.environment.openjdk.OpenJDK.index(request: Request, item:String ?="systemproperties")

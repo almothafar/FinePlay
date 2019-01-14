@@ -230,8 +230,8 @@ public class User extends Controller {
 					LOGGER.info("Not Store account");
 
 					result = result// Fluent interface, but return different instance.
-							.discardCookie(models.user.User_.USER_ID)//
-							.discardCookie(models.user.User.PASSWORD);
+							.discardingCookie(models.user.User_.USER_ID)//
+							.discardingCookie(models.user.User.PASSWORD);
 				}
 
 				return result;
@@ -261,7 +261,7 @@ public class User extends Controller {
 			Lang acceptLang = request.acceptLanguages().stream().findFirst().orElse(new Lang(Locale.US));
 
 			return redirect(controllers.user.routes.User.index())//
-					.clearingLang(messagesApi)//
+					.withoutLang(messagesApi)//
 					.withLang(acceptLang, messagesApi)// for Edge measures.
 					.withNewSession();
 		});

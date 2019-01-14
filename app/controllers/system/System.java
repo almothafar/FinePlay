@@ -33,6 +33,7 @@ public class System extends Controller {
 				controllers.framework.defaultpage.routes.javascript.Defaultpage.page(), //
 				controllers.framework.application.routes.javascript.Application.synccache(), //
 				controllers.framework.application.routes.javascript.Application.asynccache(), //
+				controllers.framework.strictdatetime.routes.javascript.DateTime.times(), //
 				controllers.lab.application.routes.javascript.WebSocket.connect(), //
 				controllers.lab.application.routes.javascript.Chat.enter(), //
 				controllers.lab.maintenance.routes.javascript.Maintenance.master(), //

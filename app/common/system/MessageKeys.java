@@ -103,6 +103,8 @@ public class MessageKeys {
 
   public static final String CHECKBOX = "checkbox";
 
+  public static final String CLEAR = "clear";
+
   public static final String CLIENT = "client";
 
   public static final String CLOCK = "clock";
@@ -744,6 +746,8 @@ public class MessageKeys {
   public static final String STOPPED = "stopped";
 
   public static final String STOPPING = "stopping";
+
+  public static final String STRICT = "strict";
 
   public static final String STYLE = "style";
 

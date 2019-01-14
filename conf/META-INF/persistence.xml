@@ -21,6 +21,7 @@
 		<class>models.company.organization.OrganizationUnitName</class>
 		<class>models.inquiry.Inquiry</class>
 		<class>models.framework.datetime.DateTime</class>
+		<class>models.framework.strictdatetime.DateTime</class>
 
 		<properties>
 
@@ -62,6 +63,7 @@
 		<class>models.company.organization.OrganizationUnitName</class>
 		<class>models.inquiry.Inquiry</class>
 		<class>models.framework.datetime.DateTime</class>
+		<class>models.framework.strictdatetime.StrictDateTime</class>
 
 		<properties>
 

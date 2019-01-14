@@ -66,6 +66,10 @@
 |                    |                                                                      |page                          |      |      |      |
 |controllers         |controllers.framework.mapping.Mapping                                 |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
+|controllers         |controllers.framework.strictdatetime.DateTime                         |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
+|                    |                                                                      |times                         |      |      |      |
+|                    |                                                                      |update                        |      |      |      |
 |controllers         |controllers.framework.welcome.Welcome                                 |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.home.Home                                                 |                              |     O|      |      |
