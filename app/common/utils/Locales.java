@@ -29,9 +29,9 @@ public class Locales {
 		Objects.requireNonNull(locale);
 
 		final Map<String, String> localeIdToNameMap = new LinkedHashMap<>();
-		localeIdToNameMap.put(Locale.US.toLanguageTag(), Locale.US.getDisplayName(locale));
-		localeIdToNameMap.put(Locale.JAPAN.toLanguageTag(), Locale.JAPAN.getDisplayName(locale));
-//		localeIdToNameMap.put(UNITED_ARAB_EMIRATES.toLanguageTag(), UNITED_ARAB_EMIRATES.getDisplayName(locale));
+		localeIdToNameMap.put(Locale.US.toLanguageTag(), Locale.US.getDisplayName(Locale.US));
+		localeIdToNameMap.put(Locale.JAPAN.toLanguageTag(), Locale.JAPAN.getDisplayName(Locale.JAPAN));
+//		localeIdToNameMap.put(UNITED_ARAB_EMIRATES.toLanguageTag(), UNITED_ARAB_EMIRATES.getDisplayName(UNITED_ARAB_EMIRATES));
 
 		return localeIdToNameMap;
 	}

@@ -62,14 +62,6 @@ public class Batchlet extends AbstractBatchlet {
 	@BatchProperty(name = "list")
 	String[] listStringArray;
 
-	// org.jberet.creation.ValueConverter#parseDate
-	// https://github.com/jberet/jsr352/blob/master/jberet-core/src/main/java/org/jberet/creation/ValueConverter.java
-	// Java 11(Java 9〜?)
-	// en_US SHORT -> 12/31/12, 12:00 AM
-	// @Inject
-	// @BatchProperty(name = "list.date")
-	// Date[] listDateArray;
-
 	@SuppressWarnings("rawtypes")
 	@Inject
 	@BatchProperty(name = "class")

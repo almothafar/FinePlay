@@ -4,8 +4,8 @@ organization := "hiro20v"
 
 version := "2.7.0-RC9-βc11-SNAPSHOT"
 
-scalaVersion := "2.12.6"
-//scalaVersion := "2.13.0-M3"
+scalaVersion := "2.12.8"
+//scalaVersion := "2.13.0"
 
 //lazy val fineplaySub = (project in file("sub"))
 //    .enablePlugins(PlayJava)
@@ -30,21 +30,21 @@ libraryDependencies ++= Seq(
   filters,
 //  openId,
 //  evolutions,
-  "com.typesafe.play" %% "play-mailer" % "6.0.1",						// Apache 6.0.1
-  "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
+  "com.typesafe.play" %% "play-mailer" % "7.0.0-RC1",					// Apache 6.0.1
+  "com.typesafe.play" %% "play-mailer-guice" % "7.0.0-RC1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.7.0-RC2",						// Apache 2.7.0-M1
-  "com.typesafe.play" %% "play-ws" % "2.0.0-RC2",						// Apache 2.0.0-M6
+  "com.typesafe.play" %% "play-json" % "2.7.0",							// Apache 2.7.0
+  "com.typesafe.play" %% "play-ws" % "2.0.0",							// Apache 2.0.0
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
-  "net.jodah" % "failsafe" % "1.1.0",									// Apache 1.1.0
+  "net.jodah" % "failsafe" % "1.1.1",									// Apache 1.1.1
   "net.logstash.logback" % "logstash-logback-encoder" % "5.2",			// Apache 5.2
   "org.hibernate" % "hibernate-core" % "5.4.0.Final",					// LGPL 5.4.0
   "org.hibernate" % "hibernate-jpamodelgen" % "5.4.0.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
-  "javax.json" % "javax.json-api" % "1.1.3",
-  "org.glassfish" % "javax.json" % "1.1.3",
+  "javax.json" % "javax.json-api" % "1.1.4",
+  "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
   "org.mockito" % "mockito-core" % "2.23.4",							// MIT 2.23.0
@@ -85,7 +85,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.4.3",							// MIT 1.4.3
   "org.webjars.npm" % "d3" % "5.7.0",									// BSD-3-Clause license 5.5.0
-  "org.webjars.npm" % "d3-geo-projection" % "2.5.0",					// MIT 2.5.0
+  "org.webjars.npm" % "d3-geo-projection" % "2.5.1",					// MIT 2.5.1
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.npm" % "prettier" % "1.15.3",							// MIT 1.15.3
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
@@ -96,7 +96,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
   "org.webjars.bower" % "plotly.js" % "1.43.2",							// MIT 1.43.2
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.1.1
+//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.3.2
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch

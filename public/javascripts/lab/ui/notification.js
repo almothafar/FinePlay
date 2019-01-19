@@ -51,15 +51,20 @@ var mySlider = $("#waitSlider").bootstrapSlider({
 $('#progressAlertButton').on('click', function(e){
 
 	var alertHtml = '' +
-		'<div class="alert alert-progress bg-dark text-light opacity-75 rounded-0 fade alert-dismissible show text-left" role="alert">' +
-			'<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-				'<span aria-hidden="true">×</span>' +
-			'</button>' +
-			'Progress' +
-			'<div class="alert-progress-bar position-absolute w-100 h-4p d-flex justify-content-start">' +
+		'<div class="toast alert-progress show mw-100 bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">' +
+			'<div class="toast-header bg-dark text-light">' +
+				'<img src="/assets/images/favicons/apple-touch-icon.png" class="rounded mr-2 w-24p h-24p" alt="...">' +
+				'<strong class="mr-auto">Bootstrap</strong>' +
+				'<small>11 mins ago</small>' +
+				'<button type="button" class="ml-2 mb-1 close text-light" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+			'</div>' +
+			'<div class="alert-progress-bar w-100 h-4p d-flex justify-content-start">' +
 				'<div class="h-4p bg-orange grow-width"></div>' +
+			'</div>' +
+			'<div class="toast-body d-flex justify-content-start bg-dark text-light opacity-75">' +
+				'Progress' +
 			'</div>' +
 		'</div>';
 
-	notify('<div class="bg-secondary opacity-75 w-100">' + alertHtml + '</div>', 5000);
+	notify('<div class="opacity-75 w-100">' + alertHtml + '</div>', 5000);
 });

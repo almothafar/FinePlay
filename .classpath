@@ -4,9 +4,9 @@
   <classpathentry excluding="resources/" kind="src" path="test"/>
   <classpathentry kind="src" path="generate"/>
   <classpathentry kind="lib" path="./lib/jar.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.6.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.8.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.12.6-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.12.8-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/twirl-api_2.12/srcs/twirl-api_2.12-1.4.0-RC4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/twirl-api_2.12/jars/twirl-api_2.12-1.4.0-RC4.jar">
@@ -129,19 +129,19 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/docs/jackson-datatype-jsr310-2.9.8-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/srcs/play-json_2.12-2.7.0-RC2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/jars/play-json_2.12-2.7.0-RC2.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/srcs/play-json_2.12-2.7.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/jars/play-json_2.12-2.7.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/docs/play-json_2.12-2.7.0-RC2-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-json_2.12/docs/play-json_2.12-2.7.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/srcs/play-functional_2.12-2.7.0-RC2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/jars/play-functional_2.12-2.7.0-RC2.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/srcs/play-functional_2.12-2.7.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/jars/play-functional_2.12-2.7.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/docs/play-functional_2.12-2.7.0-RC2-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-functional_2.12/docs/play-functional_2.12-2.7.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.12.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.12.6.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.12.8-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.12.8.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.12.6-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.12.8-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.typelevel/macro-compat_2.12/srcs/macro-compat_2.12-1.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.typelevel/macro-compat_2.12/jars/macro-compat_2.12-1.1.1.jar">
@@ -154,9 +154,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.scala-lang.modules/scala-collection-compat_2.12/docs/scala-collection-compat_2.12-0.1.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/joda-time/joda-time/srcs/joda-time-2.9.9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.9.9.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/joda-time/joda-time/srcs/joda-time-2.10.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.10.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/joda-time/joda-time/docs/joda-time-2.9.9-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/joda-time/joda-time/docs/joda-time-2.10.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.google.guava/guava/srcs/guava-27.0-jre-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.google.guava/guava/bundles/guava-27.0-jre.jar">
@@ -424,9 +424,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/docs/hibernate-jpa-2.1-api-1.0.2.Final-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer_2.12/srcs/play-mailer_2.12-6.0.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer_2.12/jars/play-mailer_2.12-6.0.1.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer_2.12/srcs/play-mailer_2.12-7.0.0-RC1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer_2.12/jars/play-mailer_2.12-7.0.0-RC1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer_2.12/docs/play-mailer_2.12-6.0.1-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer_2.12/docs/play-mailer_2.12-7.0.0-RC1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.commons/commons-email/srcs/commons-email-1.5-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.commons/commons-email/jars/commons-email-1.5.jar">
@@ -440,19 +440,19 @@
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.activation/activation/srcs/activation-1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.activation/activation/jars/activation-1.1.jar"/>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer-guice_2.12/srcs/play-mailer-guice_2.12-6.0.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer-guice_2.12/jars/play-mailer-guice_2.12-6.0.1.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer-guice_2.12/srcs/play-mailer-guice_2.12-7.0.0-RC1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer-guice_2.12/jars/play-mailer-guice_2.12-7.0.0-RC1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer-guice_2.12/docs/play-mailer-guice_2.12-6.0.1-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/srcs/play-guice_2.12-2.7.0-RC9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/jars/play-guice_2.12-2.7.0-RC9.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/docs/play-guice_2.12-2.7.0-RC9-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-mailer-guice_2.12/docs/play-mailer-guice_2.12-7.0.0-RC1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.google.inject/guice/srcs/guice-4.2.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.google.inject/guice/jars/guice-4.2.2.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.google.inject/guice/docs/guice-4.2.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/srcs/play-guice_2.12-2.7.0-RC9-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/jars/play-guice_2.12-2.7.0-RC9.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/docs/play-guice_2.12-2.7.0-RC9-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/srcs/guice-assistedinject-4.2.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.2.2.jar">
@@ -465,9 +465,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.h2database/h2/docs/h2-1.4.197-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.jodah/failsafe/srcs/failsafe-1.1.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.jodah/failsafe/jars/failsafe-1.1.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.jodah/failsafe/srcs/failsafe-1.1.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.jodah/failsafe/jars/failsafe-1.1.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.jodah/failsafe/docs/failsafe-1.1.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.jodah/failsafe/docs/failsafe-1.1.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/srcs/logstash-logback-encoder-5.2-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/jars/logstash-logback-encoder-5.2.jar">
@@ -543,14 +543,14 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.glassfish/javax.el/docs/javax.el-3.0.1-b09-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.json/javax.json-api/srcs/javax.json-api-1.1.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.json/javax.json-api/bundles/javax.json-api-1.1.3.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/javax.json/javax.json-api/srcs/javax.json-api-1.1.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/javax.json/javax.json-api/bundles/javax.json-api-1.1.4.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/javax.json/javax.json-api/docs/javax.json-api-1.1.3-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/javax.json/javax.json-api/docs/javax.json-api-1.1.4-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish/javax.json/srcs/javax.json-1.1.3-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish/javax.json/bundles/javax.json-1.1.3.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.glassfish/javax.json/srcs/javax.json-1.1.4-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish/javax.json/bundles/javax.json-1.1.4.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.glassfish/javax.json/docs/javax.json-1.1.3-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.glassfish/javax.json/docs/javax.json-1.1.4-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.apache.commons/commons-text/srcs/commons-text-1.6-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.commons/commons-text/jars/commons-text-1.6.jar">
@@ -1041,9 +1041,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-chord/docs/d3-chord-1.0.6-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/srcs/d3-geo-projection-2.5.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/jars/d3-geo-projection-2.5.0.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/srcs/d3-geo-projection-2.5.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/jars/d3-geo-projection-2.5.1.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/docs/d3-geo-projection-2.5.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/docs/d3-geo-projection-2.5.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/jqvmap/srcs/jqvmap-1.5.1-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/jqvmap/jars/jqvmap-1.5.1.jar">

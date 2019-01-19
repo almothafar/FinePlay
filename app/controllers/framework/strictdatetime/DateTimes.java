@@ -113,7 +113,11 @@ class DateTimes {
 		Objects.nonNull(clientZoneId);
 
 		final List<ZonedDateTime> serverZonedDateTimes = toServerZonedDateTimes(serverStartZonedDateTime, interval);
-		return serverZonedDateTimes.stream().map(serverZonedDateTime -> serverZonedDateTime.withZoneSameInstant(clientZoneId)).collect(Collectors.toList());
+		final List<ZonedDateTime> clientZonedDateTimes = serverZonedDateTimes.stream().map(serverZonedDateTime -> serverZonedDateTime.withZoneSameInstant(clientZoneId)).collect(Collectors.toList());
+
+		final ZonedDateTime clientStartZonedDate = clientZonedDateTimes.get(0);
+		final LocalDate clientDate = clientStartZonedDate.toLocalDate();
+		return clientZonedDateTimes.stream().filter(clientZonedDateTime -> clientDate.equals(clientZonedDateTime.toLocalDate())).collect(Collectors.toList());
 	}
 
 	private static List<ZonedDateTime> toServerZonedDateTimes(final ZonedDateTime serverStartZonedDateTime, final int interval) {
