@@ -1,5 +1,9 @@
-@import scala.collection.JavaConversions._
 @import scala.collection.JavaConverters._
+
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -14,12 +18,7 @@
 @import common.system._
 @import models.framework.strictdatetime._
 
-@(alertInfo: Map[String, String], form: play.data.Form[models.framework.strictdatetime.DateTimeFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(alertInfo: java.util.Map[String, String], form: play.data.Form[models.framework.strictdatetime.DateTimeFormContent])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 
@@ -38,7 +37,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-0")){
 
-			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrDefault("dateTimeWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("dateTimeWarning").toString))
+			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.asScala.getOrElse("dateTimeWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.asScala.contains("dateTimeWarning").toString))
 
 			@helper.form(helper.CSRF(controllers.framework.strictdatetime.routes.DateTime.update()), 'name->"updateForm", 'id->"updateForm") {
 				<div class="row mb-3">
