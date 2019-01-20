@@ -1,4 +1,4 @@
-package controllers.framework.application;
+package controllers.lab.ui;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -25,10 +25,10 @@ import test.Condition;
 import test.Counter;
 import test.Filter;
 
-public class ApplicationTest {
+public class UITest {
 
 	@Test
-	public void testFixedClock() {
+	public void testScroll() {
 
 		@SuppressWarnings("serial")
 		final List<Condition> conditions = Arrays.asList(new Condition[] { //
@@ -38,9 +38,7 @@ public class ApplicationTest {
 						put("user.id", "admin@example.com");
 						put("user.password", "admin1!aA");
 						//
-						put("title.clock", "Application | fine✿play");
-						put("server", "Jan 1, 2020, 1:01:01 AM");
-						put("client", "Dec 31, 2019, 5:01:01 PM");
+						put("title.fixedbar", "Lab | fine✿play");
 					}
 				}), //
 				new Condition("", Locale.JAPAN, new HashMap<String, Object>() {
@@ -49,9 +47,7 @@ public class ApplicationTest {
 						put("user.id", "adminjajp@example.com");
 						put("user.password", "adminjajp1!aA");
 						//
-						put("title.clock", "Application | ファイン✿プレイ");
-						put("server", "2020/01/01 1:01:01");
-						put("client", "2020/01/01 10:01:01");
+						put("title.fixedbar", "実験室 | ファイン✿プレイ");
 					}
 				}) //
 		});
@@ -81,14 +77,20 @@ public class ApplicationTest {
 				final IntroPage introPage = new IntroPage(browser);
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(introPage.getUrl()));
 
-				final ClockPage clockPage = new ClockPage(browser);
-				browser.goTo(clockPage.getUrl());
-				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(clockPage.getUrl()));
-				clockPage.isAt();
-				assertThat("", browser.window().title(), is((String) condition.get("title.clock")));
-				assertThat("", clockPage.getServerDateTime(), is((String) condition.get("server")));
-				assertThat("", clockPage.getClientDateTime(), is((String) condition.get("client")));
-				clockPage.takeScreenshot(capturePath, locale, counter, "Fixed clock - Success");
+				final FixedBarPage fixedBarPage = new FixedBarPage(browser);
+				browser.goTo(fixedBarPage.getUrl());
+				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(fixedBarPage.getUrl()));
+				fixedBarPage.isAt();
+				assertThat("", browser.window().title(), is((String) condition.get("title.fixedbar")));
+
+				fixedBarPage.scrollWithId("group_0");
+				fixedBarPage.takeScreenshot(capturePath, locale, counter, "Group 1");
+				fixedBarPage.scrollWithId("group_1");
+				fixedBarPage.takeScreenshot(capturePath, locale, counter, "Group 2");
+				fixedBarPage.scrollWithId("group_2");
+				fixedBarPage.takeScreenshot(capturePath, locale, counter, "Group 3");
+				fixedBarPage.scrollWithId("group_3");
+				fixedBarPage.takeScreenshot(capturePath, locale, counter, "Group 4");
 			});
 		});
 	}
