@@ -14,10 +14,10 @@ How to play
 
 ##### Environment #####
 
-	macOS Mojave version 10.14.2（18C54）
+	macOS Mojave version 10.14.3（18D42）
 	Time zone UTC
-	openjdk version "11.0.1" 2018-10-16 / OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
-	Safari version 12.0.2 (14606.3.4)
+	openjdk version "11.0.2" 2019-01-15 / OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+	Safari version 12.0.3 (14606.4.5)
 
 ##### OpenJDK #####
 
@@ -99,11 +99,15 @@ TODO
 Update application.conf
 
 ### FinePlay 2.7.x ###
++ Update Scala 2.13 release  
++ Update play-mailer 7.0.0 release  
 + Update Bootstrap 5.3 release  
 Restore temporary correspondence of [This problem](https://github.com/twbs/bootstrap/issues/27903).
 
-### FinePlay x.x.x ###
+### FinePlay 2.8.x ###
 + Drop IE / Refactor system_menu.
+
+### FinePlay x.x.x ###
 + Update Bootbox 5.0 release
 
 Release History

@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -146,15 +147,15 @@ class LibraryUpdateChecker {
 				.addQueryParameter("wt", "json");
 
 		@SuppressWarnings("unchecked")
-		final RetryPolicy retryPolicy = new RetryPolicy()//
-				.retryOn(InterruptedException.class, ExecutionException.class)//
-				.withMaxDuration(3, TimeUnit.SECONDS)//
+		final RetryPolicy<List<Artifact>> retryPolicy = new RetryPolicy<List<Artifact>>()//
+				.onRetry(e -> LOGGER.warn("Failure #{}. Retrying {}.", e.getLastFailure().getClass().getName(), e.getAttemptCount()))//
+				.handle(InterruptedException.class, ExecutionException.class)//
+				.withMaxDuration(Duration.ofSeconds(3))//
 				.withMaxRetries(5);
 
 		try {
 
 			final List<Artifact> result = Failsafe.with(retryPolicy)//
-					.onRetry((c, f, ctx) -> LOGGER.warn("Failure #{}. Retrying.", ctx.getExecutions()))//
 					.get(() -> {
 
 						final CompletionStage<WSResponse> responsePromise = wsRequest.setRequestTimeout(timeout).get();

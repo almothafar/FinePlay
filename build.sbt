@@ -37,10 +37,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-ws" % "2.0.0",							// Apache 2.0.0
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
-  "net.jodah" % "failsafe" % "1.1.1",									// Apache 1.1.1
-  "net.logstash.logback" % "logstash-logback-encoder" % "5.2",			// Apache 5.2
-  "org.hibernate" % "hibernate-core" % "5.4.0.Final",					// LGPL 5.4.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.4.0.Final",			//
+  "net.jodah" % "failsafe" % "2.0.0",									// Apache 2.0.0
+  "net.logstash.logback" % "logstash-logback-encoder" % "5.3",			// Apache 5.3
+  "org.hibernate" % "hibernate-core" % "5.4.1.Final",					// LGPL 5.4.0
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.4.1.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.4",
@@ -61,7 +61,7 @@ libraryDependencies ++= Seq(
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
-  "com.github.spullara.mustache.java" % "compiler" % "0.9.5",			// Apache 0.9.5
+  "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.2.1",							// MIT 4.0.0
@@ -73,7 +73,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
   "org.webjars.npm" % "chart.js" % "2.7.3",								// MIT 2.7.3
-  "org.webjars.bower" % "moment" % "2.23.0",							// MIT 2.22.0
+  "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
   "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
@@ -96,7 +96,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
   "org.webjars.bower" % "plotly.js" % "1.43.2",							// MIT 1.43.2
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.3.2
+//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.3.3
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch

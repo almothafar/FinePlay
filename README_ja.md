@@ -14,10 +14,10 @@ Play(Java) 2.7 & Bootstrap 4.2
 
 ##### 環境 #####
 
-	macOS Mojave バージョン 10.14.2（18C54）
+	macOS Mojave バージョン 10.14.3（18D42）
 	時間帯 UTC
-	openjdk バージョン "11.0.1" 2018-10-16 / OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
-	Safari バージョン 12.0.2 (14606.3.4)
+	openjdk バージョン "11.0.2" 2019-01-15 / OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+	Safari バージョン 12.0.3 (14606.4.5)
 
 ##### OpenJDK #####
 
@@ -95,15 +95,19 @@ URL を開く
 ###### このプロジェクトが、将来更新されるかどうかは、未定です。 ######
 
 ### FinePlay 2.7.0 ###
-+ Framework 2.7.0 リリース版に更新  
++ Play Framework 2.7.0 リリース版に更新  
 application.conf の更新
 
 ### FinePlay 2.7.x ###
++ Scala 2.13 リリース版に更新  
++ play-mailer 7.0.0 リリース版に更新  
 + Bootstrap 5.3 リリース版に更新  
 [この問題](https://github.com/twbs/bootstrap/issues/27903)の一時対応を元に戻す。
 
-### FinePlay x.x.x ###
+### FinePlay 2.8.x ###
 + IE の削除 / system_menuのリファクタリング
+
+### FinePlay x.x.x ###
 + Bootbox 5.0 リリース版(作者居ないっぽい？)か、フォーク版に更新
 
 リリース履歴
