@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -7,12 +12,7 @@
 
 @import common.system._
 
-@(fontAwesomeSolidIconNames: List[String], fontAwesomeRegularIconNames: List[String], fontAwesomeBrandsRegularIconNames: List[String], materialDesignIconNames: List[String], ioniconsNames: List[String], icoFontNames: List[String], twemojiAwesomeIconNames: List[String])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(fontAwesomeSolidIconNames: java.util.List[String], fontAwesomeRegularIconNames: java.util.List[String], fontAwesomeBrandsRegularIconNames: java.util.List[String], materialDesignIconNames: java.util.List[String], ioniconsNames: java.util.List[String], icoFontNames: java.util.List[String], twemojiAwesomeIconNames: java.util.List[String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 

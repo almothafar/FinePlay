@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import java.time._
 @import java.time.format._
 @import java.net.URLEncoder
@@ -15,12 +20,7 @@
 @import common.system._
 @import common.utils._
 
-@(jobNames: List[String], jobExecutions: List[JobExecution])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(jobNames: java.util.List[String], jobExecutions: java.util.List[JobExecution])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @datetime(dateTime: LocalDateTime) = @{
 

@@ -1,6 +1,5 @@
 package controllers.lab.application;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
@@ -29,6 +28,7 @@ import models.system.System.PermissionsAllowed;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
+import play.libs.Files.TemporaryFile;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
@@ -59,15 +59,16 @@ public class Upload extends Controller {
 		final Messages messages = messagesApi.preferred(request);
 		final Lang lang = messages.lang();
 
-		final MultipartFormData<File> body = request.body().asMultipartFormData();
-		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
+		final MultipartFormData<TemporaryFile> body = request.body().asMultipartFormData();
+		final play.mvc.Http.MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
 		if (filePart != null) {
 
 			@SuppressWarnings("unused")
 			final String fileName = filePart.getFilename();
 			@SuppressWarnings("unused")
 			final String contentType = filePart.getContentType();
-			final Path path = filePart.getFile().toPath();
+			final TemporaryFile tempFile = filePart.getRef();
+			final Path path = tempFile.path();
 			LOGGER.info("" + path);
 
 			final Map<String, String> alertInfo = Map.of("success", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
@@ -87,14 +88,15 @@ public class Upload extends Controller {
 		final Messages messages = messagesApi.preferred(request);
 		final Lang lang = messages.lang();
 
-		final MultipartFormData<File> body = request.body().asMultipartFormData();
-		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
+		final MultipartFormData<TemporaryFile> body = request.body().asMultipartFormData();
+		final play.mvc.Http.MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
 		if (filePart != null) {
 
 			final Path fileNamePath = Paths.get(filePart.getFilename());
 			final String fileName = fileNamePath.getFileName().toString();
 			final String contentType = filePart.getContentType();
-			final Path path = filePart.getFile().toPath();
+			final TemporaryFile tempFile = filePart.getRef();
+			final Path path = tempFile.path();
 			LOGGER.info("Receive: Path={} File name={} Content type={}", path, fileName, contentType);
 
 			try {
@@ -143,12 +145,13 @@ public class Upload extends Controller {
 		final Messages messages = messagesApi.preferred(request);
 		messages.lang();
 
-		final MultipartFormData<File> body = request.body().asMultipartFormData();
+		final MultipartFormData<TemporaryFile> body = request.body().asMultipartFormData();
 		@SuppressWarnings("unused")
 		final Map<String, String[]> form = body.asFormUrlEncoded();
-		final play.mvc.Http.MultipartFormData.FilePart<File> filePart = body.getFile("inputName");
+		final play.mvc.Http.MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
 
-		final Path path = filePart.getFile().toPath();
+		final TemporaryFile tempFile = filePart.getRef();
+		final Path path = tempFile.path();
 		LOGGER.info("" + path);
 
 		final ObjectMapper mapper = new ObjectMapper();

@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import java.time._
 @import java.time.format._
 
@@ -14,12 +19,7 @@
 @import common.system._
 @import common.utils._
 
-@(startDayInfo: List[List[String]], endDayInfo: List[List[String]], dateTimeList: List[List[LocalDateTime]])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(startDayInfo: java.util.List[java.util.List[String]], endDayInfo: java.util.List[java.util.List[String]], dateTimeList: java.util.List[java.util.List[LocalDateTime]])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @datetimeFormat(date: LocalDate) = @{
 

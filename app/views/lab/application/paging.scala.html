@@ -1,21 +1,21 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import play.i18n.Lang
 @import play.i18n.Messages
 
 @import common.system._
 @import models.components._
 
-@(pagingInfo:PagingInfo, dummyPageValues:List[String])(implicit request:Http.Request, lang: Lang, messages: Messages)
+@(pagingInfo:PagingInfo, dummyPageValues:java.util.List[String])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @equalPageSize(pageSize:Int) = @{
 
 	pageSize == pagingInfo.getPageSize()
 }
 
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
-@import scala.collection.JavaConversions._
 @import views.html._
 @import views.html.components
 @import views.html.helper._

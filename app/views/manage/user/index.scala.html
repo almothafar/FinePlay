@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import java.time._
 @import java.time.format._
 @import play.i18n.Lang
@@ -12,12 +17,7 @@
 @import models.user._
 @import models.user.User._
 
-@(form: play.data.Form[models.manage.user.ReadFormContent], users: List[User])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(form: play.data.Form[models.manage.user.ReadFormContent], users: java.util.List[User])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @datetime(dateTime: LocalDateTime) = @{
 

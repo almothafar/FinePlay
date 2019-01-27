@@ -1,17 +1,16 @@
-@import play.i18n.Lang
-@import play.i18n.Messages
-
-@()(implicit request:Http.Request, lang: Lang, messages: Messages)
-
 @import scala.collection.immutable._
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConversions._
+
+@import play.api.PlayException
+@import play.i18n.Lang
+@import play.i18n.Messages
+
 @import views.html._
 @import views.html.components
 
-@import play.api.PlayException
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 

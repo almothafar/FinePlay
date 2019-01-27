@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import java.time._
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -11,12 +16,7 @@
 @import models.company.organization._
 @import models.manage.company.organization.tree._
 
-@(alertInfo: Map[String, String], form: play.data.Form[models.manage.company.organization.tree.ReadFormContent], companyName: String, unitTreeJSON: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(alertInfo: java.util.Map[String, String], form: play.data.Form[models.manage.company.organization.tree.ReadFormContent], companyName: String, unitTreeJSON: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @datetime(dateTime: LocalDateTime) = @{
 

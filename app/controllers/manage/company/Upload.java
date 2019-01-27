@@ -1,6 +1,5 @@
 package controllers.manage.company;
 
-import java.io.File;
 import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -15,6 +14,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
@@ -47,15 +47,15 @@ import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.filters.csrf.RequireCSRFCheck;
 import play.i18n.Lang;
+import play.i18n.Messages;
 import play.i18n.MessagesApi;
+import play.libs.Files.TemporaryFile;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
-import play.mvc.Result;
-import javax.annotation.Nonnull;
-import play.i18n.Messages;
 import play.mvc.Http.Request;
+import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 
 public class Upload extends Controller {
@@ -85,7 +85,7 @@ public class Upload extends Controller {
 
 		final Result result = jpaApi.withTransaction(manager -> {
 
-			final MultipartFormData<File> multipartFormData = request.body().asMultipartFormData();
+			final MultipartFormData<TemporaryFile> multipartFormData = request.body().asMultipartFormData();
 			final Form<UploadFormContent> uploadForm = formFactory.form(UploadFormContent.class).bindFromRequestData(lang, request.attrs(), multipartFormData.asFormUrlEncoded());
 
 			if (!uploadForm.hasErrors()) {
@@ -96,12 +96,12 @@ public class Upload extends Controller {
 
 				try {
 
-					final FilePart<File> uploadFilePart = multipartFormData.getFile(Company.UPLOADFILE);
+					final FilePart<TemporaryFile> uploadFilePart = multipartFormData.getFile(Company.UPLOADFILE);
 					if (uploadFilePart.getFilename().isEmpty()) {
 
 						throw new IllegalStateException(messages.at(MessageKeys.ERROR_PATH_EMPTY));
 					}
-					final Path uploadPath = uploadFilePart.getFile().toPath();
+					final Path uploadPath = uploadFilePart.getRef().path();
 
 					final String csv = Files.readAllLines(uploadPath, StandardCharsets.UTF_8).stream().collect(Collectors.joining(CsvPreference.STANDARD_PREFERENCE.getEndOfLineSymbols()));
 					final List<Company> uploadCompanies = CSVs.toBeans(Company.getHeaders(), Company.getReadCellProcessors(), csv, Company.class);

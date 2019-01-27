@@ -113,7 +113,7 @@ Restore temporary correspondence of [This problem](https://github.com/twbs/boots
 Release History
 ---------------
 
-+ **2.7.0-RC9-βc11** - 2019-01-14
++ **2.7.0-RC9-βc12** - 2019-01-27
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

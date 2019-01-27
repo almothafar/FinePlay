@@ -424,6 +424,7 @@ $('#debugButton').on('shown.bs.popover', function () {
 	$("#secretButton").on("click", function(){$('.secret').removeClass('secret');});
 	$("#Memory").text($("#debugButton").data("memory"));
 	$("#JDK_ver").text($("#debugButton").data("jdkver"));
+	$("#Scala_ver").text($("#debugButton").data("scalaver"));
 	$("#Play_ver").text($("#debugButton").data("playver"));
 	$("#jQuery_ver").text($.fn.jquery);
 	$("#Bootstrap_ver").text(bootstrap.Button.VERSION);

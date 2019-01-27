@@ -1,4 +1,8 @@
-@import scala.collection.JavaConversions._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.SortedMap
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
 @import scala.collection.JavaConverters._
 
 @import play.i18n.Lang
@@ -10,12 +14,7 @@
 
 @import common.system._
 
-@(map: Map[String, Object])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(map: java.util.Map[String, Object])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 

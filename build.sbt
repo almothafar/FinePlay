@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-RC9-βc11-SNAPSHOT"
+version := "2.7.0-RC9-βc12-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -20,7 +20,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC9-βc11-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC9-βc12-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,

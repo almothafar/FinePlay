@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import play.i18n.Lang
 @import play.i18n.Messages
 
@@ -5,12 +10,7 @@
 @import views.html.components
 @import views.html.development
 
-@(map: Map[String, Object])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
+@(map: java.util.Map[String, Object])(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @frame(){
 

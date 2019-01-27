@@ -1,5 +1,9 @@
-@import scala.collection.JavaConversions._
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
 @import scala.collection.JavaConverters._
+
 @import views.html._
 @import views.html.components
 @import views.html.helper._
@@ -9,11 +13,6 @@
 @import common.system._
 
 @()(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
 
 @exampleText() = @{
 

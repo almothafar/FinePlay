@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import java.time._
 @import java.time.format._
 @import views.html._
@@ -9,11 +14,6 @@
 @import common.system._
 
 @(serverDateTime: LocalDateTime)(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
 
 @datetime(dateTime: LocalDateTime) = @{
 

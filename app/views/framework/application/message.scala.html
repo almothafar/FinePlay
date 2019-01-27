@@ -1,3 +1,8 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import play.i18n.Lang
 @import play.i18n.Messages
 
@@ -10,11 +15,6 @@
 @import common.system._
 
 @(displaySystemLangs: java.util.List[String], headerColumns: java.util.List[String], lineColumnsList: java.util.List[java.util.List[String]])(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
 
 @theadRowToColumns(headerColumns: java.util.List[String]) = @{
 

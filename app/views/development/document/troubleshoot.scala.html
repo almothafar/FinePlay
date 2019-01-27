@@ -1,5 +1,9 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
 @import java.util.Map._
-@import scala.collection.JavaConversions._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -11,11 +15,6 @@
 @import common.system._
 
 @(markdown: String)(implicit request:Http.Request, lang: Lang, messages: Messages)
-
-@import scala.collection.immutable._
-@import scala.collection.immutable.Map
-@import scala.collection.immutable.Seq
-@import scala.collection.immutable.List
 
 @frame(){
 
