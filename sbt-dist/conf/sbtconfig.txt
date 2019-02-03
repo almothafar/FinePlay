@@ -5,7 +5,7 @@
 # in Japan
 -Dfile.encoding=UTF-8
 
--Xmx512M
+-Xmx4g
 
 -XX:MaxPermSize=256m
 
@@ -16,4 +16,3 @@
 # Set the extra SBT options
 
 -Dsbt.log.format=true
-

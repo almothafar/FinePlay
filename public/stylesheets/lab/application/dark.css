@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+@media ( prefers-color-scheme : dark) {
+
+	#system_content {
+		color: white;
+		background: black;
+	}
+
+	#system_content .figure-caption {
+		color: white;
+	}
+}

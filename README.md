@@ -3,7 +3,7 @@ English | [日本語](./README_ja.md)
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
 Play(Java) 2.7 & Bootstrap 4.2  
-multilingual responsive project template.
+multilingual responsive project template(Tentative plan for something).
 
 | Phone | Tablet    |
 |-------|-----------|
@@ -94,13 +94,8 @@ TODO
 
 ###### Whether this project will be updated in the future is undecided. ######
 
-### FinePlay 2.7.0 ###
-+ Update Play Framework 2.7.0 release  
-Update application.conf
-
 ### FinePlay 2.7.x ###
 + Update Scala 2.13 release  
-+ Update play-mailer 7.0.0 release  
 + Update Bootstrap 5.3 release  
 Restore temporary correspondence of [This problem](https://github.com/twbs/bootstrap/issues/27903).
 
@@ -113,7 +108,7 @@ Restore temporary correspondence of [This problem](https://github.com/twbs/boots
 Release History
 ---------------
 
-+ **2.7.0-RC9-βc12** - 2019-01-27
++ **2.7.0-β1** - 2019-02-03
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

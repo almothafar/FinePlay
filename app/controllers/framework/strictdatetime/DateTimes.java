@@ -14,11 +14,6 @@ import java.util.stream.IntStream;
 
 import javax.annotation.Nonnull;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import play.mvc.Http.Request;
 
 class DateTimes {
@@ -43,39 +38,9 @@ class DateTimes {
 	}
 
 	@Nonnull
-	public static JsonNode getClientZonedDateTimeToNameJsonNode(//
+	public static List<ZonedDateTime> toClientZonedDateTimes(//
 			@Nonnull final Request request, @Nonnull final LocalDate clientDate, //
 			@Nonnull final LocalTime clientMinTime, @Nonnull final LocalTime clientMaxTime, //
-			final int interval) {
-
-		final List<ZonedDateTime> clientZonedDateTimes = toClientZonedDateTimes(//
-				request, clientDate, //
-				clientMinTime, clientMaxTime, //
-				interval);
-
-		final ObjectMapper mapper = new ObjectMapper();
-		final ObjectNode result = mapper.createObjectNode();
-
-		final ArrayNode dateTimes = result.putArray("dateTimes");
-		final ObjectNode dateTimeToName = result.putObject("dateTimeToName");
-
-		for (final ZonedDateTime zonedDateTime : clientZonedDateTimes) {
-
-			final String key = zonedDateTime.toString();
-			final String value = zonedDateTime.toOffsetDateTime().toOffsetTime().toString();
-
-			dateTimes.add(key);
-			dateTimeToName.put(//
-					key, //
-					value);
-		}
-
-		return result;
-	}
-
-	public static List<ZonedDateTime> toClientZonedDateTimes(//
-			@Nonnull final Request request, final LocalDate clientDate, //
-			final LocalTime clientMinTime, final LocalTime clientMaxTime, //
 			final int interval) {
 
 		Objects.requireNonNull(request);

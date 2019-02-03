@@ -1,0 +1,94 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+
+@import common.system._
+@import common.utils._
+@import models.user._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/application/dark.css")'>
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Dark", "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"dark"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+
+				<div class="col-md-9">
+
+					<h2 class="headline">Flower</h2>
+
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2973.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2715.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2726.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2748.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2794.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_3003.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2975.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+						<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+							@components.figure(Map("id"->"", "icon"->"", "align"->"right", "text"->"A caption for the above image.")){
+								@components.image(Map("id"->"image", "source"->routes.Assets.versioned("images/signins/IMG_2913.JPG").toString, "thumbnail"->"true", "class"->""))
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

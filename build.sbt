@@ -2,10 +2,17 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-RC9-βc12-SNAPSHOT"
+version := "2.7.0-β1-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
+
+//javacOptions ++= Seq(
+//  "-encoding", "UTF-8",
+//  "-parameters",
+//  "-Xlint:unchecked",
+//  "-Xlint:deprecation"
+//)
 
 //lazy val fineplaySub = (project in file("sub"))
 //    .enablePlugins(PlayJava)
@@ -20,7 +27,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-RC9-βc12-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-β1-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -30,8 +37,8 @@ libraryDependencies ++= Seq(
   filters,
 //  openId,
 //  evolutions,
-  "com.typesafe.play" %% "play-mailer" % "7.0.0-RC1",					// Apache 6.0.1
-  "com.typesafe.play" %% "play-mailer-guice" % "7.0.0-RC1",
+  "com.typesafe.play" %% "play-mailer" % "7.0.0",						// Apache 7.0.0
+  "com.typesafe.play" %% "play-mailer-guice" % "7.0.0",
   guice,
   "com.typesafe.play" %% "play-json" % "2.7.0",							// Apache 2.7.0
   "com.typesafe.play" %% "play-ws" % "2.0.0",							// Apache 2.0.0
@@ -47,7 +54,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.23.4",							// MIT 2.23.0
+  "org.mockito" % "mockito-core" % "2.24.0",							// MIT 2.24.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.0.1",									// Apache 4.0.0
@@ -75,7 +82,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "chart.js" % "2.7.3",								// MIT 2.7.3
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.9.0",						// MIT 3.8.0
+  "org.webjars.bower" % "fullcalendar" % "3.10.0",						// MIT 3.10.0
   "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.19",			//

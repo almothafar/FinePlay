@@ -77,10 +77,12 @@ $(document).ready(function () {
 
 					$('#ajaxDialog').modal('hide');
 
-					for(var i in responseJson.dateTimes){
+					for(var i in responseJson.times){
 
-						var dateTime = responseJson.dateTimes[i];
-						var name = responseJson.dateTimeToName[dateTime];
+						var time = responseJson.times[i];
+
+						var dateTime = time['dateTime'];
+						var name = time['name'];
 
 						var submitValue = $('#dateTime_DateTime_submit').val();
 						var activeClass = '';

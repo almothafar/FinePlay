@@ -113,6 +113,9 @@ public class Application extends Controller {
 		case "vertical":
 
 			return vertical(request, lang, messages);
+		case "dark":
+
+			return dark(request, lang, messages);
 		default:
 
 			return redirect(controllers.setting.user.routes.User.index());
@@ -378,5 +381,10 @@ public class Application extends Controller {
 	private Result vertical(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.application.vertical.render(request, lang, messages));
+	}
+
+	private Result dark(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.application.dark.render(request, lang, messages));
 	}
 }

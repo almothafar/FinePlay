@@ -31,6 +31,7 @@ GET		/batch/jobexecution/:executionId/:userId	apis.batch.Batch.jobExecution(requ
 GET		/test										controllers.test.Test.index(request: Request)
 
 GET		/											controllers.user.User.index(request: Request)
+GET		/.well-known/change-password				controllers.user.User.index(request: Request)
 POST	/signin										controllers.user.User.signIn(request: Request)
 GET		/signout									controllers.user.User.signOut(request: Request)
 POST	/confirm									controllers.user.User.confirm(request: Request)

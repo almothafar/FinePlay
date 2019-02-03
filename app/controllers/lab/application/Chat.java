@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.CoordinatedShutdown;
 import akka.actor.Props;
 import akka.stream.Materializer;
 import models.system.System.PermissionsAllowed;
@@ -46,6 +47,8 @@ public class Chat extends Controller {
 
 		this.actorSystem = actorSystem;
 		this.materializer = materializer;
+
+		CoordinatedShutdown.get(actorSystem).addJvmShutdownHook(() -> System.out.println("custom JVM shutdown hook..."));
 	}
 
 	@Authenticated(common.core.Authenticator.class)

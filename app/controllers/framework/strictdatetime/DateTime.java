@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -19,6 +20,9 @@ import javax.security.auth.login.AccountException;
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import common.system.MessageKeys;
 import controllers.user.UserService;
@@ -239,8 +243,37 @@ public class DateTime extends Controller {
 				interval = jsonNode.get("interval").asInt();
 			}
 
-			final JsonNode response = DateTimes.getClientZonedDateTimeToNameJsonNode(request, clientDate, clientMinTime, clientMaxTime, interval);
+			final JsonNode response = getClientZonedDateTimeObject(request, clientDate, clientMinTime, clientMaxTime, interval);
 			return ok(response);
 		});
+	}
+
+	@Nonnull
+	private static JsonNode getClientZonedDateTimeObject(//
+			@Nonnull final Request request, @Nonnull final LocalDate clientDate, //
+			@Nonnull final LocalTime clientMinTime, @Nonnull final LocalTime clientMaxTime, //
+			final int interval) {
+
+		final List<ZonedDateTime> clientZonedDateTimes = DateTimes.toClientZonedDateTimes(//
+				request, clientDate, //
+				clientMinTime, clientMaxTime, //
+				interval);
+
+		final ObjectMapper mapper = new ObjectMapper();
+		final ObjectNode result = mapper.createObjectNode();
+
+		final ArrayNode times = result.putArray("times");
+
+		for (final ZonedDateTime zonedDateTime : clientZonedDateTimes) {
+
+			final String key = zonedDateTime.toString();
+			final String value = zonedDateTime.toOffsetDateTime().toOffsetTime().toString();
+
+			final ObjectNode dateTimeToName = times.addObject();
+			dateTimeToName.put("dateTime", key);
+			dateTimeToName.put("name", value);
+		}
+
+		return result;
 	}
 }
