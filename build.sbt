@@ -44,7 +44,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-ws" % "2.0.0",							// Apache 2.0.0
   "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
 //  "com.h2database" % "h2" % "1.4.197" % Test,
-  "net.jodah" % "failsafe" % "2.0.0",									// Apache 2.0.0
+  "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
   "net.logstash.logback" % "logstash-logback-encoder" % "5.3",			// Apache 5.3
   "org.hibernate" % "hibernate-core" % "5.4.1.Final",					// LGPL 5.4.0
   "org.hibernate" % "hibernate-jpamodelgen" % "5.4.1.Final",			//
@@ -91,17 +91,17 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.4.3",							// MIT 1.4.3
-  "org.webjars.npm" % "d3" % "5.7.0",									// BSD-3-Clause license 5.5.0
+  "org.webjars.npm" % "d3" % "5.8.2",									// BSD-3-Clause license 5.8.2
   "org.webjars.npm" % "d3-geo-projection" % "2.5.1",					// MIT 2.5.1
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
-  "org.webjars.npm" % "prettier" % "1.15.3",							// MIT 1.15.3
+  "org.webjars.npm" % "prettier" % "1.16.4",							// MIT 1.16.4
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
-  "org.webjars.npm" % "diff2html" % "2.5.0",							// MIT 2.5.0
+  "org.webjars.npm" % "diff2html" % "2.7.0",							// MIT 2.7.0
   "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
   "org.webjars.npm" % "viz.js" % "2.1.1",								// MIT 2.1.1
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.bower" % "plotly.js" % "1.43.2",							// MIT 1.43.2
+  "org.webjars.bower" % "plotly.js" % "1.44.3",							// MIT 1.44.3
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.3.3
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
@@ -133,7 +133,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.6.3",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.6.3
+  "org.webjars" % "font-awesome" % "5.7.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.7.1
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.4.7",								// MIT 4.4.7
   "org.webjars.npm" % "twemoji" % "11.2.0"								// Code:MIT, Graphics:CC 11.2.0

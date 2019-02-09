@@ -50,6 +50,7 @@ baby
 baby-carriage
 backspace
 backward
+bacon
 balance-scale
 ban
 band-aid
@@ -84,6 +85,7 @@ bone
 bong
 book
 book-dead
+book-medical
 book-open
 book-reader
 bookmark
@@ -93,6 +95,7 @@ box-open
 boxes
 braille
 brain
+bread-slice
 briefcase
 briefcase-medical
 broadcast-tower
@@ -152,6 +155,7 @@ check
 check-circle
 check-double
 check-square
+cheese
 chess
 chess-bishop
 chess-board
@@ -173,6 +177,7 @@ church
 circle
 circle-notch
 city
+clinic-medical
 clipboard
 clipboard-check
 clipboard-list
@@ -201,6 +206,7 @@ comment
 comment-alt
 comment-dollar
 comment-dots
+comment-medical
 comment-slash
 comments
 comments-dollar
@@ -221,6 +227,7 @@ cross
 crosshairs
 crow
 crown
+crutch
 cube
 cubes
 cut
@@ -265,6 +272,7 @@ dumpster
 dumpster-fire
 dungeon
 edit
+egg
 eject
 ellipsis-h
 ellipsis-v
@@ -388,12 +396,14 @@ grip-lines-vertical
 grip-vertical
 guitar
 h-square
+hamburger
 hammer
 hamsa
 hand-holding
 hand-holding-heart
 hand-holding-usd
 hand-lizard
+hand-middle-finger
 hand-paper
 hand-peace
 hand-point-down
@@ -408,6 +418,7 @@ hands
 hands-helping
 handshake
 hanukiah
+hard-hat
 hashtag
 hat-wizard
 haykal
@@ -433,6 +444,7 @@ hospital
 hospital-alt
 hospital-symbol
 hot-tub
+hotdog
 hotel
 hourglass
 hourglass-end
@@ -441,6 +453,7 @@ hourglass-start
 house-damage
 hryvnia
 i-cursor
+ice-cream
 icicles
 id-badge
 id-card
@@ -470,6 +483,7 @@ landmark
 language
 laptop
 laptop-code
+laptop-medical
 laugh
 laugh-beam
 laugh-squint
@@ -563,6 +577,7 @@ oil-can
 om
 otter
 outdent
+pager
 paint-brush
 paint-roller
 palette
@@ -587,6 +602,7 @@ pen-square
 pencil-alt
 pencil-ruler
 people-carry
+pepper-hot
 percent
 percentage
 person-booth
@@ -596,6 +612,7 @@ phone-square
 phone-volume
 piggy-bank
 pills
+pizza-slice
 place-of-worship
 plane
 plane-arrival
@@ -828,6 +845,8 @@ transgender
 transgender-alt
 trash
 trash-alt
+trash-restore
+trash-restore-alt
 tree
 trophy
 truck
@@ -865,6 +884,7 @@ user-lock
 user-md
 user-minus
 user-ninja
+user-nurse
 user-plus
 user-secret
 user-shield

@@ -75,7 +75,9 @@ grin-tongue
 grin-tongue-squint
 grin-tongue-wink
 grin-wink
+hamburger
 hand-lizard
+hand-middle-finger
 hand-paper
 hand-peace
 hand-point-down
@@ -87,10 +89,13 @@ hand-rock
 hand-scissors
 hand-spock
 handshake
+hard-hat
 hdd
 heart
 hospital
+hotdog
 hourglass
+ice-cream
 id-badge
 id-card
 image
@@ -99,6 +104,7 @@ keyboard
 kiss
 kiss-beam
 kiss-wink-heart
+laptop-medical
 laugh
 laugh-beam
 laugh-squint
@@ -117,8 +123,11 @@ moon
 newspaper
 object-group
 object-ungroup
+pager
 paper-plane
 pause-circle
+pepper-hot
+pizza-slice
 play-circle
 plus-square
 question-circle
@@ -143,8 +152,11 @@ thumbs-up
 times-circle
 tired
 trash-alt
+trash-restore
+trash-restore-alt
 user
 user-circle
+user-nurse
 window-close
 window-maximize
 window-minimize

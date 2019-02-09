@@ -179,14 +179,19 @@ gulp
 hacker-news
 hacker-news-square
 hackerrank
+hamburger
+hand-middle-finger
+hard-hat
 hips
 hire-a-helper
 hooli
 hornbill
+hotdog
 hotjar
 houzz
 html5
 hubspot
+ice-cream
 imdb
 instagram
 intercom
@@ -210,6 +215,7 @@ keycdn
 kickstarter
 kickstarter-k
 korvue
+laptop-medical
 laravel
 lastfm
 lastfm-square
@@ -259,10 +265,12 @@ optin-monster
 osi
 page4
 pagelines
+pager
 palfed
 patreon
 paypal
 penny-arcade
+pepper-hot
 periscope
 phabricator
 phoenix-framework
@@ -275,6 +283,7 @@ pied-piper-pp
 pinterest
 pinterest-p
 pinterest-square
+pizza-slice
 playstation
 product-hunt
 pushed
@@ -353,6 +362,8 @@ themeco
 themeisle
 think-peaks
 trade-federation
+trash-restore
+trash-restore-alt
 trello
 tripadvisor
 tumblr
@@ -368,6 +379,7 @@ uniregistry
 untappd
 ups
 usb
+user-nurse
 usps
 ussunnah
 vaadin

@@ -14,7 +14,7 @@ Play(Java) 2.7 & Bootstrap 4.2
 
 ##### 環境 #####
 
-	macOS Mojave バージョン 10.14.3（18D42）
+	macOS Mojave バージョン 10.14.3（18D109）
 	時間帯 UTC
 	openjdk バージョン "11.0.2" 2019-01-15 / OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
 	Safari バージョン 12.0.3 (14606.4.5)

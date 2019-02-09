@@ -123,15 +123,15 @@ class IconNameExtractor {
 		switch (style) {
 		case "fas":
 
-			name = "FontAwesome5FreeSolid";
+			name = "FontAwesome5Free-Solid";
 			break;
 		case "far":
 
-			name = "FontAwesome5FreeRegular";
+			name = "FontAwesome5Free-Regular";
 			break;
 		case "fab":
 
-			name = "FontAwesome5BrandsRegular";
+			name = "FontAwesome5Brands-Regular";
 			break;
 		default:
 
