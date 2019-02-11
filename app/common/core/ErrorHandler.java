@@ -64,7 +64,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 		final Lang lang = messages.lang();
 
 		final Optional<String> userIdOpt = request.session().getOptional(models.user.User_.USER_ID);
-		if (userIdOpt.isEmpty()) {
+		if (!userIdOpt.isPresent()) {
 
 			return CompletableFuture.completedFuture(Results.redirect(controllers.user.routes.User.index()));
 		}
@@ -110,7 +110,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 		final Lang lang = messages.lang();
 
 		final Optional<String> userIdOpt = request.session().getOptional(models.user.User_.USER_ID);
-		if (userIdOpt.isEmpty()) {
+		if (!userIdOpt.isPresent()) {
 
 			return super.onProdServerError(request, exception);
 		}

@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import common.utils.Exceptions;
 import models.system.PDFInfoFormContent;
 import models.system.PaperInfoFormContent;
 import models.system.System.PermissionsAllowed;
@@ -100,7 +101,7 @@ public class PDF extends Controller {
 	private String getQuery(@Nonnull final Map<String, String> params) {
 
 		return params.entrySet().stream()//
-				.map(e -> e.getKey() + "=" + URLEncoder.encode(e.getValue(), StandardCharsets.UTF_8).replace("+", "%20"))//
+				.map(e -> e.getKey() + "=" + Exceptions.callQuietly(() -> URLEncoder.encode(e.getValue(), StandardCharsets.UTF_8.name())).replace("+", "%20"))//
 				.collect(Collectors.joining("&"));
 	}
 

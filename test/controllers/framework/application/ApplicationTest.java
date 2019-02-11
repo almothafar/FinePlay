@@ -1,5 +1,6 @@
 package controllers.framework.application;
 
+import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static play.test.Helpers.FIREFOX;
@@ -41,6 +42,8 @@ public class ApplicationTest {
 						put("title.clock", "Application | fine✿play");
 						put("server", "Jan 1, 2020, 1:01:01 AM");
 						put("client", "Dec 31, 2019, 5:01:01 PM");
+						put("legacy-server", "Jan 1, 2020 1:01:01 AM");
+						put("legacy-client", "Dec 31, 2019 5:01:01 PM");
 					}
 				}), //
 				new Condition("", Locale.JAPAN, new HashMap<String, Object>() {
@@ -52,6 +55,8 @@ public class ApplicationTest {
 						put("title.clock", "Application | ファイン✿プレイ");
 						put("server", "2020/01/01 1:01:01");
 						put("client", "2020/01/01 10:01:01");
+						put("legacy-server", "2020/01/01 1:01:01");
+						put("legacy-client", "2020/01/01 10:01:01");
 					}
 				}) //
 		});
@@ -86,8 +91,8 @@ public class ApplicationTest {
 				browser.await().atMost(10, TimeUnit.SECONDS).until(() -> browser.url().startsWith(clockPage.getUrl()));
 				clockPage.isAt();
 				assertThat("", browser.window().title(), is((String) condition.get("title.clock")));
-				assertThat("", clockPage.getServerDateTime(), is((String) condition.get("server")));
-				assertThat("", clockPage.getClientDateTime(), is((String) condition.get("client")));
+				assertThat("", clockPage.getServerDateTime(), anyOf(is((String) condition.get("legacy-server")), is((String) condition.get("server"))));
+				assertThat("", clockPage.getClientDateTime(), anyOf(is((String) condition.get("legacy-client")), is((String) condition.get("client"))));
 				clockPage.takeScreenshot(capturePath, locale, counter, "Fixed clock - Success");
 			});
 		});

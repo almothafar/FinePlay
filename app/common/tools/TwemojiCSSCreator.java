@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -82,93 +83,95 @@ class TwemojiCSSCreator {
 		return twemojiCSSLines;
 	}
 
-	private static Map<String, String> codePointToUnicodeCodePoint = Map.ofEntries(//
+	private static Map<String, String> codePointToUnicodeCodePoint = new HashMap<String, String>() {
+		{//
 			// Mapped.
 
 			// #
-			Map.entry("23 20E3", "0023 20E3"), //
+			put("23 20E3", "0023 20E3");
 			// *
-			Map.entry("2A 20E3", "002A 20E3"), //
+			put("2A 20E3", "002A 20E3");
 			// 0〜9
-			Map.entry("30 20E3", "0030 20E3"), //
-			Map.entry("31 20E3", "0031 20E3"), //
-			Map.entry("32 20E3", "0032 20E3"), //
-			Map.entry("33 20E3", "0033 20E3"), //
-			Map.entry("34 20E3", "0034 20E3"), //
-			Map.entry("35 20E3", "0035 20E3"), //
-			Map.entry("36 20E3", "0036 20E3"), //
-			Map.entry("37 20E3", "0037 20E3"), //
-			Map.entry("38 20E3", "0038 20E3"), //
-			Map.entry("39 20E3", "0039 20E3"), //
+			put("30 20E3", "0030 20E3");
+			put("31 20E3", "0031 20E3");
+			put("32 20E3", "0032 20E3");
+			put("33 20E3", "0033 20E3");
+			put("34 20E3", "0034 20E3");
+			put("35 20E3", "0035 20E3");
+			put("36 20E3", "0036 20E3");
+			put("37 20E3", "0037 20E3");
+			put("38 20E3", "0038 20E3");
+			put("39 20E3", "0039 20E3");
 			// (C)
-			Map.entry("A9", "00A9"), //
+			put("A9", "00A9");
 			// (R)
-			Map.entry("AE", "00AE"), //
+			put("AE", "00AE");
 
 			// Not Mapped.
 
 			// 109
-			Map.entry("E50A", ""), //
+			put("E50A", "");
 			// skier
-			Map.entry("26F7 1F3FB", ""), //
-			Map.entry("26F7 1F3FC", ""), //
-			Map.entry("26F7 1F3FD", ""), //
-			Map.entry("26F7 1F3FE", ""), //
-			Map.entry("26F7 1F3FF", ""), //
+			put("26F7 1F3FB", "");
+			put("26F7 1F3FC", "");
+			put("26F7 1F3FD", "");
+			put("26F7 1F3FE", "");
+			put("26F7 1F3FF", "");
 			// A〜Z
-			Map.entry("1F1E6", ""), //
-			Map.entry("1F1E7", ""), //
-			Map.entry("1F1E8", ""), //
-			Map.entry("1F1E9", ""), //
-			Map.entry("1F1EA", ""), //
-			Map.entry("1F1EB", ""), //
-			Map.entry("1F1EC", ""), //
-			Map.entry("1F1ED", ""), //
-			Map.entry("1F1EE", ""), //
-			Map.entry("1F1EF", ""), //
-			Map.entry("1F1F0", ""), //
-			Map.entry("1F1F1", ""), //
-			Map.entry("1F1F2", ""), //
-			Map.entry("1F1F3", ""), //
-			Map.entry("1F1F4", ""), //
-			Map.entry("1F1F5", ""), //
-			Map.entry("1F1F6", ""), //
-			Map.entry("1F1F7", ""), //
-			Map.entry("1F1F8", ""), //
-			Map.entry("1F1F9", ""), //
-			Map.entry("1F1FA", ""), //
-			Map.entry("1F1FB", ""), //
-			Map.entry("1F1FC", ""), //
-			Map.entry("1F1FD", ""), //
-			Map.entry("1F1FE", ""), //
-			Map.entry("1F1FF", ""), //
+			put("1F1E6", "");
+			put("1F1E7", "");
+			put("1F1E8", "");
+			put("1F1E9", "");
+			put("1F1EA", "");
+			put("1F1EB", "");
+			put("1F1EC", "");
+			put("1F1ED", "");
+			put("1F1EE", "");
+			put("1F1EF", "");
+			put("1F1F0", "");
+			put("1F1F1", "");
+			put("1F1F2", "");
+			put("1F1F3", "");
+			put("1F1F4", "");
+			put("1F1F5", "");
+			put("1F1F6", "");
+			put("1F1F7", "");
+			put("1F1F8", "");
+			put("1F1F9", "");
+			put("1F1FA", "");
+			put("1F1FB", "");
+			put("1F1FC", "");
+			put("1F1FD", "");
+			put("1F1FE", "");
+			put("1F1FF", "");
 			// suit levitating
-			Map.entry("1F574 1F3FB 200D 2640 FE0F", ""), //
-			Map.entry("1F574 1F3FB 200D 2642 FE0F", ""), //
-			Map.entry("1F574 1F3FC 200D 2640 FE0F", ""), //
-			Map.entry("1F574 1F3FC 200D 2642 FE0F", ""), //
-			Map.entry("1F574 1F3FD 200D 2640 FE0F", ""), //
-			Map.entry("1F574 1F3FD 200D 2642 FE0F", ""), //
-			Map.entry("1F574 1F3FE 200D 2640 FE0F", ""), //
-			Map.entry("1F574 1F3FE 200D 2642 FE0F", ""), //
-			Map.entry("1F574 1F3FF 200D 2640 FE0F", ""), //
-			Map.entry("1F574 1F3FF 200D 2642 FE0F", ""), //
-			Map.entry("1F574 FE0F 200D 2640 FE0F", ""), //
-			Map.entry("1F574 FE0F 200D 2642 FE0F", ""), //
+			put("1F574 1F3FB 200D 2640 FE0F", "");
+			put("1F574 1F3FB 200D 2642 FE0F", "");
+			put("1F574 1F3FC 200D 2640 FE0F", "");
+			put("1F574 1F3FC 200D 2642 FE0F", "");
+			put("1F574 1F3FD 200D 2640 FE0F", "");
+			put("1F574 1F3FD 200D 2642 FE0F", "");
+			put("1F574 1F3FE 200D 2640 FE0F", "");
+			put("1F574 1F3FE 200D 2642 FE0F", "");
+			put("1F574 1F3FF 200D 2640 FE0F", "");
+			put("1F574 1F3FF 200D 2642 FE0F", "");
+			put("1F574 FE0F 200D 2640 FE0F", "");
+			put("1F574 FE0F 200D 2642 FE0F", "");
 			// tuxedo
-			Map.entry("1F935 1F3FB 200D 2640 FE0F", ""), //
-			Map.entry("1F935 1F3FB 200D 2642 FE0F", ""), //
-			Map.entry("1F935 1F3FC 200D 2640 FE0F", ""), //
-			Map.entry("1F935 1F3FC 200D 2642 FE0F", ""), //
-			Map.entry("1F935 1F3FD 200D 2640 FE0F", ""), //
-			Map.entry("1F935 1F3FD 200D 2642 FE0F", ""), //
-			Map.entry("1F935 1F3FE 200D 2640 FE0F", ""), //
-			Map.entry("1F935 1F3FE 200D 2642 FE0F", ""), //
-			Map.entry("1F935 1F3FF 200D 2640 FE0F", ""), //
-			Map.entry("1F935 1F3FF 200D 2642 FE0F", ""), //
-			Map.entry("1F935 200D 2640 FE0F", ""), //
-			Map.entry("1F935 200D 2642 FE0F", "")//
-	);
+			put("1F935 1F3FB 200D 2640 FE0F", "");
+			put("1F935 1F3FB 200D 2642 FE0F", "");
+			put("1F935 1F3FC 200D 2640 FE0F", "");
+			put("1F935 1F3FC 200D 2642 FE0F", "");
+			put("1F935 1F3FD 200D 2640 FE0F", "");
+			put("1F935 1F3FD 200D 2642 FE0F", "");
+			put("1F935 1F3FE 200D 2640 FE0F", "");
+			put("1F935 1F3FE 200D 2642 FE0F", "");
+			put("1F935 1F3FF 200D 2640 FE0F", "");
+			put("1F935 1F3FF 200D 2642 FE0F", "");
+			put("1F935 200D 2640 FE0F", "");
+			put("1F935 200D 2642 FE0F", "");
+		}
+	};
 
 	private static SortedMap<String, String> getTwemojiToSVGFileNameMap() throws IOException {
 

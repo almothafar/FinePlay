@@ -71,12 +71,20 @@ public class Upload extends Controller {
 			final Path path = tempFile.path();
 			LOGGER.info("" + path);
 
-			final Map<String, String> alertInfo = Map.of("success", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
+			final Map<String, String> alertInfo = new HashMap<String, String>() {
+				{
+					put("success", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
+				}
+			};
 
 			return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 		} else {
 
-			final Map<String, String> alertInfo = Map.of("warning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> Missing " + messages.at(MessageKeys.FILE));
+			final Map<String, String> alertInfo = new HashMap<String, String>() {
+				{
+					put("warning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> Missing " + messages.at(MessageKeys.FILE));
+				}
+			};
 
 			return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 		}
@@ -114,12 +122,20 @@ public class Upload extends Controller {
 				Files.move(path, uploadPath);
 				LOGGER.info("Upload : Path={} File name={} Content type={}", uploadPath, fileName, realContentType);
 
-				final Map<String, String> alertInfo = Map.of("imageSuccess", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
+				final Map<String, String> alertInfo = new HashMap<String, String>() {
+					{
+						put("imageSuccess", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
+					}
+				};
 
 				return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 			} catch (IOException | IllegalStateException e) {
 
-				final Map<String, String> alertInfo = Map.of("imageWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + messages.at(MessageKeys.SYSTEM_ERROR_X__DATA_ILLEGAL, filePart.getFilename()));
+				final Map<String, String> alertInfo = new HashMap<String, String>() {
+					{
+						put("imageWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + messages.at(MessageKeys.SYSTEM_ERROR_X__DATA_ILLEGAL, filePart.getFilename()));
+					}
+				};
 
 				return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 			} finally {
@@ -132,7 +148,11 @@ public class Upload extends Controller {
 			}
 		} else {
 
-			final Map<String, String> alertInfo = Map.of("imageWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> Missing " + messages.at(MessageKeys.FILE));
+			final Map<String, String> alertInfo = new HashMap<String, String>() {
+				{
+					put("imageWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> Missing " + messages.at(MessageKeys.FILE));
+				}
+			};
 
 			return ok(views.html.lab.application.upload.render(alertInfo, request, lang, messages));
 		}

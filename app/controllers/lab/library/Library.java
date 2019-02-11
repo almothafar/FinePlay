@@ -8,6 +8,7 @@ import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collections;
@@ -536,7 +537,7 @@ public class Library extends Controller {
 	private Map<String, String> getParams(final Map<String, String[]> queryString) {
 
 		final Map<String, String> params = queryString.entrySet().stream()//
-				.map(e -> Map.entry(e.getKey(), e.getValue()[0]))//
+				.map(e -> new SimpleImmutableEntry<String, String>(e.getKey(), e.getValue()[0]))//
 				.collect(Collectors.toMap(//
 						e -> e.getKey(), //
 						e -> e.getValue()));

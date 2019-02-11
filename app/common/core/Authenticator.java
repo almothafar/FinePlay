@@ -1,6 +1,8 @@
 package common.core;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.annotation.Nonnull;
@@ -29,15 +31,23 @@ public class Authenticator extends Security.Authenticator {
 	@Override
 	public Result onUnauthorized(Request req) {
 
+		final String requestUrl = getRequestURI(req);
+
+		return redirect(controllers.user.routes.User.index())//
+				.withSession(new Session(new HashMap<String, String>() {
+					{//
+						put(SessionKeys.REQUEST_URL, requestUrl);//
+					}
+				}));
+	}
+
+	private String getRequestURI(Request req) {
+
 		String requestUrl = req.uri();
-		if (requestUrl == null) {
+		if (Objects.isNull(requestUrl)) {
 
 			requestUrl = "/";
 		}
-
-		return redirect(controllers.user.routes.User.index())//
-				.withSession(new Session(Map.of(//
-						SessionKeys.REQUEST_URL, requestUrl//
-				)));
+		return requestUrl;
 	}
 }

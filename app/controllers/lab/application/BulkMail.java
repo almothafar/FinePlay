@@ -4,6 +4,7 @@ import java.lang.invoke.MethodHandles;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletionStage;
@@ -149,7 +150,11 @@ public class BulkMail extends Controller {
 		LOGGER.info(template);
 
 		final Email email = new Email()//
-				.setHeaders(Map.of("X-SMTPAPI", smtpapi))//
+				.setHeaders(new HashMap<String, String>() {
+					{
+						put("X-SMTPAPI", smtpapi);
+					}
+				})//
 				.setSubject("Dear {{name}} Weekly news")//
 				.setFrom("From<from@example.com>")//
 				.addTo("to@example.com")// for Commons Email measures.

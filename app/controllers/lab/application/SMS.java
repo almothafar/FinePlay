@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.typesafe.config.Config;
 
+import common.utils.Exceptions;
 import models.system.System.PermissionsAllowed;
 import play.api.PlayException;
 import play.data.DynamicForm;
@@ -126,9 +127,9 @@ public class SMS extends Controller {
 				.setAuth(getAccountSID(), getAuthToken(), WSAuthScheme.BASIC)//
 				.setContentType("application/x-www-form-urlencoded")//
 				.setRequestTimeout(timeout).post(//
-						"From=" + URLEncoder.encode(getFrom(), StandardCharsets.UTF_8) + "&" + //
-								"Body=" + URLEncoder.encode(message, StandardCharsets.UTF_8) + "&" + //
-								"To=" + URLEncoder.encode(to, StandardCharsets.UTF_8));
+						"From=" + Exceptions.callQuietly(() -> URLEncoder.encode(getFrom(), StandardCharsets.UTF_8.name())) + "&" + //
+								"Body=" + Exceptions.callQuietly(() -> URLEncoder.encode(message, StandardCharsets.UTF_8.name())) + "&" + //
+								"To=" + Exceptions.callQuietly(() -> URLEncoder.encode(to, StandardCharsets.UTF_8.name())));
 
 		final CompletionStage<String> recoverPromise = responsePromise.handle((response, throwable) -> {
 

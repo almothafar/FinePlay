@@ -2,6 +2,7 @@ package controllers.setting.user;
 
 import java.lang.invoke.MethodHandles;
 import java.time.ZoneId;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -130,10 +131,12 @@ public class User extends Controller {
 
 				return redirect(controllers.setting.user.routes.User.index())//
 						.withLang(new Lang(updatedLocale), messagesApi)//
-						.addingToSession(request, Map.of(//
-								models.user.User_.ZONE_ID, updatedZoneId.getId(), //
-								models.user.User_.THEME, updatedTheme.name()//
-				));
+						.addingToSession(request, new HashMap<String, String>() {
+							{//
+								put(models.user.User_.ZONE_ID, updatedZoneId.getId());
+								put(models.user.User_.THEME, updatedTheme.name());
+							}
+						});
 			} else {
 
 				return failureEdit(editForm, request, lang, messages);

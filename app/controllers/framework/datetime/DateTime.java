@@ -107,7 +107,11 @@ public class DateTime extends Controller {
 					updatedDateTime = updateDateTime(manager, datetimeFormContent, request, messages);
 				} catch (IllegalStateException e) {
 
-					final Map<String, String> alertInfo = Map.of("dateTimeWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage());
+					final Map<String, String> alertInfo = new HashMap<String, String>() {
+						{
+							put("dateTimeWarning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + e.getLocalizedMessage());
+						}
+					};
 
 					return failureRead(alertInfo, datetimeForm, request, lang, messages);
 				}

@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Currency;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -241,12 +242,14 @@ public class Application extends Controller {
 
 	public Result beforeflashlist(final Request request, final Lang lang, final Messages messages) {
 
-		final Flash flash = new Flash(Map.of(//
-				"success", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.MESSAGE), //
-				"info", "<strong>" + messages.at(MessageKeys.INFO) + "</strong> " + messages.at(MessageKeys.MESSAGE), //
-				"warning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + messages.at(MessageKeys.MESSAGE), //
-				"danger", "<strong>" + messages.at(MessageKeys.DANGER) + "</strong> " + messages.at(MessageKeys.MESSAGE)//
-		));
+		final Flash flash = new Flash(new HashMap<String, String>() {
+			{//
+				put("success", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.MESSAGE));
+				put("info", "<strong>" + messages.at(MessageKeys.INFO) + "</strong> " + messages.at(MessageKeys.MESSAGE));
+				put("warning", "<strong>" + messages.at(MessageKeys.WARNING) + "</strong> " + messages.at(MessageKeys.MESSAGE));
+				put("danger", "<strong>" + messages.at(MessageKeys.DANGER) + "</strong> " + messages.at(MessageKeys.MESSAGE));
+			}
+		});
 
 		return redirect(controllers.framework.application.routes.Application.index("flash"))//
 				// set

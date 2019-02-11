@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -121,9 +122,11 @@ public class User extends Controller {
 		final Messages messages = messagesApi.preferred(request);
 		final Lang lang = messages.lang();
 
-		request.session().adding(Map.of(//
-				models.user.User_.THEME, Theme.DEFAULT.name()//
-		));
+		request.session().adding(new HashMap<String, String>() {
+			{//
+				put(models.user.User_.THEME, Theme.DEFAULT.name());
+			}
+		});
 
 		final SignInFormContent signInFormContent = new SignInFormContent();
 		if (request.cookie(models.user.User_.USER_ID) != null) {
@@ -202,13 +205,15 @@ public class User extends Controller {
 
 				Result result = redirect(requestUrl)//
 						.withLang(selectedLang, messagesApi)//
-						.withSession(new Session(Map.of(//
-								models.user.User_.USER_ID, userId, //
-								models.user.User_.THEME, user.getTheme().name(), //
-								models.user.User_.ZONE_ID, user.getZoneId().getId(), //
-								models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())), //
-								SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString()//
-				)));
+						.withSession(new Session(new HashMap<String, String>() {
+							{//
+								put(models.user.User_.USER_ID, userId);
+								put(models.user.User_.THEME, user.getTheme().name());
+								put(models.user.User_.ZONE_ID, user.getZoneId().getId());
+								put(models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())));
+								put(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString());
+							}
+						}));
 				if (Boolean.valueOf(signInFormContent.getStoreAccount())) {
 					LOGGER.info("Store account");
 
@@ -313,9 +318,11 @@ public class User extends Controller {
 				final ObjectNode response = mapper.createObjectNode();
 				response.put("status", "success");
 
-				return ok(response).addingToSession(request, Map.of(//
-						SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString()//
-				));
+				return ok(response).addingToSession(request, new HashMap<String, String>() {
+					{//
+						put(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.now().plusMinutes(OPERATION_TIMEOUT_MINUTES).toString());//
+					}
+				});
 			} else {
 
 				return failureConfirm(passwordForm, request, lang, messages);

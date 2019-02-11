@@ -117,7 +117,7 @@ public class I18nTest extends WithApplication {
 
 	public Langs toLangs(final Locale locale) {
 
-		final List<play.api.i18n.Lang> list = List.of(new play.api.i18n.Lang(locale));
+		final List<play.api.i18n.Lang> list = Arrays.asList(new play.api.i18n.Lang(locale));
 		final Seq<play.api.i18n.Lang> seq = JavaConverters.asScalaIteratorConverter(list.iterator()).asScala().toSeq();
 		return new Langs(new DefaultLangs(seq));
 	}

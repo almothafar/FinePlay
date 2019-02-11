@@ -66,8 +66,8 @@ libraryDependencies ++= Seq(
   "org.apache.pdfbox" % "pdfbox" % "2.0.13",							// Apache 2.0.9
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
-  "org.mapstruct" % "mapstruct-jdk8" % "1.2.0.Final",					// Apache 1.2.0
-  "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
+  "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
+  "org.mapstruct" % "mapstruct-processor" % "1.3.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1

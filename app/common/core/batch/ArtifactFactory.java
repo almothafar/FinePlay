@@ -93,10 +93,10 @@ public class ArtifactFactory extends AbstractArtifactFactory {
 						}
 						if (Objects.nonNull(fieldVal)) {
 
-							if (!field.canAccess(obj)) {
+//							if (!field.canAccess(obj)) {
 
-								field.setAccessible(true);
-							}
+							field.setAccessible(true);
+//							}
 							field.set(obj, fieldVal);
 						}
 					}
