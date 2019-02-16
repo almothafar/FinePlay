@@ -7,7 +7,7 @@ Selection criteria
 - Cool !
 - Fit Content security policy
 - Fit Play framework 2.7
-- Fit Bootstrap 4.2
+- Fit Bootstrap 4.3
 - Browser support
 - Responsive support
 - Multilingual support

@@ -474,10 +474,4 @@ label.required:after{
 	opacity: 0.75 !important;
 }
 
-/* Wordwrap */
-
-.wordwrap {
-	word-wrap: break-word;
-}
-
 /* Project style */

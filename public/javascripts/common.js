@@ -457,6 +457,11 @@ var enablePrint = function() {
 	$("#printButton").removeClass("d-none");
 }
 
+var isExpand = function() {
+
+	return $("#system_base").hasClass('system_expand') || $("#system_base").hasClass('system_help-expand');
+}
+
 var ready = function(selector, func){
 
 	var timerId = setInterval(function() {

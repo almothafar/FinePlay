@@ -57,7 +57,7 @@ class TwemojiCSSCreator {
 		twemojiCSSLines.add("");
 
 		twemojiCSSLines.add(".ta:before{");
-		twemojiCSSLines.add("	content: \"\1F178\";");
+		twemojiCSSLines.add("	content: \"i\";");
 		twemojiCSSLines.add("	color: transparent;");
 		twemojiCSSLines.add("}");
 		twemojiCSSLines.add("");

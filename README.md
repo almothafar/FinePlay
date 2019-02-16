@@ -2,7 +2,7 @@ English | [日本語](./README_ja.md)
 
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.7 & Bootstrap 4.2  
+Play(Java) 2.7 & Bootstrap 4.3  
 multilingual responsive project template(Tentative plan for something).
 
 | Phone | Tablet    |
@@ -60,7 +60,7 @@ Document
 
 [Play Framework](https://www.playframework.com/documentation/2.7.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.2)
+[Bootstrap](http://getbootstrap.com/docs/4.3)
 
 [Font Awesome](https://fontawesome.com/how-to-use)
 
@@ -96,8 +96,6 @@ TODO
 
 ### FinePlay 2.7.x ###
 + Update Scala 2.13 release  
-+ Update Bootstrap 5.3 release  
-Restore temporary correspondence of [This problem](https://github.com/twbs/bootstrap/issues/27903).
 
 ### FinePlay 2.8.x ###
 + Drop IE / Refactor system_menu.
@@ -108,7 +106,7 @@ Restore temporary correspondence of [This problem](https://github.com/twbs/boots
 Release History
 ---------------
 
-+ **2.7.0-β1** - 2019-02-03
++ **2.7.0-β2** - 2019-02-16
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

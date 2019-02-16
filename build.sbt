@@ -2,7 +2,7 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-β1-SNAPSHOT"
+version := "2.7.0-β2-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -27,7 +27,7 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-β1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-β2-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -71,7 +71,7 @@ libraryDependencies ++= Seq(
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
-  "org.webjars.npm" % "bootstrap" % "4.2.1",							// MIT 4.0.0
+  "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
 //  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.3.1",					// MIT 10.3.1
@@ -121,8 +121,8 @@ libraryDependencies ++= Seq(
 
 // Use bootstrap
 libraryDependencies ++= Seq(
-//  "org.webjars.bower" % "clipboard" % "2.0.0",						// MIT 2.0.0
-  "org.webjars.npm" % "popper.js" % "1.14.6"							// MIT 1.14.6
+//  "org.webjars.bower" % "clipboard" % "2.0.4",						// MIT 2.0.0
+  "org.webjars.npm" % "popper.js" % "1.14.7"							// MIT 1.14.6
 )
 
 // Polyfill

@@ -82,7 +82,10 @@ $(document).ready(function () {
 
 	$('#tourButton').on('click', function(){
 
-		tour.start();
+		if(!isExpand()){
+
+			tour.start();
+		}
 	});
 });
 
