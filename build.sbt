@@ -54,7 +54,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.24.0",							// MIT 2.24.0
+  "org.mockito" % "mockito-core" % "2.24.5",							// MIT 2.24.5
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.0.1",									// Apache 4.0.0
@@ -91,17 +91,17 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.4.3",							// MIT 1.4.3
-  "org.webjars.npm" % "d3" % "5.8.2",									// BSD-3-Clause license 5.8.2
+  "org.webjars.npm" % "d3" % "5.9.1",									// BSD-3-Clause license 5.9.1
   "org.webjars.npm" % "d3-geo-projection" % "2.5.1",					// MIT 2.5.1
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.npm" % "prettier" % "1.16.4",							// MIT 1.16.4
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.npm" % "diff2html" % "2.7.0",							// MIT 2.7.0
   "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
-  "org.webjars.npm" % "viz.js" % "2.1.1",								// MIT 2.1.1
+  "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.bower" % "plotly.js" % "1.44.3",							// MIT 1.44.3
+  "org.webjars.bower" % "plotly.js" % "1.44.4",							// MIT 1.44.4
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.3.3
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
@@ -133,7 +133,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.7.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.7.1
+  "org.webjars" % "font-awesome" % "5.7.2",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.7.2
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.4.7",								// MIT 4.4.7
   "org.webjars.npm" % "twemoji" % "11.2.0"								// Code:MIT, Graphics:CC 11.2.0
