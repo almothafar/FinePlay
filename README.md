@@ -46,7 +46,7 @@ By clicking the green user icon, users for development can be selected.
 Document
 -------
 
-### Javadoc ###
+### ~~Javadoc~~ ###
 
 ##### Console #####
 
@@ -97,16 +97,13 @@ TODO
 ### FinePlay 2.7.x ###
 + Update Scala 2.13 release  
 
-### FinePlay 2.8.x ###
+### FinePlay 3.0.x ###
 + Drop IE / Refactor system_menu.
-
-### FinePlay x.x.x ###
-+ Update Bootbox 5.0 release
 
 Release History
 ---------------
 
-+ **2.7.0-β2** - 2019-02-16
++ **2.7.0-b3** - 2019-03-03
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

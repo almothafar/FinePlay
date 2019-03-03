@@ -2,23 +2,20 @@ name := """fineplay"""
 
 organization := "hiro20v"
 
-version := "2.7.0-β2-SNAPSHOT"
+maintainer := "hiro20v++@icloud.com"
+
+version := "2.7.0-b3-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
-
-//javacOptions ++= Seq(
-//  "-encoding", "UTF-8",
-//  "-parameters",
-//  "-Xlint:unchecked",
-//  "-Xlint:deprecation"
-//)
 
 //lazy val fineplaySub = (project in file("sub"))
 //    .enablePlugins(PlayJava)
 
 lazy val root = (project in file("."))
     .enablePlugins(PlayJava)
+    .settings(
+    )
 //    .aggregate(fineplaySub)
 //    .dependsOn(fineplaySub)
 
@@ -27,7 +24,8 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-β2-SNAPSHOT",
+  "org.jacoco" % "org.jacoco.agent" % "0.8.3",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-b3-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -42,7 +40,7 @@ libraryDependencies ++= Seq(
   guice,
   "com.typesafe.play" %% "play-json" % "2.7.0",							// Apache 2.7.0
   "com.typesafe.play" %% "play-ws" % "2.0.0",							// Apache 2.0.0
-  "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.197
+  "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.198
 //  "com.h2database" % "h2" % "1.4.197" % Test,
   "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
   "net.logstash.logback" % "logstash-logback-encoder" % "5.3",			// Apache 5.3
@@ -63,7 +61,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-core" % "1.20",								// Apache 1.17
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.13",							// Apache 2.0.9
+  "org.apache.pdfbox" % "pdfbox" % "2.0.14",							// Apache 2.0.14
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
@@ -72,7 +70,7 @@ libraryDependencies ++= Seq(
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
   "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
-//  "org.webjars.npm" % "bootbox" % "4.4.0",							// MIT 4.4.0
+  "org.webjars.bower" % "bootbox" % "5.0.0",							// MIT 5.0.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.3.1",					// MIT 10.3.1
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
@@ -103,7 +101,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
   "org.webjars.bower" % "plotly.js" % "1.44.4",							// MIT 1.44.4
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
-//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.3.3
+//  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.4.0
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
@@ -168,14 +166,22 @@ excludeDependencies ++= Seq(
 
 // //////////
 
-javaOptions in Test += "-Dconfig.file=conf/application_test.conf"
-// v0.21.0 / Firefox 57
-javaOptions in Test += "-Dwebdriver.gecko.driver=misc/geckodriver"
+javacOptions ++= Seq(
+  "-encoding", "UTF-8",
+  "-s", "generate"	// Create JPA metamodel
+//  "-parameters",
+//  "-Xlint:unchecked",
+//  "-Xlint:deprecation"
+)
+
+javaOptions in Test ++= Seq(
+  "-Dconfig.file=conf/application_test.conf",
+  "-Dwebdriver.gecko.driver=misc/geckodriver"	// v0.21.0 / Firefox 57
+)
 
 // Create JPA metamodel
-javacOptions in Compile ++= Seq("-encoding", "UTF-8", "-s", "generate")
-managedSourceDirectories in Compile += baseDirectory.value / "generate"
-unmanagedSourceDirectories in Test += baseDirectory.value / "generate"
+unmanagedSourceDirectories in Compile ++= Seq(baseDirectory.value / "generate")
+unmanagedSourceDirectories in Test ++= Seq(baseDirectory.value / "generate")
 
 // Make verbose tests
 testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a", "-v"))
@@ -188,8 +194,11 @@ EclipseKeys.projectFlavor := EclipseProjectFlavor.Java
 // Use .class files instead of generated .scala files for views and routes
 EclipseKeys.createSrc := EclipseCreateSrc.ValueSet(EclipseCreateSrc.ManagedClasses, EclipseCreateSrc.ManagedResources)
 
+// Not Create javadoc
+sources in (Compile, doc) := Seq.empty
+publishArtifact in (Compile, packageDoc) := false
 // Create javadoc
-sources in (Compile, doc) ~= (_ filter (_.getName endsWith ".java"))
+//sources in (Compile, doc) ~= (_ filter (_.getName endsWith ".java"))
 
 // Copy [Folder] on dist
 // fineplay/[Folder] -> /fineplay/target/universal/fineplay-[version]-SNAPSHOT/[Folder]
@@ -225,16 +234,16 @@ mappings in Universal ++= {
 // playEnhancerEnabled := false
 
 // JaCoCo
-//testOptions in jacocoReportSettings += Tests.Setup( () => {
-//	System.setProperty("config.file", "conf/application_test.conf");
-//	System.setProperty("webdriver.gecko.driver", "misc/geckodriver");
-//} )
-//jacocoReportSettings := JacocoReportSettings(
-//  "Jacoco Coverage Report",
-//  None,
-//  JacocoThresholds(),
-//  Seq(JacocoReportFormats.ScalaHTML),
-//  "utf-8")
+testOptions in jacocoReportSettings += Tests.Setup( () => {
+	System.setProperty("config.file", "conf/application_test.conf");
+	System.setProperty("webdriver.gecko.driver", "misc/geckodriver");
+} )
+jacocoReportSettings := JacocoReportSettings(
+  "Jacoco Coverage Report",
+  None,
+  JacocoThresholds(),
+  Seq(JacocoReportFormats.ScalaHTML),
+  "utf-8")
 
 // CPD
 //cpdLanguage := CpdLanguage.Java

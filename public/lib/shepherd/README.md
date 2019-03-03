@@ -16,6 +16,18 @@
 
 ## Install
 
+### JS Framework Wrappers
+
+We strive to make it easy to use Shepherd in all the major frameworks, and have written wrappers to facilitate this.
+
+* [angular-shepherd](https://github.com/shipshapecode/angular-shepherd)
+* [ember-shepherd](https://github.com/shipshapecode/ember-shepherd)
+* [react-shepherd](https://github.com/shipshapecode/react-shepherd)
+* [vue-shepherd](https://github.com/shipshapecode/vue-shepherd)
+
+
+### Install Directly
+
 __Dependencies__
 
 * __[Tippy.js](https://atomiks.github.io/tippyjs/)__
