@@ -52,7 +52,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.24.5",							// MIT 2.24.5
+  "org.mockito" % "mockito-core" % "2.25.0",							// MIT 2.25.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.0.1",									// Apache 4.0.0
@@ -168,10 +168,10 @@ excludeDependencies ++= Seq(
 
 javacOptions ++= Seq(
   "-encoding", "UTF-8",
-  "-s", "generate"	// Create JPA metamodel
-//  "-parameters",
-//  "-Xlint:unchecked",
-//  "-Xlint:deprecation"
+  "-s", "generate",	// Create JPA metamodel
+  "-parameters",
+  "-Xlint:unchecked",
+  "-Xlint:deprecation"
 )
 
 javaOptions in Test ++= Seq(

@@ -568,9 +568,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.postgresql/postgresql/docs/postgresql-42.2.5-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.24.5-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.24.5.jar">
+  <classpathentry sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.25.0-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.25.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.24.5-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.25.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/srcs/byte-buddy-1.9.7-sources.jar" kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/jars/byte-buddy-1.9.7.jar">

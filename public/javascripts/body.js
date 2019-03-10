@@ -67,7 +67,8 @@ if(("Dev" == getMode()) && window.Popper){
 	$("#debugButton").removeClass("d-none");
 	$("#debugButton").popover({
 
-		html: true
+		html: true,
+		sanitize: false
 	});
 }
 

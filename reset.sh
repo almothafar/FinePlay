@@ -6,6 +6,7 @@ rm -r ./bin/*
 rm -r ./generate/*
 touch ./generate/.empty
 
+rm -r ./document/javadoc/*
 rm -r ./document/tabledef_prod/*
 rm -r ./document/doxygen/*
 rm -r ./project/project/

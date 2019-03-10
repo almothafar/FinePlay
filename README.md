@@ -46,14 +46,6 @@ By clicking the green user icon, users for development can be selected.
 Document
 -------
 
-### ~~Javadoc~~ ###
-
-##### Console #####
-
-	MacBook:~ user$ cd github/FinePlay
-	MacBook:FinePlay user$ ./sbt doc
-	MacBook:~ user$ open -a Safari ./target/scala-2.12/api/index.html
-
 ### Official Document ###
 
 [JDK](https://docs.oracle.com/en/java/javase/11/docs/api/)

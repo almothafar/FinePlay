@@ -46,14 +46,6 @@ URL を開く
 書類
 -------
 
-### ~~Javadoc~~ ###
-
-##### コンソール #####
-
-	MacBook:~ user$ cd github/FinePlay
-	MacBook:FinePlay user$ ./sbt doc
-	MacBook:~ user$ open -a Safari ./target/scala-2.12/api/index.html
-
 ### 公式書類 ###
 
 [JDK](https://docs.oracle.com/javase/jp/11/docs/api/)
