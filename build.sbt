@@ -33,15 +33,15 @@ libraryDependencies ++= Seq(
   javaWs,
   javaJpa,
   filters,
+  ws,
 //  openId,
 //  evolutions,
   "com.typesafe.play" %% "play-mailer" % "7.0.0",						// Apache 7.0.0
   "com.typesafe.play" %% "play-mailer-guice" % "7.0.0",
   guice,
   "com.typesafe.play" %% "play-json" % "2.7.0",							// Apache 2.7.0
-  "com.typesafe.play" %% "play-ws" % "2.0.0",							// Apache 2.0.0
-  "com.h2database" % "h2" % "1.4.197",									// MPL/EPL 1.4.198
-//  "com.h2database" % "h2" % "1.4.197" % Test,
+  "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.199
+//  "com.h2database" % "h2" % "1.4.199" % Test,
   "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
   "net.logstash.logback" % "logstash-logback-encoder" % "5.3",			// Apache 5.3
   "org.hibernate" % "hibernate-core" % "5.4.1.Final",					// LGPL 5.4.0
