@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.0-b3-SNAPSHOT"
+version := "2.7.0-b4-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -25,7 +25,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-b3-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-b4-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -44,15 +44,15 @@ libraryDependencies ++= Seq(
 //  "com.h2database" % "h2" % "1.4.199" % Test,
   "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
   "net.logstash.logback" % "logstash-logback-encoder" % "5.3",			// Apache 5.3
-  "org.hibernate" % "hibernate-core" % "5.4.1.Final",					// LGPL 5.4.0
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.4.1.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.4.2.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.25.0",							// MIT 2.25.0
+  "org.mockito" % "mockito-core" % "2.25.1",							// MIT 2.25.1
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.0.1",									// Apache 4.0.0
@@ -88,8 +88,8 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "summernote" % "0.8.11",						// MIT 0.8.11
   "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
-  "org.webjars.npm" % "cropperjs" % "1.4.3",							// MIT 1.4.3
-  "org.webjars.npm" % "d3" % "5.9.1",									// BSD-3-Clause license 5.9.1
+  "org.webjars.npm" % "cropperjs" % "1.5.1",							// MIT 1.5.1
+  "org.webjars.npm" % "d3" % "5.9.2",									// BSD-3-Clause license 5.9.2
   "org.webjars.npm" % "d3-geo-projection" % "2.5.1",					// MIT 2.5.1
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.npm" % "prettier" % "1.16.4",							// MIT 1.16.4
@@ -99,7 +99,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.bower" % "plotly.js" % "1.44.4",							// MIT 1.44.4
+  "org.webjars.bower" % "plotly.js" % "1.45.3",							// MIT 1.45.3
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.4.0
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
@@ -108,7 +108,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "jsqr" % "1.1.1",									// Apache 2018/06/24 master
   "org.webjars.npm" % "holderjs" % "2.9.4",								// MIT 2.9.4
   "org.webjars.npm" % "3dmol" % "1.3.7",								// BSD-3-Clause license 1.3.7
-  "org.webjars.npm" % "github-com-Tencent-vConsole" % "3.2.0",			// MIT 3.2.0
+  "org.webjars.npm" % "github-com-Tencent-vConsole" % "3.3.0",			// MIT 3.3.0
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
@@ -125,7 +125,7 @@ libraryDependencies ++= Seq(
 
 // Polyfill
 libraryDependencies ++= Seq(
-  "org.webjars.npm" % "core-js" % "2.5.6",								// MIT 2.5.6
+  "org.webjars.npm" % "core-js-bundle" % "3.0.0",						// MIT 3.0.0
   "org.webjars.bower" % "fetch" % "2.0.4"								// MIT 2.0.4
 )
 
@@ -134,7 +134,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.7.2",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.7.2
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.4.7",								// MIT 4.4.7
-  "org.webjars.npm" % "twemoji" % "11.2.0"								// Code:MIT, Graphics:CC 11.2.0
+  "org.webjars.npm" % "twemoji" % "11.3.0"								// Code:MIT, Graphics:CC 11.3.0
 )
 // IcoFont																// MIT 1.3
 

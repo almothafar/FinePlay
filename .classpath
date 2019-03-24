@@ -486,9 +486,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/docs/logstash-logback-encoder-5.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.4.1.Final.jar" sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.4.1.Final-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.4.2.Final.jar" sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.4.2.Final-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/docs/hibernate-core-5.4.1.Final-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/docs/hibernate-core-5.4.2.Final-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/javax.persistence/javax.persistence-api/jars/javax.persistence-api-2.2.jar" sourcepath="/Users/hiro/.ivy2/cache/javax.persistence/javax.persistence-api/srcs/javax.persistence-api-2.2-sources.jar">
@@ -499,6 +499,11 @@
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.24.0-GA.jar" sourcepath="/Users/hiro/.ivy2/cache/org.javassist/javassist/srcs/javassist-3.24.0-GA-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.javassist/javassist/docs/javassist-3.24.0-GA-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/jars/byte-buddy-1.9.10.jar" sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/srcs/byte-buddy-1.9.10-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/docs/byte-buddy-1.9.10-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/antlr/antlr/jars/antlr-2.7.7.jar"/>
@@ -539,9 +544,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/docs/FastInfoset-1.2.15-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.4.1.Final.jar" sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.4.1.Final-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/jars/hibernate-jpamodelgen-5.4.2.Final.jar" sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/srcs/hibernate-jpamodelgen-5.4.2.Final-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/docs/hibernate-jpamodelgen-5.4.1.Final-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.hibernate/hibernate-jpamodelgen/docs/hibernate-jpamodelgen-5.4.2.Final-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/jars/javax.el-3.0.1-b09.jar" sourcepath="/Users/hiro/.ivy2/cache/org.glassfish/javax.el/srcs/javax.el-3.0.1-b09-sources.jar">
@@ -574,14 +579,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.postgresql/postgresql/docs/postgresql-42.2.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.25.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.25.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.25.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.25.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.25.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/jars/byte-buddy-1.9.7.jar" sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/srcs/byte-buddy-1.9.7-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy/docs/byte-buddy-1.9.7-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.25.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.9.7.jar" sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/srcs/byte-buddy-agent-1.9.7-sources.jar">
@@ -877,24 +877,19 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/slick-carousel/docs/slick-carousel-1.8.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/jars/cropperjs-1.4.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/srcs/cropperjs-1.4.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/jars/cropperjs-1.5.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/srcs/cropperjs-1.5.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/docs/cropperjs-1.4.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/cropperjs/docs/cropperjs-1.5.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3/jars/d3-5.9.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3/srcs/d3-5.9.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3/jars/d3-5.9.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3/srcs/d3-5.9.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3/docs/d3-5.9.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3/docs/d3-5.9.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale/jars/d3-scale-2.2.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale/srcs/d3-scale-2.2.2-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-chord/jars/d3-chord-1.0.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-chord/srcs/d3-chord-1.0.6-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale/docs/d3-scale-2.2.2-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-format/jars/d3-format-1.3.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-format/srcs/d3-format-1.3.2-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-format/docs/d3-format-1.3.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-chord/docs/d3-chord-1.0.6-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-array/jars/d3-array-1.2.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-array/srcs/d3-array-1.2.4-sources.jar">
@@ -902,9 +897,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-array/docs/d3-array-1.2.4-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-collection/jars/d3-collection-1.0.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-collection/srcs/d3-collection-1.0.7-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/jars/d3-path-1.0.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/srcs/d3-path-1.0.7-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-collection/docs/d3-collection-1.0.7-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/docs/d3-path-1.0.7-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/jars/d3-shape-1.3.5.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/srcs/d3-shape-1.3.5-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/docs/d3-shape-1.3.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-interpolate/jars/d3-interpolate-1.3.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-interpolate/srcs/d3-interpolate-1.3.2-sources.jar">
@@ -917,44 +917,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-color/docs/d3-color-1.2.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time-format/jars/d3-time-format-2.1.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time-format/srcs/d3-time-format-2.1.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-format/jars/d3-format-1.3.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-format/srcs/d3-format-1.3.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time-format/docs/d3-time-format-2.1.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-format/docs/d3-format-1.3.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time/jars/d3-time-1.0.11.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time/srcs/d3-time-1.0.11-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-zoom/jars/d3-zoom-1.7.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-zoom/srcs/d3-zoom-1.7.3-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time/docs/d3-time-1.0.11-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale-chromatic/jars/d3-scale-chromatic-1.3.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale-chromatic/srcs/d3-scale-chromatic-1.3.3-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale-chromatic/docs/d3-scale-chromatic-1.3.3-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo/jars/d3-geo-1.11.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo/srcs/d3-geo-1.11.3-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo/docs/d3-geo-1.11.3-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/jars/d3-path-1.0.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/srcs/d3-path-1.0.7-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-path/docs/d3-path-1.0.7-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/jars/d3-shape-1.3.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/srcs/d3-shape-1.3.4-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-shape/docs/d3-shape-1.3.4-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-chord/jars/d3-chord-1.0.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-chord/srcs/d3-chord-1.0.6-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-chord/docs/d3-chord-1.0.6-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-brush/jars/d3-brush-1.0.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-brush/srcs/d3-brush-1.0.6-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-brush/docs/d3-brush-1.0.6-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-zoom/docs/d3-zoom-1.7.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-dispatch/jars/d3-dispatch-1.0.5.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-dispatch/srcs/d3-dispatch-1.0.5-sources.jar">
@@ -962,14 +932,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-dispatch/docs/d3-dispatch-1.0.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-selection/jars/d3-selection-1.4.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-selection/srcs/d3-selection-1.4.0-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-selection/docs/d3-selection-1.4.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-drag/jars/d3-drag-1.2.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-drag/srcs/d3-drag-1.2.3-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-drag/docs/d3-drag-1.2.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-selection/jars/d3-selection-1.4.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-selection/srcs/d3-selection-1.4.0-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-selection/docs/d3-selection-1.4.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-transition/jars/d3-transition-1.2.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-transition/srcs/d3-transition-1.2.0-sources.jar">
@@ -987,34 +957,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-ease/docs/d3-ease-1.0.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-force/jars/d3-force-1.2.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-force/srcs/d3-force-1.2.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-contour/jars/d3-contour-1.3.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-contour/srcs/d3-contour-1.3.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-force/docs/d3-force-1.2.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-quadtree/jars/d3-quadtree-1.0.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-quadtree/srcs/d3-quadtree-1.0.6-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-quadtree/docs/d3-quadtree-1.0.6-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-polygon/jars/d3-polygon-1.0.5.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-polygon/srcs/d3-polygon-1.0.5-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-polygon/docs/d3-polygon-1.0.5-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-random/jars/d3-random-1.1.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-random/srcs/d3-random-1.1.2-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-random/docs/d3-random-1.1.2-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-axis/jars/d3-axis-1.0.12.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-axis/srcs/d3-axis-1.0.12-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-axis/docs/d3-axis-1.0.12-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-fetch/jars/d3-fetch-1.1.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-fetch/srcs/d3-fetch-1.1.2-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-fetch/docs/d3-fetch-1.1.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-contour/docs/d3-contour-1.3.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-dsv/jars/d3-dsv-1.1.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-dsv/srcs/d3-dsv-1.1.1-sources.jar">
@@ -1042,9 +987,39 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/rw/docs/rw-1.3.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-contour/jars/d3-contour-1.3.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-contour/srcs/d3-contour-1.3.2-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-brush/jars/d3-brush-1.0.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-brush/srcs/d3-brush-1.0.6-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-contour/docs/d3-contour-1.3.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-brush/docs/d3-brush-1.0.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale/jars/d3-scale-2.2.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale/srcs/d3-scale-2.2.2-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale/docs/d3-scale-2.2.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-collection/jars/d3-collection-1.0.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-collection/srcs/d3-collection-1.0.7-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-collection/docs/d3-collection-1.0.7-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time-format/jars/d3-time-format-2.1.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time-format/srcs/d3-time-format-2.1.3-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time-format/docs/d3-time-format-2.1.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time/jars/d3-time-1.0.11.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time/srcs/d3-time-1.0.11-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-time/docs/d3-time-1.0.11-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-axis/jars/d3-axis-1.0.12.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-axis/srcs/d3-axis-1.0.12-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-axis/docs/d3-axis-1.0.12-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-voronoi/jars/d3-voronoi-1.1.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-voronoi/srcs/d3-voronoi-1.1.4-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-voronoi/docs/d3-voronoi-1.1.4-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-hierarchy/jars/d3-hierarchy-1.1.8.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-hierarchy/srcs/d3-hierarchy-1.1.8-sources.jar">
@@ -1052,14 +1027,39 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-hierarchy/docs/d3-hierarchy-1.1.8-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-zoom/jars/d3-zoom-1.7.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-zoom/srcs/d3-zoom-1.7.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-quadtree/jars/d3-quadtree-1.0.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-quadtree/srcs/d3-quadtree-1.0.6-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-zoom/docs/d3-zoom-1.7.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-quadtree/docs/d3-quadtree-1.0.6-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-voronoi/jars/d3-voronoi-1.1.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-voronoi/srcs/d3-voronoi-1.1.4-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-fetch/jars/d3-fetch-1.1.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-fetch/srcs/d3-fetch-1.1.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-voronoi/docs/d3-voronoi-1.1.4-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-fetch/docs/d3-fetch-1.1.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-random/jars/d3-random-1.1.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-random/srcs/d3-random-1.1.2-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-random/docs/d3-random-1.1.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-force/jars/d3-force-1.2.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-force/srcs/d3-force-1.2.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-force/docs/d3-force-1.2.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale-chromatic/jars/d3-scale-chromatic-1.3.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale-chromatic/srcs/d3-scale-chromatic-1.3.3-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-scale-chromatic/docs/d3-scale-chromatic-1.3.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-polygon/jars/d3-polygon-1.0.5.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-polygon/srcs/d3-polygon-1.0.5-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-polygon/docs/d3-polygon-1.0.5-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo/jars/d3-geo-1.11.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo/srcs/d3-geo-1.11.3-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo/docs/d3-geo-1.11.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/jars/d3-geo-projection-2.5.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/d3-geo-projection/srcs/d3-geo-projection-2.5.1-sources.jar">
@@ -1142,9 +1142,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.headjs/headjs/docs/headjs-1.0.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/jars/plotly.js-1.44.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/srcs/plotly.js-1.44.4-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/jars/plotly.js-1.45.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/srcs/plotly.js-1.45.3-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/docs/plotly.js-1.44.4-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/docs/plotly.js-1.45.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/jars/parsleyjs-2.8.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/srcs/parsleyjs-2.8.1-sources.jar">
@@ -1187,9 +1187,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/3dmol/docs/3dmol-1.3.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/github-com-Tencent-vConsole/jars/github-com-Tencent-vConsole-3.2.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/github-com-Tencent-vConsole/srcs/github-com-Tencent-vConsole-3.2.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/github-com-Tencent-vConsole/jars/github-com-Tencent-vConsole-3.3.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/github-com-Tencent-vConsole/srcs/github-com-Tencent-vConsole-3.3.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/github-com-Tencent-vConsole/docs/github-com-Tencent-vConsole-3.2.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/github-com-Tencent-vConsole/docs/github-com-Tencent-vConsole-3.3.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/mocha/jars/mocha-3.0.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/mocha/srcs/mocha-3.0.2-sources.jar">
@@ -1207,9 +1207,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/popper.js/docs/popper.js-1.14.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js/jars/core-js-2.5.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js/srcs/core-js-2.5.6-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/jars/core-js-bundle-3.0.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/srcs/core-js-bundle-3.0.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/core-js/docs/core-js-2.5.6-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/docs/core-js-bundle-3.0.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/jars/fetch-2.0.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/srcs/fetch-2.0.4-sources.jar">
@@ -1232,9 +1232,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.4.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/jars/twemoji-11.2.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/srcs/twemoji-11.2.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/jars/twemoji-11.3.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/srcs/twemoji-11.3.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/docs/twemoji-11.2.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/docs/twemoji-11.3.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/jars/jasperreports-6.7.0.jar" sourcepath="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/srcs/jasperreports-6.7.0-sources.jar">

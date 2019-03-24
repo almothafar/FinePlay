@@ -305,5 +305,10 @@
 		"getHelpError":"@messages(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages(MessageKeys.HELP))"
 	}'></div>
 
+@if(isDev()){
+
+	<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/github-com-Tencent-vConsole/vconsole.min.js")'></script>
+}
+
 	<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/body.js")'></script>
 </body>
