@@ -257,7 +257,9 @@ var tell = function(text, wait){
 
 	$('#system_alerts').prepend(element);
 
+	var rtlLeft = element.position().left - $('#system_menu').position().left;
 	$(selector).effect( 'bounce', {}, 500);
+	element.css({left: rtlLeft});
 
 	if(wait == null){
 		// null or undefined

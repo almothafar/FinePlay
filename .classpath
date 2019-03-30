@@ -1217,9 +1217,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/docs/fetch-2.0.4-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.7.2.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/font-awesome/jars/font-awesome-5.8.1.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.7.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/font-awesome/docs/font-awesome-5.8.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/jars/material-design-icons-3.0.1.jar">
@@ -1227,9 +1227,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/material-design-icons/docs/material-design-icons-3.0.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/jars/ionicons-4.4.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/srcs/ionicons-4.4.7-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/jars/ionicons-4.5.5.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/srcs/ionicons-4.5.5-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.4.7-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/ionicons/docs/ionicons-4.5.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/jars/twemoji-11.3.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/srcs/twemoji-11.3.0-sources.jar">

@@ -1,6 +1,6 @@
 @charset "utf-8";
 .colorpicker-bs-popover {
-  max-width: initial;
+  max-width: 296px;
 }
 
 .colorpicker-2x.colorpicker-with-alpha {
@@ -46,4 +46,9 @@
 .colorpicker-swatch {
   height: 44px;
   width: 44px;
+}
+
+/* IE fix */
+.colorpicker-input-addon:before {
+  top: 10px;
 }

@@ -6,6 +6,7 @@ adn
 adobe
 adversal
 affiliatetheme
+airbnb
 algolia
 alipay
 amazon
@@ -29,6 +30,7 @@ avianex
 aviato
 aws
 bandcamp
+battle-net
 behance
 behance-square
 bimobject
@@ -41,7 +43,9 @@ blogger
 blogger-b
 bluetooth
 bluetooth-b
+bootstrap
 btc
+buffer
 buromobelexperte
 buysellads
 canadian-maple-leaf
@@ -58,6 +62,7 @@ cc-visa
 centercode
 centos
 chrome
+chromecast
 cloudscale
 cloudsmith
 cloudversify
@@ -118,6 +123,7 @@ envira
 erlang
 ethereum
 etsy
+evernote
 expeditedssl
 facebook
 facebook-f
@@ -198,6 +204,7 @@ intercom
 internet-explorer
 invision
 ioxhost
+itch-io
 itunes
 itunes-note
 java
@@ -311,6 +318,7 @@ rev
 rocketchat
 rockrms
 safari
+salesforce
 sass
 schlix
 scribd
@@ -335,6 +343,7 @@ snapchat-square
 soundcloud
 sourcetree
 speakap
+speaker-deck
 spotify
 squarespace
 stack-exchange
@@ -353,6 +362,7 @@ stumbleupon-circle
 superpowers
 supple
 suse
+symfony
 teamspeak
 telegram
 telegram-plane
@@ -394,6 +404,8 @@ vine
 vk
 vnv
 vuejs
+wave-square
+waze
 weebly
 weibo
 weixin
@@ -416,6 +428,7 @@ xing
 xing-square
 y-combinator
 yahoo
+yammer
 yandex
 yandex-international
 yarn

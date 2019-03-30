@@ -1,13 +1,17 @@
 address-book
 address-card
+airbnb
 angry
 arrow-alt-circle-down
 arrow-alt-circle-left
 arrow-alt-circle-right
 arrow-alt-circle-up
+battle-net
 bell
 bell-slash
 bookmark
+bootstrap
+buffer
 building
 calendar
 calendar-alt
@@ -22,6 +26,7 @@ caret-square-up
 chart-bar
 check-circle
 check-square
+chromecast
 circle
 clipboard
 clock
@@ -40,6 +45,7 @@ dot-circle
 edit
 envelope
 envelope-open
+evernote
 eye
 eye-slash
 file
@@ -100,6 +106,7 @@ id-badge
 id-card
 image
 images
+itch-io
 keyboard
 kiss
 kiss-beam
@@ -134,12 +141,14 @@ question-circle
 registered
 sad-cry
 sad-tear
+salesforce
 save
 share-square
 smile
 smile-beam
 smile-wink
 snowflake
+speaker-deck
 square
 star
 star-half
@@ -147,6 +156,7 @@ sticky-note
 stop-circle
 sun
 surprise
+symfony
 thumbs-down
 thumbs-up
 times-circle
@@ -157,7 +167,10 @@ trash-restore-alt
 user
 user-circle
 user-nurse
+wave-square
+waze
 window-close
 window-maximize
 window-minimize
 window-restore
+yammer

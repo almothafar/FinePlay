@@ -3,6 +3,7 @@ address-book
 address-card
 adjust
 air-freshener
+airbnb
 align-center
 align-justify
 align-left
@@ -64,6 +65,7 @@ battery-full
 battery-half
 battery-quarter
 battery-three-quarters
+battle-net
 bed
 beer
 bell
@@ -89,6 +91,7 @@ book-medical
 book-open
 book-reader
 bookmark
+bootstrap
 bowling-ball
 box
 box-open
@@ -101,6 +104,7 @@ briefcase-medical
 broadcast-tower
 broom
 brush
+buffer
 bug
 building
 bullhorn
@@ -173,6 +177,7 @@ chevron-left
 chevron-right
 chevron-up
 child
+chromecast
 church
 circle
 circle-notch
@@ -284,6 +289,7 @@ equals
 eraser
 ethernet
 euro-sign
+evernote
 exchange-alt
 exclamation
 exclamation-circle
@@ -468,6 +474,7 @@ infinity
 info
 info-circle
 italic
+itch-io
 jedi
 joint
 journal-whills
@@ -679,6 +686,7 @@ running
 rupee-sign
 sad-cry
 sad-tear
+salesforce
 satellite
 satellite-dish
 save
@@ -748,6 +756,7 @@ sort-numeric-up
 sort-up
 spa
 space-shuttle
+speaker-deck
 spider
 spinner
 splotch
@@ -785,6 +794,7 @@ surprise
 swatchbook
 swimmer
 swimming-pool
+symfony
 synagogue
 sync
 sync-alt
@@ -916,6 +926,8 @@ walking
 wallet
 warehouse
 water
+wave-square
+waze
 weight
 weight-hanging
 wheelchair
@@ -931,5 +943,6 @@ wine-glass-alt
 won-sign
 wrench
 x-ray
+yammer
 yen-sign
 yin-yang
