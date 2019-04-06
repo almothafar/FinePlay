@@ -70,22 +70,22 @@
 						@components.button(Map("id"->"", "type"->"secondary", "block"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Block level button"))
 					</div>
 					<div class="mb-3">
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-check-circle", "text"->"Button", "iconType"->"success"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-info-circle", "text"->"Button", "iconType"->"info"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-exclamation-triangle", "text"->"Button", "iconType"->"warning"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-ban", "text"->"Button", "iconType"->"danger"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-check-circle", "text"->messages(MessageKeys.BUTTON), "iconType"->"success"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-info-circle", "text"->messages(MessageKeys.BUTTON), "iconType"->"info"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-exclamation-triangle", "text"->messages(MessageKeys.BUTTON), "iconType"->"warning"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-ban", "text"->messages(MessageKeys.BUTTON), "iconType"->"danger"))
 					</div>
 					<div class="mb-3">
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->"Button", "badge"->"New", "iconType"->"success"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->"Button", "badge"->"1", "iconType"->"info"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->"Button", "badge"->"2", "iconType"->"warning"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->"Button", "badge"->"3", "iconType"->"danger"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.BUTTON), "badge"->messages(MessageKeys.NEW), "iconType"->"success"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.BUTTON), "badge"->"1", "iconType"->"info"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.BUTTON), "badge"->"2", "iconType"->"warning"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.BUTTON), "badge"->"3", "iconType"->"danger"))
 					</div>
 					<div class="mb-3">
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-check-circle", "text"->"Button", "badge"->"New", "iconType"->"success"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-info-circle", "text"->"Button", "badge"->"1", "iconType"->"info"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-exclamation-triangle", "text"->"Button", "badge"->"2", "iconType"->"warning"))
-						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-ban", "text"->"Button", "badge"->"3", "iconType"->"danger"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-check-circle", "text"->messages(MessageKeys.BUTTON), "badge"->messages(MessageKeys.NEW), "iconType"->"success"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-info-circle", "text"->messages(MessageKeys.BUTTON), "badge"->"1", "iconType"->"info"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-exclamation-triangle", "text"->messages(MessageKeys.BUTTON), "badge"->"2", "iconType"->"warning"))
+						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-ban", "text"->messages(MessageKeys.BUTTON), "badge"->"3", "iconType"->"danger"))
 					</div>
 					<div class="mb-3">
 						@components.button(Map("id"->"", "type"->"primary", "outline"->"true", "icon"->"fas fa-spinner fa-pulse", "text"->"Tooltip on top", "data-toggle"->"tooltip", "title"->"Tooltip on top"))

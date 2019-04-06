@@ -3,6 +3,7 @@ package common.utils;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -34,6 +35,14 @@ public class JSONsTest {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Test
+	public void testToJSON_BigDecimal() {
+
+		final String json = JSONs.toJSON(new BigDecimal("0.0000001"));
+
+		assertThat("", json, is("0.0000001"));
 	}
 
 	@Test

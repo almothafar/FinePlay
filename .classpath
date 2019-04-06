@@ -579,14 +579,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.postgresql/postgresql/docs/postgresql-42.2.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.25.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.25.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.26.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.26.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.25.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.26.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.9.7.jar" sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/srcs/byte-buddy-agent-1.9.7-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.9.10.jar" sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/srcs/byte-buddy-agent-1.9.10-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/docs/byte-buddy-agent-1.9.7-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/docs/byte-buddy-agent-1.9.10-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-2.6.jar" sourcepath="/Users/hiro/.ivy2/cache/org.objenesis/objenesis/srcs/objenesis-2.6-sources.jar">
@@ -735,19 +735,19 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/docs/bootstrap-4.3.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/bootbox/jars/bootbox-5.0.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/bootbox/srcs/bootbox-5.0.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/jars/bootbox-5.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/srcs/bootbox-5.1.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/bootbox/docs/bootbox-5.0.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/docs/bootbox-5.1.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/bootstrap/jars/bootstrap-3.3.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/bootstrap/srcs/bootstrap-3.3.7-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.twbs/bootstrap/jars/bootstrap-3.3.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.twbs/bootstrap/srcs/bootstrap-3.3.7-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/bootstrap/docs/bootstrap-3.3.7-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.twbs/bootstrap/docs/bootstrap-3.3.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/jars/jquery-3.3.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/srcs/jquery-3.3.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/jars/jquery-dist-3.3.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/srcs/jquery-dist-3.3.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/docs/jquery-3.3.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/docs/jquery-dist-3.3.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/jars/pickadate.js-3.5.6.jar">
@@ -755,9 +755,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/docs/pickadate.js-3.5.6-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/jars/bootstrap-slider-10.3.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/srcs/bootstrap-slider-10.3.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/jars/bootstrap-slider-10.6.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/srcs/bootstrap-slider-10.6.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/docs/bootstrap-slider-10.3.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/docs/bootstrap-slider-10.6.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/hammerjs/jars/hammerjs-2.0.8.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/hammerjs/srcs/hammerjs-2.0.8-sources.jar">
@@ -822,6 +822,11 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/fullcalendar/docs/fullcalendar-3.10.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/jars/jquery-3.3.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/srcs/jquery-3.3.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/docs/jquery-3.3.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/openlayers/jars/openlayers-5.2.0.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/openlayers/docs/openlayers-5.2.0-javadoc.jar!/"/>
@@ -857,14 +862,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/handsontable/docs/handsontable-6.2.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/numbro/jars/numbro-2.1.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/numbro/srcs/numbro-2.1.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/numbro/jars/numbro-2.1.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/numbro/srcs/numbro-2.1.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/numbro/docs/numbro-2.1.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/numbro/docs/numbro-2.1.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bignumber.js/jars/bignumber.js-4.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bignumber.js/srcs/bignumber.js-4.1.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bignumber.js/jars/bignumber.js-8.1.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bignumber.js/srcs/bignumber.js-8.1.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bignumber.js/docs/bignumber.js-4.1.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bignumber.js/docs/bignumber.js-8.1.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/pikaday/jars/pikaday-1.5.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/pikaday/srcs/pikaday-1.5.1-sources.jar">

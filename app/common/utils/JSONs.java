@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import javax.annotation.Nonnull;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -51,7 +52,7 @@ public class JSONs {
 	private JSONs() {
 	}
 
-	@SuppressWarnings({ "null", "serial" })
+	@SuppressWarnings("serial")
 	@Nonnull
 	public static String toJSON(@Nonnull final Object bean) {
 
@@ -61,6 +62,7 @@ public class JSONs {
 		try {
 
 			final ObjectMapper mapper = new ObjectMapper();
+			mapper.enable(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN);
 			mapper.registerModule(SERIALIZE_TIME_MODULE);
 			json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(bean);
 		} catch (final JsonProcessingException e) {
