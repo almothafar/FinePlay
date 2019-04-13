@@ -13,7 +13,7 @@ $('#translateButton').on('click', function(e){
 		url: Routes.apis.transrator.Transrator.translate().url + "?" + getToken(),
 		data: $.param({
 				to: messages("langCode"),
-				text: $('#translateTabContent div:eq(0) textarea').val()
+				text: $('#translateTabContent div textarea').eq(0).val()
 		}),
 		contentType: 'text/plain',
 		dataType: "json",
@@ -24,8 +24,8 @@ $('#translateButton').on('click', function(e){
 
 			$('#ajaxDialog').modal('hide');
 
-			$('#translateTabContent div:eq(1) textarea').val(responseJson['text']);
-			$('#translateTab li:eq(1) a').tab('show');
+			$('#translateTabContent div textarea').eq(1).val(responseJson['text']);
+			$('#translateTab li a').eq(1).tab('show');
 		},
 		function (jqXHR, textStatus, errorThrown) {
 

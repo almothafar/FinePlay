@@ -20,6 +20,7 @@
 
 	@head("lab"){
 
+		@libraries.twemojiawesome.head()
 		@libraries.standard.head()
 		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/hammerjs.css")'>
 	}
@@ -44,17 +45,17 @@
 					<div class="row mt-3">
 						<div class="d-none">
 							<div id="races">
-								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x", "text"->"👧"))
-								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x", "text"->"👧🏻"))
-								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x", "text"->"👧🏼"))
-								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x", "text"->"👧🏽"))
-								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x", "text"->"👧🏾"))
-								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x", "text"->"👧🏿"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x ta ta-girl", "data-icon"->"ta-girl"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x ta ta-girl_light-skin-tone", "data-icon"->"ta-girl_light-skin-tone"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x ta ta-girl_medium-light-skin-tone", "data-icon"->"ta-girl_medium-light-skin-tone"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x ta ta-girl_medium-skin-tone", "data-icon"->"ta-girl_medium-skin-tone"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x ta ta-girl_medium-dark-skin-tone", "data-icon"->"ta-girl_medium-dark-skin-tone"))
+								@components.icon(Map("id"->"", "class"->"raceIcon", "icon"->"fa-3x ta ta-girl_dark-skin-tone", "data-icon"->"ta-girl_dark-skin-tone"))
 							</div>
 						</div>
 						<div class="col">
 							<h4 class="headline">Press</h4>
-							@components.icon(Map("id"->"girlIcon", "icon"->"fa-3x", "text"->"👧", "data-placement"->"top"))
+							@components.icon(Map("id"->"girlIcon", "icon"->"fa-3x ta ta-girl", "text"->"", "data-placement"->"top"))
 						</div>
 					</div>
 				</div>

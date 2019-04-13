@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.0-b4-SNAPSHOT"
+version := "2.7.0-b5-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -25,7 +25,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-b4-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.0-b5-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -68,7 +68,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct-processor" % "1.3.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
-  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
+//  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.0",			// MIT 5.1.0
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
@@ -134,7 +134,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.8.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.8.1
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.5.5",								// MIT 4.5.5
-  "org.webjars.npm" % "twemoji" % "11.3.0"								// Code:MIT, Graphics:CC 11.3.0
+  "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0
 )
 // IcoFont																// MIT 1.3
 
@@ -160,6 +160,10 @@ libraryDependencies ++= Seq(
   "org.wildfly.security" % "wildfly-security-manager" % "1.1.2.Final"	// LGPL(http://www.wildfly.org footer) 1.1.2.Final
 )
 
+dependencyOverrides ++= Seq(
+  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
+  "org.webjars.bower" % "jquery" % "3.3.1"
+)
 excludeDependencies ++= Seq(
 //  "[GroupId]" % "[ArtifactId]"
 )

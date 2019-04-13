@@ -238,8 +238,8 @@ class TwemojiCSSCreator {
 
 	private static Map<String, String> getCodePointToIconNameMap() throws IOException {
 
-		// https://unicode.org/Public/emoji/11.0/
-		// https://unicode.org/Public/emoji/11.0/emoji-test.txt
+		// https://unicode.org/Public/emoji/12.0/
+		// https://unicode.org/Public/emoji/12.0/emoji-test.txt
 		final Path path = Paths.get(".", "conf", "resources", "emoji", "emoji-test.txt");
 		if (!Files.exists(path)) {
 

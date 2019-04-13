@@ -4,22 +4,22 @@ $(document).ready(function() {
 
 	$('#htmlFormatButton').on('click', function(){
 
-		var html = $('#htmlTabContent div:eq(0) textarea').val();
+		var html = $('#htmlTabContent div textarea').eq(0).val();
 		html = prettier.format(html, { parser: "html", plugins: prettierPlugins });
-		$('#htmlTabContent div:eq(1) textarea').val(html);
+		$('#htmlTabContent div textarea').eq(1).val(html);
 	});
 
 	$('#cssFormatButton').on('click', function(){
 
-		var css = $('#cssTabContent div:eq(0) textarea').val();
+		var css = $('#cssTabContent div textarea').eq(0).val();
 		css = prettier.format(css, { parser: "css", plugins: prettierPlugins });
-		$('#cssTabContent div:eq(1) textarea').val(css);
+		$('#cssTabContent div textarea').eq(1).val(css);
 	});
 
 	$('#jsonFormatButton').on('click', function(){
 
-		var json = $('#jsonTabContent div:eq(0) textarea').val();
+		var json = $('#jsonTabContent div textarea').eq(0).val();
 		json = prettier.format(json, { parser: "json", plugins: prettierPlugins });
-		$('#jsonTabContent div:eq(1) textarea').val(json);
+		$('#jsonTabContent div textarea').eq(1).val(json);
 	});
 });

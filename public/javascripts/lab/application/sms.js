@@ -23,8 +23,8 @@ $('#sendButton').on('click', function(e){
 
 			$('#ajaxDialog').modal('hide');
 
-			$('#smsTabContent div:eq(1) textarea').val(JSON.stringify(responseJson));
-			$('#smsTab li:eq(1) a').tab('show');
+			$('#smsTabContent div textarea').eq(1).val(JSON.stringify(responseJson));
+			$('#smsTab li a').eq(1).tab('show');
 		},
 		function (jqXHR, textStatus, errorThrown) {
 

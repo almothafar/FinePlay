@@ -38,9 +38,9 @@ $("#editButton").on('click', function(e) {
 		$( "#sortable" ).sortable( "disable" );
 		$("#editButton").text(messages(MessageKeys.EDIT));
 
-		$("#sortable>tr").find("td:eq(2)").each(function(i){
+		$("#sortable>tr").each(function(i){
 
-			$(this).text(i);
+			$(this).find("td").eq(2).text(i);
 		});
 	}
 });
