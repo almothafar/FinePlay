@@ -579,9 +579,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.postgresql/postgresql/docs/postgresql-42.2.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.26.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.26.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.27.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.27.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.26.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.27.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.9.10.jar" sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/srcs/byte-buddy-agent-1.9.10-sources.jar">
@@ -604,19 +604,19 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.sf.supercsv/super-csv-java8/docs/super-csv-java8-2.4.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi/jars/poi-4.0.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.poi/poi/srcs/poi-4.0.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi/jars/poi-4.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.poi/poi/srcs/poi-4.1.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.poi/poi/docs/poi-4.0.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.poi/poi/docs/poi-4.1.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.11.jar" sourcepath="/Users/hiro/.ivy2/cache/commons-codec/commons-codec/srcs/commons-codec-1.11-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.12.jar" sourcepath="/Users/hiro/.ivy2/cache/commons-codec/commons-codec/srcs/commons-codec-1.12-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/commons-codec/commons-codec/docs/commons-codec-1.11-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/commons-codec/commons-codec/docs/commons-codec-1.12-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.commons/commons-collections4/jars/commons-collections4-4.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.commons/commons-collections4/srcs/commons-collections4-4.2-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.commons/commons-collections4/jars/commons-collections4-4.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.commons/commons-collections4/srcs/commons-collections4-4.3-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.commons/commons-collections4/docs/commons-collections4-4.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.commons/commons-collections4/docs/commons-collections4-4.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.commons/commons-math3/jars/commons-math3-3.6.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.commons/commons-math3/srcs/commons-math3-3.6.1-sources.jar">
@@ -624,20 +624,20 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.commons/commons-math3/docs/commons-math3-3.6.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi-scratchpad/jars/poi-scratchpad-4.0.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.poi/poi-scratchpad/srcs/poi-scratchpad-4.0.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi-scratchpad/jars/poi-scratchpad-4.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.poi/poi-scratchpad/srcs/poi-scratchpad-4.1.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.poi/poi-scratchpad/docs/poi-scratchpad-4.0.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.poi/poi-scratchpad/docs/poi-scratchpad-4.1.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml/jars/poi-ooxml-4.0.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml/srcs/poi-ooxml-4.0.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml/jars/poi-ooxml-4.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml/srcs/poi-ooxml-4.1.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml/docs/poi-ooxml-4.0.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml/docs/poi-ooxml-4.1.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml-schemas/jars/poi-ooxml-schemas-4.0.1.jar"/>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.xmlbeans/xmlbeans/jars/xmlbeans-3.0.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.xmlbeans/xmlbeans/srcs/xmlbeans-3.0.2-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.poi/poi-ooxml-schemas/jars/poi-ooxml-schemas-4.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.xmlbeans/xmlbeans/jars/xmlbeans-3.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.xmlbeans/xmlbeans/srcs/xmlbeans-3.1.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.xmlbeans/xmlbeans/docs/xmlbeans-3.0.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.xmlbeans/xmlbeans/docs/xmlbeans-3.1.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.commons/commons-compress/jars/commons-compress-1.18.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.commons/commons-compress/srcs/commons-compress-1.18-sources.jar">
@@ -645,9 +645,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.commons/commons-compress/docs/commons-compress-1.18-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/jars/curvesapi-1.05.jar" sourcepath="/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/srcs/curvesapi-1.05-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/jars/curvesapi-1.06.jar" sourcepath="/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/srcs/curvesapi-1.06-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/docs/curvesapi-1.05-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/docs/curvesapi-1.06-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/bundles/tika-core-1.20.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/srcs/tika-core-1.20-sources.jar">
@@ -680,14 +680,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/quagga/docs/quagga-0.12.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/bundles/pdfbox-2.0.14.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/srcs/pdfbox-2.0.14-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/bundles/pdfbox-2.0.15.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/srcs/pdfbox-2.0.15-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/docs/pdfbox-2.0.14-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/pdfbox/docs/pdfbox-2.0.15-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/bundles/fontbox-2.0.14.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/srcs/fontbox-2.0.14-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/bundles/fontbox-2.0.15.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/srcs/fontbox-2.0.15-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/docs/fontbox-2.0.14-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.pdfbox/fontbox/docs/fontbox-2.0.15-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.2.jar" sourcepath="/Users/hiro/.ivy2/cache/commons-logging/commons-logging/srcs/commons-logging-1.2-sources.jar">
@@ -745,9 +745,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.twbs/bootstrap/docs/bootstrap-3.3.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/jars/jquery-dist-3.3.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/srcs/jquery-dist-3.3.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/jars/jquery-dist-3.4.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/srcs/jquery-dist-3.4.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/docs/jquery-dist-3.3.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/docs/jquery-dist-3.4.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/jars/pickadate.js-3.5.6.jar">
@@ -842,9 +842,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-plugins/docs/datatables.net-plugins-1.10.19-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/jars/datatables.net-select-1.2.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/srcs/datatables.net-select-1.2.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/jars/datatables.net-select-1.3.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/srcs/datatables.net-select-1.3.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/docs/datatables.net-select-1.2.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net-select/docs/datatables.net-select-1.3.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net/jars/datatables.net-1.10.9.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/datatables.net/srcs/datatables.net-1.10.9-sources.jar">
@@ -972,9 +972,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/d3-dsv/docs/d3-dsv-1.1.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/commander/jars/commander-2.19.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/commander/srcs/commander-2.19.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/commander/jars/commander-2.20.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/commander/srcs/commander-2.20.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/commander/docs/commander-2.19.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/commander/docs/commander-2.20.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/iconv-lite/jars/iconv-lite-0.4.24.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/iconv-lite/srcs/iconv-lite-0.4.24-sources.jar">

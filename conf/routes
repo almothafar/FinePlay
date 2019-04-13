@@ -13,6 +13,7 @@ POST	/system/pdf									apis.system.PDF.index(request: Request)
 POST	/system/slide								apis.system.Slide.index(request: Request)
 POST	/system/paper								apis.system.Paper.index(request: Request)
 
+GET		/development/http/get						apis.development.http.Http.getData(request: Request)
 POST	/development/http/post						apis.development.http.Http.postData(request: Request)
 
 GET		/companies									apis.company.Company.companies(request: Request, name: String, page:Int ?=0, size:Int ?=100)

@@ -13,6 +13,7 @@
 |apis                |apis.company.organization.Organization                                |                              |      |      |      |
 |                    |                                                                      |organizationUnits             |      |      |     O|
 |apis                |apis.development.http.Http                                            |                              |     O|     O|     O|
+|                    |                                                                      |getData                       |      |      |      |
 |                    |                                                                      |postData                      |      |      |      |
 |apis                |apis.system.CSPReport                                                 |                              |      |      |      |
 |                    |                                                                      |log                           |      |      |      |

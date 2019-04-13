@@ -52,16 +52,16 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.26.0",							// MIT 2.26.0
+  "org.mockito" % "mockito-core" % "2.27.0",							// MIT 2.27.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
-  "org.apache.poi" % "poi" % "4.0.1",									// Apache 4.0.0
-  "org.apache.poi" % "poi-scratchpad" % "4.0.1",
-  "org.apache.poi" % "poi-ooxml" % "4.0.1",
+  "org.apache.poi" % "poi" % "4.1.0",									// Apache 4.1.0
+  "org.apache.poi" % "poi-scratchpad" % "4.1.0",
+  "org.apache.poi" % "poi-ooxml" % "4.1.0",
   "org.apache.tika" % "tika-core" % "1.20",								// Apache 1.17
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.14",							// Apache 2.0.14
+  "org.apache.pdfbox" % "pdfbox" % "2.0.15",							// Apache 2.0.15
   "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
@@ -84,7 +84,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.19",			//
-  "org.webjars.bower" % "datatables.net-select" % "1.2.3",				//
+  "org.webjars.bower" % "datatables.net-select" % "1.3.0",				//
   "org.webjars.bower" % "summernote" % "0.8.11",						// MIT 0.8.11
   "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
