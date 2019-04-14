@@ -186,6 +186,7 @@ GET		/lab/application/download/report.xlsx		controllers.lab.application.Download
 GET		/lab/application/download/report.pptx		controllers.lab.application.Download.reportPowerpointStream(request: Request)
 GET		/lab/application/download/files.zip			controllers.lab.application.Download.zipStream(request: Request)
 GET		/lab/application/download/encryptfiles.zip	controllers.lab.application.Download.encryptZipStream(request: Request)
+GET		/lab/application/download/puppeteer.pdf		controllers.lab.application.Download.puppeteerPdfStream(request: Request)
 GET		/lab/application/download/filename			controllers.lab.application.Download.fileName(request: Request)
 GET		/lab/application/download/:urlfilename		controllers.lab.application.Download.urlFileName(request: Request, urlfilename: String)
 GET		/lab/application/upload						controllers.lab.application.Upload.index(request: Request)

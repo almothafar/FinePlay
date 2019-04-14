@@ -100,6 +100,7 @@
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |pdfboxStream                  |      |      |      |
 |                    |                                                                      |powerPointStream              |      |      |      |
+|                    |                                                                      |puppeteerPdfStream            |      |      |      |
 |                    |                                                                      |reportExcelStream             |      |      |      |
 |                    |                                                                      |reportPdfStream               |      |      |      |
 |                    |                                                                      |reportPowerpointStream        |      |      |      |

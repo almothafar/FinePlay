@@ -13,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -59,6 +61,7 @@ import akka.stream.OverflowStrategy;
 import akka.stream.javadsl.Source;
 import akka.util.ByteString;
 import common.system.MessageKeys;
+import common.utils.Commands;
 import common.utils.Reports;
 import common.utils.ZIPs;
 import models.base.EntityDao;
@@ -508,23 +511,28 @@ public class Download extends Controller {
 	}
 
 	@Authenticated(common.core.Authenticator.class)
-	public CompletionStage<Result> ivdPdfStream(@Nonnull final Request request, final long executionId) {
+	public CompletionStage<Result> puppeteerPdfStream(@Nonnull final Request request) {
 
 		final Messages messages = messagesApi.preferred(request);
 		messages.lang();
 
 		return CompletableFuture.supplyAsync(() -> {
 
-			final Path tmpPath = Paths.get(System.getProperty("java.io.tmpdir"));
-			final Path tmpBatchsPath = tmpPath.resolve("batchs");
-			final Path tmpBatchExecutionPath = tmpBatchsPath.resolve(String.valueOf(executionId));
-			final Path tmpBatchExecutionPdfPath = tmpBatchExecutionPath.resolve("ivd.pdf");
+			final Path execPath = Paths.get("/", "Users", "[user]", "Desktop", "[puppeteer-work]");
+			final Path puppeteerPath = execPath.resolve("node_modules").resolve("puppeteer");
+			final Path jsPath = puppeteerPath.resolve("[createpdf].js");
+			final Path pdfPath = puppeteerPath.resolve("[created].pdf");
 
-			byte[] bytes;
+			final List<String> command = Arrays.asList("node", jsPath.toString());
+			final Duration wait = Duration.ofSeconds(20);
+
+			Commands.exec(execPath, command, wait);
+
+			final byte[] bytes;
 			try {
 
-				bytes = Files.readAllBytes(tmpBatchExecutionPdfPath);
-				Files.deleteIfExists(tmpBatchExecutionPdfPath);
+				bytes = Files.readAllBytes(pdfPath);
+				Files.deleteIfExists(pdfPath);
 			} catch (IOException e) {
 
 				LOGGER.error(e.getLocalizedMessage());

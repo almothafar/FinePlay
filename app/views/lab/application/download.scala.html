@@ -200,6 +200,16 @@
 					</div>
 
 					<div class="mb-3 lab secret">
+						<h4 class="headline">Puppeteer</h4>
+						@components.linkbutton(Map("id"->"", "link"->controllers.lab.application.routes.Download.puppeteerPdfStream().toString(), "type"->"primary", "outline"->"true", "icon"->"fas fa-download", "text"->messages(MessageKeys.DOWNLOAD)))
+					</div>
+
+					<div class="mb-3 secret">
+
+						<hr class="separator">
+					</div>
+
+					<div class="mb-3 lab secret">
 						<h4 class="headline">Local</h4>
 						@components.badge(Map("id"->"URL", "type"->"danger", "text"->"URL"))
 						<br>
