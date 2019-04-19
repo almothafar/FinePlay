@@ -30,28 +30,28 @@
 /* Tooltip */
 
 .bs-tooltip-right .arrow, .bs-tooltip-auto[x-placement^="right"] .arrow {
-  /* initial */
-  right: initial;
+  /* auto */
+  right: auto;
   left: 0;
 }
 
 .bs-tooltip-right .arrow::before, .bs-tooltip-auto[x-placement^="right"] .arrow::before {
-  /* initial */
-  left: initial;
+  /* auto */
+  left: auto;
   right: 0;
   border-width: 0.4rem 0.4rem 0.4rem 0;
   border-right-color: #000;
 }
 
 .bs-tooltip-left .arrow, .bs-tooltip-auto[x-placement^="left"] .arrow {
-  /* initial */
-  left: initial;
+  /* auto */
+  left: auto;
   right: 0;
 }
 
 .bs-tooltip-left .arrow::before, .bs-tooltip-auto[x-placement^="left"] .arrow::before {
-  /* initial */
-  right: initial;
+  /* auto */
+  right: auto;
   left: 0;
   border-width: 0.4rem 0 0.4rem 0.4rem;
   border-left-color: #000;
@@ -60,20 +60,20 @@
 /* Popover */
 
 .popover {
-  /* initial */
-  right: initial;
+  /* auto */
+  right: auto;
   left: 0;
 }
 
 .bs-popover-right, .bs-popover-auto[x-placement^="right"] {
-  /* initial */
-  margin-right: initial;
+  /* auto */
+  margin-right: auto;
   margin-left: 0.5rem;
 }
 
 .bs-popover-right .arrow, .bs-popover-auto[x-placement^="right"] .arrow {
-  /* initial */
-  right: initial;
+  /* auto */
+  right: auto;
   left: calc((0.5rem + 1px) * -1);
 }
 
@@ -82,28 +82,28 @@
 }
 
 .bs-popover-right .arrow::before, .bs-popover-auto[x-placement^="right"] .arrow::before {
-  /* initial */
-  right: initial;
+  /* auto */
+  right: auto;
   left: 0;
   border-right-color: rgba(0, 0, 0, 0.25);
 }
 
 .bs-popover-right .arrow::after, .bs-popover-auto[x-placement^="right"] .arrow::after {
-  /* initial */
-  right: initial;
+  /* auto */
+  right: auto;
   left: 1px;
   border-right-color: #fff;
 }
 
 .bs-popover-left, .bs-popover-auto[x-placement^="left"] {
-  /* initial */
-  margin-left: initial;
+  /* auto */
+  margin-left: auto;
   margin-right: 0.5rem;
 }
 
 .bs-popover-left .arrow, .bs-popover-auto[x-placement^="left"] .arrow {
-  /* initial */
-  left: initial;
+  /* auto */
+  left: auto;
   right: calc((0.5rem + 1px) * -1);
 }
 
@@ -112,15 +112,15 @@
 }
 
 .bs-popover-left .arrow::before, .bs-popover-auto[x-placement^="left"] .arrow::before {
-  /* initial */
-  left: initial;
+  /* auto */
+  left: auto;
   right: 0;
   border-left-color: rgba(0, 0, 0, 0.25);
 }
 
 .bs-popover-left .arrow::after, .bs-popover-auto[x-placement^="left"] .arrow::after {
-  /* initial */
-  left: initial;
+  /* auto */
+  left: auto;
   right: 1px;
   border-left-color: #fff;
 }

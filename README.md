@@ -16,14 +16,14 @@ How to play
 
 	macOS Mojave version 10.14.4（18E226）
 	Time zone UTC
-	openjdk version "11.0.2" 2019-01-15 / OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+	openjdk version "11.0.3" 2019-04-16 LTS / OpenJDK Runtime Environment Corretto-11.0.3.7.1 (build 11.0.3+7-LTS)
 	Safari version 12.1 (14607.1.40.1.4)
 
 ##### OpenJDK #####
 
 Install
 
-[OpenJDK](http://jdk.java.net/11/)
+[Amazon Corretto](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
 
 ##### Console #####
 
@@ -61,9 +61,6 @@ This **template** is unofficial.
 Support / Additional contents
 ---------------
 
-##### JDK #####
-+ It seems that a [paid version](https://support.oracle.com/epmos/faces/MosIndex.jspx) is being offered by Oracle.
-
 ##### Play Framework #####
 + [Commercial support](https://www.lightbend.com/subscription) seems to be provided at Lightbend.
 
@@ -89,13 +86,13 @@ TODO
 ### FinePlay 2.7.x ###
 + Update Scala 2.13 release  
 
-### FinePlay 3.0.x ###
+### FinePlay x.x.x ###
 + Drop IE / Refactor system_menu.
 
 Release History
 ---------------
 
-+ **2.7.0-b5** - 2019-04-13
++ **2.7.1-b1** - 2019-04-19
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

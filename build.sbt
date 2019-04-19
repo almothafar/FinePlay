@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.0-b5-SNAPSHOT"
+version := "2.7.1-b1-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -25,7 +25,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",
-//  "hiro20v" %% "fineplay-sub" % "2.7.0-b5-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.1-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -39,7 +39,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "7.0.0",						// Apache 7.0.0
   "com.typesafe.play" %% "play-mailer-guice" % "7.0.0",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.7.0",							// Apache 2.7.0
+  "com.typesafe.play" %% "play-json" % "2.7.3",							// Apache 2.7.3
   "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.199
 //  "com.h2database" % "h2" % "1.4.199" % Test,
   "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
@@ -70,7 +70,7 @@ libraryDependencies ++= Seq(
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
 //  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
-  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.0",			// MIT 5.1.0
+  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.1",			// MIT 5.1.1
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.6.1",					// MIT 10.6.1
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
@@ -140,7 +140,7 @@ libraryDependencies ++= Seq(
 
 // JasperReports library
 libraryDependencies ++= Seq(
-  "net.sf.jasperreports" % "jasperreports" % "6.7.0",					// LGPL 6.7.0
+  "net.sf.jasperreports" % "jasperreports" % "6.8.0",					// LGPL 6.8.0
   "net.sf.jasperreports" % "jasperreports-fonts" % "6.0.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1

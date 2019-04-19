@@ -16,14 +16,14 @@ Play(Java) 2.7 & Bootstrap 4.3
 
 	macOS Mojave バージョン 10.14.4（18E226）
 	時間帯 UTC
-	openjdk バージョン "11.0.2" 2019-01-15 / OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+	openjdk バージョン "11.0.3" 2019-04-16 LTS / OpenJDK Runtime Environment Corretto-11.0.3.7.1 (build 11.0.3+7-LTS)
 	Safari バージョン 12.1 (14607.1.40.1.4)
 
 ##### OpenJDK #####
 
 インストール
 
-[OpenJDK](http://jdk.java.net/11/)
+[Amazon Corretto](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
 
 ##### コンソール #####
 
@@ -61,9 +61,6 @@ URL を開く
 サポート / 追加コンテンツ
 ---------------
 
-##### JDK #####
-+ オラクル社で、[有償版](https://support.oracle.com/epmos/faces/MosIndex.jspx)が提供されているようです。
-
 ##### Play Framework #####
 + ライトベンド社で、[商用サポート](https://www.lightbend.com/subscription)が提供されているようです。
 
@@ -89,13 +86,13 @@ URL を開く
 ### FinePlay 2.7.x ###
 + Scala 2.13 リリース版に更新  
 
-### FinePlay 3.0.x ###
+### FinePlay x.x.x ###
 + IE の削除 / system_menuのリファクタリング
 
 リリース履歴
 ---------------
 
-+ **2.7.0-b5** - 2019-04-13
++ **2.7.1-b1** - 2019-04-19
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + 最初のコミット

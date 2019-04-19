@@ -8,6 +8,23 @@
 
 @()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
+@script(args = 'type -> "text/javascript") {
+
+	'use strict';
+
+	(function(){
+
+		if($('html').hasClass('dir-rtl')){
+
+			var placementLeftElems = $('[data-placement=left]');
+			var placementRightElems = $('[data-placement=right]');
+
+			placementLeftElems.attr('data-placement', 'right');
+			placementRightElems.attr('data-placement', 'left');
+		}
+	})();
+}
+
 @src() = @{
 
 	if(ConfigFactory.defaultApplication().hasPath("bootstrap.cdn.script")){
