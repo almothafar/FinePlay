@@ -115,6 +115,7 @@ public class Edit extends Controller {
 
 					organization = new Organization();
 					organization.setCompany(company);
+					organization.setUpdateDateTime(LocalDateTime.now());
 					company.setOrganization(organization);
 					manager.persist(company);
 				}
@@ -127,6 +128,7 @@ public class Edit extends Controller {
 
 					organizationUnit = new OrganizationUnit();
 					organizationUnit.setOrganization(organization);
+					organizationUnit.setUpdateDateTime(LocalDateTime.now());
 					organizationUnitDao.create(manager, organizationUnit);
 
 					final Map<Locale, OrganizationUnitName> names = new HashMap<>();

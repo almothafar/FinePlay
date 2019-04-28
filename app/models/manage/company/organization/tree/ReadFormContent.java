@@ -1,7 +1,5 @@
 package models.manage.company.organization.tree;
 
-import java.time.LocalDateTime;
-
 import play.data.validation.Constraints;
 
 public class ReadFormContent {
@@ -13,7 +11,7 @@ public class ReadFormContent {
 	private Long organizationId;
 
 	// Play
-	private LocalDateTime organizationUpdateDateTime;
+	private Long organizationVersion;
 
 	public long getCompanyId() {
 
@@ -35,13 +33,13 @@ public class ReadFormContent {
 		this.organizationId = organizationId;
 	}
 
-	public LocalDateTime getOrganizationUpdateDateTime() {
+	public Long getOrganizationVersion() {
 
-		return organizationUpdateDateTime;
+		return organizationVersion;
 	}
 
-	public void setOrganizationUpdateDateTime(LocalDateTime organizationUpdateDateTime) {
+	public void setOrganizationVersion(Long organizationVersion) {
 
-		this.organizationUpdateDateTime = organizationUpdateDateTime;
+		this.organizationVersion = organizationVersion;
 	}
 }

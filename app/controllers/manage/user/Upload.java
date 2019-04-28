@@ -4,7 +4,9 @@ import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -37,6 +39,7 @@ import models.manage.user.UploadFormContent.Operation;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
+import models.user.User.Theme;
 import play.api.PlayException.ExceptionSource;
 import play.data.Form;
 import play.data.FormFactory;
@@ -234,6 +237,10 @@ public class Upload extends Controller {
 
 					throw new AccountException(messages.at(MessageKeys.SYSTEM_ERROR_USERID_EXIST) + ": " + uploadUser.getUserId());
 				}
+
+				uploadUser.setLocale(Locale.US);
+				uploadUser.setTheme(Theme.DEFAULT);
+				uploadUser.setZoneId(ZoneOffset.UTC);
 
 				try {
 

@@ -6,4 +6,4 @@ dumponexit=true,delay=2m,\
 maxsize=512m,\
 settings=profile,\
 path-to-gc-roots=true \
--J-Xmx4g -debug -jvm-debug 9999 run
+-J-Xmx8g -debug -jvm-debug 9999 run

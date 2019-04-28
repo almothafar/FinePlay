@@ -85,6 +85,7 @@ public class Edit extends Controller {
 				try {
 
 					company = new Company();
+					company.setUpdateDateTime(LocalDateTime.now());
 					companyDao.create(manager, company);
 
 					final Map<Locale, CompanyName> names = new HashMap<>();

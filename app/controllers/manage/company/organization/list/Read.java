@@ -2,7 +2,6 @@ package controllers.manage.company.organization.list;
 
 import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import common.utils.Binaries;
 import common.utils.CSVs;
-import common.utils.DateTimes;
 import models.base.EntityDao;
 import models.company.Company;
 import models.company.organization.Organization;
@@ -164,8 +162,8 @@ public class Read extends Controller {
 		}
 
 		readFormContent.setOrganizationId(organization.getId());
-		final LocalDateTime organizationUpdateDateTime = DateTimes.toClientDateTime(request, organization.getUpdateDateTime());
-		readFormContent.setOrganizationUpdateDateTime(organizationUpdateDateTime);
+		final Long organizationVersion = organization.getVersion();
+		readFormContent.setOrganizationVersion(organizationVersion);
 
 		final String name = readFormContent.getName();
 		final int maxResult = Integer.parseInt(readFormContent.getMaxResult());

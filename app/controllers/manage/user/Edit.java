@@ -128,6 +128,7 @@ public class Edit extends Controller {
 						user.setCompany(company);
 					}
 					user.setExpireDateTime(LocalDateTime.now().plusYears(1000));
+					user.setUpdateDateTime(LocalDateTime.now());
 
 					userService.create(manager, messages, user);
 				} catch (final AccountException e) {

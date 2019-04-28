@@ -1,7 +1,6 @@
 package controllers.manage.company.organization.tree;
 
 import java.lang.invoke.MethodHandles;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,7 +24,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import common.system.MessageKeys;
-import common.utils.DateTimes;
 import models.base.EntityDao;
 import models.company.Company;
 import models.company.organization.Organization;
@@ -123,8 +121,8 @@ public class Read extends Controller {
 		} else {
 
 			readFormContent.setOrganizationId(organization.getId());
-			final LocalDateTime organizationUpdateDateTime = DateTimes.toClientDateTime(request, organization.getUpdateDateTime());
-			readFormContent.setOrganizationUpdateDateTime(organizationUpdateDateTime);
+			final Long organizationVersion = organization.getVersion();
+			readFormContent.setOrganizationVersion(organizationVersion);
 
 			rootUnits = readRootList(manager, organization);
 		}
