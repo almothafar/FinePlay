@@ -263,7 +263,7 @@ $(document).ready(function() {
 				"id":columns[0],
 				"name":columns[1],
 				"localName":columns[2],
-				"updateDateTime":columns[3]
+				"version":columns[4]
 			};
 			companies.push(company);
 		});

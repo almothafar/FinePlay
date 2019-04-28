@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import models.company.Company;
+import models.company.Company_;
 import play.i18n.MessagesApi;
 
 @Entity
@@ -57,12 +58,15 @@ public class Organization {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organization")
 	private Set<OrganizationUnit> organizationUnits = new HashSet<>();
 
-	@Version
 	@Column(nullable = false)
 	private LocalDateTime updateDateTime;
 
+	@Version
+	private long version;
+
 	public static final String ID = Organization_.ID;
 	public static final String UPDATE_DATE_TIME = Organization_.UPDATE_DATE_TIME;
+	public static final String VERSION = Organization_.VERSION;
 
 	public Map<Long, OrganizationUnit> getIdToUnitMap() {
 
@@ -115,5 +119,15 @@ public class Organization {
 	public void setUpdateDateTime(LocalDateTime updateDateTime) {
 
 		this.updateDateTime = updateDateTime;
+	}
+
+	public long getVersion() {
+
+		return version;
+	}
+
+	public void setVersion(long version) {
+
+		this.version = version;
 	}
 }

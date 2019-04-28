@@ -123,7 +123,7 @@ public class Read extends Controller {
 		} else {
 
 			readFormContent.setOrganizationId(organization.getId());
-			final LocalDateTime organizationUpdateDateTime = organization.getUpdateDateTime() != null ? DateTimes.toClientDateTime(request, organization.getUpdateDateTime()) : null;
+			final LocalDateTime organizationUpdateDateTime = DateTimes.toClientDateTime(request, organization.getUpdateDateTime());
 			readFormContent.setOrganizationUpdateDateTime(organizationUpdateDateTime);
 
 			rootUnits = readRootList(manager, organization);

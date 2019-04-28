@@ -101,7 +101,6 @@ class InitialUsersCreator {
 		adminUser.setZoneId(ZoneId.of("US/Pacific"));
 		adminUser.setTheme(Theme.DEFAULT);
 		adminUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
-		adminUser.setUpdateDateTime(LocalDateTime.now());
 		users.add(adminUser);
 
 		final User customerUser = createUser();
@@ -112,7 +111,6 @@ class InitialUsersCreator {
 		customerUser.setZoneId(ZoneId.of("US/Pacific"));
 		customerUser.setTheme(Theme.DEFAULT);
 		customerUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
-		customerUser.setUpdateDateTime(LocalDateTime.now());
 		users.add(customerUser);
 
 		final User guestUser = createUser();
@@ -133,7 +131,6 @@ class InitialUsersCreator {
 		adminJaJpUser.setZoneId(ZoneId.of("Asia/Tokyo"));
 		adminJaJpUser.setTheme(Theme.DEFAULT);
 		adminJaJpUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
-		adminJaJpUser.setUpdateDateTime(LocalDateTime.now());
 		users.add(adminJaJpUser);
 
 		final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
@@ -169,10 +166,9 @@ class InitialUsersCreator {
 			final List<String> lines = new ArrayList<>();
 
 			user.setId(i + 1);
-			final String userLine = String.format("INSERT INTO USERS (ID, USERID, SALT, HASHEDPASSWORD, LOCALE, ZONEID, THEME, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP)", //
+			final String userLine = String.format("INSERT INTO USERS (ID, USERID, HASHEDPASSWORD, LOCALE, ZONEID, THEME, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME, VERSION) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP, 0)", //
 					user.getId(), //
 					"'" + user.getUserId() + "'", //
-					"'" + user.getSalt().replace("'", "''") + "'", //
 					"'" + user.getHashedPassword().replace("'", "''") + "'", //
 					"'" + user.getLocale().toLanguageTag() + "'", //
 					"'" + user.getZoneId().getId() + "'", //

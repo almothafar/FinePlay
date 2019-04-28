@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.1-b1-SNAPSHOT"
+version := "2.7.2-b1-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -25,7 +25,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",
-//  "hiro20v" %% "fineplay-sub" % "2.7.1-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.2-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   jcache,
@@ -42,6 +42,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-json" % "2.7.3",							// Apache 2.7.3
   "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.199
 //  "com.h2database" % "h2" % "1.4.199" % Test,
+  "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
   "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
   "net.logstash.logback" % "logstash-logback-encoder" % "5.3",			// Apache 5.3
   "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2

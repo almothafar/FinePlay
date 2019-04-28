@@ -46,7 +46,7 @@
 			Map("text"->(if(user.getSignInDateTime != null){datetimeFormat(datetime(user.getSignInDateTime))}else{""})),
 			Map("text"->(if(user.getSignOutDateTime != null){datetimeFormat(datetime(user.getSignOutDateTime))}else{""})),
 			Map("text"->datetimeFormat(datetime(user.getUpdateDateTime))),
-			Map("text"->datetime(user.getUpdateDateTime).toString)
+			Map("text"->user.getVersion.toString)
 		);
 
 		tbodyRowToColumnsList += Tuple2(tbodyRow, columnsList);

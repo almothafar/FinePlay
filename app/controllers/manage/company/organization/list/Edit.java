@@ -35,6 +35,7 @@ import models.company.organization.OrganizationUnit_;
 import models.manage.company.organization.list.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
+import models.user.User_;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -98,8 +99,8 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(request, LocalDateTime.parse(createFormContent.getOrganizationUpdateDateTime()));
-					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
+					final long organizationVersion = Long.valueOf(createFormContent.getOrganizationVersion()).longValue();
+					if (organization.getVersion() != organizationVersion) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
@@ -146,8 +147,10 @@ public class Edit extends Controller {
 					manager.merge(organization);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(createFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(createFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
@@ -200,8 +203,8 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(request, LocalDateTime.parse(updateFormContent.getOrganizationUpdateDateTime()));
-					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
+					final long organizationVersion = Long.valueOf(updateFormContent.getOrganizationVersion()).longValue();
+					if (organization.getVersion() != organizationVersion) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
@@ -217,8 +220,7 @@ public class Edit extends Controller {
 				final long id = updateFormContent.getId();
 				final String name = updateFormContent.getName();
 				final String localName = updateFormContent.getLocalName();
-				@SuppressWarnings("unused")
-				final LocalDateTime updateDateTime = updateFormContent.getUpdateDateTime();
+				final Long version = updateFormContent.getVersion();
 
 				final OrganizationUnit organizationUnit;
 				try {
@@ -229,7 +231,8 @@ public class Edit extends Controller {
 
 							final Root<OrganizationUnit> root = query.from(OrganizationUnit.class);
 							query.where(builder.and(//
-									builder.equal(root.get(OrganizationUnit_.id), id)));
+									builder.equal(root.get(OrganizationUnit_.id), id), //
+									builder.equal(root.get(OrganizationUnit_.version), version)));
 						});
 					} catch (final NoResultException e) {
 
@@ -264,14 +267,17 @@ public class Edit extends Controller {
 							names.remove(lang.toLocale());
 						}
 					}
+					organizationUnit.setUpdateDateTime(LocalDateTime.now());
 
 					final Set<OrganizationUnit> organizationUnits = organization.getOrganizationUnits();
 					organizationUnits.add(organizationUnit);
 					manager.merge(organization);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(updateFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
@@ -324,8 +330,8 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(request, LocalDateTime.parse(deleteFormContent.getOrganizationUpdateDateTime()));
-					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
+					final long organizationVersion = Long.valueOf(deleteFormContent.getOrganizationVersion()).longValue();
+					if (organization.getVersion() != organizationVersion) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
@@ -339,8 +345,7 @@ public class Edit extends Controller {
 				}
 
 				final long id = deleteFormContent.getId();
-				@SuppressWarnings("unused")
-				final LocalDateTime updateDateTime = deleteFormContent.getUpdateDateTime();
+				final Long version = deleteFormContent.getVersion();
 
 				final OrganizationUnit organizationUnit;
 				try {
@@ -351,7 +356,8 @@ public class Edit extends Controller {
 
 							final Root<OrganizationUnit> root = query.from(OrganizationUnit.class);
 							query.where(builder.and(//
-									builder.equal(root.get(OrganizationUnit_.id), id)));
+									builder.equal(root.get(OrganizationUnit_.id), id), //
+									builder.equal(root.get(OrganizationUnit_.version), version)));
 						});
 					} catch (final NoResultException e) {
 
@@ -377,8 +383,10 @@ public class Edit extends Controller {
 					manager.clear();
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureDeleteForm = formFactory.form(EditFormContent.class).fill(deleteFormContent);
-					failureDeleteForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureDeleteForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(deleteFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureDeleteForm, request, lang, messages);
 				}
 

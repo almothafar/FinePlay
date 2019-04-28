@@ -43,7 +43,6 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		adminUser.setZoneId(ZoneId.of("UTC"));
 		adminUser.setTheme(Theme.DEFAULT);
 		adminUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
-		adminUser.setUpdateDateTime(LocalDateTime.now());
 		users.add(adminUser);
 
 		final User customerUser = new User();
@@ -54,7 +53,6 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		customerUser.setZoneId(ZoneId.of("UTC"));
 		customerUser.setTheme(Theme.DEFAULT);
 		customerUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
-		customerUser.setUpdateDateTime(LocalDateTime.now());
 		users.add(customerUser);
 
 		final User guestUser = new User();
@@ -75,7 +73,6 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		adminJaJpUser.setZoneId(ZoneId.of("Asia/Tokyo"));
 		adminJaJpUser.setTheme(Theme.DEFAULT);
 		adminJaJpUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
-		adminJaJpUser.setUpdateDateTime(LocalDateTime.now());
 		users.add(adminJaJpUser);
 
 		return Collections.unmodifiableList(users);

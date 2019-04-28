@@ -37,6 +37,8 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import common.system.MessageKeys;
+import models.company.Company_;
+
 import org.supercsv.cellprocessor.time.FmtLocalDateTime;
 import org.supercsv.cellprocessor.time.ParseLocalDateTime;
 import play.i18n.Messages;
@@ -83,9 +85,11 @@ public class OrganizationUnit {
 	@JoinColumn(nullable = false)
 	private Organization organization;
 
-	@Version
 	@Column(nullable = false)
 	private LocalDateTime updateDateTime;
+
+	@Version
+	private long version;
 
 	@Transient
 	private long organizationId;
@@ -101,10 +105,11 @@ public class OrganizationUnit {
 	public static final String NAME = "name";
 	public static final String NAMES = OrganizationUnit_.NAMES;
 	public static final String UPDATE_DATE_TIME = OrganizationUnit_.UPDATE_DATE_TIME;
+	public static final String VERSION = OrganizationUnit_.VERSION;
 
 	public static final String COMPANYID = "companyId";
 	public static final String ORGANIZATIONID = "organizationId";
-	public static final String ORGANIZATIONUPDATEDATETIME = "organizationUpdateDateTime";
+	public static final String ORGANIZATIONVERSION = "organizationVersion";
 	public static final String MAXRESULT = "maxResult";
 	public static final String LOCALNAME = "localName";
 	public static final String UPLOADFILE = "uploadFile";
@@ -261,6 +266,16 @@ public class OrganizationUnit {
 	public void setUpdateDateTime(LocalDateTime updateDateTime) {
 
 		this.updateDateTime = updateDateTime;
+	}
+
+	public long getVersion() {
+
+		return version;
+	}
+
+	public void setVersion(long version) {
+
+		this.version = version;
 	}
 
 	public long getOrganizationId() {

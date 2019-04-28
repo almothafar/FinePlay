@@ -256,6 +256,7 @@ public class ResetUser extends Controller {
 					}
 
 					user.setPassword(password);
+					user.setUpdateDateTime(LocalDateTime.now());
 
 					userService.update(manager, messages, user);
 

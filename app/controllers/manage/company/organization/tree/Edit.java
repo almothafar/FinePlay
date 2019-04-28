@@ -92,8 +92,8 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final LocalDateTime organizationUpdateServerDateTime = DateTimes.toServerDateTime(request, updateFormContent.getOrganizationUpdateDateTime());
-					if (!organization.getUpdateDateTime().isEqual(organizationUpdateServerDateTime)) {
+					final long organizationVersion = updateFormContent.getOrganizationVersion().longValue();
+					if (organization.getVersion() != organizationVersion) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
@@ -123,8 +123,10 @@ public class Edit extends Controller {
 					organizationDao.update(manager, organization);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(updateFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 

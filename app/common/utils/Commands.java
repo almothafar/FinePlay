@@ -30,7 +30,7 @@ public class Commands {
 		try {
 
 			final Process process = builder.start();
-			final boolean isSuccess = process.waitFor(wait.toSeconds(), TimeUnit.SECONDS);
+			final boolean isSuccess = process.waitFor(wait.getSeconds(), TimeUnit.SECONDS);
 			if (!isSuccess) {
 
 				process.destroy();

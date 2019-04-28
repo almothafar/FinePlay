@@ -39,6 +39,7 @@ import org.supercsv.cellprocessor.time.ParseLocalDateTime;
 
 import common.system.MessageKeys;
 import models.company.organization.Organization;
+import models.user.User_;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
 
@@ -72,10 +73,19 @@ public class Company {
 	@JoinColumns(value = { @JoinColumn(nullable = true, unique = true) })
 	private Organization organization;
 
-	@Version
 	@Column(nullable = false)
 	private LocalDateTime updateDateTime;
 
+	@Version
+	private long version;
+
+	private long temp;
+	public long getTemp() {
+		return temp;
+	}
+	public void setTemp(long temp) {
+		this.temp = temp;
+	}
 	@Transient
 	private String name;
 
@@ -88,6 +98,7 @@ public class Company {
 	public static final String NAME = "name";
 	public static final String NAMES = Company_.NAMES;
 	public static final String UPDATE_DATE_TIME = Company_.UPDATE_DATE_TIME;
+	public static final String VERSION = Company_.VERSION;
 
 	public static final String MAXRESULT = "maxResult";
 	public static final String LOCALNAME = "localName";
@@ -209,6 +220,16 @@ public class Company {
 	public void setUpdateDateTime(LocalDateTime updateDateTime) {
 
 		this.updateDateTime = updateDateTime;
+	}
+
+	public long getVersion() {
+
+		return version;
+	}
+
+	public void setVersion(long version) {
+
+		this.version = version;
 	}
 
 	public String getName() {

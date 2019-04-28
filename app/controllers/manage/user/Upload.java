@@ -110,15 +110,19 @@ public class Upload extends Controller {
 
 					manager.getTransaction().setRollbackOnly();
 
-					final Form<UploadFormContent> failureUploadForm = formFactory.form(UploadFormContent.class).fill(uploadFormContent);
-					failureUploadForm.withGlobalError(messages.at(MessageKeys.SYSTEM_ERROR_X__CASE__DATA_ILLEGAL, e.line()) + ": " + e.getLocalizedMessage());
+					final Form<UploadFormContent> failureUploadForm = formFactory//
+							.form(UploadFormContent.class)//
+							.fill(uploadFormContent)//
+							.withGlobalError(messages.at(MessageKeys.SYSTEM_ERROR_X__CASE__DATA_ILLEGAL, e.line()) + ": " + e.getLocalizedMessage());
 					return failureUpload(failureUploadForm, request, lang, messages);
 				} catch (final Exception e) {
 
 					manager.getTransaction().setRollbackOnly();
 
-					final Form<UploadFormContent> failureUploadForm = formFactory.form(UploadFormContent.class).fill(uploadFormContent);
-					failureUploadForm.withGlobalError(e.getLocalizedMessage());
+					final Form<UploadFormContent> failureUploadForm = formFactory//
+							.form(UploadFormContent.class)//
+							.fill(uploadFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureUpload(failureUploadForm, request, lang, messages);
 				}
 
@@ -277,6 +281,7 @@ public class Upload extends Controller {
 				storedUser.setExpireDateTime(uploadUser.getExpireDateTime());
 				storedUser.setSignInDateTime(uploadUser.getSignInDateTime());
 				storedUser.setSignOutDateTime(uploadUser.getSignOutDateTime());
+				storedUser.setUpdateDateTime(uploadUser.getUpdateDateTime());
 
 				try {
 

@@ -511,7 +511,6 @@ public class Application extends Controller {
 
 		final HandlerDef handlerDef = request.attrs().get(Router.Attrs.HANDLER_DEF);
 		final List<String> modifiers = handlerDef.getModifiers();
-		;
 		map.put("HandlerDef", modifiers);
 
 		return ok(views.html.framework.application.request.render(map, request, lang, messages));
@@ -705,9 +704,9 @@ public class Application extends Controller {
 			map.put("signOutTime(UTC)", Objects.toString(user.getSignOutDateTime(), ""));
 			map.put("updateTime(UTC)", user.getUpdateDateTime().toString());
 			map.put("expireTime", DateTimes.toClientDateTime(request, user.getExpireDateTime()).toString());
-			final LocalDateTime signInTime = user.getSignInDateTime() != null ? DateTimes.toClientDateTime(request, user.getSignInDateTime()) : null;
+			final LocalDateTime signInTime = DateTimes.toClientDateTime(request, user.getSignInDateTime());
 			map.put("signInTime", Objects.toString(signInTime, ""));
-			final LocalDateTime signOutTime = user.getSignOutDateTime() != null ? DateTimes.toClientDateTime(request, user.getSignOutDateTime()) : null;
+			final LocalDateTime signOutTime = DateTimes.toClientDateTime(request, user.getSignOutDateTime());
 			map.put("signOutTime", Objects.toString(signOutTime, ""));
 			map.put("updateTime", DateTimes.toClientDateTime(request, user.getUpdateDateTime()).toString());
 			return ok(views.html.framework.application.user.render(map, request, lang, messages));

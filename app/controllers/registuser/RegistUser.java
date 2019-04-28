@@ -296,13 +296,13 @@ public class RegistUser extends Controller {
 
 			final models.user.User user = new models.user.User();
 			user.setUserId(registUser.getUserId());
-			user.setSalt(registUser.getSalt());
 			user.setHashedPassword(registUser.getHashedPassword());
 			user.setRoles(EnumSet.of(Role.CUSTOMER));
 			user.setTheme(Theme.DEFAULT);
 			user.setLocale(registUser.getLocale());
 			user.setZoneId(registUser.getZoneId());
 			user.setExpireDateTime(LocalDateTime.now().plusYears(1000));
+			user.setUpdateDateTime(LocalDateTime.now());
 
 			try {
 

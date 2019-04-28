@@ -1,7 +1,5 @@
 package models.manage.company.organization.tree;
 
-import java.time.LocalDateTime;
-
 import common.data.validation.groups.Create;
 import common.data.validation.groups.Delete;
 import common.data.validation.groups.Update;
@@ -19,7 +17,7 @@ public class EditFormContent {
 
 	// Play
 	@Constraints.Required(groups = { Update.class, Delete.class })
-	private LocalDateTime organizationUpdateDateTime;
+	private Long organizationVersion;
 
 	// Play
 	@Constraints.Required(groups = { Update.class })
@@ -45,14 +43,14 @@ public class EditFormContent {
 		this.organizationId = organizationId;
 	}
 
-	public LocalDateTime getOrganizationUpdateDateTime() {
+	public Long getOrganizationVersion() {
 
-		return organizationUpdateDateTime;
+		return organizationVersion;
 	}
 
-	public void setOrganizationUpdateDateTime(LocalDateTime organizationUpdateDateTime) {
+	public void setOrganizationVersion(Long organizationVersion) {
 
-		this.organizationUpdateDateTime = organizationUpdateDateTime;
+		this.organizationVersion = organizationVersion;
 	}
 
 	public String getUnitTreeJSON() {

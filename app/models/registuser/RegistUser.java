@@ -40,10 +40,7 @@ public class RegistUser implements ExpireHandler, PasswordHandler {
 	@UserId
 	private String userId;
 
-	@Column(nullable = false, length = SALT_SIZE_MAX)
-	private String salt;
-
-	@Column(nullable = false, length = 64)
+	@Column(nullable = false, length = 60)
 	// Play
 	@Constraints.Required
 	private String hashedPassword;
@@ -93,19 +90,6 @@ public class RegistUser implements ExpireHandler, PasswordHandler {
 	public void setUserId(String userId) {
 
 		this.userId = userId;
-	}
-
-	@Override
-	@Nonnull
-	public String getSalt() {
-
-		return salt;
-	}
-
-	@Override
-	public void setSalt(@Nonnull String salt) {
-
-		this.salt = salt;
 	}
 
 	public String getHashedPassword() {

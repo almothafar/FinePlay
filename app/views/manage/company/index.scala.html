@@ -4,6 +4,7 @@
 @import scala.collection.immutable.List
 
 @import java.time._
+@import java.time.format._
 @import play.i18n.Lang
 @import play.i18n.Messages
 @import views.html._
@@ -23,9 +24,9 @@
 	common.utils.DateTimes.toClientDateTime(request, dateTime)
 }
 
-@datetime_now() = @{
+@datetimeFormat(dateTime: LocalDateTime) = @{
 
-	datetime(LocalDateTime.now())
+	DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(lang.toLocale).format(dateTime)
 }
 
 @tbodyRowToColumnsList(companies: java.util.List[Company]) = @{
@@ -39,7 +40,8 @@
 			Map("text"->String.valueOf(company.getId())),
 			Map("text"->company.getNames().get(Locale.US).getName()),
 			Map("text"->(if(company.getNames().containsKey(lang.toLocale)){company.getNames().get(lang.toLocale).getName()}else{""})),
-			Map("text"->datetime(company.getUpdateDateTime()).toString),
+			Map("text"->datetimeFormat(datetime(company.getUpdateDateTime()))),
+			Map("text"->company.getVersion.toString),
 			Map("text"->components.button(Map("id"->"", "class"->"nextButton", "type"->"link", "icon"->"fas fa-arrow-circle-right fa-dir-flip-horizontal", "text"->"")).toString())
 		);
 
@@ -97,6 +99,7 @@
 						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.COMPANY_NAME)),
 						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.LOCAL_NAME)),
 						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.VERSION)),
 						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.DETAIL)))),
 					Map("id"->""),
 					tbodyRowToColumnsList(companies),
@@ -105,6 +108,7 @@
 						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.COMPANY_NAME)),
 						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.LOCAL_NAME)),
 						Map("id"->"", "head"->"true", "text"->(messages(MessageKeys.UPDATE) + " " + messages(MessageKeys.DATETIME))),
+						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.VERSION)),
 						Map("id"->"", "head"->"true", "text"->messages(MessageKeys.DETAIL))))
 				)
 			</div>

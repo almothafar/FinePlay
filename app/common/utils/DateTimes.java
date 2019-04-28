@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import play.mvc.Http.Request;
 
@@ -18,18 +19,24 @@ public class DateTimes {
 
 	@SuppressWarnings("null")
 	@Nonnull
-	public static LocalDateTime toClientDateTime(@Nonnull final Request request, @Nonnull final LocalDateTime serverDateTime) {
+	public static LocalDateTime toClientDateTime(@Nonnull final Request request, @Nullable final LocalDateTime serverDateTime) {
 
-		Objects.requireNonNull(serverDateTime);
+		if (Objects.isNull(serverDateTime)) {
+
+			return null;
+		}
 
 		return ZonedDateTime.of(serverDateTime, ZoneOffset.UTC).withZoneSameInstant(getClientZoneId(request)).toLocalDateTime();
 	}
 
 	private static final int[] DST_DIFF_MINUTES = { 30, 60 };
 
-	public static boolean isServerDateTimeConvertible(@Nonnull final Request request, @Nonnull final LocalDateTime clientDateTime) {
+	public static boolean isServerDateTimeConvertible(@Nonnull final Request request, @Nullable final LocalDateTime clientDateTime) {
 
-		Objects.requireNonNull(clientDateTime);
+		if (Objects.isNull(clientDateTime)) {
+
+			return true;
+		}
 
 		final LocalDateTime serverDateTime = toServerDateTime(request, clientDateTime);
 		final LocalDateTime reConvClientDateTime = toClientDateTime(request, serverDateTime);
@@ -69,9 +76,12 @@ public class DateTimes {
 
 	@SuppressWarnings("null")
 	@Nonnull
-	public static LocalDateTime toServerDateTime(@Nonnull final Request request, @Nonnull final LocalDateTime clientDateTime) {
+	public static LocalDateTime toServerDateTime(@Nonnull final Request request, @Nullable final LocalDateTime clientDateTime) {
 
-		Objects.requireNonNull(clientDateTime);
+		if (Objects.isNull(clientDateTime)) {
+
+			return null;
+		}
 
 		return ZonedDateTime.of(clientDateTime, getClientZoneId(request)).withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
 	}

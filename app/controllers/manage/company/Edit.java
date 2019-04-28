@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
@@ -30,6 +31,7 @@ import models.company.CompanyName;
 import models.manage.company.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
+import models.user.User_;
 import play.api.PlayException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -99,8 +101,10 @@ public class Edit extends Controller {
 					company.setNames(names);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(createFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(createFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
@@ -141,8 +145,7 @@ public class Edit extends Controller {
 				final long id = updateFormContent.getId();
 				final String name = updateFormContent.getName();
 				final String localName = updateFormContent.getLocalName();
-				@SuppressWarnings("unused")
-				final LocalDateTime updateDateTime = updateFormContent.getUpdateDateTime();
+				final Long version = updateFormContent.getVersion();
 
 				final Company company;
 				try {
@@ -153,7 +156,8 @@ public class Edit extends Controller {
 
 							final Root<Company> root = query.from(Company.class);
 							query.where(builder.and(//
-									builder.equal(root.get(Company_.id), id)));
+									builder.equal(root.get(Company_.id), id), //
+									builder.equal(root.get(Company_.version), version)));
 						});
 					} catch (final NoResultException e) {
 
@@ -189,12 +193,15 @@ public class Edit extends Controller {
 							names.remove(lang.toLocale());
 						}
 					}
+					company.setUpdateDateTime(LocalDateTime.now());
 
 					companyDao.update(manager, company);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(updateFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
@@ -233,8 +240,7 @@ public class Edit extends Controller {
 				final EditFormContent deleteFormContent = deleteForm.get();
 
 				final long id = deleteFormContent.getId();
-				@SuppressWarnings("unused")
-				final LocalDateTime updateDateTime = deleteFormContent.getUpdateDateTime();
+				final Long version = deleteFormContent.getVersion();
 
 				final Company company;
 				try {
@@ -245,7 +251,8 @@ public class Edit extends Controller {
 
 							final Root<Company> root = query.from(Company.class);
 							query.where(builder.and(//
-									builder.equal(root.get(Company_.id), id)));
+									builder.equal(root.get(Company_.id), id), //
+									builder.equal(root.get(Company_.version), version)));
 						});
 					} catch (final NoResultException e) {
 
@@ -258,8 +265,10 @@ public class Edit extends Controller {
 					companyDao.delete(manager, company);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureDeleteForm = formFactory.form(EditFormContent.class).fill(deleteFormContent);
-					failureDeleteForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureDeleteForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(deleteFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureDeleteForm, request, lang, messages);
 				}
 

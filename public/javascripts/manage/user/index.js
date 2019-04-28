@@ -420,7 +420,7 @@ $(document).ready(function() {
 				"expireDateTime":columns[5],
 				"signInDateTime":("" != columns[6] ? columns[6]:null),
 				"signOutDateTime":("" != columns[7] ? columns[7]:null),
-				"updateDateTime":columns[9]
+				"version":columns[9]
 			};
 			users.push(user);
 		});

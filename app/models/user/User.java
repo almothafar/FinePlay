@@ -35,6 +35,7 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.Size;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.supercsv.cellprocessor.ConvertNullTo;
@@ -116,10 +117,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	@UserId
 	private String userId;
 
-	@Column(nullable = false, length = SALT_SIZE_MAX)
-	private String salt;
-
-	@Column(nullable = false, length = 64)
+	@Column(nullable = false, length = 60)
 	// Play
 	@Constraints.Required
 	private String hashedPassword;
@@ -155,9 +153,11 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 
 	private LocalDateTime signOutDateTime;
 
-	@Version
 	@Column(nullable = false)
 	private LocalDateTime updateDateTime;
+
+	@Version
+	private long version;
 
 	@Transient
 	private Role role0;
@@ -186,6 +186,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	public static final String SIGN_IN_DATE_TIME = User_.SIGN_IN_DATE_TIME;
 	public static final String SIGN_OUT_DATE_TIME = User_.SIGN_OUT_DATE_TIME;
 	public static final String UPDATE_DATE_TIME = User_.UPDATE_DATE_TIME;
+	public static final String VERSION = User_.VERSION;
 
 	public static final String NEWUSERID = "newUserId";
 	public static final String REPASSWORD = "rePassword";
@@ -251,8 +252,8 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 
 		Objects.requireNonNull(password);
 
-		final String hashedPassword = toHashedPassword(password + getSalt());
-		return getHashedPassword().equals(hashedPassword);
+		final String hashedPassword = getHashedPassword();
+		return BCrypt.checkpw(password, hashedPassword);
 	}
 
 	public static String[] getHeaders() {
@@ -372,19 +373,6 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 		this.userId = userId;
 	}
 
-	@Override
-	@Nonnull
-	public String getSalt() {
-
-		return salt;
-	}
-
-	@Override
-	public void setSalt(@Nonnull String salt) {
-
-		this.salt = salt;
-	}
-
 	public String getHashedPassword() {
 
 		return hashedPassword;
@@ -486,6 +474,16 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	public void setUpdateDateTime(LocalDateTime updateDateTime) {
 
 		this.updateDateTime = updateDateTime;
+	}
+
+	public long getVersion() {
+
+		return version;
+	}
+
+	public void setVersion(long version) {
+
+		this.version = version;
 	}
 
 	public Role getRole0() {

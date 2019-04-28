@@ -128,6 +128,7 @@ public class UserDaoTest extends WithApplication {
 				createUser.setZoneId(ZoneId.of("UTC"));
 				createUser.setTheme(Theme.DEFAULT);
 				createUser.setExpireDateTime(LocalDateTime.MAX);
+				createUser.setUpdateDateTime(LocalDateTime.now());
 				try {
 
 					userDao.create(manager, createUser);
@@ -217,6 +218,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
+				readUser.setUpdateDateTime(LocalDateTime.now());
 				try {
 
 					userDao.create(manager, readUser);
@@ -254,6 +256,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
+				readUser.setUpdateDateTime(LocalDateTime.now());
 
 				userDao.create(manager, readUser);
 
@@ -289,6 +292,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
+				readUser.setUpdateDateTime(LocalDateTime.now());
 
 				userDao.create(manager, readUser);
 
@@ -327,6 +331,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
+				readUser.setUpdateDateTime(LocalDateTime.now());
 				try {
 
 					userDao.create(manager, readUser);
@@ -361,6 +366,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
+				readUser.setUpdateDateTime(LocalDateTime.now());
 
 				userDao.create(manager, readUser);
 
@@ -397,6 +403,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
+				readUser.setUpdateDateTime(LocalDateTime.now());
 
 				userDao.create(manager, readUser);
 

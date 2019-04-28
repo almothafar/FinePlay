@@ -8,6 +8,14 @@ $(document).ready(function() {
 
 	});
 
+	$("#update" + "zoneId").on('select2:opening', function (e) {
+
+		if(isExpand()){
+
+			e.preventDefault();
+		}
+	});
+
 	$( "#update" + "locale").change(function(e) {
 
 		$('#updateForm').submit();

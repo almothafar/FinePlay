@@ -1,6 +1,5 @@
 package models.manage.user;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.constraints.Size;
@@ -49,7 +48,7 @@ public class EditFormContent {
 
 	// Play
 	@Constraints.Required(groups = { Update.class, Delete.class })
-	private LocalDateTime updateDateTime;
+	private Long version;
 
 	public String getUserId() {
 
@@ -111,13 +110,13 @@ public class EditFormContent {
 		this.companyId = companyId;
 	}
 
-	public LocalDateTime getUpdateDateTime() {
+	public Long getVersion() {
 
-		return updateDateTime;
+		return version;
 	}
 
-	public void setUpdateDateTime(LocalDateTime updateDateTime) {
+	public void setVersion(Long version) {
 
-		this.updateDateTime = updateDateTime;
+		this.version = version;
 	}
 }

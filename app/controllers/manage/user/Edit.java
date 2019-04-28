@@ -132,13 +132,17 @@ public class Edit extends Controller {
 					userService.create(manager, messages, user);
 				} catch (final AccountException e) {
 
-					final Form<EditFormContent> failureCreateForm = formFactory.form(EditFormContent.class).fill(createFormContent);
-					failureCreateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureCreateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(createFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureCreateForm, request, lang, messages);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(createFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(createFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
@@ -184,8 +188,7 @@ public class Edit extends Controller {
 				final String newUserId = updateFormContent.getNewUserId();
 				final Set<Role> roles = updateFormContent.getRoles().stream().filter(role -> role != null).collect(Collectors.toCollection(() -> EnumSet.noneOf(Role.class)));
 				final Long companyId = updateFormContent.getCompanyId();
-				@SuppressWarnings("unused")
-				final LocalDateTime updateDateTime = updateFormContent.getUpdateDateTime();
+				final Long version = updateFormContent.getVersion();
 
 				final models.user.User user;
 				try {
@@ -202,7 +205,8 @@ public class Edit extends Controller {
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//
-									builder.equal(root.get(User_.userId), userId)));
+									builder.equal(root.get(User_.userId), userId), //
+									builder.equal(root.get(User_.version), version)));
 						});
 					} catch (final NoResultException e) {
 
@@ -223,17 +227,22 @@ public class Edit extends Controller {
 						user.setCompany(null);
 					}
 					user.setExpireDateTime(LocalDateTime.now().plusYears(1000));
+					user.setUpdateDateTime(LocalDateTime.now());
 
 					userService.update(manager, messages, user);
 				} catch (final AccountException e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(updateFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureUpdateForm = formFactory.form(EditFormContent.class).fill(updateFormContent);
-					failureUpdateForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureUpdateForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(updateFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureUpdateForm, request, lang, messages);
 				}
 
@@ -272,8 +281,7 @@ public class Edit extends Controller {
 				final EditFormContent deleteFormContent = deleteForm.get();
 
 				final String userId = deleteFormContent.getUserId();
-				@SuppressWarnings("unused")
-				final LocalDateTime updateDateTime = deleteFormContent.getUpdateDateTime();
+				final Long version = deleteFormContent.getVersion();
 
 				final models.user.User user;
 				try {
@@ -284,7 +292,8 @@ public class Edit extends Controller {
 
 							final Root<models.user.User> root = query.from(models.user.User.class);
 							query.where(builder.and(//
-									builder.equal(root.get(User_.userId), userId)));
+									builder.equal(root.get(User_.userId), userId), //
+									builder.equal(root.get(User_.version), version)));
 						});
 					} catch (final NoResultException e) {
 
@@ -297,13 +306,17 @@ public class Edit extends Controller {
 					userService.delete(manager, messages, user);
 				} catch (final AccountException e) {
 
-					final Form<EditFormContent> failureDeleteForm = formFactory.form(EditFormContent.class).fill(deleteFormContent);
-					failureDeleteForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureDeleteForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(deleteFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureDeleteForm, request, lang, messages);
 				} catch (final Exception e) {
 
-					final Form<EditFormContent> failureDeleteForm = formFactory.form(EditFormContent.class).fill(deleteFormContent);
-					failureDeleteForm.withGlobalError(e.getLocalizedMessage());
+					final Form<EditFormContent> failureDeleteForm = formFactory//
+							.form(EditFormContent.class)//
+							.fill(deleteFormContent)//
+							.withGlobalError(e.getLocalizedMessage());
 					return failureEdit(failureDeleteForm, request, lang, messages);
 				}
 

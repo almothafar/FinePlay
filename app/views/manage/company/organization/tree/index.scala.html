@@ -23,11 +23,6 @@
 	common.utils.DateTimes.toClientDateTime(request, dateTime)
 }
 
-@datetime_now() = @{
-
-	datetime(LocalDateTime.now())
-}
-
 @frame(){
 
 	@head("manage"){
@@ -54,11 +49,11 @@
 			<div class="mt-3 mb-3">
 
 				<h2>@companyName</h2>
-				<div class="d-flex justify-content-start bd-highlight mb-3">
-					<div class="bd-highlight">
+				<div class="d-flex justify-content-start mb-3">
+					<div class="">
 						@components.button(Map("id"->"previousButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-arrow-circle-left fa-dir-flip-horizontal", "text"->messages(MessageKeys.PREVIOUS), "class"->"mr-3 float-left"))
 					</div>
-					<div class="bd-highlight w-100">
+					<div class="flex-shrink-1">
 						@manage.company.detailtasks(Map("id"->"", "task"->"organization", "target"->form(OrganizationUnit.COMPANYID).value.orElse("")))
 					</div>
 				</div>
