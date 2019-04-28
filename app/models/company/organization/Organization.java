@@ -30,7 +30,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import models.company.Company;
-import models.company.Company_;
 import play.i18n.MessagesApi;
 
 @Entity

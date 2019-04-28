@@ -39,7 +39,6 @@ import org.supercsv.cellprocessor.time.ParseLocalDateTime;
 
 import common.system.MessageKeys;
 import models.company.organization.Organization;
-import models.user.User_;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
 
@@ -80,12 +79,15 @@ public class Company {
 	private long version;
 
 	private long temp;
+
 	public long getTemp() {
 		return temp;
 	}
+
 	public void setTemp(long temp) {
 		this.temp = temp;
 	}
+
 	@Transient
 	private String name;
 
