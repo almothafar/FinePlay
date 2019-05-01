@@ -1,108 +1,123 @@
 'use strict';
 
-//
+$(document).ready(function() {
 
-if(messages("formError")) {
+	if (messages("formError")) {
 
-	shake('#signInPanel');
-}
+		shake('#signInPanel');
+	}
 
-var signInImageLink = "url(" + messages("signInImage") + ")";
-$('#system_base').css({
-	"background-image": signInImageLink,
-	"background-size": "cover",
-	"background-position": "center"
-});
+	var signInImageLink = "url(" + messages("signInImage") + ")";
+	$('#system_base').css({
+		"background-image": signInImageLink,
+		"background-size": "cover",
+		"background-position": "center"
+	});
 
-$(window).on('keydown', function(e){
+	$(window).on('keydown', function(e) {
 
-	var keyCode = e.which ? e.which : e.keyCode;
-	if (13 == keyCode) {
+		var keyCode = e.which ? e.which : e.keyCode;
+		if (13 == keyCode) {
 
-		if($("#licenseDialog").is(".show")){
+			if ($("#licenseDialog").is(".show")) {
 
-			$('#licenseOk').trigger("click");
-		}else	if($("#usersDialog").is(".show")){
+				$('#licenseOk').trigger("click");
+			} else if ($("#usersDialog").is(".show")) {
 
 				$('#usersOk').trigger("click");
-		}else{
+			} else {
 
-			$('#signInButton').trigger("click");
+				$('#signInButton').trigger("click");
+			}
+
+			e.preventDefault();
 		}
+	});
 
-		e.preventDefault();
-	}
-});
+	//
 
-//
+	var fixedUsers = $('#fixedUsers');
+	var fixedUsersData = JSON.parse($('#fixedUsersData').text());
+	$.each(fixedUsersData, function() {
 
-var fixedUsers = $('#fixedUsers');
-var fixedUsersData = JSON.parse($('#fixedUsersData').text());
-$.each(fixedUsersData, function(){
+		var fixedUser = this;
 
-	var fixedUser = this;
-
-	var fixedUsersHtml = '';
-	fixedUsersHtml = fixedUsersHtml + '<div class="rounded mx-1 my-1 fixedUser">';
-	if('Dev' == getMode()){
-		fixedUsersHtml = fixedUsersHtml +
-			'<div class="fixedUser_info">' +
+		var fixedUsersHtml = '';
+		fixedUsersHtml = fixedUsersHtml + '<div class="rounded mx-1 my-1 fixedUser">';
+		if ('Dev' == getMode()) {
+			fixedUsersHtml = fixedUsersHtml +
+				'<div class="fixedUser_info">' +
 				'<span class="badge badge-pill badge-info">' + fixedUser.locale + '</span>&nbsp;' +
 				'<span class="badge badge-pill badge-info">' + fixedUser.zoneId + '</span>&nbsp;' +
 				'<span class="badge badge-pill badge-info">' + fixedUser.roles + '</span>' +
-			'</div>';
-	}
-	fixedUsersHtml = fixedUsersHtml +
-		'<div class="row justify-content-center">' +
+				'</div>';
+		}
+		fixedUsersHtml = fixedUsersHtml +
+			'<div class="row justify-content-center">' +
 			'<div class="my-1">' +
-				'<button type="button" class="btn btn-success fixedUser_body fixedUserButton rounded-circle"><i class="far fa-user"></i></button>' +
+			'<button type="button" class="btn btn-success fixedUser_body fixedUserButton rounded-circle"><i class="far fa-user"></i></button>' +
 			'</div>' +
-		'</div>' +
-		'<div class="fixedUser_caption"><strong class="fixedUser_UserId">' + fixedUser.userId + '</strong></div>';
-	if('Dev' == getMode()){
-		fixedUsersHtml = fixedUsersHtml +'<div class="fixedUser_Password d-none">' + fixedUser.password + '</div>';
+			'</div>' +
+			'<div class="fixedUser_caption"><strong class="fixedUser_UserId">' + fixedUser.userId + '</strong></div>';
+		if ('Dev' == getMode()) {
+			fixedUsersHtml = fixedUsersHtml + '<div class="fixedUser_Password d-none">' + fixedUser.password + '</div>';
+		}
+		fixedUsersHtml = fixedUsersHtml + '</div>';
+
+		fixedUsers.append(fixedUsersHtml);
+	});
+
+	$('.fixedUserButton').on('click', function(event) {
+
+		$('#usersDialog').modal('hide');
+
+		var eventSource = $(event.target);
+		var fixedUserButton;
+		if (eventSource.parent().hasClass('fixedUserButton')) {
+
+			fixedUserButton = eventSource.parent();
+		} else if (eventSource.hasClass('fixedUserButton')) {
+
+			fixedUserButton = eventSource;
+		}
+
+		if (fixedUserButton) {
+
+			var fixedUser = fixedUserButton.parent().parent().parent();
+			var userId = fixedUser.find('.fixedUser_UserId').text();
+			var password = fixedUser.find('.fixedUser_Password').text();
+
+			$('#userId').val(userId);
+			$('#password').val(password);
+			$('#signInForm').parsley().validate();
+		}
+	});
+
+	if (1 <= fixedUsersData.length) {
+
+		$('#selectUserContainer').removeClass("d-none");
 	}
-	fixedUsersHtml = fixedUsersHtml +'</div>';
 
-	fixedUsers.append(fixedUsersHtml);
-});
+	window.Parsley.addValidator('userid', 　ParsleyValidators.UserIdValidator);
+	window.Parsley.addValidator('password', 　ParsleyValidators.PasswordValidator);
+	$('#signInForm').parsley();
 
-$('.fixedUserButton').on('click', function(event){
+	window.Parsley.on('form:error', function() {
 
-	$('#usersDialog').modal('hide');
+		shake('#signInPanel');
+	});
 
-	var eventSource = $(event.target);
-	var fixedUserButton;
-	if(eventSource.parent().hasClass('fixedUserButton')){
+	//
 
-		fixedUserButton = eventSource.parent();
-	}else if(eventSource.hasClass('fixedUserButton')){
+	if (navigator.share) {
 
-		fixedUserButton = eventSource;
+		$('#shareButton').removeClass('d-none');
+		$('#shareButton').on('click', function(e) {
+
+			navigator.share({
+				url: document.URL,
+				title: document.title
+			});
+		});
 	}
-
-	if(fixedUserButton){
-
-		var fixedUser = fixedUserButton.parent().parent().parent();
-		var userId = fixedUser.find('.fixedUser_UserId').text();
-		var password = fixedUser.find('.fixedUser_Password').text();
-
-		$('#userId').val(userId);
-		$('#password').val(password);
-		$('#signInForm').parsley().validate();
-	}
-});
-
-if(1 <= fixedUsersData.length){
-
-	$('#selectUserContainer').removeClass("d-none");
-}
-
-window.Parsley.addValidator('userid',　ParsleyValidators.UserIdValidator);
-window.Parsley.addValidator('password',　ParsleyValidators.PasswordValidator);
-$('#signInForm').parsley();
-
-window.Parsley.on('form:error', function() {
-
-	shake('#signInPanel');
 });

@@ -349,22 +349,6 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/javax.cache/cache-api/docs/cache-api-1.0.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-jcache_2.12/jars/play-jcache_2.12-2.7.2.jar" sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-jcache_2.12/srcs/play-jcache_2.12-2.7.2-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-jcache_2.12/docs/play-jcache_2.12-2.7.2-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.jsr107.ri/cache-annotations-ri-guice/jars/cache-annotations-ri-guice-1.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.jsr107.ri/cache-annotations-ri-guice/srcs/cache-annotations-ri-guice-1.1.0-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.jsr107.ri/cache-annotations-ri-guice/docs/cache-annotations-ri-guice-1.1.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.jsr107.ri/cache-annotations-ri-common/jars/cache-annotations-ri-common-1.1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.jsr107.ri/cache-annotations-ri-common/srcs/cache-annotations-ri-common-1.1.0-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.jsr107.ri/cache-annotations-ri-common/docs/cache-annotations-ri-common-1.1.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/aopalliance/aopalliance/srcs/aopalliance-1.0-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/jars/play-ahc-ws_2.12-2.7.2.jar" sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/srcs/play-ahc-ws_2.12-2.7.2-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/docs/play-ahc-ws_2.12-2.7.2-javadoc.jar!/"/>
@@ -456,6 +440,7 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.google.inject/guice/docs/guice-4.2.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar" sourcepath="/Users/hiro/.ivy2/cache/aopalliance/aopalliance/srcs/aopalliance-1.0-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/jars/play-guice_2.12-2.7.2.jar" sourcepath="/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/srcs/play-guice_2.12-2.7.2-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.play/play-guice_2.12/docs/play-guice_2.12-2.7.2-javadoc.jar!/"/>

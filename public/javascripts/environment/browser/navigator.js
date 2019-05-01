@@ -4,6 +4,7 @@ if(navigator.onLine){$("#OnLine").removeClass("badge-danger").addClass("badge-su
 if(navigator.cookieEnabled){$("#Cookie").removeClass("badge-danger").addClass("badge-success")}
 if(navigator.geolocation){$("#Geolocation").removeClass("badge-danger").addClass("badge-success")}
 if(navigator.mediaDevices){$("#MediaDevices").removeClass("badge-danger").addClass("badge-success")}
+if(navigator.share){$("#Share").removeClass("badge-danger").addClass("badge-success")}
 if(navigator.vibrate){$("#Vibration").removeClass("badge-danger").addClass("badge-success")}
 
 var navigatorMap = new Object();

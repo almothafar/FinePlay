@@ -371,7 +371,7 @@ $(document).ready(function() {
 					var errors = responseJson.globalErrors;
 					$.each(errors, function(i, error){
 
-						errorContainer.append('<p class="text-warning">'+error+'</p>');
+						errorContainer.append('<p class="text-danger">'+error+'</p>');
 					});
 				}
 				if(responseJson['errors']){
@@ -382,7 +382,7 @@ $(document).ready(function() {
 						var propertyErrors = responseJson.errors[property];
 						$.each(propertyErrors, function(i, error){
 
-							propertyErrorContainer.append('<p class="text-warning">'+error+'</p>');
+							propertyErrorContainer.append('<p class="text-danger">'+error+'</p>');
 						});
 					}
 
@@ -510,7 +510,7 @@ $(document).ready(function() {
 					var errors = responseJson.globalErrors;
 					$.each(errors, function(i, error){
 
-						errorContainer.append('<p class="text-warning">'+error+'</p>');
+						errorContainer.append('<p class="text-danger">'+error+'</p>');
 					});
 				}
 				if(responseJson['errors']){
@@ -521,7 +521,7 @@ $(document).ready(function() {
 						var propertyErrors = responseJson.errors[property];
 						$.each(propertyErrors, function(i, error){
 
-							propertyErrorContainer.append('<p class="text-warning">'+error+'</p>');
+							propertyErrorContainer.append('<p class="text-danger">'+error+'</p>');
 						});
 					}
 

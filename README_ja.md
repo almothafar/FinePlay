@@ -87,7 +87,14 @@ URL を開く
 + Scala 2.13 リリース版に更新  
 
 ### FinePlay x.x.x ###
-+ IE の削除 / system_menuのリファクタリング
++ Bootstrap 4.3.2 リリース版に更新  
+   + jQuery の更新
+   + popper.js の更新
++ IE の削除
+   + system_menuのリファクタリング
+   + shepherd.js の更新
+   + marked の更新
+   + reveal.js の更新
 
 リリース履歴
 ---------------

@@ -28,8 +28,6 @@ libraryDependencies ++= Seq(
 //  "hiro20v" %% "fineplay-sub" % "2.7.2-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
-  jcache,
-  "org.jsr107.ri" % "cache-annotations-ri-guice" % "1.1.0",
   javaWs,
   javaJpa,
   filters,

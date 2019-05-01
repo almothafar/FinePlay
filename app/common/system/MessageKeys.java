@@ -155,6 +155,8 @@ public class MessageKeys {
 
   public static final String CONVERT = "convert";
 
+  public static final String COOPERATE = "cooperate";
+
   public static final String COPY = "copy";
 
   public static final String COUNTRY_FLAG = "country.flag";
@@ -722,6 +724,8 @@ public class MessageKeys {
   public static final String SET = "set";
 
   public static final String SETTING = "setting";
+
+  public static final String SHARE = "share";
 
   public static final String SHEET = "sheet";
 

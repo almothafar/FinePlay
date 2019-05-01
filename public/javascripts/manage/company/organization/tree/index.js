@@ -105,7 +105,7 @@ $(document).ready(function() {
 					var errors = responseJson.globalErrors;
 					$.each(errors, function(i, error){
 
-						errorContainer.append('<p class="text-warning">'+error+'</p>');
+						errorContainer.append('<p class="text-danger">'+error+'</p>');
 					});
 				}
 

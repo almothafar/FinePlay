@@ -94,9 +94,9 @@
 							@components.linkbutton(Map("id"->"", "type"->"link", "icon"->"fas fa-", "text"->messages(MessageKeys.RESETUSER_FORGET__PASSWORD), "link"->controllers.resetuser.routes.ResetUser.index().toString, "class"->"forget-password"))
 						</div>
 
-						<div id="snsLinks" class="mt-3">
-
-							<a class="github-button" href="https://github.com/hiro20v/FinePlay" data-show-count="true" aria-label="Star hiro20v/FinePlay on GitHub">Star</a>
+						<div class="d-flex justify-content-between mt-3">
+							<div id="snsLinks"><a class="github-button" href="https://github.com/hiro20v/FinePlay" data-show-count="true" aria-label="Star hiro20v/FinePlay on GitHub">Star</a></div>
+							<div>@components.button(Map("id"->"shareButton", "type"->"secondary", "size"->"sm", "icon"->"fas fa-share", "text"->messages(MessageKeys.SHARE)))</div>
 						</div>
 					}
 					</div>

@@ -19,6 +19,7 @@ if(window.speechSynthesis){$("#SpeechSynthesis").removeClass("badge-danger").add
 if(window.speechRecognition){$("#SpeechRecognition").removeClass("badge-danger").addClass("badge-success")}
 if(window.DeviceOrientationEvent){$("#DeviceOrientationEvent").removeClass("badge-danger").addClass("badge-success")}
 if(window.DeviceMotionEvent){$("#DeviceMotionEvent").removeClass("badge-danger").addClass("badge-success")}
+if(window.Image){$("#Image").removeClass("badge-danger").addClass("badge-success")}
 if(window.openDatabase){$("#WebSQLDatabase").removeClass("badge-danger").addClass("badge-success")}
 if('GamepadEvent' in window){$("#GamepadEvent").removeClass("badge-danger").addClass("badge-success")}
 if('indexedDB' in window){$("#IndexedDatabase").removeClass("badge-danger").addClass("badge-success")}
