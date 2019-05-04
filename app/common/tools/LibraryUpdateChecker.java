@@ -76,7 +76,7 @@ class LibraryUpdateChecker {
 
 				isStart = true;
 				continue;
-			} else if (!(libBlockCount <= 3)) {
+			} else if (!(libBlockCount <= 6)) {
 
 				break;
 			}

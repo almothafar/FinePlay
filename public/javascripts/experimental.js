@@ -216,3 +216,9 @@ if( window.history && window.history.pushState ){
 		history.pushState(null, null, null);
 	});
 }
+
+$(document).ready(function() {
+
+	// provisional coped for Bug? of Mobile Safari
+	$('#system_content').eq(0)[0].style.webkitOverflowScrolling='touch';
+});

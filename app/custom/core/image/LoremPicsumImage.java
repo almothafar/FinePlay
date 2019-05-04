@@ -9,13 +9,13 @@ import javax.inject.Singleton;
 import common.core.image.Image;
 
 @Singleton
-public class UnsplashItImage implements Image {
+public class LoremPicsumImage implements Image {
 
 	@Override
 	@Nonnull
 	public String getName() {
 
-		return "Unsplash It";
+		return "Lorem Picsum";
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class UnsplashItImage implements Image {
 
 		try {
 
-			return new URI("https://unsplash.it/1600/1200/?random");
+			return new URI("https://picsum.photos/1600/1200/?random");
 		} catch (URISyntaxException e) {
 
 			throw new RuntimeException(e);
@@ -50,7 +50,7 @@ public class UnsplashItImage implements Image {
 
 				try {
 
-					return new URI("https://unsplash.it");
+					return new URI("https://picsum.photos");
 				} catch (URISyntaxException e) {
 
 					throw new RuntimeException(e);

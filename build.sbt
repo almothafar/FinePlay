@@ -67,7 +67,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct-processor" % "1.3.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
-//  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
+//  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.1",			// MIT 5.1.1
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
@@ -76,7 +76,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
-  "org.webjars.npm" % "chart.js" % "2.7.3",								// MIT 2.7.3
+  "org.webjars.npm" % "chart.js" % "2.8.0",								// MIT 2.8.0
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.10.0",						// MIT 3.10.0
@@ -140,28 +140,28 @@ libraryDependencies ++= Seq(
 // JasperReports library
 libraryDependencies ++= Seq(
   "net.sf.jasperreports" % "jasperreports" % "6.8.0",					// LGPL 6.8.0
-  "net.sf.jasperreports" % "jasperreports-fonts" % "6.0.0",
+  "net.sf.jasperreports" % "jasperreports-fonts" % "6.8.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1
-  "org.apache.xmlgraphics" % "batik-bridge" % "1.10"
+  "org.apache.xmlgraphics" % "batik-bridge" % "1.11"
 )
 
 // Batch library
 libraryDependencies ++= Seq(
   "javax.enterprise" % "cdi-api" % "2.0",
-  "org.jboss.weld.se" % "weld-se" % "2.4.5.Final",						// Apache 2.4.5.Final
-  "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.1.Final",
-  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.5.Final",		// Apache 2.0.2.Final
-  "org.jboss.logging" % "jboss-logging" % "3.3.2.Final",
-  "org.jberet" % "jberet-core" % "1.3.1.Final",							// Eclipse Public 1.3.0.Final
-  "org.jberet" % "jberet-support" % "1.3.0.Final",
-  "org.jberet" % "jberet-se" % "1.3.0.Final",
+  "org.jboss.weld.se" % "weld-se" % "2.4.8.Final",						// Apache 2.4.8.Final
+  "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.2.Final",
+  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.7.Final",		// Apache 2.0.7.Final
+  "org.jboss.logging" % "jboss-logging" % "3.4.0.Final",
+  "org.jberet" % "jberet-core" % "1.3.4.Final",							// Eclipse Public 1.3.4.Final
+  "org.jberet" % "jberet-support" % "1.3.4.Final",
+  "org.jberet" % "jberet-se" % "1.3.4.Final",
   "org.wildfly.security" % "wildfly-security-manager" % "1.1.2.Final"	// LGPL(http://www.wildfly.org footer) 1.1.2.Final
 )
 
 dependencyOverrides ++= Seq(
-  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.3.1
-  "org.webjars.bower" % "jquery" % "3.3.1"
+  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
+  "org.webjars.bower" % "jquery" % "3.4.1"
 )
 excludeDependencies ++= Seq(
 //  "[GroupId]" % "[ArtifactId]"

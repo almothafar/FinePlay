@@ -3,7 +3,7 @@ package custom.core.module;
 import com.typesafe.config.Config;
 
 import common.core.image.Image;
-import custom.core.image.UnsplashItImage;
+import custom.core.image.LoremPicsumImage;
 import play.Environment;
 
 public class GlobalModule extends common.core.module.GlobalModule {
@@ -18,6 +18,6 @@ public class GlobalModule extends common.core.module.GlobalModule {
 
 		super.configure();
 
-		bind(Image.class).to(UnsplashItImage.class);
+		bind(Image.class).to(LoremPicsumImage.class);
 	}
 }

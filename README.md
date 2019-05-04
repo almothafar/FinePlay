@@ -85,16 +85,10 @@ TODO
 
 ### FinePlay 2.7.x ###
 + Update Scala 2.13 release  
-
-### FinePlay x.x.x ###
 + Update Bootstrap 4.3.2  release  
-   + Update jQuery
    + Update popper.js
 + Drop IE
    + Refactor system_menu.
-   + Update shepherd.js
-   + Update marked
-   + Update reveal.js
 
 Release History
 ---------------

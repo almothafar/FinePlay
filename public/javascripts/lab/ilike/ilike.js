@@ -16,8 +16,11 @@ $(document).ready(function() {
 
 		hideToRight('#i_detail', function(e){
 
-			$('#i_content').removeClass('detail');
-			$('#i_detail').css('display', '');
+			setTimeout(function(){
+
+				$('#i_content').removeClass('detail');
+				$('#i_detail').css('display', '');
+			},100);// provisional coped for Bug? of Mobile Safari
 		});
 	});
 });
