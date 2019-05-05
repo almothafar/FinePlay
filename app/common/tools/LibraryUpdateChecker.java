@@ -57,8 +57,9 @@ class LibraryUpdateChecker {
 			artifact.getRepositoryArtifacts().forEach(repositoryArtifact -> {
 
 				System.out.print(repositoryArtifact.isAvailable() ? "  " : "! ");
-				System.out.println(repositoryArtifact.toString());
+				System.out.print(repositoryArtifact.toString());
 			});
+			System.out.println();
 		});
 
 		System.exit(0);
@@ -68,20 +69,16 @@ class LibraryUpdateChecker {
 	private static @Nonnull List<Artifact> toArtifacts(@Nonnull final List<String> lines) {
 
 		final List<Artifact> artifacts = new ArrayList<>();
-		boolean isStart = false;
-		int libBlockCount = 0;
+		boolean isLibBlockStart = false;
 		for (final String line : lines) {
 
 			if (line.startsWith("libraryDependencies ++= Seq(")) {
 
-				isStart = true;
+				isLibBlockStart = true;
 				continue;
-			} else if (!(libBlockCount <= 6)) {
-
-				break;
 			}
 
-			if (!isStart)
+			if (!isLibBlockStart)
 				continue;
 
 			if (line.isEmpty())
@@ -92,7 +89,7 @@ class LibraryUpdateChecker {
 
 			if (line.startsWith(")")) {
 
-				libBlockCount++;
+				isLibBlockStart = false;
 				continue;
 			}
 
