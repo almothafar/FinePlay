@@ -16,6 +16,17 @@
 
 		if($('html').hasClass('dir-rtl')){
 
+			$('[data-toggle="popover"]').each(function(){
+
+			  var popoverElem = $(this);
+
+			  var placement = popoverElem.attr('data-placement');
+			  if(!placement){
+
+			    popoverElem.attr('data-placement', 'right');
+			  }
+			});
+
 			var placementLeftElems = $('[data-placement=left]');
 			var placementRightElems = $('[data-placement=right]');
 

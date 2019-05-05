@@ -289,23 +289,23 @@ var tell = function(text, wait){
 var notifyAlert = function(type, text, wait){
 
 	var icon ='';
-	var notifyInfo = {'icon': 'comment-alt', 'bg': ''};
+	var notifyInfo = {'icon': 'comment-alt', 'text': '', 'bg': ''};
 	switch (type) {
 	case 'success':
 
-		notifyInfo = {'icon': 'check', 'bg': 'green-100'};
+		notifyInfo = {'icon': 'check', 'text': 'light', 'bg': 'success'};
 		break;
 	case 'info':
 
-		notifyInfo = {'icon': 'info-circle', 'bg': 'cyan-100'};
+		notifyInfo = {'icon': 'info-circle', 'text': 'light', 'bg': 'info'};
 		break;
 	case 'warning':
 
-		notifyInfo = {'icon': 'exclamation-triangle', 'bg': 'yellow-100'};
+		notifyInfo = {'icon': 'exclamation-triangle', 'text': 'light', 'bg': 'warning'};
 		break;
 	case 'danger':
 
-		notifyInfo = {'icon': 'ban', 'bg': 'red-100'};
+		notifyInfo = {'icon': 'ban', 'text': 'light', 'bg': 'danger'};
 		break;
 	default:
 
@@ -313,10 +313,10 @@ var notifyAlert = function(type, text, wait){
 	}
 	var html = '<div class="toast show mw-100" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">' +
 					'<div class="toast-header bg-' + notifyInfo.bg + '">' +
-						'<i class="fas fa-' + notifyInfo.icon + '"></i>' +
-						'<strong class="mr-auto"></strong>' +
+						'<i class="fas fa-' + notifyInfo.icon + ' text-' + notifyInfo.text + '"></i>' +
+						'<strong class="mr-auto text-' + notifyInfo.text + '"></strong>' +
 						'<small></small>' +
-						'<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+						'<button type="button" class="ml-2 mb-1 close text-' + notifyInfo.text + '" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 					'</div>' +
 					'<div class="toast-body">' +
 						text +
