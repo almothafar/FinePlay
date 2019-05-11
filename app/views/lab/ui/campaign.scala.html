@@ -8,6 +8,7 @@
 
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 
@@ -50,54 +51,63 @@
 					</div>
 
 					<div class="row mb-3">
-						<div id="campaigns-wrapper" class="w-100 shadow-inset">
+						<div id="campaigns-wrapper" class="w-100 px-2 shadow-inset">
 							<div id="campaigns">
-								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								@components.card(Map("id"->"", "class"->"campaign shadow my-3 ml-3 float-left", "align"->"right")){
-									@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
-									<div class="card-body">
-										<p class="card-text draft"><span>Description.</span></p>
-									</div>
-									<div class="card-footer">
-										@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
-									</div>
-								}
-								<div class="pl-3"></div>
+								<div class="campaign">
+									@components.card(Map("id"->"", "class"->"shadow my-3 mx-2", "align"->"right")){
+										@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
+										<div class="card-body">
+											<p class="card-text draft"><span>Description.</span></p>
+										</div>
+										<div class="card-footer">
+											@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+										</div>
+									}
+								</div>
+								<div class="campaign">
+									@components.card(Map("id"->"", "class"->"shadow my-3 mx-2", "align"->"right")){
+										@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
+										<div class="card-body">
+											<p class="card-text draft"><span>Description.</span></p>
+										</div>
+										<div class="card-footer">
+											@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+										</div>
+									}
+								</div>
+								<div class="campaign">
+									@components.card(Map("id"->"", "class"->"shadow my-3 mx-2", "align"->"right")){
+										@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
+										<div class="card-body">
+											<p class="card-text draft"><span>Description.</span></p>
+										</div>
+										<div class="card-footer">
+											@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+										</div>
+									}
+								</div>
+								<div class="campaign">
+									@components.card(Map("id"->"", "class"->"shadow my-3 mx-2", "align"->"right")){
+										@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
+										<div class="card-body">
+											<p class="card-text draft"><span>Description.</span></p>
+										</div>
+										<div class="card-footer">
+											@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+										</div>
+									}
+								</div>
+								<div class="campaign">
+									@components.card(Map("id"->"", "class"->"shadow my-3 mx-2", "align"->"right")){
+										@components.image(Map("id"->"", "source"->"holder.js/100px150?random=yes", "fluid"->"true", "alternate"->messages(MessageKeys.CONTENT)))
+										<div class="card-body">
+											<p class="card-text draft"><span>Description.</span></p>
+										</div>
+										<div class="card-footer">
+											@components.linkbutton(Map("id"->"", "type"->"primary", "text"->"More", "size"->"sm"))
+										</div>
+									}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -118,5 +128,6 @@
 
 		@libraries.standard.last()
 		@libraries.holder.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ui/campaign.js")'></script>
 	}
 }

@@ -69,7 +69,7 @@ libraryDependencies ++= Seq(
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
-  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.1",			// MIT 5.1.1
+  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.3",			// MIT 5.1.3
   "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
   "org.webjars.npm" % "bootstrap-slider" % "10.6.1",					// MIT 10.6.1
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
@@ -111,6 +111,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
+// jQuery RTL Scroll Type Detector										// MIT Apr 26, 2017 master
 // TwentyTwenty															// ISC? MIT? Aug 7, 2018 master
 // markdeep																// BSD archive master(Sep 10, 2018)
 // Frappé Gantt															// MIT build version 0.0.7 master

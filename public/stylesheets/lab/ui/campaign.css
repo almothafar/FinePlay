@@ -5,11 +5,11 @@
 	background-color:gainsboro;
 }
 #campaigns{
+	display:-ms-flexbox;
 	display:-webkit-box;
 	display: box;
-	width: 1390px;
 }
-#campaigns>.campaign{
+#campaigns>.campaign>.card{
 	width: 260px;
 	height: 280px;
 }

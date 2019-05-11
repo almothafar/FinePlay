@@ -36,7 +36,7 @@
 		@components.container(Map("id"->"", "fluid"->"true")){
 
 			<div class="jumbotron mt-3">
-				@components.image(Map("id"->"theme_image", "class"->"w-144p h-144p", "thumbnail"->"true", "alternate"->"...", "source"->routes.Assets.versioned("themes/" + request.session().getOptional(models.user.User.THEME).get().toLowerCase + "/image.png").toString))
+				@components.image(Map("id"->"theme_image", "class"->"w-144p h-144p", "thumbnail"->"true", "alternate"->"...", "source"->routes.Assets.versioned("themes/" + request.session().getOptional(models.user.User.THEME).get().toLowerCase + "/image.svg").toString))
 				<h1 class="display-4 d-inline align-top">@messages(models.user.User.Theme.valueOf(request.session().getOptional(models.user.User.THEME).get()).getMessageKey())</h1>
 			</div>
 		}

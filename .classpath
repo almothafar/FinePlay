@@ -715,9 +715,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap/docs/bootstrap-4.3.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/jars/bootbox-5.1.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/srcs/bootbox-5.1.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/jars/bootbox-5.1.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/srcs/bootbox-5.1.3-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/docs/bootbox-5.1.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.makeusabrew/bootbox/docs/bootbox-5.1.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.twbs/bootstrap/jars/bootstrap-3.3.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.twbs/bootstrap/srcs/bootstrap-3.3.7-sources.jar">
@@ -725,9 +725,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.twbs/bootstrap/docs/bootstrap-3.3.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/jars/jquery-dist-3.4.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/srcs/jquery-dist-3.4.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/jars/jquery-dist-3.4.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/srcs/jquery-dist-3.4.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/docs/jquery-dist-3.4.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/docs/jquery-dist-3.4.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/jars/pickadate.js-3.5.6.jar">

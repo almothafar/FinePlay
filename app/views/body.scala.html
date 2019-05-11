@@ -149,7 +149,7 @@
 						@components.button(Map("id"->"scrollTopButton", "type"->"link", "icon"->"fas fa-angle-double-up", "text"->"", "class"->"ml-1"))
 						<div class="btn-group">
 							<button id="system_user-menu" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-user"></i><span class="d-none d-sm-inline">@request.session().getOptional(User.USER_ID).orElse(/* Direct access of not signin */"")</span>
+								<i class="fas fa-user"></i><span class="d-none d-sm-inline">&nbsp;@request.session().getOptional(User.USER_ID).orElse(/* Direct access of not signin */"")</span>
 							</button>
 							<div class="dropdown-menu dropdown-menu-right text-left">
 								<a class="dropdown-item" href="@controllers.setting.user.routes.User.index()"><i class="fas fa-cog"></i> @messages(MessageKeys.SETTING)...</a>
