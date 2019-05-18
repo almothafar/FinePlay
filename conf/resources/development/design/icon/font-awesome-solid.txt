@@ -367,6 +367,7 @@ genderless
 ghost
 gift
 gifts
+git-alt
 glass-cheers
 glass-martini
 glass-martini-alt
@@ -764,6 +765,7 @@ spray-can
 square
 square-full
 square-root-alt
+stackpath
 stamp
 star
 star-and-crescent

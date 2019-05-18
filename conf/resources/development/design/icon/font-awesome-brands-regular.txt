@@ -158,6 +158,7 @@ get-pocket
 gg
 gg-circle
 git
+git-alt
 git-square
 github
 github-alt
@@ -348,6 +349,7 @@ spotify
 squarespace
 stack-exchange
 stack-overflow
+stackpath
 staylinked
 steam
 steam-square

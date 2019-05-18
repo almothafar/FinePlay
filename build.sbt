@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.2-b1-SNAPSHOT"
+version := "2.7.2-b2-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -24,8 +24,8 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-  "org.jacoco" % "org.jacoco.agent" % "0.8.3",
-//  "hiro20v" %% "fineplay-sub" % "2.7.2-b1-SNAPSHOT",
+  "org.jacoco" % "org.jacoco.agent" % "0.8.3",							// EPL 0.8.3
+//  "hiro20v" %% "fineplay-sub" % "2.7.2-b2-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -61,10 +61,10 @@ libraryDependencies ++= Seq(
   "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.15",							// Apache 2.0.15
-  "org.jsoup" % "jsoup" % "1.11.3",										// MIT 1.11.2
+  "org.jsoup" % "jsoup" % "1.12.1",										// MIT 1.12.1
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
-  "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
-  "org.mapstruct" % "mapstruct-processor" % "1.3.0.Final",				//
+  "org.mapstruct" % "mapstruct" % "1.2.0.Final",						// Apache 1.3.0
+  "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
@@ -75,7 +75,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
-  "org.webjars.bower" % "select2" % "4.0.5",							// MIT 4.0.4
+  "org.webjars.bower" % "select2" % "4.0.7",							// MIT 4.0.7
   "org.webjars.npm" % "chart.js" % "2.8.0",								// MIT 2.8.0
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
@@ -131,7 +131,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.8.1",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.8.1
+  "org.webjars" % "font-awesome" % "5.8.2",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.8.2
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.5.5",								// MIT 4.5.5
   "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0
@@ -161,8 +161,8 @@ libraryDependencies ++= Seq(
 )
 
 dependencyOverrides ++= Seq(
-  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
-  "org.webjars.bower" % "jquery" % "3.4.1"
+  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.4.1
+  "org.webjars.bower" % "jquery" % "3.3.1"
 )
 excludeDependencies ++= Seq(
 //  "[GroupId]" % "[ArtifactId]"

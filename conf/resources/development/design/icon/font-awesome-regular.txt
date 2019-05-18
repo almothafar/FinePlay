@@ -67,6 +67,7 @@ frown
 frown-open
 futbol
 gem
+git-alt
 grimace
 grin
 grin-alt
@@ -150,6 +151,7 @@ smile-wink
 snowflake
 speaker-deck
 square
+stackpath
 star
 star-half
 sticky-note
