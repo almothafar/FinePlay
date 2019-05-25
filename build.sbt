@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.2-b2-SNAPSHOT"
+version := "2.7.2-b3-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -25,7 +25,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",							// EPL 0.8.3
-//  "hiro20v" %% "fineplay-sub" % "2.7.2-b2-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.2-b3-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -57,8 +57,8 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.1.0",									// Apache 4.1.0
   "org.apache.poi" % "poi-scratchpad" % "4.1.0",
   "org.apache.poi" % "poi-ooxml" % "4.1.0",
-  "org.apache.tika" % "tika-core" % "1.20",								// Apache 1.17
-  "com.google.zxing" % "javase" % "3.3.3",								// Apache 3.3.3
+  "org.apache.tika" % "tika-core" % "1.21",								// Apache 1.21
+  "com.google.zxing" % "javase" % "3.4.0",								// Apache 3.4.0
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.15",							// Apache 2.0.15
   "org.jsoup" % "jsoup" % "1.12.1",										// MIT 1.12.1
@@ -98,7 +98,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.bower" % "plotly.js" % "1.45.3",							// MIT 1.45.3
+  "org.webjars.npm" % "echarts" % "4.2.1",								// Apache 4.2.1
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.4.0
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
@@ -125,7 +125,7 @@ libraryDependencies ++= Seq(
 
 // Polyfill
 libraryDependencies ++= Seq(
-  "org.webjars.npm" % "core-js-bundle" % "3.0.0",						// MIT 3.0.0
+  "org.webjars.npm" % "core-js-bundle" % "3.1.2",						// MIT 3.1.2
   "org.webjars.bower" % "fetch" % "2.0.4"								// MIT 2.0.4
 )
 
@@ -140,8 +140,8 @@ libraryDependencies ++= Seq(
 
 // JasperReports library
 libraryDependencies ++= Seq(
-  "net.sf.jasperreports" % "jasperreports" % "6.8.0",					// LGPL 6.8.0
-  "net.sf.jasperreports" % "jasperreports-fonts" % "6.8.0",
+  "net.sf.jasperreports" % "jasperreports" % "6.8.1",					// LGPL 6.8.1
+  "net.sf.jasperreports" % "jasperreports-fonts" % "6.8.1",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1
   "org.apache.xmlgraphics" % "batik-bridge" % "1.11"

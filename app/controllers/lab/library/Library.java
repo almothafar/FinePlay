@@ -108,9 +108,9 @@ public class Library extends Controller {
 		case "markdeep":
 
 			return markdeep(request, lang, messages);
-		case "plotlyjs":
+		case "echarts":
 
-			return plotlyjs(request, lang, messages);
+			return echarts(request, lang, messages);
 		case "parsley":
 
 			return parsley(request, lang, messages);
@@ -288,9 +288,9 @@ public class Library extends Controller {
 		return ok(views.html.lab.library.marked.render(request, lang, messages));
 	}
 
-	public static Result plotlyjs(final Request request, final Lang lang, final Messages messages) {
+	public static Result echarts(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.library.plotlyjs.render(request, lang, messages));
+		return ok(views.html.lab.library.echarts.render(request, lang, messages));
 	}
 
 	public static Result parsley(final Request request, final Lang lang, final Messages messages) {

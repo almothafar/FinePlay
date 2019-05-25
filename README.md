@@ -14,10 +14,10 @@ How to play
 
 ##### Environment #####
 
-	macOS Mojave version 10.14.4（18E226）
+	macOS Mojave version 10.14.5（18F132）
 	Time zone UTC
 	openjdk version "11.0.3" 2019-04-16 LTS / OpenJDK Runtime Environment Corretto-11.0.3.7.1 (build 11.0.3+7-LTS)
-	Safari version 12.1 (14607.1.40.1.4)
+	Safari version 12.1.1 (14607.2.6.1.1)
 
 ##### OpenJDK #####
 
@@ -93,7 +93,7 @@ TODO
 Release History
 ---------------
 
-+ **2.7.2-b2** - 2019-05-18
++ **2.7.2-b3** - 2019-05-25
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
    + First commit

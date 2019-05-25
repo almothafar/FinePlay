@@ -635,19 +635,19 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.github.virtuald/curvesapi/docs/curvesapi-1.06-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/bundles/tika-core-1.20.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/srcs/tika-core-1.20-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/bundles/tika-core-1.21.jar" sourcepath="/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/srcs/tika-core-1.21-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/docs/tika-core-1.20-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.apache.tika/tika-core/docs/tika-core-1.21-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.google.zxing/javase/jars/javase-3.3.3.jar" sourcepath="/Users/hiro/.ivy2/cache/com.google.zxing/javase/srcs/javase-3.3.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.google.zxing/javase/jars/javase-3.4.0.jar" sourcepath="/Users/hiro/.ivy2/cache/com.google.zxing/javase/srcs/javase-3.4.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.google.zxing/javase/docs/javase-3.3.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.google.zxing/javase/docs/javase-3.4.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.google.zxing/core/jars/core-3.3.3.jar" sourcepath="/Users/hiro/.ivy2/cache/com.google.zxing/core/srcs/core-3.3.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.google.zxing/core/jars/core-3.4.0.jar" sourcepath="/Users/hiro/.ivy2/cache/com.google.zxing/core/srcs/core-3.4.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.google.zxing/core/docs/core-3.3.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.google.zxing/core/docs/core-3.4.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.beust/jcommander/jars/jcommander-1.72.jar" sourcepath="/Users/hiro/.ivy2/cache/com.beust/jcommander/srcs/jcommander-1.72-sources.jar">
@@ -1132,9 +1132,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.headjs/headjs/docs/headjs-1.0.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/jars/plotly.js-1.45.3.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/srcs/plotly.js-1.45.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/echarts/jars/echarts-4.2.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/echarts/srcs/echarts-4.2.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/plotly.js/docs/plotly.js-1.45.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/echarts/docs/echarts-4.2.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/zrender/jars/zrender-4.0.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/zrender/srcs/zrender-4.0.7-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/zrender/docs/zrender-4.0.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/jars/parsleyjs-2.8.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/parsleyjs/srcs/parsleyjs-2.8.1-sources.jar">
@@ -1197,9 +1202,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/popper.js/docs/popper.js-1.14.7-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/jars/core-js-bundle-3.0.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/srcs/core-js-bundle-3.0.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/jars/core-js-bundle-3.1.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/srcs/core-js-bundle-3.1.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/docs/core-js-bundle-3.0.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/core-js-bundle/docs/core-js-bundle-3.1.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/jars/fetch-2.0.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/fetch/srcs/fetch-2.0.4-sources.jar">
@@ -1227,9 +1232,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/twemoji/docs/twemoji-12.0.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/jars/jasperreports-6.8.0.jar" sourcepath="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/srcs/jasperreports-6.8.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/jars/jasperreports-6.8.1.jar" sourcepath="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/srcs/jasperreports-6.8.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/docs/jasperreports-6.8.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports/docs/jasperreports-6.8.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/commons-beanutils/commons-beanutils/jars/commons-beanutils-1.9.3.jar" sourcepath="/Users/hiro/.ivy2/cache/commons-beanutils/commons-beanutils/srcs/commons-beanutils-1.9.3-sources.jar">
@@ -1278,7 +1283,7 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.codehaus.castor/castor-core/docs/castor-core-1.4.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports-fonts/jars/jasperreports-fonts-6.8.0.jar"/>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports-fonts/jars/jasperreports-fonts-6.8.1.jar" sourcepath="/Users/hiro/.ivy2/cache/net.sf.jasperreports/jasperreports-fonts/srcs/jasperreports-fonts-6.8.1-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.sf.barcode4j/barcode4j/jars/barcode4j-2.1.jar" sourcepath="/Users/hiro/.ivy2/cache/net.sf.barcode4j/barcode4j/srcs/barcode4j-2.1-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.sf.barcode4j/barcode4j/docs/barcode4j-2.1-javadoc.jar!/"/>

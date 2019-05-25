@@ -209,6 +209,8 @@ public class MessageKeys {
 
   public static final String DROP = "drop";
 
+  public static final String ECHARTS_LANG = "echarts.lang";
+
   public static final String EDIT = "edit";
 
   public static final String EMAIL = "email";
@@ -592,8 +594,6 @@ public class MessageKeys {
   public static final String PLEASE__SELECT = "please_select";
 
   public static final String PLEASE__WAIT = "please_wait";
-
-  public static final String PLOTLYJS_LANG = "plotlyjs.lang";
 
   public static final String PREVIEW = "preview";
 

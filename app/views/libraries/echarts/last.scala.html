@@ -1,0 +1,26 @@
+@import com.typesafe.config._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html.helper._
+
+@import common.system._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@translation() = @{
+
+	var connecter = ""
+	var lang = messages(MessageKeys.ECHARTS_LANG)
+	if(lang.isEmpty){
+
+	}else{
+
+		connecter = "-"
+	}
+
+	var path = "lib/echarts/dist/echarts" + connecter + lang + ".js"
+	Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
+}
+@translation()
