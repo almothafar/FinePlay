@@ -61,6 +61,7 @@ $('#okButton').on('click', function (e) {
 $('#cp2').colorpicker({
 	container: true,
 	customClass: 'colorpicker-2x',
+	format: null,
 	sliders: {
 		saturation: {
 			maxLeft: 200,

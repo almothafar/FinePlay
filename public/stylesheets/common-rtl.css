@@ -41,9 +41,7 @@ body {
 	width: 100%;
 	top: 0px;
 	bottom: 0px;
-	overflow: auto;
-	overflow-scrolling: touch;
-	-webkit-overflow-scrolling: touch;
+	overflow: scroll;
 	right: 0px;
 	left: 100%;
 	transition-property: right,left;

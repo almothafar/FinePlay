@@ -20,7 +20,7 @@
 		connecter = "-"
 	}
 
-	var path = "lib/echarts/dist/echarts" + connecter + lang + ".js"
+	var path = "lib/echarts/dist/echarts" + connecter + lang + ".min.js"
 	Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
 }
 @translation()

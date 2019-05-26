@@ -66,7 +66,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.2.0.Final",						// Apache 1.3.0
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "1.3.2",								// Apache 1.3.2
+  "net.lingala.zip4j" % "zip4j" % "1.3.3",								// Apache 1.3.3
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.3",			// MIT 5.1.3
@@ -101,7 +101,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "echarts" % "4.2.1",								// Apache 4.2.1
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.4.0
-  "org.webjars.npm" % "bootstrap-colorpicker" % "3.0.3",				// MIT 3.0.3
+  "org.webjars.npm" % "bootstrap-colorpicker" % "3.1.2",				// MIT 3.1.2
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
   "org.webjars.npm" % "jsqr" % "1.1.1",									// Apache 2018/06/24 master

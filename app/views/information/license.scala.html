@@ -36,6 +36,11 @@
 
 		@components.container(Map("id"->"")){
 
+			@components.alerts(Map("id"->"system_alerts")){
+
+				@components.alert(Map("id"->"", "icon"->"fas fa-info-circle", "text"->"This page is an notice of <a href=\"http://opensource.org/licenses/MIT\" class=\"alert-link\"><strong>MIT license</strong></a>.", "type"->"info"))
+			}
+
 			<div class="jumbotron ">
 
 				<div id="projectImage" class="img-thumbnail mb-3">
