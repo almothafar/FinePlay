@@ -385,6 +385,8 @@ public class MessageKeys {
 
   public static final String INITIALIZE = "initialize";
 
+  public static final String INPUT = "input";
+
   public static final String INQUIRY = "inquiry";
 
   public static final String INQUIRY_SEND = "inquiry.send";
@@ -562,6 +564,8 @@ public class MessageKeys {
   public static final String OTHER = "other";
 
   public static final String OUTLINE = "outline";
+
+  public static final String OUTPUT = "output";
 
   public static final String OVERVIEW = "overview";
 

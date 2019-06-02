@@ -22,6 +22,7 @@
 
 		@libraries.standard.head()
 		@libraries.diff2html.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/diff2html.css")'>
 	}
 
 	@body("lab","library"){
@@ -41,6 +42,56 @@
 				</div>
 				<div class="col-md-9">
 
+					<div id="h-split-pane" class="lang-ltr">
+						<div id="oldPane" class="h-split">
+							<div class="v-split jsPane">
+								<input class="form-control fileName" type="text" placeholder="Old file" value="a/src/my/really/big/path/sample.js">
+								<textarea id="text" class="form-control code" placeholder="Old code" rows="8" required maxlength="1000">
+console.log('hello');
+								</textarea>
+							</div>
+							<div class="v-split javaPane">
+								<input class="form-control fileName" type="text" placeholder="Old file" value="a/src/core/init.java">
+								<textarea id="text" class="form-control code" placeholder="Old code" rows="8" required maxlength="1000">
+/**
+* Setter for property filesize.
+*
+* @@param filesize value of property 'filesize'.
+*/
+public void setFilesize(int filesize) {
+  this.filesizeOld = filesizeOld;
+}
+								</textarea>
+							</div>
+						</div>
+						<div id="newPane" class="h-split">
+							<div class="v-split jsPane">
+								<input class="form-control fileName" type="text" placeholder="Old file" value="b/src/my/small/path/sample.js">
+								<textarea id="text" class="form-control code" placeholder="Old code" rows="8" required maxlength="1000">
+console.dir('hello');
+								</textarea>
+							</div>
+							<div class="v-split javaPane">
+								<input class="form-control fileName" type="text" placeholder="Old file" value="b/src/core/init.java">
+								<textarea id="text" class="form-control code" placeholder="Old code" rows="8" required maxlength="1000">
+/**
+* Setter for property filesize.
+*
+* @@param filesize value of property 'filesize'.
+*/
+public void setFilesize(int filesize) {
+  this.filesizeNew = filesizeNew;
+}
+								</textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt-3 mb-3 text-right">
+
+						@components.button(Map("id"->"diffButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-code", "text"->messages(MessageKeys.OUTPUT)))
+					</div>
+
 					<div class="mb-3 lang-ltr">
 
 						<div id="line-by-line" class="mx-auto"></div>
@@ -55,6 +106,8 @@
 		}
 
 		@libraries.standard.last()
+		@libraries.splitjs.last()
+		@libraries.jsdiff.last()
 		@libraries.highlight.last()
 		@libraries.diff2html.last()
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/diff2html.js")'></script>

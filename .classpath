@@ -564,9 +564,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.postgresql/postgresql/docs/postgresql-42.2.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.27.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.27.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-2.28.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-2.28.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.27.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.mockito/mockito-core/docs/mockito-core-2.28.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.9.10.jar" sourcepath="/Users/hiro/.ivy2/cache/net.bytebuddy/byte-buddy-agent/srcs/byte-buddy-agent-1.9.10-sources.jar">
@@ -756,6 +756,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/jquery/jars/jquery-1.12.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars/jquery/srcs/jquery-1.12.0-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/Split.js/jars/Split.js-1.5.9.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/Split.js/srcs/Split.js-1.5.9-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/Split.js/docs/Split.js-1.5.9-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/jars/select2-4.0.7.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/select2/srcs/select2-4.0.7-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/select2/docs/select2-4.0.7-javadoc.jar!/"/>
@@ -1072,14 +1077,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/highlightjs/docs/highlightjs-9.12.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/diff2html/jars/diff2html-2.7.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/diff2html/srcs/diff2html-2.7.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/diff/jars/diff-4.0.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/diff/srcs/diff-4.0.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/diff2html/docs/diff2html-2.7.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/diff/docs/diff-4.0.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/diff/jars/diff-3.5.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/diff/srcs/diff-3.5.0-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/diff2html/jars/diff2html-2.9.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/diff2html/srcs/diff2html-2.9.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/diff/docs/diff-3.5.0-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/diff2html/docs/diff2html-2.9.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/hogan.js/jars/hogan.js-3.0.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/hogan.js/srcs/hogan.js-3.0.2-sources.jar">
@@ -1102,9 +1107,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/mkdirp/docs/mkdirp-0.3.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/lodash.merge/jars/lodash.merge-4.6.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/lodash.merge/srcs/lodash.merge-4.6.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/merge/jars/merge-1.2.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/merge/srcs/merge-1.2.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/lodash.merge/docs/lodash.merge-4.6.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/merge/docs/merge-1.2.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/whatwg-fetch/jars/whatwg-fetch-3.0.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/whatwg-fetch/srcs/whatwg-fetch-3.0.0-sources.jar">

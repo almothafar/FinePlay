@@ -46,12 +46,11 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2
   "org.hibernate" % "hibernate-jpamodelgen" % "5.4.2.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
-  "org.dom4j" % "dom4j" % "2.1.1",										// Origin 2.1.1
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
   "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
-  "org.mockito" % "mockito-core" % "2.27.0",							// MIT 2.27.0
+  "org.mockito" % "mockito-core" % "2.28.2",							// MIT 2.28.2
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.1.0",									// Apache 4.1.0
@@ -75,6 +74,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
+  "org.webjars.bower" % "Split.js" % "1.5.9",							// MIT 1.5.9
   "org.webjars.bower" % "select2" % "4.0.7",							// MIT 4.0.7
   "org.webjars.npm" % "chart.js" % "2.8.0",								// MIT 2.8.0
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
@@ -93,7 +93,8 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.npm" % "prettier" % "1.16.4",							// MIT 1.16.4
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
-  "org.webjars.npm" % "diff2html" % "2.7.0",							// MIT 2.7.0
+  "org.webjars.npm" % "diff" % "4.0.1",									// BSD 4.0.1
+  "org.webjars.npm" % "diff2html" % "2.9.0",							// MIT 2.9.0
   "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
   "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0

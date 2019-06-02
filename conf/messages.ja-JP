@@ -363,6 +363,7 @@ image=画像
 info=情報
 information=情報
 initialize=初期化
+input=入力
 insert_column_left=左に列挿入
 insert_column_right=右に列挿入
 insert_row_above=上に行挿入
@@ -417,6 +418,7 @@ other=その他
 
 optional=任意
 outline=概要
+output=出力
 overview=概要
 page=ページ
 paper=紙
