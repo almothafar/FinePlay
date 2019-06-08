@@ -105,19 +105,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.12/docs/akka-slf4j_2.12-2.5.22-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.9.8.jar" sourcepath="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/srcs/jackson-core-2.9.8-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/docs/jackson-core-2.9.8-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.9.8.jar" sourcepath="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/srcs/jackson-annotations-2.9.8-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/docs/jackson-annotations-2.9.8-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.9.8.jar" sourcepath="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/srcs/jackson-databind-2.9.8-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/docs/jackson-databind-2.9.8-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.9.8.jar" sourcepath="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/srcs/jackson-datatype-jdk8-2.9.8-sources.jar">
@@ -466,9 +456,19 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.jodah/failsafe/docs/failsafe-2.0.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/jars/logstash-logback-encoder-5.3.jar" sourcepath="/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/srcs/logstash-logback-encoder-5.3-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/jars/logstash-logback-encoder-6.0.jar" sourcepath="/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/srcs/logstash-logback-encoder-6.0-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/docs/logstash-logback-encoder-5.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/net.logstash.logback/logstash-logback-encoder/docs/logstash-logback-encoder-6.0-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.9.9.jar" sourcepath="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/srcs/jackson-databind-2.9.9-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/docs/jackson-databind-2.9.9-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.9.9.jar" sourcepath="/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/srcs/jackson-core-2.9.9-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/docs/jackson-core-2.9.9-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/jars/hibernate-core-5.4.2.Final.jar" sourcepath="/Users/hiro/.ivy2/cache/org.hibernate/hibernate-core/srcs/hibernate-core-5.4.2.Final-sources.jar">

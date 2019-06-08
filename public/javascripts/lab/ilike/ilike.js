@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 	$('.detail #backButton').on('click', function() {
 
-		hideToRight('#i_detail', function(e){
+		hideToEnd('#i_detail', function(e){
 
 			setTimeout(function(){
 
