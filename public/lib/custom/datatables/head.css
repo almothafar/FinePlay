@@ -27,3 +27,13 @@ table.dataTable {
 div.dataTables_wrapper div.dataTables_length select {
 	width: 100px;
 }
+
+.dir-rtl div.dataTables_wrapper div.dataTables_filter {
+	text-align: left
+}
+
+@media screen and (max-width: 767px) {
+	.dir-rtl div.dataTables_wrapper div.dataTables_filter {
+		text-align: center
+	}
+}

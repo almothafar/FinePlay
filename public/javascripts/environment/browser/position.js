@@ -1,12 +1,11 @@
 'use strict';
 
 var boxmap = {
-	'$("#box").offset().top': $("#box_container>.box").offset().top,
-	'$("#box").position().top': $("#box_container>.box").position().top,
-	'$("#box").scrollTop()': $("#box_container>.box").scrollTop(),
-	'document.querySelector("#box").getBoundingClientRect().top': document.querySelector("#box_container>.box").getBoundingClientRect().top,
-	'document.querySelector("#box").offsetTop': document.querySelector("#box_container>.box").offsetTop,
-	'document.querySelector("#box").scrollTop': document.querySelector("#box_container>.box").scrollTop,
+	'$("#box_container").scrollTop()': $("#box_container").scrollTop(),
+	'$("#box").scrollTop()': $("#box_container>.box").offset().top,
+	'$("#box_container>.box").position().top': $("#box_container>.box").position().top,
+	'document.querySelector("#box_container").scrollTop': document.querySelector("#box_container").scrollTop,
+	'document.querySelector("#box_container>.box").getBoundingClientRect().top': document.querySelector("#box_container>.box").getBoundingClientRect().top,
 }
 
 $.each(boxmap, function(key, value){
@@ -17,21 +16,21 @@ $.each(boxmap, function(key, value){
 
 $('#box_container').scroll(function(){
 
-	$("#table tbody>tr").eq(0).find('td:nth-child(2)').text($("#box_container>.box").offset().top);
-	$("#table tbody>tr").eq(1).find('td:nth-child(2)').text($("#box_container>.box").position().top);
-	$("#table tbody>tr").eq(2).find('td:nth-child(2)').text($("#box_container>.box").scrollTop());
-	$("#table tbody>tr").eq(5).find('td:nth-child(2)').text(document.querySelector("#box_container>.box").getBoundingClientRect().top);
-	$("#table tbody>tr").eq(3).find('td:nth-child(2)').text(document.querySelector("#box_container>.box").offsetTop);
-	$("#table tbody>tr").eq(4).find('td:nth-child(2)').text(document.querySelector("#box_container>.box").scrollTop);
+	$("#table tbody>tr").eq(0).find('td:nth-child(2)').text($("#box_container").scrollTop());
+	$("#table tbody>tr").eq(1).find('td:nth-child(2)').text($("#box_container>.box").offset().top);
+	$("#table tbody>tr").eq(2).find('td:nth-child(2)').text($("#box_container>.box").position().top);
+	$("#table tbody>tr").eq(3).find('td:nth-child(2)').text(document.querySelector("#box_container").scrollTop);
+	$("#table tbody>tr").eq(4).find('td:nth-child(2)').text(document.querySelector("#box_container>.box").getBoundingClientRect().top);
 });
 
+//
+
 var boxmap_relative = {
-	'$("#box").offset().top': $("#box_container_relative>.box").offset().top,
-	'$("#box").position().top': $("#box_container_relative>.box").position().top,
-	'$("#box").scrollTop()': $("#box_container_relative>.box").scrollTop(),
-	'document.querySelector("#box").getBoundingClientRect().top': document.querySelector("#box_container_relative>.box").getBoundingClientRect().top,
-	'document.querySelector("#box").offsetTop': document.querySelector("#box_container_relative>.box").offsetTop,
-	'document.querySelector("#box").scrollTop': document.querySelector("#box_container_relative>.box").scrollTop,
+	'$("#box_container").scrollTop()': $("#box_container_relative").scrollTop(),
+	'$("#box").scrollTop()': $("#box_container_relative>.box").offset().top,
+	'$("#box_container>.box").position().top': $("#box_container_relative>.box").position().top,
+	'document.querySelector("#box_container").scrollTop': document.querySelector("#box_container_relative").scrollTop,
+	'document.querySelector("#box_container>.box").getBoundingClientRect().top': document.querySelector("#box_container_relative>.box").getBoundingClientRect().top,
 }
 
 $.each(boxmap_relative, function(key, value){
@@ -42,10 +41,9 @@ $.each(boxmap_relative, function(key, value){
 
 $('#box_container_relative').scroll(function(){
 
-	$("#table_relative tbody>tr").eq(0).find('td:nth-child(2)').text($("#box_container_relative>.box").offset().top);
-	$("#table_relative tbody>tr").eq(1).find('td:nth-child(2)').text($("#box_container_relative>.box").position().top);
-	$("#table_relative tbody>tr").eq(2).find('td:nth-child(2)').text($("#box_container_relative>.box").scrollTop());
-	$("#table_relative tbody>tr").eq(5).find('td:nth-child(2)').text(document.querySelector("#box_container_relative>.box").getBoundingClientRect().top);
-	$("#table_relative tbody>tr").eq(3).find('td:nth-child(2)').text(document.querySelector("#box_container_relative>.box").offsetTop);
-	$("#table_relative tbody>tr").eq(4).find('td:nth-child(2)').text(document.querySelector("#box_container_relative>.box").scrollTop);
+	$("#table_relative tbody>tr").eq(0).find('td:nth-child(2)').text($("#box_container_relative").scrollTop());
+	$("#table_relative tbody>tr").eq(1).find('td:nth-child(2)').text($("#box_container_relative>.box").offset().top);
+	$("#table_relative tbody>tr").eq(2).find('td:nth-child(2)').text($("#box_container_relative>.box").position().top);
+	$("#table_relative tbody>tr").eq(3).find('td:nth-child(2)').text(document.querySelector("#box_container_relative").scrollTop);
+	$("#table_relative tbody>tr").eq(4).find('td:nth-child(2)').text(document.querySelector("#box_container_relative>.box").getBoundingClientRect().top);
 });
