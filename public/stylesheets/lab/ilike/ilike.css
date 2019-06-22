@@ -19,6 +19,10 @@
 	border-left: 0.5px solid darkgray;
 }
 
+.dir-rtl #i_detail {
+	border-right: 0.5px solid darkgray;
+}
+
 @media ( min-width :768px) {
 	#i_detail {
 		display: block;

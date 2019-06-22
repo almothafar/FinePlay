@@ -9,8 +9,12 @@ arrow-alt-circle-up
 battle-net
 bell
 bell-slash
+biking
 bookmark
 bootstrap
+border-all
+border-none
+border-style
 buffer
 building
 calendar
@@ -48,6 +52,7 @@ envelope-open
 evernote
 eye
 eye-slash
+fan
 file
 file-alt
 file-archive
@@ -103,6 +108,7 @@ hospital
 hotdog
 hourglass
 ice-cream
+icons
 id-badge
 id-card
 image
@@ -135,11 +141,15 @@ pager
 paper-plane
 pause-circle
 pepper-hot
+phone-alt
+phone-square-alt
+photo-video
 pizza-slice
 play-circle
 plus-square
 question-circle
 registered
+remove-format
 sad-cry
 sad-tear
 salesforce
@@ -149,7 +159,14 @@ smile
 smile-beam
 smile-wink
 snowflake
+sort-alpha-down-alt
+sort-alpha-up-alt
+sort-amount-down-alt
+sort-amount-up-alt
+sort-numeric-down-alt
+sort-numeric-up-alt
 speaker-deck
+spell-check
 square
 stackpath
 star
@@ -169,6 +186,7 @@ trash-restore-alt
 user
 user-circle
 user-nurse
+voicemail
 wave-square
 waze
 window-close

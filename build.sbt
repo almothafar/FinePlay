@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.2-b3-SNAPSHOT"
+version := "2.7.3-b1-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 //scalaVersion := "2.13.0"
@@ -25,7 +25,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",							// EPL 0.8.3
-//  "hiro20v" %% "fineplay-sub" % "2.7.2-b3-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.3-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -42,14 +42,14 @@ libraryDependencies ++= Seq(
 //  "com.h2database" % "h2" % "1.4.199" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
   "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
-  "net.logstash.logback" % "logstash-logback-encoder" % "6.0",			// Apache 6.0
+  "net.logstash.logback" % "logstash-logback-encoder" % "6.1",			// Apache 6.1
   "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2
   "org.hibernate" % "hibernate-jpamodelgen" % "5.4.2.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
-  "org.postgresql" % "postgresql" % "42.2.5",							// BSD 2-clause 42.2.1
+  "org.postgresql" % "postgresql" % "42.2.6",							// BSD 2-clause 42.2.6
   "org.mockito" % "mockito-core" % "2.28.2",							// MIT 2.28.2
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
@@ -126,13 +126,13 @@ libraryDependencies ++= Seq(
 
 // Polyfill
 libraryDependencies ++= Seq(
-  "org.webjars.npm" % "core-js-bundle" % "3.1.2",						// MIT 3.1.2
+  "org.webjars.npm" % "core-js-bundle" % "3.1.4",						// MIT 3.1.4
   "org.webjars.bower" % "fetch" % "2.0.4"								// MIT 2.0.4
 )
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.8.2",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.8.2
+  "org.webjars" % "font-awesome" % "5.9.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.9.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.5.5",								// MIT 4.5.5
   "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0

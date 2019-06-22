@@ -33,6 +33,7 @@ bandcamp
 battle-net
 behance
 behance-square
+biking
 bimobject
 bitbucket
 bitcoin
@@ -44,6 +45,9 @@ blogger-b
 bluetooth
 bluetooth-b
 bootstrap
+border-all
+border-none
+border-style
 btc
 buffer
 buromobelexperte
@@ -129,6 +133,7 @@ facebook
 facebook-f
 facebook-messenger
 facebook-square
+fan
 fantasy-flight-games
 fedex
 fedora
@@ -199,6 +204,7 @@ houzz
 html5
 hubspot
 ice-cream
+icons
 imdb
 instagram
 intercom
@@ -257,7 +263,6 @@ monero
 napster
 neos
 nimblr
-nintendo-switch
 node
 node-js
 npm
@@ -283,6 +288,9 @@ periscope
 phabricator
 phoenix-framework
 phoenix-squadron
+phone-alt
+phone-square-alt
+photo-video
 php
 pied-piper
 pied-piper-alt
@@ -311,6 +319,7 @@ reddit
 reddit-alien
 reddit-square
 redhat
+remove-format
 renren
 replyd
 researchgate
@@ -341,10 +350,17 @@ slideshare
 snapchat
 snapchat-ghost
 snapchat-square
+sort-alpha-down-alt
+sort-alpha-up-alt
+sort-amount-down-alt
+sort-amount-up-alt
+sort-numeric-down-alt
+sort-numeric-up-alt
 soundcloud
 sourcetree
 speakap
 speaker-deck
+spell-check
 spotify
 squarespace
 stack-exchange
@@ -405,6 +421,7 @@ vimeo-v
 vine
 vk
 vnv
+voicemail
 vuejs
 wave-square
 waze
