@@ -4,7 +4,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -19,6 +19,7 @@
 @import models.user.User._
 
 @import views.html._
+@import views.html.components
 @import views.html.helper._
 
 @import common.system._
@@ -35,7 +36,7 @@
 
 	LoggerFactory.getLogger(MethodHandles.lookup().lookupClass()).info("Menu");
 	val roleValues = request.session().getOptional(User.ROLES).orElse(/* Direct access of not signin */"");
-	models.system.System.isPermissionAllowed(EnumSet.copyOf(permissions.asJava), User.getPermissions(Sessions.toRoles(roleValues)))
+	models.system.System.isPermissionAllowed(EnumSet.copyOf(permissions), User.getPermissions(Sessions.toRoles(roleValues)))
 }
 
 @equalSection(section:String) = @{

@@ -38,10 +38,10 @@
 				<div class="col-md-9">
 
 					<h2 class="headline">Properties</h2>
-					@development.proptable("", SortedMap[String, AnyRef]() ++ propertiesMap.asScala.toMap)
+					@development.proptable("", SortedMap[String, AnyRef]() ++ propertiesMap)
 
 					<h2 class="headline">Platform</h2>
-					@development.proptable("", SortedMap[String, AnyRef]() ++ platformMap.asScala.toMap)
+					@development.proptable("", SortedMap[String, AnyRef]() ++ platformMap)
 				</div>
 			</div>
 		}

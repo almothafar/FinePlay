@@ -829,7 +829,7 @@ public class Application extends Controller {
 		props.$plus$eq(new Tuple2<String, String>("type", "success"));
 		props.$plus$eq(new Tuple2<String, String>("text", text));
 		@SuppressWarnings("unchecked")
-		final scala.collection.immutable.Map<String, String> prop = scala.collection.immutable.HashMap$.MODULE$.apply(props.toList());
+		final scala.collection.immutable.Map<String, String> prop = scala.collection.immutable.HashMap$.MODULE$.from(props.toList());
 
 		return views.html.components.badge.render(prop);
 	}

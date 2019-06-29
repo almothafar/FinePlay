@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -40,7 +40,7 @@
 			@components.badge(Map("id"->"Fullscreen", "type"->"danger", "text"->"Fullscreen"))
 			@components.badge(Map("id"->"PageVisibility", "type"->"danger", "text"->"PageVisibility"))
 
-			@development.proptable("", map.asScala.toMap)
+			@development.proptable("", map)
 		</div>
 
 		@libraries.standard.last()

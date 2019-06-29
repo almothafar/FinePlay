@@ -41,7 +41,7 @@
 						</div>
 						<div class="card-body">
 
-							@helper.form(helper.CSRF(controllers.inquiry.routes.Inquiry.send()), 'name->"inquiryForm", 'id->"inquiryForm") {
+							@helper.form(helper.CSRF(controllers.inquiry.routes.Inquiry.send()), Symbol("name")->"inquiryForm", Symbol("id")->"inquiryForm") {
 								<h4 class="card-title">@messages(MessageKeys.INQUIRY_SEND)</h4>
 								<p class="card-text">@messages(MessageKeys.INQUIRY_SEND_DESCRIPTION)</p>
 								@if(form.hasGlobalErrors) {

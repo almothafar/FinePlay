@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -63,7 +63,7 @@
 			@components.badge(Map("id"->"ActiveX", "type"->"danger", "text"->"ActiveX"))
 			@components.badge(Map("id"->"XMLHttpRequestLevel2", "type"->"danger", "text"->"XMLHttpRequestLevel2"))
 
-			@development.proptable("", map.asScala.toMap)
+			@development.proptable("", map)
 		</div>
 
 		@libraries.standard.last()

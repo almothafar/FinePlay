@@ -8,7 +8,7 @@
 
 @()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-@script(args = 'type -> "text/javascript") {
+@script(args = Symbol("type") -> "text/javascript") {
 
 	'use strict';
 

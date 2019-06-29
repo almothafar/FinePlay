@@ -24,10 +24,12 @@ $(document).ready(function() {
 			if(isIconClose){
 
 				target.closest('.icon-frame-wrapper').remove();
-			}
+				$('.icon-board').sortable( "destroy" ).sortable({});
+			}else{
 
-			$('.icon-board').sortable('disable');
-			$('.icon-frame').removeClass('undecided');
+				$('.icon-board').sortable('disable');
+				$('.icon-frame').removeClass('undecided');
+			}
 			break;
 		case 'press':
 

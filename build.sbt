@@ -6,8 +6,7 @@ maintainer := "hiro20v++@icloud.com"
 
 version := "2.7.3-b1-SNAPSHOT"
 
-scalaVersion := "2.12.8"
-//scalaVersion := "2.13.0"
+scalaVersion := "2.13.0"
 
 //lazy val fineplaySub = (project in file("sub"))
 //    .enablePlugins(PlayJava)
@@ -34,10 +33,10 @@ libraryDependencies ++= Seq(
   ws,
 //  openId,
 //  evolutions,
-  "com.typesafe.play" %% "play-mailer" % "7.0.0",						// Apache 7.0.0
-  "com.typesafe.play" %% "play-mailer-guice" % "7.0.0",
+  "com.typesafe.play" %% "play-mailer" % "7.0.1",						// Apache 7.0.1
+  "com.typesafe.play" %% "play-mailer-guice" % "7.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.7.3",							// Apache 2.7.3
+  "com.typesafe.play" %% "play-json" % "2.7.4",							// Apache 2.7.4
   "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.199
 //  "com.h2database" % "h2" % "1.4.199" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
@@ -59,7 +58,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-core" % "1.21",								// Apache 1.21
   "com.google.zxing" % "javase" % "3.4.0",								// Apache 3.4.0
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.15",							// Apache 2.0.15
+  "org.apache.pdfbox" % "pdfbox" % "2.0.16",							// Apache 2.0.16
   "org.jsoup" % "jsoup" % "1.12.1",										// MIT 1.12.1
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct" % "1.2.0.Final",						// Apache 1.3.0
@@ -141,8 +140,8 @@ libraryDependencies ++= Seq(
 
 // JasperReports library
 libraryDependencies ++= Seq(
-  "net.sf.jasperreports" % "jasperreports" % "6.8.1",					// LGPL 6.8.1
-  "net.sf.jasperreports" % "jasperreports-fonts" % "6.8.1",
+  "net.sf.jasperreports" % "jasperreports" % "6.9.0",					// LGPL 6.9.0
+  "net.sf.jasperreports" % "jasperreports-fonts" % "6.9.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1
   "org.apache.xmlgraphics" % "batik-bridge" % "1.11"

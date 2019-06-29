@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -46,7 +46,7 @@
 						<div class="space_box">#space_box</div>
 					</div>
 
-					@development.proptable("table", map.asScala.toMap)
+					@development.proptable("table", map)
 				</div>
 				<div class="col-md-6">
 
@@ -56,7 +56,7 @@
 						<div class="space_box">#space_box</div>
 					</div>
 
-					@development.proptable("table_relative", map.asScala.toMap)
+					@development.proptable("table_relative", map)
 				</div>
 			</div>
 		</div>

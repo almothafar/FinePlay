@@ -49,7 +49,7 @@
 							</div>
 							<div class="card-body">
 
-								@helper.form(helper.CSRF(controllers.lab.library.routes.Library.index("bootstrapslider")), 'name->"sliderForm", 'id->"sliderForm") {
+								@helper.form(helper.CSRF(controllers.lab.library.routes.Library.index("bootstrapslider")), Symbol("name")->"sliderForm", Symbol("id")->"sliderForm") {
 
 									<div class="form-group row secret">
 										<label for="" class="col-sm-3 col-form-label required">Bootstrap</label>

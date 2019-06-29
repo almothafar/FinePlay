@@ -34,8 +34,8 @@ import play.mvc.Http.RequestBuilder;
 import play.test.Helpers;
 import play.test.WithApplication;
 import play.twirl.api.Content;
-import scala.collection.JavaConverters;
-import scala.collection.Seq;
+import scala.jdk.javaapi.CollectionConverters;
+import scala.collection.immutable.Seq;
 import test.Condition;
 import test.Filter;
 import test.LoggerNames;
@@ -118,7 +118,7 @@ public class I18nTest extends WithApplication {
 	public Langs toLangs(final Locale locale) {
 
 		final List<play.api.i18n.Lang> list = Arrays.asList(new play.api.i18n.Lang(locale));
-		final Seq<play.api.i18n.Lang> seq = JavaConverters.asScalaIteratorConverter(list.iterator()).asScala().toSeq();
+		final Seq<play.api.i18n.Lang> seq = CollectionConverters.asScala(list.iterator()).toSeq();
 		return new Langs(new DefaultLangs(seq));
 	}
 }

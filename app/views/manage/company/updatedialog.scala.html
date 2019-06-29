@@ -20,7 +20,7 @@
 		Map("id"->"updateOk", "type"->"primary", "text"->messages(MessageKeys.OK), "default"->"true")
 	)){
 
-	@helper.form(helper.CSRF(controllers.manage.company.routes.Edit.update()), 'name->"updateForm", 'id->"updateForm") {
+	@helper.form(helper.CSRF(controllers.manage.company.routes.Edit.update()), Symbol("name")->"updateForm", Symbol("id")->"updateForm") {
 		<div>
 			<p class="text-danger"></p>
 		</div>

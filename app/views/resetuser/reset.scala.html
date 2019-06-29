@@ -39,7 +39,7 @@
 						</div>
 						<div class="card-body">
 
-							@helper.form(helper.CSRF(controllers.resetuser.routes.ResetUser.apply()), args = 'class -> "form-reset") {
+							@helper.form(helper.CSRF(controllers.resetuser.routes.ResetUser.apply()), args = Symbol("class") -> "form-reset") {
 								<h4 class="card-title">@messages(MessageKeys.RESETUSER_PLEASE__RESET)</h4>
 								<p class="card-text">@messages(MessageKeys.RESETUSER_PLEASE__RESET_DESCRIPTION)</p>
 								@if(form.hasGlobalErrors) {

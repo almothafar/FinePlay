@@ -41,7 +41,7 @@
 
 					<div class="mb-3">
 
-						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = 'class -> "form-slide") {
+						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = Symbol("class") -> "form-slide") {
 							<input id="@models.system.SlideInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.URL" value="@routes.Assets.versioned("slides/index.html")" required>
 							<input id="@models.system.SlideInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("revealjs").toString()" required>
 
@@ -51,7 +51,7 @@
 
 					<div class="mb-3">
 
-						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = 'class -> "form-slide") {
+						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = Symbol("class") -> "form-slide") {
 							<input id="@models.system.SlideInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.URL" value="@controllers.lab.library.routes.Library.revealjs("demo").toString()" required>
 							<input id="@models.system.SlideInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("revealjs").toString()" required>
 
@@ -61,7 +61,7 @@
 
 					<div class="mb-3 secret">
 
-						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = 'class -> "form-slide") {
+						@helper.form(helper.CSRF(apis.system.routes.Slide.index()), args = Symbol("class") -> "form-slide") {
 							<input id="@models.system.SlideInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.URL" value="https://revealjs.com" required>
 							<input id="@models.system.SlideInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.SlideInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("revealjs").toString()" required>
 

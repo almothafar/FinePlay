@@ -181,7 +181,7 @@
 
 <pre><code class="bash">MacBook:~ user$ /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk-printing</code></pre>
 
-						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = 'class -> "form-paper") {
+						@helper.form(helper.CSRF(apis.system.routes.Paper.index()), args = Symbol("class") -> "form-paper") {
 							<input id="@models.system.PaperInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.URL" value="@controllers.lab.library.routes.Library.papercss("receipt").toString()" required>
 							<input id="@models.system.PaperInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.RETURNURL" value="@controllers.lab.application.routes.Download.index().toString()" required>
 							<input id="@models.system.PaperInfoFormContent.SIZE" class="form-control" type="hidden" name="@models.system.PaperInfoFormContent.SIZE" value="A4" required>

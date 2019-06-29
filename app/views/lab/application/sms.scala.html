@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import views.html._
 @import views.html.components
@@ -60,7 +60,7 @@
 				</div>
 				<div class="col-md-9">
 
-					@helper.form(helper.CSRF(controllers.lab.application.routes.SMS.send()), 'name->"smsForm", 'id->"smsForm") {
+					@helper.form(helper.CSRF(controllers.lab.application.routes.SMS.send()), Symbol("name")->"smsForm", Symbol("id")->"smsForm") {
 
 						<input id="to" type="text" name="to" class="form-control" placeholder="+819000000000" value="+819000000000" required autofocus maxlength="13">
 

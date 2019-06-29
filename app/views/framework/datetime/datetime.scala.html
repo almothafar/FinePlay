@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -36,9 +36,9 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-0")){
 
-			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.asScala.getOrElse("dateTimeWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("dateTimeWarning").toString))
+			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrElse("dateTimeWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("dateTimeWarning").toString))
 
-			@helper.form(helper.CSRF(controllers.framework.datetime.routes.DateTime.update()), 'name->"updateForm", 'id->"updateForm") {
+			@helper.form(helper.CSRF(controllers.framework.datetime.routes.DateTime.update()), Symbol("name")->"updateForm", Symbol("id")->"updateForm") {
 				<div class="row mb-3">
 					<div class="col-12">
 						@if(form.hasGlobalErrors) {
@@ -54,7 +54,7 @@
 											<i class="fas fa-calendar-alt"></i>
 										</span>
 									</div>
-									@for(error <- form(DateTimeFormContent.DATETIME_DATE).errors.asScala) {
+									@for(error <- form(DateTimeFormContent.DATETIME_DATE).errors) {
 										<div class="text-danger">@messages(error.message)</div>
 									}
 								</div>
@@ -67,7 +67,7 @@
 											<i class="far fa-clock"></i>
 										</span>
 									</div>
-									@for(error <- form(DateTimeFormContent.DATETIME_TIME).errors.asScala) {
+									@for(error <- form(DateTimeFormContent.DATETIME_TIME).errors) {
 										<div class="text-danger">@messages(error.message)</div>
 									}
 								</div>
@@ -83,7 +83,7 @@
 											<i class="fas fa-calendar-alt"></i>
 										</span>
 									</div>
-									@for(error <- form(DateTimeFormContent.DATE_DATE).errors.asScala) {
+									@for(error <- form(DateTimeFormContent.DATE_DATE).errors) {
 										<div class="text-danger">@messages(error.message)</div>
 									}
 								</div>
@@ -102,7 +102,7 @@
 											<i class="far fa-clock"></i>
 										</span>
 									</div>
-									@for(error <- form(DateTimeFormContent.TIME_TIME).errors.asScala) {
+									@for(error <- form(DateTimeFormContent.TIME_TIME).errors) {
 										<div class="text-danger">@messages(error.message)</div>
 									}
 								</div>

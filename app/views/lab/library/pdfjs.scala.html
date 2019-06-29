@@ -41,7 +41,7 @@
 
 					<div class="mb-3">
 
-						@helper.form(helper.CSRF(apis.system.routes.PDF.index()), args = 'class -> "form-pdf") {
+						@helper.form(helper.CSRF(apis.system.routes.PDF.index()), args = Symbol("class") -> "form-pdf") {
 							<input id="@models.system.PDFInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.URL" value="@routes.Assets.versioned("pdfs/helloworld.pdf")" required>
 							<input id="@models.system.PDFInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("pdfjs").toString()" required>
 
@@ -51,7 +51,7 @@
 
 					<div class="mb-3">
 
-						@helper.form(helper.CSRF(apis.system.routes.PDF.index()), args = 'class -> "form-pdf") {
+						@helper.form(helper.CSRF(apis.system.routes.PDF.index()), args = Symbol("class") -> "form-pdf") {
 							<input id="@models.system.PDFInfoFormContent.URL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.URL" value="@controllers.lab.library.routes.Library.pdfjs("tracemonkey").toString()" required>
 							<input id="@models.system.PDFInfoFormContent.RETURNURL" class="form-control" type="hidden" name="@models.system.PDFInfoFormContent.RETURNURL" value="@controllers.lab.library.routes.Library.index("pdfjs").toString()" required>
 

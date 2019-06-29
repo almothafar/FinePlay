@@ -20,7 +20,7 @@
 	@head("section"){
 
 		@libraries.standard.head()
-		@style('type -> "text/css") {
+		@style(Symbol("type") -> "text/css") {
 
 			#button {
 
@@ -50,7 +50,7 @@
 		}
 
 		@libraries.standard.last()
-		@script(args = 'type -> "text/javascript") {
+		@script(args = Symbol("type") -> "text/javascript") {
 
 			'use strict';
 

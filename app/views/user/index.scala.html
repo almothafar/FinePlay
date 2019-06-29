@@ -55,7 +55,7 @@
 						}
 					</div>
 					<div class="card-body text-xs-left pb-0">
-					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = 'class -> "form-signin", 'name->"signInForm", 'id->"signInForm") {
+					@helper.form(helper.CSRF(controllers.user.routes.User.signIn()), args = Symbol("class") -> "form-signin", Symbol("name")->"signInForm", Symbol("id")->"signInForm") {
 						<h5 class="form-signin-heading">@messages(MessageKeys.USER_PLEASE__SIGNIN)</h5>
 						<div id="selectUserContainer" class="d-none">
 							<div class="row justify-content-center">

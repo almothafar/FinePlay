@@ -21,7 +21,7 @@
 		Map("id"->"createOk", "type"->"primary", "text"->messages(MessageKeys.OK), "default"->"true")
 	)){
 
-	@helper.form(helper.CSRF(controllers.manage.company.organization.list.routes.Edit.create()), 'name->"createForm", 'id->"createForm") {
+	@helper.form(helper.CSRF(controllers.manage.company.organization.list.routes.Edit.create()), Symbol("name")->"createForm", Symbol("id")->"createForm") {
 		<div>
 			<p class="text-danger"></p>
 		</div>

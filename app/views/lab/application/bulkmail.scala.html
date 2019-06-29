@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import views.html._
 @import views.html.components
@@ -160,7 +160,7 @@
 				</div>
 				<div class="col-md-9">
 
-					@helper.form(helper.CSRF(controllers.lab.application.routes.BulkMail.send()), 'name->"bulkMailForm", 'id->"bulkMailForm") {
+					@helper.form(helper.CSRF(controllers.lab.application.routes.BulkMail.send()), Symbol("name")->"bulkMailForm", Symbol("id")->"bulkMailForm") {
 
 						@components.nav(Map("id"->"bulkMailTab","tabs"->"true"), List(
 							Map("name"->"X-SMTPAPI", "icon"->"", "link"->"#smtpapi", "selected"->"true", "data-toggle"->"tab"),

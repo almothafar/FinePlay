@@ -19,7 +19,7 @@
 <div class="collapse" id="readCollapse">
 	<div id="readPanel" class="card text-xs-center">
 		<div class="card-body text-xs-left">
-		@helper.form(helper.CSRF(controllers.manage.company.routes.Read.read()), 'name->"readForm", 'id->"readForm") {
+		@helper.form(helper.CSRF(controllers.manage.company.routes.Read.read()), Symbol("name")->"readForm", Symbol("id")->"readForm") {
 			<h5 class="form-read-heading">@messages(MessageKeys.CONDITION)</h5>
 			@if(form.hasGlobalErrors) {
 				<p class="text-danger">@form.globalError.get.message</p>

@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -42,10 +42,10 @@
 
 					<div class="mb-3">
 						<h4 class="headline">Form</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.asScala.getOrElse("success", "-"), "closable"->"true", "display"->alertInfo.containsKey("success").toString))
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.asScala.getOrElse("warning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("warning").toString))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.getOrElse("success", "-"), "closable"->"true", "display"->alertInfo.containsKey("success").toString))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrElse("warning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("warning").toString))
 
-						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.form()), 'name->"normalForm", 'enctype -> "multipart/form-data") {
+						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.form()), Symbol("name")->"normalForm", Symbol("enctype") -> "multipart/form-data") {
 
 							<div class="row">
 								<div class="col-md-12">
@@ -64,14 +64,14 @@
 
 					<div class="mb-3">
 						<h4 class="headline">@(messages(MessageKeys.IMAGE)+" "+messages(MessageKeys.PREVIEW))</h4>
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.asScala.getOrElse("imageSuccess", "-"), "closable"->"true", "display"->alertInfo.containsKey("imageSuccess").toString))
-						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.asScala.getOrElse("imageWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("imageWarning").toString))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-check", "text"->alertInfo.getOrElse("imageSuccess", "-"), "closable"->"true", "display"->alertInfo.containsKey("imageSuccess").toString))
+						@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrElse("imageWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("imageWarning").toString))
 
 						<div class="row">
 
 							<div class="col-md-6">
 
-								@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.image()), 'name->"imageForm", 'enctype -> "multipart/form-data") {
+								@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.image()), Symbol("name")->"imageForm", Symbol("enctype") -> "multipart/form-data") {
 
 									<div class="row">
 										<div class="col-md-12">
@@ -100,7 +100,7 @@
 						@components.alert(Map("id"->"ajaxSuccess", "icon"->"fas fa-check", "text"->"", "closable"->"true"))
 						@components.alert(Map("id"->"ajaxWarning", "icon"->"fas fa-exclamation-triangle", "text"->"", "type"->"warning", "closable"->"true"))
 
-						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.direct()), 'name->"ajaxForm", 'enctype -> "multipart/form-data", 'id->"ajaxForm") {
+						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.direct()), Symbol("name")->"ajaxForm", Symbol("enctype") -> "multipart/form-data", Symbol("id")->"ajaxForm") {
 
 							<div class="row">
 								<div class="col-md-12">

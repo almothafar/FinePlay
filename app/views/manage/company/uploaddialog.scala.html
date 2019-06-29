@@ -21,7 +21,7 @@
 		Map("id"->"uploadOk", "type"->"primary", "text"->messages(MessageKeys.OK), "default"->"true")
 	)){
 
-	@helper.form(helper.CSRF(controllers.manage.company.routes.Upload.upload()), 'name->"uploadForm", 'id->"uploadForm", 'enctype -> "multipart/form-data") {
+	@helper.form(helper.CSRF(controllers.manage.company.routes.Upload.upload()), Symbol("name")->"uploadForm", Symbol("id")->"uploadForm", Symbol("enctype") -> "multipart/form-data") {
 		<div>
 			<p class="text-danger"></p>
 		</div>

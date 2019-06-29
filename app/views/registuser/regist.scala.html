@@ -39,7 +39,7 @@
 						</div>
 						<div class="card-body">
 
-							@helper.form(helper.CSRF(controllers.registuser.routes.RegistUser.apply()), args = 'class -> "form-regist") {
+							@helper.form(helper.CSRF(controllers.registuser.routes.RegistUser.apply()), args = Symbol("class") -> "form-regist") {
 								<h4 class="card-title">@messages(MessageKeys.REGISTUSER_PLEASE__REGIST)</h4>
 								<p class="card-text">@messages(MessageKeys.REGISTUSER_PLEASE__REGIST_DESCRIPTION)</p>
 								@if(form.hasGlobalErrors) {

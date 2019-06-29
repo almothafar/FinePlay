@@ -3,7 +3,7 @@
 @import scala.collection.immutable.SortedMap
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -37,7 +37,7 @@
 
 		<div class="container-fluid">
 
-			@development.proptable("", SortedMap[String, AnyRef]() ++ map.asScala.toMap)
+			@development.proptable("", SortedMap[String, AnyRef]() ++ map)
 		</div>
 
 		@libraries.standard.last()

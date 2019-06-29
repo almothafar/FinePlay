@@ -45,7 +45,7 @@
 							</div>
 							<div class="card-body">
 
-								@helper.form(helper.CSRF(controllers.bootstrap.component.routes.Component.index("form")), 'name->"checkboxForm", 'id->"checkboxForm") {
+								@helper.form(helper.CSRF(controllers.bootstrap.component.routes.Component.index("form")), Symbol("name")->"checkboxForm", Symbol("id")->"checkboxForm") {
 
 									<div class="form-group row d-none">
 										<label for="" class="col-sm-3 required">Simple</label>
@@ -102,7 +102,7 @@
 							</div>
 							<div class="card-body">
 
-								@helper.form(helper.CSRF(controllers.bootstrap.component.routes.Component.index("form")), 'name->"radioForm", 'id->"radioForm") {
+								@helper.form(helper.CSRF(controllers.bootstrap.component.routes.Component.index("form")), Symbol("name")->"radioForm", Symbol("id")->"radioForm") {
 
 									<div class="form-group row d-none">
 										<label for="" class="col-sm-3 required">Simple</label>
@@ -169,7 +169,7 @@
 							</div>
 							<div class="card-body">
 
-								@helper.form(helper.CSRF(controllers.lab.ui.routes.UI.index("formswitch")), 'name->"switchForm", 'id->"switchForm") {
+								@helper.form(helper.CSRF(controllers.lab.ui.routes.UI.index("formswitch")), Symbol("name")->"switchForm", Symbol("id")->"switchForm") {
 
 									<div class="form-group row d-none">
 										<label for="" class="col-sm-3 required">Simple</label>

@@ -2,7 +2,7 @@
 @import scala.collection.immutable.Map
 @import scala.collection.immutable.Seq
 @import scala.collection.immutable.List
-@import scala.collection.JavaConverters._
+@import scala.jdk.CollectionConverters._
 
 @import play.i18n.Lang
 @import play.i18n.Messages
@@ -44,7 +44,7 @@
 			@components.badge(Map("id"->"Share", "type"->"danger", "text"->"Share"))
 			@components.badge(Map("id"->"Vibration", "type"->"danger", "text"->"Vibration"))
 
-			@development.proptable("navigatorPropTable", map.asScala.toMap)
+			@development.proptable("navigatorPropTable", map)
 
 			<h2 class="headline">Mime Types</h2>
 			<div class="table-responsive">

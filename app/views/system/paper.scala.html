@@ -65,7 +65,7 @@
 			"executePrint":@Boolean.valueOf(paperInfo.get(models.system.PaperInfoFormContent.PRINT))
 		}'></meta>
 
-		@style('type -> "text/css") {
+		@style(Symbol("type") -> "text/css") {
 
 			@@media print {
 				body.A3 .sheet {
