@@ -2,6 +2,8 @@ LANG=en_US.UTF-8
 
 ./sbt clean
 
+./sbt compile
+
 #./sbt test
 # /fineplay/target/test-reports/*
 

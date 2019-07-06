@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.3-b1-SNAPSHOT"
+version := "2.7.3-b2-SNAPSHOT"
 
 scalaVersion := "2.13.0"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",							// EPL 0.8.3
-//  "hiro20v" %% "fineplay-sub" % "2.7.3-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.7.3-b2-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -47,7 +47,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",
-  "org.apache.commons" % "commons-text" % "1.6",						// Apache 1.4
+  "org.apache.commons" % "commons-text" % "1.7",						// Apache 1.7
   "org.postgresql" % "postgresql" % "42.2.6",							// BSD 2-clause 42.2.6
   "org.mockito" % "mockito-core" % "2.28.2",							// MIT 2.28.2
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
@@ -61,10 +61,10 @@ libraryDependencies ++= Seq(
   "org.apache.pdfbox" % "pdfbox" % "2.0.16",							// Apache 2.0.16
   "org.jsoup" % "jsoup" % "1.12.1",										// MIT 1.12.1
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
-  "org.mapstruct" % "mapstruct" % "1.2.0.Final",						// Apache 1.3.0
+  "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
   "org.mapstruct" % "mapstruct-processor" % "1.2.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "1.3.3",								// Apache 1.3.3
+  "net.lingala.zip4j" % "zip4j" % "2.0.3",								// Apache 2.0.3
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.3",			// MIT 5.1.3
@@ -87,7 +87,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.5.1",							// MIT 1.5.1
-  "org.webjars.npm" % "d3" % "5.9.2",									// BSD-3-Clause license 5.9.2
+  "org.webjars.npm" % "d3" % "5.9.7",									// BSD-3-Clause license 5.9.7
   "org.webjars.npm" % "d3-geo-projection" % "2.5.1",					// MIT 2.5.1
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.npm" % "prettier" % "1.16.4",							// MIT 1.16.4
