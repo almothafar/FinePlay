@@ -79,9 +79,6 @@ public class ZIPs {
 		} catch (IOException e) {
 
 			throw new UncheckedIOException(e);
-		} catch (ZipException e) {
-
-			throw new IllegalStateException(e);
 		}
 	}
 

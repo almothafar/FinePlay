@@ -8,6 +8,7 @@
 
 @import views.html._
 @import views.html.components
+@import views.html.helper._
 
 @import common.system._
 @import common.utils._
@@ -90,5 +91,6 @@
 		}
 
 		@libraries.standard.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/dark.js")'></script>
 	}
 }

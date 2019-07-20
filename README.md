@@ -83,11 +83,9 @@ TODO
 
 ###### Whether this project will be updated in the future is undecided. ######
 
-### FinePlay 2.7.x ###
-+ Update Bootstrap 4.3.2  release  
++ Update Bootstrap 4.4  release  
    + Update popper.js
-+ Drop IE
-   + Refactor system_menu.
++ Refactor system_menu.
 
 Release History
 ---------------

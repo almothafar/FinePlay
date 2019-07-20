@@ -59,5 +59,9 @@ function tick() {
 			notify('<div class="rounded">' + notificationHtml + '</div>', 3000);
 		}
 	}
-	requestAnimationFrame(tick);
+
+	setTimeout(function () {
+
+		requestAnimationFrame(tick);
+	}, 10);
 }
