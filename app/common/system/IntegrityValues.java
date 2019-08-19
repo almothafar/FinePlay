@@ -29,7 +29,7 @@ public class IntegrityValues {
 
   public static final String BOOTSTRAP_STYLE_RTL = "iIRRdbFaXCk44A+3ITOsIEI43QLqN0SJLtRYLXLwgPzle8SLWjT/nhbiy8XHr5YF";
 
-  public static final String JQUERY_SCRIPT = "tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT";
+  public static final String JQUERY_SCRIPT = "vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh";
 
   public static final String JQUERY_UI_SCRIPT = "PtTRqvDhycIBU6x1wwIqnbDo8adeWIWP3AHmnrvccafo35E7oIvW7HPXn2YimvWu";
 

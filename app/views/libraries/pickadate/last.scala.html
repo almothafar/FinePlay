@@ -10,9 +10,9 @@
 <script @{CSPNonce.attr} type='text/javascript'
 	src='@routes.Assets.versioned("lib/custom/pickadate/head.css.js")'></script>
 
-<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.js")'></script>
-<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.date.js")'></script>
-<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate.js/compressed/picker.time.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate/lib/compressed/picker.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate/lib/compressed/picker.date.js")'></script>
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/pickadate/lib/compressed/picker.time.js")'></script>
 @translation() = @{
 
 	var lang = messages(MessageKeys.PICKADATE_LANG)
@@ -21,13 +21,8 @@
 		Html("")
 	}else{
 
-		var path = "lib/pickadate.js/compressed/translations/"+lang+".js"
+		var path = "lib/pickadate/lib/translations/"+lang+".js"
 		Html("<script " + CSPNonce.attr + " type='text/javascript' src='"+routes.Assets.versioned(path)+"'></script>")
 	}
 }
 @translation()
-
-<div id="pickadate_messages" class="d-none" data-messages='{
-	"@MessageKeys.CLOSE":"@messages(MessageKeys.CLOSE)"
-}'></div>
-<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/custom/pickadate/last.js")'></script>

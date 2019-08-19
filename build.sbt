@@ -68,7 +68,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.3",			// MIT 5.1.3
-  "org.webjars" % "pickadate.js" % "3.5.6",								// MIT 3.5.6
+  "org.webjars.bower" % "pickadate" % "3.6.4",							// MIT 3.6.4
   "org.webjars.npm" % "bootstrap-slider" % "10.6.1",					// MIT 10.6.1
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
@@ -161,8 +161,8 @@ libraryDependencies ++= Seq(
 )
 
 dependencyOverrides ++= Seq(
-  "org.webjars.npm" % "jquery" % "3.3.1",								// MIT 3.4.1
-  "org.webjars.bower" % "jquery" % "3.3.1"
+  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
+  "org.webjars.bower" % "jquery" % "3.4.1"
 )
 excludeDependencies ++= Seq(
 //  "[GroupId]" % "[ArtifactId]"

@@ -3,9 +3,9 @@
 
 @()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.css")'>
-<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.date.css")'>
-<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate.js/compressed/themes/default.time.css")'>
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate/lib/compressed/themes/default.css")'>
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate/lib/compressed/themes/default.date.css")'>
+<link rel='stylesheet' href='@routes.Assets.versioned("lib/pickadate/lib/compressed/themes/default.time.css")'>
 
 @translation() = @{
 
@@ -15,7 +15,7 @@
 		Html("")
 	}else{
 
-		var path = "lib/pickadate.js/themes/rtl.css"
+		var path = "lib/pickadate/lib/themes/rtl.css"
 		Html("<link rel='stylesheet' href='"+routes.Assets.versioned(path)+"'>")
 	}
 }

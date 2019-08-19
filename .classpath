@@ -725,9 +725,14 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bowergithub.jquery/jquery-dist/docs/jquery-dist-3.4.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/jars/pickadate.js-3.5.6.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/pickadate/jars/pickadate-3.6.4.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/pickadate/srcs/pickadate-3.6.4-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars/pickadate.js/docs/pickadate.js-3.5.6-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/pickadate/docs/pickadate-3.6.4-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/jars/jquery-3.4.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/srcs/jquery-3.4.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/docs/jquery-3.4.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/jars/bootstrap-slider-10.6.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/bootstrap-slider/srcs/bootstrap-slider-10.6.1-sources.jar">
@@ -800,11 +805,6 @@
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/fullcalendar/jars/fullcalendar-3.10.0.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/fullcalendar/srcs/fullcalendar-3.10.0-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/fullcalendar/docs/fullcalendar-3.10.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/jars/jquery-3.3.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/srcs/jquery-3.3.1-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.bower/jquery/docs/jquery-3.3.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars/openlayers/jars/openlayers-5.2.0.jar">
@@ -1057,9 +1057,9 @@
 			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/jqvmap/docs/jqvmap-1.5.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/jars/jquery-3.3.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/srcs/jquery-3.3.1-sources.jar">
+	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/jars/jquery-3.4.1.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/srcs/jquery-3.4.1-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/docs/jquery-3.3.1-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/Users/hiro/.ivy2/cache/org.webjars.npm/jquery/docs/jquery-3.4.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/hiro/.ivy2/cache/org.webjars.npm/prettier/jars/prettier-1.18.2.jar" sourcepath="/Users/hiro/.ivy2/cache/org.webjars.npm/prettier/srcs/prettier-1.18.2-sources.jar">
