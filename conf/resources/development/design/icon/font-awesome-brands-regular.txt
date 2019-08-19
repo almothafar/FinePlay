@@ -75,6 +75,7 @@ codiepie
 confluence
 connectdevelop
 contao
+cotton-bureau
 cpanel
 creative-commons
 creative-commons-by

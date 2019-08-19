@@ -43,6 +43,7 @@ comments
 compass
 copy
 copyright
+cotton-bureau
 credit-card
 dizzy
 dot-circle

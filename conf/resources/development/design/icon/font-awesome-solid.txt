@@ -230,6 +230,7 @@ cookie
 cookie-bite
 copy
 copyright
+cotton-bureau
 couch
 credit-card
 crop

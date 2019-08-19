@@ -40,7 +40,7 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.199
 //  "com.h2database" % "h2" % "1.4.199" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
-  "net.jodah" % "failsafe" % "2.0.1",									// Apache 2.0.1
+  "net.jodah" % "failsafe" % "2.3.0",									// Apache 2.3.0
   "net.logstash.logback" % "logstash-logback-encoder" % "6.1",			// Apache 6.1
   "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2
   "org.hibernate" % "hibernate-jpamodelgen" % "5.4.2.Final",			//
@@ -55,7 +55,7 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.1.0",									// Apache 4.1.0
   "org.apache.poi" % "poi-scratchpad" % "4.1.0",
   "org.apache.poi" % "poi-ooxml" % "4.1.0",
-  "org.apache.tika" % "tika-core" % "1.21",								// Apache 1.21
+  "org.apache.tika" % "tika-core" % "1.22",								// Apache 1.22
   "com.google.zxing" % "javase" % "3.4.0",								// Apache 3.4.0
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.16",							// Apache 2.0.16
@@ -64,7 +64,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
   "org.mapstruct" % "mapstruct-processor" % "1.3.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.1.1",								// Apache 2.1.1
+  "net.lingala.zip4j" % "zip4j" % "2.1.2",								// Apache 2.1.2
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.3",			// MIT 5.1.3
@@ -74,7 +74,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "Split.js" % "1.5.9",							// MIT 1.5.9
-  "org.webjars.bower" % "select2" % "4.0.7",							// MIT 4.0.7
+  "org.webjars.bower" % "select2" % "4.0.8",							// MIT 4.0.8
   "org.webjars.npm" % "chart.js" % "2.8.0",								// MIT 2.8.0
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
@@ -131,7 +131,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.9.0",								// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.9.0
+  "org.webjars" % "font-awesome" % "5.10.1",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.10.1
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.5.5",								// MIT 4.5.5
   "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0
@@ -152,8 +152,8 @@ libraryDependencies ++= Seq(
   "javax.enterprise" % "cdi-api" % "2.0",
   "org.jboss.weld.se" % "weld-se" % "2.4.8.Final",						// Apache 2.4.8.Final
   "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.2.Final",
-  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.7.Final",		// Apache 2.0.7.Final
-  "org.jboss.logging" % "jboss-logging" % "3.4.0.Final",
+  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.8.Final",		// Apache 2.0.8.Final
+  "org.jboss.logging" % "jboss-logging" % "3.4.1.Final",
   "org.jberet" % "jberet-core" % "1.3.4.Final",							// Eclipse Public 1.3.4.Final
   "org.jberet" % "jberet-support" % "1.3.4.Final",
   "org.jberet" % "jberet-se" % "1.3.4.Final",
