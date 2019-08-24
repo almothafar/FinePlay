@@ -475,6 +475,8 @@ public class MessageKeys {
 
   public static final String LICENSE = "license";
 
+  public static final String LIGHTWEIGHTCHARTS_LANG = "lightweightcharts.lang";
+
   public static final String LINK = "link";
 
   public static final String LIST = "list";

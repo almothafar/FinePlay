@@ -235,6 +235,7 @@ var MessageKeys = {
 	LEFT: "left",
 	LIBRARY: "library",
 	LICENSE: "license",
+	LIGHTWEIGHTCHARTS_LANG: "lightweightcharts.lang",
 	LINK: "link",
 	LIST: "list",
 	LOAD: "load",

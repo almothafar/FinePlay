@@ -40,7 +40,7 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.199
 //  "com.h2database" % "h2" % "1.4.199" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
-  "net.jodah" % "failsafe" % "2.3.0",									// Apache 2.3.0
+  "net.jodah" % "failsafe" % "2.3.1",									// Apache 2.3.1
   "net.logstash.logback" % "logstash-logback-encoder" % "6.1",			// Apache 6.1
   "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2
   "org.hibernate" % "hibernate-jpamodelgen" % "5.4.2.Final",			//
@@ -87,7 +87,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "handsontable" % "6.2.0",							// MIT/Pro 6.2.0
   "org.webjars.bower" % "slick-carousel" % "1.8.1",						// MIT 1.8.1
   "org.webjars.npm" % "cropperjs" % "1.5.1",							// MIT 1.5.1
-  "org.webjars.npm" % "d3" % "5.9.7",									// BSD-3-Clause license 5.9.7
+  "org.webjars.npm" % "d3" % "5.11.0",									// BSD-3-Clause license 5.11.0
   "org.webjars.npm" % "d3-geo-projection" % "2.5.1",					// MIT 2.5.1
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.npm" % "prettier" % "1.18.2",							// MIT 1.18.2
@@ -99,6 +99,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
   "org.webjars.npm" % "echarts" % "4.2.1",								// Apache 4.2.1
+  "org.webjars.npm" % "lightweight-charts" % "1.0.2",					// Apache 1.0.2
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.4.0
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.1.2",				// MIT 3.1.2
@@ -165,6 +166,7 @@ dependencyOverrides ++= Seq(
   "org.webjars.bower" % "jquery" % "3.4.1"
 )
 excludeDependencies ++= Seq(
+  ExclusionRule("xml-apis", "xml-apis")
 //  "[GroupId]" % "[ArtifactId]"
 )
 

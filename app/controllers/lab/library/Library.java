@@ -111,6 +111,9 @@ public class Library extends Controller {
 		case "echarts":
 
 			return echarts(request, lang, messages);
+		case "lightweightcharts":
+
+			return lightweightcharts(request, lang, messages);
 		case "parsley":
 
 			return parsley(request, lang, messages);
@@ -291,6 +294,11 @@ public class Library extends Controller {
 	public static Result echarts(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.library.echarts.render(request, lang, messages));
+	}
+
+	public static Result lightweightcharts(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.lightweightcharts.render(request, lang, messages));
 	}
 
 	public static Result parsley(final Request request, final Lang lang, final Messages messages) {
