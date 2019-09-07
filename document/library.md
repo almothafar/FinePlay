@@ -6,7 +6,7 @@ Selection criteria
 
 - Cool !
 - Fit Content security policy
-- Fit Play framework 2.7
+- Fit Play framework 2.8
 - Fit Bootstrap 4.3
 - Browser support
 - Responsive support
@@ -43,7 +43,6 @@ ECMAScript/CSS Include
 
 - There are a variety of cases depending on the library.
 - As of 2018, most libraries do not support content security policy.
-- As of 2018, there are a growing number of libraries that do not support Internet Explorer.
 
 ### Position ###
 

@@ -32,9 +32,9 @@ public class Requests {
 		final String submitToken;
 		synchronized (syncCache) {
 
-			final Optional<String> previousSubmitTokenOptional = syncCache.getOptional("previousSubmitToken");
+			final Optional<String> previousSubmitTokenOptional = syncCache.get("previousSubmitToken");
 			previousSubmitToken = previousSubmitTokenOptional.orElse(null);
-			submitToken = request.getQueryString("csrfToken");
+			submitToken = request.queryString("csrfToken").orElse(null);
 			syncCache.set("previousSubmitToken", submitToken);
 		}
 		LOGGER.info(createSubmitMessage(previousSubmitToken, submitToken));

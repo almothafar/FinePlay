@@ -243,7 +243,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	public static boolean hasAnyRole(@Nonnull final Request request, @Nonnull final Role... roles) {
 
 		final Set<Role> requestRoles = EnumSet.copyOf(Arrays.asList(roles));
-		final String roleValues = request.session().getOptional(User_.ROLES).get();
+		final String roleValues = request.session().get(User_.ROLES).get();
 		final Set<Role> userRoles = Sessions.toRoles(roleValues);
 		return userRoles.stream().anyMatch(role -> requestRoles.contains(role));
 	}

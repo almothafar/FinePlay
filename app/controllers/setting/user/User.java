@@ -53,8 +53,8 @@ public class User extends Controller {
 
 		final EditFormContent editFormContent = new EditFormContent();
 		final String locale = lang.code();
-		final String zoneId = request.session().getOptional(models.user.User_.ZONE_ID).get();
-		final String theme = request.session().getOptional(models.user.User_.THEME).get();
+		final String zoneId = request.session().get(models.user.User_.ZONE_ID).get();
+		final String theme = request.session().get(models.user.User_.THEME).get();
 
 		editFormContent.setLocale(locale);
 		editFormContent.setZoneId(zoneId);
@@ -78,8 +78,8 @@ public class User extends Controller {
 			if (!editForm.hasErrors()) {
 
 				final Locale locale = Lang.forCode(lang.code()).toLocale();
-				final ZoneId zoneId = ZoneId.of(request.session().getOptional(models.user.User_.ZONE_ID).get());
-				final Theme theme = Theme.valueOf(request.session().getOptional(models.user.User_.THEME).get());
+				final ZoneId zoneId = ZoneId.of(request.session().get(models.user.User_.ZONE_ID).get());
+				final Theme theme = Theme.valueOf(request.session().get(models.user.User_.THEME).get());
 
 				final EditFormContent editFormContent = editForm.get();
 				final Locale updatedLocale = Lang.forCode(editFormContent.getLocale()).toLocale();
@@ -107,7 +107,7 @@ public class User extends Controller {
 
 						try {
 
-							user = userService.read(manager, messages, request.session().getOptional(models.user.User_.USER_ID).get());
+							user = userService.read(manager, messages, request.session().get(models.user.User_.USER_ID).get());
 						} catch (final AccountException e) {
 
 							throw e;

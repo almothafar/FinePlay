@@ -63,23 +63,23 @@ public class ActionCreator extends DefaultActionCreator {
 			return new Action.Simple() {
 
 				@Override
-				public CompletionStage<Result> call(Request req) {
+				public CompletionStage<Result> call(Request request) {
 
-					MDC.put(User_.USER_ID, req.session().getOptional(User_.USER_ID).orElse(null));
+					MDC.put(User_.USER_ID, request.session().get(User_.USER_ID).orElse(null));
 
-					LOGGER.info(createRequestHeadersMessage(req.getHeaders()));
-					LOGGER.info(createSessionMessage(req.session()));
+					LOGGER.info(createRequestHeadersMessage(request.getHeaders()));
+					LOGGER.info(createSessionMessage(request.session()));
 
-					final String rolesValue = req.session().getOptional(User_.ROLES).orElse(null);
+					final String rolesValue = request.session().get(User_.ROLES).orElse(null);
 					final boolean isSignIn = rolesValue != null && !rolesValue.isEmpty();
 					final CompletionStage<Result> stage;
 					if (!isSignIn) {
 
-						stage = callNotSignIn(req, permissionsAllowed);
+						stage = callNotSignIn(request, permissionsAllowed);
 					} else {
 
 						final Set<Role> roles = Sessions.toRoles(rolesValue);
-						stage = callSignIn(req, permissionsAllowed, roles);
+						stage = callSignIn(request, permissionsAllowed, roles);
 					}
 
 					LOGGER.info("========================================================");

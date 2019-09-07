@@ -20,7 +20,7 @@
 
 @encodedUserId() = @{
 
-	var userId = request.session().getOptional(models.user.User.USER_ID).get();
+	var userId = request.session().get(models.user.User.USER_ID).get();
 
 	try {
 

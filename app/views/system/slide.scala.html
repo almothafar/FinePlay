@@ -57,7 +57,7 @@
 		}'></meta>
 
 		<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/reveal.css")">
-		@request.session().getOptional(models.user.User.THEME).orElse(null) match {
+		@request.session().get(models.user.User.THEME).orElse(null) match {
 			case "PRETTY" => {
 
 				<link rel="stylesheet" href="@routes.Assets.versioned("lib/custom/reveal.js/theme/sky.css")">

@@ -2,7 +2,7 @@
 
 <img src="./public/images/ja-JP/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.7 & Bootstrap 4.3  
+Play(Java) 2.8 & Bootstrap 4.3  
 多言語、レスポンシブな、プロジェクトのひな形(何かのたたき台に)。
 
 | 携帯 | タブレット |
@@ -14,7 +14,7 @@ Play(Java) 2.7 & Bootstrap 4.3
 
 ##### 環境 #####
 
-	macOS Mojave バージョン 10.14.6（18G87）
+	macOS Mojave バージョン 10.14.6（18G95）
 	時間帯 UTC
 	openjdk バージョン "11.0.4" 2019-07-16 LTS / OpenJDK Runtime Environment Corretto-11.0.4.11.1 (build 11.0.4+11-LTS)
 	Safari バージョン 12.1.2 (14607.3.9)
@@ -90,6 +90,7 @@ URL を開く
 リリース履歴
 ---------------
 
++ **2.8.0-M4-b1** - 2019-09-07
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

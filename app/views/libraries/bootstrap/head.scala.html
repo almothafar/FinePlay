@@ -42,7 +42,7 @@
 
 @theme() = @{
 
-	request.session().getOptional(models.user.User.THEME).orElse(models.user.User.Theme.DEFAULT.name());
+	request.session().get(models.user.User.THEME).orElse(models.user.User.Theme.DEFAULT.name());
 }
 
 <link rel='stylesheet'

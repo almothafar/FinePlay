@@ -1,5 +1,5 @@
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.3")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.8.0-M4")
 
 // Web plugins
 addSbtPlugin("com.typesafe.sbt" % "sbt-jshint" % "1.0.6")
@@ -21,7 +21,7 @@ addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.2")
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
 // JaCoCo
-addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.1.0")
+addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.2.0")
 dependencyOverrides ++= Seq(
   "org.jacoco" % "org.jacoco.core" % "0.8.3",
   "org.jacoco" % "org.jacoco.report" % "0.8.3"

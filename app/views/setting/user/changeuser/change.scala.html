@@ -37,7 +37,7 @@
 			@tasks(Map("id"->"", "task"->"changeuser"))
 		}
 
-		@if(!LocalDateTime.now().isBefore(LocalDateTime.parse(request.session().getOptional(SessionKeys.OPERATION_TIMEOUT).get()))){
+		@if(!LocalDateTime.now().isBefore(LocalDateTime.parse(request.session().get(SessionKeys.OPERATION_TIMEOUT).get()))){
 
 			@confirmdialog()
 			@components.container(Map("id"->"contents", "fluid"->"true", "class"->"mt-5 mb-5 text-center")){

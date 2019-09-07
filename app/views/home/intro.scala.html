@@ -20,7 +20,7 @@
 
 @currentTimeZone() = @{
 
-	common.utils.ZoneIds.getZoneIdToNameMap(lang.toLocale).get(request.session().getOptional(models.user.User.ZONE_ID).get())
+	common.utils.ZoneIds.getZoneIdToNameMap(lang.toLocale).get(request.session().get(models.user.User.ZONE_ID).get())
 }
 
 @currentLang() = @{

@@ -10,7 +10,7 @@
 
 @theme() = @{
 
-	request.session().getOrElse(models.user.User.THEME, models.user.User.Theme.DEFAULT.name()).toLowerCase
+	request.session().get(models.user.User.THEME).orElse(models.user.User.Theme.DEFAULT.name()).toLowerCase
 }
 
 @dir() = @{

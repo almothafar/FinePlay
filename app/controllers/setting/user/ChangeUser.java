@@ -109,7 +109,7 @@ public class ChangeUser extends Controller {
 					}
 
 					changeUser = new models.setting.user.changeuser.ChangeUser();
-					changeUser.setUserId(request.session().getOptional(models.user.User_.USER_ID).get());
+					changeUser.setUserId(request.session().get(models.user.User_.USER_ID).get());
 					changeUser.setNewUserId(newUserId);
 					changeUser.setCode();
 					changeUser.setExpireDateTime(LocalDateTime.now().plusDays(ONE_DAY));

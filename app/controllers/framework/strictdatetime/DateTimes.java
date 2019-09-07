@@ -34,7 +34,7 @@ class DateTimes {
 	@Nonnull
 	private static ZoneId getClientZoneId(@Nonnull final Request request) {
 
-		return ZoneId.of(request.session().getOptional(models.user.User_.ZONE_ID).get());
+		return ZoneId.of(request.session().get(models.user.User_.ZONE_ID).get());
 	}
 
 	@Nonnull

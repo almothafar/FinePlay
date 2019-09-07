@@ -70,7 +70,7 @@
 						<h2 class="headline">HTML</h2>
 						<textarea class="form-control" id="htmlText" rows="10">
 <div class="alert alert-rich alert-dismissible fade show p-0 d-flex justify-content-start" role="alert">
-	<div class="p-2"><img id="richAlertImg" src="@routes.Assets.versioned("themes/" + request.session().getOptional(models.user.User.THEME).get().toLowerCase + "/image.svg")" class="rounded"></div>
+	<div class="p-2"><img id="richAlertImg" src="@routes.Assets.versioned("themes/" + request.session().get(models.user.User.THEME).get().toLowerCase + "/image.svg")" class="rounded"></div>
 	<div class="p-2 align-self-stretch w-100">
 		<strong>Rich notification!</strong><br> <a href="@controllers.home.routes.Home.index()" class="alert-link">Link</a> The quick brown fox jumps over the lazy dog.
 	</div>

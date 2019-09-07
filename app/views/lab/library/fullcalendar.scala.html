@@ -58,7 +58,7 @@
 
 		<div id="system_messages" class="d-none" data-messages='{
 			"@MessageKeys.FULLCALENDAR_LANG":"@messages(MessageKeys.FULLCALENDAR_LANG)",
-			"clientZoneId":"@request.session().getOptional(models.user.User.ZONE_ID).get()",
+			"clientZoneId":"@request.session().get(models.user.User.ZONE_ID).get()",
 			"clientDateTime":"@datetime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)",
 			"clientDate":"@datetime().format(DateTimeFormatter.ISO_LOCAL_DATE)"
 		}'></div>

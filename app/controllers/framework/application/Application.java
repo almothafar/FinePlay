@@ -211,7 +211,7 @@ public class Application extends Controller {
 	public static Result cookie(final Request request, final Lang lang, final Messages messages) {
 
 		// get
-		request.cookie("key");
+		request.getCookie("key");
 
 		final Map<String, Object> map = StreamSupport.stream(request.cookies().spliterator(), false).collect(Collectors.toMap(cookie -> cookie.name(), v -> v.value()));
 
@@ -234,7 +234,7 @@ public class Application extends Controller {
 		request.session().adding("key", "value");
 
 		// get
-		request.session().getOptional("key");
+		request.session().get("key");
 
 		final Map<String, Object> map = request.session().data().entrySet().stream().collect(Collectors.toMap(k -> k.getKey(), v -> v.getValue()));
 		return ok(views.html.framework.application.session.render(new TreeMap<>(map), request, lang, messages));
@@ -261,7 +261,7 @@ public class Application extends Controller {
 		// get
 		final Flash flash = request.flash();
 
-		return ok(views.html.framework.application.flashlist.render(flash, new TreeMap<>(flash), request, lang, messages));
+		return ok(views.html.framework.application.flashlist.render(flash.data(), new TreeMap<>(flash.data()), request, lang, messages));
 	}
 
 	public Result logger(final Request request, final Lang lang, final Messages messages) {
@@ -546,7 +546,7 @@ public class Application extends Controller {
 		final OffsetDateTime serverOffsetTime = OffsetDateTime.of(serverTime, serverZoneId.getRules().getOffset(serverTime));
 		final ZonedDateTime serverZonedTime = ZonedDateTime.of(serverTime, serverZoneId);
 
-		final ZoneId clientZoneId = ZoneId.of(request.session().getOptional(models.user.User_.ZONE_ID).get());
+		final ZoneId clientZoneId = ZoneId.of(request.session().get(models.user.User_.ZONE_ID).get());
 		final ZonedDateTime clientZonedTime = serverZonedTime.withZoneSameInstant(clientZoneId);
 		final LocalDateTime clientTime = clientZonedTime.toLocalDateTime();
 		final OffsetDateTime clientOffsetTime = OffsetDateTime.of(clientTime, clientZoneId.getRules().getOffset(clientTime));
@@ -690,7 +690,7 @@ public class Application extends Controller {
 			final User user;
 			try {
 
-				user = userService.read(manager, messages, request.session().getOptional(User_.USER_ID).get());
+				user = userService.read(manager, messages, request.session().get(User_.USER_ID).get());
 			} catch (final AccountException e) {
 
 				throw new RuntimeException(e);
@@ -734,7 +734,7 @@ public class Application extends Controller {
 		if (value.isEmpty()) {
 			// get
 
-			final Optional<String> cachedValueOptional = syncCache.getOptional(key);
+			final Optional<String> cachedValueOptional = syncCache.get(key);
 			final String cachedValue = cachedValueOptional.orElseGet(() -> "");
 
 			result.put("value", cachedValue);
@@ -772,7 +772,7 @@ public class Application extends Controller {
 			if (value.isEmpty()) {
 				// get
 
-				final CompletionStage<Optional<String>> stage = aSyncCache.getOptional(key);
+				final CompletionStage<Optional<String>> stage = aSyncCache.get(key);
 				try {
 
 					final Optional<String> cachedValueOptional = stage.toCompletableFuture().get(3, TimeUnit.SECONDS);

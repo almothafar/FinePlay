@@ -3,7 +3,7 @@
 
 @()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
-@request.session().getOptional(models.user.User.THEME).orElse(null) match {
+@request.session().get(models.user.User.THEME).orElse(null) match {
 	case "PRETTY" => {
 
 		<link rel='stylesheet' href='@routes.Assets.versioned("lib/highlightjs/styles/atelier-dune-light.css")'>

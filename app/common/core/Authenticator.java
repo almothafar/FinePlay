@@ -18,9 +18,9 @@ public class Authenticator extends Security.Authenticator {
 
 	@Nullable
 	@Override
-	public Optional<String> getUsername(Request req) {
+	public Optional<String> getUsername(Request request) {
 
-		final Optional<String> userIdOpt = req.session().getOptional(User_.USER_ID);
+		final Optional<String> userIdOpt = request.session().get(User_.USER_ID);
 
 		return userIdOpt;
 	}

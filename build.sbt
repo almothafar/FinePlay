@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.7.3-b2-SNAPSHOT"
+version := "2.8.0-M4-b1-SNAPSHOT"
 
 scalaVersion := "2.13.0"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",							// EPL 0.8.3
-//  "hiro20v" %% "fineplay-sub" % "2.7.3-b2-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-M4-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -47,7 +47,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",
-  "org.apache.commons" % "commons-text" % "1.7",						// Apache 1.7
+  "org.apache.commons" % "commons-text" % "1.8",						// Apache 1.8
   "org.postgresql" % "postgresql" % "42.2.6",							// BSD 2-clause 42.2.6
   "org.mockito" % "mockito-core" % "3.0.0",								// MIT 3.0.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
@@ -67,7 +67,7 @@ libraryDependencies ++= Seq(
   "net.lingala.zip4j" % "zip4j" % "2.1.2",								// Apache 2.1.2
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
-  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.1.3",			// MIT 5.1.3
+  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
   "org.webjars.bower" % "pickadate" % "3.6.4",							// MIT 3.6.4
   "org.webjars.npm" % "bootstrap-slider" % "10.6.1",					// MIT 10.6.1
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
@@ -153,7 +153,7 @@ libraryDependencies ++= Seq(
   "javax.enterprise" % "cdi-api" % "2.0",
   "org.jboss.weld.se" % "weld-se" % "2.4.8.Final",						// Apache 2.4.8.Final
   "org.jboss.spec.javax.batch" % "jboss-batch-api_1.0_spec" % "1.0.2.Final",
-  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.8.Final",		// Apache 2.0.8.Final
+  "org.jboss.marshalling" % "jboss-marshalling" % "2.0.9.Final",		// Apache 2.0.9.Final
   "org.jboss.logging" % "jboss-logging" % "3.4.1.Final",
   "org.jberet" % "jberet-core" % "1.3.4.Final",							// Eclipse Public 1.3.4.Final
   "org.jberet" % "jberet-support" % "1.3.4.Final",

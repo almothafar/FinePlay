@@ -128,9 +128,9 @@ public class User extends Controller {
 		});
 
 		final SignInFormContent signInFormContent = new SignInFormContent();
-		if (request.cookie(models.user.User_.USER_ID) != null) {
+		if (request.getCookie(models.user.User_.USER_ID).isPresent()) {
 
-			final String userId = request.cookie(models.user.User_.USER_ID).value();
+			final String userId = request.getCookie(models.user.User_.USER_ID).get().value();
 			final String decodedUserId;
 			try {
 
@@ -143,9 +143,9 @@ public class User extends Controller {
 			signInFormContent.setUserId(decodedUserId);
 			signInFormContent.setStoreAccount(Boolean.TRUE.toString());
 		}
-		if (request.cookie(models.user.User.PASSWORD) != null) {
+		if (request.getCookie(models.user.User.PASSWORD).isPresent()) {
 
-			final String password = request.cookie(models.user.User.PASSWORD).value();
+			final String password = request.getCookie(models.user.User.PASSWORD).get().value();
 			final String decodedPassword;
 			try {
 
@@ -196,7 +196,7 @@ public class User extends Controller {
 
 				final Lang selectedLang = new Lang(user.getLocale());
 
-				String requestUrl = request.session().getOptional(SessionKeys.REQUEST_URL).orElse(null);
+				String requestUrl = request.session().get(SessionKeys.REQUEST_URL).orElse(null);
 				if (requestUrl == null || requestUrl.equals("") || requestUrl.equals(controllers.user.routes.User.index().absoluteURL(request))) {
 
 					requestUrl = controllers.home.routes.Home.index().url();
@@ -275,7 +275,7 @@ public class User extends Controller {
 
 		try {
 
-			userAuthenticator.signOut(manager, messages, request.session().getOptional(models.user.User_.USER_ID).get());
+			userAuthenticator.signOut(manager, messages, request.session().get(models.user.User_.USER_ID).get());
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -298,7 +298,7 @@ public class User extends Controller {
 
 				final PasswordFormContent passwordFormContent = passwordForm.get();
 
-				final String userId = request.session().getOptional(models.user.User_.USER_ID).get();
+				final String userId = request.session().get(models.user.User_.USER_ID).get();
 				final String password = passwordFormContent.getPassword();
 
 				try {

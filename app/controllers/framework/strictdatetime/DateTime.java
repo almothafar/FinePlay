@@ -81,7 +81,7 @@ public class DateTime extends Controller {
 		final User user;
 		try {
 
-			user = userService.read(manager, messages, request.session().getOptional(User_.USER_ID).get());
+			user = userService.read(manager, messages, request.session().get(User_.USER_ID).get());
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);
@@ -154,7 +154,7 @@ public class DateTime extends Controller {
 		final User user;
 		try {
 
-			user = userService.read(manager, messages, request.session().getOptional(User_.USER_ID).get());
+			user = userService.read(manager, messages, request.session().get(User_.USER_ID).get());
 		} catch (final AccountException e) {
 
 			throw new RuntimeException(e);

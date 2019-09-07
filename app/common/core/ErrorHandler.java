@@ -63,7 +63,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 		final Messages messages = messagesApi.preferred(request);
 		final Lang lang = messages.lang();
 
-		final Optional<String> userIdOpt = request.session().getOptional(models.user.User_.USER_ID);
+		final Optional<String> userIdOpt = request.session().get(models.user.User_.USER_ID);
 		if (!userIdOpt.isPresent()) {
 
 			return CompletableFuture.completedFuture(Results.redirect(controllers.user.routes.User.index()));
@@ -109,7 +109,7 @@ public class ErrorHandler extends DefaultHttpErrorHandler {
 		final Messages messages = messagesApi.preferred(request);
 		final Lang lang = messages.lang();
 
-		final Optional<String> userIdOpt = request.session().getOptional(models.user.User_.USER_ID);
+		final Optional<String> userIdOpt = request.session().get(models.user.User_.USER_ID);
 		if (!userIdOpt.isPresent()) {
 
 			return super.onProdServerError(request, exception);
