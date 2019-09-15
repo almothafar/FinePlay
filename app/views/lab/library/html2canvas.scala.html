@@ -1,0 +1,72 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import models.components._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@import java.time._
+@import java.time.format._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"html2canvas", "icon"->"fas fa-clone", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"html2canvas"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mb-3">
+
+						<div class="col-12 chart h-432p">
+							<div id="chartFrame" class="w-100 h-100"></div>
+						</div>
+					</div>
+
+					<div class="mt-3 text-right">
+
+						@components.button(Map("id"->"captureButton", "type"->"primary", "outline"->"true", "icon"->"fas fa-camera", "text"->"Caputure"))
+					</div>
+
+					<div id="captures" class="row mt-3 mb-3">
+					</div>
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"@MessageKeys.LIGHTWEIGHTCHARTS_LANG":"@messages(MessageKeys.LIGHTWEIGHTCHARTS_LANG)"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.lightweightcharts.last()
+		@libraries.html2canvas.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/html2canvas.js")'></script>
+	}
+}

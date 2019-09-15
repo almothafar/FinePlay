@@ -47,8 +47,8 @@ $(document).ready(function() {
 		if ('Dev' == getMode()) {
 			fixedUsersHtml = fixedUsersHtml +
 				'<div class="fixedUser_info">' +
-				'<span class="badge badge-pill badge-info">' + fixedUser.locale + '</span>&nbsp;' +
-				'<span class="badge badge-pill badge-info">' + fixedUser.zoneId + '</span>&nbsp;' +
+				'<span class="badge badge-pill badge-info">' + fixedUser.locale + '</span>' +
+				'<span class="badge badge-pill badge-info">' + fixedUser.zoneId + '</span>' +
 				'<span class="badge badge-pill badge-info">' + fixedUser.roles + '</span>' +
 				'</div>';
 		}

@@ -114,6 +114,9 @@ public class Library extends Controller {
 		case "lightweightcharts":
 
 			return lightweightcharts(request, lang, messages);
+		case "html2canvas":
+
+			return html2canvas(request, lang, messages);
 		case "parsley":
 
 			return parsley(request, lang, messages);
@@ -129,6 +132,9 @@ public class Library extends Controller {
 		case "vizjs":
 
 			return vizjs(request, lang, messages);
+		case "jspdf":
+
+			return jspdf(request, lang, messages);
 		case "pdfjs":
 
 			return pdfjs(request, lang, messages);
@@ -301,6 +307,11 @@ public class Library extends Controller {
 		return ok(views.html.lab.library.lightweightcharts.render(request, lang, messages));
 	}
 
+	public static Result html2canvas(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.html2canvas.render(request, lang, messages));
+	}
+
 	public static Result parsley(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.library.parsley.render(request, lang, messages));
@@ -338,6 +349,11 @@ public class Library extends Controller {
 
 			throw new RuntimeException(e);
 		}
+	}
+
+	public static Result jspdf(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.jspdf.render(request, lang, messages));
 	}
 
 	public static Result pdfjs(final Request request, final Lang lang, final Messages messages) {

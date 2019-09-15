@@ -1,0 +1,66 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import models.components._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import java.time._
+@import java.time.format._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/lab/library/chartjs.css")'>
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"jsPDF", "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"jspdf"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row mb-3">
+
+						<div class="col-sm-6 chart">
+							<canvas id="doughnutChart" width="400" height="400"></canvas>
+						</div>
+					</div>
+
+					<div class="mt-3 mb-3 text-right">
+
+						@components.button(Map("id"->"pdfButton", "type"->"primary", "outline"->"true", "icon"->"far fa-file-pdf", "text"->"PDF"))
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.chartjs.last()
+		@libraries.html2canvas.last()
+		@libraries.jspdf.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/jspdf.js")'></script>
+	}
+}

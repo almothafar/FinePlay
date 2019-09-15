@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-M4-b1-SNAPSHOT"
+version := "2.8.0-M5-b1-SNAPSHOT"
 
 scalaVersion := "2.13.0"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.3",							// EPL 0.8.3
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-M4-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-M5-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -41,7 +41,7 @@ libraryDependencies ++= Seq(
 //  "com.h2database" % "h2" % "1.4.199" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
   "net.jodah" % "failsafe" % "2.3.1",									// Apache 2.3.1
-  "net.logstash.logback" % "logstash-logback-encoder" % "6.1",			// Apache 6.1
+  "net.logstash.logback" % "logstash-logback-encoder" % "6.2",			// Apache 6.2
   "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2
   "org.hibernate" % "hibernate-jpamodelgen" % "5.4.2.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
@@ -64,7 +64,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
   "org.mapstruct" % "mapstruct-processor" % "1.3.0.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.1.2",								// Apache 2.1.2
+  "net.lingala.zip4j" % "zip4j" % "2.1.4",								// Apache 2.1.4
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
@@ -105,6 +105,8 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.1.2",				// MIT 3.1.2
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
+  "org.webjars.npm" % "html2canvas" % "1.0.0-rc.3",						// 1.0.0-rc.3
+//  "org.webjars.npm" % "jspdf" % "1.5.3",								// MIT 1.5.3
   "org.webjars.npm" % "jsqr" % "1.2.0",									// Apache 1.2.0
   "org.webjars.npm" % "holderjs" % "2.9.4",								// MIT 2.9.4
   "org.webjars.npm" % "3dmol" % "1.3.7",								// BSD-3-Clause license 1.3.7
