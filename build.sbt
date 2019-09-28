@@ -58,7 +58,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-core" % "1.22",								// Apache 1.22
   "com.google.zxing" % "javase" % "3.4.0",								// Apache 3.4.0
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
-  "org.apache.pdfbox" % "pdfbox" % "2.0.16",							// Apache 2.0.16
+  "org.apache.pdfbox" % "pdfbox" % "2.0.17",							// Apache 2.0.17
   "org.jsoup" % "jsoup" % "1.12.1",										// MIT 1.12.1
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
   "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
@@ -69,7 +69,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
   "org.webjars.bower" % "pickadate" % "3.6.4",							// MIT 3.6.4
-  "org.webjars.npm" % "bootstrap-slider" % "10.6.1",					// MIT 10.6.1
+  "org.webjars.npm" % "bootstrap-slider" % "10.6.2",					// MIT 10.6.2
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
@@ -105,7 +105,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.1.2",				// MIT 3.1.2
   "org.webjars.npm" % "jqtree" % "1.4.9",								// Apache 1.4.9
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
-  "org.webjars.npm" % "html2canvas" % "1.0.0-rc.3",						// 1.0.0-rc.3
+  "org.webjars.npm" % "html2canvas" % "1.0.0-rc.5",						// 1.0.0-rc.5
 //  "org.webjars.npm" % "jspdf" % "1.5.3",								// MIT 1.5.3
   "org.webjars.npm" % "jsqr" % "1.2.0",									// Apache 1.2.0
   "org.webjars.npm" % "holderjs" % "2.9.4",								// MIT 2.9.4

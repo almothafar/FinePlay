@@ -14,10 +14,10 @@ How to play
 
 ##### Environment #####
 
-	macOS Mojave version 10.14.6（18G95）
+	macOS Mojave version 10.14.6（18G103）
 	Time zone UTC
 	openjdk version "11.0.4" 2019-07-16 LTS / OpenJDK Runtime Environment Corretto-11.0.4.11.1 (build 11.0.4+11-LTS)
-	Safari version 12.1.2 (14607.3.9)
+	Safari version 13.0.1 (14608.2.11.1.11)
 
 ##### OpenJDK #####
 
