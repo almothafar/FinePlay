@@ -76,7 +76,7 @@ public class Company {
 	private LocalDateTime updateDateTime;
 
 	@Version
-	private long version;
+	private LocalDateTime version;
 
 	private long temp;
 
@@ -224,12 +224,12 @@ public class Company {
 		this.updateDateTime = updateDateTime;
 	}
 
-	public long getVersion() {
+	public LocalDateTime getVersion() {
 
 		return version;
 	}
 
-	public void setVersion(long version) {
+	public void setVersion(LocalDateTime version) {
 
 		this.version = version;
 	}

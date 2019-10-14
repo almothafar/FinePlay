@@ -2,6 +2,7 @@ package controllers.manage.company.organization.list;
 
 import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -162,7 +163,7 @@ public class Read extends Controller {
 		}
 
 		readFormContent.setOrganizationId(organization.getId());
-		final Long organizationVersion = organization.getVersion();
+		final LocalDateTime organizationVersion = organization.getVersion();
 		readFormContent.setOrganizationVersion(organizationVersion);
 
 		final String name = readFormContent.getName();

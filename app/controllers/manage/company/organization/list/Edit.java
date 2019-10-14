@@ -97,8 +97,7 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final long organizationVersion = Long.valueOf(createFormContent.getOrganizationVersion()).longValue();
-					if (organization.getVersion() != organizationVersion) {
+					if (!organization.getVersion().equals(createFormContent.getOrganizationVersion())) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
@@ -203,8 +202,7 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final long organizationVersion = Long.valueOf(updateFormContent.getOrganizationVersion()).longValue();
-					if (organization.getVersion() != organizationVersion) {
+					if (!organization.getVersion().equals(updateFormContent.getOrganizationVersion())) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
@@ -220,7 +218,7 @@ public class Edit extends Controller {
 				final long id = updateFormContent.getId();
 				final String name = updateFormContent.getName();
 				final String localName = updateFormContent.getLocalName();
-				final Long version = updateFormContent.getVersion();
+				final LocalDateTime version = updateFormContent.getVersion();
 
 				final OrganizationUnit organizationUnit;
 				try {
@@ -330,8 +328,7 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final long organizationVersion = Long.valueOf(deleteFormContent.getOrganizationVersion()).longValue();
-					if (organization.getVersion() != organizationVersion) {
+					if (!organization.getVersion().equals(deleteFormContent.getOrganizationVersion())) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //
@@ -345,7 +342,7 @@ public class Edit extends Controller {
 				}
 
 				final long id = deleteFormContent.getId();
-				final Long version = deleteFormContent.getVersion();
+				final LocalDateTime version = deleteFormContent.getVersion();
 
 				final OrganizationUnit organizationUnit;
 				try {

@@ -166,7 +166,7 @@ class InitialUsersCreator {
 			final List<String> lines = new ArrayList<>();
 
 			user.setId(i + 1);
-			final String userLine = String.format("INSERT INTO USERS (ID, USERID, HASHEDPASSWORD, LOCALE, ZONEID, THEME, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME, VERSION) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP, 0)", //
+			final String userLine = String.format("INSERT INTO USERS (ID, USERID, HASHEDPASSWORD, LOCALE, ZONEID, THEME, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME, VERSION) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)", //
 					user.getId(), //
 					"'" + user.getUserId() + "'", //
 					"'" + user.getHashedPassword().replace("'", "''") + "'", //

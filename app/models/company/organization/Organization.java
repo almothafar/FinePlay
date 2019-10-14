@@ -61,7 +61,7 @@ public class Organization {
 	private LocalDateTime updateDateTime;
 
 	@Version
-	private long version;
+	private LocalDateTime version;
 
 	public static final String ID = Organization_.ID;
 	public static final String UPDATE_DATE_TIME = Organization_.UPDATE_DATE_TIME;
@@ -120,12 +120,12 @@ public class Organization {
 		this.updateDateTime = updateDateTime;
 	}
 
-	public long getVersion() {
+	public LocalDateTime getVersion() {
 
 		return version;
 	}
 
-	public void setVersion(long version) {
+	public void setVersion(LocalDateTime version) {
 
 		this.version = version;
 	}

@@ -14,10 +14,10 @@ How to play
 
 ##### Environment #####
 
-	macOS Mojave version 10.14.6（18G103）
+	macOS Catalina version 10.15（19A583）
 	Time zone UTC
 	openjdk version "11.0.4" 2019-07-16 LTS / OpenJDK Runtime Environment Corretto-11.0.4.11.1 (build 11.0.4+11-LTS)
-	Safari version 13.0.1 (14608.2.11.1.11)
+	Safari version 13.0.2 (15608.2.30.1.1)
 
 ##### OpenJDK #####
 
@@ -97,6 +97,12 @@ Release History
    + First commit
 
 ###### The version no is an ornament. It is not understood by a great person.
+
+Donate
+-------
++ **PayPal** - https://www.paypal.me/hiro20v/USD
++ **Bitcoin (BTC)** - 3GQpAVny8EHcGUqWfUJZTuXgNBupi2EKqZ
++ **Ethereum (ETH)** - 0x66f62f7f6a40bed6d9f01ea0c6257c7706b59661
 
 License
 -------

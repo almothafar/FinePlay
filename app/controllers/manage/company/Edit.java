@@ -144,7 +144,7 @@ public class Edit extends Controller {
 				final long id = updateFormContent.getId();
 				final String name = updateFormContent.getName();
 				final String localName = updateFormContent.getLocalName();
-				final Long version = updateFormContent.getVersion();
+				final LocalDateTime version = updateFormContent.getVersion();
 
 				final Company company;
 				try {
@@ -239,7 +239,7 @@ public class Edit extends Controller {
 				final EditFormContent deleteFormContent = deleteForm.get();
 
 				final long id = deleteFormContent.getId();
-				final Long version = deleteFormContent.getVersion();
+				final LocalDateTime version = deleteFormContent.getVersion();
 
 				final Company company;
 				try {

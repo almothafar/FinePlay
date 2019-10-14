@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -31,6 +32,21 @@ public class FormattersProvider implements Provider<Formatters> {
 	public Formatters get() {
 
 		final Formatters formatters = new Formatters(messagesApi);
+
+		formatters.register(ZonedDateTime.class, new SimpleFormatter<ZonedDateTime>() {
+
+			@Override
+			public ZonedDateTime parse(String text, Locale locale) throws ParseException {
+
+				return ZonedDateTime.parse(text, DateTimeFormatter.ISO_ZONED_DATE_TIME);
+			}
+
+			@Override
+			public String print(ZonedDateTime zonedDateTime, Locale locale) {
+
+				return zonedDateTime.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
+			}
+		});
 
 		formatters.register(LocalDateTime.class, new SimpleFormatter<LocalDateTime>() {
 

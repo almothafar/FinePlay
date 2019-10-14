@@ -1,5 +1,7 @@
 package models.manage.company;
 
+import java.time.LocalDateTime;
+
 import common.data.validation.groups.Create;
 import common.data.validation.groups.Delete;
 import common.data.validation.groups.Update;
@@ -19,7 +21,7 @@ public class EditFormContent {
 
 	// Play
 	@Constraints.Required(groups = { Update.class, Delete.class })
-	private Long version;
+	private LocalDateTime version;
 
 	public long getId() {
 
@@ -51,12 +53,12 @@ public class EditFormContent {
 		this.localName = localName;
 	}
 
-	public Long getVersion() {
+	public LocalDateTime getVersion() {
 
 		return version;
 	}
 
-	public void setVersion(Long version) {
+	public void setVersion(LocalDateTime version) {
 
 		this.version = version;
 	}

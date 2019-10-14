@@ -1,5 +1,7 @@
 package models.manage.company.organization.list;
 
+import java.time.LocalDateTime;
+
 import play.data.validation.Constraints;
 
 public class ReadFormContent {
@@ -11,7 +13,7 @@ public class ReadFormContent {
 	private Long organizationId;
 
 	// Play
-	private Long organizationVersion;
+	private LocalDateTime organizationVersion;
 
 	@Constraints.MaxLength(value = 256)
 	private String name;
@@ -40,12 +42,12 @@ public class ReadFormContent {
 		this.organizationId = organizationId;
 	}
 
-	public Long getOrganizationVersion() {
+	public LocalDateTime getOrganizationVersion() {
 
 		return organizationVersion;
 	}
 
-	public void setOrganizationVersion(Long organizationVersion) {
+	public void setOrganizationVersion(LocalDateTime organizationVersion) {
 
 		this.organizationVersion = organizationVersion;
 	}

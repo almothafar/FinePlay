@@ -17,6 +17,7 @@ border-none
 border-style
 buffer
 building
+buy-n-large
 calendar
 calendar-alt
 calendar-check
@@ -103,6 +104,8 @@ hand-scissors
 hand-spock
 handshake
 hard-hat
+hat-cowboy
+hat-cowboy-side
 hdd
 heart
 hospital
@@ -129,15 +132,18 @@ life-ring
 lightbulb
 list-alt
 map
+mdb
 meh
 meh-blank
 meh-rolling-eyes
 minus-square
 money-bill-alt
 moon
+mouse
 newspaper
 object-group
 object-ungroup
+orcid
 pager
 paper-plane
 pause-circle
@@ -149,6 +155,7 @@ pizza-slice
 play-circle
 plus-square
 question-circle
+record-vinyl
 registered
 remove-format
 sad-cry
@@ -176,6 +183,7 @@ sticky-note
 stop-circle
 sun
 surprise
+swift
 symfony
 thumbs-down
 thumbs-up
@@ -184,6 +192,7 @@ tired
 trash-alt
 trash-restore
 trash-restore-alt
+umbraco
 user
 user-circle
 user-nurse

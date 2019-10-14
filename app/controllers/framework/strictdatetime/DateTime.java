@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import common.system.MessageKeys;
+import common.utils.DateTimes;
 import controllers.user.UserService;
 import models.framework.strictdatetime.DateTimeFormContent;
 import models.system.System.PermissionsAllowed;
@@ -143,11 +144,11 @@ public class DateTime extends Controller {
 	private models.framework.strictdatetime.StrictDateTime updateDateTime(@Nonnull final EntityManager manager, @Nonnull final DateTimeFormContent datetimeFormContent, @Nonnull final Request request, @Nonnull final Messages messages) {
 
 		final LocalDate dateTime_Date = datetimeFormContent.getDateTime_Date();
-		final String dateTime_DateTime = datetimeFormContent.getDateTime_DateTime();
+		final ZonedDateTime dateTime_DateTime = datetimeFormContent.getDateTime_DateTime();
 		LocalDateTime serverDateTime_DateTime = null;
-		if (Objects.nonNull(dateTime_Date) && StringUtils.isNotEmpty(dateTime_DateTime)) {
+		if (Objects.nonNull(dateTime_Date) && Objects.nonNull(dateTime_DateTime)) {
 
-			final ZonedDateTime clientZonedDateTime = ZonedDateTime.parse(dateTime_DateTime);
+			final ZonedDateTime clientZonedDateTime = dateTime_DateTime;
 			serverDateTime_DateTime = clientZonedDateTime.withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
 		}
 
@@ -192,7 +193,7 @@ public class DateTime extends Controller {
 
 			final ZonedDateTime clientZonedDateTime = DateTimes.toClientZonedDateTime(request, datetime.getDateTime());
 			datetimeFormContent.setDateTime_Date_submit(clientZonedDateTime.toLocalDate());
-			datetimeFormContent.setDateTime_DateTime_submit(clientZonedDateTime.toString());
+			datetimeFormContent.setDateTime_DateTime_submit(clientZonedDateTime);
 		}
 
 		return datetimeFormContent;

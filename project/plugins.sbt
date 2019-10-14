@@ -23,8 +23,8 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 // JaCoCo
 addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.2.0")
 dependencyOverrides ++= Seq(
-  "org.jacoco" % "org.jacoco.core" % "0.8.3",
-  "org.jacoco" % "org.jacoco.report" % "0.8.3"
+  "org.jacoco" % "org.jacoco.core" % "0.8.5",
+  "org.jacoco" % "org.jacoco.report" % "0.8.5"
 )
 
 // PMD/CPD

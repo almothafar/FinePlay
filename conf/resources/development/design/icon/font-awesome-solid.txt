@@ -119,6 +119,7 @@ burn
 bus
 bus-alt
 business-time
+buy-n-large
 calculator
 calendar
 calendar-alt
@@ -435,6 +436,8 @@ handshake
 hanukiah
 hard-hat
 hashtag
+hat-cowboy
+hat-cowboy-side
 hat-wizard
 haykal
 hdd
@@ -547,6 +550,7 @@ mars-stroke
 mars-stroke-h
 mars-stroke-v
 mask
+mdb
 medal
 medkit
 meh
@@ -580,6 +584,7 @@ mortar-pestle
 mosque
 motorcycle
 mountain
+mouse
 mouse-pointer
 mug-hot
 music
@@ -592,6 +597,7 @@ object-group
 object-ungroup
 oil-can
 om
+orcid
 otter
 outdent
 pager
@@ -673,6 +679,7 @@ radiation-alt
 rainbow
 random
 receipt
+record-vinyl
 recycle
 redo
 redo-alt
@@ -814,6 +821,7 @@ sun
 superscript
 surprise
 swatchbook
+swift
 swimmer
 swimming-pool
 symfony
@@ -889,6 +897,7 @@ truck-pickup
 tshirt
 tty
 tv
+umbraco
 umbrella
 umbrella-beach
 underline

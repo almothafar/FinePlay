@@ -157,7 +157,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	private LocalDateTime updateDateTime;
 
 	@Version
-	private long version;
+	private LocalDateTime version;
 
 	@Transient
 	private Role role0;
@@ -476,12 +476,12 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 		this.updateDateTime = updateDateTime;
 	}
 
-	public long getVersion() {
+	public LocalDateTime getVersion() {
 
 		return version;
 	}
 
-	public void setVersion(long version) {
+	public void setVersion(LocalDateTime version) {
 
 		this.version = version;
 	}

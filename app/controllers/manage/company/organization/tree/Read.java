@@ -1,6 +1,7 @@
 package controllers.manage.company.organization.tree;
 
 import java.lang.invoke.MethodHandles;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -121,7 +122,7 @@ public class Read extends Controller {
 		} else {
 
 			readFormContent.setOrganizationId(organization.getId());
-			final Long organizationVersion = organization.getVersion();
+			final LocalDateTime organizationVersion = organization.getVersion();
 			readFormContent.setOrganizationVersion(organizationVersion);
 
 			rootUnits = readRootList(manager, organization);

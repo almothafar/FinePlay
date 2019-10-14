@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-M5-b1-SNAPSHOT"
+version := "2.8.0-M6-b2-SNAPSHOT"
 
 scalaVersion := "2.13.0"
 
@@ -23,8 +23,8 @@ resolvers += "jcenter" at "https://jcenter.bintray.com"
 resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
-  "org.jacoco" % "org.jacoco.agent" % "0.8.3",							// EPL 0.8.3
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-M5-b1-SNAPSHOT",
+  "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-M6-b2-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -48,8 +48,8 @@ libraryDependencies ++= Seq(
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.8",						// Apache 1.8
-  "org.postgresql" % "postgresql" % "42.2.6",							// BSD 2-clause 42.2.6
-  "org.mockito" % "mockito-core" % "3.0.0",								// MIT 3.0.0
+  "org.postgresql" % "postgresql" % "42.2.8",							// BSD 2-clause 42.2.8
+  "org.mockito" % "mockito-core" % "3.1.0",								// MIT 3.1.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.1.0",									// Apache 4.1.0
@@ -61,10 +61,10 @@ libraryDependencies ++= Seq(
   "org.apache.pdfbox" % "pdfbox" % "2.0.17",							// Apache 2.0.17
   "org.jsoup" % "jsoup" % "1.12.1",										// MIT 1.12.1
   "com.squareup" % "javapoet" % "1.11.1",								// Apache 1.11.1
-  "org.mapstruct" % "mapstruct" % "1.3.0.Final",						// Apache 1.3.0
-  "org.mapstruct" % "mapstruct-processor" % "1.3.0.Final",				//
+  "org.mapstruct" % "mapstruct" % "1.3.1.Final",						// Apache 1.3.1
+  "org.mapstruct" % "mapstruct-processor" % "1.3.1.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.1.4",								// Apache 2.1.4
+  "net.lingala.zip4j" % "zip4j" % "2.2.2",								// Apache 2.2.2
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
@@ -74,7 +74,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui-touch-punch" % "0.2.3-2",					// MIT/GPL V2 0.2.3
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "Split.js" % "1.5.9",							// MIT 1.5.9
-  "org.webjars.bower" % "select2" % "4.0.8",							// MIT 4.0.8
+  "org.webjars.bower" % "select2" % "4.0.10",							// MIT 4.0.10
   "org.webjars.npm" % "chart.js" % "2.8.0",								// MIT 2.8.0
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
@@ -134,7 +134,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.10.1",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.10.1
+  "org.webjars" % "font-awesome" % "5.11.2",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.11.2
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.5.5",								// MIT 4.5.5
   "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0
@@ -143,8 +143,8 @@ libraryDependencies ++= Seq(
 
 // JasperReports library
 libraryDependencies ++= Seq(
-  "net.sf.jasperreports" % "jasperreports" % "6.9.0",					// LGPL 6.9.0
-  "net.sf.jasperreports" % "jasperreports-fonts" % "6.9.0",
+  "net.sf.jasperreports" % "jasperreports" % "6.10.0",					// LGPL 6.10.0
+  "net.sf.jasperreports" % "jasperreports-fonts" % "6.10.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1
   "org.apache.xmlgraphics" % "batik-bridge" % "1.11"

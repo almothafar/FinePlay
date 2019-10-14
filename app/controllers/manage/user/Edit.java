@@ -189,7 +189,7 @@ public class Edit extends Controller {
 				final String newUserId = updateFormContent.getNewUserId();
 				final Set<Role> roles = updateFormContent.getRoles().stream().filter(role -> role != null).collect(Collectors.toCollection(() -> EnumSet.noneOf(Role.class)));
 				final Long companyId = updateFormContent.getCompanyId();
-				final Long version = updateFormContent.getVersion();
+				final LocalDateTime version = updateFormContent.getVersion();
 
 				final models.user.User user;
 				try {
@@ -282,7 +282,7 @@ public class Edit extends Controller {
 				final EditFormContent deleteFormContent = deleteForm.get();
 
 				final String userId = deleteFormContent.getUserId();
-				final Long version = deleteFormContent.getVersion();
+				final LocalDateTime version = deleteFormContent.getVersion();
 
 				final models.user.User user;
 				try {

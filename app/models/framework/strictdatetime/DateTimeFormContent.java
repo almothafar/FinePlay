@@ -1,6 +1,7 @@
 package models.framework.strictdatetime;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -9,23 +10,23 @@ import org.apache.commons.lang3.StringUtils;
 public class DateTimeFormContent {
 
 	private LocalDate dateTime_Date;
-	private String dateTime_DateTime;
+	private ZonedDateTime dateTime_DateTime;
 
 	public static final String DATETIME_DATE = "dateTime_Date";
 	public static final String DATETIME_DATETIME = "dateTime_DateTime";
 
 	public String validate() {
 
-		if (Objects.isNull(getDateTime_Date()) && StringUtils.isEmpty(getDateTime_DateTime())) {
+		if (Objects.isNull(getDateTime_Date()) && Objects.isNull(getDateTime_DateTime())) {
 
 			return null;
-		} else if (Objects.nonNull(getDateTime_Date()) && StringUtils.isNotEmpty(getDateTime_DateTime())) {
+		} else if (Objects.nonNull(getDateTime_Date()) && Objects.nonNull(getDateTime_DateTime())) {
 
 			return null;
-		} else if (Objects.isNull(getDateTime_Date()) && StringUtils.isNotEmpty(getDateTime_DateTime())) {
+		} else if (Objects.isNull(getDateTime_Date()) && Objects.nonNull(getDateTime_DateTime())) {
 
 			return "Date of DateTime is empty.";
-		} else if (Objects.nonNull(getDateTime_Date()) && StringUtils.isEmpty(getDateTime_DateTime())) {
+		} else if (Objects.nonNull(getDateTime_Date()) && Objects.isNull(getDateTime_DateTime())) {
 
 			return "Time of DateTime is empty.";
 		}
@@ -42,7 +43,7 @@ public class DateTimeFormContent {
 
 	public String getDateTime_DateTime_receive() {
 
-		return Objects.nonNull(getDateTime_DateTime()) ? getDateTime_DateTime() : "";
+		return Objects.nonNull(getDateTime_DateTime()) ? getDateTime_DateTime().toString() : "";
 	}
 
 	public LocalDate getDateTime_Date() {
@@ -55,12 +56,12 @@ public class DateTimeFormContent {
 		this.dateTime_Date = dateTime_Date;
 	}
 
-	public String getDateTime_DateTime() {
+	public ZonedDateTime getDateTime_DateTime() {
 
 		return dateTime_DateTime;
 	}
 
-	public void setDateTime_DateTime_submit(String dateTime_DateTime) {
+	public void setDateTime_DateTime_submit(ZonedDateTime dateTime_DateTime) {
 
 		this.dateTime_DateTime = dateTime_DateTime;
 	}

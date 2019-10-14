@@ -90,8 +90,7 @@ public class Edit extends Controller {
 								messages.at(MessageKeys.SYSTEM_ERROR_X_NOTEXIST, messages.at(MessageKeys.ORGANIZATION)));
 					}
 
-					final long organizationVersion = updateFormContent.getOrganizationVersion().longValue();
-					if (organization.getVersion() != organizationVersion) {
+					if (!organization.getVersion().equals(updateFormContent.getOrganizationVersion())) {
 
 						throw new PlayException(//
 								messages.at(MessageKeys.CONSISTENT) + " " + messages.at(MessageKeys.ERROR), //

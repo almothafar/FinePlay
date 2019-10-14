@@ -51,6 +51,7 @@ border-style
 btc
 buffer
 buromobelexperte
+buy-n-large
 buysellads
 canadian-maple-leaf
 cc-amazon-pay
@@ -195,6 +196,8 @@ hackerrank
 hamburger
 hand-middle-finger
 hard-hat
+hat-cowboy
+hat-cowboy-side
 hips
 hire-a-helper
 hooli
@@ -248,6 +251,7 @@ mandalorian
 markdown
 mastodon
 maxcdn
+mdb
 medapps
 medium
 medium-m
@@ -261,6 +265,7 @@ mixcloud
 mizuni
 modx
 monero
+mouse
 napster
 neos
 nimblr
@@ -276,6 +281,7 @@ opencart
 openid
 opera
 optin-monster
+orcid
 osi
 page4
 pagelines
@@ -315,6 +321,7 @@ react
 reacteurope
 readme
 rebel
+record-vinyl
 red-river
 reddit
 reddit-alien
@@ -381,6 +388,7 @@ stumbleupon-circle
 superpowers
 supple
 suse
+swift
 symfony
 teamspeak
 telegram
@@ -404,6 +412,7 @@ typo3
 uber
 ubuntu
 uikit
+umbraco
 uniregistry
 untappd
 ups
