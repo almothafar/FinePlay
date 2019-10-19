@@ -37,8 +37,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer-guice" % "7.0.1",
   guice,
   "com.typesafe.play" %% "play-json" % "2.7.4",							// Apache 2.7.4
-  "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.199
-//  "com.h2database" % "h2" % "1.4.199" % Test,
+  "com.h2database" % "h2" % "1.4.200",									// MPL/EPL 1.4.200
+//  "com.h2database" % "h2" % "1.4.200" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
   "net.jodah" % "failsafe" % "2.3.1",									// Apache 2.3.1
   "net.logstash.logback" % "logstash-logback-encoder" % "6.2",			// Apache 6.2
@@ -114,6 +114,8 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1
 )
+// Mapbox GL JS															// BSD-3-Clause 1.4.1
+// Mapbox GL Language													// BSD-3-Clause 0.10.1
 // jQuery RTL Scroll Type Detector										// MIT Apr 26, 2017 master
 // TwentyTwenty															// ISC? MIT? Aug 7, 2018 master
 // markdeep																// BSD archive master(Sep 10, 2018)

@@ -1,0 +1,9 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html.helper._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+<script @{CSPNonce.attr} src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+<script @{CSPNonce.attr} src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.1/mapbox-gl-language.js'></script>

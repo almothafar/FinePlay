@@ -150,7 +150,7 @@ public class ActionCreator extends DefaultActionCreator {
 
 		builder.append("---------- Request headers").append("\n");
 
-		final String headersContents = headers.toMap().entrySet().stream().map(entry -> {
+		final String headersContents = headers.asMap().entrySet().stream().map(entry -> {
 
 			final String key = StringUtils.leftPad(entry.getKey(), 25, ' ');
 			final String value = entry.getValue().stream().collect(Collectors.joining("\n", "[ ", " ]"));

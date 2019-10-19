@@ -1,0 +1,22 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html.helper._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+@style(Symbol("type") -> "text/css") {
+
+	.dir-rtl .mapboxgl-map {
+		direction: ltr;
+	}
+
+	.dir-rtl .mapboxgl-popup {
+		direction: rtl;
+	}
+	.dir-rtl .mapboxgl-popup>.mapboxgl-popup-content>.mapboxgl-popup-close-button {
+		left: 0;
+		right: initial;
+	}
+}

@@ -73,6 +73,8 @@ public class MessageKeys {
 
   public static final String CANCEL = "cancel";
 
+  public static final String CAPTURE = "capture";
+
   public static final String CARD = "card";
 
   public static final String CENTER = "center";
@@ -497,6 +499,12 @@ public class MessageKeys {
 
   public static final String MAP = "map";
 
+  public static final String MAPBOX_LANG = "mapbox.lang";
+
+  public static final String MAP_LNGLAT_LAT = "map.lnglat.lat";
+
+  public static final String MAP_LNGLAT_LNG = "map.lnglat.lng";
+
   public static final String MAP_ROTATE_GAMMA = "map.rotate.gamma";
 
   public static final String MAP_ROTATE_LAMBDA = "map.rotate.lambda";
@@ -708,6 +716,8 @@ public class MessageKeys {
   public static final String SAMPLE = "sample";
 
   public static final String SAVE = "save";
+
+  public static final String SCAN = "scan";
 
   public static final String SCIENCE = "science";
 

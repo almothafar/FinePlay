@@ -165,12 +165,16 @@ fullcalendar.lang=ar
 frappegantt.lang=ar
 handsontable.lang=en-US
 
+mapbox.lang=ar
 parsley.lang=ar
 pdfjs.lang=ar
 pickadate.lang=ar
 select2.lang=ar
 
 summernote.lang=ar-AR
+
+
+
 
 
 
@@ -403,11 +407,13 @@ button=زر
 
 
 
+
 new=جديد
 
 
 
 old=قديم
+
 
 
 

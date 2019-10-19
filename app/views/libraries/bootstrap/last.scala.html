@@ -18,13 +18,13 @@
 
 			$('[data-toggle="popover"]').each(function(){
 
-			  var popoverElem = $(this);
+				var popoverElem = $(this);
 
-			  var placement = popoverElem.attr('data-placement');
-			  if(!placement){
+				var placement = popoverElem.attr('data-placement');
+				if(!placement){
 
-			    popoverElem.attr('data-placement', 'right');
-			  }
+					popoverElem.attr('data-placement', 'right');
+				}
 			});
 
 			var placementLeftElems = $('[data-placement=left]');

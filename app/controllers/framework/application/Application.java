@@ -502,7 +502,7 @@ public class Application extends Controller {
 		map.put("Host", request.host());
 		map.put("Path", request.path());
 		map.put("URI", request.uri());
-		map.put("Headers", request.getHeaders().toMap().entrySet().stream().map(entry -> {
+		map.put("Headers", request.getHeaders().asMap().entrySet().stream().map(entry -> {
 
 			final String key = entry.getKey();
 			final String value = entry.getValue().stream().collect(Collectors.joining("<br>"));

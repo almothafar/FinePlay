@@ -37,6 +37,7 @@
 	<a href="@controllers.lab.application.routes.Application.index("webfont").toString()" class="list-group-item @("active".when(equalTask("webfont"))) secret">@messages(MessageKeys.X__X, messages(MessageKeys.WEB), messages(MessageKeys.FONT))</a>
 	<a href="@controllers.lab.application.routes.BulkMail.index().toString()" class="list-group-item @("active".when(equalTask("bulkmail"))) secret">️@messages(MessageKeys.X__X, messages(MessageKeys.BULK), messages(MessageKeys.MAIL))️</a>
 	<a href="@controllers.lab.application.routes.SMS.index().toString()" class="list-group-item @("active".when(equalTask("sms"))) secret">️@messages(MessageKeys.SMS)️</a>
+	<a href="@controllers.lab.application.routes.Application.index("map").toString()" class="list-group-item @("active".when(equalTask("map"))) secret">@messages(MessageKeys.MAP)</a>
 	<a href="@controllers.lab.application.routes.Application.index("translate").toString()" class="list-group-item @("active".when(equalTask("translate"))) secret">@messages(MessageKeys.TRANSLATE)</a>
 	<a href="@controllers.lab.application.routes.Application.index("direction").toString()" class="list-group-item @("active".when(equalTask("direction"))) secret">@messages(MessageKeys.DIRECTION)</a>
 	<a href="@controllers.lab.application.routes.Application.index("vertical").toString()" class="list-group-item @("active".when(equalTask("vertical"))) secret">Vertical</a>

@@ -104,6 +104,9 @@ public class Application extends Controller {
 		case "webfont":
 
 			return webfont(request, lang, messages);
+		case "map":
+
+			return map(request, lang, messages);
 		case "translate":
 
 			return translate(request, lang, messages);
@@ -366,6 +369,11 @@ public class Application extends Controller {
 	private Result webfont(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.application.webfont.render(request, lang, messages));
+	}
+
+	private Result map(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.application.map.render(request, lang, messages));
 	}
 
 	private Result translate(final Request request, final Lang lang, final Messages messages) {

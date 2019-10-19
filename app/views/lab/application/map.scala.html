@@ -1,0 +1,124 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.jdk.CollectionConverters._
+
+@import com.typesafe.config._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import common.system._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("Application"){
+
+		@libraries.standard.head()
+		@libraries.mapbox.head()
+	}
+
+	@body("lab","application"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.MAP), "icon"->"fas fa-exchange-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+
+			@components.alerts(Map("id"->"system_alerts")){
+
+				@components.alert(Map("id"->"", "icon"->"far fa-map", "text"->"This feature is using mapbox's services. It is not free.", "type"->"danger"))
+			}
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"map"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="row">
+
+						<div class="col-12 col-md-6 w-100 mb-3">
+							<div class="card border-0">
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" class="card-link">Card link</a>
+									<a href="#" class="card-link">Another link</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 w-100 h-288p mb-3">
+							<div id='map1' class="h-100">
+								@components.alert(Map("id"->"", "icon"->"far fa-map", "text"->"Your browser does not support Mapbox GL.", "type"->"info"))
+							</div>
+						</div>
+
+						<div class="col-12 col-md-6 w-100 mb-3">
+							<div class="card border-0">
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" class="card-link">Card link</a>
+									<a href="#" class="card-link">Another link</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 w-100 h-288p mb-3">
+							<div id='map2' class="h-100">
+								@components.alert(Map("id"->"", "icon"->"far fa-map", "text"->"Your browser does not support Mapbox GL.", "type"->"info"))
+							</div>
+						</div>
+
+						<div class="col-12 col-md-6 w-100 mb-3">
+							<div class="card border-0">
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" class="card-link">Card link</a>
+									<a href="#" class="card-link">Another link</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 w-100 h-288p mb-3">
+							<div id='map3' class="h-100">
+								@components.alert(Map("id"->"", "icon"->"far fa-map", "text"->"Your browser does not support Mapbox GL.", "type"->"info"))
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		}
+
+		<div id="system_messages" class="d-none" data-messages='{
+			"access_token": "@ConfigFactory.defaultApplication().getString("mapbox.maps.access_token")",
+			"langCode":"@messages(MessageKeys.MAPBOX_LANG)",
+			"@MessageKeys.MAP_LNGLAT_LAT":"@messages(MessageKeys.MAP_LNGLAT_LAT)",
+			"@MessageKeys.MAP_LNGLAT_LNG":"@messages(MessageKeys.MAP_LNGLAT_LNG)"
+		}'></div>
+
+		@libraries.standard.last()
+		@libraries.mapbox.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/map.js")'></script>
+	}
+}

@@ -14,7 +14,7 @@ How to play
 
 ##### Environment #####
 
-	macOS Catalina version 10.15（19A583）
+	macOS Catalina version 10.15（19A602）
 	Time zone UTC
 	openjdk version "11.0.4" 2019-07-16 LTS / OpenJDK Runtime Environment Corretto-11.0.4.11.1 (build 11.0.4+11-LTS)
 	Safari version 13.0.2 (15608.2.30.1.1)
@@ -76,7 +76,9 @@ Notice
 
 + This project is not considered to develop continuously. (However, this template is a very thin wrapper for open source software, so don't worry about it.)
 + This project is not thought to be used for multi purpose. (Since this project is a template, it is forked or modified and used.)
++ As for the client library, assume the risk due to changes in the user environment.
 + Please confirm the license of the library software you are using with this project once again.
++ This project is developed as a personal hobby and is distributed only here.
 
 TODO
 ---------------
@@ -90,7 +92,7 @@ TODO
 Release History
 ---------------
 
-+ **2.8.0-M4-b1** - 2019-09-07
++ **2.8.0-M6-b2** - 2019-10-20
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
