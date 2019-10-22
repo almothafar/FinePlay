@@ -118,6 +118,7 @@
 		}'></div>
 
 		@libraries.standard.last()
+		@libraries.corejs.last()
 		@libraries.mapbox.last()
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/map.js")'></script>
 	}

@@ -52,9 +52,9 @@ libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "3.1.0",								// MIT 3.1.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
-  "org.apache.poi" % "poi" % "4.1.0",									// Apache 4.1.0
-  "org.apache.poi" % "poi-scratchpad" % "4.1.0",
-  "org.apache.poi" % "poi-ooxml" % "4.1.0",
+  "org.apache.poi" % "poi" % "4.1.1",									// Apache 4.1.1
+  "org.apache.poi" % "poi-scratchpad" % "4.1.1",
+  "org.apache.poi" % "poi-ooxml" % "4.1.1",
   "org.apache.tika" % "tika-core" % "1.22",								// Apache 1.22
   "com.google.zxing" % "javase" % "3.4.0",								// Apache 3.4.0
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
@@ -64,7 +64,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.3.1.Final",						// Apache 1.3.1
   "org.mapstruct" % "mapstruct-processor" % "1.3.1.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.2.2",								// Apache 2.2.2
+  "net.lingala.zip4j" % "zip4j" % "2.2.3",								// Apache 2.2.3
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
@@ -130,7 +130,7 @@ libraryDependencies ++= Seq(
 
 // Polyfill
 libraryDependencies ++= Seq(
-  "org.webjars.npm" % "core-js-bundle" % "3.1.4",						// MIT 3.1.4
+  "org.webjars.npm" % "core-js-bundle" % "3.3.3",						// MIT 3.3.3
   "org.webjars.bower" % "fetch" % "2.0.4"								// MIT 2.0.4
 )
 

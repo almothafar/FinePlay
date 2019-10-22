@@ -24,6 +24,17 @@ $(document).ready(function() {
 		map1.addControl(new MapboxLanguage({
 			defaultLanguage: messages("langCode")
 		}));
+		map1.addControl(new mapboxgl.NavigationControl());
+		map1.addControl(new mapboxgl.GeolocateControl({
+			positionOptions: {
+				enableHighAccuracy: true
+			},
+			trackUserLocation: true
+		}));
+		map1.addControl(new MapboxGeocoder({
+			accessToken: mapboxgl.accessToken,
+			mapboxgl: mapboxgl
+		}), 'top-left');
 
 		var popup1 = new mapboxgl.Popup({
 				closeOnClick: false
