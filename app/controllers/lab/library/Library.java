@@ -108,6 +108,9 @@ public class Library extends Controller {
 		case "markdeep":
 
 			return markdeep(request, lang, messages);
+		case "mermaid":
+
+			return mermaid(request, lang, messages);
 		case "echarts":
 
 			return echarts(request, lang, messages);
@@ -349,6 +352,11 @@ public class Library extends Controller {
 
 			throw new RuntimeException(e);
 		}
+	}
+
+	public static Result mermaid(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.mermaid.render(request, lang, messages));
 	}
 
 	public static Result jspdf(final Request request, final Lang lang, final Messages messages) {

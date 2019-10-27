@@ -100,6 +100,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
   "org.webjars.npm" % "echarts" % "4.2.1",								// Apache 4.2.1
   "org.webjars.npm" % "lightweight-charts" % "1.0.2",					// Apache 1.0.2
+  "org.webjars.npm" % "mermaid" % "8.4.0",								// MIT 8.4.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
 //  "org.webjars.npm" % "shepherd.js" % "2.0.1",						// MIT 2.4.0
   "org.webjars.npm" % "bootstrap-colorpicker" % "3.1.2",				// MIT 3.1.2

@@ -1,0 +1,8 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html.helper._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+<script @{CSPNonce.attr} type='text/javascript' src='@routes.Assets.versioned("lib/mermaid/dist/mermaid.min.js")'></script>

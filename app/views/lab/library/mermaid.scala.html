@@ -1,0 +1,152 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import models.components._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import java.time._
+@import java.time.format._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+			@breadcrumb(Map("id"->"", "name"->"mermaid", "icon"->"fas fa-project-diagram", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"mermaid"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+<div class="mermaid mb-3 table-responsive lang-ltr">
+graph LR
+
+	Throwable
+
+	Throwable --> Error["fas:fa-ban Error 😱"]
+	Throwable --> Exception["fas:fa-exclamation-triangle Exception 😰"]
+
+		Error --> AssertionError(AssertionError)
+
+		Exception --> RuntimeException["fas:fa-exclamation-triangle RuntimeException 😥"]
+		Exception --> ExecutionException(ExecutionException)
+
+		subgraph Unchecked
+			RuntimeException --> IllegalArgumentException("IllegalArgumentException")
+		end
+
+	classDef error fill:red
+	classDef exception fill:orange
+	classDef rexception fill:yellow
+	classDef Impl fill:#FFFFFF,stroke-dasharray: 5, 5
+
+	class Error error
+	class Exception exception
+	class RuntimeException rexception
+	class AssertionError,ExecutionException,IllegalArgumentException Impl
+</div>
+
+<h2 class="headline">Flowcharts</h2>
+
+<div class="mermaid mb-3 table-responsive lang-ltr">
+graph LR
+	A[Hard edge] -->|Link text| B(Round edge)
+	B --> C{Decision}
+	C -->|One| D[Result one]
+	C -->|Two| E[Result two]
+</div>
+
+<h2 class="headline">Sequence diagrams</h2>
+
+<div class="mermaid mb-3 table-responsive lang-ltr">
+sequenceDiagram
+	Alice->John: Hello John, how are you?
+	loop Every minute
+		John-->Alice: Great!
+	end
+</div>
+
+<h2 class="headline">Class diagrams</h2>
+
+<div class="mermaid mb-3 table-responsive lang-ltr">
+classDiagram
+	Animal <|-- Duck
+	Animal <|-- Fish
+	Animal <|-- Zebra
+	Animal : +int age
+	Animal : +String gender
+	Animal: +isMammal()
+	Animal: +mate()
+	class Duck{
+		+String beakColor
+		+swim()
+		+quack()
+	}
+	class Fish{
+		-int sizeInFeet
+		-canEat()
+	}
+	class Zebra{
+		+bool is_wild
+		+run()
+	}
+</div>
+
+<h2 class="headline">State diagrams</h2>
+
+<div class="mermaid mb-3 table-responsive lang-ltr">
+stateDiagram
+	[*] --> Still
+	Still --> [*]
+
+	Still --> Moving
+	Moving --> Still
+	Moving --> Crash
+	Crash --> [*]
+</div>
+
+<h2 class="headline">Gantt diagrams</h2>
+
+<div class="mermaid mb-3 table-responsive lang-ltr">
+gantt
+	title A Gantt Diagram
+	dateFormat  YYYY-MM-DD
+	section Section
+	A task           :a1, 2014-01-01, 30d
+	Another task     :after a1  , 20d
+	section Another
+	Task in sec      :2014-01-12  , 12d
+	another task      : 24d
+</div>
+
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.mermaid.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/mermaid.js")'></script>
+	}
+}
