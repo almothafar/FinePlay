@@ -14,16 +14,16 @@ How to play
 
 ##### Environment #####
 
-	macOS Catalina version 10.15（19A602）
+	macOS Catalina version 10.15.1（19B88）
 	Time zone UTC
-	openjdk version "11.0.4" 2019-07-16 LTS / OpenJDK Runtime Environment Corretto-11.0.4.11.1 (build 11.0.4+11-LTS)
-	Safari version 13.0.2 (15608.2.30.1.1)
+	openjdk version "11.0.5" 2019-10-15 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.5+10)
+	Safari version 13.0.3 (15608.3.10.1.4)
 
 ##### OpenJDK #####
 
 Install
 
-[Amazon Corretto](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
+[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/tag/jdk-11.0.5%2B10)
 
 ##### Console #####
 
@@ -85,6 +85,8 @@ TODO
 
 ###### Whether this project will be updated in the future is undecided. ######
 
++ Update Bootstrap 2.8  release  
+   + Fixed deprecation
 + Update Bootstrap 4.4  release  
    + Update popper.js
 + Refactor system_menu.
@@ -92,7 +94,7 @@ TODO
 Release History
 ---------------
 
-+ **2.8.0-M6-b2** - 2019-10-20
++ **2.8.0-RC1-b1** - 2019-11-03
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

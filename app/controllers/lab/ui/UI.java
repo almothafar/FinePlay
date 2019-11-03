@@ -99,6 +99,9 @@ public class UI extends Controller {
 		case "securekeyboard":
 
 			return securekeyboard(request, lang, messages);
+		case "loadbutton":
+
+			return loadbutton(request, lang, messages);
 		case "glance":
 
 			return glance(request, lang, messages);
@@ -237,6 +240,11 @@ public class UI extends Controller {
 	private static Result securekeyboard(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.ui.securekeyboard.render(request, lang, messages));
+	}
+
+	private static Result loadbutton(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.ui.loadbutton.render(request, lang, messages));
 	}
 
 	private static Result glance(final Request request, final Lang lang, final Messages messages) {

@@ -1,48 +1,49 @@
 <!-- https://www.playframework.com/documentation/latest/SettingsLogger -->
 <configuration>
 
-  <conversionRule conversionWord="coloredLevel" converterClass="play.api.libs.logback.ColoredLevel" />
+	<conversionRule conversionWord="coloredLevel" converterClass="play.api.libs.logback.ColoredLevel" />
 
-  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-    <file>${application.home:-.}/logs/application.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${application.home:-.}/logs/application.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- rollover daily -->
 			<fileNamePattern>./logs/application-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-			<timeBasedFileNamingAndTriggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<maxFileSize>10MB</maxFileSize>
-			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- each file should be at most 100MB, keep 100 days worth of history, but at most 20GB -->
+			<maxFileSize>10MB</maxFileSize>
+			<maxHistory>100</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
 		</rollingPolicy>
-    <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
 <!--
-    <encoder>
-      <pattern>%date [%level] from %logger in %thread - %message%n%xException</pattern>
-    </encoder>
+		<encoder>
+			<pattern>%date [%level] from %logger in %thread - %message%n%xException</pattern>
+		</encoder>
 -->
-  </appender>
+	</appender>
 
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder>
-		<pattern>%coloredLevel %cyan(%logger{15}) - %green([%X{userId}]) %white(%message%n%xException{10})</pattern>
-      <!-- <pattern>%coloredLevel %logger{15} - %message%n%xException{10}</pattern> -->
-    </encoder>
-  </appender>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%coloredLevel %cyan(%logger{15}) - %green([%X{userId}]) %white(%message%n%xException{10})</pattern>
+			<!-- <pattern>%coloredLevel %logger{15} - %message%n%xException{10}</pattern> -->
+		</encoder>
+	</appender>
 
-  <appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
-    <appender-ref ref="FILE" />
-  </appender>
+	<appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="FILE" />
+	</appender>
 
-  <appender name="ASYNCSTDOUT" class="ch.qos.logback.classic.AsyncAppender">
-    <appender-ref ref="STDOUT" />
-  </appender>
+	<appender name="ASYNCSTDOUT" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="STDOUT" />
+	</appender>
 
-  <logger name="play" level="INFO" />
+	<logger name="play" level="INFO" />
 
-  <!-- Off these ones as they are annoying, and anyway we manage configuration ourselves -->
-  <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
+	<!-- Off these ones as they are annoying, and anyway we manage configuration ourselves -->
+	<logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
 
-  <root level="INFO">
-    <appender-ref ref="ASYNCFILE" />
-    <appender-ref ref="ASYNCSTDOUT" />
-  </root>
+	<root level="INFO">
+		<appender-ref ref="ASYNCFILE" />
+		<appender-ref ref="ASYNCSTDOUT" />
+	</root>
 
 </configuration>

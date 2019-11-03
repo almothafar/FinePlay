@@ -17,6 +17,21 @@ $.each(timeKeys, function(i, key) {
 
 //
 
+$.ajax({
+	method:"GET"
+})
+.then(
+	function(data, textStatus, jqXHR) {
+
+		var serverDate = new Date(jqXHR.getResponseHeader('Date'));
+		console.log('Server(Ajax): ' + serverDate);
+	},
+	function( jqXHR, textStatus, errorThrown) {
+	}
+);
+
+//
+
 var zeroMoment = moment({
 	y : 0,
 	M : 0,

@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-M6-b2-SNAPSHOT"
+version := "2.8.0-RC1-b1-SNAPSHOT"
 
 scalaVersion := "2.13.0"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-par
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-M6-b2-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-RC1-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -36,7 +36,6 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "7.0.1",						// Apache 7.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "7.0.1",
   guice,
-  "com.typesafe.play" %% "play-json" % "2.7.4",							// Apache 2.7.4
   "com.h2database" % "h2" % "1.4.200",									// MPL/EPL 1.4.200
 //  "com.h2database" % "h2" % "1.4.200" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
@@ -75,7 +74,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "Split.js" % "1.5.9",							// MIT 1.5.9
   "org.webjars.bower" % "select2" % "4.0.10",							// MIT 4.0.10
-  "org.webjars.npm" % "chart.js" % "2.8.0",								// MIT 2.8.0
+  "org.webjars.npm" % "chart.js" % "2.9.1",								// MIT 2.9.1
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.10.0",						// MIT 3.10.0

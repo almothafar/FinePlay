@@ -40,8 +40,10 @@
 				</div>
 				<div class="col-md-9">
 
-<div class="mermaid mb-3 table-responsive lang-ltr">
-graph LR
+<div class="mb-3 table-responsive">
+	<div class="w-fit-content">
+		<div class="mermaid lang-ltr">
+graph TB
 
 	Throwable
 
@@ -54,43 +56,61 @@ graph LR
 		Exception --> ExecutionException(ExecutionException)
 
 		subgraph Unchecked
-			RuntimeException --> IllegalArgumentException("IllegalArgumentException")
+			RuntimeException --> UsefulException("UsefulException")
+				UsefulException --> PlayException("PlayException")
+					PlayException --> ExceptionSource("ExceptionSource")
+					PlayException --> ExceptionAttachment("ExceptionAttachment")
+						ExceptionAttachment --> RichDescription("RichDescription")
 		end
 
 	classDef error fill:red
 	classDef exception fill:orange
 	classDef rexception fill:yellow
+	classDef play fill:cyan
 	classDef Impl fill:#FFFFFF,stroke-dasharray: 5, 5
 
 	class Error error
 	class Exception exception
 	class RuntimeException rexception
-	class AssertionError,ExecutionException,IllegalArgumentException Impl
+	class UsefulException,PlayException,ExceptionSource,ExceptionAttachment,RichDescription play
+	class AssertionError,ExecutionException Impl
+		</div>
+	</div>
 </div>
 
 <h2 class="headline">Flowcharts</h2>
 
-<div class="mermaid mb-3 table-responsive lang-ltr">
+<div class="mb-3 table-responsive">
+	<div class="w-fit-content">
+		<div class="mermaid lang-ltr">
 graph LR
 	A[Hard edge] -->|Link text| B(Round edge)
 	B --> C{Decision}
 	C -->|One| D[Result one]
 	C -->|Two| E[Result two]
+		</div>
+	</div>
 </div>
 
 <h2 class="headline">Sequence diagrams</h2>
 
-<div class="mermaid mb-3 table-responsive lang-ltr">
+<div class="mb-3 table-responsive">
+	<div class="w-fit-content">
+		<div class="mermaid lang-ltr w-768p">
 sequenceDiagram
 	Alice->John: Hello John, how are you?
 	loop Every minute
 		John-->Alice: Great!
 	end
+		</div>
+	</div>
 </div>
 
 <h2 class="headline">Class diagrams</h2>
 
-<div class="mermaid mb-3 table-responsive lang-ltr">
+<div class="mb-3 table-responsive">
+	<div class="w-fit-content">
+		<div class="mermaid lang-ltr w-576p">
 classDiagram
 	Animal <|-- Duck
 	Animal <|-- Fish
@@ -112,11 +132,15 @@ classDiagram
 		+bool is_wild
 		+run()
 	}
+		</div>
+	</div>
 </div>
 
 <h2 class="headline">State diagrams</h2>
 
-<div class="mermaid mb-3 table-responsive lang-ltr">
+<div class="mb-3 table-responsive">
+	<div class="w-fit-content">
+		<div class="mermaid lang-ltr w-216p">
 stateDiagram
 	[*] --> Still
 	Still --> [*]
@@ -125,11 +149,15 @@ stateDiagram
 	Moving --> Still
 	Moving --> Crash
 	Crash --> [*]
+		</div>
+	</div>
 </div>
 
 <h2 class="headline">Gantt diagrams</h2>
 
-<div class="mermaid mb-3 table-responsive lang-ltr">
+<div class="mb-3 table-responsive">
+	<div class="w-fit-content">
+		<div class="mermaid lang-ltr w-768p">
 gantt
 	title A Gantt Diagram
 	dateFormat  YYYY-MM-DD
@@ -139,6 +167,8 @@ gantt
 	section Another
 	Task in sec      :2014-01-12  , 12d
 	another task      : 24d
+		</div>
+	</div>
 </div>
 
 				</div>

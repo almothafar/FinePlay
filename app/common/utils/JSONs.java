@@ -1,7 +1,5 @@
 package common.utils;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -139,9 +137,6 @@ public class JSONs {
 					return json;
 				}
 			};
-		} catch (final IOException e) {
-
-			throw new UncheckedIOException(e);
 		}
 
 		return bean;
