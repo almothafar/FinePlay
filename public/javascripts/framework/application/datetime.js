@@ -29,30 +29,3 @@ $.ajax({
 	function( jqXHR, textStatus, errorThrown) {
 	}
 );
-
-//
-
-var zeroMoment = moment({
-	y : 0,
-	M : 0,
-	d : 0
-});
-var requestMoment = moment(messages("clientDateTime"));
-
-var requestDate = new Date();
-setTimeout(function() {
-
-	setInterval(function() {
-
-		var currentDate = new Date();
-		var progressSec = parseInt((currentDate.getTime() - requestDate
-				.getTime()) / 1000);
-
-		var fromZero = zeroMoment.clone().add(progressSec, 'second').format(
-				'HH:mm:ss');
-		var fromRequest = requestMoment.clone().add(progressSec, 'second')
-				.format('YYYY-MM-DDTHH:mm:ss');
-
-		console.log('Unverified: ' + fromRequest + ' (' + fromZero + ')');
-	}, 1000);
-}, 3000);

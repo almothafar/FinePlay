@@ -6,7 +6,7 @@ maintainer := "hiro20v++@icloud.com"
 
 version := "2.8.0-RC1-b1-SNAPSHOT"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 //lazy val fineplaySub = (project in file("sub"))
 //    .enablePlugins(PlayJava)
@@ -63,7 +63,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.3.1.Final",						// Apache 1.3.1
   "org.mapstruct" % "mapstruct-processor" % "1.3.1.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.2.3",								// Apache 2.2.3
+  "net.lingala.zip4j" % "zip4j" % "2.2.4",								// Apache 2.2.4
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
@@ -74,8 +74,9 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.12.1",								// MIT 1.12.1
   "org.webjars.bower" % "Split.js" % "1.5.9",							// MIT 1.5.9
   "org.webjars.bower" % "select2" % "4.0.10",							// MIT 4.0.10
-  "org.webjars.npm" % "chart.js" % "2.9.1",								// MIT 2.9.1
-  "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.22.0
+  "org.webjars.npm" % "chart.js" % "2.9.3",								// MIT 2.9.3
+  "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.24.0
+  "org.webjars.npm" % "moment-timezone" % "0.5.27",						// MIT 0.5.27
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
   "org.webjars.bower" % "fullcalendar" % "3.10.0",						// MIT 3.10.0
   "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
@@ -97,7 +98,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.npm" % "echarts" % "4.2.1",								// Apache 4.2.1
+  "org.webjars.bower" % "echarts" % "4.5.0",							// Apache 4.5.0
   "org.webjars.npm" % "lightweight-charts" % "1.0.2",					// Apache 1.0.2
   "org.webjars.npm" % "mermaid" % "8.4.0",								// MIT 8.4.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1
@@ -149,7 +150,7 @@ libraryDependencies ++= Seq(
   "net.sf.jasperreports" % "jasperreports-fonts" % "6.10.0",
   "net.sf.barcode4j" % "barcode4j" % "2.1",								// Apache 2.1
   "net.sourceforge.barbecue" % "barbecue" % "1.5-beta1",				// BSD-style 1.5-beta1
-  "org.apache.xmlgraphics" % "batik-bridge" % "1.11"
+  "org.apache.xmlgraphics" % "batik-bridge" % "1.12"
 )
 
 // Batch library

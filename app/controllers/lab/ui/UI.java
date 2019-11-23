@@ -3,8 +3,14 @@ package controllers.lab.ui;
 import models.system.System.PermissionsAllowed;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
+
+import common.utils.DateTimes;
 import play.i18n.Messages;
 import play.i18n.Lang;
 import play.i18n.MessagesApi;
@@ -234,7 +240,15 @@ public class UI extends Controller {
 
 	private static Result pay(final Request request, final Lang lang, final Messages messages) {
 
-		return ok(views.html.lab.ui.pay.render(request, lang, messages));
+		final long days = 7;
+		final LocalDateTime currentDateTime = LocalDateTime.now();
+
+//		final ZonedDateTime clientStartZonedDateTime = ZonedDateTime.parse("2017-03-12T01:59-08:00[US/Pacific]");
+//		final ZonedDateTime clientStartZonedDateTime = ZonedDateTime.parse("2017-11-05T01:59-07:00[US/Pacific]");
+		final ZonedDateTime clientStartZonedDateTime = DateTimes.toClientZonedDateTime(request, currentDateTime);
+		final ZonedDateTime clientLimitZonedDateTime = clientStartZonedDateTime.plusDays(days);
+
+		return ok(views.html.lab.ui.pay.render(request, lang, messages, clientStartZonedDateTime, clientLimitZonedDateTime));
 	}
 
 	private static Result securekeyboard(final Request request, final Lang lang, final Messages messages) {

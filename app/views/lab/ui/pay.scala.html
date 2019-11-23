@@ -18,7 +18,12 @@
 
 @import common.system._
 
-@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+@()(implicit request:Http.Request, lang: Lang, messages: Messages, clientStartZonedDateTime: ZonedDateTime, clientLimitZonedDateTime: ZonedDateTime)
+
+@isTargetLocale() = @{
+
+	Arrays.asList(Locale.JAPAN).contains(lang.locale)
+}
 
 @frame(){
 
@@ -47,6 +52,24 @@
 
 					<div class="mb-3">
 
+						<span id="time" class=""></span>
+					</div>
+
+					<div class="mb-3 @("d-none".when(!isTargetLocale))">
+
+						<p class="h1 text-danger">急いで、入金して下さい。</p>
+
+						<span id="years" class="p-2 rounded h1 text-white bg-dark d-none"></span>
+						<span id="months" class="p-2 rounded h1 text-white bg-dark d-none"></span>
+						<span id="days" class="p-2 rounded h1 text-white bg-dark"></span>
+						<span id="hours" class="p-2 rounded h1 text-white bg-dark"></span>
+						<span id="minutes" class="p-2 rounded h1 text-white bg-dark"></span>
+						<span id="seconds" class="p-2 rounded h1 text-white bg-dark"></span>
+						<span id="milliseconds" class="p-2 rounded h1 text-white bg-dark d-none d-sm-inline"></span>
+					</div>
+
+					<div class="mb-3">
+
 						@components.button(Map("id"->"windowButton", "type"->"dark", "outline"->"false", "icon"->"far fa-credit-card", "text"->messages(MessageKeys.PAY), "data-toggle"->"modal","data-target"->"#window"))
 					</div>
 
@@ -61,6 +84,15 @@
 			</div>
 		}
 
+		<div id="system_messages" class="d-none" data-messages='{
+			"clientZoneId":"@clientStartZonedDateTime.getZone().getId()",
+			"clientStartOffsetDateTime":"@clientStartZonedDateTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)",
+			"clientLimitOffsetDateTime":"@clientLimitZonedDateTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)"
+		}'></div>
+
 		@libraries.standard.last()
+		@libraries.moment.last()
+		@libraries.momenttimezone.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/ui/pay.js")'></script>
 	}
 }
