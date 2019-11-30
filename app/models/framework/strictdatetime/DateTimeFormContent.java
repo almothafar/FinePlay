@@ -5,8 +5,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class DateTimeFormContent {
 
 	private LocalDate dateTime_Date;
