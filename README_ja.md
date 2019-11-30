@@ -2,7 +2,7 @@
 
 <img src="./public/images/ja-JP/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.8 & Bootstrap 4.3  
+Play(Java) 2.8 & Bootstrap 4.4  
 多言語、レスポンシブな、プロジェクトのひな形(何かのたたき台に)。
 
 | 携帯 | タブレット |
@@ -50,9 +50,9 @@ URL を開く
 
 [JDK](https://docs.oracle.com/javase/jp/11/docs/api/)
 
-[Play Framework](https://www.playframework.com/documentation/2.7.x)
+[Play Framework](https://www.playframework.com/documentation/2.8.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.3)
+[Bootstrap](http://getbootstrap.com/docs/4.4)
 
 [Font Awesome](https://fontawesome.com/how-to-use)
 
@@ -63,6 +63,8 @@ URL を開く
 
 ##### Play Framework #####
 + ライトベンド社で、[商用サポート](https://www.lightbend.com/subscription)が提供されているようです。
++ [フォーラム](https://discuss.lightbend.com/c/play)が開催されているようです。
++ アプリケーションの[実装例](https://github.com/playframework/play-samples)があるようです。
 
 ##### Bootstrap #####
 + [ドキュメント](https://getbootstrap.com)を閲覧すると、広告収入になると思います。
@@ -87,8 +89,6 @@ URL を開く
 
 + Bootstrap 2.8 リリース版に更新   
    + 廃止予定の修正
-+ Bootstrap 4.4 リリース版に更新  
-   + popper.js の更新
 + system_menuのリファクタリング
 
 リリース履歴

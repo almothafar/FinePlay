@@ -18,7 +18,7 @@
 
 @import common.system._
 
-@()(implicit request:Http.Request, lang: Lang, messages: Messages, clientStartZonedDateTime: ZonedDateTime, clientLimitZonedDateTime: ZonedDateTime)
+@(clientStartZonedDateTime: ZonedDateTime, clientLimitZonedDateTime: ZonedDateTime)(implicit request:Http.Request, lang: Lang, messages: Messages)
 
 @isTargetLocale() = @{
 

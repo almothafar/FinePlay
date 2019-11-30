@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-RC1-b1-SNAPSHOT"
+version := "2.8.0-RC2-b1-SNAPSHOT"
 
 scalaVersion := "2.13.1"
 
@@ -20,11 +20,11 @@ lazy val root = (project in file("."))
 
 // Another Repository
 resolvers += "jcenter" at "https://jcenter.bintray.com"
-resolvers += "jasperreports" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
+resolvers += "jasperreports" at "https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-RC1-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-RC2-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -48,7 +48,7 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.json" % "1.1.4",
   "org.apache.commons" % "commons-text" % "1.8",						// Apache 1.8
   "org.postgresql" % "postgresql" % "42.2.8",							// BSD 2-clause 42.2.8
-  "org.mockito" % "mockito-core" % "3.1.0",								// MIT 3.1.0
+  "org.mockito" % "mockito-core" % "3.2.0",								// MIT 3.2.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.1.1",									// Apache 4.1.1
@@ -63,9 +63,9 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.3.1.Final",						// Apache 1.3.1
   "org.mapstruct" % "mapstruct-processor" % "1.3.1.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.2.4",								// Apache 2.2.4
+  "net.lingala.zip4j" % "zip4j" % "2.2.6",								// Apache 2.2.6
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
-  "org.webjars.npm" % "bootstrap" % "4.3.1",							// MIT 4.3.0
+  "org.webjars.npm" % "bootstrap" % "4.4.1",							// MIT 4.4.1
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
   "org.webjars.bower" % "pickadate" % "3.6.4",							// MIT 3.6.4
   "org.webjars.npm" % "bootstrap-slider" % "10.6.2",					// MIT 10.6.2
@@ -126,7 +126,7 @@ libraryDependencies ++= Seq(
 // Use bootstrap
 libraryDependencies ++= Seq(
 //  "org.webjars.bower" % "clipboard" % "2.0.4",						// MIT 2.0.0
-  "org.webjars.npm" % "popper.js" % "1.14.7"							// MIT 1.14.6
+  "org.webjars.npm" % "popper.js" % "1.16.0"							// MIT 1.16.0
 )
 
 // Polyfill

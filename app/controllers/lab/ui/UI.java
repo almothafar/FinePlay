@@ -248,7 +248,7 @@ public class UI extends Controller {
 		final ZonedDateTime clientStartZonedDateTime = DateTimes.toClientZonedDateTime(request, currentDateTime);
 		final ZonedDateTime clientLimitZonedDateTime = clientStartZonedDateTime.plusDays(days);
 
-		return ok(views.html.lab.ui.pay.render(request, lang, messages, clientStartZonedDateTime, clientLimitZonedDateTime));
+		return ok(views.html.lab.ui.pay.render(clientStartZonedDateTime, clientLimitZonedDateTime, request, lang, messages));
 	}
 
 	private static Result securekeyboard(final Request request, final Lang lang, final Messages messages) {

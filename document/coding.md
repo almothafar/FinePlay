@@ -9,6 +9,10 @@ If you follow the license, you are free.
 Recommend
 ----------
 
+#### Application Secret ####
+
+https://www.playframework.com/documentation/2.8.x/ApplicationSecret
+
 #### Error handling ####
 
 The Controller does not raise exceptions that can be considered.  

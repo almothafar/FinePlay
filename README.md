@@ -2,7 +2,7 @@ English | [日本語](./README_ja.md)
 
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.8 & Bootstrap 4.3  
+Play(Java) 2.8 & Bootstrap 4.4  
 multilingual responsive project template(Tentative plan for something).
 
 | Phone | Tablet    |
@@ -50,9 +50,9 @@ Document
 
 [JDK](https://docs.oracle.com/en/java/javase/11/docs/api/)
 
-[Play Framework](https://www.playframework.com/documentation/2.7.x)
+[Play Framework](https://www.playframework.com/documentation/2.8.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.3)
+[Bootstrap](http://getbootstrap.com/docs/4.4)
 
 [Font Awesome](https://fontawesome.com/how-to-use)
 
@@ -63,6 +63,8 @@ Support / Additional contents
 
 ##### Play Framework #####
 + [Commercial support](https://www.lightbend.com/subscription) seems to be provided at Lightbend.
++ It seems that a [forum](https://discuss.lightbend.com/c/play) is being held.
++ There seems to be an application implementation [example](https://github.com/playframework/play-samples).
 
 ##### Bootstrap #####
 + When you browse the [document](https://getbootstrap.com), I think that it will become advertisement revenue.
@@ -87,8 +89,6 @@ TODO
 
 + Update Bootstrap 2.8  release  
    + Fixed deprecation
-+ Update Bootstrap 4.4  release  
-   + Update popper.js
 + Refactor system_menu.
 
 Release History
