@@ -20,6 +20,7 @@ import javax.security.auth.login.AccountException;
 import com.typesafe.config.Config;
 
 import common.system.MessageKeys;
+import common.utils.Locales;
 import controllers.user.UserService;
 import models.registuser.RegistFormContent;
 import models.registuser.RegistUserDao;
@@ -158,7 +159,7 @@ public class RegistUser extends Controller {
 
 		if (!useLang.country().isEmpty()) {
 
-			useLang = new Lang(normalizeLocale(useLang));
+			useLang = new Lang(Locales.normalize(useLang.toLocale()));
 		}
 
 		if (!langs.availables().contains(useLang)) {
@@ -172,36 +173,6 @@ public class RegistUser extends Controller {
 		}
 
 		return useLang.toLocale();
-	}
-
-	private static Locale normalizeLocale(final Lang useLang) {
-
-		switch (useLang.language()) {
-		case "ja":
-
-			return Locale.JAPAN;
-		case "zh":
-
-			switch (useLang.country()) {
-			case "TW":
-
-				return Locale.US;
-			// return Locale.TRADITIONAL_CHINESE;
-			case "CN":
-			default:
-
-				return Locale.US;
-			// return Locale.SIMPLIFIED_CHINESE;
-			}
-		case "ko":
-
-			return Locale.US;
-		// return Locale.KOREA;
-		case "en":
-		default:
-
-			return Locale.US;
-		}
 	}
 
 	@Nonnull

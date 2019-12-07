@@ -19,7 +19,7 @@ Add Language
 ### Add Initial Locale code ###
 ###### Optional.
 
-	github/fineplay/app/controllers.registuser.RegistUser#normalizeLocale
+	github/fineplay/app/common.utils.Locales#normalize
 
 ### Add Select Locale code ###
 

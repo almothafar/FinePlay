@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-RC2-b1-SNAPSHOT"
+version := "2.8.0-RC5-b1-SNAPSHOT"
 
 scalaVersion := "2.13.1"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "https://jaspersoft.jfrog.io/jaspersoft/third-pa
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-RC2-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-RC5-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -54,7 +54,7 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.1.1",									// Apache 4.1.1
   "org.apache.poi" % "poi-scratchpad" % "4.1.1",
   "org.apache.poi" % "poi-ooxml" % "4.1.1",
-  "org.apache.tika" % "tika-core" % "1.22",								// Apache 1.22
+  "org.apache.tika" % "tika-core" % "1.23",								// Apache 1.23
   "com.google.zxing" % "javase" % "3.4.0",								// Apache 3.4.0
   "org.webjars.bower" % "quagga" % "0.12.1",							// MIT 0.12.1
   "org.apache.pdfbox" % "pdfbox" % "2.0.17",							// Apache 2.0.17
@@ -63,7 +63,7 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.3.1.Final",						// Apache 1.3.1
   "org.mapstruct" % "mapstruct-processor" % "1.3.1.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.2.6",								// Apache 2.2.6
+  "net.lingala.zip4j" % "zip4j" % "2.2.7",								// Apache 2.2.7
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.4.1",							// MIT 4.4.1
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
