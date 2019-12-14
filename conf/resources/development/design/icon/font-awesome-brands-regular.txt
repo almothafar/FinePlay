@@ -54,6 +54,7 @@ buromobelexperte
 buy-n-large
 buysellads
 canadian-maple-leaf
+caravan
 cc-amazon-pay
 cc-amex
 cc-apple-pay
@@ -141,6 +142,7 @@ fedex
 fedora
 figma
 firefox
+firefox-browser
 first-order
 first-order-alt
 firstdraft
@@ -209,6 +211,7 @@ html5
 hubspot
 ice-cream
 icons
+ideal
 imdb
 instagram
 intercom
@@ -259,6 +262,7 @@ medrt
 meetup
 megaport
 mendeley
+microblog
 microsoft
 mix
 mixcloud
@@ -303,6 +307,7 @@ pied-piper
 pied-piper-alt
 pied-piper-hat
 pied-piper-pp
+pied-piper-square
 pinterest
 pinterest-p
 pinterest-square
@@ -393,12 +398,15 @@ symfony
 teamspeak
 telegram
 telegram-plane
+temperature-high
+temperature-low
 tencent-weibo
 the-red-yeti
 themeco
 themeisle
 think-peaks
 trade-federation
+trailer
 trash-restore
 trash-restore-alt
 trello
@@ -414,6 +422,7 @@ ubuntu
 uikit
 umbraco
 uniregistry
+unity
 untappd
 ups
 usb
@@ -432,7 +441,9 @@ vine
 vk
 vnv
 voicemail
+vote-yea
 vuejs
+water
 wave-square
 waze
 weebly

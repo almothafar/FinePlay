@@ -87,14 +87,12 @@ TODO
 
 ###### Whether this project will be updated in the future is undecided. ######
 
-+ Update Bootstrap 2.8  release  
-   + Fixed deprecation
 + Refactor system_menu.
 
 Release History
 ---------------
 
-+ **2.8.0-RC5-b1** - 2019-12-07
++ **2.8.0-b1** - 2019-12-14
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

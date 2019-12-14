@@ -495,10 +495,3 @@
 	border-right: 10px solid #f8f9fa;
 	border-right: 10px solid var(--light);
 }
-
-/* Webkit autofill color disabled */
-
-input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0px 1000px #e4f6e1 inset;
-}
-

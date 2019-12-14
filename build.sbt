@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-RC5-b1-SNAPSHOT"
+version := "2.8.0-b1-SNAPSHOT"
 
 scalaVersion := "2.13.1"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "https://jaspersoft.jfrog.io/jaspersoft/third-pa
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-RC5-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -137,7 +137,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.11.2",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.11.2
+  "org.webjars" % "font-awesome" % "5.12.0",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.12.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.5.5",								// MIT 4.5.5
   "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0

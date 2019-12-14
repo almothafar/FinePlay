@@ -2,6 +2,7 @@ ad
 address-book
 address-card
 adjust
+adobe
 air-freshener
 airbnb
 align-center
@@ -40,6 +41,7 @@ arrow-up
 arrows-alt
 arrows-alt-h
 arrows-alt-v
+artstation
 assistive-listening-systems
 asterisk
 at
@@ -52,6 +54,7 @@ baby-carriage
 backspace
 backward
 bacon
+bahai
 balance-scale
 balance-scale-left
 balance-scale-right
@@ -140,6 +143,7 @@ car-alt
 car-battery
 car-crash
 car-side
+caravan
 caret-down
 caret-left
 caret-right
@@ -225,6 +229,7 @@ comments-dollar
 compact-disc
 compass
 compress
+compress-alt
 compress-arrows-alt
 concierge-bell
 cookie
@@ -303,6 +308,7 @@ exclamation
 exclamation-circle
 exclamation-triangle
 expand
+expand-alt
 expand-arrows-alt
 external-link-alt
 external-link-square-alt
@@ -348,6 +354,7 @@ fingerprint
 fire
 fire-alt
 fire-extinguisher
+firefox-browser
 first-aid
 fish
 fist-raised
@@ -439,7 +446,6 @@ hashtag
 hat-cowboy
 hat-cowboy-side
 hat-wizard
-haykal
 hdd
 heading
 headphones
@@ -477,6 +483,7 @@ icons
 id-badge
 id-card
 id-card-alt
+ideal
 igloo
 image
 images
@@ -560,6 +567,7 @@ memory
 menorah
 mercury
 meteor
+microblog
 microchip
 microphone
 microphone-alt
@@ -636,6 +644,7 @@ phone-square
 phone-square-alt
 phone-volume
 photo-video
+pied-piper-square
 piggy-bank
 pills
 pizza-slice
@@ -858,6 +867,7 @@ thermometer-full
 thermometer-half
 thermometer-quarter
 thermometer-three-quarters
+think-peaks
 thumbs-down
 thumbs-up
 thumbtack
@@ -879,6 +889,7 @@ torii-gate
 tractor
 trademark
 traffic-light
+trailer
 train
 tram
 transgender
@@ -903,6 +914,7 @@ umbrella-beach
 underline
 undo
 undo-alt
+unity
 universal-access
 university
 unlink
@@ -972,6 +984,7 @@ window-restore
 wine-bottle
 wine-glass
 wine-glass-alt
+wizards-of-the-coast
 won-sign
 wrench
 x-ray
