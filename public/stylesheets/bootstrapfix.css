@@ -22,5 +22,5 @@
 .modal-open #system_work-menu,
 .modal-open #system_content,
 .modal-open #system_help-main{
-	overflow: initial;
+	overflow: hidden;
 }

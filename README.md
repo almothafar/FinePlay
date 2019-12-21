@@ -14,10 +14,10 @@ How to play
 
 ##### Environment #####
 
-	macOS Catalina version 10.15.1（19B88）
+	macOS Catalina version 10.15.2（19C57）
 	Time zone UTC
 	openjdk version "11.0.5" 2019-10-15 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.5+10)
-	Safari version 13.0.3 (15608.3.10.1.4)
+	Safari version 13.0.4 (15608.4.9.1.3)
 
 ##### OpenJDK #####
 
@@ -92,7 +92,7 @@ TODO
 Release History
 ---------------
 
-+ **2.8.0-b1** - 2019-12-14
++ **2.8.0-b2** - 2019-12-21
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

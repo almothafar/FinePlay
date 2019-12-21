@@ -114,9 +114,6 @@ public class UI extends Controller {
 		case "reverse":
 
 			return reverse(request, lang, messages);
-		case "window":
-
-			return window(request, lang, messages);
 		default:
 
 			return redirect(controllers.setting.user.routes.User.index());
@@ -269,10 +266,5 @@ public class UI extends Controller {
 	private static Result reverse(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.ui.reverse.render(request, lang, messages));
-	}
-
-	private static Result window(final Request request, final Lang lang, final Messages messages) {
-
-		return ok(views.html.lab.ui.window.render(request, lang, messages));
 	}
 }
