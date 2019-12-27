@@ -94,7 +94,9 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
   "org.webjars.npm" % "diff" % "4.0.1",									// BSD 4.0.1
   "org.webjars.npm" % "diff2html" % "2.9.0",							// MIT 2.9.0
-  "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
+//  "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
+  "org.webjars.npm" % "easymde" % "2.8.0",
+//  "org.webjars.npm" % "typo-js" % "1.1.0",
   "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
@@ -168,7 +170,9 @@ libraryDependencies ++= Seq(
 
 dependencyOverrides ++= Seq(
   "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
-  "org.webjars.bower" % "jquery" % "3.4.1"
+  "org.webjars.bower" % "jquery" % "3.4.1",
+  "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
+  "org.webjars.npm" % "typo-js" % "1.1.0"								// Modified BSD 1.1.0
 )
 excludeDependencies ++= Seq(
   ExclusionRule("xml-apis", "xml-apis")

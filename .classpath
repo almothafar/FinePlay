@@ -137,6 +137,11 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.1/jackson-datatype-jsr310-2.10.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.50.0/codemirror-5.50.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.50.0/codemirror-5.50.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.50.0/codemirror-5.50.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/datatables/1.10.19/datatables-1.10.19-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/datatables/1.10.19/datatables-1.10.19.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/datatables/1.10.19/datatables-1.10.19-javadoc.jar!/"/>
@@ -591,6 +596,11 @@
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-test_2.13/2.8.0/play-test_2.13-2.8.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-test_2.13/2.8.0/play-test_2.13-2.8.0.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-test_2.13/2.8.0/play-test_2.13-2.8.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/typo-js/1.1.0/typo-js-1.1.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/typo-js/1.1.0/typo-js-1.1.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/typo-js/1.1.0/typo-js-1.1.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/atteo/classindex/classindex/3.4/classindex-3.4-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/atteo/classindex/classindex/3.4/classindex-3.4.jar">
@@ -1216,6 +1226,11 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/mockito/mockito-core/3.2.0/mockito-core-3.2.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror-spell-checker/1.1.2/codemirror-spell-checker-1.1.2-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror-spell-checker/1.1.2/codemirror-spell-checker-1.1.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror-spell-checker/1.1.2/codemirror-spell-checker-1.1.2-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/net/sf/jasperreports/jasperreports-fonts/6.10.0/jasperreports-fonts-6.10.0.jar"/>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/nopt/1.0.10/nopt-1.0.10-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/nopt/1.0.10/nopt-1.0.10.jar">
     <attributes>
@@ -1669,6 +1684,11 @@
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-actor-typed_2.13/2.6.1/akka-actor-typed_2.13-2.6.1-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-actor-typed_2.13/2.6.1/akka-actor-typed_2.13-2.6.1.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-actor-typed_2.13/2.6.1/akka-actor-typed_2.13-2.6.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/jcenter.bintray.com/org/webjars/npm/easymde/2.8.0/easymde-2.8.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/jcenter.bintray.com/org/webjars/npm/easymde/2.8.0/easymde-2.8.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/jcenter.bintray.com/org/webjars/npm/easymde/2.8.0/easymde-2.8.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hibernate/hibernate-jpamodelgen/5.4.2.Final/hibernate-jpamodelgen-5.4.2.Final-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hibernate/hibernate-jpamodelgen/5.4.2.Final/hibernate-jpamodelgen-5.4.2.Final.jar">

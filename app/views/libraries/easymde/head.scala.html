@@ -1,0 +1,28 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html.helper._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+<link href='@routes.Assets.versioned("lib/easymde/dist/easymde.min.css")' rel="stylesheet" type="text/css">
+@style(Symbol("type") -> "text/css") {
+
+	.editor-toolbar.fullscreen,
+	.CodeMirror-fullscreen,
+	.editor-preview-side {
+		z-index: 1999;
+	}
+
+	.dir-rtl .CodeMirror-fullscreen {
+		right:initial;
+	}
+	.dir-rtl .CodeMirror-sizer {
+		padding-left: 15px;
+		padding-right: initial;
+	}
+	.dir-rtl .CodeMirror-vscrollbar {
+		left: 0;
+		right: initial;
+	}
+}

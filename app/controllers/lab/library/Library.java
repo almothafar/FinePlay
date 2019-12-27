@@ -105,6 +105,9 @@ public class Library extends Controller {
 		case "marked":
 
 			return marked(request, lang, messages);
+		case "easymde":
+
+			return easymde(request, lang, messages);
 		case "markdeep":
 
 			return markdeep(request, lang, messages);
@@ -298,6 +301,11 @@ public class Library extends Controller {
 	public static Result marked(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.library.marked.render(request, lang, messages));
+	}
+
+	public static Result easymde(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.easymde.render(request, lang, messages));
 	}
 
 	public static Result echarts(final Request request, final Lang lang, final Messages messages) {
