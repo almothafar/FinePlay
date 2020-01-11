@@ -2,7 +2,7 @@ message.code=Default
 country.flag=Undefined
 
 #
-# Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
+# Copyright (C) Lightbend Inc. <https://www.lightbend.com>
 #
 
 # Default messages
@@ -363,6 +363,7 @@ hex=HEX
 home=Home
 horizontal=Horizontal
 http=HTTP
+hide=Hide
 icon=Icon
 id=ID
 image=Image
@@ -484,6 +485,8 @@ set=Set
 setting=Setting
 share=Share
 sheet=Sheet
+show=Show
+signature=Signature
 slide=Slide
 sms=SMS
 sort=Sort

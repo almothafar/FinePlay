@@ -61,6 +61,7 @@
 		}'></div>
 
 		@libraries.standard.last()
+		@libraries.corejs.last()
 		@libraries.lightweightcharts.last()
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/lightweightcharts.js")'></script>
 	}

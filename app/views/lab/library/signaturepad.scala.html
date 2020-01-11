@@ -1,0 +1,74 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import models.components._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"Signature Pad", "icon"->"fas fa-signature", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"signaturepad"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div id="signature-pad" class="signature-pad">
+
+						<h4 class="headline">@messages(MessageKeys.SIGNATURE)</h4>
+
+						<div class="signature-pad--body h-432p p-3 bg-light shadow mb-3">
+
+							<canvas class="w-100 h-100"></canvas>
+						</div>
+
+						<div class="row mb-3">
+							<div class="col-6 col-md-3 col-xl-2">
+								@components.button(Map("id"->"clearButton", "type"->"primary", "outline"->"true", "block"->"true", "icon"->"fas fa-eraser", "text"->messages(MessageKeys.CLEAR)))
+							</div>
+							<div class="d-none d-md-block col-md-3 col-xl-4">
+							</div>
+							<div class="d-none d-md-block col-md-3 col-xl-4">
+							</div>
+							<div class="col-6 col-md-3 col-xl-2">
+								@components.button(Map("id"->"saveButton", "type"->"primary", "outline"->"true", "block"->"true", "icon"->"fas fa-save", "text"->messages(MessageKeys.SAVE)))
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+		@libraries.bootbox.last()
+		@libraries.signaturepad.last()
+		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/signaturepad.js")'></script>
+	}
+}

@@ -96,6 +96,9 @@ public class Library extends Controller {
 		case "twentytwenty":
 
 			return twentytwenty(request, lang, messages);
+		case "signaturepad":
+
+			return signaturepad(request, lang, messages);
 		case "diff2html":
 
 			return diff2html(request, lang, messages);
@@ -286,6 +289,11 @@ public class Library extends Controller {
 	public static Result twentytwenty(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.library.twentytwenty.render(request, lang, messages));
+	}
+
+	public static Result signaturepad(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.signaturepad.render(request, lang, messages));
 	}
 
 	public static Result diff2html(final Request request, final Lang lang, final Messages messages) {

@@ -92,7 +92,7 @@ TODO
 Release History
 ---------------
 
-+ **2.8.0-b2** - 2019-12-21
++ **2.8.0-b3** - 2020-01-11
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14
@@ -108,7 +108,7 @@ Donate
 
 License
 -------
-Copyright &copy; 2017-2019 [hiro20v](https://github.com/hiro20v)  
+Copyright &copy; [hiro20v](https://github.com/hiro20v)  
 Distributed under the [MIT License][mit].
 
 [MIT]: http://opensource.org/licenses/MIT

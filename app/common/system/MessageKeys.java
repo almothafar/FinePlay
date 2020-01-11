@@ -369,6 +369,8 @@ public class MessageKeys {
 
   public static final String HEX = "hex";
 
+  public static final String HIDE = "hide";
+
   public static final String HOME = "home";
 
   public static final String HORIZONTAL = "horizontal";
@@ -744,6 +746,10 @@ public class MessageKeys {
   public static final String SHARE = "share";
 
   public static final String SHEET = "sheet";
+
+  public static final String SHOW = "show";
+
+  public static final String SIGNATURE = "signature";
 
   public static final String SLIDE = "slide";
 

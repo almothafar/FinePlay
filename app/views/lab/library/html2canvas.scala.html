@@ -65,6 +65,7 @@
 		}'></div>
 
 		@libraries.standard.last()
+		@libraries.corejs.last()
 		@libraries.lightweightcharts.last()
 		@libraries.html2canvas.last()
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/library/html2canvas.js")'></script>

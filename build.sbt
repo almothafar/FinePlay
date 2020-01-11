@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-b1-SNAPSHOT"
+version := "2.8.0-b3-SNAPSHOT"
 
 scalaVersion := "2.13.1"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "https://jaspersoft.jfrog.io/jaspersoft/third-pa
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-b3-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -92,11 +92,12 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "jqvmap" % "1.5.1",								// MIT/GPL 1.5.1
   "org.webjars.npm" % "prettier" % "1.18.2",							// MIT 1.18.2
   "org.webjars.bower" % "highlightjs" % "9.12.0",						// BSD-3-Clause license 9.12.0
+  "org.webjars.npm" % "signature_pad" % "3.0.0-beta.3",					// MIT 3.0.0-beta.3
   "org.webjars.npm" % "diff" % "4.0.1",									// BSD 4.0.1
   "org.webjars.npm" % "diff2html" % "2.9.0",							// MIT 2.9.0
 //  "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
-  "org.webjars.npm" % "easymde" % "2.8.0",
-//  "org.webjars.npm" % "typo-js" % "1.1.0",
+  "org.webjars.npm" % "easymde" % "2.8.0",								// MIT 2.8.0
+//  "org.webjars.npm" % "typo-js" % "1.1.0",							// Modified BSD 1.1.0
   "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
@@ -133,7 +134,7 @@ libraryDependencies ++= Seq(
 
 // Polyfill
 libraryDependencies ++= Seq(
-  "org.webjars.npm" % "core-js-bundle" % "3.3.3",						// MIT 3.3.3
+  "org.webjars.npm" % "core-js-bundle" % "3.6.1",						// MIT 3.6.1
   "org.webjars.bower" % "fetch" % "2.0.4"								// MIT 2.0.4
 )
 
