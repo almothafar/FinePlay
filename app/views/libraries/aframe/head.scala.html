@@ -1,0 +1,24 @@
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html.helper._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@* https://github.com/aframevr/aframe/issues/3923 *@
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/aframe/dist/aframe-v1.0.3.min.js")'></script>
+
+@script(args = Symbol("type") -> "text/javascript") {
+
+	'use strict';
+
+	if(navigator.xr || navigator.getVRDisplays){
+
+	}else{
+
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "@routes.Assets.versioned("lib/aframe-0.9.2/dist/aframe-v0.9.2.min.js")";
+		document.head.appendChild(script);
+	}
+}

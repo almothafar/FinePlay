@@ -1,0 +1,58 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+
+@import models.components._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+
+@import common.system._
+
+@()(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.aframe.head()
+	}
+
+	@body("lab","library"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->"A-Frame", "icon"->"fas fa-vr-cardboard", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true")){
+			<div class="row">
+				<div class="col-md-3">
+
+					@tasks(Map("id"->"", "task"->"aframe"))
+				</div>
+				<div class="mt-3 d-md-none">
+				</div>
+				<div class="col-md-9">
+
+					<div class="h-432p mb-3 lang-ltr">
+
+						<a-scene embedded>
+
+							<a-sky src="@routes.Assets.versioned("lib/aframe/examples/boilerplate/panorama/puydesancy.jpg").toString" rotation="0 -130 0"></a-sky>
+							<a-text font="kelsonsans" value="Puy de Sancy, France" width="6" position="-2.5 0.25 -1.5" rotation="0 15 0"></a-text>
+						</a-scene>
+					</div>
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

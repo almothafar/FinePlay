@@ -124,6 +124,7 @@ libraryDependencies ++= Seq(
 // TwentyTwenty															// ISC? MIT? Aug 7, 2018 master
 // markdeep																// BSD archive master(Sep 10, 2018)
 // Frappé Gantt															// MIT build version 0.0.7 master
+// A-Frame																// MIT 1.0.3/0.9.2
 // geckodriver															// Mozilla Public License 0.18.0
 
 // Use bootstrap

@@ -153,6 +153,9 @@ public class Library extends Controller {
 		case "papercss":
 
 			return papercss(request, lang, messages);
+		case "aframe":
+
+			return aframe(request, lang, messages);
 		case "camera":
 
 			return camera(request, lang, messages);
@@ -393,6 +396,11 @@ public class Library extends Controller {
 	public static Result papercss(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.library.papercss.render(request, lang, messages));
+	}
+
+	public static Result aframe(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.library.aframe.render(request, lang, messages));
 	}
 
 	public static Result camera(final Request request, final Lang lang, final Messages messages) {
