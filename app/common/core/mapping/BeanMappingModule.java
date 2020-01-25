@@ -4,7 +4,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.google.inject.AbstractModule;
 
-import models.framework.mapping.BeanMapper;
+import models.framework.beantype.BeanMapper;
 
 public class BeanMappingModule extends AbstractModule {
 

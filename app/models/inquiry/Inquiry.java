@@ -50,7 +50,6 @@ public class Inquiry {
 	private long id;
 
 	@Column(nullable = false)
-	@Convert(converter = LocaleConverter.class)
 	private Locale locale;
 
 	@Column(nullable = false, length = 256)

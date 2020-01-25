@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.0-b3-SNAPSHOT"
+version := "2.8.0-b4-SNAPSHOT"
 
 scalaVersion := "2.13.1"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "https://jaspersoft.jfrog.io/jaspersoft/third-pa
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.0-b3-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.0-b4-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -36,8 +36,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-mailer" % "7.0.1",						// Apache 7.0.1
   "com.typesafe.play" %% "play-mailer-guice" % "7.0.1",
   guice,
-  "com.h2database" % "h2" % "1.4.200",									// MPL/EPL 1.4.200
-//  "com.h2database" % "h2" % "1.4.200" % Test,
+  "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.200
+//  "com.h2database" % "h2" % "1.4.199" % Test,
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
   "net.jodah" % "failsafe" % "2.3.1",									// Apache 2.3.1
   "net.logstash.logback" % "logstash-logback-encoder" % "6.2",			// Apache 6.2
@@ -143,7 +143,7 @@ libraryDependencies ++= Seq(
 libraryDependencies ++= Seq(
   "org.webjars" % "font-awesome" % "5.12.0",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.12.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
-  "org.webjars.npm" % "ionicons" % "4.5.5",								// MIT 4.5.5
+  "org.webjars.npm" % "ionicons" % "4.6.3",								// MIT 4.6.3
   "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0
 )
 // IcoFont																// MIT 1.3

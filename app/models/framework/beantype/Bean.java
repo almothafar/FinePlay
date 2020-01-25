@@ -1,4 +1,4 @@
-package models.framework.mapping;
+package models.framework.beantype;
 
 import java.util.List;
 

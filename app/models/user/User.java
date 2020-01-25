@@ -135,11 +135,9 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	private Theme theme;
 
 	@Column(nullable = false)
-	@Convert(converter = LocaleConverter.class)
 	private Locale locale;
 
 	@Column(nullable = false)
-	@Convert(converter = ZoneIdConverter.class)
 	private ZoneId zoneId;
 
 	@ManyToOne(fetch = FetchType.LAZY)

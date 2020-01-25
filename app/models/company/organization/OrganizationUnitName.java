@@ -85,7 +85,6 @@ public class OrganizationUnitName {
 
 	@Id
 	@Column(nullable = false)
-	@Convert(converter = LocaleConverter.class)
 	private Locale locale;
 
 	@Column(nullable = false)

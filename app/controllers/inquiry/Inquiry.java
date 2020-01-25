@@ -14,6 +14,7 @@ import common.utils.Requests;
 import models.base.EntityDao;
 import models.inquiry.Inquiry.Type;
 import models.inquiry.InquiryFormContent;
+import play.api.PlayException;
 import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
@@ -68,13 +69,9 @@ public class Inquiry extends Controller {
 
 			final Form<InquiryFormContent> inquiryForm = formFactory.form(InquiryFormContent.class, Create.class).bindFromRequest(request);
 
-			if (!Requests.isFirstSubmit(request, syncCache)) {
-
-				LOGGER.info("Not first submit.");
-				return ok(views.html.inquiry.send.complete.render(inquiryForm, request, lang, messages));
-			}
-
 			if (!inquiryForm.hasErrors()) {
+
+				final boolean isFirstSubmit = Requests.isFirstSubmit(request, syncCache);
 
 				final InquiryFormContent inquiryFormContent = inquiryForm.get();
 
@@ -102,6 +99,15 @@ public class Inquiry extends Controller {
 				} catch (final EntityExistsException e) {
 
 					throw new RuntimeException(e);
+				}
+
+				if (isFirstSubmit) {
+
+					LOGGER.info("First submit.");
+				} else {
+
+					LOGGER.warn("Not first submit.");
+					manager.getTransaction().setRollbackOnly();
 				}
 
 				return ok(views.html.inquiry.send.complete.render(inquiryForm, request, lang, messages));

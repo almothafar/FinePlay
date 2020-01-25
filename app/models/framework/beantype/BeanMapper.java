@@ -1,4 +1,4 @@
-package models.framework.mapping;
+package models.framework.beantype;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.Qualifier;
 
-import controllers.framework.mapping.Mapping.CustomConvertor;
+import controllers.framework.beantype.Mapping.CustomConvertor;
 
 @Mapper(uses = { CustomConvertor.class })
 public interface BeanMapper {

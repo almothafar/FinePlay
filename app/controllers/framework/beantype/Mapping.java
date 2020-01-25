@@ -1,4 +1,4 @@
-package controllers.framework.mapping;
+package controllers.framework.beantype;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -7,12 +7,12 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 
-import models.framework.mapping.Bean;
-import models.framework.mapping.BeanFormContent;
-import models.framework.mapping.BeanFormContent.Inner;
-import models.framework.mapping.BeanMapper;
-import models.framework.mapping.BeanMapper.CustomConvertorClass;
-import models.framework.mapping.BeanMapper.CustomConvertorMethod;
+import models.framework.beantype.Bean;
+import models.framework.beantype.BeanFormContent;
+import models.framework.beantype.BeanMapper;
+import models.framework.beantype.BeanFormContent.Inner;
+import models.framework.beantype.BeanMapper.CustomConvertorClass;
+import models.framework.beantype.BeanMapper.CustomConvertorMethod;
 import models.system.System.PermissionsAllowed;
 import play.mvc.Controller;
 import play.mvc.Result;

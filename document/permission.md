@@ -59,13 +59,15 @@
 |                    |                                                                      |playException                 |      |      |      |
 |                    |                                                                      |runtimeException              |      |      |      |
 |                    |                                                                      |synccache                     |      |      |      |
+|controllers         |controllers.framework.beantype.Mapping                                |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.framework.datetime.DateTime                               |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |update                        |      |      |      |
 |controllers         |controllers.framework.defaultpage.Defaultpage                         |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |page                          |      |      |      |
-|controllers         |controllers.framework.mapping.Mapping                                 |                              |     O|     O|     O|
+|controllers         |controllers.framework.entitytype.Mapping                              |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |controllers         |controllers.framework.strictdatetime.DateTime                         |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |

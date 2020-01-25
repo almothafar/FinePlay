@@ -46,11 +46,9 @@ public class RegistUser implements ExpireHandler, PasswordHandler {
 	private String hashedPassword;
 
 	@Column(nullable = false)
-	@Convert(converter = LocaleConverter.class)
 	private Locale locale;
 
 	@Column(nullable = false)
-	@Convert(converter = ZoneIdConverter.class)
 	private ZoneId zoneId;
 
 	@Column(nullable = false, length = CODE_SIZE_MAX)

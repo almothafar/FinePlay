@@ -142,7 +142,8 @@ POST	/framework/datetime/update					controllers.framework.datetime.DateTime.upda
 GET		/framework/strictdatetime					controllers.framework.strictdatetime.DateTime.index(request: Request)
 POST	/framework/strictdatetime/update			controllers.framework.strictdatetime.DateTime.update(request: Request)
 POST	/framework/strictdatetime/times				controllers.framework.strictdatetime.DateTime.times(request: Request)
-GET		/framework/mapping							controllers.framework.mapping.Mapping.index(request: Request)
+GET		/framework/beantype							controllers.framework.beantype.Mapping.index(request: Request)
+GET		/framework/entitytype						controllers.framework.entitytype.Mapping.index(request: Request)
 
 GET		/environment								controllers.environment.openjdk.OpenJDK.index(request: Request, item:String ?="systemproperties")
 GET		/environment/openjdk						controllers.environment.openjdk.OpenJDK.index(request: Request, item:String ?="systemproperties")
