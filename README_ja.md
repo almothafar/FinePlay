@@ -14,16 +14,16 @@ Play(Java) 2.8 & Bootstrap 4.4
 
 ##### 環境 #####
 
-	macOS Catalina バージョン 10.15.2（19C57）
+	macOS Catalina バージョン 10.15.3（19D76）
 	時間帯 UTC
-	openjdk バージョン "11.0.5" 2019-10-15 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.5+10)
-	Safari バージョン 13.0.4 (15608.4.9.1.3)
+	openjdk バージョン "11.0.6" 2020-01-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.5+10)
+	Safari バージョン 13.0.5 (15608.5.11)
 
 ##### OpenJDK #####
 
 インストール
 
-[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/tag/jdk-11.0.5%2B10)
+[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.6_10.pkg)
 
 ##### コンソール #####
 
@@ -92,7 +92,7 @@ URL を開く
 リリース履歴
 ---------------
 
-+ **2.8.0-b4** - 2020-01-25
++ **2.8.1-b1** - 2020-02-01
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

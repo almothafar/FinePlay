@@ -13,6 +13,7 @@
 		<class>models.base.ZoneIdConverter</class>
 		<class>models.base.YearConverter</class>
 		<class>models.base.YearMonthConverter</class>
+		<class>models.base.MonthConverter</class>
 
 		<class>models.user.User</class>
 		<class>models.registuser.RegistUser</class>
@@ -60,6 +61,7 @@
 		<class>models.base.ZoneIdConverter</class>
 		<class>models.base.YearConverter</class>
 		<class>models.base.YearMonthConverter</class>
+		<class>models.base.MonthConverter</class>
 
 		<class>models.user.User</class>
 		<class>models.registuser.RegistUser</class>

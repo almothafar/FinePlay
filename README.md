@@ -14,16 +14,16 @@ How to play
 
 ##### Environment #####
 
-	macOS Catalina version 10.15.2（19C57）
+	macOS Catalina version 10.15.3（19D76）
 	Time zone UTC
-	openjdk version "11.0.5" 2019-10-15 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.5+10)
-	Safari version 13.0.4 (15608.4.9.1.3)
+	openjdk version "11.0.6" 2020-01-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.6+10)
+	Safari version 13.0.5 (15608.5.11)
 
 ##### OpenJDK #####
 
 Install
 
-[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/tag/jdk-11.0.5%2B10)
+[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.6_10.pkg)
 
 ##### Console #####
 
@@ -92,7 +92,7 @@ TODO
 Release History
 ---------------
 
-+ **2.8.0-b4** - 2020-01-25
++ **2.8.1-b1** - 2020-02-01
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

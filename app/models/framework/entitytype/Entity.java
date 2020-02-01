@@ -35,7 +35,6 @@ public class Entity {
 
 	private Year year;
 	private YearMonth yearMonth;
-	@Enumerated(EnumType.STRING)
 	private Month month;
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek dayOfWeek;

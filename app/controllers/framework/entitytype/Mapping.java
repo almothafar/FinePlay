@@ -147,7 +147,7 @@ public class Mapping extends Controller {
 				System.out.println((Timestamp) record[2]);// LocalDateTime
 				System.out.println((String) record[3]);// DayOfWeek
 				System.out.println((String) record[4]);// Locale
-				System.out.println((String) record[5]);// Month
+				System.out.println((Integer) record[5]);// Month
 				System.out.println((Time) record[6]);// LocalTime
 				System.out.println((Integer) record[7]);// Year
 				System.out.println((Timestamp) record[8]);// YearMonth
