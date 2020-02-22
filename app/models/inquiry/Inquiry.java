@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Locale;
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,7 +15,6 @@ import javax.persistence.UniqueConstraint;
 
 import common.data.validation.Constraints.UserId;
 import common.system.MessageKeys;
-import models.base.LocaleConverter;
 import play.data.validation.Constraints;
 
 @Entity

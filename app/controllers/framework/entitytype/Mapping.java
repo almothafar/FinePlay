@@ -4,12 +4,14 @@ import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.Year;
 import java.time.YearMonth;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +81,7 @@ public class Mapping extends Controller {
 				entity.setUser_Id(user.getId());
 
 				final Entity storedEntity = manager.find(Entity.class, user.getId());
-				if(Objects.isNull(storedEntity)) {
+				if (Objects.isNull(storedEntity)) {
 
 					setValues(entity);
 					entityDao.create(manager, entity);
@@ -96,7 +98,7 @@ public class Mapping extends Controller {
 					System.out.println(entity.getDate());
 					System.out.println(entity.getTime());
 					System.out.println(entity.toString());
-				}else {
+				} else {
 
 					setValues(storedEntity);
 					entityDao.update(manager, storedEntity);
@@ -142,16 +144,16 @@ public class Mapping extends Controller {
 
 				final Object[] record = (Object[]) manager.createNativeQuery("SELECT * FROM " + Entity.NAME + " WHERE " + Entity_.USER__ID + "=?").setParameter(1, user.getId()).getSingleResult();
 				System.out.println("---");
-				System.out.println((BigInteger) record[0]);
-				System.out.println((Date) record[1]);// LocalDate
-				System.out.println((Timestamp) record[2]);// LocalDateTime
-				System.out.println((String) record[3]);// DayOfWeek
-				System.out.println((String) record[4]);// Locale
-				System.out.println((Integer) record[5]);// Month
-				System.out.println((Time) record[6]);// LocalTime
-				System.out.println((Integer) record[7]);// Year
-				System.out.println((Timestamp) record[8]);// YearMonth
-				System.out.println((String) record[9]);// ZoneId
+				System.out.println(record[0] + " " + (record[0] instanceof BigInteger ? "BigInteger" : "X"));
+				System.out.println(record[1] + " " + (record[1] instanceof Date ? "Date" : "X"));// LocalDate
+				System.out.println(record[2] + " " + (record[2] instanceof Timestamp ? "Timestamp" : "X"));// LocalDateTime
+				System.out.println(record[3] + " " + (record[3] instanceof String ? "String" : "X"));// DayOfWeek
+				System.out.println(record[4] + " " + (record[4] instanceof String ? "String" : "X"));// Locale
+				System.out.println(record[5] + " " + (record[5] instanceof Integer ? "Integer" : "X"));// Month
+				System.out.println(record[6] + " " + (record[6] instanceof Time ? "Time" : "X"));// LocalTime
+				System.out.println(record[7] + " " + (record[7] instanceof Integer ? "Integer" : "X"));// Year
+				System.out.println(record[8] + " " + (record[8] instanceof Timestamp ? "Timestamp" : "X"));// YearMonth
+				System.out.println(record[9] + " " + (record[9] instanceof String ? "String" : "X"));// ZoneId
 			} catch (final Exception e) {
 
 				throw e;

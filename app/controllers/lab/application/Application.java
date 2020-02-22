@@ -1,12 +1,14 @@
 package controllers.lab.application;
 
 import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +19,17 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import javax.inject.Inject;
+import javax.money.CurrencyUnit;
+import javax.money.Monetary;
+import javax.money.MonetaryAmount;
+import javax.money.format.AmountFormatQueryBuilder;
+import javax.money.format.MonetaryAmountFormat;
+import javax.money.format.MonetaryFormats;
 import javax.persistence.TypedQuery;
 
+import org.javamoney.moneta.Money;
+import org.javamoney.moneta.format.CurrencyStyle;
+import org.javamoney.moneta.function.MonetaryFunctions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -92,6 +103,9 @@ public class Application extends Controller {
 		case "jpql":
 
 			return jpql(request, lang, messages);
+		case "money":
+
+			return money(request, lang, messages);
 		case "serialtask":
 
 			return serialTask(request, lang, messages);
@@ -181,6 +195,35 @@ public class Application extends Controller {
 
 			return ok(query.getResultList().toString());
 		});
+	}
+
+	private static Result money(final Request request, final Lang lang, final Messages messages) {
+
+		final CurrencyUnit USD = Monetary.getCurrency("USD");
+		final CurrencyUnit JPY = Monetary.getCurrency("JPY");
+
+		final MonetaryAmountFormat format = MonetaryFormats.getAmountFormat(//
+				AmountFormatQueryBuilder.of(messages.lang().locale())//
+						.set(CurrencyStyle.SYMBOL)//
+						.set("pattern", "¤ 0.00")//
+						.build());
+
+		final List<MonetaryAmount> monies = new ArrayList<>();
+		monies.add(Money.of(new BigDecimal("10000.00"), USD));
+		monies.add(Money.of(new BigDecimal("12345.60"), JPY));
+		monies.add(Money.of(new BigDecimal("65432.10"), JPY));
+
+		final MonetaryAmount average = monies.stream()//
+				.collect(MonetaryFunctions.summarizingMonetary(JPY)).getAverage();
+		System.out.println(average);
+		System.out.println(format.format(average));
+
+		final MonetaryAmount sum = monies.stream()//
+				.filter(MonetaryFunctions.filterByExcludingCurrency(USD)).reduce(MonetaryFunctions.sum()).get();
+		System.out.println(sum);
+		System.out.println(format.format(sum));
+
+		return TODO(request);
 	}
 
 	private static Result serialTask(final Request request, final Lang lang, final Messages messages) {

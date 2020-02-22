@@ -6,7 +6,6 @@ import java.util.Locale;
 
 import javax.annotation.Nonnull;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,8 +14,6 @@ import javax.persistence.UniqueConstraint;
 
 import common.data.validation.Constraints.UserId;
 import common.utils.Strings;
-import models.base.LocaleConverter;
-import models.base.ZoneIdConverter;
 import models.user.ExpireHandler;
 import models.user.PasswordHandler;
 import play.data.validation.Constraints;

@@ -14,7 +14,6 @@ import common.utils.Requests;
 import models.base.EntityDao;
 import models.inquiry.Inquiry.Type;
 import models.inquiry.InquiryFormContent;
-import play.api.PlayException;
 import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;

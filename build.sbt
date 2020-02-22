@@ -46,8 +46,10 @@ libraryDependencies ++= Seq(
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",
+  "javax.money" % "money-api" % "1.0.3",								// Apache 1.0.3
+  "org.javamoney" % "moneta" % "1.3",									// Apache 1.3
   "org.apache.commons" % "commons-text" % "1.8",						// Apache 1.8
-  "org.postgresql" % "postgresql" % "42.2.8",							// BSD 2-clause 42.2.8
+  "org.postgresql" % "postgresql" % "42.2.10",							// BSD 2-clause 42.2.10
   "org.mockito" % "mockito-core" % "3.2.0",								// MIT 3.2.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",

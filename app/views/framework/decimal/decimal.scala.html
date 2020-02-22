@@ -1,0 +1,81 @@
+@import scala.collection.immutable._
+@import scala.collection.immutable.Map
+@import scala.collection.immutable.Seq
+@import scala.collection.immutable.List
+@import scala.jdk.CollectionConverters._
+
+@import play.i18n.Lang
+@import play.i18n.Messages
+
+@import java.time._
+@import java.time.format._
+@import models.components._
+@import views.html._
+@import views.html.components
+@import views.html.helper._
+@import views.html.development
+
+@import common.system._
+@import models.framework.decimal._
+
+@(alertInfo: java.util.Map[String, String], form: play.data.Form[models.framework.decimal.DecimalFormContent], map: java.util.Map[String, Object])(implicit request:Http.Request, lang: Lang, messages: Messages)
+
+@frame(){
+
+	@head("lab"){
+
+		@libraries.standard.head()
+		@libraries.pickadate.head()
+	}
+
+	@body("framework","decimal"){
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-3")){
+
+			@breadcrumb(Map("id"->"", "name"->messages(MessageKeys.DECIMAL), "icon"->"fas fa-pencil-alt", "selected"->"true"))
+		}
+
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-0")){
+
+			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrElse("dateTimeWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("dateTimeWarning").toString))
+
+			@helper.form(helper.CSRF(controllers.framework.decimal.routes.Decimal.update()), Symbol("name")->"updateForm", Symbol("id")->"updateForm") {
+				<div class="row mb-3">
+					<div class="col-12">
+						@if(form.hasGlobalErrors) {
+							<p class="text-danger">@form.globalError.get.message</p>
+						}
+						<div class="row form-group">
+							<label for="@DecimalFormContent.DECIMAL" class="col-12 col-sm-12 col-form-label">@messages(MessageKeys.DECIMAL)</label>
+							<div class="col-12 col-sm-12">
+								<div class="input-group">
+									<input id='@DecimalFormContent.DECIMAL' type='text' name="@DecimalFormContent.DECIMAL" class="form-control" value="@form(DecimalFormContent.DECIMAL).value.orElse("")"/>
+									<div class="input-group-append">
+										<span class="input-group-text">
+											<i class="fas fa-money-bill"></i>
+										</span>
+									</div>
+								</div>
+								@for(error <- form(DecimalFormContent.DECIMAL).errors) {
+									<div class="text-danger">@messages(error.message)</div>
+								}
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						@components.button(Map("id"->"updateButton", "action"->"submit", "type"->"primary", "icon"->"fas fa-sync", "text"->messages(MessageKeys.UPDATE), "class"->"float-right"))
+					</div>
+				</div>
+			}
+
+			<div class="row">
+				<div class="col-12">
+
+					@development.proptable("", map)
+				</div>
+			</div>
+		}
+
+		@libraries.standard.last()
+	}
+}

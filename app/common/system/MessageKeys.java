@@ -167,6 +167,8 @@ public class MessageKeys {
 
   public static final String CREATOR = "creator";
 
+  public static final String CURRENCY = "currency";
+
   public static final String CUT = "cut";
 
   public static final String DANGER = "danger";
@@ -180,6 +182,8 @@ public class MessageKeys {
   public static final String DAY = "day";
 
   public static final String DAYLIGHT__SAVING__TIME = "daylight_saving_time";
+
+  public static final String DECIMAL = "decimal";
 
   public static final String DEFAULT = "default";
 
@@ -409,6 +413,8 @@ public class MessageKeys {
 
   public static final String INSERT__ROW__BELOW = "insert_row_below";
 
+  public static final String INTEGER = "integer";
+
   public static final String INTRO = "intro";
 
   public static final String JAVA = "java";
@@ -530,6 +536,8 @@ public class MessageKeys {
   public static final String MIN = "min";
 
   public static final String MIN__CASE = "min_case";
+
+  public static final String MONEY = "money";
 
   public static final String MONTH = "month";
 

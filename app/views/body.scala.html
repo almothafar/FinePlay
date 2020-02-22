@@ -102,6 +102,7 @@
 					Map("name"->messages(MessageKeys.WELCOME), "icon"->"ii ii-play", "link"->controllers.framework.welcome.routes.Welcome.index().toString(), "selected"->equalWork("framework","welcome")),
 					Map("name"->(messages(MessageKeys.DEFAULT)+" "+messages(MessageKeys.PAGE)), "icon"->"ef ef-note", "link"->controllers.framework.defaultpage.routes.Defaultpage.index().toString(), "selected"->equalWork("framework","defaultpage")),
 					Map("name"->messages(MessageKeys.APPLICATION), "icon"->"ef ef-musical_note if-monochrome if-inverse", "link"->controllers.framework.application.routes.Application.index("config").toString(), "selected"->equalWork("framework","application")),
+					Map("name"->messages(MessageKeys.DECIMAL), "icon"->"fas fa-money-bill", "link"->controllers.framework.decimal.routes.Decimal.index().toString(), "selected"->equalWork("framework","decimal")),
 					Map("name"->messages(MessageKeys.DATETIME), "icon"->"ef ef-calendar if-monochrome", "link"->controllers.framework.datetime.routes.DateTime.index().toString(), "selected"->equalWork("framework","datetime")),
 					Map("name"->(messages(MessageKeys.DATETIME)+"("+messages(MessageKeys.STRICT)+")"), "icon"->"ef ef-calendar if-monochrome", "link"->controllers.framework.strictdatetime.routes.DateTime.index().toString(), "selected"->equalWork("framework","strictdatetime"), "show"->"false")
 				)),

@@ -106,7 +106,7 @@ public class DateTimes {
 	public static List<ZonedDateTime> toClientZonedDateTimes(//
 			@Nonnull final Request request, @Nonnull final LocalDate clientDate, //
 			@Nonnull final LocalTime clientMinTime, @Nonnull final LocalTime clientMaxTime, //
-			final int interval) {
+			final int minStep) {
 
 		Objects.requireNonNull(request);
 		Objects.requireNonNull(clientDate);
@@ -117,7 +117,7 @@ public class DateTimes {
 		final LocalDateTime clientStartDateTime = toClientStartDateTime(clientDate);
 		final ZonedDateTime serverStartZonedDateTime = toServerStartZonedDateTime(clientZoneId, clientStartDateTime);
 
-		final List<ZonedDateTime> clientZonedDateTimes = toClientZonedDateTimes(serverStartZonedDateTime, clientZoneId, interval);
+		final List<ZonedDateTime> clientZonedDateTimes = toClientZonedDateTimes(serverStartZonedDateTime, clientZoneId, minStep);
 		final List<ZonedDateTime> filterdClientZonedDateTimes = filterClientZonedDateTimes(clientZonedDateTimes, clientMinTime, clientMaxTime);
 		return filterdClientZonedDateTimes;
 	}
@@ -137,12 +137,12 @@ public class DateTimes {
 		return ZonedDateTime.of(clientStartDateTime, clientZoneId).withZoneSameInstant(ZoneOffset.UTC);
 	}
 
-	private static List<ZonedDateTime> toClientZonedDateTimes(final ZonedDateTime serverStartZonedDateTime, final ZoneId clientZoneId, final int interval) {
+	private static List<ZonedDateTime> toClientZonedDateTimes(final ZonedDateTime serverStartZonedDateTime, final ZoneId clientZoneId, final int minStep) {
 
 		Objects.nonNull(serverStartZonedDateTime);
 		Objects.nonNull(clientZoneId);
 
-		final List<ZonedDateTime> serverZonedDateTimes = toServerZonedDateTimes(serverStartZonedDateTime, interval);
+		final List<ZonedDateTime> serverZonedDateTimes = toServerZonedDateTimes(serverStartZonedDateTime, minStep);
 		final List<ZonedDateTime> clientZonedDateTimes = serverZonedDateTimes.stream().map(serverZonedDateTime -> serverZonedDateTime.withZoneSameInstant(clientZoneId)).collect(Collectors.toList());
 
 		final ZonedDateTime clientStartZonedDate = clientZonedDateTimes.get(0);
@@ -150,16 +150,16 @@ public class DateTimes {
 		return clientZonedDateTimes.stream().filter(clientZonedDateTime -> clientDate.equals(clientZonedDateTime.toLocalDate())).collect(Collectors.toList());
 	}
 
-	private static List<ZonedDateTime> toServerZonedDateTimes(final ZonedDateTime serverStartZonedDateTime, final int interval) {
+	private static List<ZonedDateTime> toServerZonedDateTimes(final ZonedDateTime serverStartZonedDateTime, final int minStep) {
 
 		Objects.nonNull(serverStartZonedDateTime);
 
-		return toMinutes(interval).stream().map(minute -> serverStartZonedDateTime.plusMinutes(minute)).collect(Collectors.toList());
+		return toMinutes(minStep).stream().map(minute -> serverStartZonedDateTime.plusMinutes(minute)).collect(Collectors.toList());
 	}
 
-	private static List<Integer> toMinutes(final int interval) {
+	private static List<Integer> toMinutes(final int minStep) {
 
-		return IntStream.iterate(0, i -> i + interval).limit(Duration.ofDays(1).toMinutes() / interval).boxed().collect(Collectors.toList());
+		return IntStream.iterate(0, i -> i + minStep).limit(Duration.ofDays(1).toMinutes() / minStep).boxed().collect(Collectors.toList());
 	}
 
 	private static List<ZonedDateTime> filterClientZonedDateTimes(final List<ZonedDateTime> clientZonedDateTimes, final LocalTime clientMinTime, final LocalTime clientMaxTime) {

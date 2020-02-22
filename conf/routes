@@ -137,6 +137,8 @@ GET		/framework/application/playexception		controllers.framework.application.App
 GET		/framework/application/runtimeexception		controllers.framework.application.Application.runtimeException(request: Request)
 POST	/framework/application/synccache			controllers.framework.application.Application.synccache(request: Request)
 POST	/framework/application/asynccache			controllers.framework.application.Application.asynccache(request: Request)
+GET		/framework/decimal							controllers.framework.decimal.Decimal.index(request: Request)
+POST	/framework/decimal/update					controllers.framework.decimal.Decimal.update(request: Request)
 GET		/framework/datetime							controllers.framework.datetime.DateTime.index(request: Request)
 POST	/framework/datetime/update					controllers.framework.datetime.DateTime.update(request: Request)
 GET		/framework/strictdatetime					controllers.framework.strictdatetime.DateTime.index(request: Request)

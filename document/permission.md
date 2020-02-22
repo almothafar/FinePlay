@@ -64,6 +64,9 @@
 |controllers         |controllers.framework.datetime.DateTime                               |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |update                        |      |      |      |
+|controllers         |controllers.framework.decimal.Decimal                                 |                              |     O|     O|     O|
+|                    |                                                                      |index                         |      |      |      |
+|                    |                                                                      |update                        |      |      |      |
 |controllers         |controllers.framework.defaultpage.Defaultpage                         |                              |     O|     O|     O|
 |                    |                                                                      |index                         |      |      |      |
 |                    |                                                                      |page                          |      |      |      |

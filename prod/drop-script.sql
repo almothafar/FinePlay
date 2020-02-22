@@ -12,6 +12,8 @@ drop table if exists COMPANIES cascade;
 drop table if exists COMPANIES_COMPANY_NAMES cascade;
 drop table if exists COMPANY_NAMES cascade;
 drop table if exists DATETIMES cascade;
+drop table if exists DECIMALS cascade;
+drop table if exists ENTITIES cascade;
 drop table if exists INQUIRIES cascade;
 drop table if exists ORGANIZATION_UNIT_NAMES cascade;
 drop table if exists ORGANIZATION_UNITS cascade;

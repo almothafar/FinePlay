@@ -17,8 +17,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.security.auth.login.AccountException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;

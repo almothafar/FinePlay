@@ -9,6 +9,16 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/inject/extensions/guice-assistedinject/4.2.2/guice-assistedinject-4.2.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-core/1.3/moneta-core-1.3-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-core/1.3/moneta-core-1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-core/1.3/moneta-core-1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/javax/money/money-api/1.0.3/money-api-1.0.3-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/javax/money/money-api/1.0.3/money-api-1.0.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/javax/money/money-api/1.0.3/money-api-1.0.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/squareup/javapoet/1.11.1/javapoet-1.11.1-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/squareup/javapoet/1.11.1/javapoet-1.11.1.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/squareup/javapoet/1.11.1/javapoet-1.11.1-javadoc.jar!/"/>
@@ -76,11 +86,6 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/jquery-ui/1.12.1/jquery-ui-1.12.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/postgresql/postgresql/42.2.8/postgresql-42.2.8-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/postgresql/postgresql/42.2.8/postgresql-42.2.8.jar">
-    <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/postgresql/postgresql/42.2.8/postgresql-42.2.8-javadoc.jar!/"/>
-    </attributes>
-  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/crypto-random-string/3.1.0/crypto-random-string-3.1.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/crypto-random-string/3.1.0/crypto-random-string-3.1.0.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/crypto-random-string/3.1.0/crypto-random-string-3.1.0-javadoc.jar!/"/>
@@ -122,9 +127,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/shaven/0.8.1/shaven-0.8.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.51.0/codemirror-5.51.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.51.0/codemirror-5.51.0.jar">
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.52.0/codemirror-5.52.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.52.0/codemirror-5.52.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.51.0/codemirror-5.51.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/codemirror/5.52.0/codemirror-5.52.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/datatables/1.10.19/datatables-1.10.19-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/datatables/1.10.19/datatables-1.10.19.jar">
@@ -177,9 +182,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/jai-imageio/jai-imageio-core/1.4.0/jai-imageio-core-1.4.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/clean-css/4.2.1/clean-css-4.2.1-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/clean-css/4.2.1/clean-css-4.2.1.jar">
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/clean-css/4.2.3/clean-css-4.2.3-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/clean-css/4.2.3/clean-css-4.2.3.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/clean-css/4.2.1/clean-css-4.2.1-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/clean-css/4.2.3/clean-css-4.2.3-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/hammerjs/2.0.8/hammerjs-2.0.8-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/hammerjs/2.0.8/hammerjs-2.0.8.jar">
@@ -367,6 +372,11 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-mailer-guice_2.13/7.0.1/play-mailer-guice_2.13-7.0.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert-imf/1.3/moneta-convert-imf-1.3-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert-imf/1.3/moneta-convert-imf-1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert-imf/1.3/moneta-convert-imf-1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3-javadoc.jar!/"/>
@@ -400,6 +410,11 @@
   <classpathentry kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/openlayers/5.2.0/openlayers-5.2.0.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/openlayers/5.2.0/openlayers-5.2.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-http-core_2.13/10.1.11/akka-http-core_2.13-10.1.11-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-http-core_2.13/10.1.11/akka-http-core_2.13-10.1.11.jar">
@@ -591,6 +606,11 @@
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/xmlgraphics/batik-script/1.12/batik-script-1.12-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/xmlgraphics/batik-script/1.12/batik-script-1.12.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/xmlgraphics/batik-script/1.12/batik-script-1.12-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/postgresql/postgresql/42.2.10/postgresql-42.2.10-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/postgresql/postgresql/42.2.10/postgresql-42.2.10.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/postgresql/postgresql/42.2.10/postgresql-42.2.10-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/diff2html/2.9.0/diff2html-2.9.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/diff2html/2.9.0/diff2html-2.9.0.jar">
@@ -1221,6 +1241,11 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/ionicons/4.6.3/ionicons-4.6.3-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert/1.3/moneta-convert-1.3-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert/1.3/moneta-convert-1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert/1.3/moneta-convert-1.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.2.Final/hibernate-jpa-2.1-api-1.0.2.Final-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.2.Final/hibernate-jpa-2.1-api-1.0.2.Final.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.2.Final/hibernate-jpa-2.1-api-1.0.2.Final-javadoc.jar!/"/>
@@ -1292,9 +1317,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-remote-driver/3.141.59/selenium-remote-driver-3.141.59-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/moment-mini/2.22.1/moment-mini-2.22.1-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/moment-mini/2.22.1/moment-mini-2.22.1.jar">
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/moment-mini/2.24.0/moment-mini-2.24.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/moment-mini/2.24.0/moment-mini-2.24.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/moment-mini/2.22.1/moment-mini-2.22.1-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/moment-mini/2.24.0/moment-mini-2.24.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/pickadate/3.6.4/pickadate-3.6.4-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/pickadate/3.6.4/pickadate-3.6.4.jar">
@@ -1338,9 +1363,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/d3-brush/1.1.5/d3-brush-1.1.5-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/uglify-js/3.7.5/uglify-js-3.7.5-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/uglify-js/3.7.5/uglify-js-3.7.5.jar">
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/uglify-js/3.8.0/uglify-js-3.8.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/uglify-js/3.8.0/uglify-js-3.8.0.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/uglify-js/3.7.5/uglify-js-3.7.5-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/uglify-js/3.8.0/uglify-js-3.8.0-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-streams_2.13/2.8.1/play-streams_2.13-2.8.1-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-streams_2.13/2.8.1/play-streams_2.13-2.8.1.jar">
@@ -1744,6 +1769,11 @@
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/try-to-catch/1.1.1/try-to-catch-1.1.1-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/try-to-catch/1.1.1/try-to-catch-1.1.1.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/try-to-catch/1.1.1/try-to-catch-1.1.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert-ecb/1.3/moneta-convert-ecb-1.3-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert-ecb/1.3/moneta-convert-ecb-1.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/javamoney/moneta/moneta-convert-ecb/1.3/moneta-convert-ecb-1.3-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.12/batik-svg-dom-1.12-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.12/batik-svg-dom-1.12.jar">
