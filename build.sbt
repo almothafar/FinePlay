@@ -41,8 +41,8 @@ libraryDependencies ++= Seq(
   "org.mindrot" % "jbcrypt" % "0.4",									// ISC/BSD 0.4
   "net.jodah" % "failsafe" % "2.3.1",									// Apache 2.3.1
   "net.logstash.logback" % "logstash-logback-encoder" % "6.2",			// Apache 6.2
-  "org.hibernate" % "hibernate-core" % "5.4.2.Final",					// LGPL 5.4.2
-  "org.hibernate" % "hibernate-jpamodelgen" % "5.4.2.Final",			//
+  "org.hibernate" % "hibernate-core" % "5.4.12.Final",					// LGPL 5.4.12
+  "org.hibernate" % "hibernate-jpamodelgen" % "5.4.12.Final",			//
   "org.glassfish" % "javax.el" % "3.0.1-b09",
   "javax.json" % "javax.json-api" % "1.1.4",
   "org.glassfish" % "javax.json" % "1.1.4",

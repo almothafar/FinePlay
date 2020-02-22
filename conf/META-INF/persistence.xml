@@ -47,7 +47,7 @@
 
 			<property name="javax.persistence.sql-load-script-source" value="file:./dev/load.sql"/>
 
-			<property name="hibernate.ejb.interceptor" value="common.core.DatabaseInterceptor"/>
+			<property name="hibernate.session_factory.interceptor" value="common.core.DatabaseInterceptor"/>
 		</properties>
 	</persistence-unit>
 
@@ -89,7 +89,7 @@
 			<property name="javax.persistence.schema-generation.scripts.create-target" value="./prod/create.sql"/>
 			<property name="javax.persistence.schema-generation.scripts.drop-target" value="./prod/drop.sql"/>
 
-			<property name="hibernate.ejb.interceptor" value="common.core.DatabaseInterceptor"/>
+			<property name="hibernate.session_factory.interceptor" value="common.core.DatabaseInterceptor"/>
 		</properties>
 	</persistence-unit>
 

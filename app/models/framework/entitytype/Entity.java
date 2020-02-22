@@ -34,6 +34,7 @@ public class Entity {
 	private ZoneId zoneId;
 
 	private Year year;
+	@Column(columnDefinition = "date")
 	private YearMonth yearMonth;
 	private Month month;
 	@Enumerated(EnumType.STRING)

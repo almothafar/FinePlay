@@ -152,7 +152,7 @@ public class Mapping extends Controller {
 				System.out.println(record[5] + " " + (record[5] instanceof Integer ? "Integer" : "X"));// Month
 				System.out.println(record[6] + " " + (record[6] instanceof Time ? "Time" : "X"));// LocalTime
 				System.out.println(record[7] + " " + (record[7] instanceof Integer ? "Integer" : "X"));// Year
-				System.out.println(record[8] + " " + (record[8] instanceof Timestamp ? "Timestamp" : "X"));// YearMonth
+				System.out.println(record[8] + " " + (record[8] instanceof Date ? "Date" : "X"));// YearMonth
 				System.out.println(record[9] + " " + (record[9] instanceof String ? "String" : "X"));// ZoneId
 			} catch (final Exception e) {
 

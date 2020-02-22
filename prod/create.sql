@@ -5,7 +5,7 @@ create table COMPANIES_COMPANY_NAMES (Company_id int8 not null, names_company_Id
 create table COMPANY_NAMES (company_Id int8 not null, locale varchar(255) not null, name varchar(255) not null, primary key (company_Id, locale))
 create table DATETIMES (user_Id int8 not null, date date, dateTime timestamp, time time, primary key (user_Id))
 create table DECIMALS (user_Id int8 not null, decimal numeric(100, 2), primary key (user_Id))
-create table ENTITIES (user_Id int8 not null, date date, dateTime timestamp, dayOfWeek varchar(255), locale varchar(255), month int4, time time, year int4, yearMonth timestamp, zoneId varchar(255), primary key (user_Id))
+create table ENTITIES (user_Id int8 not null, date date, dateTime timestamp, dayOfWeek varchar(255), locale varchar(255), month int4, time time, year int4, yearMonth date, zoneId varchar(255), primary key (user_Id))
 create table INQUIRIES (id int8 not null, content varchar(1000) not null, dateTime timestamp not null, locale varchar(255) not null, name varchar(64), title varchar(64) not null, type varchar(255) not null, userId varchar(256) not null, primary key (id))
 create table ORGANIZATION_UNIT_NAMES (locale varchar(255) not null, organizationUnit_Id int8 not null, name varchar(255) not null, primary key (locale, organizationUnit_Id))
 create table ORGANIZATION_UNITS (id int8 not null, sortOrder int8, updateDateTime timestamp not null, version timestamp, organization_id int8 not null, PARENT_ID int8, primary key (id))
