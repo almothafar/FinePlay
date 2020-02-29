@@ -37,7 +37,7 @@
 
 		@components.container(Map("id"->"", "fluid"->"true", "class"->"mt-0")){
 
-			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrElse("dateTimeWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("dateTimeWarning").toString))
+			@components.adjust.alert(Map("id"->"", "icon"->"fas fa-exclamation-triangle", "text"->alertInfo.getOrElse("decimalWarning", "-"), "type"->"warning", "closable"->"true", "display"->alertInfo.containsKey("decimalWarning").toString))
 
 			@helper.form(helper.CSRF(controllers.framework.decimal.routes.Decimal.update()), Symbol("name")->"updateForm", Symbol("id")->"updateForm") {
 				<div class="row mb-3">

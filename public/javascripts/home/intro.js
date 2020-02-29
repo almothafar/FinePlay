@@ -87,6 +87,11 @@ $(document).ready(function () {
 			tour.start();
 		}
 	});
+
+	$('#timezoneInfo, #languageInfo').on('close.bs.alert', function () {
+
+		$(this).parent().remove();
+	});
 });
 
 enablePrint();

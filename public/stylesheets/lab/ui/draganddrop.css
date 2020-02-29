@@ -1,18 +1,18 @@
 @charset "utf-8";
 
-.section{
-
-	width:100%;
+.section {
+	width: 100%;
+	table-layout: fixed;
 }
-.seat{
 
-	width:140px;
-	height:48px;
-}
-.employee{
-
+.seat {
+	height: 48px;
 	text-align: center;
-	z-index:1000;
+}
+
+.employee {
+	z-index: 1000;
+	display: inline;
 }
 
 #Usagi_Tsukino{color:#fff;background-color:#efd03f;}
