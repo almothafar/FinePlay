@@ -245,9 +245,9 @@ public class Upload extends Controller {
 				try {
 
 					userService.create(manager, messages, uploadUser);
-				} catch (final EntityExistsException e) {
+				} catch (final AccountException e) {
 
-					throw e;
+					throw new RuntimeException(e);
 				}
 			}
 		}

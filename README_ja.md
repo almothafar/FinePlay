@@ -16,7 +16,7 @@ Play(Java) 2.8 & Bootstrap 4.4
 
 	macOS Catalina バージョン 10.15.3（19D76）
 	時間帯 UTC
-	openjdk バージョン "11.0.6" 2020-01-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.5+10)
+	openjdk バージョン "11.0.6" 2020-01-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.6+10)
 	Safari バージョン 13.0.5 (15608.5.11)
 
 ##### OpenJDK #####

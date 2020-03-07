@@ -265,6 +265,12 @@ public class RegistUser extends Controller {
 				throw new RuntimeException(e);
 			}
 
+			if (userService.isExist(manager, messages, registUser.getUserId())) {
+
+				// conceal a fail reason
+				throw new PlayException("", "");
+			}
+
 			final models.user.User user = new models.user.User();
 			user.setUserId(registUser.getUserId());
 			user.setHashedPassword(registUser.getHashedPassword());
@@ -280,7 +286,7 @@ public class RegistUser extends Controller {
 				userService.create(manager, messages, user);
 			} catch (final AccountException e) {
 
-				throw new PlayException("", "", e);
+				throw new RuntimeException(e);
 			}
 
 			registUserDao.delete(manager, registUser);
