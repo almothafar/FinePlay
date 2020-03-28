@@ -568,6 +568,62 @@
 						)
 					</div>
 
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "icon"->"fas fa-spinner fa-pulse", "text"->"List of users"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
+					<div class="mb-3">
+
+						@components.table(Map("id"->"", "icon"->"fas fa-spinner fa-pulse", "align"->"right", "text"->"List of users"),
+							Map("id"->""),Tuple2(Map("id"->""),List(
+								Map("id"->"", "head"->"true", "text"->"#"),
+								Map("id"->"", "head"->"true", "text"->"First Name"),
+								Map("id"->"", "head"->"true", "text"->"Last Name"),
+								Map("id"->"", "head"->"true", "text"->"Username"))),
+							Map("id"->""),List(
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"1", "scope"->"row"),
+									Map("id"->"", "text"->"Mark"),
+									Map("id"->"", "text"->"Otto"),
+									Map("id"->"", "text"->"@mdo"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"2", "scope"->"row"),
+									Map("id"->"", "text"->"Jacob"),
+									Map("id"->"", "text"->"Thornton"),
+									Map("id"->"", "text"->"@fat"))),
+								Tuple2(Map("id"->""),List(
+									Map("id"->"", "head"->"true", "text"->"3", "scope"->"row"),
+									Map("id"->"", "text"->"Larry"),
+									Map("id"->"", "text"->"the Bird"),
+									Map("id"->"", "text"->"@twitter")))),
+							Map("id"->""),Tuple2(Map("id"->""),List())
+						)
+					</div>
+
 					<div class="mb-3 table-responsive secret">
 
 						@table_color()

@@ -65,10 +65,10 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct" % "1.3.1.Final",						// Apache 1.3.1
   "org.mapstruct" % "mapstruct-processor" % "1.3.1.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
-  "net.lingala.zip4j" % "zip4j" % "2.2.7",								// Apache 2.2.7
+  "net.lingala.zip4j" % "zip4j" % "2.5.1",								// Apache 2.5.1
 //  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
   "org.webjars.npm" % "bootstrap" % "4.4.1",							// MIT 4.4.1
-  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.3.2",			// MIT 5.3.2
+  "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.4.0",			// MIT 5.4.0
   "org.webjars.bower" % "pickadate" % "3.6.4",							// MIT 3.6.4
   "org.webjars.npm" % "bootstrap-slider" % "10.6.2",					// MIT 10.6.2
   "org.webjars.bower" % "hammerjs" % "2.0.8",							// MIT 2.0.8
@@ -103,7 +103,7 @@ libraryDependencies ++= Seq(
   "org.webjars.npm" % "viz.js" % "2.1.2",								// MIT 2.1.2
   "org.webjars.bowergithub.hakimel" % "reveal.js" % "3.7.0",			// MIT 3.7.0
 //  "org.webjars.npm" % "paper-css" % "0.4.1",							// MIT 0.4.1
-  "org.webjars.bower" % "echarts" % "4.5.0",							// Apache 4.5.0
+  "org.webjars.bower" % "echarts" % "4.7.0",							// Apache 4.7.0
   "org.webjars.npm" % "lightweight-charts" % "1.0.2",					// Apache 1.0.2
   "org.webjars.npm" % "mermaid" % "8.4.0",								// MIT 8.4.0
   "org.webjars.bower" % "parsleyjs" % "2.8.1",							// MIT 2.8.1

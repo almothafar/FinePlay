@@ -11,7 +11,8 @@ $('#ex1').bootstrapSlider({
 $("#ex2").bootstrapSlider({});
 
 $("#ex4").bootstrapSlider({
-	reversed: true
+	reversed: true,
+	tooltip_position: $('html').hasClass('dir-ltr') ? 'right' : 'left'
 });
 
 $("#ex7").bootstrapSlider({});
@@ -29,7 +30,7 @@ $("#topTooltip").bootstrapSlider({
 });
 $("#rightTooltip").bootstrapSlider({
 	tooltip: 'always',
-	tooltip_position: 'right'
+	tooltip_position: $('html').hasClass('dir-ltr') ? 'right' : 'left'
 });
 $("#bottomTooltip").bootstrapSlider({
 	tooltip: 'always',
@@ -37,7 +38,7 @@ $("#bottomTooltip").bootstrapSlider({
 });
 $("#leftTooltip").bootstrapSlider({
 	tooltip: 'always',
-	tooltip_position: 'left'
+	tooltip_position: $('html').hasClass('dir-ltr') ? 'left' : 'right'
 });
 
 // Touch scroll off

@@ -14,10 +14,10 @@ Play(Java) 2.8 & Bootstrap 4.4
 
 ##### 環境 #####
 
-	macOS Catalina バージョン 10.15.3（19D76）
+	macOS Catalina バージョン 10.15.4（19E266）
 	時間帯 UTC
 	openjdk バージョン "11.0.6" 2020-01-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.6+10)
-	Safari バージョン 13.0.5 (15608.5.11)
+	Safari バージョン 13.1 (15609.1.20.111.8)
 
 ##### OpenJDK #####
 
@@ -103,8 +103,6 @@ URL を開く
 寄付
 -------
 + **ペイパル** - https://www.paypal.me/hiro20v/JPY
-+ **ビットコイン (BTC)** - 3GQpAVny8EHcGUqWfUJZTuXgNBupi2EKqZ
-+ **イーサリアム (ETH)** - 0x66f62f7f6a40bed6d9f01ea0c6257c7706b59661
 
 ライセンス
 -------

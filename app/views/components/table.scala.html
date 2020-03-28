@@ -15,6 +15,22 @@
 	tfootRowToColumns:Tuple2[ /*tr*/ scala.collection.immutable.Map[String, String], /*tds*/ Seq[scala.collection.immutable.Map[String, String]]]
 )
 
+@alignClass() = @{
+
+	val align = prop.getOrElse("align","");
+
+	if("left".equals(align)){
+
+		""
+	}else if("right".equals(align)){
+
+		"text-right"
+	}else{
+
+		""
+	}
+}
+
 @cellTag(prop:scala.collection.immutable.Map[String, String]) = @{
 
 	if(Boolean.valueOf(prop.getOrElse("head", "false"))){
@@ -27,6 +43,12 @@
 }
 
 <table id="@prop.getOrElse("id", "")" class="table table-@prop.getOrElse("type", "") @("table-striped".when(Boolean.valueOf(prop.getOrElse("striped", "false")))) @("table-bordered".when(Boolean.valueOf(prop.getOrElse("bordered", "false")))) @("table-hover".when(Boolean.valueOf(prop.getOrElse("hover", "false")))) table-@prop.getOrElse("size", "") @Attributes.classValue(prop)" @Html(Attributes.datas(prop))>
+	@if(Boolean.valueOf(!prop.getOrElse("icon", "").isEmpty() || !prop.getOrElse("text", "").isEmpty())){
+	<caption class="@alignClass()">
+		@components.icon(Map("type"->prop.getOrElse("iconType", ""), "icon"->prop.getOrElse("icon", "")))
+		@Html(prop.getOrElse("text",""))
+	</caption>
+	}
 	<thead id="@thead.getOrElse("id", "")" class="thead-@thead.getOrElse("type", "")">
 	@defining(theadRowToColumns._1) { row =>
 		<tr class="table-@row.getOrElse("type", "") @Attributes.classValue(row)">

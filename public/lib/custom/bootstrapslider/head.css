@@ -75,12 +75,16 @@
 
 /* Coped for Bootstrap 4 */
 
+.slider .tooltip {
+  border: 1px solid transparent;
+}
+
 .slider .tooltip.top {
-  margin-top: -44px;
+  margin-top: -2.8rem;
 }
 
 .slider .tooltip.bottom {
-  margin-top: -4px;
+  margin-top: -0.16rem;
 }
 
 .tooltip.in {
@@ -113,7 +117,7 @@
 }
 
 .tooltip.top .tooltip-arrow {
-  bottom: 0;
+  bottom: 0.12rem;
   left: 50%;
   margin-left: -0.4rem;
   border-width: 0.4rem 0.4rem 0;
@@ -121,7 +125,7 @@
 }
 
 .tooltip.right .tooltip-arrow {
-  left: 0;
+  left: 0.12rem;
   top: 50%;
   margin-top: -0.4rem;
   width: 0.4rem;
@@ -131,7 +135,7 @@
 }
 
 .tooltip.left .tooltip-arrow {
-  right: 0;
+  right: 0.12rem;
   top: 50%;
   margin-top: -0.4rem;
   width: 0.4rem;
@@ -141,7 +145,7 @@
 }
 
 .tooltip.bottom .tooltip-arrow {
-  top: 0;
+  top: 0.12rem;
   left: 50%;
   margin-left: -0.4rem;
   border-width: 0 0.4rem 0.4rem;
