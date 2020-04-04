@@ -9,8 +9,6 @@ import java.util.Objects;
 
 import javax.annotation.Nonnull;
 
-import org.jboss.weld.exceptions.IllegalStateException;
-
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;

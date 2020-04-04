@@ -4,10 +4,13 @@ import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -27,6 +30,7 @@ import javax.money.format.MonetaryAmountFormat;
 import javax.money.format.MonetaryFormats;
 import javax.persistence.TypedQuery;
 
+import org.apache.commons.lang3.Range;
 import org.javamoney.moneta.Money;
 import org.javamoney.moneta.format.CurrencyStyle;
 import org.javamoney.moneta.function.MonetaryFunctions;
@@ -106,6 +110,9 @@ public class Application extends Controller {
 		case "money":
 
 			return money(request, lang, messages);
+		case "range":
+
+			return range(request, lang, messages);
 		case "serialtask":
 
 			return serialTask(request, lang, messages);
@@ -222,6 +229,73 @@ public class Application extends Controller {
 				.filter(MonetaryFunctions.filterByExcludingCurrency(USD)).reduce(MonetaryFunctions.sum()).get();
 		System.out.println(sum);
 		System.out.println(format.format(sum));
+
+		return TODO(request);
+	}
+
+	private static Result range(final Request request, final Lang lang, final Messages messages) {
+
+		final Range<ChronoLocalDate> daysOf2020 = Range.between(LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.DECEMBER, 31));
+		System.out.println(daysOf2020.getMinimum());
+		System.out.println(daysOf2020.getMaximum());
+
+		System.out.println(daysOf2020.contains(LocalDate.of(2019, Month.DECEMBER, 31)));
+		System.out.println(daysOf2020.contains(LocalDate.of(2020, Month.JANUARY, 1)));
+		System.out.println(daysOf2020.contains(LocalDate.of(2020, Month.DECEMBER, 31)));
+		System.out.println(daysOf2020.contains(LocalDate.of(2021, Month.JANUARY, 1)));
+
+		System.out.println(daysOf2020.isStartedBy(LocalDate.of(2019, Month.DECEMBER, 31)));
+		System.out.println(daysOf2020.isStartedBy(LocalDate.of(2020, Month.JANUARY, 1)));
+		System.out.println(daysOf2020.isStartedBy(LocalDate.of(2020, Month.JANUARY, 2)));
+
+		System.out.println(daysOf2020.isEndedBy(LocalDate.of(2020, Month.DECEMBER, 30)));
+		System.out.println(daysOf2020.isEndedBy(LocalDate.of(2020, Month.DECEMBER, 31)));
+		System.out.println(daysOf2020.isEndedBy(LocalDate.of(2021, Month.JANUARY, 1)));
+
+		//
+
+		final Range<Month> months = Range.between(Month.MARCH, Month.OCTOBER);
+		System.out.println(months.getMinimum());
+		System.out.println(months.getMaximum());
+
+		System.out.println(months.contains(Month.FEBRUARY));
+		System.out.println(months.contains(Month.MARCH));
+		System.out.println(months.contains(Month.OCTOBER));
+		System.out.println(months.contains(Month.NOVEMBER));
+
+		System.out.println(months.isStartedBy(Month.FEBRUARY));
+		System.out.println(months.isStartedBy(Month.MARCH));
+		System.out.println(months.isStartedBy(Month.APRIL));
+
+		System.out.println(months.isEndedBy(Month.SEPTEMBER));
+		System.out.println(months.isEndedBy(Month.OCTOBER));
+		System.out.println(months.isEndedBy(Month.NOVEMBER));
+
+		//
+
+		final List<String> rainbow = List.of("Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet");
+
+		final Range<String> colors = Range.between("Orange", "Indigo", (o0,o1)->Integer.compare(rainbow.indexOf(o0), rainbow.indexOf(o1)));
+		System.out.println(colors.getMinimum());
+		System.out.println(colors.getMaximum());
+
+		System.out.println(colors.contains("Red"));
+		System.out.println(colors.contains("Orange"));
+		System.out.println(colors.contains("Yellow"));
+		System.out.println(colors.contains("Green"));
+		System.out.println(colors.contains("Blue"));
+		System.out.println(colors.contains("Indigo"));
+		System.out.println(colors.contains("Violet"));
+
+		System.out.println(colors.isStartedBy("Red"));
+		System.out.println(colors.isStartedBy("Orange"));
+		System.out.println(colors.isStartedBy("Yellow"));
+
+		System.out.println(colors.isEndedBy("Blue"));
+		System.out.println(colors.isEndedBy("Indigo"));
+		System.out.println(colors.isEndedBy("Violet"));
+
+		//
 
 		return TODO(request);
 	}

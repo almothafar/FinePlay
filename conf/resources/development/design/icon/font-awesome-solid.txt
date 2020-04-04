@@ -2,9 +2,7 @@ ad
 address-book
 address-card
 adjust
-adobe
 air-freshener
-airbnb
 align-center
 align-justify
 align-left
@@ -41,7 +39,6 @@ arrow-up
 arrows-alt
 arrows-alt-h
 arrows-alt-v
-artstation
 assistive-listening-systems
 asterisk
 at
@@ -70,7 +67,6 @@ battery-full
 battery-half
 battery-quarter
 battery-three-quarters
-battle-net
 bed
 beer
 bell
@@ -97,13 +93,13 @@ book-medical
 book-open
 book-reader
 bookmark
-bootstrap
 border-all
 border-none
 border-style
 bowling-ball
 box
 box-open
+box-tissue
 boxes
 braille
 brain
@@ -113,7 +109,6 @@ briefcase-medical
 broadcast-tower
 broom
 brush
-buffer
 bug
 building
 bullhorn
@@ -122,7 +117,6 @@ burn
 bus
 bus-alt
 business-time
-buy-n-large
 calculator
 calendar
 calendar-alt
@@ -188,7 +182,6 @@ chevron-left
 chevron-right
 chevron-up
 child
-chromecast
 church
 circle
 circle-notch
@@ -236,7 +229,6 @@ cookie
 cookie-bite
 copy
 copyright
-cotton-bureau
 couch
 credit-card
 crop
@@ -266,6 +258,7 @@ dice-three
 dice-two
 digital-tachograph
 directions
+disease
 divide
 dizzy
 dna
@@ -302,7 +295,6 @@ equals
 eraser
 ethernet
 euro-sign
-evernote
 exchange-alt
 exclamation
 exclamation-circle
@@ -318,6 +310,7 @@ eye-slash
 fan
 fast-backward
 fast-forward
+faucet
 fax
 feather
 feather-alt
@@ -354,7 +347,6 @@ fingerprint
 fire
 fire-alt
 fire-extinguisher
-firefox-browser
 first-aid
 fish
 fist-raised
@@ -383,7 +375,6 @@ genderless
 ghost
 gift
 gifts
-git-alt
 glass-cheers
 glass-martini
 glass-martini-alt
@@ -424,7 +415,9 @@ hammer
 hamsa
 hand-holding
 hand-holding-heart
+hand-holding-medical
 hand-holding-usd
+hand-holding-water
 hand-lizard
 hand-middle-finger
 hand-paper
@@ -436,10 +429,14 @@ hand-point-up
 hand-pointer
 hand-rock
 hand-scissors
+hand-sparkles
 hand-spock
 hands
 hands-helping
+hands-wash
 handshake
+handshake-alt-slash
+handshake-slash
 hanukiah
 hard-hat
 hashtag
@@ -447,6 +444,10 @@ hat-cowboy
 hat-cowboy-side
 hat-wizard
 hdd
+head-side-cough
+head-side-cough-slash
+head-side-mask
+head-side-virus
 heading
 headphones
 headphones-alt
@@ -467,6 +468,7 @@ horse-head
 hospital
 hospital-alt
 hospital-symbol
+hospital-user
 hot-tub
 hotdog
 hotel
@@ -475,6 +477,7 @@ hourglass-end
 hourglass-half
 hourglass-start
 house-damage
+house-user
 hryvnia
 i-cursor
 ice-cream
@@ -483,7 +486,6 @@ icons
 id-badge
 id-card
 id-card-alt
-ideal
 igloo
 image
 images
@@ -494,7 +496,6 @@ infinity
 info
 info-circle
 italic
-itch-io
 jedi
 joint
 journal-whills
@@ -510,6 +511,7 @@ landmark
 language
 laptop
 laptop-code
+laptop-house
 laptop-medical
 laugh
 laugh-beam
@@ -539,6 +541,8 @@ long-arrow-alt-right
 long-arrow-alt-up
 low-vision
 luggage-cart
+lungs
+lungs-virus
 magic
 magnet
 mail-bulk
@@ -557,7 +561,6 @@ mars-stroke
 mars-stroke-h
 mars-stroke-v
 mask
-mdb
 medal
 medkit
 meh
@@ -567,7 +570,6 @@ memory
 menorah
 mercury
 meteor
-microblog
 microchip
 microphone
 microphone-alt
@@ -605,7 +607,6 @@ object-group
 object-ungroup
 oil-can
 om
-orcid
 otter
 outdent
 pager
@@ -632,6 +633,7 @@ pen-nib
 pen-square
 pencil-alt
 pencil-ruler
+people-arrows
 people-carry
 pepper-hot
 percent
@@ -644,7 +646,6 @@ phone-square
 phone-square-alt
 phone-volume
 photo-video
-pied-piper-square
 piggy-bank
 pills
 pizza-slice
@@ -652,6 +653,7 @@ place-of-worship
 plane
 plane-arrival
 plane-departure
+plane-slash
 play
 play-circle
 plug
@@ -675,6 +677,8 @@ prescription-bottle-alt
 print
 procedures
 project-diagram
+pump-medical
+pump-soap
 puzzle-piece
 qrcode
 question
@@ -716,7 +720,6 @@ running
 rupee-sign
 sad-cry
 sad-tear
-salesforce
 satellite
 satellite-dish
 save
@@ -738,6 +741,7 @@ share-alt-square
 share-square
 shekel-sign
 shield-alt
+shield-virus
 ship
 shipping-fast
 shoe-prints
@@ -773,6 +777,7 @@ snowboarding
 snowflake
 snowman
 snowplow
+soap
 socks
 solar-panel
 sort
@@ -792,7 +797,6 @@ sort-numeric-up-alt
 sort-up
 spa
 space-shuttle
-speaker-deck
 spell-check
 spider
 spinner
@@ -801,7 +805,6 @@ spray-can
 square
 square-full
 square-root-alt
-stackpath
 stamp
 star
 star-and-crescent
@@ -816,8 +819,11 @@ sticky-note
 stop
 stop-circle
 stopwatch
+stopwatch-20
 store
 store-alt
+store-alt-slash
+store-slash
 stream
 street-view
 strikethrough
@@ -830,10 +836,8 @@ sun
 superscript
 surprise
 swatchbook
-swift
 swimmer
 swimming-pool
-symfony
 synagogue
 sync
 sync-alt
@@ -867,7 +871,6 @@ thermometer-full
 thermometer-half
 thermometer-quarter
 thermometer-three-quarters
-think-peaks
 thumbs-down
 thumbs-up
 thumbtack
@@ -881,6 +884,7 @@ toggle-off
 toggle-on
 toilet
 toilet-paper
+toilet-paper-slash
 toolbox
 tools
 tooth
@@ -908,13 +912,11 @@ truck-pickup
 tshirt
 tty
 tv
-umbraco
 umbrella
 umbrella-beach
 underline
 undo
 undo-alt
-unity
 universal-access
 university
 unlink
@@ -958,6 +960,9 @@ vials
 video
 video-slash
 vihara
+virus
+virus-slash
+viruses
 voicemail
 volleyball-ball
 volume-down
@@ -971,7 +976,6 @@ wallet
 warehouse
 water
 wave-square
-waze
 weight
 weight-hanging
 wheelchair
@@ -984,10 +988,8 @@ window-restore
 wine-bottle
 wine-glass
 wine-glass-alt
-wizards-of-the-coast
 won-sign
 wrench
 x-ray
-yammer
 yen-sign
 yin-yang

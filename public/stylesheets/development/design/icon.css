@@ -6,21 +6,11 @@
 	float: left;
 }
 
-.icon_list .icon_container:nth-child(1n)>.icon_body { color: #ff6666 }
-.icon_list .icon_container:nth-child(2n)>.icon_body { color: #ffcc66 }
-.icon_list .icon_container:nth-child(3n)>.icon_body { color: #66ff66 }
-.icon_list .icon_container:nth-child(4n)>.icon_body { color: #66ccff }
-.icon_list .icon_container:nth-child(5n)>.icon_body { color: #6666ff }
-.icon_list .icon_container:nth-child(6n)>.icon_body { color: #cc66ff }
-.icon_list .icon_container:nth-child(7n)>.icon_body { color: #ff66ff }
+.icon_list .icon_container:nth-child(even)>.icon_body { color: #4fc3f7 }
+.icon_list .icon_container:nth-child(odd)>.icon_body { color: #039be5 }
 
-.icon_result_list .icon_container:nth-child(1n)>.icon_body { color: #ff2222 }
-.icon_result_list .icon_container:nth-child(2n)>.icon_body { color: #ff8822 }
-.icon_result_list .icon_container:nth-child(3n)>.icon_body { color: #22ff22 }
-.icon_result_list .icon_container:nth-child(4n)>.icon_body { color: #2288ff }
-.icon_result_list .icon_container:nth-child(5n)>.icon_body { color: #2222ff }
-.icon_result_list .icon_container:nth-child(6n)>.icon_body { color: #8822ff }
-.icon_result_list .icon_container:nth-child(7n)>.icon_body { color: #ff22ff }
+.icon_result_list .icon_container:nth-child(even)>.icon_body { color: #ffb74d }
+.icon_result_list .icon_container:nth-child(odd)>.icon_body { color: #fb8c00 }
 
 .icon_container>.icon_caption{
 	font-size: 0.7rem;

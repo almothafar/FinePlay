@@ -1,13 +1,10 @@
 package common.tools;
 
-import java.awt.Font;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,17 +14,17 @@ class IconNameExtractor {
 
 	public static void main(String[] args) throws Exception {
 
-		final List<String> fontAwesomeSolidIconNames = getFontAwesomeIconNames("fas");
+		final List<String> fontAwesomeSolidIconNames = getFontAwesomeIconNames("solid");
 		final Path fontAwesomeSolid = Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-solid.txt");
 		Files.write(fontAwesomeSolid, fontAwesomeSolidIconNames, StandardCharsets.UTF_8);
 		System.out.println("Created :" + fontAwesomeSolid);
 
-		final List<String> fontAwesomeRegularIconNames = getFontAwesomeIconNames("far");
+		final List<String> fontAwesomeRegularIconNames = getFontAwesomeIconNames("regular");
 		final Path fontAwesomeRegular = Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-regular.txt");
 		Files.write(fontAwesomeRegular, fontAwesomeRegularIconNames, StandardCharsets.UTF_8);
 		System.out.println("Created :" + fontAwesomeRegular);
 
-		final List<String> fontAwesomeBrandsRegularIconNames = getFontAwesomeIconNames("fab");
+		final List<String> fontAwesomeBrandsRegularIconNames = getFontAwesomeIconNames("brands");
 		final Path fontAwesomeBrandsRegular = Paths.get(".", "conf", "resources", "development", "design", "icon", "font-awesome-brands-regular.txt");
 		Files.write(fontAwesomeBrandsRegular, fontAwesomeBrandsRegularIconNames, StandardCharsets.UTF_8);
 		System.out.println("Created :" + fontAwesomeBrandsRegular);
@@ -53,93 +50,31 @@ class IconNameExtractor {
 		System.out.println("Created :" + twemojis);
 	}
 
-	private static final Pattern PATTERN_FONTAWESOME = Pattern.compile("\\.fa-(?<iconName>.*):before.*");
-	private static final Pattern PATTERN_FONTAWESOME_HEX = Pattern.compile(".*content:.*\"\\\\(?<iconHex>.*)\".*");
+	private static final List<String> EXCLUDE_SVG_LIST = List.of("font-awesome-logo-full");
 
 	private static List<String> getFontAwesomeIconNames(final String style) throws IOException {
 
-		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "font-awesome", "css", "all.min.css");
+		final Path path = Paths.get(".", "target", "web", "public", "main", "lib", "font-awesome", "svgs", style);
 
 		if (!Files.exists(path)) {
 
 			throw new RuntimeException(": " + path);
 		}
 
-		final Font font = createFont(style);
+		if (!Files.isDirectory(path)) {
 
-		String tmp = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
-		tmp = Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL).matcher(tmp).replaceAll("");
-		tmp = tmp.replaceAll("\\n", "");
-		tmp = tmp.replaceAll("\\{", "{\n");
-		tmp = tmp.replaceAll("\\}", "}\n");
-		final List<String> lines = Arrays.asList(tmp.split("\n"));
-		final List<String> iconNames = new ArrayList<>();
-		boolean isFirstIcon = false;
-		for (int i = 0; i < lines.size(); i++) {
-
-			final String line = lines.get(i);
-
-			if (!isFirstIcon) {
-
-				isFirstIcon = ".fa-500px:before{".equals(line);
-
-				if (!isFirstIcon) {
-
-					continue;
-				}
-			}
-
-			if (line.startsWith(".fa-")) {
-
-				final Matcher matcher = PATTERN_FONTAWESOME.matcher(line);
-				if (!matcher.matches()) {
-
-					throw new IllegalStateException(line);
-				}
-				final String iconName = matcher.group("iconName");
-
-				final String nextLine = lines.get(i + 1);
-				final Matcher nextMatcher = PATTERN_FONTAWESOME_HEX.matcher(nextLine);
-				if (!nextMatcher.matches()) {
-
-					throw new IllegalStateException(nextLine);
-				}
-				final String iconHex = nextMatcher.group("iconHex");
-				final int codePoint = Integer.valueOf(iconHex, 16);
-
-				if (font.canDisplay(codePoint)) {
-
-					iconNames.add(iconName);
-				}
-			}
+			throw new RuntimeException(": " + path);
 		}
+
+		final List<String> iconNames = Files.list(path)//
+				.filter(file -> !Files.isDirectory(file))//
+				.filter(file -> "svg".equals(com.google.common.io.Files.getFileExtension(file.getFileName().toString())))//
+				.map(file -> com.google.common.io.Files.getNameWithoutExtension(file.getFileName().toString()))//
+				.filter(svgName -> !EXCLUDE_SVG_LIST.contains(svgName))//
+				.sorted()//
+				.collect(Collectors.toList());
 
 		return iconNames;
-	}
-
-	private static Font createFont(final String style) {
-
-		final String name;
-		switch (style) {
-		case "fas":
-
-			name = "FontAwesome5Free-Solid";
-			break;
-		case "far":
-
-			name = "FontAwesome5Free-Regular";
-			break;
-		case "fab":
-
-			name = "FontAwesome5Brands-Regular";
-			break;
-		default:
-
-			throw new RuntimeException(": " + style);
-		}
-
-		// need install.
-		return new Font(name, Font.PLAIN, 16);
 	}
 
 	private static List<String> getMaterialDesignIconNames() throws IOException {

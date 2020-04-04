@@ -446,9 +446,34 @@ if("Dev" == getMode()){
 
 document.onkeydown = function(e){
 
+	if(e.keyCode === 9){
+
+		if($("#system_base").hasClass("system_expand")){
+
+			$("#system_base").removeClass('system_expand');
+		}
+		return true;
+	}
+
 	if(e.altKey && e.keyCode === 72){
 
 		$('.secret').removeClass('secret');
 		return false;
 	}
 };
+
+//
+
+$(document).ready(function() {
+
+	if($.fn.select2){
+
+		$(".select2-hidden-accessible").on('select2:opening', function (e) {
+
+			if(isExpand()){
+
+				e.preventDefault();
+			}
+		});
+	}
+});
