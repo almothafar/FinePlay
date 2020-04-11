@@ -203,6 +203,93 @@
 			</div>
 		}
 
+		@components.container(Map("id"->"", "fluid"->"true", "class"->"secret")){
+
+			<h4 class="headline">Rearrange</h4>
+			<div class="mb-3">
+
+				@components.table(Map("id"->"", "class"->"r-type1"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"#"),
+						Map("id"->"", "head"->"true", "text"->"First Name"),
+						Map("id"->"", "head"->"true", "text"->"Last Name"),
+						Map("id"->"", "head"->"true", "text"->"Username"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1", "scope"->"row", "type"->"active"),
+							Map("id"->"", "text"->"Mark"),
+							Map("id"->"", "text"->"Otto"),
+							Map("id"->"", "text"->"@mdo"))),
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"2", "scope"->"row", "type"->"active"),
+							Map("id"->"", "text"->"Jacob"),
+							Map("id"->"", "text"->"Thornton"),
+							Map("id"->"", "text"->"@fat"))),
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"3", "scope"->"row", "type"->"active"),
+							Map("id"->"", "text"->"Larry"),
+							Map("id"->"", "text"->"the Bird"),
+							Map("id"->"", "text"->"@twitter")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+			<div class="mb-3">
+
+				@components.table(Map("id"->"", "class"->"r-type2"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"#"),
+						Map("id"->"", "head"->"true", "text"->"First Name"),
+						Map("id"->"", "head"->"true", "text"->"Last Name"),
+						Map("id"->"", "head"->"true", "text"->"Username"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1", "scope"->"row", "type"->"active", "data-label"->"#"),
+							Map("id"->"", "text"->"Mark", "data-label"->"First"),
+							Map("id"->"", "text"->"Otto", "data-label"->"Last"),
+							Map("id"->"", "text"->"@mdo", "data-label"->"Handle"))),
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"2", "scope"->"row", "type"->"active", "data-label"->"#"),
+							Map("id"->"", "text"->"Jacob", "data-label"->"First"),
+							Map("id"->"", "text"->"Thornton", "data-label"->"Last"),
+							Map("id"->"", "text"->"@fat", "data-label"->"Handle"))),
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"3", "scope"->"row", "type"->"active", "data-label"->"#"),
+							Map("id"->"", "text"->"Larry", "data-label"->"First"),
+							Map("id"->"", "text"->"the Bird", "data-label"->"Last"),
+							Map("id"->"", "text"->"@twitter", "data-label"->"Handle")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+
+			<div class="mb-3">
+
+				@components.table(Map("id"->"", "class"->"r-type3"),
+					Map("id"->""),Tuple2(Map("id"->""),List(
+						Map("id"->"", "head"->"true", "text"->"#"),
+						Map("id"->"", "head"->"true", "text"->"First Name"),
+						Map("id"->"", "head"->"true", "text"->"Last Name"),
+						Map("id"->"", "head"->"true", "text"->"Username"))),
+					Map("id"->""),List(
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"1", "scope"->"row", "type"->"active"),
+							Map("id"->"", "text"->"Mark"),
+							Map("id"->"", "text"->"Otto"),
+							Map("id"->"", "text"->"@mdo"))),
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"2", "scope"->"row", "type"->"active"),
+							Map("id"->"", "text"->"Jacob"),
+							Map("id"->"", "text"->"Thornton"),
+							Map("id"->"", "text"->"@fat"))),
+						Tuple2(Map("id"->""),List(
+							Map("id"->"", "head"->"true", "text"->"3", "scope"->"row", "type"->"active"),
+							Map("id"->"", "text"->"Larry"),
+							Map("id"->"", "text"->"the Bird"),
+							Map("id"->"", "text"->"@twitter")))),
+					Map("id"->""),Tuple2(Map("id"->""),List())
+				)
+			</div>
+		}
+
 		@libraries.standard.last()
 		@libraries.holder.last()
 	}
