@@ -12,3 +12,20 @@
 	background-position: center;
 	background-size: contain;
 }
+
+@media (min-width: 992px) {
+
+	.custom-file-area {
+	  border-radius: 0.25rem;
+	  border: lightgray 4px dotted;
+	  background-color: rgb(248, 249, 250);
+		padding: 3rem;
+	}
+
+	.custom-file-area .custom-file-input {
+		left: -3rem;
+		top: -3rem;
+		width: calc(100% + 3rem + 3rem);
+		height: calc(100% + 3rem + 3rem);
+	}
+}

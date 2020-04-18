@@ -1,12 +1,18 @@
 'use strict';
 
+var toFileName = function(filePath){
+
+	var filePaths = filePath.split(/\\|\\/);
+	var fileName = filePaths[filePaths.length - 1];
+
+	return fileName;
+}
+
 //
 
 $('#file').on('change', function(e){
 
-	var selectedFilePath = document.normalForm.inputName.value;
-	var selectedFilePaths = selectedFilePath.split(/\\|\\/);
-	var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
+	var selectedFileName = toFileName(document.normalForm.inputName.value);
 
 	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
 });
@@ -15,9 +21,7 @@ $('#file').on('change', function(e){
 
 $('#imageFile').on('change', function(e){
 
-	var selectedFilePath = document.imageForm.inputName.value;
-	var selectedFilePaths = selectedFilePath.split(/\\|\\/);
-	var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
+	var selectedFileName = toFileName(document.imageForm.inputName.value);
 
 	if(!this.files.length){
 
@@ -75,9 +79,7 @@ $("#ajaxWarning>button").on('click', function(e){
 
 $('#ajaxFile').on('change', function(e){
 
-	var selectedFilePath = document.ajaxForm.inputName.value;
-	var selectedFilePaths = selectedFilePath.split(/\\|\\/);
-	var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
+	var selectedFileName = toFileName(document.ajaxForm.inputName.value);
 
 	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
 });
@@ -135,3 +137,11 @@ $('#ajaxSubmit').on('click', function(e){
 	return false;
 });
 
+//
+
+$('#dropFile').on('change', function(e){
+
+	var selectedFileName = toFileName(document.dropForm.inputName.value);
+
+	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
+});

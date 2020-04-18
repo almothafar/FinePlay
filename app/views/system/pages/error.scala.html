@@ -35,7 +35,7 @@
 
 	if(isPlayException){
 
-		error.title
+		error.cause.getCause().asInstanceOf[play.api.PlayException].title
 	}else{
 
 		messages(MessageKeys.SYSTEM_ERROR_EXECUTION_EXCEPTION)
@@ -45,6 +45,9 @@
 @causes(error: play.api.UsefulException) = @{
 
 	val buffer = scala.collection.mutable.ListBuffer[Throwable]()
+
+	buffer += error
+
 	var throwable = error.getCause();
 	while(throwable != null){
 
@@ -64,7 +67,7 @@
 
 	@body("error","error"){
 
-		@components.modal(Map("id"->"errorModal", "title"->title(isPlayException(error)), "size"->"lg"), List(
+		@components.modal(Map("id"->"errorModal", "title"->title(isPlayException(error)), "size"->"lg", "center"->"true"), List(
 				Map("id"->"errorModalOk", "type"->"primary", "text"->"OK", "default"->"true")
 			)){
 
@@ -75,22 +78,28 @@
 
 				<i class="fas fa-ban fa-3x fa-pull-left fa-border text-danger"></i>
 			}
-			<p>@error.id</p>
-			<p>@error.description</p>
-
-			@for(cause <- causes(error)){
-
-				@Html(cause.getLocalizedMessage())
-			}
+			<p><strong>@error.id</strong></p>
+			<p>
+				@error.title<br>
+				@Html(error.description)
+			</p>
 
 			@if(isDev()){
-			<div class="mt-3">
-				<input type="text" class="form-control" id="searchServerErrorMessage" placeholder="@messages(MessageKeys.ERROR)" value="@error.getLocalizedMessage()">
-				@components.button(Map("id"->"searchServerStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"Stack Overflow"))
-				@components.button(Map("id"->"searchServerStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"スタック・オーバーフロー"))
-				@components.button(Map("id"->"searchServerQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
-				@components.button(Map("id"->"searchServerTeratailButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"teratail"))
-			</div>
+
+				<ul>
+				@for(cause <- causes(error)){
+
+					<li><strong>@cause.getClass.getName</strong><br><small>@cause.getLocalizedMessage()</small></li>
+				}
+				</ul>
+
+				<div class="mt-3">
+					<input type="text" class="form-control" id="searchServerErrorMessage" placeholder="@messages(MessageKeys.ERROR)" value="@error.getLocalizedMessage()">
+					@components.button(Map("id"->"searchServerStackOverflowButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"Stack Overflow"))
+					@components.button(Map("id"->"searchServerStackOverflowJaButton", "type"->"primary", "outline"->"true", "icon"->"fab fa-stack-overflow", "text"->"スタック・オーバーフロー"))
+					@components.button(Map("id"->"searchServerQiitaButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"Qiita"))
+					@components.button(Map("id"->"searchServerTeratailButton", "type"->"primary", "outline"->"true", "icon"->"", "text"->"teratail"))
+				</div>
 			}
 		}
 

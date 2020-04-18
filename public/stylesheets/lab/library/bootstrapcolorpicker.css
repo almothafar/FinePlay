@@ -39,6 +39,10 @@
   width: 298px;
 }
 
+#picker>.colorpicker {
+  padding: 12px;
+}
+
 .colorpicker-with-alpha .colorpicker-swatch:nth-of-type(8n+0) {
   margin-right: 6px;
 }

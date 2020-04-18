@@ -60,7 +60,7 @@ public class Upload extends Controller {
 		final Lang lang = messages.lang();
 
 		final MultipartFormData<TemporaryFile> body = request.body().asMultipartFormData();
-		final play.mvc.Http.MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
+		final MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
 		if (filePart != null) {
 
 			@SuppressWarnings("unused")
@@ -97,7 +97,7 @@ public class Upload extends Controller {
 		final Lang lang = messages.lang();
 
 		final MultipartFormData<TemporaryFile> body = request.body().asMultipartFormData();
-		final play.mvc.Http.MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
+		final MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
 		if (filePart != null) {
 
 			final Path fileNamePath = Paths.get(filePart.getFilename());
@@ -168,7 +168,7 @@ public class Upload extends Controller {
 		final MultipartFormData<TemporaryFile> body = request.body().asMultipartFormData();
 		@SuppressWarnings("unused")
 		final Map<String, String[]> form = body.asFormUrlEncoded();
-		final play.mvc.Http.MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
+		final MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
 
 		final TemporaryFile tempFile = filePart.getRef();
 		final Path path = tempFile.path();
@@ -180,5 +180,19 @@ public class Upload extends Controller {
 		result.put("message", "<strong>" + messages.at(MessageKeys.SUCCESS) + "</strong> " + messages.at(MessageKeys.FILE) + " uploaded");
 
 		return ok(result);
+	}
+
+	@RequireCSRFCheck
+	public Result drop(@Nonnull final Request request) {
+
+		final Messages messages = messagesApi.preferred(request);
+		final Lang lang = messages.lang();
+
+		final MultipartFormData<TemporaryFile> body = request.body().asMultipartFormData();
+		final MultipartFormData.FilePart<TemporaryFile> filePart = body.getFile("inputName");
+
+		LOGGER.info("" + filePart);
+
+		return TODO(request);
 	}
 }

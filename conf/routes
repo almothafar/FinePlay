@@ -196,6 +196,7 @@ GET		/lab/application/upload						controllers.lab.application.Upload.index(reque
 POST	/lab/application/upload/form				controllers.lab.application.Upload.form(request: Request)
 POST	/lab/application/upload/image				controllers.lab.application.Upload.image(request: Request)
 POST	/lab/application/upload/direct				controllers.lab.application.Upload.direct(request: Request)
+POST	/lab/application/upload/drop				controllers.lab.application.Upload.drop(request: Request)
 GET		/lab/application/bulkmail					controllers.lab.application.BulkMail.index(request: Request)
 POST	/lab/application/bulkmail/send				controllers.lab.application.BulkMail.send(request: Request)
 GET		/lab/application/sms						controllers.lab.application.SMS.index(request: Request)

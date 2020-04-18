@@ -57,6 +57,9 @@ public class UI extends Controller {
 		case "balloon":
 
 			return balloon(request, lang, messages);
+		case "disclaim":
+
+			return disclaim(request, lang, messages);
 		case "alert":
 
 			return alert(request, lang, messages);
@@ -163,6 +166,11 @@ public class UI extends Controller {
 	private static Result balloon(final Request request, final Lang lang, final Messages messages) {
 
 		return ok(views.html.lab.ui.balloon.render(request, lang, messages));
+	}
+
+	private static Result disclaim(final Request request, final Lang lang, final Messages messages) {
+
+		return ok(views.html.lab.ui.disclaim.render(request, lang, messages));
 	}
 
 	private static Result alert(final Request request, final Lang lang, final Messages messages) {

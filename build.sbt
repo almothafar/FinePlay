@@ -33,8 +33,8 @@ libraryDependencies ++= Seq(
   ws,
 //  openId,
 //  evolutions,
-  "com.typesafe.play" %% "play-mailer" % "7.0.1",						// Apache 7.0.1
-  "com.typesafe.play" %% "play-mailer-guice" % "7.0.1",
+  "com.typesafe.play" %% "play-mailer" % "8.0.0",						// Apache 8.0.0
+  "com.typesafe.play" %% "play-mailer-guice" % "8.0.0",
   guice,
   "com.h2database" % "h2" % "1.4.199",									// MPL/EPL 1.4.200
 //  "com.h2database" % "h2" % "1.4.199" % Test,
@@ -49,7 +49,7 @@ libraryDependencies ++= Seq(
   "javax.money" % "money-api" % "1.0.3",								// Apache 1.0.3
   "org.javamoney" % "moneta" % "1.3",									// Apache 1.3
   "org.apache.commons" % "commons-text" % "1.8",						// Apache 1.8
-  "org.postgresql" % "postgresql" % "42.2.10",							// BSD 2-clause 42.2.10
+  "org.postgresql" % "postgresql" % "42.2.12",							// BSD 2-clause 42.2.12
   "org.mockito" % "mockito-core" % "3.2.0",								// MIT 3.2.0
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",

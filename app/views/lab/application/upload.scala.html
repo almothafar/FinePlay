@@ -125,6 +125,29 @@
 							</p>
 						}
 					</div>
+
+					<div class="mb-3 secret">
+						<h4 class="headline">Drop</h4>
+
+						@helper.form(helper.CSRF(controllers.lab.application.routes.Upload.drop()), Symbol("name")->"dropForm", Symbol("enctype") -> "multipart/form-data") {
+
+
+							<div class="row">
+								<div class="col-md-12">
+
+									<div class="custom-file-area">
+										<div class="custom-file">
+											<input id="dropFile" type="file" name="inputName" class="custom-file-input">
+											<label class="custom-file-label" for="dropFile"></label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p>
+								@components.button(Map("id"->"", "action"->"submit", "type"->"primary", "outline"->"true", "icon"->"fas fa-upload", "text"->messages(MessageKeys.UPLOAD)))
+							</p>
+						}
+					</div>
 				</div>
 			</div>
 		}

@@ -119,6 +119,7 @@
 |                    |                                                                      |send                          |      |      |      |
 |controllers         |controllers.lab.application.Upload                                    |                              |     O|     O|     O|
 |                    |                                                                      |direct                        |      |      |      |
+|                    |                                                                      |drop                          |      |      |      |
 |                    |                                                                      |form                          |      |      |      |
 |                    |                                                                      |image                         |      |      |      |
 |                    |                                                                      |index                         |      |      |      |

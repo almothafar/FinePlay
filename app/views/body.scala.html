@@ -177,7 +177,7 @@
 		<div id="system_notifications">
 		</div>
 
-		@components.modal(Map("id"->"reportErrorDialog", "icon"->"fas fa-bug", "title"->(messages(MessageKeys.REPORT)+" "+messages(MessageKeys.ERROR)), "data-backdrop"->"static", "size"->"lg"), List(
+		@components.modal(Map("id"->"reportErrorDialog", "icon"->"fas fa-bug", "title"->(messages(MessageKeys.REPORT)+" "+messages(MessageKeys.ERROR)), "data-backdrop"->"static", "size"->"lg", "center"->"true"), List(
 				Map("id"->"reportErrorCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal"),
 				Map("id"->"reportErrorButton", "type"->"primary", "text"->messages(MessageKeys.REPORT), "default"->"true")
 			)){

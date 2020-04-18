@@ -812,7 +812,9 @@ public class Application extends Controller {
 		messages.lang();
 
 		throw new PlayException(messages.at(MessageKeys.TITLE), messages.at(MessageKeys.DESCRIPTION) + //
-				" <a href=\"" + controllers.framework.application.routes.Application.index("exception").url() + "\">" + messages.at(MessageKeys.RECOVERY) + "</a>");
+				" <a href=\"" + controllers.framework.application.routes.Application.index("exception").url() + "\">" + messages.at(MessageKeys.RECOVERY) + "</a>", //
+				new RuntimeException(messages.at(MessageKeys.MESSAGE) + " 2", //
+						new RuntimeException(messages.at(MessageKeys.MESSAGE) + " 1")));
 	}
 
 	public Result runtimeException(Request request) {
@@ -820,7 +822,9 @@ public class Application extends Controller {
 		final Messages messages = messagesApi.preferred(request);
 		messages.lang();
 
-		throw new RuntimeException(messages.at(MessageKeys.MESSAGE));
+		throw new RuntimeException(messages.at(MessageKeys.MESSAGE), //
+				new RuntimeException(messages.at(MessageKeys.MESSAGE) + " 2", //
+						new RuntimeException(messages.at(MessageKeys.MESSAGE) + " 1")));
 	}
 
 	private static Html createBadge(final String text) {

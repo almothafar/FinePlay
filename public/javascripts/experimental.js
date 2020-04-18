@@ -222,3 +222,13 @@ $(document).ready(function() {
 	// provisional coped for Bug? of Mobile Safari
 	$('#system_content').eq(0)[0].style.webkitOverflowScrolling='touch';
 });
+
+$('.modal').on('shown.bs.modal', function (e) {
+
+	$('#system_base').css('overflow','visible');
+	$("#system_base").width('100.1%').delay(500).queue(function(next){$(this).width('100%');next();});
+}).on('hidden.bs.modal', function (e) {
+
+	$('#system_base').css('overflow','hidden');
+	$("#system_base").width('100.1%').delay(500).queue(function(next){$(this).width('100%');next();});
+});
