@@ -4,7 +4,7 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.1-b1-SNAPSHOT"
+version := "2.8.1-b2-SNAPSHOT"
 
 scalaVersion := "2.13.1"
 
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "https://jaspersoft.jfrog.io/jaspersoft/third-pa
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.1-b1-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.1-b2-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,

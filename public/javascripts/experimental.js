@@ -226,9 +226,9 @@ $(document).ready(function() {
 $('.modal').on('shown.bs.modal', function (e) {
 
 	$('#system_base').css('overflow','visible');
-	$("#system_base").width('100.1%').delay(500).queue(function(next){$(this).width('100%');next();});
+	$("#system_base").width('99.99999%');
 }).on('hidden.bs.modal', function (e) {
 
 	$('#system_base').css('overflow','hidden');
-	$("#system_base").width('100.1%').delay(500).queue(function(next){$(this).width('100%');next();});
+	$("#system_base").width('100%');
 });
