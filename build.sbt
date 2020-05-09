@@ -115,7 +115,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "jspdf" % "1.5.3",								// MIT 1.5.3
   "org.webjars.npm" % "jsqr" % "1.2.0",									// Apache 1.2.0
   "org.webjars.npm" % "holderjs" % "2.9.4",								// MIT 2.9.4
-  "org.webjars.npm" % "3dmol" % "1.3.7",								// BSD-3-Clause license 1.3.7
+  "org.webjars.npm" % "3dmol" % "1.5.1" exclude("org.webjars.npm", "atob") exclude("org.webjars.npm", "spdx-exceptions"),	// BSD-3-Clause license 1.5.1
   "org.webjars.npm" % "github-com-Tencent-vConsole" % "3.3.0",			// MIT 3.3.0
   "org.webjars.bower" % "mocha" % "3.0.2",								// MIT 3.5.0
   "org.webjars.bower" % "chai" % "4.1.1"								// MIT 4.1.1

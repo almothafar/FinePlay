@@ -69,7 +69,7 @@ java.error.AssertFalse=must be false
 java.error.AssertTrue=must be true
 java.error.DecimalMax=must be less than {0,choice,0# |1# or equal to }{1}
 java.error.DecimalMin=must be greater than {0,choice,0# |1# or equal to }{1}
-java.error.Digits=numeric value out of bounds (<{0} digits>.<{1} digits> expected)
+java.error.Digits=numeric value out of bounds (<{1} digits>.<{0} digits> expected)
 java.error.Email=must be a well-formed email address
 java.error.Future=must be a future date
 java.error.FutureOrPresent=must be a date in the present or in the future
@@ -86,7 +86,7 @@ java.error.PastOrPresent=must be a date in the past or in the present
 java.error.Pattern=must match "{1}"
 java.error.Positive=must be greater than 0
 java.error.PositiveOrZero=must be greater than or equal to 0
-java.error.Size=size must be between {0} and {1}
+java.error.Size=size must be between {1} and {0}
 
 #
 # fine play

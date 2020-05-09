@@ -16,14 +16,14 @@ How to play
 
 	macOS Catalina version 10.15.4（19E287）
 	Time zone UTC
-	openjdk version "11.0.6" 2020-01-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.6+10)
+	openjdk version "11.0.7" 2020-04-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.7+10)
 	Safari version 13.1 (15609.1.20.111.8)
 
 ##### OpenJDK #####
 
 Install
 
-[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.6_10.pkg)
+[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.7%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.7_10.pkg)
 
 ##### Console #####
 

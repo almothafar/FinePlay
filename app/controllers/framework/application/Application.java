@@ -468,6 +468,9 @@ public class Application extends Controller {
 					throw new IllegalStateException(v.toString());
 				}, //
 				LinkedHashMap::new));
+				playForm.errors().forEach(error -> {
+					System.out.println(error.message() + "," + error.arguments());
+				});
 
 		final Form<Jsr380Bean> jsr380Form = formFactory.form(Jsr380Bean.class).bindFromRequest(request);
 		final Map<String, Object> jsr380Map = jsr380Form.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
@@ -477,6 +480,9 @@ public class Application extends Controller {
 					throw new IllegalStateException(v.toString());
 				}, //
 				LinkedHashMap::new));
+				jsr380Form.errors().forEach(error -> {
+					System.out.println(error.message() + "," + error.arguments());
+				});
 
 		final Form<FinePlayBean> fineplayForm = formFactory.form(FinePlayBean.class).bindFromRequest(request);
 		final Map<String, Object> fineplayMap = fineplayForm.errors().stream().map(createErrorDisplayEntry).collect(Collectors.toMap(//
@@ -486,6 +492,9 @@ public class Application extends Controller {
 					throw new IllegalStateException(v.toString());
 				}, //
 				LinkedHashMap::new));
+				fineplayForm.errors().forEach(error -> {
+					System.out.println(error.message() + "," + error.arguments());
+				});
 
 		return ok(views.html.framework.application.validation.render(//
 				new TreeMap<>(playMap), //

@@ -7,7 +7,7 @@ Connection
 ### Develop ###
 
 	/Users/hiro/github/FinePlay/build.sbt
-	"com.h2database" % "h2" % "1.4.200"
+	"com.h2database" % "h2" % "1.4.199"
 
 	github/FinePlay/conf/application.conf
 	db.default.[*]
@@ -23,7 +23,7 @@ Connection
 ###### The frequency of checking is fairly low. ######
 
 	/Users/hiro/github/FinePlay/build.sbt
-	"org.postgresql" % "postgresql" % "42.2.8"
+	"org.postgresql" % "postgresql" % "42.2.12"
 
 	github/FinePlay/conf/application_prod.conf
 	db.default.[*]
@@ -40,4 +40,4 @@ Connection
 
 	github/FinePlay/tabledef_prod.sh
 
-	github/FinePlay/misc/postgresql-42.2.8.jar
+	github/FinePlay/misc/postgresql-42.2.12.jar

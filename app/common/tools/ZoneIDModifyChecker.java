@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class ZoneIDModifyChecker {
 
-	private static final String BEFORE_JDK = "11.0.5";
+	private static final String BEFORE_JDK = "11.0.6";
 
 	public static void main(String[] args) throws Exception {
 

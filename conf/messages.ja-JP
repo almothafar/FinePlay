@@ -69,7 +69,7 @@ java.error.AssertFalse=偽 である必要があります。
 java.error.AssertTrue=真 である必要があります。
 java.error.DecimalMax={1}{0,choice,0# 未満の|1# 以下である}必要があります。
 java.error.DecimalMin={1}{0,choice,0# を超える|1# 以上である}必要があります。
-java.error.Digits=数値が範囲外です。 (期待値 <{0} 桁>.<{1} 桁>)
+java.error.Digits=数値が範囲外です。 (期待値 <{1} 桁>.<{0} 桁>)
 java.error.Email=正しいEメールである必要があります。
 java.error.Future=未来の日付である必要があります。
 java.error.FutureOrPresent=現在より、未来の日付である必要があります。
@@ -86,7 +86,7 @@ java.error.PastOrPresent=現在より、過去の日付である必要があり�
 java.error.Pattern=この正規表現に適合する必要があります。: "{1}"
 java.error.Positive=正数である必要があります。
 java.error.PositiveOrZero=0以上である必要があります。
-java.error.Size=サイズは、 {0} と {1} の間である必要があります。
+java.error.Size=サイズは、 {1} と {0} の間である必要があります。
 
 #
 # fine play

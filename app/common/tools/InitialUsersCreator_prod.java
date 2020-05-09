@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -82,5 +83,7 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 	protected void writeSQL(final Path loadSQLPath, final List<String> insertSQLLines) throws IOException {
 
 		Files.write(loadSQLPath, insertSQLLines, StandardCharsets.UTF_8);
+//		Files.write(loadSQLPath, String.format("UPDATE HIBERNATE_SEQUENCE SET NEXT_VAL=(%d)", insertSQLLines.size() + 1).getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
+		Files.write(loadSQLPath, String.format("ALTER SEQUENCE IF EXISTS HIBERNATE_SEQUENCE RESTART WITH %d", insertSQLLines.size() + 1).getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
 	}
 }

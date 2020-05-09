@@ -6,6 +6,7 @@ $(document).ready(function() {
 	viewer.setBackgroundColor(0x00000000, 0.2);
 	viewer.addModel( $('#pdb').text(), "pdb" );
 	viewer.setStyle({}, {cartoon:{color:"spectrum"}});
+	viewer.center();
 	viewer.render();
 
 	setInterval(function() {

@@ -513,7 +513,7 @@ public class Library extends Controller {
 
 	public static Result tdmol(final Request request, final Lang lang, final Messages messages) {
 
-		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/lab/library/tdmol/2por.pdb"); //
+		try (final InputStream inputStream = play.Environment.simple().resourceAsStream("resources/lab/library/tdmol/6lu7.pdb"); //
 				final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
 
 			final String pdb = reader.lines().collect(Collectors.joining("\n"));

@@ -82,6 +82,7 @@
 
 		<properties>
 
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 			<property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
 
