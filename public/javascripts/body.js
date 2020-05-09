@@ -450,6 +450,7 @@ document.onkeydown = function(e){
 
 		if($("#system_base").hasClass("system_expand")){
 
+			$('#system_content-left-corner').focus();
 			$("#system_base").removeClass('system_expand');
 		}
 		return true;
