@@ -10,6 +10,12 @@
 	font-family: HiraMinProN-W3;
 }
 
+@font-face {
+	font-family: 'IPAmjMincho';
+	src: url(ipamjm.ttf) format('opentype');
+	src: local('IPAmjMincho'), url(../fonts/ipamjm00601/ipamjm.ttf) format('opentype');
+}
+
 .font-family_IPAmjMincho{
 	font-family: IPAmjMincho;
 }

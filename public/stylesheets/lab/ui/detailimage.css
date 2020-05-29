@@ -11,13 +11,6 @@
 	}
 }
 
-#image {
-	user-select: none;
-	-ms-user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-}
-
 #imageDraggable {
 	left: 0px;
 	top: 0px;

@@ -52,7 +52,7 @@
 
 									<div class="custom-file">
 										<input id="file" type="file" name="inputName" class="custom-file-input">
-										<label class="custom-file-label" for="file"></label>
+										<label class="custom-file-label" for="file">@messages(MessageKeys.SELECT__FILE)</label>
 									</div>
 								</div>
 							</div>
@@ -78,7 +78,7 @@
 
 											<div class="custom-file">
 												<input id="imageFile" type="file" name="inputName" class="custom-file-input" accept="image/png,image/jpeg,image/gif">
-												<label class="custom-file-label" for="imageFile"></label>
+												<label class="custom-file-label" for="imageFile">@messages(MessageKeys.SELECT__FILE)</label>
 											</div>
 										</div>
 									</div>
@@ -107,7 +107,7 @@
 
 									<div class="custom-file">
 										<input id="ajaxFile" type="file" name="inputName" class="custom-file-input">
-										<label class="custom-file-label" for="ajaxFile"></label>
+										<label class="custom-file-label" for="ajaxFile">@messages(MessageKeys.SELECT__FILE)</label>
 									</div>
 									@components.modal(Map("id"->"ajaxDialog", "icon"->"fas fa-spinner fa-pulse", "title"->messages(MessageKeys.REQUEST), "closable"->"false", "data-backdrop"->"static"), List(
 											Map("id"->"ajaxCancel", "type"->"primary", "outline"->"true", "text"->messages(MessageKeys.CANCEL), "data-dismiss"->"modal")
@@ -138,7 +138,7 @@
 									<div class="custom-file-area">
 										<div class="custom-file">
 											<input id="dropFile" type="file" name="inputName" class="custom-file-input">
-											<label class="custom-file-label" for="dropFile"></label>
+											<label class="custom-file-label" for="dropFile">@messages(MessageKeys.SELECT__FILE)</label>
 										</div>
 									</div>
 								</div>
@@ -160,6 +160,7 @@
 		}'></div>
 
 		@libraries.standard.last()
+		@libraries.bscustomfileinput.last()
 		<script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/lab/application/upload.js")'></script>
 	}
 }

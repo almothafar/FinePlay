@@ -1,7 +1,7 @@
 package controllers.resetuser.change;
 
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import play.test.TestBrowser;
 import test.Page;

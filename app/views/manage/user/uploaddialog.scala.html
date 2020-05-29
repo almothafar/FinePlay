@@ -30,7 +30,7 @@
 			<div class="col-sm-12">
 				<div class="custom-file">
 					<input id="@User.UPLOADFILE" type="file" name="@User.UPLOADFILE" class="custom-file-input" value="" required autofocus>
-					<label class="custom-file-label" for="@User.UPLOADFILE"></label>
+					<label class="custom-file-label" for="@User.UPLOADFILE">@messages(MessageKeys.SELECT__FILE)</label>
 				</div>
 				<small class="text-muted">@messages(MessageKeys.ABOUT__X, messages(MessageKeys.FORMAT))@components.button(Map("id"->"uploadFileInfo", "type"->"info", "outline"->"true", "icon"->"fas fa-question-circle", "text"->"", "size"->"sm", "data-toggle"->"popover", "title"->"Popover on bottom", "data-content"->"CSV(contains header)", "data-placement"->"bottom"))</small>
 				<div>

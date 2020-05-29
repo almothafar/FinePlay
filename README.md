@@ -2,7 +2,7 @@ English | [日本語](./README_ja.md)
 
 <img src="./public/images/en-US/logo.png" alt="fine✿play" height="54"/>
 
-Play(Java) 2.8 & Bootstrap 4.4  
+Play(Java) 2.8 & Bootstrap 4.5  
 multilingual responsive project template(Tentative plan for something).
 
 | Phone | Tablet    |
@@ -14,10 +14,10 @@ How to play
 
 ##### Environment #####
 
-	macOS Catalina version 10.15.4（19E287）
+	macOS Catalina version 10.15.5（19F96）
 	Time zone UTC
 	openjdk version "11.0.7" 2020-04-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.7+10)
-	Safari version 13.1 (15609.1.20.111.8)
+	Safari version 13.1.1 (15609.2.9.1.2)
 
 ##### OpenJDK #####
 
@@ -52,7 +52,7 @@ Document
 
 [Play Framework](https://www.playframework.com/documentation/2.8.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.4)
+[Bootstrap](http://getbootstrap.com/docs/4.5)
 
 [Font Awesome](https://fontawesome.com/how-to-use)
 
@@ -92,7 +92,7 @@ TODO
 Release History
 ---------------
 
-+ **2.8.1-b2** - 2020-04-19
++ **2.8.2-b1** - 2020-05-30
 + **2.7.3-b2** - 2019-07-06
 + **2.6.13-β7** - 2018-06-18
 + **2.6.3-α1** - 2017-08-14

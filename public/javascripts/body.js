@@ -364,6 +364,11 @@ $("#help-search-text").on('keyup', function () {
 		if (0 == keyupEvents.length) {
 
 			var helpWrapper = helpMain.find('#help-wrapper');
+			if(!helpWrapper[0]){
+
+				return;
+			}
+
 			if(0 == searchText.length){
 
 				if(storedHelpWrapper){

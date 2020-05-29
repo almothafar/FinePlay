@@ -1,147 +1,111 @@
 'use strict';
 
-var toFileName = function(filePath){
+$(document).ready(function () {
 
-	var filePaths = filePath.split(/\\|\\/);
-	var fileName = filePaths[filePaths.length - 1];
+	$('#imageFile').on('change', function(e){
 
-	return fileName;
-}
+		if(!this.files.length){
 
-//
+			document.imageForm.inputName.value = '';
+			$('#imagePreview').css('background-image', '');
+			return;
+		}
 
-$('#file').on('change', function(e){
+		var file = $(this).prop('files')[0];
 
-	var selectedFileName = toFileName(document.normalForm.inputName.value);
+		if(!/^image.*/.test(file.type)){
 
-	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
-});
+			document.imageForm.inputName.value = '';
+			$('#imagePreview').css('background-image', '');
+			return;
+		}
 
-//
+		if(window.FileReader){
 
-$('#imageFile').on('change', function(e){
+			var reader = new FileReader();
+			reader.onload = function(){
 
-	var selectedFileName = toFileName(document.imageForm.inputName.value);
+				var imageData = reader.result;
+				$('#imagePreview').css('background-image', 'url('+imageData+')');
+			};
+			reader.readAsDataURL(file);
+		}
+	});
 
-	if(!this.files.length){
+	if(!window.FileReader){
 
-		document.imageForm.inputName.value = '';
-		$(this).next('label.custom-file-label').attr('data-filename', '');
-		$('#imagePreview').css('background-image', '');
-		return;
+		$('#imagePreview').hide();
 	}
 
-	var file = $(this).prop('files')[0];
+	//
 
-	if(!/^image.*/.test(file.type)){
+	$("#ajaxSuccess").append("<span></span>").hide();
+	$("#ajaxWarning").append("<span></span>").hide();
 
-		document.imageForm.inputName.value = '';
-		$(this).next('label.custom-file-label').attr('data-filename', '');
-		$('#imagePreview').css('background-image', '');
-		return;
-	}
+	$("#ajaxSuccess>button").on('click', function(e){
 
-	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
+		$("#ajaxSuccess").hide();
+		return false;
+	});
 
-	if(window.FileReader){
+	$("#ajaxWarning>button").on('click', function(e){
 
-		var reader = new FileReader();
-		reader.onload = function(){
+		$("#ajaxWarning").hide();
+		return false;
+	});
 
-			var imageData = reader.result;
-			$('#imagePreview').css('background-image', 'url('+imageData+')');
-		};
-		reader.readAsDataURL(file);
-	}
-});
+	$('#ajaxSubmit').on('click', function(e){
 
-if(!window.FileReader){
+		$('#ajaxDialog').one('shown.bs.modal', function (e) {
 
-	$('#imagePreview').hide();
-}
+			var form = $('#ajaxForm');
+			var url = form.attr('action');
+			var formData = new FormData(form[0]);
+			$.ajax({
+				method:"POST",
+				url:url,
+				data:formData,
+				processData: false,
+				contentType: false,
+				dataType: "json",
+				timeout: 3 * 1000
+			})
+			.then(
+				function(responseJson) {
 
-//
+					$('#ajaxDialog').modal('hide');
 
-$("#ajaxSuccess").append("<span></span>").hide();
-$("#ajaxWarning").append("<span></span>").hide();
+					var status = responseJson.status;
+					var message = responseJson.message;
+					if("success" == status){
 
-$("#ajaxSuccess>button").on('click', function(e){
+						$("#ajaxSuccess>span").html(message);
+						$("#ajaxSuccess").show();
+					}else if("warning" == status){
 
-	$("#ajaxSuccess").hide();
-	return false;
-});
+						$("#ajaxWarning>span").html(message);
+						$("#ajaxWarning").show();
+					}
+				},
+				function( jqXHR, textStatus, errorThrown) {
 
-$("#ajaxWarning>button").on('click', function(e){
-
-	$("#ajaxWarning").hide();
-	return false;
-});
-
-$('#ajaxFile').on('change', function(e){
-
-	var selectedFileName = toFileName(document.ajaxForm.inputName.value);
-
-	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
-});
-
-$('#ajaxSubmit').on('click', function(e){
-
-	$('#ajaxDialog').one('shown.bs.modal', function (e) {
-
-		var form = $('#ajaxForm');
-		var url = form.attr('action');
-		var formData = new FormData(form[0]);
-		$.ajax({
-			method:"POST",
-			url:url,
-			data:formData,
-			processData: false,
-			contentType: false,
-			dataType: "json",
-			timeout: 3 * 1000
-		})
-		.then(
-			function(responseJson) {
-
-				$('#ajaxDialog').modal('hide');
-
-				var status = responseJson.status;
-				var message = responseJson.message;
-				if("success" == status){
-
-					$("#ajaxSuccess>span").html(message);
-					$("#ajaxSuccess").show();
-				}else if("warning" == status){
-
-					$("#ajaxWarning>span").html(message);
-					$("#ajaxWarning").show();
+					$('#ajaxProgress>.progress-bar').addClass('bg-danger');
+					$('#ajaxCancel').prop('disabled', false);
+					$('#ajaxMessage').text(messages(MessageKeys.FAILURE));
+					$('#ajaxDescription').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
 				}
-			},
-			function( jqXHR, textStatus, errorThrown) {
+			);
+		})
 
-				$('#ajaxProgress>.progress-bar').addClass('bg-danger');
-				$('#ajaxCancel').prop('disabled', false);
-				$('#ajaxMessage').text(messages(MessageKeys.FAILURE));
-				$('#ajaxDescription').html(messages(MessageKeys.STATUS) + '&nbsp;<strong>'+textStatus+'</strong>&nbsp;-&nbsp;' + messages(MessageKeys.ERROR) + '&nbsp;<strong>'+errorThrown+'</strong>');
-			}
-		);
-	})
+		$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
+		$('#ajaxCancel').prop('disabled', true);
+		$('#ajaxMessage').text(messages(MessageKeys.PLEASE__WAIT));
+		$('#ajaxDescription').text('-');
 
-	$('#ajaxProgress>.progress-bar').removeClass('bg-danger');
-	$('#ajaxCancel').prop('disabled', true);
-	$('#ajaxMessage').text(messages(MessageKeys.PLEASE__WAIT));
-	$('#ajaxDescription').text('-');
+		$('#ajaxDialog').modal('show');
 
-	$('#ajaxDialog').modal('show');
+		return false;
+	});
 
-	return false;
-});
-
-//
-
-$('#dropFile').on('change', function(e){
-
-	var selectedFileName = toFileName(document.dropForm.inputName.value);
-
-	$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
-});
+	bsCustomFileInput.init();
+})

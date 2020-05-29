@@ -4,9 +4,9 @@ organization := "hiro20v"
 
 maintainer := "hiro20v++@icloud.com"
 
-version := "2.8.1-b2-SNAPSHOT"
+version := "2.8.2-b1-SNAPSHOT"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.2"
 
 //lazy val fineplaySub = (project in file("sub"))
 //    .enablePlugins(PlayJava)
@@ -24,7 +24,7 @@ resolvers += "jasperreports" at "https://jaspersoft.jfrog.io/jaspersoft/third-pa
 
 libraryDependencies ++= Seq(
   "org.jacoco" % "org.jacoco.agent" % "0.8.5",							// EPL 0.8.5
-//  "hiro20v" %% "fineplay-sub" % "2.8.1-b2-SNAPSHOT",
+//  "hiro20v" %% "fineplay-sub" % "2.8.2-b1-SNAPSHOT",
   javaJdbc,
   caffeine,
   javaWs,
@@ -50,7 +50,7 @@ libraryDependencies ++= Seq(
   "org.javamoney" % "moneta" % "1.3",									// Apache 1.3
   "org.apache.commons" % "commons-text" % "1.8",						// Apache 1.8
   "org.postgresql" % "postgresql" % "42.2.12",							// BSD 2-clause 42.2.12
-  "org.mockito" % "mockito-core" % "3.2.0",								// MIT 3.2.0
+  "org.mockito" % "mockito-core" % "3.3.3",								// MIT 3.3.3
   "net.sf.supercsv" % "super-csv" % "2.4.0",							// Apache 2.4.0
   "net.sf.supercsv" % "super-csv-java8" % "2.4.0",
   "org.apache.poi" % "poi" % "4.1.1",									// Apache 4.1.1
@@ -66,8 +66,9 @@ libraryDependencies ++= Seq(
   "org.mapstruct" % "mapstruct-processor" % "1.3.1.Final",				//
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "2.5.1",								// Apache 2.5.1
-//  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
-  "org.webjars.npm" % "bootstrap" % "4.4.1",							// MIT 4.4.1
+//  "org.webjars.npm" % "jquery" % "3.5.1",								// MIT 3.5.1
+  "org.webjars.npm" % "bootstrap" % "4.5.0",							// MIT 4.5.0
+  "org.webjars.npm" % "bs-custom-file-input" % "1.3.4",					// MIT 1.3.4
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.4.0",			// MIT 5.4.0
   "org.webjars.bower" % "pickadate" % "3.6.4",							// MIT 3.6.4
   "org.webjars.npm" % "bootstrap-slider" % "10.6.2",					// MIT 10.6.2
@@ -131,7 +132,7 @@ libraryDependencies ++= Seq(
 
 // Use bootstrap
 libraryDependencies ++= Seq(
-//  "org.webjars.bower" % "clipboard" % "2.0.4",						// MIT 2.0.0
+  "org.webjars.npm" % "clipboard" % "2.0.6",							// MIT 2.0.6
   "org.webjars.npm" % "popper.js" % "1.16.0"							// MIT 1.16.0
 )
 
@@ -173,8 +174,8 @@ libraryDependencies ++= Seq(
 )
 
 dependencyOverrides ++= Seq(
-  "org.webjars.npm" % "jquery" % "3.4.1",								// MIT 3.4.1
-  "org.webjars.bower" % "jquery" % "3.4.1",
+  "org.webjars.npm" % "jquery" % "3.5.1",								// MIT 3.5.1
+  "org.webjars.bower" % "jquery" % "3.5.1",
   "org.webjars.npm" % "marked" % "0.5.2",								// MIT 0.5.2
   "org.webjars.npm" % "typo-js" % "1.1.0"								// Modified BSD 1.1.0
 )

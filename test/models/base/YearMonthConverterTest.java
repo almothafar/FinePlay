@@ -2,7 +2,7 @@ package models.base;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -35,6 +35,7 @@ public class YearMonthConverterTest {
 	public static void tearDownAfterClass() throws Exception {
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testDateSpec() {
 

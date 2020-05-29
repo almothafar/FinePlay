@@ -433,22 +433,12 @@ $(document).ready(function() {
 
 	// ////////// Upload //////////
 
-	$('#uploadFile').on('change', function(e){
-
-		var selectedFilePath = document.uploadForm.uploadFile.value;
-		var selectedFilePaths = selectedFilePath.split(/\\|\\/);
-		var selectedFileName = selectedFilePaths[selectedFilePaths.length - 1];
-
-		$(this).next('label.custom-file-label').attr('data-filename', selectedFileName);
-	});
-
 	$('#uploadButton').on("click", function(){
 
 		initUploadOperation('upload');
 
-		$(this).next('label.custom-file-label').attr('data-filename', '');
-
 		$('#uploadFile').val("");
+		$('#uploadFile').next('label.custom-file-label').text($('#uploadFile')[0].bsCustomFileInput.defaultText);
 
 		$('#updateRadio').prop('checked', true);
 	});
@@ -550,6 +540,8 @@ $(document).ready(function() {
 		}
 		$('#uploadFileInfo').popover('hide');
 	})
+
+	bsCustomFileInput.init();
 
 	// ////////// Setting //////////
 

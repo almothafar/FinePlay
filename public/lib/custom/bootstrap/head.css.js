@@ -9,9 +9,6 @@ injectStyle('label.required:after', {
 	'content': '"' + bootstrapMessages(MessageKeys.REQUIRED) + '"'
 });
 
-injectStyle('.custom-file-label:empty::after', {
-	'content': '"' + bootstrapMessages(MessageKeys.SELECT__FILE) + '" !important'
-});
-injectStyle('.custom-file-label::before', {
+injectStyle('.custom-file-label:after', {
 	'content': '"' + bootstrapMessages(MessageKeys.BROWSE) + '" !important'
 });
