@@ -1,15 +1,18 @@
 @charset "utf-8";
 
-#h-split-pane {
-	height: 440px;
-}
-
 .h-split {
 	float: left;
+}
+
+.gutter {
+	background-color: #eee;
+	background-repeat: no-repeat;
+	background-position: 50%;
 }
 
 .gutter.gutter-horizontal {
 	float: left;
 	height: 100%;
 	cursor: col-resize;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
 }

@@ -176,7 +176,10 @@ public class Decimal extends Controller {
 			manager.merge(decimal);
 		}
 
-		return decimal;
+		manager.flush();
+		manager.clear();
+
+		return readDecimal(manager, request, messages);
 	}
 
 	@Nonnull

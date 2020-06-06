@@ -14,7 +14,7 @@ How to play
 
 ##### Environment #####
 
-	macOS Catalina version 10.15.5（19F96）
+	macOS Catalina version 10.15.5（19F101）
 	Time zone UTC
 	openjdk version "11.0.7" 2020-04-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.7+10)
 	Safari version 13.1.1 (15609.2.9.1.2)

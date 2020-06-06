@@ -4,6 +4,27 @@ $(document).ready(function() {
 
 	Split(['#oldPane', '#newPane']);
 
+	var updateTabState = function(){
+
+		var maxHeight = Math.max($('#oldPane').height(), $('#newPane').height());
+		$('#h-split-pane').height(maxHeight);
+	};
+
+	updateTabState();
+
+	var timer = false;
+	$('#lib-content').on('mouseup touchend pointerup', function() {
+
+		if (timer !== false) {
+
+			clearTimeout(timer);
+		}
+		timer = setTimeout(function() {
+
+			updateTabState();
+		}, 100);
+	});
+
 	$('#diffButton').on('click', function(){
 
 		var jsDiff= Diff.createPatch("", $('#oldPane>.jsPane>.code').val(), $('#newPane>.jsPane>.code').val(), $('#oldPane>.jsPane>.fileName').val(), $('#newPane>.jsPane>.fileName').val());
