@@ -81,7 +81,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "moment" % "2.24.0",							// MIT 2.24.0
   "org.webjars.npm" % "moment-timezone" % "0.5.27",						// MIT 0.5.27
   "org.webjars.bower" % "Snap.svg" % "0.5.1",							// Apache 0.5.1
-  "org.webjars.bower" % "fullcalendar" % "3.10.0",						// MIT 3.10.0
+  "org.webjars.npm" % "fullcalendar" % "3.10.2",						// MIT 3.10.2
   "org.webjars" % "openlayers" % "5.2.0",								// 2-Clause BSD 5.2.0
   "org.webjars.bower" % "datatables" % "1.10.19",						// MIT 1.10.19
   "org.webjars.bower" % "datatables.net-plugins" % "1.10.19",			//

@@ -286,9 +286,9 @@
       <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/Snap.svg/0.5.1/Snap.svg-0.5.1-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
-  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/fullcalendar/3.10.0/fullcalendar-3.10.0-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/fullcalendar/3.10.0/fullcalendar-3.10.0.jar">
+  <classpathentry sourcepath="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/fullcalendar/3.10.2/fullcalendar-3.10.2-sources.jar" kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/fullcalendar/3.10.2/fullcalendar-3.10.2.jar">
     <attributes>
-      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/bower/fullcalendar/3.10.0/fullcalendar-3.10.0-javadoc.jar!/"/>
+      <attribute name="javadoc_location" value="jar:file:/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/npm/fullcalendar/3.10.2/fullcalendar-3.10.2-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="lib" path="/Users/hiro/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/webjars/openlayers/5.2.0/openlayers-5.2.0.jar">
