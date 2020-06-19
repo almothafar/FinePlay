@@ -14,6 +14,7 @@ import controllers.user.UserService;
 import models.setting.user.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
+import models.user.User.Appearance;
 import models.user.User.Theme;
 import play.data.Form;
 import play.data.FormFactory;
@@ -55,10 +56,12 @@ public class User extends Controller {
 		final String locale = lang.code();
 		final String zoneId = request.session().get(models.user.User_.ZONE_ID).get();
 		final String theme = request.session().get(models.user.User_.THEME).get();
+		final String appearance = request.session().get(models.user.User_.APPEARANCE).get();
 
 		editFormContent.setLocale(locale);
 		editFormContent.setZoneId(zoneId);
 		editFormContent.setTheme(theme);
+		editFormContent.setAppearance(appearance);
 
 		final Form<EditFormContent> editForm = formFactory.form(EditFormContent.class).fill(editFormContent);
 
@@ -80,11 +83,13 @@ public class User extends Controller {
 				final Locale locale = Lang.forCode(lang.code()).toLocale();
 				final ZoneId zoneId = ZoneId.of(request.session().get(models.user.User_.ZONE_ID).get());
 				final Theme theme = Theme.valueOf(request.session().get(models.user.User_.THEME).get());
+				final Appearance appearance = Appearance.valueOf(request.session().get(models.user.User_.APPEARANCE).get());
 
 				final EditFormContent editFormContent = editForm.get();
 				final Locale updatedLocale = Lang.forCode(editFormContent.getLocale()).toLocale();
 				final ZoneId updatedZoneId = ZoneId.of(editFormContent.getZoneId());
 				final Theme updatedTheme = Theme.valueOf(editFormContent.getTheme());
+				final Appearance updatedAppearance = Appearance.valueOf(editFormContent.getAppearance());
 
 				boolean isUpdated = false;
 				if (!locale.equals(updatedLocale)) {
@@ -96,6 +101,10 @@ public class User extends Controller {
 					isUpdated = true;
 				}
 				if (!theme.equals(updatedTheme)) {
+
+					isUpdated = true;
+				}
+				if (!appearance.equals(updatedAppearance)) {
 
 					isUpdated = true;
 				}
@@ -116,6 +125,7 @@ public class User extends Controller {
 						user.setLocale(updatedLocale);
 						user.setZoneId(updatedZoneId);
 						user.setTheme(updatedTheme);
+						user.setAppearance(updatedAppearance);
 
 						userService.update(manager, messages, user);
 					} catch (final AccountException e) {
@@ -133,6 +143,7 @@ public class User extends Controller {
 							{//
 								put(models.user.User_.ZONE_ID, updatedZoneId.getId());
 								put(models.user.User_.THEME, updatedTheme.name());
+								put(models.user.User_.APPEARANCE, updatedAppearance.name());
 							}
 						});
 			} else {

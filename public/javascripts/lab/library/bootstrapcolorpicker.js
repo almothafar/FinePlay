@@ -39,7 +39,8 @@ $('#picker').colorpicker({
 	]
 }).on('colorpickerChange colorpickerCreate', function (e) {
 
-	e.colorpicker.picker.parents('.modal').find('.modal-header').css('background-color', e.colorpicker.color.toRgbString());
+	e.colorpicker.picker.css('background-color', e.colorpicker.color.toRgbString());
+//	e.colorpicker.picker.parents('.modal').find('.modal-header').css('background-color', e.colorpicker.color.toRgbString());
 });
 
 $('#okButton').on('click', function (e) {

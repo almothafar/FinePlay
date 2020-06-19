@@ -11,11 +11,25 @@ public class EditFormContent {
 
 	// Play
 	@Constraints.Required(groups = { Update.class })
+	private String appearance;
+
+	// Play
+	@Constraints.Required(groups = { Update.class })
 	private String locale;
 
 	// Play
 	@Constraints.Required(groups = { Update.class })
 	private String zoneId;
+
+	public String getAppearance() {
+
+		return appearance;
+	}
+
+	public void setAppearance(String appearance) {
+
+		this.appearance = appearance;
+	}
 
 	public String getTheme() {
 

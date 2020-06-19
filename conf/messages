@@ -150,6 +150,13 @@ theme.natural=Natural
 
 #
 
+appearance=Appearance
+appearance.light=Light
+appearance.dark=Dark
+appearance.auto=Auto
+
+#
+
 font.ipamjmincho=IPAmjMincho
 font.hiraginosans_w3=HiraginoSans-W3
 font.hiraminpron_w3=HiraMinProN-W3

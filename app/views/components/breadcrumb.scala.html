@@ -10,11 +10,15 @@
 	<li class="breadcrumb-item @("active".when(Boolean.valueOf(elements(i).getOrElse("selected", "false"))))">
 		@if(elements(i).contains("link")){
 		<a href="@elements(i).get("link")">
+		}else{
+		<div>
 		}
 			<i class="@elements(i).getOrElse("icon", "")"></i>
 			@elements(i).getOrElse("name", "")
 		@if(elements(i).contains("link")){
 		</a>
+		}else{
+		</div>
 		}
 	</li>
 	}

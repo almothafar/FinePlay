@@ -208,15 +208,6 @@ var flash = function(){
 	$('html').fadeOut(300).fadeIn(300);
 }
 
-if( window.history && window.history.pushState ){
-
-	history.pushState(null, null, null);
-	$(window).on( "popstate", function(event){
-
-		history.pushState(null, null, null);
-	});
-}
-
 $(document).ready(function() {
 
 	// provisional coped for Bug? of Mobile Safari

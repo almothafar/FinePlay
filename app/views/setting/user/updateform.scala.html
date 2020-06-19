@@ -55,9 +55,24 @@
 			<div class="col-sm-9">
 				<select id="update@User.THEME" name="@User.THEME" class="form-control custom-select">
 					@for((themeId,themeName) <- common.utils.Themes.getThemeIdToNameMap(lang.toLocale)) {
-							<option value="@themeId" @("selected".when(themeId.equals(form(User.THEME).value.orElse(""))))>@themeName</option>
+					<option value="@themeId" @("selected".when(themeId.equals(form(User.THEME).value.orElse(""))))>@themeName</option>
 					}
 				</select>
+				<small class="text-muted"></small>
+				<div>
+					<p class="text-danger"></p>
+				</div>
+			</div>
+		</div>
+		<div class="row form-group secret">
+			<label for="update@User.APPEARANCE" class="col-sm-3 col-form-label"><i class="fas fa-moon"></i> @messages(MessageKeys.APPEARANCE)</label>
+			<div class="col-sm-9">
+				@for((appearanceId,appearanceName) <- common.utils.Appearances.getAppearanceIdToNameMap(lang.toLocale)) {
+				<div class="custom-control custom-radio custom-control-inline">
+					<input id="update@User.APPEARANCE@appearanceId" class="update@User.APPEARANCE custom-control-input" name="@User.APPEARANCE" type="radio" value="@appearanceId" @("checked".when(appearanceId.equals(form(User.APPEARANCE).value.orElse(""))))>
+					<label class="custom-control-label" for="update@User.APPEARANCE@appearanceId">@appearanceName</label>
+				</div>
+				}
 				<small class="text-muted"></small>
 				<div>
 					<p class="text-danger"></p>

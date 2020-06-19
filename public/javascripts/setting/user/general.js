@@ -22,4 +22,9 @@ $(document).ready(function() {
 
 		$('#updateForm').submit();
 	});
+
+	$( ".update" + "appearance").change(function(e) {
+
+		$('#updateForm').submit();
+	});
 });

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Locale;
 
 import models.user.User;
+import models.user.User.Appearance;
 import models.user.User.Role;
 import models.user.User.Theme;
 
@@ -43,6 +44,7 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		adminUser.setLocale(Locale.US);
 		adminUser.setZoneId(ZoneId.of("UTC"));
 		adminUser.setTheme(Theme.DEFAULT);
+		adminUser.setAppearance(Appearance.LIGHT);
 		adminUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(adminUser);
 
@@ -53,6 +55,7 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		customerUser.setLocale(Locale.US);
 		customerUser.setZoneId(ZoneId.of("UTC"));
 		customerUser.setTheme(Theme.DEFAULT);
+		customerUser.setAppearance(Appearance.LIGHT);
 		customerUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(customerUser);
 
@@ -63,6 +66,7 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		guestUser.setLocale(Locale.US);
 		guestUser.setZoneId(ZoneId.of("UTC"));
 		guestUser.setTheme(Theme.DEFAULT);
+		guestUser.setAppearance(Appearance.LIGHT);
 		guestUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(guestUser);
 
@@ -73,6 +77,7 @@ class InitialUsersCreator_prod extends InitialUsersCreator {
 		adminJaJpUser.setLocale(Locale.JAPAN);
 		adminJaJpUser.setZoneId(ZoneId.of("Asia/Tokyo"));
 		adminJaJpUser.setTheme(Theme.DEFAULT);
+		adminJaJpUser.setAppearance(Appearance.LIGHT);
 		adminJaJpUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(adminJaJpUser);
 

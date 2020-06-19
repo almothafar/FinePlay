@@ -34,6 +34,7 @@ import models.base.EntityDao;
 import models.manage.user.EditFormContent;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
+import models.user.User.Appearance;
 import models.user.User.Role;
 import models.user.User.Theme;
 import models.user.User_;
@@ -97,6 +98,7 @@ public class Edit extends Controller {
 				final String rePassword = createFormContent.getRePassword();
 				final Set<Role> roles = createFormContent.getRoles().stream().filter(role -> role != null).collect(Collectors.toCollection(() -> EnumSet.noneOf(Role.class)));
 				final Theme theme = Theme.DEFAULT;
+				final Appearance appearance = Appearance.LIGHT;
 				final Locale locale = Locale.US;
 				final ZoneId zoneId = ZoneOffset.UTC;
 				final Long companyId = createFormContent.getCompanyId();
@@ -120,6 +122,7 @@ public class Edit extends Controller {
 					user.setPassword(password);
 					user.setRoles(EnumSet.copyOf(roles));
 					user.setTheme(theme);
+					user.setAppearance(appearance);
 					user.setLocale(locale);
 					user.setZoneId(zoneId);
 					if (Objects.nonNull(companyId)) {

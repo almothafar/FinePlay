@@ -13,6 +13,11 @@
 	request.session().get(models.user.User.THEME).orElse(models.user.User.Theme.DEFAULT.name()).toLowerCase
 }
 
+@appearance() = @{
+
+	request.session().get(models.user.User.APPEARANCE).orElse(models.user.User.Appearance.LIGHT.name()).toLowerCase
+}
+
 @dir() = @{
 
 	val isLTR = models.system.System.Direction.LTR == common.utils.Locales.toDirection(lang.locale);
@@ -24,7 +29,7 @@
 <html
 	lang="@lang.code"
 	dir="@dir()"
-	class="mode-@mode() dir-@dir() theme-@theme()"
+	class="mode-@mode() dir-@dir() theme-@theme() appearance-@appearance()"
 >
 	@content
 </html>

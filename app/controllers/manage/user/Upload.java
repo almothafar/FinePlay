@@ -39,6 +39,7 @@ import models.manage.user.UploadFormContent.Operation;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.User;
+import models.user.User.Appearance;
 import models.user.User.Theme;
 import play.api.PlayException.ExceptionSource;
 import play.data.Form;
@@ -240,6 +241,7 @@ public class Upload extends Controller {
 
 				uploadUser.setLocale(Locale.US);
 				uploadUser.setTheme(Theme.DEFAULT);
+				uploadUser.setAppearance(Appearance.LIGHT);
 				uploadUser.setZoneId(ZoneOffset.UTC);
 
 				try {

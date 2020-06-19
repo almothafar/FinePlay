@@ -26,6 +26,7 @@ import javax.validation.Validator;
 
 import common.utils.JSONs;
 import models.user.User;
+import models.user.User.Appearance;
 import models.user.User.Role;
 import models.user.User.Theme;
 
@@ -100,6 +101,7 @@ class InitialUsersCreator {
 		adminUser.setLocale(Locale.US);
 		adminUser.setZoneId(ZoneId.of("US/Pacific"));
 		adminUser.setTheme(Theme.DEFAULT);
+		adminUser.setAppearance(Appearance.LIGHT);
 		adminUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(adminUser);
 
@@ -110,6 +112,7 @@ class InitialUsersCreator {
 		customerUser.setLocale(Locale.US);
 		customerUser.setZoneId(ZoneId.of("US/Pacific"));
 		customerUser.setTheme(Theme.DEFAULT);
+		customerUser.setAppearance(Appearance.LIGHT);
 		customerUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(customerUser);
 
@@ -120,6 +123,7 @@ class InitialUsersCreator {
 		guestUser.setLocale(Locale.US);
 		guestUser.setZoneId(ZoneId.of("US/Pacific"));
 		guestUser.setTheme(Theme.DEFAULT);
+		guestUser.setAppearance(Appearance.LIGHT);
 		guestUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(guestUser);
 
@@ -130,6 +134,7 @@ class InitialUsersCreator {
 		adminJaJpUser.setLocale(Locale.JAPAN);
 		adminJaJpUser.setZoneId(ZoneId.of("Asia/Tokyo"));
 		adminJaJpUser.setTheme(Theme.DEFAULT);
+		adminJaJpUser.setAppearance(Appearance.LIGHT);
 		adminJaJpUser.setExpireDateTime(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
 		users.add(adminJaJpUser);
 
@@ -144,6 +149,7 @@ class InitialUsersCreator {
 			user.setLocale(Locale.US);
 			user.setZoneId(ZoneId.of("UTC"));
 			user.setTheme(Theme.DEFAULT);
+			user.setAppearance(Appearance.LIGHT);
 			user.setExpireDateTime(LocalDateTime.of(now.getYear() + i, Month.JANUARY, 1, 0, 0));
 			final Set<ConstraintViolation<User>> violations = validator.validate(user);
 			violations.stream().forEach(violation -> {
@@ -166,13 +172,14 @@ class InitialUsersCreator {
 			final List<String> lines = new ArrayList<>();
 
 			user.setId(i + 1);
-			final String userLine = String.format("INSERT INTO USERS (ID, USERID, HASHEDPASSWORD, LOCALE, ZONEID, THEME, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME, VERSION) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)", //
+			final String userLine = String.format("INSERT INTO USERS (ID, USERID, HASHEDPASSWORD, LOCALE, ZONEID, THEME, APPEARANCE, EXPIREDATETIME, SIGNINDATETIME, SIGNOUTDATETIME, UPDATEDATETIME, VERSION) VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)", //
 					user.getId(), //
 					"'" + user.getUserId() + "'", //
 					"'" + user.getHashedPassword().replace("'", "''") + "'", //
 					"'" + user.getLocale().toLanguageTag() + "'", //
 					"'" + user.getZoneId().getId() + "'", //
 					"'" + user.getTheme().name() + "'", //
+					"'" + user.getAppearance().name() + "'", //
 					"'" + FORMATTER.format(user.getExpireDateTime()) + "'", //
 					user.getSignInDateTime() != null ? "'" + FORMATTER.format(user.getSignInDateTime()) + "'" : "NULL", //
 					user.getSignOutDateTime() != null ? "'" + FORMATTER.format(user.getSignOutDateTime()) + "'" : "NULL");

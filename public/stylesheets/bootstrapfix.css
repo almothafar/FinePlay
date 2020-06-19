@@ -24,3 +24,9 @@
 .modal-open #system_help-main{
 	overflow: hidden;
 }
+
+/* for Dark Reader */
+
+.mark, mark {
+	color: #212529;
+}

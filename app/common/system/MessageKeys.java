@@ -31,6 +31,14 @@ public class MessageKeys {
 
   public static final String ANSWER = "answer";
 
+  public static final String APPEARANCE = "appearance";
+
+  public static final String APPEARANCE_AUTO = "appearance.auto";
+
+  public static final String APPEARANCE_DARK = "appearance.dark";
+
+  public static final String APPEARANCE_LIGHT = "appearance.light";
+
   public static final String APPLICATION = "application";
 
   public static final String ARRANGE = "arrange";

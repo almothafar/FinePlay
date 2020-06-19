@@ -15,7 +15,7 @@ create table REGIST_USERS (id int8 not null, code varchar(64) not null, expireDa
 create table RESET_USERS (id int8 not null, code varchar(64) not null, expireDateTime timestamp not null, userId varchar(256) not null, primary key (id))
 create table STRICT_DATETIMES (user_Id int8 not null, dateTime timestamp, primary key (user_Id))
 create table USER_ROLES (USER_ID int8 not null, ROLE varchar(255) not null, primary key (USER_ID, ROLE))
-create table USERS (id int8 not null, expireDateTime timestamp not null, hashedPassword varchar(60) not null, locale varchar(255) not null, signInDateTime timestamp, signOutDateTime timestamp, theme varchar(255) not null, updateDateTime timestamp not null, userId varchar(256) not null, version timestamp, zoneId varchar(255) not null, COMPANY_ID int8, primary key (id))
+create table USERS (id int8 not null, appearance varchar(255) not null, expireDateTime timestamp not null, hashedPassword varchar(60) not null, locale varchar(255) not null, signInDateTime timestamp, signOutDateTime timestamp, theme varchar(255) not null, updateDateTime timestamp not null, userId varchar(256) not null, version timestamp, zoneId varchar(255) not null, COMPANY_ID int8, primary key (id))
 create index IDXktdkurexwv3uxufg7vru7np5s on COMPANIES (id)
 alter table COMPANIES_COMPANY_NAMES add constraint UK_iesn9bki7ydmkpr1n55aexfne unique (names_company_Id, names_locale)
 create index IDX1tpvc9ive4udpna3chg5aw07f on COMPANY_NAMES (company_Id, locale)

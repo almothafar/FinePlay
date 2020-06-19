@@ -25,6 +25,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import models.base.EntityDao;
+import models.user.User.Appearance;
 import models.user.User.Role;
 import models.user.User.Theme;
 import play.db.jpa.JPAApi;
@@ -127,6 +128,7 @@ public class UserDaoTest extends WithApplication {
 				createUser.setLocale(Locale.US);
 				createUser.setZoneId(ZoneId.of("UTC"));
 				createUser.setTheme(Theme.DEFAULT);
+				createUser.setAppearance(Appearance.LIGHT);
 				createUser.setExpireDateTime(LocalDateTime.MAX);
 				createUser.setUpdateDateTime(LocalDateTime.now());
 				try {
@@ -217,6 +219,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setLocale(Locale.US);
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
+				readUser.setAppearance(Appearance.LIGHT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
 				readUser.setUpdateDateTime(LocalDateTime.now());
 				try {
@@ -255,6 +258,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setLocale(Locale.US);
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
+				readUser.setAppearance(Appearance.LIGHT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
 				readUser.setUpdateDateTime(LocalDateTime.now());
 
@@ -291,6 +295,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setLocale(Locale.US);
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
+				readUser.setAppearance(Appearance.LIGHT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
 				readUser.setUpdateDateTime(LocalDateTime.now());
 
@@ -330,6 +335,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setLocale(Locale.US);
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
+				readUser.setAppearance(Appearance.LIGHT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
 				readUser.setUpdateDateTime(LocalDateTime.now());
 				try {
@@ -365,6 +371,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setLocale(Locale.US);
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
+				readUser.setAppearance(Appearance.LIGHT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
 				readUser.setUpdateDateTime(LocalDateTime.now());
 
@@ -402,6 +409,7 @@ public class UserDaoTest extends WithApplication {
 				readUser.setLocale(Locale.US);
 				readUser.setZoneId(ZoneId.of("UTC"));
 				readUser.setTheme(Theme.DEFAULT);
+				readUser.setAppearance(Appearance.LIGHT);
 				readUser.setExpireDateTime(LocalDateTime.MAX);
 				readUser.setUpdateDateTime(LocalDateTime.now());
 

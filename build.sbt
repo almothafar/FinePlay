@@ -114,6 +114,7 @@ libraryDependencies ++= Seq(
 //  "org.webjars.npm" % "pdfjs-dist" % "2.0.550",						// Apache 2.0.550 +patch
   "org.webjars.npm" % "html2canvas" % "1.0.0-rc.5",						// 1.0.0-rc.5
 //  "org.webjars.npm" % "jspdf" % "1.5.3",								// MIT 1.5.3
+  "org.webjars.npm" % "darkreader" % "4.9.10",							// MIT 4.9.10
   "org.webjars.npm" % "jsqr" % "1.2.0",									// Apache 1.2.0
   "org.webjars.npm" % "holderjs" % "2.9.4",								// MIT 2.9.4
   "org.webjars.npm" % "3dmol" % "1.5.1" exclude("org.webjars.npm", "atob") exclude("org.webjars.npm", "spdx-exceptions"),	// BSD-3-Clause license 1.5.1

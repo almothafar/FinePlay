@@ -27,6 +27,7 @@ import models.registuser.RegistUserDao;
 import models.registuser.RegistUser_;
 import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
+import models.user.User.Appearance;
 import models.user.User.Role;
 import models.user.User.Theme;
 import play.api.PlayException;
@@ -276,6 +277,7 @@ public class RegistUser extends Controller {
 			user.setHashedPassword(registUser.getHashedPassword());
 			user.setRoles(EnumSet.of(Role.CUSTOMER));
 			user.setTheme(Theme.DEFAULT);
+			user.setAppearance(Appearance.LIGHT);
 			user.setLocale(registUser.getLocale());
 			user.setZoneId(registUser.getZoneId());
 			user.setExpireDateTime(LocalDateTime.now().plusYears(1000));

@@ -101,6 +101,28 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 		}
 	}
 
+	public enum Appearance {
+		LIGHT, DARK, AUTO;
+
+		public String getMessageKey() {
+
+			switch (this) {
+			case LIGHT:
+
+				return MessageKeys.APPEARANCE_LIGHT;
+			case DARK:
+
+				return MessageKeys.APPEARANCE_DARK;
+			case AUTO:
+
+				return MessageKeys.APPEARANCE_AUTO;
+			default:
+
+				throw new IllegalStateException(this.name());
+			}
+		}
+	}
+
 	@Id
 	@GeneratedValue
 	@Column(nullable = false)
@@ -130,6 +152,10 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Theme theme;
+
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Appearance appearance;
 
 	@Column(nullable = false)
 	private Locale locale;
@@ -175,6 +201,7 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	private static final String ROLE = "role";
 	public static final String ROLES = User_.ROLES;
 	public static final String THEME = User_.THEME;
+	public static final String APPEARANCE = User_.APPEARANCE;
 	public static final String LOCALE = User_.LOCALE;
 	public static final String ZONE_ID = User_.ZONE_ID;
 	public static final String EXPIRE_DATE_TIME = User_.EXPIRE_DATE_TIME;
@@ -397,6 +424,16 @@ public class User implements ExpireHandler, PasswordHandler, Validatable<List<Va
 	public void setTheme(Theme theme) {
 
 		this.theme = theme;
+	}
+
+	public Appearance getAppearance() {
+
+		return appearance;
+	}
+
+	public void setAppearance(Appearance appearance) {
+
+		this.appearance = appearance;
 	}
 
 	public Locale getLocale() {

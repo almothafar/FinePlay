@@ -7,6 +7,11 @@
 
 @()(implicit request:Http.Request, lang: Lang, messages: Messages)
 
+@appearance() = @{
+
+	request.session().get(models.user.User.APPEARANCE).orElse(models.user.User.Appearance.LIGHT.name());
+}
+
 @libraries.jquery.last()
 
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/common.js")'></script>
@@ -21,3 +26,42 @@
 @libraries.bootstrap.last()
 <script @{CSPNonce.attr} src='@routes.Assets.versioned("javascripts/fakestrap.js")'></script>
 @libraries.jqueryui.last()
+<script @{CSPNonce.attr} src='@routes.Assets.versioned("lib/darkreader/darkreader.js")'></script>
+@script(args = Symbol("type") -> "text/javascript") {
+
+	'use strict';
+
+	(function(){
+
+		var themeOptions = {
+			brightness: 110,
+			contrast: 80,
+			sepia: 0
+		};
+		var colorpickerSaturation_overrideStyle = '.colorpicker-saturation{background:-webkit-gradient(linear,left top,left bottom,from(transparent),to(black)),-webkit-gradient(linear,left top,right top,from(white),to(rgba(255,255,255,0)));background:linear-gradient(to bottom,transparent 0,#000 100%),linear-gradient(to right,#fff 0,rgba(255,255,255,0) 100%);}';
+		var colorpickerAlpha_overrideStyle = '.colorpicker-alpha{background:linear-gradient(45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.1) 75%,rgba(0,0,0,.1) 0),linear-gradient(45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.1) 75%,rgba(0,0,0,.1) 0),#fff;background-size:10px 10px;background-position:0 0,5px 5px;}';
+		var colorpickerHorizontalAlpha_overrideStyle = '.colorpicker.colorpicker-horizontal .colorpicker-alpha{background:linear-gradient(45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.1) 75%,rgba(0,0,0,.1) 0),linear-gradient(45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.1) 75%,rgba(0,0,0,.1) 0),#fff;background-size:10px 10px;background-position:0 0,5px 5px}';
+		var colorpickerPreview_overrideStyle = '.colorpicker-preview{background:linear-gradient(45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.1) 75%,rgba(0,0,0,.1) 0),linear-gradient(45deg,rgba(0,0,0,.1) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.1) 75%,rgba(0,0,0,.1) 0),#fff;background-size:10px 10px;background-position:0 0,5px 5px}';
+		var colorpicker2x_overrideStyle = '.colorpicker-2x .colorpicker-alpha, .colorpicker-2x .colorpicker-preview {background-size: 20px 20px;background-position: 0 0, 10px 10px;}';
+		var fixes = {
+			invert:['#system_logo_signin','#system_logo','#logoImage'],
+			ignoreInlineStyle:['.colorpicker','.colorpicker-saturation','.colorpicker-hue','.colorpicker-alpha','.colorpicker-preview','.colorpicker-swatch--inner'],
+			css:colorpickerSaturation_overrideStyle + colorpickerAlpha_overrideStyle + colorpickerHorizontalAlpha_overrideStyle + colorpickerPreview_overrideStyle + colorpicker2x_overrideStyle
+		};
+
+		var appearance = '@appearance()';
+		switch (appearance) {
+			case '@models.user.User.Appearance.LIGHT.name()':
+
+				break;
+			case '@models.user.User.Appearance.DARK.name()':
+
+				DarkReader.enable(themeOptions,fixes);
+				break;
+			case '@models.user.User.Appearance.AUTO.name()':
+			default:
+
+				DarkReader.auto(themeOptions,fixes);
+		}
+	})();
+}

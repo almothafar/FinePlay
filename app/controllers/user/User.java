@@ -38,6 +38,7 @@ import models.system.System.Permission;
 import models.system.System.PermissionsAllowed;
 import models.user.PasswordFormContent;
 import models.user.SignInFormContent;
+import models.user.User.Appearance;
 import models.user.User.Theme;
 import play.Application;
 import play.data.Form;
@@ -124,6 +125,7 @@ public class User extends Controller {
 		request.session().adding(new HashMap<String, String>() {
 			{//
 				put(models.user.User_.THEME, Theme.DEFAULT.name());
+				put(models.user.User_.APPEARANCE, Appearance.LIGHT.name());
 			}
 		});
 
@@ -208,6 +210,7 @@ public class User extends Controller {
 							{//
 								put(models.user.User_.USER_ID, userId);
 								put(models.user.User_.THEME, user.getTheme().name());
+								put(models.user.User_.APPEARANCE, user.getAppearance().name());
 								put(models.user.User_.ZONE_ID, user.getZoneId().getId());
 								put(models.user.User_.ROLES, Sessions.toValue(new ArrayList<>(user.getRoles())));
 								put(SessionKeys.OPERATION_TIMEOUT, LocalDateTime.MIN.toString());
