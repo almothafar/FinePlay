@@ -51,6 +51,8 @@ baby-carriage
 backspace
 backward
 bacon
+bacteria
+bacterium
 bahai
 balance-scale
 balance-scale-left
@@ -757,6 +759,7 @@ sign-out-alt
 signal
 signature
 sim-card
+sink
 sitemap
 skating
 skiing
@@ -949,6 +952,7 @@ user-tie
 user-times
 users
 users-cog
+users-slash
 utensil-spoon
 utensils
 vector-square

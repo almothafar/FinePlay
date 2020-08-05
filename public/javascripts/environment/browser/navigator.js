@@ -1,5 +1,6 @@
 'use strict';
 
+if(navigator.credentials){$("#Credentials").removeClass("badge-danger").addClass("badge-success")}
 if(navigator.onLine){$("#OnLine").removeClass("badge-danger").addClass("badge-success")}
 if(navigator.cookieEnabled){$("#Cookie").removeClass("badge-danger").addClass("badge-success")}
 if(navigator.geolocation){$("#Geolocation").removeClass("badge-danger").addClass("badge-success")}

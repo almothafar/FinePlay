@@ -96,6 +96,7 @@ d-and-d
 d-and-d-beyond
 dailymotion
 dashcube
+deezer
 delicious
 deploydog
 deskpro
@@ -118,6 +119,7 @@ dyalog
 earlybirds
 ebay
 edge
+edge-legacy
 elementor
 ello
 ember
@@ -177,6 +179,7 @@ goodreads
 goodreads-g
 google
 google-drive
+google-pay
 google-play
 google-plus
 google-plus-g
@@ -319,6 +322,7 @@ resolving
 rev
 rocketchat
 rockrms
+rust
 safari
 salesforce
 sass
@@ -376,6 +380,7 @@ the-red-yeti
 themeco
 themeisle
 think-peaks
+tiktok
 trade-federation
 trello
 tripadvisor
@@ -391,6 +396,7 @@ uikit
 umbraco
 uniregistry
 unity
+unsplash
 untappd
 ups
 usb

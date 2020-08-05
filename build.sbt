@@ -67,7 +67,7 @@ libraryDependencies ++= Seq(
   "com.github.spullara.mustache.java" % "compiler" % "0.9.6",			// Apache 0.9.6
   "net.lingala.zip4j" % "zip4j" % "2.5.1",								// Apache 2.5.1
 //  "org.webjars.npm" % "jquery" % "3.5.1",								// MIT 3.5.1
-  "org.webjars.npm" % "bootstrap" % "4.5.0",							// MIT 4.5.0
+  "org.webjars.npm" % "bootstrap" % "4.5.1",							// MIT 4.5.1
   "org.webjars.npm" % "bs-custom-file-input" % "1.3.4",					// MIT 1.3.4
   "org.webjars.bowergithub.makeusabrew" % "bootbox" % "5.4.0",			// MIT 5.4.0
   "org.webjars.bower" % "pickadate" % "3.6.4",							// MIT 3.6.4
@@ -134,7 +134,7 @@ libraryDependencies ++= Seq(
 // Use bootstrap
 libraryDependencies ++= Seq(
   "org.webjars.npm" % "clipboard" % "2.0.6",							// MIT 2.0.6
-  "org.webjars.npm" % "popper.js" % "1.16.0"							// MIT 1.16.0
+  "org.webjars.npm" % "popper.js" % "1.16.1-lts"						// MIT 1.16.1
 )
 
 // Polyfill
@@ -145,7 +145,7 @@ libraryDependencies ++= Seq(
 
 // Icon library
 libraryDependencies ++= Seq(
-  "org.webjars" % "font-awesome" % "5.13.0",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.13.0
+  "org.webjars" % "font-awesome" % "5.14.0",							// Icons:CC, Fonts:SIL OFL, Code: MIT/Pro 5.14.0
   "org.webjars" % "material-design-icons" % "3.0.1",					// Apache 3.0.1
   "org.webjars.npm" % "ionicons" % "4.6.3",								// MIT 4.6.3
   "org.webjars.npm" % "twemoji" % "12.0.0" exclude("org.webjars.npm", "twemoji-parser")		// Code:MIT, Graphics:CC 12.0.0

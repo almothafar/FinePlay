@@ -14,16 +14,16 @@ Play(Java) 2.8 & Bootstrap 4.5
 
 ##### 環境 #####
 
-	macOS Catalina バージョン 10.15.5（19F101）
+	macOS Catalina バージョン 10.15.6（19G73）
 	時間帯 UTC
-	openjdk バージョン "11.0.7" 2020-04-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.7+10)
-	Safari バージョン 13.1.1 (15609.2.9.1.2)
+	openjdk バージョン "11.0.8" 2020-07-14 / OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.8+10)
+	Safari バージョン 13.1.2 (15609.3.5.1.3)
 
 ##### OpenJDK #####
 
 インストール
 
-[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.7%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.7_10.pkg)
+[AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.8%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.8_10.pkg)
 
 ##### コンソール #####
 
@@ -52,7 +52,7 @@ URL を開く
 
 [Play Framework](https://www.playframework.com/documentation/2.8.x)
 
-[Bootstrap](http://getbootstrap.com/docs/4.5)
+[Bootstrap](https://getbootstrap.com/docs/4.5)
 
 [Font Awesome](https://fontawesome.com/how-to-use)
 
